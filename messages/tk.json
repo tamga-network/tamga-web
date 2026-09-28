@@ -1,0 +1,63 @@
+{
+  "meta": {
+    "title": "Tamga Network — Sanly Ynam Infrastrukturasy",
+    "description": "Tamga Network — şahslaryň, guramalaryň we sanly emläkleriň ynamly kesgitlenip, barlanyp bilinýän gatnaşyklar gurup bilýän Sanly Ynam Infrastrukturasydyr. Türkiýe we türki dünýäsi üçin açyk standartlara laýyk, özygtyýarly infrastruktura.",
+    "ogDescription": "Gadymy tamganyň häzirki zaman garşylygy: Türkiýe we türki dünýäsi üçin açyk standartlara laýyk, özygtyýarly sanly ynam infrastrukturasy."
+  },
+  "nav": {
+    "manifesto": "Manifest",
+    "about": "Biz barada",
+    "docs": "Resminamalar",
+    "scenarios": "Ssenariýalar",
+    "whitepaper": "Whitepaper",
+    "blog": "Blog"
+  },
+  "common": {
+    "menu": "Menýuny aç/ýap",
+    "toDark": "Garaňky tema geç",
+    "toLight": "Ýagty tema geç",
+    "downloadPdf": "PDF hökmünde ýükle",
+    "home": "Baş sahypa",
+    "contents": "Mazmuny"
+  },
+  "footer": {
+    "tagline": "Sanly Ynam Infrastrukturasy. Gadymy tamganyň häzirki zaman garşylygyny Türkiýe we türki dünýäsi üçin gurýarys.",
+    "slogan": "Building Trust Infrastructure for the Digital World.",
+    "project": "Taslama",
+    "resources": "Çeşmeler",
+    "standards": "Standartlar",
+    "about": "Biz barada",
+    "manifesto": "Manifest",
+    "ecosystem": "Ekoulgam",
+    "docs": "Resminamalar",
+    "whitepaper": "Whitepaper",
+    "blog": "Blog",
+    "glossary": "Sözlük",
+    "howItWorks": "Nähili işleýär",
+    "eidas": "eIDAS & EUDI",
+    "network": "Tor",
+    "company": "Kompaniýa",
+    "team": "Topar",
+    "careers": "Karýera",
+    "references": "Salgylanmalar",
+    "contact": "Habarlaşmak",
+    "rights": "Ähli hukuklar goralan.",
+    "trustLists": "Ynam sanawlary",
+    "devDocs": "Işläp düzüjiler üçin resminamalar",
+    "developers": "Işläp düzüjiler",
+    "eudiComparison": "Tamga we EUDI"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Bu tamga hiç ýere äkitmeýär",
+    "body": "Gözleýän sahypaňyz tapylmady. Baş sahypa dolanyp ýa-da resminamalara göz aýlap bilersiňiz.",
+    "home": "Baş sahypa",
+    "docs": "Resminamalar"
+  },
+  "langSwitcher": {
+    "label": "Dil",
+    "tr": "Türkçe",
+    "en": "English",
+    "tk": "Türkmençe"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "meta": {
+    "title": "Tamga Network — Dijital Güven Altyapısı",
+    "description": "Tamga Network, bireylerin, kurumların ve dijital varlıkların güvenilir biçimde tanımlanıp doğrulanabilir ilişkiler kurabildiği bir Dijital Güven Altyapısıdır. Türkiye ve Türk dünyası için açık standartlara uyumlu, egemen bir altyapı.",
+    "ogDescription": "Kadim mührün çağdaş karşılığı: Türkiye ve Türk dünyası için açık standartlara uyumlu, egemen bir dijital güven altyapısı."
+  },
+  "nav": {
+    "manifesto": "Manifesto",
+    "about": "Hakkında",
+    "docs": "Dokümanlar",
+    "scenarios": "Senaryolar",
+    "whitepaper": "Whitepaper",
+    "blog": "Blog"
+  },
+  "common": {
+    "menu": "Menüyü aç/kapat",
+    "toDark": "Karanlık temaya geç",
+    "toLight": "Aydınlık temaya geç",
+    "downloadPdf": "PDF olarak indir",
+    "home": "Ana sayfa",
+    "contents": "İçindekiler"
+  },
+  "footer": {
+    "tagline": "Dijital Güven Altyapısı. Kadim mührün çağdaş karşılığını Türkiye ve Türk dünyası için inşa ediyoruz.",
+    "slogan": "Building Trust Infrastructure for the Digital World.",
+    "project": "Proje",
+    "resources": "Kaynaklar",
+    "standards": "Standartlar",
+    "about": "Hakkında",
+    "manifesto": "Manifesto",
+    "ecosystem": "Ekosistem",
+    "docs": "Dokümanlar",
+    "whitepaper": "Whitepaper",
+    "blog": "Blog",
+    "glossary": "Sözlük",
+    "howItWorks": "Nasıl Çalışır",
+    "eidas": "eIDAS & EUDI",
+    "network": "Ağ",
+    "company": "Şirket",
+    "team": "Ekip",
+    "careers": "Kariyer",
+    "references": "Referanslar",
+    "contact": "İletişim",
+    "rights": "Tüm hakları saklıdır.",
+    "trustLists": "Güven listeleri",
+    "devDocs": "Geliştirici belgeleri",
+    "developers": "Geliştiriciler",
+    "eudiComparison": "Tamga ve EUDI"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Bu mühür bir yere bağlanmıyor",
+    "body": "Aradığınız sayfa bulunamadı. Ana sayfaya dönebilir ya da dokümanlara göz atabilirsiniz.",
+    "home": "Ana sayfa",
+    "docs": "Dokümanlar"
+  },
+  "langSwitcher": {
+    "label": "Dil",
+    "tr": "Türkçe",
+    "en": "English",
+    "tk": "Türkmençe"
+  }
+}

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- Monogram: altıgen mühür içinde serif "T" harfi -->
+  <rect width="100" height="100" rx="20" fill="#17110F"/>
+  <path d="M50 14 L80 31 V63 L50 80 M50 14 L20 31 V63 L50 80" fill="none" stroke="#C8A24C" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M34 38 H66 M50 38 V68" fill="none" stroke="#B01E22" stroke-width="8" stroke-linecap="round"/>
+  <path d="M44 68 H56" stroke="#B01E22" stroke-width="8" stroke-linecap="round"/>
+</svg>

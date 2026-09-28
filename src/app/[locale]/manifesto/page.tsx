@@ -1,0 +1,104 @@
+import type { Metadata } from "next";
+import { setRequestLocale, getTranslations } from "next-intl/server";
+import { Download } from "lucide-react";
+import { Link } from "@/i18n/navigation";
+import { LogoMark } from "@/components/logo";
+import { getManifestoContent } from "@/content/manifesto";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const { meta } = getManifestoContent(locale);
+  return { title: meta.title, description: meta.description };
+}
+
+export default async function ManifestoPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const c = getManifestoContent(locale);
+  const t = await getTranslations("common");
+
+  return (
+    <article className="shell max-w-3xl py-16 sm:py-20">
+      {/* Masthead */}
+      <div className="flex items-center justify-between border-b border-border pb-6">
+        <div className="flex items-center gap-3">
+          <LogoMark size={30} />
+          <div>
+            <p className="font-serif text-base font-semibold text-foreground">
+              Tamga Network
+            </p>
+            <p className="mono-label" lang="en">
+              {c.mastheadSub}
+            </p>
+          </div>
+        </div>
+        <a
+          href={`/manifesto-${locale}.pdf`}
+          target="_blank"
+          rel="noopener"
+          className="no-print inline-flex items-center justify-center gap-2 rounded-md border border-border-strong px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
+        >
+          <Download size={16} />
+          {t("downloadPdf")}
+        </a>
+      </div>
+
+      <header className="mt-12">
+        <p className="eyebrow mb-4">{c.eyebrow}</p>
+        <h1 className="text-balance text-4xl font-semibold leading-tight sm:text-5xl">
+          {c.title}
+        </h1>
+        <p className="mt-6 text-xl leading-relaxed text-foreground-muted">
+          {c.lead}
+        </p>
+      </header>
+
+      <div className="mt-14 space-y-12">
+        {c.theses.map((t) => (
+          <section key={t.n} className="grid gap-4 sm:grid-cols-[auto_1fr] sm:gap-8">
+            <span className="font-mono text-3xl font-medium text-gold">{t.n}</span>
+            <div>
+              <h2 className="font-serif text-2xl font-semibold text-foreground">
+                {t.title}
+              </h2>
+              <p className="mt-3 text-lg leading-relaxed text-foreground-muted">
+                {t.body}
+              </p>
+            </div>
+          </section>
+        ))}
+      </div>
+
+      <footer className="mt-16 border-t border-border pt-8">
+        <p className="text-lg leading-relaxed text-foreground">{c.closing}</p>
+        <p className="mt-4 font-serif text-xl italic text-primary" lang="en">
+          {c.slogan}
+        </p>
+
+        <div className="no-print mt-10 flex flex-wrap gap-3 text-sm">
+          <Link
+            href="/whitepaper"
+            className="link-underline text-foreground-muted hover:text-foreground"
+          >
+            {c.linkWhitepaper}
+          </Link>
+          <span className="text-border-strong">·</span>
+          <Link
+            href="/docs"
+            className="link-underline text-foreground-muted hover:text-foreground"
+          >
+            {c.linkDocs}
+          </Link>
+        </div>
+      </footer>
+    </article>
+  );
+}

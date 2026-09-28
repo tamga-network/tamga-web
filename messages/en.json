@@ -1,0 +1,63 @@
+{
+  "meta": {
+    "title": "Tamga Network — Digital Trust Infrastructure",
+    "description": "Tamga Network is a Digital Trust Infrastructure where individuals, organizations and digital assets can be reliably identified and build verifiable relationships. A sovereign, open-standards infrastructure for Türkiye and the Turkic world.",
+    "ogDescription": "The modern counterpart of the ancient seal: a sovereign, open-standards digital trust infrastructure for Türkiye and the Turkic world."
+  },
+  "nav": {
+    "manifesto": "Manifesto",
+    "about": "About",
+    "docs": "Docs",
+    "scenarios": "Scenarios",
+    "whitepaper": "Whitepaper",
+    "blog": "Blog"
+  },
+  "common": {
+    "menu": "Toggle menu",
+    "toDark": "Switch to dark theme",
+    "toLight": "Switch to light theme",
+    "downloadPdf": "Download as PDF",
+    "home": "Home",
+    "contents": "Contents"
+  },
+  "footer": {
+    "tagline": "Digital Trust Infrastructure. We are building the modern counterpart of the ancient seal for Türkiye and the Turkic world.",
+    "slogan": "Building Trust Infrastructure for the Digital World.",
+    "project": "Project",
+    "resources": "Resources",
+    "standards": "Standards",
+    "about": "About",
+    "manifesto": "Manifesto",
+    "ecosystem": "Ecosystem",
+    "docs": "Docs",
+    "whitepaper": "Whitepaper",
+    "blog": "Blog",
+    "glossary": "Glossary",
+    "howItWorks": "How it works",
+    "eidas": "eIDAS & EUDI",
+    "network": "Network",
+    "company": "Company",
+    "team": "Team",
+    "careers": "Careers",
+    "references": "References",
+    "contact": "Contact",
+    "rights": "All rights reserved.",
+    "trustLists": "Trust lists",
+    "devDocs": "Developer docs",
+    "developers": "Developers",
+    "eudiComparison": "Tamga and EUDI"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "This seal leads nowhere",
+    "body": "The page you are looking for could not be found. You can return home or browse the documentation.",
+    "home": "Home",
+    "docs": "Docs"
+  },
+  "langSwitcher": {
+    "label": "Language",
+    "tr": "Türkçe",
+    "en": "English",
+    "tk": "Türkmençe"
+  }
+}

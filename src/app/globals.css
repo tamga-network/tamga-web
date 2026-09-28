@@ -1,0 +1,296 @@
+@import "tailwindcss";
+
+/* Theme provider sets class="dark" / "light" on <html> (see theme-provider.tsx) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+  Tamga Network — Brand design system
+  Palette (approved): Al Kızıl #B01E22 · Altın #C8A24C · Obsidyen #17110F
+  Parşömen #F4EDE2 · Göktürk gök mavisi #2A6F8E
+  Type: IBM Plex Serif (display) · IBM Plex Sans (body) · IBM Plex Mono (labels)
+*/
+
+:root {
+  /* Light — clean neutral canvas (replaces the warm "Parşömen") */
+  --background: #fafaf8;
+  --background-elevated: #ffffff;
+  --surface: #f3f2ef;
+  --surface-2: #eae8e3;
+  --foreground: #1c1b19;
+  --foreground-muted: #57534d;
+  --foreground-subtle: #7c776f;
+  --border: #e5e3dd;
+  --border-strong: #d2cfc8;
+
+  --primary: #b01e22;      /* Al Kızıl */
+  --primary-strong: #8a1619;
+  --primary-contrast: #ffffff;
+  --gold: #9a7a2e;         /* muted gold reads on light */
+  --gold-bright: #c8a24c;
+  --accent: #2a6f8e;       /* Göktürk mavisi */
+
+  --ring: rgba(176, 30, 34, 0.30);
+  --shadow-color: 20 18 15;
+}
+
+.dark {
+  /* Dark — clean neutral canvas (replaces the warm "Obsidyen") */
+  --background: #131314;
+  --background-elevated: #191919;
+  --surface: #1d1d1e;
+  --surface-2: #242425;
+  --foreground: #f4f3f1;
+  --foreground-muted: #b6b3ad;
+  --foreground-subtle: #86837d;
+  --border: #2b2b2d;
+  --border-strong: #3c3c3f;
+
+  --primary: #e0554b;      /* brighter Al Kızıl for dark contrast */
+  --primary-strong: #b01e22;
+  --primary-contrast: #ffffff;
+  --gold: #c8a24c;         /* Altın */
+  --gold-bright: #e0bf6f;
+  --accent: #4d9ec0;       /* brighter Göktürk mavisi */
+
+  --ring: rgba(224, 85, 75, 0.4);
+  --shadow-color: 0 0 0;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-background-elevated: var(--background-elevated);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-foreground: var(--foreground);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-foreground-subtle: var(--foreground-subtle);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+
+  --color-primary: var(--primary);
+  --color-primary-strong: var(--primary-strong);
+  --color-primary-contrast: var(--primary-contrast);
+  --color-gold: var(--gold);
+  --color-gold-bright: var(--gold-bright);
+  --color-accent: var(--accent);
+
+  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  /* "serif" utility now drives the modern display font (Sora) — headings,
+     wordmark, section titles. Name kept to avoid churn across the codebase. */
+  --font-serif: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+
+  --shadow-soft: 0 14px 40px rgba(0, 0, 0, 0.12);
+
+  --spacing-shell: 1200px;
+
+  /* Aurora — slow-drifting brand-color blobs for the hero atmosphere */
+  --animate-aurora-1: aurora-1 19s ease-in-out infinite;
+  --animate-aurora-2: aurora-2 23s ease-in-out infinite;
+  --animate-aurora-3: aurora-3 27s ease-in-out infinite;
+}
+
+@keyframes aurora-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(8%, 6%) scale(1.18); }
+}
+@keyframes aurora-2 {
+  0%, 100% { transform: translate(0, 0) scale(1.1); }
+  50%      { transform: translate(-7%, 4%) scale(1); }
+}
+@keyframes aurora-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(5%, -6%) scale(1.2); }
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--primary);
+  color: var(--primary-contrast);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  letter-spacing: -0.015em;
+  color: var(--foreground);
+}
+
+/* Reusable brand utilities */
+@layer components {
+  .shell {
+    width: 100%;
+    max-width: var(--spacing-shell);
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--primary);
+  }
+
+  .mono-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--foreground-subtle);
+  }
+
+  /* Subtle neutral canvas glow — brand tints, no yellow cast */
+  .bg-tamga-grain {
+    background-image:
+      radial-gradient(60rem 60rem at 78% -12%, color-mix(in oklab, var(--primary) 10%, transparent), transparent 60%),
+      radial-gradient(48rem 48rem at 8% 8%, color-mix(in oklab, var(--accent) 9%, transparent), transparent 55%);
+  }
+
+  /* Faint dotted grid — adds depth behind the hero / feature areas */
+  .bg-dot-grid {
+    background-image: radial-gradient(
+      color-mix(in oklab, var(--foreground) 9%, transparent) 1px,
+      transparent 1.4px
+    );
+    background-size: 22px 22px;
+  }
+
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.3s ease;
+  }
+  .link-underline:hover {
+    background-size: 100% 1px;
+  }
+
+  /* Brand-colored hover underline — red in light, white in dark */
+  .link-underline-brand {
+    background-image: linear-gradient(var(--primary), var(--primary));
+    background-size: 0% 1.5px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.3s ease;
+  }
+  .link-underline-brand:hover {
+    background-size: 100% 1.5px;
+  }
+  .dark .link-underline-brand {
+    background-image: linear-gradient(var(--foreground), var(--foreground));
+  }
+}
+
+/* Long-form reading (docs / whitepaper / manifesto) */
+.prose {
+  color: var(--foreground-muted);
+  font-size: 1.02rem;
+  line-height: 1.8;
+}
+.prose > * + * { margin-top: 1.1rem; }
+.prose h2 {
+  font-size: 1.6rem;
+  margin-top: 2.8rem;
+  margin-bottom: 0.5rem;
+  scroll-margin-top: 5.5rem;
+  color: var(--foreground);
+}
+/* Short gold rule above each section heading — subtle brand marker */
+.prose h2::before {
+  content: "";
+  display: block;
+  width: 2rem;
+  height: 2px;
+  margin-bottom: 0.9rem;
+  border-radius: 2px;
+  background: var(--gold-bright);
+}
+.prose h3 {
+  font-size: 1.2rem;
+  margin-top: 1.9rem;
+  margin-bottom: 0.2rem;
+  scroll-margin-top: 5.5rem;
+  color: var(--foreground);
+}
+.prose p { color: var(--foreground-muted); }
+.prose strong { color: var(--foreground); font-weight: 600; }
+.prose a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: color-mix(in oklab, var(--primary) 45%, transparent);
+}
+.prose ul { list-style: none; padding-left: 0; }
+.prose ul li {
+  position: relative;
+  padding-left: 1.4rem;
+  margin-top: 0.5rem;
+}
+.prose ul li::before {
+  content: "";
+  position: absolute;
+  left: 0.15rem;
+  top: 0.72em;
+  width: 0.42rem;
+  height: 0.42rem;
+  background: var(--primary);
+  transform: rotate(45deg);
+}
+.prose ol { padding-left: 1.2rem; }
+.prose ol li { margin-top: 0.5rem; padding-left: 0.3rem; }
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.1em 0.4em;
+}
+.prose blockquote {
+  border-left: 3px solid var(--gold-bright);
+  padding-left: 1.1rem;
+  color: var(--foreground);
+  font-style: italic;
+}
+
+/* Animated logo stroke draw */
+@keyframes tamga-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Print — used by whitepaper / manifesto "download as PDF" */
+@media print {
+  .no-print { display: none !important; }
+  body { background: #fff; color: #1a1a1a; }
+  .prose { color: #2a2a2a; }
+  a { color: #1a1a1a; text-decoration: none; }
+  .print-page-break { page-break-before: always; }
+}
