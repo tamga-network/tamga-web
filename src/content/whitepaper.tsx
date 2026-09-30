@@ -200,7 +200,7 @@ const en: WhitepaperContent = {
             <li><strong>Selective disclosure</strong> by default; predicates such as <code>age_over_18</code> where the format allows.</li>
             <li><strong>Identity checks are isolated.</strong> Only the identity service talks to the identity-verification provider; after issuing it keeps no photos, only an opaque hashed record (a subject reference and a document-number hash). Institutions match a person through the identity credential, not through the provider.</li>
             <li><strong>No personal data in logs or public addresses.</strong> Revocation-list addresses never encode the institution; logs record what happened, never to whom.</li>
-            <li><strong>Websites</strong> store their own keyed hash of the account key, never the raw value.</li>
+            <li><strong>Websites</strong> get a separate pseudonym per site as the account key; no document value is sent and sites cannot match a person.</li>
           </ul>
           <p className="text-sm text-foreground-subtle">Residual risk, stated openly: the same issuer colluding with several verifiers could still link a person. Closing this requires zero-knowledge credentials (see research directions).</p>
         </>
@@ -425,7 +425,7 @@ const tr: WhitepaperContent = {
             <li>Varsayılan olarak <strong>seçici açıklama</strong>; biçim izin verdiğinde <code>age_over_18</code> gibi yüklemler.</li>
             <li><strong>Kimlik kontrolü yalıtılmıştır.</strong> Kimlik doğrulama sağlayıcısıyla yalnızca kimlik servisi konuşur; belgeyi verdikten sonra fotoğraf tutmaz, yalnızca opak ve özetlenmiş bir kayıt (kişi referansı ve belge numarası özeti) tutar. Kurumlar kişiyi sağlayıcı üzerinden değil, kimlik belgesi üzerinden eşleştirir.</li>
             <li><strong>Günlüklerde ve herkese açık adreslerde kişisel veri yok.</strong> İptal listesi adresleri kurumu açığa vurmaz; günlükler ne olduğunu yazar, kimin başına geldiğini asla yazmaz.</li>
-            <li><strong>Web siteleri</strong> hesap anahtarının ham değerini değil, kendi sırlarıyla üretilmiş özetini saklar.</li>
+            <li><strong>Web siteleri</strong> hesap anahtarı olarak siteye özel bir takma ad alır; belge değeri gitmez, siteler kişiyi eşleştiremez.</li>
           </ul>
           <p className="text-sm text-foreground-subtle">Açıkça söylenen artık risk: aynı kurum birden çok doğrulayıcıyla işbirliği yaparsa kişiyi hâlâ eşleştirebilir. Bunu kapatmak sıfır bilgili belgeler gerektirir (bkz. araştırma yönleri).</p>
         </>
@@ -650,7 +650,7 @@ const tk: WhitepaperContent = {
             <li>Adaty ýagdaýda <strong>saýlama açyklama</strong>; görnüş rugsat berende <code>age_over_18</code> ýaly predikatlar.</li>
             <li><strong>Şahsyýet barlagy aýrylandyr.</strong> Şahsyýet barlag üpjün edijisi bilen diňe şahsyýet hyzmaty gürleşýär; resminamany berenden soň surat saklamaýar, diňe açyk däl, heşlenen ýazgy (şahs salgysy we resminama belgisiniň heşi) saklaýar. Guramalar adamy üpjün ediji arkaly däl, şahsyýet resminamasy arkaly deňeşdirýär.</li>
             <li><strong>Žurnallarda we açyk salgylarda şahsy maglumat ýok.</strong> Ýatyrylyş sanawynyň salgylary guramany aýan etmeýär; žurnallar näme bolandygyny ýazýar, kimiň başyna gelendigini asla ýazmaýar.</li>
-            <li><strong>Web saýtlar</strong> hasap açarynyň çig bahasyny däl, öz syry bilen döredilen heşini saklaýar.</li>
+            <li><strong>Web saýtlar</strong> hasap açary hökmünde saýta degişli lakam alýar; resminama bahasy iberilmeýär, saýtlar adamy deňeşdirip bilmeýär.</li>
           </ul>
           <p className="text-sm text-foreground-subtle">Açyk aýdylýan galyndy töwekgelçilik: şol bir gurama birnäçe barlaýjy bilen hyzmatdaşlyk etse, adamy heniz tanap biler. Muny ýapmak üçin nol bilimli resminamalar gerek (gözleg ugurlaryna serediň).</p>
         </>

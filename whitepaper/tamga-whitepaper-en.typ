@@ -101,7 +101,7 @@ Revocation uses the *IETF Token Status List*: two bits per credential copy — v
 - *Selective disclosure* by default; predicates such as #raw("age_over_18") where the format allows.
 - *Identity checks are isolated.* Only the identity service talks to the identity-verification provider; after issuing it keeps no photos, only an opaque hashed record (a subject reference and a document-number hash). Institutions match a person through the identity credential, not through the provider.
 - *No personal data in logs or public addresses.* Revocation-list addresses never encode the institution; logs record what happened, never to whom.
-- *Websites* store their own keyed hash of the account key, never the raw value.
+- *Websites* get a separate pseudonym per site as the account key; no document value is sent and sites cannot match a person.
 
 #notebox[Residual risk, stated openly: the same issuer colluding with several verifiers could still link a person. Closing this requires zero-knowledge credentials (see research directions).]
 

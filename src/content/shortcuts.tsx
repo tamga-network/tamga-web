@@ -298,25 +298,6 @@ export const SHORTCUTS: Shortcut[] = [
     },
   },
   {
-    id: "S-17",
-    state: "narrowed",
-    what: {
-      en: "When signing up to websites, the same document fingerprint goes to every site (daily sign-in uses a passkey).",
-      tr: "Web sitelerine kayıtta aynı belge özeti her siteye gidiyor (günlük giriş passkey ile).",
-      tk: "Web saýtlara hasaba duranyňda şol bir resminama heşi her saýta gidýär (gündelik giriş passkey bilen).",
-    },
-    why: {
-      en: "Per-site pseudonyms are not built yet.",
-      tr: "Site başına takma ad henüz yok.",
-      tk: "Saýt başyna lakam heniz ýok.",
-    },
-    closing: {
-      en: "A different pseudonym for each site.",
-      tr: "Her siteye farklı takma ad.",
-      tk: "Her saýta başga lakam.",
-    },
-  },
-  {
     id: "S-19",
     state: "open",
     what: {
@@ -333,6 +314,21 @@ export const SHORTCUTS: Shortcut[] = [
       en: "The registration desk or the institution's page starts the request.",
       tr: "İsteği kayıt masası ya da kurumun sayfası başlatır.",
       tk: "Haýyşy hasaba alyş stoly ýa-da guramanyň sahypasy başlaýar.",
+    },
+  },
+  {
+    id: "S-17",
+    state: "closed",
+    date: "2026-10-01",
+    what: {
+      en: "When signing up to websites, the same document fingerprint went to every site.",
+      tr: "Web sitelerine kayıtta aynı belge özeti her siteye gidiyordu.",
+      tk: "Web saýtlara hasaba duranyňda şol bir resminama heşi her saýta gidýärdi.",
+    },
+    closing: {
+      en: "Each site now gets its own pseudonym; no document value is sent, and sites cannot match you.",
+      tr: "Artık her site kendine özel bir takma ad alıyor; belge değeri gitmiyor, siteler seni eşleştiremiyor.",
+      tk: "Indi her saýt özüne degişli lakam alýar; resminama bahasy iberilmeýär, saýtlar seni deňeşdirip bilmeýär.",
     },
   },
   {

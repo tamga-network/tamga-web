@@ -101,7 +101,7 @@ Her barlag şol bir hatary şol bir tertipde işledýär we ilkinji säwlikde to
 - Adaty ýagdaýda *saýlama açyklama*; görnüş rugsat berende #raw("age_over_18") ýaly predikatlar.
 - *Şahsyýet barlagy aýrylandyr.* Şahsyýet barlag üpjün edijisi bilen diňe şahsyýet hyzmaty gürleşýär; resminamany berenden soň surat saklamaýar, diňe açyk däl, heşlenen ýazgy (şahs salgysy we resminama belgisiniň heşi) saklaýar. Guramalar adamy üpjün ediji arkaly däl, şahsyýet resminamasy arkaly deňeşdirýär.
 - *Žurnallarda we açyk salgylarda şahsy maglumat ýok.* Ýatyrylyş sanawynyň salgylary guramany aýan etmeýär; žurnallar näme bolandygyny ýazýar, kimiň başyna gelendigini asla ýazmaýar.
-- *Web saýtlar* hasap açarynyň çig bahasyny däl, öz syry bilen döredilen heşini saklaýar.
+- *Web saýtlar* hasap açary hökmünde saýta degişli lakam alýar; resminama bahasy iberilmeýär, saýtlar adamy deňeşdirip bilmeýär.
 
 #notebox[Açyk aýdylýan galyndy töwekgelçilik: şol bir gurama birnäçe barlaýjy bilen hyzmatdaşlyk etse, adamy heniz tanap biler. Muny ýapmak üçin nol bilimli resminamalar gerek (gözleg ugurlaryna serediň).]
 

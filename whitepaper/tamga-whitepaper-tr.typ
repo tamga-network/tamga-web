@@ -101,7 +101,7 @@ Her doğrulama aynı hattı aynı sırayla çalıştırır ve ilk hatada durur. 
 - Varsayılan olarak *seçici açıklama*; biçim izin verdiğinde #raw("age_over_18") gibi yüklemler.
 - *Kimlik kontrolü yalıtılmıştır.* Kimlik doğrulama sağlayıcısıyla yalnızca kimlik servisi konuşur; belgeyi verdikten sonra fotoğraf tutmaz, yalnızca opak ve özetlenmiş bir kayıt (kişi referansı ve belge numarası özeti) tutar. Kurumlar kişiyi sağlayıcı üzerinden değil, kimlik belgesi üzerinden eşleştirir.
 - *Günlüklerde ve herkese açık adreslerde kişisel veri yok.* İptal listesi adresleri kurumu açığa vurmaz; günlükler ne olduğunu yazar, kimin başına geldiğini asla yazmaz.
-- *Web siteleri* hesap anahtarının ham değerini değil, kendi sırlarıyla üretilmiş özetini saklar.
+- *Web siteleri* hesap anahtarı olarak siteye özel bir takma ad alır; belge değeri gitmez, siteler kişiyi eşleştiremez.
 
 #notebox[Açıkça söylenen artık risk: aynı kurum birden çok doğrulayıcıyla işbirliği yaparsa kişiyi hâlâ eşleştirebilir. Bunu kapatmak sıfır bilgili belgeler gerektirir (bkz. araştırma yönleri).]
 

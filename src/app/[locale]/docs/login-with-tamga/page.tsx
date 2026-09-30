@@ -49,7 +49,7 @@ const CONTENT: Record<Locale, Content> = {
         <ol>
           <li>
             <strong>Sign up (once).</strong> The site asks for a small set of fields — for example
-            first name, last name and an account key. On a computer you scan a QR code; on the
+            first name and last name — and gets <strong>its own pseudonym for you</strong>. On a computer you scan a QR code; on the
             phone the wallet opens directly. The wallet shows exactly what is asked and who is
             asking; you approve.
           </li>
@@ -65,8 +65,8 @@ const CONTENT: Record<Locale, Content> = {
             works for that one site.
           </li>
           <li>
-            <strong>New device, no passkey?</strong> “Sign in with Tamga” asks for the account
-            key only, then you add a passkey again.
+            <strong>New device, no passkey?</strong> “Sign in with Tamga” sends only your
+            pseudonym for that site — no document field — then you add a passkey again.
           </li>
         </ol>
 
@@ -89,9 +89,11 @@ const CONTENT: Record<Locale, Content> = {
         <Callout title="What a site can — and cannot — get" tone="primary">
           A site receives <strong>only the fields you approve</strong>. There is no password to
           steal. It cannot ask beyond its registered scope: every relying party is listed in the
-          trust list with the fields it may request, and your wallet warns on anything more. The
-          account key a site stores is its own keyed hash, so two sites cannot match their
-          users by it.
+          trust list with the fields it may request, and your wallet warns on anything more. Your
+          account key is a <strong>pseudonym only for that site</strong>: another site sees a
+          different one, so sites cannot match you. It is derived from your verified identity, so
+          on a new phone you get the same pseudonyms back once you verify your identity again. Your
+          ID number and document number are never sent.
         </Callout>
 
         <h2>For developers</h2>
@@ -121,8 +123,8 @@ const CONTENT: Record<Locale, Content> = {
         <Callout title="Status today" tone="gold">
           Working end to end on our sample site (sign-up, repeat-use rejection, sign-in, passkey). The
           hosted verifier hands results only to the site that opened the presentation, proven with a
-          signature from its trust-list key, and releases the values once. A per-site pseudonymous
-          account key issued by the wallet is on the roadmap.
+          signature from its trust-list key, and releases the values once. Each site gets its own
+          pseudonym from the wallet; the verifier checks it with the wallet instance attestation.
         </Callout>
       </>
     ),
@@ -142,8 +144,8 @@ const CONTENT: Record<Locale, Content> = {
         <h2>İki adım: bir kez kayıt, sonra passkey</h2>
         <ol>
           <li>
-            <strong>Kayıt (bir kez).</strong> Site az sayıda alan ister — örneğin ad, soyad ve bir
-            hesap anahtarı. Bilgisayarda QR kodu okutursun; telefonda cüzdan doğrudan açılır.
+            <strong>Kayıt (bir kez).</strong> Site az sayıda alan ister — örneğin ad ve soyad — ve
+            <strong>sana bu siteye özel bir takma ad</strong> alır. Bilgisayarda QR kodu okutursun; telefonda cüzdan doğrudan açılır.
             Cüzdan tam olarak neyin, kim tarafından istendiğini gösterir; onaylarsın.
           </li>
           <li>
@@ -157,8 +159,8 @@ const CONTENT: Record<Locale, Content> = {
             özeldir.
           </li>
           <li>
-            <strong>Yeni cihaz, passkey yok mu?</strong> “Tamga ile giriş yap” yalnızca hesap
-            anahtarını ister, sonra yeniden passkey eklersin.
+            <strong>Yeni cihaz, passkey yok mu?</strong> “Tamga ile giriş yap” yalnızca o siteye
+            özel takma adını gönderir — hiçbir belge alanı — sonra yeniden passkey eklersin.
           </li>
         </ol>
 
@@ -181,8 +183,10 @@ const CONTENT: Record<Locale, Content> = {
         <Callout title="Bir site neyi alabilir — neyi alamaz" tone="primary">
           Site <strong>yalnızca onayladığın alanları</strong> alır. Çalınacak şifre yoktur. Kayıtlı
           kapsamının dışına çıkamaz: her doğrulayıcı, isteyebileceği alanlarla birlikte güven
-          listesinde kayıtlıdır ve cüzdanın fazlasını uyarır. Sitenin sakladığı hesap anahtarı
-          kendi sırrıyla üretilmiş bir özettir; iki site kullanıcılarını bununla eşleştiremez.
+          listesinde kayıtlıdır ve cüzdanın fazlasını uyarır. Hesap anahtarın <strong>yalnız o
+          siteye özel bir takma addır</strong>: başka bir site başka bir takma ad görür, siteler seni
+          eşleştiremez. Doğrulanmış kimliğinden türediği için yeni telefonda kimliğini yeniden
+          doğrulayınca aynı takma adlar geri gelir. Kimlik ve belge numaran hiç gönderilmez.
         </Callout>
 
         <h2>Geliştiriciler için</h2>
@@ -213,7 +217,7 @@ const CONTENT: Record<Locale, Content> = {
           Örnek sitemizde uçtan uca çalışıyor (kayıt, tekrar kullanımın reddi, giriş, passkey).
           Barındırılan doğrulayıcı sonucu yalnızca sunumu açan siteye verir — site bunu güven
           listesindeki anahtarıyla imzalayarak kanıtlar — ve değerleri bir kez teslim eder.
-          Cüzdanın her site için ayrı takma ad hesap anahtarı üretmesi yol haritasında.
+          Cüzdan her siteye ayrı takma ad verir; doğrulayıcı onu cüzdan örneği kanıtıyla denetler.
         </Callout>
       </>
     ),
@@ -234,7 +238,7 @@ const CONTENT: Record<Locale, Content> = {
         <ol>
           <li>
             <strong>Hasaba durmak (bir gezek).</strong> Saýt az sanly meýdan soraýar — meselem,
-            ady, familiýasy we hasap açary. Kompýuterde QR kody okadýarsyň; telefonda gapjyk göni
+            ady we familiýasy — we <strong>seniň üçin özüne degişli lakamy</strong> alýar. Kompýuterde QR kody okadýarsyň; telefonda gapjyk göni
             açylýar. Gapjyk nämäniň, kim tarapyndan soralýandygyny takyk görkezýär; sen
             tassyklaýarsyň.
           </li>
@@ -249,8 +253,8 @@ const CONTENT: Record<Locale, Content> = {
             saýt üçin işleýär.
           </li>
           <li>
-            <strong>Täze enjam, passkey ýokmy?</strong> “Tamga bilen gir” diňe hasap açaryny
-            soraýar, soň ýene passkey goşýarsyň.
+            <strong>Täze enjam, passkey ýokmy?</strong> “Tamga bilen gir” diňe şol saýta degişli
+            lakamyňy iberýär — hiç bir resminama meýdany ýok — soň ýene passkey goşýarsyň.
           </li>
         </ol>
 
@@ -273,9 +277,11 @@ const CONTENT: Record<Locale, Content> = {
         <Callout title="Saýt näme alyp biler — näme alyp bilmez" tone="primary">
           Saýt <strong>diňe tassyklan meýdanlaryňy</strong> alýar. Ogurlanjak parol ýok. Hasaba
           alnan çäginden çykyp bilmez: her barlaýjy soraýan meýdanlary bilen birlikde ynam
-          sanawynda hasaba alnandyr we gapjygyň artykmajy barada duýduryş berýär. Saýtyň
-          saklaýan hasap açary öz syry bilen döredilen heşdir; iki saýt ulanyjylaryny muňa görä
-          deňeşdirip bilmeýär.
+          sanawynda hasaba alnandyr we gapjygyň artykmajy barada duýduryş berýär. Hasap
+          açaryň <strong>diňe şol saýta degişli lakamdyr</strong>: başga saýt başga lakam görýär,
+          saýtlar seni deňeşdirip bilmeýär. Tassyklanan şahsyýetiňden alnandygy üçin täze telefonda
+          şahsyýetiňi täzeden tassyklanyňda şol lakamlar yzyna gelýär. Şahsyýet we resminama
+          belgiň hiç haçan iberilmeýär.
         </Callout>
 
         <h2>Işläp düzüjiler üçin</h2>
@@ -306,7 +312,7 @@ const CONTENT: Record<Locale, Content> = {
           Nusga saýtymyzda başdan-aýak işleýär (hasaba durmak, gaýtadan ulanmagyň ret edilmegi,
           giriş, passkey). Ýerleşdirilen barlaýjy netijäni diňe hödürlemäni açan saýta berýär —
           saýt muny ynam sanawyndaky açary bilen gol çekip subut edýär — we bahalary bir gezek
-          berýär. Gapjygyň her saýt üçin aýry lakam hasap açaryny döretmegi ýol kartasynda.
+          berýär. Gapjyk her saýta aýry lakam berýär; barlaýjy ony gapjyk nusgasynyň subutnamasy bilen barlaýar.
         </Callout>
       </>
     ),

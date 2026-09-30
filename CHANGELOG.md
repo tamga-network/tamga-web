@@ -4,6 +4,11 @@ Biçim: Keep a Changelog. Site dağıtımları tarihle anılır.
 
 ## [Yayınlanmadı]
 
+### Değişti (2026-10-01 — site başına takma ad)
+- `/shortcuts`: S-17 **kapandı** (her site kendine özel takma ad alıyor; belge değeri gitmiyor). `/docs/login-with-tamga` (üç dil):
+  hesap anahtarı site başına takma ad; yeni telefonda kimlik yeniden doğrulanınca aynı takma adlar döner. Whitepaper (üç dil, PDF)
+  ve web girişi kod örneği aynı anlatımla.
+
 ### Değişti (2026-09-30 — Tamga Verify)
 - verify.tamga.network her yerde **Tamga Verify** adıyla: ekosistem listesi ve menüler, `/docs/roles` (aracı doğrulayıcı),
   `/brand` ad tablosu (üç dil).
