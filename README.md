@@ -1,90 +1,49 @@
-# Tamga Network — Tanıtım Sitesi
+# tamga.network
 
-**tamga.network** için tanıtım/kurumsal web sitesi. Dijital Güven Altyapısı
-projesini sıfırdan, hiç bilmeyen birinin bile anlayacağı şekilde anlatır.
+The website of Tamga Network — a Digital Trust Infrastructure for Türkiye and the Turkic world, built on the EU digital
+identity (eIDAS 2.0 / EUDI) profiles. Three languages: English (default), Turkish, Turkmen.
 
-## Teknoloji
+## Stack
 
-- **Next.js 16** (App Router, Turbopack) + **React 19**
-- **TypeScript**
-- **Tailwind CSS v4** (sınıf tabanlı dark/light — `next-themes`)
-- **framer-motion** (animasyonlu logo + scroll-reveal)
-- **lucide-react** (ikonlar)
-- Fontlar: **IBM Plex Serif / Sans / Mono** (`next/font`)
+- **Next.js 16** (App Router, Turbopack) · **React 19** · **TypeScript**
+- **Tailwind CSS v4**; brand tokens in `src/app/globals.css` (light and dark theme)
+- **next-intl** — every route carries a language prefix: `/en` · `/tr` · `/tk`
+- **Radix UI** (shadcn/ui patterns) for the navigation menus; **framer-motion** and **ogl** (WebGL) for motion; **lucide-react** icons
+- **Typst** for the whitepaper and manifesto PDFs
 
-## Komutlar
+## Commands
 
 ```bash
-npm run dev      # geliştirme sunucusu (http://localhost:3000)
-npm run build    # prodüksiyon derlemesi
-npm run start    # derlenmiş sürümü çalıştır
+npm run dev             # http://localhost:3000
+npm run build           # production build
+npm run start           # serve the build
+npm run check           # typecheck + three-language key parity + code examples up to date
+npm run examples:sync   # copy the tested code examples from the tamga-network repository
 ```
 
-## Sayfa Haritası
+## Pages
 
-Tüm yollar bir dil öneki taşır: **`/en` (varsayılan) · `/tr` · `/tk`**. Kök `/`
-otomatik olarak `/en`'e yönlenir. Aşağıdaki yollar öneksiz gösterilmiştir.
+| Route | Content |
+|---|---|
+| `/` | Home: the problem, what Tamga is, Europe, the Turkic world, how it works, sectors, the network's public addresses, status |
+| `/docs/*` | Concepts from scratch, how Tamga works, trust lists, eIDAS/EUDI, TamgaID, developers, glossary |
+| `/sdk` | The open-source `@tamga-network/*` packages, installation and working examples |
+| `/issuers` | For institutions: what it takes to issue credentials with Tamga |
+| `/whitepaper`, `/manifesto` | Online and as PDF in three languages |
+| `/roadmap`, `/changelog` | Stages of the network; every release |
+| `/scenarios`, `/about`, `/blog` | Everyday scenarios, the name and mission, articles |
 
-| Yol | İçerik |
-|-----|--------|
-| `/` | Ana sayfa: hero (animasyonlu tamga mührü), sorun, biz neyiz, isim kökeni, eIDAS/Avrupa, Türk dünyası, nasıl çalışır, ekosistem, konumlandırma |
-| `/manifesto` | 8 tezlik manifesto (PDF olarak indirilebilir — yazdır) |
-| `/about` | İsim kökeni, misyon/vizyon, konumlandırma (Türk dünyasının EBSI'si) |
-| `/docs` | Sıfırdan rehber (aşağıya bakın) |
-| `/whitepaper` | 12 bölümlük teknik whitepaper (PDF olarak indirilebilir) |
-| `/blog`, `/blog/[slug]` | Yazılar |
+Developer documentation and the API reference live at [docs.tamga.network](https://docs.tamga.network); the architecture
+and reference framework at [arf.tamga.network](https://arf.tamga.network).
 
-### Dokümanlar (`/docs`) — sıfırdan anlatım
+## Content
 
-1. Neden yeni bir model? → 2. Dijital Kimlik → 3. Blockchain (ve değil) →
-4. Kriptografi temelleri → 5. DID & Verifiable Credentials → 6. Seçici ifşa /
-SD-JWT → 7. Mimari & Trust Graph → 8. eIDAS/EUDI/EBSI → 9. TamgaID & ekosistem →
-10. Sözlük.
-
-Manifesto ve whitepaper, kavramlar için bu dokümanlara kaynak/atıf verir.
-
-## Tasarım Sistemi
-
-Onaylanan marka paleti `src/app/globals.css` içinde CSS değişkenleri olarak
-tanımlıdır ve iki tema (Obsidyen/dark, Parşömen/light) için ayrı ayrı eşlenir:
-
-- Al Kızıl `#B01E22` · Altın `#C8A24C` · Obsidyen `#17110F`
-- Parşömen `#F4EDE2` · Göktürk mavisi `#2A6F8E`
-
-Yeniden kullanılabilir bileşenler `src/components/` altında (`ui.tsx`,
-`logo.tsx`, `header.tsx`, `footer.tsx`, `reveal.tsx`, `doc-article.tsx`).
-
-## Diller (i18n — `next-intl`)
-
-Site üç dillidir: **`en` (varsayılan) · `tr` · `tk` (Türkmence)**. Yapı:
-
-- `src/i18n/{routing,request,navigation}.ts`, `src/proxy.ts` (Next 16’da
-  `middleware.ts` → `proxy.ts`), `next.config.ts` içinde plugin.
-- Tüm sayfalar `src/app/[locale]/` altında; `[locale]/layout.tsx` `<html lang>`’i
-  render eder. Dahili linkler `@/i18n/navigation`’dan (`Link`, locale-önekli).
-- Arayüz metinleri `messages/{en,tr,tk}.json`. Dil değiştirici header’da
-  (`LocaleSwitcher`).
-- **Durum:** arayüz + iskelet 3 dilli. Uzun sayfa *gövdeleri* şu an TR fallback
-  gösteriyor; EN/TK çevirisi devam ediyor (bkz. `todos.md`). Türkmence ilk taslak,
-  native review gerekir.
-
-> **i→İ tuzağı:** büyütülen İngilizce ibareler (`Digital Trust Infrastructure`)
-> `lang="en"` ile işaretlenir; `text-transform: uppercase` altında bozulma olmaz.
-
-## PDF
-
-- **Whitepaper → Typst PDF (kanonik).** Akademik, beyaz zeminli PDF; kaynak
-  `whitepaper/*.typ`, şablon `whitepaper/template.typ`. Çıktı üç dilde:
-  `public/whitepaper-{en,tr,tk}.pdf`. `/whitepaper` sayfasındaki buton locale'e
-  göre doğru PDF'i indirir. Yeniden üretmek için:
-  ```powershell
-  powershell -File whitepaper/build.ps1   # Typst binary tools/ altında (gitignore)
+- Page texts: `src/content/*` (one object per language) and `messages/{en,tr,tk}.json` (interface strings). All three
+  languages are updated together; `npm run check` fails on a missing key.
+- Public addresses of the network: `src/lib/ecosystem.ts` (used by the menu, the home page table and the footer).
+- Whitepaper: single source `whitepaper/source/content.py` → site page and PDFs:
+  ```bash
+  python whitepaper/source/generate.py && npx prettier --write src/content/whitepaper.tsx
+  powershell -File whitepaper/build.ps1   # Typst binary under tools/ (not in the repository)
   ```
-- **Manifesto → yazdır.** Manifesto sayfası yazdırma için optimize; "PDF olarak
-  indir" tarayıcının yazdır → PDF akışını tetikler (`@media print`).
-
-## Notlar
-
-- Bu depo Next.js 16 kullanır; `AGENTS.md` bu sürümün bazı API'lerinin
-  değiştiğini hatırlatır (ör. dinamik route `params` artık `Promise`).
-- Tüm sayfalar statik olarak önceden üretilir (SSG); site hızlıdır.
+- Manifesto PDF: `powershell -File manifesto/build.ps1`.

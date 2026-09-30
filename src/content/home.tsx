@@ -227,8 +227,8 @@ const en: HomeContent = {
       </>
     ),
     stats: [
-      { k: "~300M", v: "Common ground: population of the Turkic world" },
-      { k: "6+", v: "Organization of Turkic States members/observers" },
+      { k: "~170M", v: "Common ground: population of the Turkic states" },
+      { k: "5 + 3", v: "Organization of Turkic States: members + observers" },
       { k: "1", v: "Shared, interoperable trust standard" },
       { k: "0", v: "Personal data written to trust lists, logs or ledger" },
     ],
@@ -306,7 +306,7 @@ const en: HomeContent = {
           "Remote identity check (document + liveness) → identity credential, also as ISO mdoc for age checks",
           "Turnstile and event-gate pass; single-use tickets",
           "Website sign-up with the wallet, daily sign-in with a passkey",
-          "Open-source packages @tamga-network/* (npm release pending)",
+          "Open-source packages @tamga-network/* on npm (pre-release 0.1.0)",
         ],
       },
       {
@@ -325,7 +325,7 @@ const en: HomeContent = {
         items: [
           "A permissioned ledger (Besu/QBFT) once at least two independent operators join",
           "Trust lists run by the member states themselves",
-          "Close-range presentation (ISO 18013-5 over NFC/BLE) and the browser Digital Credentials API",
+          "Close range over NFC with reader authentication; Bluetooth and the browser Digital Credentials API on real phones",
         ],
       },
     ],
@@ -499,8 +499,8 @@ const tr: HomeContent = {
       </>
     ),
     stats: [
-      { k: "~300M", v: "Ortak zemin: Türk dünyası nüfusu" },
-      { k: "6+", v: "Türk Devletleri Teşkilatı üye/gözlemci" },
+      { k: "~170M", v: "Ortak zemin: Türk devletlerinin nüfusu" },
+      { k: "5 + 3", v: "Türk Devletleri Teşkilatı: üye + gözlemci" },
       { k: "1", v: "Ortak, birlikte çalışabilir güven standardı" },
       { k: "0", v: "Güven listesine, günlüğe ya da zincire yazılan kişisel veri" },
     ],
@@ -556,10 +556,10 @@ const tr: HomeContent = {
     tamgaIdBody:
       "Kullanıcının belgelerini sakladığı ve sunduğu cüzdan. EUDI Wallet benzeri: kimlik ve diploma, seçici açıklama, turnike ve etkinlik kapısı için geçiş kartı, web sitelerine şifresiz giriş. Kişiler için ücretsiz. Nitelikli e-imza yol haritasında. TamgaID, Tamga Network’ün kendisi değildir — ona açılan ilk kapıdır.",
     verticals: [
-      { name: "Education", body: "Diploma, transkript ve akademik unvanların uluslararası doğrulanabilir belgeleri." },
-      { name: "Health", body: "Hekim yetkileri, hasta onayları ve dijital sağlık belgeleri." },
-      { name: "Logistics", body: "Müşterinin son teslimatı cüzdanıyla onaylamasından uluslararası taşımacılığa — TIR, şoför, mal ve gümrük uçtan uca doğrulanır, ödeme teslim kanıtıyla serbest kalır." },
-      { name: "Payments", body: "Kimliği doğrulanmış taraflar arası ödemenin yetkilendirilmesi — mutabakat bankalarda/CBDC’de kalır, Tamga’da değil." },
+      { name: "Eğitim", body: "Diploma, transkript ve akademik unvanların uluslararası doğrulanabilir belgeleri." },
+      { name: "Sağlık", body: "Hekim yetkileri, hasta onayları ve dijital sağlık belgeleri." },
+      { name: "Lojistik", body: "Müşterinin son teslimatı cüzdanıyla onaylamasından uluslararası taşımacılığa — TIR, şoför, mal ve gümrük uçtan uca doğrulanır, ödeme teslim kanıtıyla serbest kalır." },
+      { name: "Ödeme", body: "Kimliği doğrulanmış taraflar arası ödemenin yetkilendirilmesi — mutabakat bankalarda/CBDC’de kalır, Tamga’da değil." },
     ],
   },
   today: {
@@ -578,7 +578,7 @@ const tr: HomeContent = {
           "Uzaktan kimlik doğrulama (belge + canlılık) → kimlik belgesi; yaş kontrolü için ISO mdoc olarak da",
           "Turnike ve etkinlik kapısı için geçiş kartı; tek kullanımlık bilet",
           "Web sitesine cüzdanla kayıt, günlük girişte passkey",
-          "Açık kaynak paketler @tamga-network/* (npm yayını bekliyor)",
+          "Açık kaynak paketler @tamga-network/* npm'de (ön sürüm 0.1.0)",
         ],
       },
       {
@@ -597,7 +597,7 @@ const tr: HomeContent = {
         items: [
           "En az iki bağımsız operatör katılınca izinli defter (Besu/QBFT)",
           "Güven listelerini üye devletlerin kendisi yayınlar",
-          "Yakın alan sunumu (NFC/BLE üzerinden ISO 18013-5) ve tarayıcı Digital Credentials API",
+          "Okuyucu kimlik doğrulamalı NFC ile yakın alan; Bluetooth ve tarayıcı Digital Credentials API gerçek telefonlarda",
         ],
       },
     ],
@@ -772,8 +772,8 @@ const tk: HomeContent = {
       </>
     ),
     stats: [
-      { k: "~300M", v: "Umumy binýat: türki dünýäsiniň ilaty" },
-      { k: "6+", v: "Türki Döwletleriň Guramasy agza/synçy" },
+      { k: "~170M", v: "Umumy binýat: türki döwletleriň ilaty" },
+      { k: "5 + 3", v: "Türki Döwletleriň Guramasy: agza + synçy" },
       { k: "1", v: "Umumy, bilelikde işleýän ynam standarty" },
       { k: "0", v: "Ynam sanawyna, žurnala ýa-da zynjyra ýazylan şahsy maglumat" },
     ],
@@ -829,10 +829,10 @@ const tk: HomeContent = {
     tamgaIdBody:
       "Ulanyjynyň resminamalaryny saklaýan we hödürleýän gapjygy. EUDI Wallet ýaly: şahsyýet we diplom, saýlama açyklama, turniket we çäre gapysy üçin geçiş kartasy, web saýtlara parolsyz giriş. Adamlar üçin mugt. Kwalifisirlenen elektron gol ýol kartasynda. TamgaID Tamga Network-yň özi däl — oňa açylýan ilkinji gapydyr.",
     verticals: [
-      { name: "Education", body: "Diplomlaryň, transkriptleriň we akademiki dereželeriň halkara barlanyp bilinýän resminamalary." },
-      { name: "Health", body: "Lukman ygtyýarlary, näsag razylyklary we sanly saglyk resminamalary." },
-      { name: "Logistics", body: "Müşderiniň soňky eltip berişi gapjygy bilen tassyklamagyndan halkara daşamaga çenli — TIR, sürüji, haryt we gümrük uçdan-uca barlanýar, töleg eltip beriş subutnamasy bilen açylýar." },
-      { name: "Payments", body: "Şahsyýeti barlanan taraplaryň arasyndaky tölegi ygtyýarlandyrmak — hasaplaşyk banklarda/CBDC-de galýar, Tamga-da däl." },
+      { name: "Bilim", body: "Diplomlaryň, transkriptleriň we akademiki dereželeriň halkara barlanyp bilinýän resminamalary." },
+      { name: "Saglyk", body: "Lukman ygtyýarlary, näsag razylyklary we sanly saglyk resminamalary." },
+      { name: "Logistika", body: "Müşderiniň soňky eltip berişi gapjygy bilen tassyklamagyndan halkara daşamaga çenli — TIR, sürüji, haryt we gümrük uçdan-uca barlanýar, töleg eltip beriş subutnamasy bilen açylýar." },
+      { name: "Tölegler", body: "Şahsyýeti barlanan taraplaryň arasyndaky tölegi ygtyýarlandyrmak — hasaplaşyk banklarda/CBDC-de galýar, Tamga-da däl." },
     ],
   },
   today: {
@@ -851,7 +851,7 @@ const tk: HomeContent = {
           "Uzakdan şahsyýet barlagy (resminama + janlylyk) → şahsyýet resminamasy; ýaş barlagy üçin ISO mdoc görnüşinde hem",
           "Turniket we çäre gapysy üçin geçiş kartasy; bir gezeklik bilet",
           "Web saýta gapjyk bilen hasaba durmak, gündelik girişde passkey",
-          "Açyk çeşmeli paketler @tamga-network/* (npm çykyşy garaşylýar)",
+          "Açyk çeşmeli paketler @tamga-network/* npm-de (deslapky wersiýa 0.1.0)",
         ],
       },
       {
@@ -870,7 +870,7 @@ const tk: HomeContent = {
         items: [
           "Azyndan iki garaşsyz operator goşulanda rugsatly kitap (Besu/QBFT)",
           "Ynam sanawlaryny agza döwletleriň özi çap edýär",
-          "Ýakyn aralyk hödürlemesi (NFC/BLE arkaly ISO 18013-5) we brauzer Digital Credentials API",
+          "Okaýjy barlagly NFC arkaly ýakyn aralyk; Bluetooth we brauzer Digital Credentials API hakyky telefonlarda",
         ],
       },
     ],

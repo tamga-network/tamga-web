@@ -40,7 +40,7 @@ Biçim: Keep a Changelog. Site dağıtımları tarihle anılır.
 - Geliştiriciler: kurulum sekmeleri (npm/pnpm/yarn) + dört testli örnek (`tamga-network/examples` → `npm run examples:sync`;
   `npm run check` bayat örneği yakalar). TamgaID ile giriş sayfası aynı örnek dosyaları gösterir. Kod bloklarına "Kopyala" düğmesi.
 
-### Değişti (2026-09-27 — içerik güncel mimariye göre; denetim `../docs/SITE-GUNCELLEME.md`)
+### Değişti (2026-09-27 — içerik güncel mimariye göre)
 - Ana sayfa: zincir yerine imzalı güven listeleri (Faz B), W3C VC yerine SD-JWT VC + ISO mdoc; yeni "Bugün / Pilot / Sonra"
   bölümü; QES yol haritasına; devlet validatörleri hedef olarak; bileşen metinleri (platform şeması, belge kartı, giriş).
 - Docs: yeniden yazılan — TamgaID ile giriş (kayıt + passkey, geliştirici kodu), Belgeler (X.509, SD-JWT VC, mdoc; eski
