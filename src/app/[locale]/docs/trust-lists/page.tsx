@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { DocArticle, Callout, CodeBlock } from "@/components/doc-article";
+import { DocArticle, Callout, KeyTable } from "@/components/doc-article";
 import { FlowStrip } from "@/components/scenario-visuals";
 import type { Locale } from "@/i18n/routing";
 
@@ -15,13 +15,6 @@ type Content = {
 };
 
 /* Kaynak: tamga-network SPEC-TRUST-0001 (docs/specifications/0017-trust-lists-phase-b.md), ADR-0009, D-BC-6, D-GOV-5 */
-const LAYOUT = `https://trust.tamga.network/
-  lotl.jws                    list of lists: national lists, schemas, wallet providers
-  tl-tr.jws                   Türkiye: root CAs, issuers, relying parties
-  tl-az.jws · tl-kz.jws …     reserved slots for the other member states
-  anchors.jsonl               anchor log: one signed line per event, at least hourly
-  keys/root-fingerprints.json the root of trust (also at tamga.network/trust-anchor)
-  archive/                    every past version, never deleted`;
 
 const CONTENT: Record<Locale, Content> = {
   en: {
@@ -63,7 +56,7 @@ const CONTENT: Record<Locale, Content> = {
           <li><strong>Always fresh.</strong> Every list carries a “next update” date; a stale list is not trusted.</li>
           <li><strong>Anchor log.</strong> Every status-list publication and schema change is written as a signed line to a public, append-only log, at least hourly. A verifier can detect a list that was rolled back or rewritten.</li>
         </ul>
-        <CodeBlock label="Published files" code={LAYOUT} />
+        <KeyTable label="Published files — trust.tamga.network" rows={[["lotl.jws", "list of lists: national lists, schemas, wallet providers"], ["tl-tr.jws", "Türkiye: root CAs, issuers, relying parties"], ["tl-az.jws · tl-kz.jws …", "reserved slots for the other member states"], ["anchors.jsonl", "anchor log: one signed line per event, at least hourly"], ["keys/root-fingerprints.json", "the root of trust (also at tamga.network/trust-anchor)"], ["archive/", "every past version, never deleted"]]} />
 
         <h2>How a verifier uses it</h2>
         <FlowStrip
@@ -138,7 +131,7 @@ const CONTENT: Record<Locale, Content> = {
           <li><strong>Hep taze.</strong> Her listenin bir “sonraki güncelleme” tarihi vardır; bayat listeye güvenilmez.</li>
           <li><strong>Çapa günlüğü.</strong> Her iptal listesi yayını ve şema değişikliği, en az saatte bir, herkese açık ve yalnızca eklenebilen bir günlüğe imzalı satır olarak yazılır. Doğrulayıcı geri sarılmış ya da yeniden yazılmış bir listeyi fark eder.</li>
         </ul>
-        <CodeBlock label="Yayınlanan dosyalar" code={LAYOUT} />
+        <KeyTable label="Yayınlanan dosyalar — trust.tamga.network" rows={[["lotl.jws", "listelerin listesi: ulusal listeler, şemalar, cüzdan sağlayıcıları"], ["tl-tr.jws", "Türkiye: kök sertifika otoriteleri, belge verenler, doğrulayıcılar"], ["tl-az.jws · tl-kz.jws …", "diğer üye devletler için ayrılmış yerler"], ["anchors.jsonl", "çapa günlüğü: her olay için imzalı bir satır, en az saatte bir"], ["keys/root-fingerprints.json", "güvenin kökü (tamga.network/trust-anchor adresinde de)"], ["archive/", "geçmiş her sürüm, hiç silinmez"]]} />
 
         <h2>Doğrulayıcı bunu nasıl kullanır</h2>
         <FlowStrip
@@ -213,7 +206,7 @@ const CONTENT: Record<Locale, Content> = {
           <li><strong>Hemişe täze.</strong> Her sanawyň “indiki täzelenme” senesi bar; köne sanawa ynanylmaýar.</li>
           <li><strong>Labyr žurnaly.</strong> Her ýatyrylyş sanawynyň çap edilmegi we shema üýtgeşmesi, azyndan sagatda bir gezek, açyk we diňe goşup bolýan žurnala gol çekilen setir hökmünde ýazylýar. Barlaýjy yza aýlanan ýa-da täzeden ýazylan sanawy anyklaýar.</li>
         </ul>
-        <CodeBlock label="Çap edilýän faýllar" code={LAYOUT} />
+        <KeyTable label="Çap edilýän faýllar — trust.tamga.network" rows={[["lotl.jws", "sanawlaryň sanawy: milli sanawlar, shemalar, gapjyk üpjün edijileri"], ["tl-tr.jws", "Türkiýe: kök sertifikat edaralary, resminama berijiler, barlaýjylar"], ["tl-az.jws · tl-kz.jws …", "beýleki agza döwletler üçin goýlan orunlar"], ["anchors.jsonl", "labyr žurnaly: her waka üçin gol çekilen bir setir, azyndan sagatda bir gezek"], ["keys/root-fingerprints.json", "ynamyň köki (tamga.network/trust-anchor salgysynda hem)"], ["archive/", "öňki her wersiýa, asla pozulmaýar"]]} />
 
         <h2>Barlaýjy muny nähili ulanýar</h2>
         <FlowStrip

@@ -10,7 +10,14 @@
     "docs": "Dokümanlar",
     "scenarios": "Senaryolar",
     "whitepaper": "Whitepaper",
-    "blog": "Blog"
+    "blog": "Blog",
+    "ecosystem": "Ekosistem",
+    "project": "Proje",
+    "roadmap": "Yol haritası",
+    "changelog": "Değişiklik günlüğü",
+    "joinIssuer": "Kurum olarak katıl",
+    "allAddresses": "Tüm adresler",
+    "menu": "Menüyü aç"
   },
   "common": {
     "menu": "Menüyü aç/kapat",
@@ -45,7 +52,14 @@
     "trustLists": "Güven listeleri",
     "devDocs": "Geliştirici belgeleri",
     "developers": "Geliştiriciler",
-    "eudiComparison": "Tamga ve EUDI"
+    "eudiComparison": "Tamga ve EUDI",
+    "sdk": "SDK ve paketler",
+    "npm": "npm paketleri",
+    "apiRef": "API başvuruları",
+    "roadmap": "Yol haritası",
+    "changelog": "Değişiklik günlüğü",
+    "issuers": "Kurum olarak katıl",
+    "developerHub": "Geliştiriciler"
   },
   "notFound": {
     "code": "404",

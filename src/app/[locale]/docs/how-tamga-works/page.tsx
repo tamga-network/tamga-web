@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { DocArticle, Callout, CodeBlock } from "@/components/doc-article";
+import { DocArticle, Callout, KeyTable } from "@/components/doc-article";
+import { EcosystemTable } from "@/components/ecosystem-table";
 import { SplitPanel } from "@/components/doc-visuals";
 import type { Locale } from "@/i18n/routing";
 
@@ -18,21 +19,7 @@ type Content = {
  * Kaynak: ARCH (docs/delivery/01-ARCHITECTURE.md), SPEC-API-0001 §1 (A–E adım kayıt defteri, üç değerli sonuç, AP2),
  * D-NAME-1 (alan adları), ADR-0009 (Faz B), ADR-0011 (kimlik servisi), SPEC-CRED-0001 (WUA).
  */
-const SERVICES = `trust.tamga.network        signed trust lists + anchor log            (public)
-schemas.tamga.network      document-type catalogue                     (public)
-issuer.tamga.network/{org} issuing service, one per institution path  (OpenID4VCI)
-status.tamga.network/…     revocation lists, published at fixed times (Token Status List)
-id.tamga.network           identity check → identity credential       (remote ID + liveness)
-wallet.tamga.network       wallet provider: vouches for genuine apps  (WUA)
-verify.tamga.network       reference verifier + web sign-in kit       (OpenID4VP)`;
 
-const STEPS = `T0  request and answer belong together (nonce, audience, encryption)
-A   format:   signature, certificate chain, device proof, hidden fields intact
-B   type:     document type known, definition hash matches the catalogue
-C   trust:    issuer authorized for this type ON THE ISSUE DATE (trust list)
-D   status:   not revoked or suspended; revocation list fresh and anchored
-E   policy:   every requested field present, nothing beyond the verifier's scope
-→  ACCEPTED · REJECTED (with the failing step) · INDETERMINATE (could not check)`;
 
 const CONTENT: Record<Locale, Content> = {
   en: {
@@ -71,7 +58,7 @@ const CONTENT: Record<Locale, Content> = {
         </Callout>
 
         <h2>The services</h2>
-        <CodeBlock label="One network, a few small services" code={SERVICES} />
+        <EcosystemTable locale="en" groups={["trust", "services"]} />
         <ul>
           <li>
             <strong>One issuing service, many institutions.</strong> Every institution is a tenant
@@ -96,7 +83,7 @@ const CONTENT: Record<Locale, Content> = {
           Every verification runs the same pipeline, in the same order, and stops at the first
           failure. Each step has a permanent code, so a “rejected” always says <em>why</em>.
         </p>
-        <CodeBlock label="Verification pipeline" code={STEPS} />
+        <KeyTable label="Verification pipeline" rows={[["T0", "request and answer belong together (nonce, audience, encryption)"], ["A · format", "signature, certificate chain, device proof, hidden fields intact"], ["B · type", "document type known, definition hash matches the catalogue"], ["C · trust", "issuer authorized for this type on the issue date (trust list)"], ["D · status", "not revoked or suspended; revocation list fresh and anchored"], ["E · policy", "every requested field present, nothing beyond the verifier's scope"], ["→ outcome", "ACCEPTED · REJECTED (with the failing step) · INDETERMINATE (could not check)"]]} />
         <Callout title="“Could not check” is not “fake”" tone="gold">
           If a list cannot be reached or is out of date, the answer is <strong>INDETERMINATE</strong>,
           shown separately from REJECTED. The difference between “this diploma is fake” and “I
@@ -161,7 +148,7 @@ const CONTENT: Record<Locale, Content> = {
         </Callout>
 
         <h2>Servisler</h2>
-        <CodeBlock label="Tek ağ, birkaç küçük servis" code={SERVICES} />
+        <EcosystemTable locale="tr" groups={["trust", "services"]} />
         <ul>
           <li>
             <strong>Tek belge verme servisi, çok kurum.</strong> Her kurum kendi yolunda bir
@@ -185,7 +172,7 @@ const CONTENT: Record<Locale, Content> = {
           Her doğrulama aynı hattı, aynı sırayla çalıştırır ve ilk hatada durur. Her adımın
           kalıcı bir kodu vardır; bu yüzden bir “red” her zaman <em>nedenini</em> söyler.
         </p>
-        <CodeBlock label="Doğrulama hattı (etiketler İngilizce)" code={STEPS} />
+        <KeyTable label="Doğrulama hattı" rows={[["T0", "istek ve cevap birbirine ait (nonce, hedef, şifreleme)"], ["A · biçim", "imza, sertifika zinciri, cihaz kanıtı, gizli alanlar bozulmamış"], ["B · tür", "belge türü biliniyor, tanımın özeti katalogla aynı"], ["C · güven", "kurum bu tür için veriliş tarihinde yetkili (güven listesi)"], ["D · durum", "iptal edilmemiş ya da askıda değil; iptal listesi güncel ve çapalı"], ["E · politika", "istenen her alan var, doğrulayıcının kapsamı dışında bir şey yok"], ["→ sonuç", "ACCEPTED (kabul) · REJECTED (red, hangi adımda) · INDETERMINATE (denetlenemedi)"]]} />
         <Callout title="“Denetlenemedi”, “sahte” demek değildir" tone="gold">
           Bir listeye ulaşılamazsa ya da liste güncel değilse cevap <strong>INDETERMINATE</strong>{" "}
           (belirsiz) olur ve REJECTED’dan ayrı gösterilir. “Bu diploma sahte” ile “şu an kontrol
@@ -249,7 +236,7 @@ const CONTENT: Record<Locale, Content> = {
         </Callout>
 
         <h2>Hyzmatlar</h2>
-        <CodeBlock label="Bir tor, birnäçe kiçi hyzmat" code={SERVICES} />
+        <EcosystemTable locale="tk" groups={["trust", "services"]} />
         <ul>
           <li>
             <strong>Bir resminama beriş hyzmaty, köp gurama.</strong> Her gurama öz ýolunda
@@ -274,7 +261,7 @@ const CONTENT: Record<Locale, Content> = {
           Her barlag şol bir hatary, şol bir tertipde işledýär we ilkinji säwlikde togtaýar. Her
           ädimiň hemişelik kody bar; şonuň üçin “ret” hemişe <em>sebäbini</em> aýdýar.
         </p>
-        <CodeBlock label="Barlag hatary (bellikler iňlis dilinde)" code={STEPS} />
+        <KeyTable label="Barlag hatary" rows={[["T0", "haýyş we jogap biri-birine degişli (nonce, alyjy, şifrleme)"], ["A · format", "gol, sertifikat zynjyry, enjam subutnamasy, gizlin meýdanlar bozulmadyk"], ["B · görnüş", "resminama görnüşi belli, kesgitlemäniň heşi katalog bilen gabat gelýär"], ["C · ynam", "gurama bu görnüş üçin berlen senesinde ygtyýarly (ynam sanawy)"], ["D · ýagdaý", "ýatyrylmadyk ýa-da togtadylmadyk; ýatyrylyş sanawy täze we labyrlanan"], ["E · syýasat", "soralan her meýdan bar, barlaýjynyň çäginden daşary hiç zat ýok"], ["→ netije", "ACCEPTED (kabul) · REJECTED (ret, haýsy ädimde) · INDETERMINATE (barlap bolmady)"]]} />
         <Callout title="“Barlap bolmady” — “ýasama” diýmek däl" tone="gold">
           Sanawa ýetip bolmasa ýa-da sanaw täze bolmasa jogap <strong>INDETERMINATE</strong>{" "}
           (kesgitsiz) bolýar we REJECTED-den aýratyn görkezilýär. “Bu diplom ýasama” bilen “häzir

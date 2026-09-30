@@ -70,7 +70,7 @@
         _Tamga_ türki taýpalaryň gadymy möhüridi — eýeçiligi, degişliligi we
         ygtyýary tassyklaýan belgi. Barlanyp bilinýän sanly resminama şonuň
         häzirki zaman garşylygydyr. Umumy dili, medeniýeti we taryhy paýlaşýan
-        *~300 million ilatly türki dünýäsi*, umumy sanly ynam binýady üçin tebigy
+        *~170 million ilatly türki dünýäsi*, umumy sanly ynam binýady üçin tebigy
         topragydyr.
       ],
     ),

@@ -6,14 +6,41 @@
 #let ink = rgb("#1a1a1a")
 #let muted = rgb("#4a4a4a")
 
-// Code / diagram block
-#let codeblock(body) = block(
-  width: 100%,
-  fill: rgb("#f5f2ec"),
-  stroke: 0.5pt + rgb("#e0d9cb"),
-  radius: 3pt,
-  inset: 9pt,
-)[#body]
+#let rule = rgb("#e0d9cb")
+#let paper2 = rgb("#f7f4ee")
+
+// Small caption above a figure (kept on the same page as the figure)
+#let caption(label) = if label != "" {
+  block(below: 5pt, text(font: "DejaVu Sans Mono", size: 7pt, tracking: 0.6pt, fill: gold)[#upper(label)])
+}
+
+// Code block: caption + code never split across pages
+#let codeblock(label, code) = block(breakable: false, width: 100%, above: 12pt, below: 12pt)[
+  #caption(label)
+  #block(width: 100%, fill: paper2, stroke: (left: 1.6pt + gold, rest: 0.4pt + rule), inset: (x: 11pt, y: 9pt), radius: 2pt)[
+    #set par(justify: false, leading: 0.55em)
+    #text(font: "DejaVu Sans Mono", size: 7.6pt, fill: ink)[#raw(block: true, code)]
+  ]
+]
+
+// Key / description table: mono keys, wrapping descriptions; never split across pages
+#let kvtable(label, rows, mono: false) = block(breakable: false, width: 100%, above: 12pt, below: 12pt)[
+  #caption(label)
+  #set par(justify: false, leading: 0.55em)
+  #table(
+    columns: (auto, 1fr),
+    inset: (x: 8pt, y: 5.5pt),
+    stroke: (x, y) => (top: if y == 0 { 0.8pt + gold } else { 0.4pt + rule }, bottom: if y == rows.len() - 1 { 0.8pt + gold } else { none }),
+    fill: (x, y) => if calc.odd(y) { paper2 } else { none },
+    ..rows.map(((k, v)) => (
+      text(font: "DejaVu Sans Mono", size: 7.6pt, weight: "bold", fill: ink)[#k],
+      if mono { text(font: "DejaVu Sans Mono", size: 7.6pt, fill: muted)[#v] } else { text(size: 9pt, fill: muted)[#v] },
+    )).flatten(),
+  )
+]
+
+// Chapter boundary: next major section starts on a fresh page (a no-op at the top of a page)
+#let chapter() = pagebreak(weak: true)
 
 // Callout note box (left gold rule)
 #let notebox(body) = block(
@@ -50,13 +77,11 @@
 
   set heading(numbering: "1.1  ")
   show heading: set text(fill: ink)
-  show heading.where(level: 1): it => [
-    #v(0.6em)
+  // Headings stay with the text that follows (sticky): no heading alone at the bottom of a page
+  show heading.where(level: 1): it => block(sticky: true, above: 22pt, below: 10pt)[
     #text(size: 13pt, weight: 700, fill: al)[#it]
-    #v(0.1em)
   ]
-  show heading.where(level: 2): it => [
-    #v(0.2em)
+  show heading.where(level: 2): it => block(sticky: true, above: 14pt, below: 7pt)[
     #text(size: 11pt, weight: 700)[#it]
   ]
 
@@ -75,7 +100,7 @@
     #v(6pt)
     #line(length: 30%, stroke: 0.8pt + gold)
     #v(18pt)
-    #text(size: 22pt, weight: 700)[#title]
+    #block[#set par(justify: false); #set text(hyphenate: false); #text(size: 22pt, weight: 700)[#title]]
     #v(14pt)
     #block(width: 78%)[
       #text(size: 11pt, fill: muted, style: "italic")[#subtitle]
@@ -111,8 +136,8 @@
   v(10pt)
   outline(title: text(size: 12pt, weight: 700, fill: al)[#lb.contents], indent: 1.2em)
 
-  v(6pt)
-  line(length: 100%, stroke: 0.4pt + rgb("#e0d9cb"))
+  // Abstract and contents on their own page; the body starts fresh
+  pagebreak()
 
   body
 }

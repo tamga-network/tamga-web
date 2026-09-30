@@ -10,7 +10,14 @@
     "docs": "Docs",
     "scenarios": "Scenarios",
     "whitepaper": "Whitepaper",
-    "blog": "Blog"
+    "blog": "Blog",
+    "ecosystem": "Ecosystem",
+    "project": "Project",
+    "roadmap": "Roadmap",
+    "changelog": "Changelog",
+    "joinIssuer": "Become an issuer",
+    "allAddresses": "All addresses",
+    "menu": "Open menu"
   },
   "common": {
     "menu": "Toggle menu",
@@ -45,7 +52,14 @@
     "trustLists": "Trust lists",
     "devDocs": "Developer docs",
     "developers": "Developers",
-    "eudiComparison": "Tamga and EUDI"
+    "eudiComparison": "Tamga and EUDI",
+    "sdk": "SDK & packages",
+    "npm": "npm packages",
+    "apiRef": "API references",
+    "roadmap": "Roadmap",
+    "changelog": "Changelog",
+    "issuers": "Become an issuer",
+    "developerHub": "Developers"
   },
   "notFound": {
     "code": "404",

@@ -114,7 +114,7 @@ const en: ManifestoContent = {
           proved ownership, belonging and authority. A verifiable digital
           credential is its modern counterpart. Sharing a common language,
           culture and history, the{" "}
-          <strong>Turkic world of ~300 million people</strong> is a natural soil
+          <strong>Turkic world of ~170 million people</strong> is a natural soil
           for a shared digital foundation of trust.
         </>
       ),
@@ -239,7 +239,7 @@ const tr: ManifestoContent = {
           <em>Tamga</em>, Türk boylarının kadim mührüydü — mülkiyeti, aidiyeti ve
           yetkiyi doğrulayan işaret. Doğrulanabilir dijital belge bunun çağdaş
           karşılığıdır. Ortak dil, kültür ve tarih mirasını paylaşan{" "}
-          <strong>~300 milyon nüfuslu Türk dünyası</strong>, ortak bir dijital
+          <strong>~170 milyon nüfuslu Türk dünyası</strong>, ortak bir dijital
           güven zemini için doğal bir topraktır.
         </>
       ),
@@ -364,7 +364,7 @@ const tk: ManifestoContent = {
           <em>Tamga</em> türki taýpalaryň gadymy möhüridi — eýeçiligi, degişliligi
           we ygtyýary tassyklaýan belgi. Barlanyp bilinýän sanly resminama şonuň
           häzirki zaman garşylygydyr. Umumy dili, medeniýeti we taryhy paýlaşýan{" "}
-          <strong>~300 million ilatly türki dünýäsi</strong>, umumy sanly ynam
+          <strong>~170 million ilatly türki dünýäsi</strong>, umumy sanly ynam
           binýady üçin tebigy topragydyr.
         </>
       ),

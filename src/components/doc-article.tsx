@@ -118,6 +118,32 @@ export function CodeBlock({ label, code, copy = false }: { label?: string; code:
   );
 }
 
+/**
+ * Anahtar / açıklama tablosu — dosya listeleri, adım listeleri gibi "hizalı metin" yerine. Dar ekranda satır alt alta akar,
+ * yatay kaydırma yok; açıklamalar sayfanın dilinde.
+ */
+export function KeyTable({ label, rows, mono = false }: { label?: string; rows: [string, ReactNode][]; mono?: boolean }) {
+  return (
+    <div className="not-prose my-6 overflow-hidden rounded-lg border border-border bg-surface/60">
+      {label && (
+        <div className="border-b border-border px-4 py-2">
+          <span className="mono-label">{label}</span>
+        </div>
+      )}
+      <dl className="divide-y divide-border">
+        {rows.map(([k, v]) => (
+          <div key={k} className="grid gap-1 px-4 py-2.5 sm:grid-cols-[minmax(9rem,14rem)_1fr] sm:gap-5">
+            <dt className="font-mono text-[0.8rem] font-medium break-words text-foreground">{k}</dt>
+            <dd className={`leading-relaxed break-words text-foreground-muted ${mono ? "font-mono text-[0.8rem]" : "text-sm"}`}>
+              {v}
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  );
+}
+
 /** Durum hapı — renk tek başına anlam taşımasın diye simge + metin birlikte. */
 export type Fit = "same" | "bridge" | "planned" | "differs";
 const FIT_STYLE: Record<Fit, { mark: string; cls: string }> = {

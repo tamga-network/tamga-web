@@ -1,6 +1,6 @@
 // Tamga Network — Whitepaper v3.0 (tk). whitepaper/source/content.py dosyasından üretilir (generate.py) — elle düzenleme.
 // Build:  typst compile --root . tamga-whitepaper-tk.typ ../public/whitepaper-tk.pdf
-#import "template.typ": conf, codeblock, notebox, muted
+#import "template.typ": conf, codeblock, kvtable, chapter, notebox, muted
 
 #show: conf.with(
   lang: "tk",
@@ -44,39 +44,34 @@ Türki dünýäsi dili, medeniýeti we taryhy paýlaşýar. Bir döwletde berlen
 
 ÝB arhitekturasynyň her roly Tamga-da bar. Döwlet heniz goşulmadyk bolsa, roly Tamga wagtlaýyn we hasaba alnan görnüşde öz üstüne alýar: ynam sanawynyň operatory, hasaba alyş edarasy, “TR National Root CA (wagtlaýyn operator: Tamga)” we gapjyk üpjün edijisi. Guramalar resminama üpjün edijilerdir; iş berijiler, web saýtlar we gapylar hasaba alnan barlaýjylardyr. PID üpjün edijisiniň orny döwlet ony doldurýança boş; şol wagt şahsyýet resminamasy Tamga şahsyýet hyzmatyndan gelýär (resminama we janlylyk barlagy). Heniz validator operatory ýok — şonuň üçin kitap hem ýok. Ýanaşyk: #link("https://tamga.network/tk/docs/eudi-comparison")[Tamga we EUDI arhitekturasy].
 
+#chapter()
 = Ynam modeli: gol çekilen ynam sanawlary
 
 Gol kimiň gol çekendigini subut edýär; *ynam sanawy* bolsa gol çekijiniň hakyky guramadygyny, haýsy resminama görnüşlerini haçandan bäri berip biljekdigini we häzirki ýagdaýyny aýdýar. Sanawlar gol çekilen JWS faýllarydyr, *wersiýaly we heş-zynjyrly*, pozulmaýar we indiki täzelenme senesini göterýär; barlaýjy gol çekijini aýratyn ýol bilen çap edilen kök barmak yzy bilen deňeşdirýär. Her ýatyrylyş sanawynyň çap edilmegi we shema üýtgeşmesi mundan başga-da azyndan sagatda bir gezek açyk *labyr žurnalyna* ýazylýar; şeýlelikde yza aýlanan sanaw anyklanýar. Jikme-jiklik: #link("https://tamga.network/tk/docs/trust-lists")[ynam sanawlary].
 
-#text(size: 8pt, fill: muted)[Çap edilýän faýllar]
-#codeblock(text(size: 7.5pt, raw(block: true, "https://trust.tamga.network/
-  lotl.jws              list of lists — national lists, schemas, wallet providers
-  tl-tr.jws             Türkiye — root CAs, issuers (+ authorizations), relying parties
-  tl-az / kz / kg / uz  reserved slots for the other member states
-  anchors.jsonl         anchor log — one signed line per event, at least hourly
-  keys/                 root fingerprints (the out-of-band trust anchor)
-  archive/              every past version, never deleted")))
+#kvtable("Çap edilýän faýllar — trust.tamga.network", (("lotl.jws", "sanawlaryň sanawy — milli sanawlar, shemalar, gapjyk üpjün edijileri"), ("tl-tr.jws", "Türkiýe — kök sertifikat edaralary, resminama berijiler (+ ygtyýarlar), barlaýjylar"), ("tl-az · kz · kg · uz", "beýleki agza döwletler üçin goýlan orunlar"), ("anchors.jsonl", "labyr žurnaly — her waka üçin gol çekilen bir setir, azyndan sagatda bir gezek"), ("keys/", "kök barmak yzlary (aýratyn ýoldaky ynam labyry)"), ("archive/", "öňki her wersiýa, asla pozulmaýar"),), mono: false)
 
 Belgiler bellenilmeýär, alynýar; tabşyrylanda ýa-da kitap gelende üýtgemeýär:
 
-#text(size: 8pt, fill: muted)[Belgiler]
-#codeblock(text(size: 7.5pt, raw(block: true, "ca_id      = keccak256(state_code ‖ SHA-256(root certificate))
-issuer_id  = keccak256(state_code ‖ SHA-256(issuer certificate))
-vct        = urn:tamga:<domain>:<Type>:<major>     e.g. urn:tamga:edu:DiplomaCredential:1
-schema_id  = keccak256(vct)
-person     = no identifier — a device key per credential copy")))
+#kvtable("Belgiler", (("ca_id", "keccak256(state_code ‖ SHA-256(kök sertifikat))"), ("issuer_id", "keccak256(state_code ‖ SHA-256(gurama sertifikaty))"), ("vct", "urn:tamga:<ugur>:<Görnüş>:<esasy wersiýa> — meselem urn:tamga:edu:DiplomaCredential:1"), ("schema_id", "keccak256(vct)"), ("adam", "belgi ýok — resminamanyň her nusgasy üçin bir enjam açary"),), mono: true)
 
 = Resminamalar: SD-JWT VC we mdoc
 
 Esasy görnüş *SD-JWT VC* (IETF, #raw("dc+sd-jwt"), ES256). Her meýdan duzlanan heşiň aňyrsynda gizlenýär we diňe eýesiniň razylygy bilen açylýar; sözbaşy guramanyň X.509 zynjyryny göterýär; #raw("cnf") nusgany enjam açaryna baglaýar. Şahsyýet resminamasy mundan başga-da *ISO 18013-5 mdoc* görnüşinde berilýär; şeýlelikde ýaş barlagy #raw("age_over_18") meýdanyny alýar we başga hiç zat almaýar. Resminama görnüşleri hemişelik URN-lerdir; olaryň kesgitlemeleri açyk katalogda durýar we her resminama öz kesgitlemesiniň heşini göterýär. Serediň: #link("https://tamga.network/tk/docs/did-vc")[resminamalar].
 
-#text(size: 8pt, fill: muted)[SD-JWT VC görnüşindäki diplom (açylan, gysgaldylan)]
-#codeblock(text(size: 7.5pt, raw(block: true, "{ \"iss\": \"https://issuer.tamga.network/example-university\",
-  \"vct\": \"urn:tamga:edu:DiplomaCredential:1\",  \"vct#integrity\": \"sha256-…\",
-  \"iat\": 1790000000,  \"cnf\": { \"jwk\": { … } },          // device key of THIS copy
-  \"status\": { \"status_list\": { \"idx\": 48213, \"uri\": \"https://status.tamga.network/…\" } },
-  \"_sd\": [ \"…\", \"…\" ] }                                   // hidden fields: salted hashes
-header: x5c = the institution's X.509 certificate chain")))
+#codeblock("SD-JWT VC görnüşindäki diplom (açylan, gysgaldylan)", "{
+  \"iss\": \"https://issuer.tamga.network/example-university\",
+  \"vct\": \"urn:tamga:edu:DiplomaCredential:1\",
+  \"vct#integrity\": \"sha256-…\",
+  \"iat\": 1790000000,
+  \"cnf\": { \"jwk\": { … } },
+  \"status\": { \"status_list\": {
+    \"idx\": 48213,
+    \"uri\": \"https://status.tamga.network/…\" } },
+  \"_sd\": [ \"…\", \"…\" ]
+}")
+
+#kvtable("", (("cnf.jwk", "şu nusganyň enjam açary"), ("_sd", "gizlin meýdanlar, duzlanan heşler görnüşinde"), ("sözbaşy · x5c", "guramanyň X.509 sertifikat zynjyry"),), mono: false)
 
 Milli şahsyýet belgisi diňe şahsyýet resminamasynda bar; hiç bir diplom, karta ýa-da bilet ony göterýär däl.
 
@@ -91,14 +86,7 @@ Milli şahsyýet belgisi diňe şahsyýet resminamasynda bar; hiç bir diplom, k
 
 Her barlag şol bir hatary şol bir tertipde işledýär we ilkinji säwlikde togtaýar. Her ädimiň hemişelik kody bar; şonuň üçin ret hemişe sebäbini aýdýar.
 
-#text(size: 8pt, fill: muted)[Barlag hatary (bellikler iňlis dilinde)]
-#codeblock(text(size: 7.5pt, raw(block: true, "T0  request and answer belong together (nonce, audience, encryption)
-A   format   signature, certificate chain, device proof, hidden fields intact
-B   type     document type registered; definition hash matches the catalogue
-C   trust    issuer authorized for this type ON THE ISSUE DATE; category matches
-D   status   not revoked or suspended; list fresh and anchored
-E   policy   requested fields present; nothing beyond the verifier's scope
-→   ACCEPTED · REJECTED (failing step) · INDETERMINATE (could not check)")))
+#kvtable("Barlag hatary", (("T0", "haýyş we jogap biri-birine degişli (nonce, alyjy, şifrleme)"), ("A · format", "gol, sertifikat zynjyry, enjam subutnamasy, gizlin meýdanlar bozulmadyk"), ("B · görnüş", "resminama görnüşi hasaba alnan; kesgitlemäniň heşi katalog bilen gabat gelýär"), ("C · ynam", "gurama bu görnüş üçin berlen senesinde ygtyýarly; kategoriýa gabat gelýär"), ("D · ýagdaý", "ýatyrylmadyk ýa-da togtadylmadyk; sanaw täze we labyrlanan"), ("E · syýasat", "soralan meýdanlar bar; barlaýjynyň çäginden daşary hiç zat ýok"), ("→ netije", "ACCEPTED (kabul) · REJECTED (ret, haýsy ädimde) · INDETERMINATE (barlap bolmady)"),), mono: false)
 
 *INDETERMINATE* (kesgitsiz) asla REJECTED (ret) hökmünde habar berilmeýär. Sanawa ýetip bolmasa ýa-da sanaw täze bolmasa, barlaýjy “häzir barlap bolmady” diýýär — “bu diplom ýasama” bilen “barlap bilemok” arasyndaky tapawut kimdir biriniň işe alynmagyny kesgitleýär. Ygtyýar *berlen senesine* görä bahalandyrylýar: uniwersitet işjeň wagtynda berlen diplom togtadylandan soň hem güýjünde galýar, täze resminama bermek bolsa derrew togtaýar.
 
@@ -106,6 +94,7 @@ E   policy   requested fields present; nothing beyond the verifier's scope
 
 Ýatyrylyş *IETF Token Status List* bilen edilýär: her resminama nusgasy üçin *tötänleýin* orunda iki bit — güýjünde, ýatyrylan ýa-da togtadylan. Gurama sanawy *kesgitli aralykda* çap edýär, asla haýyş boýunça däl; şeýlelikde wagty adam barada hiç zady aýan etmeýär; her çap edilişi labyrlanýar. Barlaýjylar sanawlary öňünden alýar; resminamany barlamak ne gurama, ne-de telefona çagyryş edýär. Ýatyrylyş iň giç takmynan 90 minutda her barlaýja ýetýär. Nusgalar dizaýn boýunça gutarýar; gapjyk täzelerini almazdan öň soraýar we asla ýuwaşlyk bilen täzelemeýär. Serediň: #link("https://tamga.network/tk/docs/recovery-revocation")[dikeldiş we ýatyrylyş].
 
+#chapter()
 = Dizaýndan gelýän gizlinlik
 
 - *Barlaýjy başyna nusga.* Her barlaýjy başga açara baglanan başga nusga alýar; barlaýjylar alanlaryny deňeşdirip adamy tanap bilmeýär.
@@ -120,6 +109,7 @@ E   policy   requested fields present; nothing beyond the verifier's scope
 
 Turniketler we çäre gapylary üçin Tamga *geçiş kartasyny* ulanýar: standart hödürleme bilen bir gezek hasaba durmak, soňra QR hökmünde görkezilýän 60 sekuntlyk gol çekilen belgi — belgide şahsy maglumat ýok, gaýtadan ulanmak ret edilýär we biletler bir gezeklik bolup biler. Adamdan adama barlagda OpenID4VP tersine başlaýar: barlaýanyň programmasy standart haýyş başlaýar. Ikisi hem wersiýaly köprülerdir; maksat NFC/BLE arkaly ISO 18013-5.
 
+#chapter()
 = Sanawlardan kitaba
 
 Kitap diňe birnäçe garaşsyz tarap ony dolandyranda bir zat goşýar. Şonuň üçin Tamga sanawlar bilen başlaýar we *QBFT* ylalaşykly rugsatly *Hyperledger Besu* toruny diňe azyndan iki garaşsyz validator operatory ýazmaça razylyk berende goşýar. Sanawyň her meýdany kontrakt ýazgysyna gabat gelýär; sanawyň taryhy kontraktlara gaýtadan oýnalýar we ikisiniň şol bir jogaby berýändigi synagdan geçirilýär. Bölekler ynamy bir interfeýs arkaly okaýar; resminamalar, gapjyklar we barlag hatary üýtgemeýär. Serediň: #link("https://tamga.network/tk/docs/blockchain")[blokçeýn näme — we näme däl].
@@ -135,15 +125,12 @@ Bular öwrenilýän dizaýnlardyr; ilkinji wersiýanyň ýa-da pilotyň bölegi 
 - *Alnan lakamlar we dikeldiş* — iýerarhiki açarlar, konwert şifrlemesi, enjamy dikeltmek. Serediň: #link("https://tamga.network/tk/docs/identity-layers")[şahsyýet gatlaklary].
 - *Baha gatlagy* — barlanan taraplaryň arasynda ygtyýarlandyrma; hasaplaşyk düzgünleşdirilen ýollarda galýar.
 
+#chapter()
 = Ýagdaý we ýol kartasy
 
 *Häzir işleýän (ilkinji wersiýa, hakyky kriptografiýa):* diplom we talyp resminamasyny bermek we hödürlemek; ýatyrylyş we guramanyň togtadylmagy; şahsyýet barlagy we şahsyýet resminamasy, mdoc görnüşinde hem; kampus we çäre geçiş kartalary, bir gezeklik biletler; web saýta hasaba durmak we passkey bilen giriş; sekiz açyk çeşmeli paket. Telefonda synagdan geçirildi.
 
-#text(size: 8pt, fill: muted)[Tapgyrlar (bellikler iňlis dilinde)]
-#codeblock(text(size: 7.5pt, raw(block: true, "Phase B (today)   signed trust lists + anchor log · Tamga = provisional operator
-Pilot             one foundation university · issuer key at the university · lists, no ledger
-Phase 0           permissioned Besu/QBFT ledger once ≥ 2 independent validator operators sign
-Phase 1           member-state lists · close range (NFC/BLE) · Digital Credentials API")))
+#kvtable("Tapgyrlar", (("B tapgyr (häzir)", "gol çekilen ynam sanawlary + labyr žurnaly · Tamga = wagtlaýyn operator"), ("Pilot", "bir wakf uniwersiteti · guramanyň açary uniwersitetde · sanawlar, kitap ýok"), ("0 tapgyr", "azyndan 2 garaşsyz validator operatory gol çekende rugsatly Besu/QBFT kitaby"), ("1 tapgyr", "agza döwletleriň sanawlary · ýakyn aralyk (NFC/BLE) · Digital Credentials API"),), mono: false)
 
 Ilkinji wersiýadaky her gysga ýol — nusga ýazgylar, programmada açar, Tamga-da duran guramanyň açary, ýeke operator — açyk gyşarma sanawynda görkezilýär we pilotdan öň ýapylýar. Pilotyň üstünlik we togtatma ölçegleri öňünden kesgitlenendir.
 

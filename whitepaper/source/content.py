@@ -1,39 +1,141 @@
 # -*- coding: utf-8 -*-
 """Tamga whitepaper v3.0 — tek kaynak (üretici: generate.py) (en/tr/tk). Satır içi: **kalın**, `kod`, [metin](/docs/yol).
-Blok türleri: ("p", str) · ("ul", [str]) · ("code", etiket, KOD_ANAHTARI) · ("note", str)
+Blok türleri: ("p", str) · ("ul", [str]) · ("code", etiket, KOD_ANAHTARI) · ("table", etiket, TABLO_ANAHTARI) · ("note", str)
 Kaynaklar: DECISIONS §0 (D-BC-6, D-GOV-5, D-SCHEMA-4, D-CRED-4), D-CRED-1, D-ID-1, ADR-0009…0014, FW-ARF-0001,
 SPEC-TRUST-0001, SPEC-API-0001, PM-GTM-0001 / PRD, sapma kütüğü (delivery/09 §6)."""
 
 CODE = {
-    "trust": """https://trust.tamga.network/
-  lotl.jws              list of lists — national lists, schemas, wallet providers
-  tl-tr.jws             Türkiye — root CAs, issuers (+ authorizations), relying parties
-  tl-az / kz / kg / uz  reserved slots for the other member states
-  anchors.jsonl         anchor log — one signed line per event, at least hourly
-  keys/                 root fingerprints (the out-of-band trust anchor)
-  archive/              every past version, never deleted""",
-    "ids": """ca_id      = keccak256(state_code ‖ SHA-256(root certificate))
-issuer_id  = keccak256(state_code ‖ SHA-256(issuer certificate))
-vct        = urn:tamga:<domain>:<Type>:<major>     e.g. urn:tamga:edu:DiplomaCredential:1
-schema_id  = keccak256(vct)
-person     = no identifier — a device key per credential copy""",
-    "pipeline": """T0  request and answer belong together (nonce, audience, encryption)
-A   format   signature, certificate chain, device proof, hidden fields intact
-B   type     document type registered; definition hash matches the catalogue
-C   trust    issuer authorized for this type ON THE ISSUE DATE; category matches
-D   status   not revoked or suspended; list fresh and anchored
-E   policy   requested fields present; nothing beyond the verifier's scope
-→   ACCEPTED · REJECTED (failing step) · INDETERMINATE (could not check)""",
-    "sdjwt": """{ "iss": "https://issuer.tamga.network/example-university",
-  "vct": "urn:tamga:edu:DiplomaCredential:1",  "vct#integrity": "sha256-…",
-  "iat": 1790000000,  "cnf": { "jwk": { … } },          // device key of THIS copy
-  "status": { "status_list": { "idx": 48213, "uri": "https://status.tamga.network/…" } },
-  "_sd": [ "…", "…" ] }                                   // hidden fields: salted hashes
-header: x5c = the institution's X.509 certificate chain""",
-    "phases": """Phase B (today)   signed trust lists + anchor log · Tamga = provisional operator
-Pilot             one foundation university · issuer key at the university · lists, no ledger
-Phase 0           permissioned Besu/QBFT ledger once ≥ 2 independent validator operators sign
-Phase 1           member-state lists · close range (NFC/BLE) · Digital Credentials API""",
+    "sdjwt": """{
+  "iss": "https://issuer.tamga.network/example-university",
+  "vct": "urn:tamga:edu:DiplomaCredential:1",
+  "vct#integrity": "sha256-…",
+  "iat": 1790000000,
+  "cnf": { "jwk": { … } },
+  "status": { "status_list": {
+    "idx": 48213,
+    "uri": "https://status.tamga.network/…" } },
+  "_sd": [ "…", "…" ]
+}""",
+}
+
+# Anahtar / açıklama tabloları (dil başına). TABLE_MONO: değer sütunu da eş aralıklı yazılır.
+TABLE_MONO = {"ids"}
+TABLES = {
+    "trust": {
+        "en": [
+            ("lotl.jws", "list of lists — national lists, schemas, wallet providers"),
+            ("tl-tr.jws", "Türkiye — root CAs, issuers (+ authorizations), relying parties"),
+            ("tl-az · kz · kg · uz", "reserved slots for the other member states"),
+            ("anchors.jsonl", "anchor log — one signed line per event, at least hourly"),
+            ("keys/", "root fingerprints (the out-of-band trust anchor)"),
+            ("archive/", "every past version, never deleted"),
+        ],
+        "tr": [
+            ("lotl.jws", "listelerin listesi — ulusal listeler, şemalar, cüzdan sağlayıcıları"),
+            ("tl-tr.jws", "Türkiye — kök sertifika otoriteleri, belge verenler (+ yetkiler), doğrulayıcılar"),
+            ("tl-az · kz · kg · uz", "diğer üye devletler için ayrılmış yerler"),
+            ("anchors.jsonl", "çapa günlüğü — her olay için imzalı bir satır, en az saatte bir"),
+            ("keys/", "kök parmak izleri (bant dışı güven çapası)"),
+            ("archive/", "geçmiş her sürüm, hiç silinmez"),
+        ],
+        "tk": [
+            ("lotl.jws", "sanawlaryň sanawy — milli sanawlar, shemalar, gapjyk üpjün edijileri"),
+            ("tl-tr.jws", "Türkiýe — kök sertifikat edaralary, resminama berijiler (+ ygtyýarlar), barlaýjylar"),
+            ("tl-az · kz · kg · uz", "beýleki agza döwletler üçin goýlan orunlar"),
+            ("anchors.jsonl", "labyr žurnaly — her waka üçin gol çekilen bir setir, azyndan sagatda bir gezek"),
+            ("keys/", "kök barmak yzlary (aýratyn ýoldaky ynam labyry)"),
+            ("archive/", "öňki her wersiýa, asla pozulmaýar"),
+        ],
+    },
+    "ids": {
+        "en": [
+            ("ca_id", "keccak256(state_code ‖ SHA-256(root certificate))"),
+            ("issuer_id", "keccak256(state_code ‖ SHA-256(issuer certificate))"),
+            ("vct", "urn:tamga:<domain>:<Type>:<major> — e.g. urn:tamga:edu:DiplomaCredential:1"),
+            ("schema_id", "keccak256(vct)"),
+            ("person", "no identifier — a device key per credential copy"),
+        ],
+        "tr": [
+            ("ca_id", "keccak256(state_code ‖ SHA-256(kök sertifika))"),
+            ("issuer_id", "keccak256(state_code ‖ SHA-256(kurum sertifikası))"),
+            ("vct", "urn:tamga:<alan>:<Tür>:<ana sürüm> — örn. urn:tamga:edu:DiplomaCredential:1"),
+            ("schema_id", "keccak256(vct)"),
+            ("kişi", "tanımlayıcı yok — her belge kopyası için bir cihaz anahtarı"),
+        ],
+        "tk": [
+            ("ca_id", "keccak256(state_code ‖ SHA-256(kök sertifikat))"),
+            ("issuer_id", "keccak256(state_code ‖ SHA-256(gurama sertifikaty))"),
+            ("vct", "urn:tamga:<ugur>:<Görnüş>:<esasy wersiýa> — meselem urn:tamga:edu:DiplomaCredential:1"),
+            ("schema_id", "keccak256(vct)"),
+            ("adam", "belgi ýok — resminamanyň her nusgasy üçin bir enjam açary"),
+        ],
+    },
+    "sdjwt_notes": {
+        "en": [
+            ("cnf.jwk", "device key of this copy"),
+            ("_sd", "hidden fields, as salted hashes"),
+            ("header · x5c", "the institution's X.509 certificate chain"),
+        ],
+        "tr": [
+            ("cnf.jwk", "bu kopyanın cihaz anahtarı"),
+            ("_sd", "gizli alanlar, tuzlanmış özetler olarak"),
+            ("başlık · x5c", "kurumun X.509 sertifika zinciri"),
+        ],
+        "tk": [
+            ("cnf.jwk", "şu nusganyň enjam açary"),
+            ("_sd", "gizlin meýdanlar, duzlanan heşler görnüşinde"),
+            ("sözbaşy · x5c", "guramanyň X.509 sertifikat zynjyry"),
+        ],
+    },
+    "pipeline": {
+        "en": [
+            ("T0", "request and answer belong together (nonce, audience, encryption)"),
+            ("A · format", "signature, certificate chain, device proof, hidden fields intact"),
+            ("B · type", "document type registered; definition hash matches the catalogue"),
+            ("C · trust", "issuer authorized for this type on the issue date; category matches"),
+            ("D · status", "not revoked or suspended; list fresh and anchored"),
+            ("E · policy", "requested fields present; nothing beyond the verifier's scope"),
+            ("→ outcome", "ACCEPTED · REJECTED (failing step) · INDETERMINATE (could not check)"),
+        ],
+        "tr": [
+            ("T0", "istek ve cevap birbirine ait (nonce, hedef, şifreleme)"),
+            ("A · biçim", "imza, sertifika zinciri, cihaz kanıtı, gizli alanlar bozulmamış"),
+            ("B · tür", "belge türü kayıtlı; tanımın özeti katalogla aynı"),
+            ("C · güven", "kurum bu tür için veriliş tarihinde yetkili; kategori uyuşuyor"),
+            ("D · durum", "iptal edilmemiş ya da askıda değil; liste güncel ve çapalı"),
+            ("E · politika", "istenen alanlar var; doğrulayıcının kapsamı dışında bir şey yok"),
+            ("→ sonuç", "ACCEPTED (kabul) · REJECTED (red, hangi adımda) · INDETERMINATE (denetlenemedi)"),
+        ],
+        "tk": [
+            ("T0", "haýyş we jogap biri-birine degişli (nonce, alyjy, şifrleme)"),
+            ("A · format", "gol, sertifikat zynjyry, enjam subutnamasy, gizlin meýdanlar bozulmadyk"),
+            ("B · görnüş", "resminama görnüşi hasaba alnan; kesgitlemäniň heşi katalog bilen gabat gelýär"),
+            ("C · ynam", "gurama bu görnüş üçin berlen senesinde ygtyýarly; kategoriýa gabat gelýär"),
+            ("D · ýagdaý", "ýatyrylmadyk ýa-da togtadylmadyk; sanaw täze we labyrlanan"),
+            ("E · syýasat", "soralan meýdanlar bar; barlaýjynyň çäginden daşary hiç zat ýok"),
+            ("→ netije", "ACCEPTED (kabul) · REJECTED (ret, haýsy ädimde) · INDETERMINATE (barlap bolmady)"),
+        ],
+    },
+    "phases": {
+        "en": [
+            ("Phase B (today)", "signed trust lists + anchor log · Tamga = provisional operator"),
+            ("Pilot", "one foundation university · issuer key at the university · lists, no ledger"),
+            ("Phase 0", "permissioned Besu/QBFT ledger once at least 2 independent validator operators sign"),
+            ("Phase 1", "member-state lists · close range (NFC/BLE) · Digital Credentials API"),
+        ],
+        "tr": [
+            ("Faz B (bugün)", "imzalı güven listeleri + çapa günlüğü · Tamga = geçici operatör"),
+            ("Pilot", "bir vakıf üniversitesi · kurum anahtarı üniversitede · listeler, defter yok"),
+            ("Faz 0", "en az 2 bağımsız validator operatörü imzalayınca izinli Besu/QBFT defteri"),
+            ("Faz 1", "üye devlet listeleri · yakın alan (NFC/BLE) · Digital Credentials API"),
+        ],
+        "tk": [
+            ("B tapgyr (häzir)", "gol çekilen ynam sanawlary + labyr žurnaly · Tamga = wagtlaýyn operator"),
+            ("Pilot", "bir wakf uniwersiteti · guramanyň açary uniwersitetde · sanawlar, kitap ýok"),
+            ("0 tapgyr", "azyndan 2 garaşsyz validator operatory gol çekende rugsatly Besu/QBFT kitaby"),
+            ("1 tapgyr", "agza döwletleriň sanawlary · ýakyn aralyk (NFC/BLE) · Digital Credentials API"),
+        ],
+    },
 }
 
 IDS = ["problem", "vision", "principles", "roles", "trust", "credentials", "flows", "verification",
@@ -81,13 +183,14 @@ EN = {
         ]),
         "trust": ("Trust model: signed trust lists", [
             ("p", "A signature proves who signed; a **trust list** says whether that signer is a real institution, which document types it may issue, since when, and its current status. Lists are signed JWS files, **versioned and hash-chained**, never deleted, and carry a next-update date; verifiers check the signer against a root fingerprint published out of band. Every revocation-list publication and schema change is also written, at least hourly, to a public **anchor log**, so a rolled-back list can be detected. Details: [trust lists](/docs/trust-lists)."),
-            ("code", "Published files", "trust"),
+            ("table", "Published files — trust.tamga.network", "trust"),
             ("p", "Identifiers are derived, not assigned, and do not change on handover or when the ledger arrives:"),
-            ("code", "Identifiers", "ids"),
+            ("table", "Identifiers", "ids"),
         ]),
         "credentials": ("Credentials: SD-JWT VC and mdoc", [
             ("p", "The main format is **SD-JWT VC** (IETF, `dc+sd-jwt`, ES256). Each field is hidden behind a salted hash and revealed only with the holder’s approval; the header carries the institution’s X.509 chain; `cnf` binds the copy to a device key. The identity credential is also issued as an **ISO 18013-5 mdoc**, so an age check can receive `age_over_18` and nothing else. Document types are stable URNs; their definitions sit in a public catalogue and every credential carries a hash of its definition. See [credentials](/docs/did-vc)."),
             ("code", "An SD-JWT VC diploma (decoded, shortened)", "sdjwt"),
+            ("table", "", "sdjwt_notes"),
             ("p", "The national ID number appears only in the identity credential; no diploma, card or ticket carries it."),
         ]),
         "flows": ("Issuing and presenting", [
@@ -100,7 +203,7 @@ EN = {
         ]),
         "verification": ("Verification: five layers, three outcomes", [
             ("p", "Every verification runs the same pipeline in the same order and stops at the first failure. Each step has a permanent code, so a rejection always states why."),
-            ("code", "Verification pipeline", "pipeline"),
+            ("table", "Verification pipeline", "pipeline"),
             ("p", "**INDETERMINATE** is never reported as REJECTED. If a list cannot be reached or is out of date, the verifier says “could not check right now” — the difference between “this diploma is fake” and “I cannot check” decides whether someone is hired. Authorization is judged on the **issue date**: a diploma issued while a university was active stays valid after a suspension, while new issuance stops at once."),
         ]),
         "revocation": ("Revocation and lifecycle", [
@@ -134,7 +237,7 @@ EN = {
         ]),
         "status": ("Status and roadmap", [
             ("p", "**Working today (first release, real cryptography):** issuance and presentation of diplomas and student cards; revocation and institution suspension; identity check and identity credential, also as mdoc; campus and event passes, single-use tickets; website sign-up and passkey sign-in; eight open-source packages. Tested on a phone."),
-            ("code", "Phases", "phases"),
+            ("table", "Phases", "phases"),
             ("p", "Every first-release shortcut — sample records, software keys, the issuer key held by Tamga, a single operator — is listed in a public deviation log and closed before the pilot. The pilot’s success and stop criteria are defined in advance."),
         ]),
         "limits": ("Known limits", [
@@ -195,13 +298,14 @@ TR = {
         ]),
         "trust": ("Güven modeli: imzalı güven listeleri", [
             ("p", "İmza kimin imzaladığını kanıtlar; **güven listesi** ise imzalayanın gerçek bir kurum olup olmadığını, hangi belge tiplerini ne zamandan beri verebileceğini ve güncel durumunu söyler. Listeler imzalı JWS dosyalarıdır, **sürümlü ve hash-zincirlidir**, silinmez ve bir sonraki güncelleme tarihi taşır; doğrulayıcı imzalayanı bant dışında yayınlanmış bir kök parmak iziyle karşılaştırır. Her iptal listesi yayını ve şema değişikliği ayrıca en az saatte bir herkese açık bir **çapa günlüğüne** yazılır; böylece geri sarılmış bir liste fark edilir. Ayrıntı: [güven listeleri](/docs/trust-lists)."),
-            ("code", "Yayınlanan dosyalar", "trust"),
+            ("table", "Yayınlanan dosyalar — trust.tamga.network", "trust"),
             ("p", "Tanımlayıcılar atanmaz, türetilir; devirde ya da defter geldiğinde değişmez:"),
-            ("code", "Tanımlayıcılar", "ids"),
+            ("table", "Tanımlayıcılar", "ids"),
         ]),
         "credentials": ("Belgeler: SD-JWT VC ve mdoc", [
             ("p", "Ana biçim **SD-JWT VC**’dir (IETF, `dc+sd-jwt`, ES256). Her alan tuzlanmış bir özetin arkasında gizlidir ve yalnızca belge sahibinin onayıyla açılır; başlık kurumun X.509 zincirini taşır; `cnf` kopyayı bir cihaz anahtarına bağlar. Kimlik belgesi ayrıca **ISO 18013-5 mdoc** olarak verilir; böylece yaş kontrolü `age_over_18` alanını alır ve başka hiçbir şey almaz. Belge tipleri sabit URN’lerdir; tanımları herkese açık bir katalogda durur ve her belge kendi tanımının özetini taşır. Bkz. [belgeler](/docs/did-vc)."),
             ("code", "SD-JWT VC biçiminde bir diploma (çözülmüş, kısaltılmış)", "sdjwt"),
+            ("table", "", "sdjwt_notes"),
             ("p", "Ulusal kimlik numarası yalnızca kimlik belgesinde bulunur; hiçbir diploma, kart ya da bilet onu taşımaz."),
         ]),
         "flows": ("Belge verme ve sunma", [
@@ -214,7 +318,7 @@ TR = {
         ]),
         "verification": ("Doğrulama: beş katman, üç sonuç", [
             ("p", "Her doğrulama aynı hattı aynı sırayla çalıştırır ve ilk hatada durur. Her adımın kalıcı bir kodu vardır; bu yüzden bir red her zaman nedenini söyler."),
-            ("code", "Doğrulama hattı (etiketler İngilizce)", "pipeline"),
+            ("table", "Doğrulama hattı", "pipeline"),
             ("p", "**INDETERMINATE** (belirsiz) asla REJECTED (red) olarak bildirilmez. Bir listeye ulaşılamazsa ya da liste güncel değilse doğrulayıcı “şu an denetlenemedi” der — “bu diploma sahte” ile “denetleyemiyorum” arasındaki fark birinin işe alınıp alınmamasıdır. Yetki **veriliş tarihine** göre değerlendirilir: üniversite etkinken verilmiş diploma askıdan sonra da geçerli kalır, yeni belge verme ise hemen durur."),
         ]),
         "revocation": ("İptal ve yaşam döngüsü", [
@@ -248,7 +352,7 @@ TR = {
         ]),
         "status": ("Durum ve yol haritası", [
             ("p", "**Bugün çalışan (ilk sürüm, gerçek kriptografi):** diploma ve öğrenci belgesi verme ve sunma; iptal ve kurum askısı; kimlik kontrolü ve kimlik belgesi, mdoc olarak da; kampüs ve etkinlik geçiş kartları, tek kullanımlık biletler; web sitesine kayıt ve passkey ile giriş; sekiz açık kaynak paket. Telefonda test edildi."),
-            ("code", "Aşamalar (etiketler İngilizce)", "phases"),
+            ("table", "Aşamalar", "phases"),
             ("p", "İlk sürümdeki her kestirme — örnek kayıtlar, yazılımda anahtar, Tamga’da duran kurum anahtarı, tek operatör — herkese açık bir sapma kütüğünde listelenir ve pilottan önce kapatılır. Pilotun başarı ve durdurma ölçütleri önceden tanımlıdır."),
         ]),
         "limits": ("Bilinen sınırlar", [
@@ -309,13 +413,14 @@ TK = {
         ]),
         "trust": ("Ynam modeli: gol çekilen ynam sanawlary", [
             ("p", "Gol kimiň gol çekendigini subut edýär; **ynam sanawy** bolsa gol çekijiniň hakyky guramadygyny, haýsy resminama görnüşlerini haçandan bäri berip biljekdigini we häzirki ýagdaýyny aýdýar. Sanawlar gol çekilen JWS faýllarydyr, **wersiýaly we heş-zynjyrly**, pozulmaýar we indiki täzelenme senesini göterýär; barlaýjy gol çekijini aýratyn ýol bilen çap edilen kök barmak yzy bilen deňeşdirýär. Her ýatyrylyş sanawynyň çap edilmegi we shema üýtgeşmesi mundan başga-da azyndan sagatda bir gezek açyk **labyr žurnalyna** ýazylýar; şeýlelikde yza aýlanan sanaw anyklanýar. Jikme-jiklik: [ynam sanawlary](/docs/trust-lists)."),
-            ("code", "Çap edilýän faýllar", "trust"),
+            ("table", "Çap edilýän faýllar — trust.tamga.network", "trust"),
             ("p", "Belgiler bellenilmeýär, alynýar; tabşyrylanda ýa-da kitap gelende üýtgemeýär:"),
-            ("code", "Belgiler", "ids"),
+            ("table", "Belgiler", "ids"),
         ]),
         "credentials": ("Resminamalar: SD-JWT VC we mdoc", [
             ("p", "Esasy görnüş **SD-JWT VC** (IETF, `dc+sd-jwt`, ES256). Her meýdan duzlanan heşiň aňyrsynda gizlenýär we diňe eýesiniň razylygy bilen açylýar; sözbaşy guramanyň X.509 zynjyryny göterýär; `cnf` nusgany enjam açaryna baglaýar. Şahsyýet resminamasy mundan başga-da **ISO 18013-5 mdoc** görnüşinde berilýär; şeýlelikde ýaş barlagy `age_over_18` meýdanyny alýar we başga hiç zat almaýar. Resminama görnüşleri hemişelik URN-lerdir; olaryň kesgitlemeleri açyk katalogda durýar we her resminama öz kesgitlemesiniň heşini göterýär. Serediň: [resminamalar](/docs/did-vc)."),
             ("code", "SD-JWT VC görnüşindäki diplom (açylan, gysgaldylan)", "sdjwt"),
+            ("table", "", "sdjwt_notes"),
             ("p", "Milli şahsyýet belgisi diňe şahsyýet resminamasynda bar; hiç bir diplom, karta ýa-da bilet ony göterýär däl."),
         ]),
         "flows": ("Bermek we hödürlemek", [
@@ -328,7 +433,7 @@ TK = {
         ]),
         "verification": ("Barlag: bäş gatlak, üç netije", [
             ("p", "Her barlag şol bir hatary şol bir tertipde işledýär we ilkinji säwlikde togtaýar. Her ädimiň hemişelik kody bar; şonuň üçin ret hemişe sebäbini aýdýar."),
-            ("code", "Barlag hatary (bellikler iňlis dilinde)", "pipeline"),
+            ("table", "Barlag hatary", "pipeline"),
             ("p", "**INDETERMINATE** (kesgitsiz) asla REJECTED (ret) hökmünde habar berilmeýär. Sanawa ýetip bolmasa ýa-da sanaw täze bolmasa, barlaýjy “häzir barlap bolmady” diýýär — “bu diplom ýasama” bilen “barlap bilemok” arasyndaky tapawut kimdir biriniň işe alynmagyny kesgitleýär. Ygtyýar **berlen senesine** görä bahalandyrylýar: uniwersitet işjeň wagtynda berlen diplom togtadylandan soň hem güýjünde galýar, täze resminama bermek bolsa derrew togtaýar."),
         ]),
         "revocation": ("Ýatyrylyş we durmuş aýlawy", [
@@ -362,7 +467,7 @@ TK = {
         ]),
         "status": ("Ýagdaý we ýol kartasy", [
             ("p", "**Häzir işleýän (ilkinji wersiýa, hakyky kriptografiýa):** diplom we talyp resminamasyny bermek we hödürlemek; ýatyrylyş we guramanyň togtadylmagy; şahsyýet barlagy we şahsyýet resminamasy, mdoc görnüşinde hem; kampus we çäre geçiş kartalary, bir gezeklik biletler; web saýta hasaba durmak we passkey bilen giriş; sekiz açyk çeşmeli paket. Telefonda synagdan geçirildi."),
-            ("code", "Tapgyrlar (bellikler iňlis dilinde)", "phases"),
+            ("table", "Tapgyrlar", "phases"),
             ("p", "Ilkinji wersiýadaky her gysga ýol — nusga ýazgylar, programmada açar, Tamga-da duran guramanyň açary, ýeke operator — açyk gyşarma sanawynda görkezilýär we pilotdan öň ýapylýar. Pilotyň üstünlik we togtatma ölçegleri öňünden kesgitlenendir."),
         ]),
         "limits": ("Belli çäkler", [

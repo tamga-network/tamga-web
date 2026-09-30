@@ -102,7 +102,7 @@ function Hero({ c }: { c: HomeContent }) {
         <Reveal delay={0.15}>
           <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
             <Button
-              href={{ pathname: "/", hash: "status" }}
+              href="/issuers"
               className="shadow-sm hover:shadow-soft"
             >
               {c.hero.ctaDemo} <ArrowRight size={16} />

@@ -41,18 +41,46 @@ function Code({ label, code }: { label: string; code: string }) {
   );
 }
 
+/** Key / description table (files, identifiers, pipeline steps, phases). */
+function KV({
+  label,
+  rows,
+  mono,
+}: {
+  label: string;
+  rows: string[][];
+  mono?: boolean;
+}) {
+  return (
+    <div className="not-prose my-6 overflow-hidden rounded-lg border border-border bg-surface/60">
+      {label && (
+        <div className="border-b border-border px-4 py-2">
+          <span className="mono-label">{label}</span>
+        </div>
+      )}
+      <dl className="divide-y divide-border">
+        {rows.map(([k, v]) => (
+          <div
+            key={k}
+            className="grid gap-1 px-4 py-2.5 sm:grid-cols-[11rem_1fr] sm:gap-4"
+          >
+            <dt className="font-mono text-[0.8rem] text-foreground">{k}</dt>
+            <dd
+              className={`text-sm leading-relaxed text-foreground-muted ${mono ? "font-mono text-[0.8rem] break-words" : ""}`}
+            >
+              {v}
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  );
+}
+
 /* --- Language-neutral blocks (shared across locales) --- */
 
-const C_TRUST =
-  "https://trust.tamga.network/\n  lotl.jws              list of lists — national lists, schemas, wallet providers\n  tl-tr.jws             Türkiye — root CAs, issuers (+ authorizations), relying parties\n  tl-az / kz / kg / uz  reserved slots for the other member states\n  anchors.jsonl         anchor log — one signed line per event, at least hourly\n  keys/                 root fingerprints (the out-of-band trust anchor)\n  archive/              every past version, never deleted";
-const C_IDS =
-  "ca_id      = keccak256(state_code ‖ SHA-256(root certificate))\nissuer_id  = keccak256(state_code ‖ SHA-256(issuer certificate))\nvct        = urn:tamga:<domain>:<Type>:<major>     e.g. urn:tamga:edu:DiplomaCredential:1\nschema_id  = keccak256(vct)\nperson     = no identifier — a device key per credential copy";
-const C_PIPELINE =
-  "T0  request and answer belong together (nonce, audience, encryption)\nA   format   signature, certificate chain, device proof, hidden fields intact\nB   type     document type registered; definition hash matches the catalogue\nC   trust    issuer authorized for this type ON THE ISSUE DATE; category matches\nD   status   not revoked or suspended; list fresh and anchored\nE   policy   requested fields present; nothing beyond the verifier's scope\n→   ACCEPTED · REJECTED (failing step) · INDETERMINATE (could not check)";
 const C_SDJWT =
-  '{ "iss": "https://issuer.tamga.network/example-university",\n  "vct": "urn:tamga:edu:DiplomaCredential:1",  "vct#integrity": "sha256-…",\n  "iat": 1790000000,  "cnf": { "jwk": { … } },          // device key of THIS copy\n  "status": { "status_list": { "idx": 48213, "uri": "https://status.tamga.network/…" } },\n  "_sd": [ "…", "…" ] }                                   // hidden fields: salted hashes\nheader: x5c = the institution\'s X.509 certificate chain';
-const C_PHASES =
-  "Phase B (today)   signed trust lists + anchor log · Tamga = provisional operator\nPilot             one foundation university · issuer key at the university · lists, no ledger\nPhase 0           permissioned Besu/QBFT ledger once ≥ 2 independent validator operators sign\nPhase 1           member-state lists · close range (NFC/BLE) · Digital Credentials API";
+  '{\n  "iss": "https://issuer.tamga.network/example-university",\n  "vct": "urn:tamga:edu:DiplomaCredential:1",\n  "vct#integrity": "sha256-…",\n  "iat": 1790000000,\n  "cnf": { "jwk": { … } },\n  "status": { "status_list": {\n    "idx": 48213,\n    "uri": "https://status.tamga.network/…" } },\n  "_sd": [ "…", "…" ]\n}';
 
 const en: WhitepaperContent = {
   meta: {
@@ -223,12 +251,50 @@ const en: WhitepaperContent = {
             detected. Details: <Link href="/docs/trust-lists">trust lists</Link>
             .
           </p>
-          <Code label="Published files" code={C_TRUST} />
+          <KV
+            label="Published files — trust.tamga.network"
+            rows={[
+              [
+                "lotl.jws",
+                "list of lists — national lists, schemas, wallet providers",
+              ],
+              [
+                "tl-tr.jws",
+                "Türkiye — root CAs, issuers (+ authorizations), relying parties",
+              ],
+              [
+                "tl-az · kz · kg · uz",
+                "reserved slots for the other member states",
+              ],
+              [
+                "anchors.jsonl",
+                "anchor log — one signed line per event, at least hourly",
+              ],
+              ["keys/", "root fingerprints (the out-of-band trust anchor)"],
+              ["archive/", "every past version, never deleted"],
+            ]}
+          />
           <p>
             Identifiers are derived, not assigned, and do not change on handover
             or when the ledger arrives:
           </p>
-          <Code label="Identifiers" code={C_IDS} />
+          <KV
+            label="Identifiers"
+            rows={[
+              ["ca_id", "keccak256(state_code ‖ SHA-256(root certificate))"],
+              [
+                "issuer_id",
+                "keccak256(state_code ‖ SHA-256(issuer certificate))",
+              ],
+              [
+                "vct",
+                "urn:tamga:<domain>:<Type>:<major> — e.g. urn:tamga:edu:DiplomaCredential:1",
+              ],
+              ["schema_id", "keccak256(vct)"],
+              ["person", "no identifier — a device key per credential copy"],
+            ]}
+            mono
+          />
         </>
       ),
     },
@@ -253,6 +319,14 @@ const en: WhitepaperContent = {
           <Code
             label="An SD-JWT VC diploma (decoded, shortened)"
             code={C_SDJWT}
+          />
+          <KV
+            label=""
+            rows={[
+              ["cnf.jwk", "device key of this copy"],
+              ["_sd", "hidden fields, as salted hashes"],
+              ["header · x5c", "the institution's X.509 certificate chain"],
+            ]}
           />
           <p>
             The national ID number appears only in the identity credential; no
@@ -309,7 +383,39 @@ const en: WhitepaperContent = {
             stops at the first failure. Each step has a permanent code, so a
             rejection always states why.
           </p>
-          <Code label="Verification pipeline" code={C_PIPELINE} />
+          <KV
+            label="Verification pipeline"
+            rows={[
+              [
+                "T0",
+                "request and answer belong together (nonce, audience, encryption)",
+              ],
+              [
+                "A · format",
+                "signature, certificate chain, device proof, hidden fields intact",
+              ],
+              [
+                "B · type",
+                "document type registered; definition hash matches the catalogue",
+              ],
+              [
+                "C · trust",
+                "issuer authorized for this type on the issue date; category matches",
+              ],
+              [
+                "D · status",
+                "not revoked or suspended; list fresh and anchored",
+              ],
+              [
+                "E · policy",
+                "requested fields present; nothing beyond the verifier's scope",
+              ],
+              [
+                "→ outcome",
+                "ACCEPTED · REJECTED (failing step) · INDETERMINATE (could not check)",
+              ],
+            ]}
+          />
           <p>
             <strong>INDETERMINATE</strong> is never reported as REJECTED. If a
             list cannot be reached or is out of date, the verifier says “could
@@ -487,7 +593,27 @@ const en: WhitepaperContent = {
             sign-up and passkey sign-in; eight open-source packages. Tested on a
             phone.
           </p>
-          <Code label="Phases" code={C_PHASES} />
+          <KV
+            label="Phases"
+            rows={[
+              [
+                "Phase B (today)",
+                "signed trust lists + anchor log · Tamga = provisional operator",
+              ],
+              [
+                "Pilot",
+                "one foundation university · issuer key at the university · lists, no ledger",
+              ],
+              [
+                "Phase 0",
+                "permissioned Besu/QBFT ledger once at least 2 independent validator operators sign",
+              ],
+              [
+                "Phase 1",
+                "member-state lists · close range (NFC/BLE) · Digital Credentials API",
+              ],
+            ]}
+          />
           <p>
             Every first-release shortcut — sample records, software keys, the
             issuer key held by Tamga, a single operator — is listed in a public
@@ -717,12 +843,53 @@ const tr: WhitepaperContent = {
             liste fark edilir. Ayrıntı:{" "}
             <Link href="/docs/trust-lists">güven listeleri</Link>.
           </p>
-          <Code label="Yayınlanan dosyalar" code={C_TRUST} />
+          <KV
+            label="Yayınlanan dosyalar — trust.tamga.network"
+            rows={[
+              [
+                "lotl.jws",
+                "listelerin listesi — ulusal listeler, şemalar, cüzdan sağlayıcıları",
+              ],
+              [
+                "tl-tr.jws",
+                "Türkiye — kök sertifika otoriteleri, belge verenler (+ yetkiler), doğrulayıcılar",
+              ],
+              [
+                "tl-az · kz · kg · uz",
+                "diğer üye devletler için ayrılmış yerler",
+              ],
+              [
+                "anchors.jsonl",
+                "çapa günlüğü — her olay için imzalı bir satır, en az saatte bir",
+              ],
+              ["keys/", "kök parmak izleri (bant dışı güven çapası)"],
+              ["archive/", "geçmiş her sürüm, hiç silinmez"],
+            ]}
+          />
           <p>
             Tanımlayıcılar atanmaz, türetilir; devirde ya da defter geldiğinde
             değişmez:
           </p>
-          <Code label="Tanımlayıcılar" code={C_IDS} />
+          <KV
+            label="Tanımlayıcılar"
+            rows={[
+              ["ca_id", "keccak256(state_code ‖ SHA-256(kök sertifika))"],
+              [
+                "issuer_id",
+                "keccak256(state_code ‖ SHA-256(kurum sertifikası))",
+              ],
+              [
+                "vct",
+                "urn:tamga:<alan>:<Tür>:<ana sürüm> — örn. urn:tamga:edu:DiplomaCredential:1",
+              ],
+              ["schema_id", "keccak256(vct)"],
+              [
+                "kişi",
+                "tanımlayıcı yok — her belge kopyası için bir cihaz anahtarı",
+              ],
+            ]}
+            mono
+          />
         </>
       ),
     },
@@ -747,6 +914,14 @@ const tr: WhitepaperContent = {
           <Code
             label="SD-JWT VC biçiminde bir diploma (çözülmüş, kısaltılmış)"
             code={C_SDJWT}
+          />
+          <KV
+            label=""
+            rows={[
+              ["cnf.jwk", "bu kopyanın cihaz anahtarı"],
+              ["_sd", "gizli alanlar, tuzlanmış özetler olarak"],
+              ["başlık · x5c", "kurumun X.509 sertifika zinciri"],
+            ]}
           />
           <p>
             Ulusal kimlik numarası yalnızca kimlik belgesinde bulunur; hiçbir
@@ -803,9 +978,32 @@ const tr: WhitepaperContent = {
             durur. Her adımın kalıcı bir kodu vardır; bu yüzden bir red her
             zaman nedenini söyler.
           </p>
-          <Code
-            label="Doğrulama hattı (etiketler İngilizce)"
-            code={C_PIPELINE}
+          <KV
+            label="Doğrulama hattı"
+            rows={[
+              ["T0", "istek ve cevap birbirine ait (nonce, hedef, şifreleme)"],
+              [
+                "A · biçim",
+                "imza, sertifika zinciri, cihaz kanıtı, gizli alanlar bozulmamış",
+              ],
+              ["B · tür", "belge türü kayıtlı; tanımın özeti katalogla aynı"],
+              [
+                "C · güven",
+                "kurum bu tür için veriliş tarihinde yetkili; kategori uyuşuyor",
+              ],
+              [
+                "D · durum",
+                "iptal edilmemiş ya da askıda değil; liste güncel ve çapalı",
+              ],
+              [
+                "E · politika",
+                "istenen alanlar var; doğrulayıcının kapsamı dışında bir şey yok",
+              ],
+              [
+                "→ sonuç",
+                "ACCEPTED (kabul) · REJECTED (red, hangi adımda) · INDETERMINATE (denetlenemedi)",
+              ],
+            ]}
           />
           <p>
             <strong>INDETERMINATE</strong> (belirsiz) asla REJECTED (red) olarak
@@ -985,7 +1183,27 @@ const tr: WhitepaperContent = {
             kayıt ve passkey ile giriş; sekiz açık kaynak paket. Telefonda test
             edildi.
           </p>
-          <Code label="Aşamalar (etiketler İngilizce)" code={C_PHASES} />
+          <KV
+            label="Aşamalar"
+            rows={[
+              [
+                "Faz B (bugün)",
+                "imzalı güven listeleri + çapa günlüğü · Tamga = geçici operatör",
+              ],
+              [
+                "Pilot",
+                "bir vakıf üniversitesi · kurum anahtarı üniversitede · listeler, defter yok",
+              ],
+              [
+                "Faz 0",
+                "en az 2 bağımsız validator operatörü imzalayınca izinli Besu/QBFT defteri",
+              ],
+              [
+                "Faz 1",
+                "üye devlet listeleri · yakın alan (NFC/BLE) · Digital Credentials API",
+              ],
+            ]}
+          />
           <p>
             İlk sürümdeki her kestirme — örnek kayıtlar, yazılımda anahtar,
             Tamga’da duran kurum anahtarı, tek operatör — herkese açık bir sapma
@@ -1221,12 +1439,53 @@ const tk: WhitepaperContent = {
             aýlanan sanaw anyklanýar. Jikme-jiklik:{" "}
             <Link href="/docs/trust-lists">ynam sanawlary</Link>.
           </p>
-          <Code label="Çap edilýän faýllar" code={C_TRUST} />
+          <KV
+            label="Çap edilýän faýllar — trust.tamga.network"
+            rows={[
+              [
+                "lotl.jws",
+                "sanawlaryň sanawy — milli sanawlar, shemalar, gapjyk üpjün edijileri",
+              ],
+              [
+                "tl-tr.jws",
+                "Türkiýe — kök sertifikat edaralary, resminama berijiler (+ ygtyýarlar), barlaýjylar",
+              ],
+              [
+                "tl-az · kz · kg · uz",
+                "beýleki agza döwletler üçin goýlan orunlar",
+              ],
+              [
+                "anchors.jsonl",
+                "labyr žurnaly — her waka üçin gol çekilen bir setir, azyndan sagatda bir gezek",
+              ],
+              ["keys/", "kök barmak yzlary (aýratyn ýoldaky ynam labyry)"],
+              ["archive/", "öňki her wersiýa, asla pozulmaýar"],
+            ]}
+          />
           <p>
             Belgiler bellenilmeýär, alynýar; tabşyrylanda ýa-da kitap gelende
             üýtgemeýär:
           </p>
-          <Code label="Belgiler" code={C_IDS} />
+          <KV
+            label="Belgiler"
+            rows={[
+              ["ca_id", "keccak256(state_code ‖ SHA-256(kök sertifikat))"],
+              [
+                "issuer_id",
+                "keccak256(state_code ‖ SHA-256(gurama sertifikaty))",
+              ],
+              [
+                "vct",
+                "urn:tamga:<ugur>:<Görnüş>:<esasy wersiýa> — meselem urn:tamga:edu:DiplomaCredential:1",
+              ],
+              ["schema_id", "keccak256(vct)"],
+              [
+                "adam",
+                "belgi ýok — resminamanyň her nusgasy üçin bir enjam açary",
+              ],
+            ]}
+            mono
+          />
         </>
       ),
     },
@@ -1252,6 +1511,14 @@ const tk: WhitepaperContent = {
           <Code
             label="SD-JWT VC görnüşindäki diplom (açylan, gysgaldylan)"
             code={C_SDJWT}
+          />
+          <KV
+            label=""
+            rows={[
+              ["cnf.jwk", "şu nusganyň enjam açary"],
+              ["_sd", "gizlin meýdanlar, duzlanan heşler görnüşinde"],
+              ["sözbaşy · x5c", "guramanyň X.509 sertifikat zynjyry"],
+            ]}
           />
           <p>
             Milli şahsyýet belgisi diňe şahsyýet resminamasynda bar; hiç bir
@@ -1308,9 +1575,38 @@ const tk: WhitepaperContent = {
             säwlikde togtaýar. Her ädimiň hemişelik kody bar; şonuň üçin ret
             hemişe sebäbini aýdýar.
           </p>
-          <Code
-            label="Barlag hatary (bellikler iňlis dilinde)"
-            code={C_PIPELINE}
+          <KV
+            label="Barlag hatary"
+            rows={[
+              [
+                "T0",
+                "haýyş we jogap biri-birine degişli (nonce, alyjy, şifrleme)",
+              ],
+              [
+                "A · format",
+                "gol, sertifikat zynjyry, enjam subutnamasy, gizlin meýdanlar bozulmadyk",
+              ],
+              [
+                "B · görnüş",
+                "resminama görnüşi hasaba alnan; kesgitlemäniň heşi katalog bilen gabat gelýär",
+              ],
+              [
+                "C · ynam",
+                "gurama bu görnüş üçin berlen senesinde ygtyýarly; kategoriýa gabat gelýär",
+              ],
+              [
+                "D · ýagdaý",
+                "ýatyrylmadyk ýa-da togtadylmadyk; sanaw täze we labyrlanan",
+              ],
+              [
+                "E · syýasat",
+                "soralan meýdanlar bar; barlaýjynyň çäginden daşary hiç zat ýok",
+              ],
+              [
+                "→ netije",
+                "ACCEPTED (kabul) · REJECTED (ret, haýsy ädimde) · INDETERMINATE (barlap bolmady)",
+              ],
+            ]}
           />
           <p>
             <strong>INDETERMINATE</strong> (kesgitsiz) asla REJECTED (ret)
@@ -1492,7 +1788,27 @@ const tk: WhitepaperContent = {
             biletler; web saýta hasaba durmak we passkey bilen giriş; sekiz açyk
             çeşmeli paket. Telefonda synagdan geçirildi.
           </p>
-          <Code label="Tapgyrlar (bellikler iňlis dilinde)" code={C_PHASES} />
+          <KV
+            label="Tapgyrlar"
+            rows={[
+              [
+                "B tapgyr (häzir)",
+                "gol çekilen ynam sanawlary + labyr žurnaly · Tamga = wagtlaýyn operator",
+              ],
+              [
+                "Pilot",
+                "bir wakf uniwersiteti · guramanyň açary uniwersitetde · sanawlar, kitap ýok",
+              ],
+              [
+                "0 tapgyr",
+                "azyndan 2 garaşsyz validator operatory gol çekende rugsatly Besu/QBFT kitaby",
+              ],
+              [
+                "1 tapgyr",
+                "agza döwletleriň sanawlary · ýakyn aralyk (NFC/BLE) · Digital Credentials API",
+              ],
+            ]}
+          />
           <p>
             Ilkinji wersiýadaky her gysga ýol — nusga ýazgylar, programmada
             açar, Tamga-da duran guramanyň açary, ýeke operator — açyk gyşarma

@@ -1,5 +1,6 @@
 import { getLocale, getTranslations } from "next-intl/server";
 import { arfUrl } from "@/lib/docs-nav";
+import { DEV_LINKS } from "@/lib/ecosystem";
 import { Link, type Href } from "@/i18n/navigation";
 import { LogoMark } from "./logo";
 import { SocialLinks } from "./social-icons";
@@ -29,29 +30,33 @@ const COLUMNS: { titleKey: string; items: FItem[] }[] = [
   {
     titleKey: "resources",
     items: [
-      { key: "docs", href: "/docs" },
-      { key: "devDocs", external: "https://docs.tamga.network" },
+      { key: "devDocs", external: DEV_LINKS.devDocs },
+      { key: "sdk", href: "/docs/developers" },
+      { key: "apiRef", external: DEV_LINKS.apiRef },
+      { key: "npm", external: DEV_LINKS.npm },
+      { label: "GitHub", external: DEV_LINKS.github },
       { label: "Tamga ARF", external: "arf" },
-      { key: "references" },
-      { label: "GitHub", external: "https://github.com/tamga-network" },
     ],
   },
   {
     titleKey: "network",
     items: [
+      { key: "docs", href: "/docs" },
       { key: "trustLists", href: "/docs/trust-lists" },
-      { key: "developers", href: "/docs/developers" },
-      { key: "eudiComparison", href: "/docs/eudi-comparison" },
       { key: "howItWorks", href: "/docs/how-tamga-works" },
+      { key: "eudiComparison", href: "/docs/eudi-comparison" },
+      { key: "issuers", href: "/issuers" },
     ],
   },
   {
     titleKey: "company",
     items: [
       { key: "about", href: "/about" },
+      { key: "roadmap", href: "/roadmap" },
+      { key: "changelog", href: "/changelog" },
+      { key: "blog", href: "/blog" },
       { key: "team" },
       { key: "careers" },
-      { key: "blog", href: "/blog" },
     ],
   },
 ];

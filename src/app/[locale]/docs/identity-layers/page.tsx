@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { setRequestLocale } from "next-intl/server";
-import { DocArticle, Callout, CodeBlock } from "@/components/doc-article";
+import { DocArticle, Callout, KeyTable } from "@/components/doc-article";
 import { KeyTree } from "@/components/doc-visuals";
 import type { Locale } from "@/i18n/routing";
 
@@ -13,21 +13,6 @@ type Content = {
   body: ReactNode;
 };
 
-const LAYERS_EN = `Root Identity      → "who is this?"   (state + guardian threshold)
-Pseudonym          → in-app identity  (each app sees only its own)
-Credential content → "what / what happened" (only holder decrypts)
-
-No single party can decrypt all three layers at once.`;
-const LAYERS_TR = `Kök Kimlik        → "bu kim?"        (devlet + guardian eşiği)
-Pseudonym         → app-içi kimlik   (her app kendi pseudonym'ini görür)
-Credential içerik → "ne var/ne oldu" (yalnızca holder çözer)
-
-Hiçbir tek taraf üç katmanı birden çözemez.`;
-const LAYERS_TK = `Kök Şahsyýet      → "bu kim?"        (döwlet + guardian eşigi)
-Pseudonym         → app-içi şahsyýet (her app öz pseudonym'ini görýär)
-Credential mazmun → "näme bar/boldy" (diňe holder açýar)
-
-Hiç bir tarap üç gatlagy birden açyp bilmeýär.`;
 
 const CONTENT: Record<Locale, Content> = {
   en: {
@@ -78,7 +63,7 @@ const CONTENT: Record<Locale, Content> = {
           </li>
         </ul>
 
-        <CodeBlock label="Separation of the layers" code={LAYERS_EN} />
+        <KeyTable label="Separation of the layers" rows={[["Root identity", "“who is this?” — state + guardian threshold"], ["Pseudonym", "in-app identity — each app sees only its own"], ["Credential content", "“what / what happened” — only the holder decrypts"], ["→", "no single party can decrypt all three layers at once"]]} />
 
         <h2>What is a pseudonym, and why does it matter?</h2>
         <p>
@@ -187,7 +172,7 @@ const CONTENT: Record<Locale, Content> = {
           </li>
         </ul>
 
-        <CodeBlock label="Katmanların ayrımı" code={LAYERS_TR} />
+        <KeyTable label="Katmanların ayrımı" rows={[["Kök kimlik", "“bu kim?” — devlet + guardian eşiği"], ["Pseudonym", "uygulama içi kimlik — her uygulama yalnız kendi pseudonym'ini görür"], ["Belge içeriği", "“ne var / ne oldu” — yalnızca belge sahibi çözer"], ["→", "hiçbir tek taraf üç katmanı birden çözemez"]]} />
 
         <h2>Pseudonym nedir, neden önemli?</h2>
         <p>
@@ -297,7 +282,7 @@ const CONTENT: Record<Locale, Content> = {
           </li>
         </ul>
 
-        <CodeBlock label="Gatlaklaryň bölünişi" code={LAYERS_TK} />
+        <KeyTable label="Gatlaklaryň bölünişi" rows={[["Kök şahsyýet", "“bu kim?” — döwlet + guardian eşigi"], ["Pseudonym", "programma içi şahsyýet — her programma diňe öz pseudonym'ini görýär"], ["Resminama mazmuny", "“näme bar / näme boldy” — diňe eýesi açýar"], ["→", "hiç bir tarap üç gatlagy birden açyp bilmeýär"]]} />
 
         <h2>Pseudonym näme, näme üçin möhüm?</h2>
         <p>

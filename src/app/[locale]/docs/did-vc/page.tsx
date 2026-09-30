@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { DocArticle, Callout, CodeBlock } from "@/components/doc-article";
+import { DocArticle, Callout, CodeBlock, KeyTable } from "@/components/doc-article";
 import { FlowStrip } from "@/components/scenario-visuals";
 import type { Locale } from "@/i18n/routing";
 
@@ -22,14 +22,15 @@ type Content = {
 const SDJWT = `{
   "iss": "https://issuer.tamga.network/example-university",
   "vct": "urn:tamga:edu:DiplomaCredential:1",
-  "vct#integrity": "sha256-…",          // type definition in the catalogue
+  "vct#integrity": "sha256-…",
   "iat": 1790000000,
-  "cnf": { "jwk": { … } },               // the device key of THIS copy
-  "status": { "status_list": { "idx": 48213, "uri": "https://status.tamga.network/…" } },
-  "_sd": [ "…", "…", "…" ],              // hidden fields: salted hashes only
-  "degree_title": "…"                    // revealed only if you approve
-}
-header: x5c = the university's X.509 certificate chain`;
+  "cnf": { "jwk": { … } },
+  "status": { "status_list": {
+    "idx": 48213,
+    "uri": "https://status.tamga.network/…" } },
+  "_sd": [ "…", "…", "…" ],
+  "degree_title": "…"
+}`;
 
 const CONTENT: Record<Locale, Content> = {
   en: {
@@ -89,6 +90,7 @@ const CONTENT: Record<Locale, Content> = {
           and every credential carries a hash of that definition.
         </p>
         <CodeBlock label="An SD-JWT VC diploma (decoded, shortened)" code={SDJWT} />
+        <KeyTable rows={[["vct#integrity", "hash of the type definition in the catalogue"], ["cnf.jwk", "the device key of this copy"], ["_sd", "hidden fields: salted hashes only"], ["degree_title", "revealed only if you approve"], ["header · x5c", "the university's X.509 certificate chain"]]} />
 
         <h2>How a credential travels</h2>
         <FlowStrip
@@ -187,6 +189,7 @@ const CONTENT: Record<Locale, Content> = {
           herkese açık bir katalogda durur ve her belge bu tanımın özetini taşır.
         </p>
         <CodeBlock label="SD-JWT VC biçiminde bir diploma (çözülmüş, kısaltılmış)" code={SDJWT} />
+        <KeyTable rows={[["vct#integrity", "katalogdaki tür tanımının özeti"], ["cnf.jwk", "bu kopyanın cihaz anahtarı"], ["_sd", "gizli alanlar: yalnızca tuzlanmış özetler"], ["degree_title", "yalnızca onaylarsan açılır"], ["başlık · x5c", "üniversitenin X.509 sertifika zinciri"]]} />
 
         <h2>Belge nasıl yol alır</h2>
         <FlowStrip
@@ -287,6 +290,7 @@ const CONTENT: Record<Locale, Content> = {
           göterýär.
         </p>
         <CodeBlock label="SD-JWT VC görnüşindäki diplom (açylan, gysgaldylan)" code={SDJWT} />
+        <KeyTable rows={[["vct#integrity", "katalogdaky görnüş kesgitlemesiniň heşi"], ["cnf.jwk", "şu nusganyň enjam açary"], ["_sd", "gizlin meýdanlar: diňe duzlanan heşler"], ["degree_title", "diňe razylyk berseňiz açylýar"], ["sözbaşy · x5c", "uniwersitetiň X.509 sertifikat zynjyry"]]} />
 
         <h2>Resminama nähili ýol geçýär</h2>
         <FlowStrip

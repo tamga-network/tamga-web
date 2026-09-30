@@ -5,7 +5,10 @@ Kullanım (tamga-web kökünden): python whitepaper/source/generate.py && npx pr
 import json, os, re, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-from content import CODE, IDS, LANGS
+from content import CODE, IDS, LANGS, TABLES, TABLE_MONO
+
+# PDF: bu bölümler yeni sayfada başlar (bölüm geçişleri; web sayfasını etkilemez)
+CHAPTER_BREAKS = {"trust", "privacy", "ledger", "status"}
 
 WEB = os.path.normpath(os.path.join(HERE, "..", "..")).replace("\\", "/") + "/"
 TOK = re.compile(r"\*\*(.+?)\*\*|`([^`]+)`|\[([^\]]+)\]\(([^)]+)\)")
@@ -37,7 +40,7 @@ def jsx_inline(t):
     return "".join(res)
 
 
-def jsx_blocks(blocks, ind="        "):
+def jsx_blocks(blocks, ind="        ", lang="en"):
     out = []
     for b in blocks:
         k = b[0]
@@ -49,6 +52,10 @@ def jsx_blocks(blocks, ind="        "):
             out.append(f"{ind}</ul>")
         elif k == "code":
             out.append(f"{ind}<Code label={json.dumps(b[1], ensure_ascii=False)} code={{C_{b[2].upper()}}} />")
+        elif k == "table":
+            rows = json.dumps([list(r) for r in TABLES[b[2]][lang]], ensure_ascii=False)
+            mono = " mono" if b[2] in TABLE_MONO else ""
+            out.append(f"{ind}<KV label={json.dumps(b[1], ensure_ascii=False)} rows={{{rows}}}{mono} />")
         elif k == "note":
             out.append(f'{ind}<p className="text-sm text-foreground-subtle">{jsx_inline(b[1])}</p>')
     return "\n".join(out)
@@ -94,6 +101,27 @@ function Code({ label, code }: { label: string; code: string }) {
   );
 }
 
+/** Key / description table (files, identifiers, pipeline steps, phases). */
+function KV({ label, rows, mono }: { label: string; rows: string[][]; mono?: boolean }) {
+  return (
+    <div className="not-prose my-6 overflow-hidden rounded-lg border border-border bg-surface/60">
+      {label && (
+        <div className="border-b border-border px-4 py-2">
+          <span className="mono-label">{label}</span>
+        </div>
+      )}
+      <dl className="divide-y divide-border">
+        {rows.map(([k, v]) => (
+          <div key={k} className="grid gap-1 px-4 py-2.5 sm:grid-cols-[11rem_1fr] sm:gap-4">
+            <dt className="font-mono text-[0.8rem] text-foreground">{k}</dt>
+            <dd className={`text-sm leading-relaxed text-foreground-muted ${mono ? "font-mono text-[0.8rem] break-words" : ""}`}>{v}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  );
+}
+
 /* --- Language-neutral blocks (shared across locales) --- */
 ''')
     for k, v in CODE.items():
@@ -114,7 +142,7 @@ function Code({ label, code }: { label: string; code: string }) {
         for i, sid in enumerate(IDS, 1):
             title, blocks = d["sections"][sid]
             L.append(f'    {{\n      id: "{sid}",\n      n: "{i:02d}",\n      title: {json.dumps(title, ensure_ascii=False)},\n      body: (\n        <>')
-            L.append(jsx_blocks(blocks, "          "))
+            L.append(jsx_blocks(blocks, "          ", lang))
             L.append("        </>\n      ),\n    },")
         L.append("  ],")
         L.append('  slogan: "Building Trust Infrastructure for the Digital World.",')
@@ -164,7 +192,7 @@ def ty_inline(t, lang):
 def typst(lang, d):
     L = [f"// Tamga Network — Whitepaper v3.0 ({lang}). whitepaper/source/content.py dosyasından üretilir (generate.py) — elle düzenleme.",
          f"// Build:  typst compile --root . tamga-whitepaper-{lang}.typ ../public/whitepaper-{lang}.pdf",
-         '#import "template.typ": conf, codeblock, notebox, muted', "",
+         '#import "template.typ": conf, codeblock, kvtable, chapter, notebox, muted', "",
          "#show: conf.with(",
          f'  lang: "{lang}",',
          f"  title: [{d['pdf_title']}],",
@@ -180,6 +208,8 @@ def typst(lang, d):
     L.append("")
     for sid in IDS:
         title, blocks = d["sections"][sid]
+        if sid in CHAPTER_BREAKS:
+            L.append("#chapter()")
         L.append("= " + ty_text(title))
         L.append("")
         for b in blocks:
@@ -191,8 +221,12 @@ def typst(lang, d):
                     L.append("- " + ty_inline(i, lang))
                 L.append("")
             elif b[0] == "code":
-                L.append(f"#text(size: 8pt, fill: muted)[{ty_text(b[1])}]")
-                L.append(f"#codeblock(text(size: 7.5pt, raw(block: true, {ty_str(CODE[b[2]])})))")
+                L.append(f"#codeblock({ty_str(b[1])}, {ty_str(CODE[b[2]])})")
+                L.append("")
+            elif b[0] == "table":
+                rows = ", ".join("(" + ty_str(k) + ", " + ty_str(v) + ")" for k, v in TABLES[b[2]][lang])
+                mono = "true" if b[2] in TABLE_MONO else "false"
+                L.append(f"#kvtable({ty_str(b[1])}, ({rows},), mono: {mono})")
                 L.append("")
             elif b[0] == "note":
                 L.append(f"#notebox[{ty_inline(b[1], lang)}]")

@@ -10,7 +10,14 @@
     "docs": "Resminamalar",
     "scenarios": "Ssenariýalar",
     "whitepaper": "Whitepaper",
-    "blog": "Blog"
+    "blog": "Blog",
+    "ecosystem": "Ekoulgam",
+    "project": "Taslama",
+    "roadmap": "Ýol kartasy",
+    "changelog": "Üýtgeşmeler žurnaly",
+    "joinIssuer": "Gurama hökmünde goşul",
+    "allAddresses": "Ähli salgylar",
+    "menu": "Menýuny aç"
   },
   "common": {
     "menu": "Menýuny aç/ýap",
@@ -45,7 +52,14 @@
     "trustLists": "Ynam sanawlary",
     "devDocs": "Işläp düzüjiler üçin resminamalar",
     "developers": "Işläp düzüjiler",
-    "eudiComparison": "Tamga we EUDI"
+    "eudiComparison": "Tamga we EUDI",
+    "sdk": "SDK we paketler",
+    "npm": "npm paketleri",
+    "apiRef": "API salgylanmalary",
+    "roadmap": "Ýol kartasy",
+    "changelog": "Üýtgeşmeler žurnaly",
+    "issuers": "Gurama hökmünde goşul",
+    "developerHub": "Işläp düzüjiler"
   },
   "notFound": {
     "code": "404",

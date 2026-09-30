@@ -1,6 +1,6 @@
 // Tamga Network — Whitepaper v3.0 (tr). whitepaper/source/content.py dosyasından üretilir (generate.py) — elle düzenleme.
 // Build:  typst compile --root . tamga-whitepaper-tr.typ ../public/whitepaper-tr.pdf
-#import "template.typ": conf, codeblock, notebox, muted
+#import "template.typ": conf, codeblock, kvtable, chapter, notebox, muted
 
 #show: conf.with(
   lang: "tr",
@@ -44,39 +44,34 @@ Türk dünyası dili, kültürü ve tarihi paylaşır. Bir devlette verilen dipl
 
 AB mimarisinin her rolü Tamga’da vardır. Bir devlet henüz katılmadıysa rolü Tamga geçici ve kayıtlı olarak üstlenir: güven listesi operatörü, kayıt otoritesi, “TR National Root CA (geçici operatör: Tamga)” ve cüzdan sağlayıcısı. Kurumlar belge sağlayıcılarıdır; işverenler, web siteleri ve kapılar kayıtlı doğrulayıcılardır. PID sağlayıcısı yeri bir devlet doldurana kadar boştur; bu arada kimlik belgesi Tamga kimlik servisinden gelir (belge ve canlılık kontrolü). Henüz validator operatörü yoktur — bu yüzden defter de yoktur. Yan yana: #link("https://tamga.network/tr/docs/eudi-comparison")[Tamga ve EUDI mimarisi].
 
+#chapter()
 = Güven modeli: imzalı güven listeleri
 
 İmza kimin imzaladığını kanıtlar; *güven listesi* ise imzalayanın gerçek bir kurum olup olmadığını, hangi belge tiplerini ne zamandan beri verebileceğini ve güncel durumunu söyler. Listeler imzalı JWS dosyalarıdır, *sürümlü ve hash-zincirlidir*, silinmez ve bir sonraki güncelleme tarihi taşır; doğrulayıcı imzalayanı bant dışında yayınlanmış bir kök parmak iziyle karşılaştırır. Her iptal listesi yayını ve şema değişikliği ayrıca en az saatte bir herkese açık bir *çapa günlüğüne* yazılır; böylece geri sarılmış bir liste fark edilir. Ayrıntı: #link("https://tamga.network/tr/docs/trust-lists")[güven listeleri].
 
-#text(size: 8pt, fill: muted)[Yayınlanan dosyalar]
-#codeblock(text(size: 7.5pt, raw(block: true, "https://trust.tamga.network/
-  lotl.jws              list of lists — national lists, schemas, wallet providers
-  tl-tr.jws             Türkiye — root CAs, issuers (+ authorizations), relying parties
-  tl-az / kz / kg / uz  reserved slots for the other member states
-  anchors.jsonl         anchor log — one signed line per event, at least hourly
-  keys/                 root fingerprints (the out-of-band trust anchor)
-  archive/              every past version, never deleted")))
+#kvtable("Yayınlanan dosyalar — trust.tamga.network", (("lotl.jws", "listelerin listesi — ulusal listeler, şemalar, cüzdan sağlayıcıları"), ("tl-tr.jws", "Türkiye — kök sertifika otoriteleri, belge verenler (+ yetkiler), doğrulayıcılar"), ("tl-az · kz · kg · uz", "diğer üye devletler için ayrılmış yerler"), ("anchors.jsonl", "çapa günlüğü — her olay için imzalı bir satır, en az saatte bir"), ("keys/", "kök parmak izleri (bant dışı güven çapası)"), ("archive/", "geçmiş her sürüm, hiç silinmez"),), mono: false)
 
 Tanımlayıcılar atanmaz, türetilir; devirde ya da defter geldiğinde değişmez:
 
-#text(size: 8pt, fill: muted)[Tanımlayıcılar]
-#codeblock(text(size: 7.5pt, raw(block: true, "ca_id      = keccak256(state_code ‖ SHA-256(root certificate))
-issuer_id  = keccak256(state_code ‖ SHA-256(issuer certificate))
-vct        = urn:tamga:<domain>:<Type>:<major>     e.g. urn:tamga:edu:DiplomaCredential:1
-schema_id  = keccak256(vct)
-person     = no identifier — a device key per credential copy")))
+#kvtable("Tanımlayıcılar", (("ca_id", "keccak256(state_code ‖ SHA-256(kök sertifika))"), ("issuer_id", "keccak256(state_code ‖ SHA-256(kurum sertifikası))"), ("vct", "urn:tamga:<alan>:<Tür>:<ana sürüm> — örn. urn:tamga:edu:DiplomaCredential:1"), ("schema_id", "keccak256(vct)"), ("kişi", "tanımlayıcı yok — her belge kopyası için bir cihaz anahtarı"),), mono: true)
 
 = Belgeler: SD-JWT VC ve mdoc
 
 Ana biçim *SD-JWT VC*’dir (IETF, #raw("dc+sd-jwt"), ES256). Her alan tuzlanmış bir özetin arkasında gizlidir ve yalnızca belge sahibinin onayıyla açılır; başlık kurumun X.509 zincirini taşır; #raw("cnf") kopyayı bir cihaz anahtarına bağlar. Kimlik belgesi ayrıca *ISO 18013-5 mdoc* olarak verilir; böylece yaş kontrolü #raw("age_over_18") alanını alır ve başka hiçbir şey almaz. Belge tipleri sabit URN’lerdir; tanımları herkese açık bir katalogda durur ve her belge kendi tanımının özetini taşır. Bkz. #link("https://tamga.network/tr/docs/did-vc")[belgeler].
 
-#text(size: 8pt, fill: muted)[SD-JWT VC biçiminde bir diploma (çözülmüş, kısaltılmış)]
-#codeblock(text(size: 7.5pt, raw(block: true, "{ \"iss\": \"https://issuer.tamga.network/example-university\",
-  \"vct\": \"urn:tamga:edu:DiplomaCredential:1\",  \"vct#integrity\": \"sha256-…\",
-  \"iat\": 1790000000,  \"cnf\": { \"jwk\": { … } },          // device key of THIS copy
-  \"status\": { \"status_list\": { \"idx\": 48213, \"uri\": \"https://status.tamga.network/…\" } },
-  \"_sd\": [ \"…\", \"…\" ] }                                   // hidden fields: salted hashes
-header: x5c = the institution's X.509 certificate chain")))
+#codeblock("SD-JWT VC biçiminde bir diploma (çözülmüş, kısaltılmış)", "{
+  \"iss\": \"https://issuer.tamga.network/example-university\",
+  \"vct\": \"urn:tamga:edu:DiplomaCredential:1\",
+  \"vct#integrity\": \"sha256-…\",
+  \"iat\": 1790000000,
+  \"cnf\": { \"jwk\": { … } },
+  \"status\": { \"status_list\": {
+    \"idx\": 48213,
+    \"uri\": \"https://status.tamga.network/…\" } },
+  \"_sd\": [ \"…\", \"…\" ]
+}")
+
+#kvtable("", (("cnf.jwk", "bu kopyanın cihaz anahtarı"), ("_sd", "gizli alanlar, tuzlanmış özetler olarak"), ("başlık · x5c", "kurumun X.509 sertifika zinciri"),), mono: false)
 
 Ulusal kimlik numarası yalnızca kimlik belgesinde bulunur; hiçbir diploma, kart ya da bilet onu taşımaz.
 
@@ -91,14 +86,7 @@ Ulusal kimlik numarası yalnızca kimlik belgesinde bulunur; hiçbir diploma, ka
 
 Her doğrulama aynı hattı aynı sırayla çalıştırır ve ilk hatada durur. Her adımın kalıcı bir kodu vardır; bu yüzden bir red her zaman nedenini söyler.
 
-#text(size: 8pt, fill: muted)[Doğrulama hattı (etiketler İngilizce)]
-#codeblock(text(size: 7.5pt, raw(block: true, "T0  request and answer belong together (nonce, audience, encryption)
-A   format   signature, certificate chain, device proof, hidden fields intact
-B   type     document type registered; definition hash matches the catalogue
-C   trust    issuer authorized for this type ON THE ISSUE DATE; category matches
-D   status   not revoked or suspended; list fresh and anchored
-E   policy   requested fields present; nothing beyond the verifier's scope
-→   ACCEPTED · REJECTED (failing step) · INDETERMINATE (could not check)")))
+#kvtable("Doğrulama hattı", (("T0", "istek ve cevap birbirine ait (nonce, hedef, şifreleme)"), ("A · biçim", "imza, sertifika zinciri, cihaz kanıtı, gizli alanlar bozulmamış"), ("B · tür", "belge türü kayıtlı; tanımın özeti katalogla aynı"), ("C · güven", "kurum bu tür için veriliş tarihinde yetkili; kategori uyuşuyor"), ("D · durum", "iptal edilmemiş ya da askıda değil; liste güncel ve çapalı"), ("E · politika", "istenen alanlar var; doğrulayıcının kapsamı dışında bir şey yok"), ("→ sonuç", "ACCEPTED (kabul) · REJECTED (red, hangi adımda) · INDETERMINATE (denetlenemedi)"),), mono: false)
 
 *INDETERMINATE* (belirsiz) asla REJECTED (red) olarak bildirilmez. Bir listeye ulaşılamazsa ya da liste güncel değilse doğrulayıcı “şu an denetlenemedi” der — “bu diploma sahte” ile “denetleyemiyorum” arasındaki fark birinin işe alınıp alınmamasıdır. Yetki *veriliş tarihine* göre değerlendirilir: üniversite etkinken verilmiş diploma askıdan sonra da geçerli kalır, yeni belge verme ise hemen durur.
 
@@ -106,6 +94,7 @@ E   policy   requested fields present; nothing beyond the verifier's scope
 
 İptal *IETF Token Status List* ile yapılır: her belge kopyası için *rastgele* bir konumda iki bit — geçerli, iptal ya da askıda. Kurum listeyi *sabit aralıkla* yayınlar, asla istek üzerine değil; böylece zamanlama kişi hakkında hiçbir şey ele vermez; her yayın çapalanır. Doğrulayıcılar listeleri önceden çeker; bir belgeyi denetlemek ne kuruma ne telefona çağrı yapar. Bir iptal en geç yaklaşık 90 dakikada her doğrulayıcıya ulaşır. Kopyalar tasarım gereği tükenir; cüzdan yenilerini almadan önce sorar ve asla sessizce yenilemez. Bkz. #link("https://tamga.network/tr/docs/recovery-revocation")[kurtarma ve iptal].
 
+#chapter()
 = Tasarımdan gelen mahremiyet
 
 - *Doğrulayıcı başına kopya.* Her doğrulayıcı farklı bir anahtara bağlı farklı bir kopya alır; doğrulayıcılar aldıklarını karşılaştırarak kişiyi eşleştiremez.
@@ -120,6 +109,7 @@ E   policy   requested fields present; nothing beyond the verifier's scope
 
 Turnike ve etkinlik kapıları için Tamga bir *geçiş kartı* kullanır: standart bir sunumla bir kez kayıt, ardından QR olarak gösterilen 60 saniyelik imzalı bir jeton — jetonda kişisel veri yoktur, tekrar kullanım reddedilir ve biletler tek kullanımlık olabilir. Kişiden kişiye kontrolde OpenID4VP tersine başlatılır: kontrol edenin uygulaması standart bir istek başlatır. İkisi de sürümlü köprülerdir; hedef NFC/BLE üzerinden ISO 18013-5’tir.
 
+#chapter()
 = Listelerden deftere
 
 Bir defter ancak birden çok bağımsız taraf onu işletirse bir şey katar. Bu yüzden Tamga listelerle başlar ve *QBFT* mutabakatlı izinli bir *Hyperledger Besu* ağını ancak en az iki bağımsız validator operatörü yazılı kabul verdiğinde ekler. Her liste alanı bir kontrat kaydına eşlenir; liste geçmişi kontratlara yeniden oynatılır ve ikisinin aynı cevabı verdiği test edilir. Bileşenler güveni tek bir arayüz üzerinden okur; belgeler, cüzdanlar ve doğrulama hattı değişmez. Bkz. #link("https://tamga.network/tr/docs/blockchain")[blockchain nedir — ve ne değildir].
@@ -135,15 +125,12 @@ Bunlar incelenen tasarımlardır; ilk sürümün ya da pilotun parçası değild
 - *Türetilmiş takma adlar ve kurtarma* — hiyerarşik anahtarlar, zarf şifreleme, cihaz kurtarma. Bkz. #link("https://tamga.network/tr/docs/identity-layers")[kimlik katmanları].
 - *Değer katmanı* — doğrulanmış taraflar arasında yetkilendirme; mutabakat düzenlenmiş raylarda kalır.
 
+#chapter()
 = Durum ve yol haritası
 
 *Bugün çalışan (ilk sürüm, gerçek kriptografi):* diploma ve öğrenci belgesi verme ve sunma; iptal ve kurum askısı; kimlik kontrolü ve kimlik belgesi, mdoc olarak da; kampüs ve etkinlik geçiş kartları, tek kullanımlık biletler; web sitesine kayıt ve passkey ile giriş; sekiz açık kaynak paket. Telefonda test edildi.
 
-#text(size: 8pt, fill: muted)[Aşamalar (etiketler İngilizce)]
-#codeblock(text(size: 7.5pt, raw(block: true, "Phase B (today)   signed trust lists + anchor log · Tamga = provisional operator
-Pilot             one foundation university · issuer key at the university · lists, no ledger
-Phase 0           permissioned Besu/QBFT ledger once ≥ 2 independent validator operators sign
-Phase 1           member-state lists · close range (NFC/BLE) · Digital Credentials API")))
+#kvtable("Aşamalar", (("Faz B (bugün)", "imzalı güven listeleri + çapa günlüğü · Tamga = geçici operatör"), ("Pilot", "bir vakıf üniversitesi · kurum anahtarı üniversitede · listeler, defter yok"), ("Faz 0", "en az 2 bağımsız validator operatörü imzalayınca izinli Besu/QBFT defteri"), ("Faz 1", "üye devlet listeleri · yakın alan (NFC/BLE) · Digital Credentials API"),), mono: false)
 
 İlk sürümdeki her kestirme — örnek kayıtlar, yazılımda anahtar, Tamga’da duran kurum anahtarı, tek operatör — herkese açık bir sapma kütüğünde listelenir ve pilottan önce kapatılır. Pilotun başarı ve durdurma ölçütleri önceden tanımlıdır.
 

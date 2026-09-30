@@ -4,6 +4,19 @@ Biçim: Keep a Changelog. Site dağıtımları tarihle anılır.
 
 ## [Yayınlanmadı]
 
+### Eklendi (2026-09-30 — menü, kurum sayfası, yol haritası, değişiklik günlüğü)
+- Üst menü: Ekosistem (ağın bütün alt alan adları, gruplu) ve Proje (Senaryolar, Yol haritası, Değişiklik günlüğü, Blog, Hakkında)
+  açılır menüleri; sağda "Kurum olarak katıl" düğmesi. Ana sayfadaki "Bugün neler çalışıyor" düğmesi yerine aynı başvuru.
+- Yeni sayfalar: `/issuers` (kurum olarak katılma: kimler, ne kazandırır, gereksinimler, süreç, başvuru), `/roadmap` (tarihsiz
+  aşamalar), `/changelog` (sade dille değişiklikler). Hakkında sayfasında ağın herkese açık adresleri tablosu (`#ecosystem`).
+- Alt bilgi: geliştirici belgeleri, SDK ve paketler, API başvuruları, npm, GitHub, yol haritası, değişiklik günlüğü.
+
+### Değişti (2026-09-30 — kod blokları ve PDF dizgisi)
+- Belgelerde hizalı düz metin blokları tabloya dönüştü (güven listesi dosyaları, servisler, doğrulama hattı, kimlik katmanları,
+  SD-JWT örneğinin açıklamaları); açıklamalar sayfanın dilinde. `not-prose` bileşenleri artık metin içi stilleri almaz.
+- Whitepaper PDF: tablolar, başlıklar sonraki metinle aynı sayfada, şekiller sayfa arasında bölünmez, içindekiler ayrı sayfada,
+  büyük bölümler yeni sayfada. Manifesto PDF: ilkeler iki sayfaya dengeli, kapanış ayrı sayfada, başlıkta tire yok.
+
 ### Kaldırıldı (2026-09-27)
 - `deploy/` PM2 kurulum dosyaları (setup/security/authorization/verify, REDEPLOY, nginx örneği, todos) — kurulum artık
   operatör deposunda tek yerde (tek sunucu, nginx + systemd).

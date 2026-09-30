@@ -18,6 +18,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/whitepaper",
     "/docs",
     "/blog",
+    "/issuers",
+    "/roadmap",
+    "/changelog",
   ];
   const docRoutes = docHrefs.filter((h) => h !== "/docs") as unknown as SHref[];
   const blogRoutes: SHref[] = allSlugs().map((slug) => ({

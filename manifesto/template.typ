@@ -40,6 +40,8 @@
     #text(size: 12pt, tracking: 4pt, fill: gold)[#upper(eyebrow)]
     #v(16pt)
     #block(width: 84%)[
+      #set text(hyphenate: false)
+      #set par(justify: false)
       #text(size: 25pt, weight: 700)[#title]
     ]
     #v(30pt)
@@ -75,7 +77,10 @@
   v(14pt)
 
   // Theses
+  // Theses split evenly over two pages; the closing gets a page of its own
+  let half = calc.ceil(theses.len() / 2)
   for (i, th) in theses.enumerate() {
+    if i == half { pagebreak() }
     let n = if i < 9 { "0" + str(i + 1) } else { str(i + 1) }
     block(breakable: false, width: 100%)[
       #grid(
@@ -83,21 +88,28 @@
         column-gutter: 14pt,
         align(top)[#text(size: 22pt, weight: 700, fill: gold)[#n]],
         [
+          #set text(hyphenate: false)
           #text(size: 13pt, weight: 700, fill: al)[#th.title]
+          #set text(hyphenate: auto)
           #v(3pt)
           #th.body
         ],
       )
     ]
-    v(12pt)
+    v(18pt)
   }
 
-  v(4pt)
-  line(length: 100%, stroke: 0.4pt + rgb("#e0d9cb"))
-  v(10pt)
-  text(size: 11.5pt)[#closing]
-  v(10pt)
-  align(center)[
+  pagebreak()
+  align(center + horizon)[
+    #image("seal.svg", width: 1.4cm)
+    #v(18pt)
+    #block(width: 82%)[
+      #set par(justify: false)
+      #text(size: 13pt, style: "italic")[#closing]
+    ]
+    #v(22pt)
+    #line(length: 18%, stroke: 0.6pt + gold)
+    #v(14pt)
     #text(size: 12pt, fill: al, style: "italic")[#slogan]
   ]
 }

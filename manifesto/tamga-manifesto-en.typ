@@ -72,7 +72,7 @@
         _Tamga_ was the ancient seal of the Turkic tribes — a mark that proved
         ownership, belonging and authority. A verifiable digital credential is
         its modern counterpart. Sharing a common language, culture and history,
-        the *Turkic world of ~300 million people* is a natural soil for a shared
+        the *Turkic world of ~170 million people* is a natural soil for a shared
         digital foundation of trust.
       ],
     ),

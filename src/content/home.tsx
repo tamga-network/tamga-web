@@ -105,7 +105,7 @@ const en: HomeContent = {
     ),
     ctaManifesto: "Read the manifesto",
     ctaWhitepaper: "Whitepaper",
-    ctaDemo: "See what works today",
+    ctaDemo: "Become an issuer",
     trustLine: "Open standards · SD-JWT VC · ISO mdoc · OpenID4VC · eIDAS 2.0 compatible",
   },
   problem: {
@@ -218,7 +218,7 @@ const en: HomeContent = {
         </p>
         <p>
           Sharing a common language, culture and history, the{" "}
-          <strong>Turkic world of ~300 million people</strong> is a natural and
+          <strong>Turkic world of ~170 million people</strong> is a natural and
           vast foundation for cross-border verifiable identity. In the long run
           this vision takes shape as a <strong>Trust Mesh</strong>: each country
           keeps its own trust network while connecting to others through shared
@@ -377,7 +377,7 @@ const tr: HomeContent = {
     ),
     ctaManifesto: "Manifesto’yu oku",
     ctaWhitepaper: "Whitepaper",
-    ctaDemo: "Bugün neler çalışıyor",
+    ctaDemo: "Kurum olarak katıl",
     trustLine: "Açık standartlar · SD-JWT VC · ISO mdoc · OpenID4VC · eIDAS 2.0 uyumlu",
   },
   problem: {
@@ -490,7 +490,7 @@ const tr: HomeContent = {
         </p>
         <p>
           Ortak dil, kültür ve tarih mirasını paylaşan{" "}
-          <strong>~300 milyon nüfuslu Türk dünyası</strong>, sınır ötesi
+          <strong>~170 milyon nüfuslu Türk dünyası</strong>, sınır ötesi
           doğrulanabilir kimlik için doğal ve büyük bir zemindir. Uzun vadede bu
           vizyon <strong>Trust Mesh</strong> olarak somutlaşır: her ülke kendi
           güven ağını korurken ortak standartlar üzerinden diğer ağlarla güven
@@ -649,7 +649,7 @@ const tk: HomeContent = {
     ),
     ctaManifesto: "Manifesti oka",
     ctaWhitepaper: "Whitepaper",
-    ctaDemo: "Häzir näme işleýär",
+    ctaDemo: "Gurama hökmünde goşul",
     trustLine: "Açyk standartlar · SD-JWT VC · ISO mdoc · OpenID4VC · eIDAS 2.0 laýyk",
   },
   problem: {
@@ -763,7 +763,7 @@ const tk: HomeContent = {
         </p>
         <p>
           Umumy dili, medeniýeti we taryhy mirasy paýlaşýan{" "}
-          <strong>~300 million ilatly türki dünýäsi</strong>, serhetaşa barlanyp
+          <strong>~170 million ilatly türki dünýäsi</strong>, serhetaşa barlanyp
           bilinýän şahsyýet üçin tebigy we uly binýatdyr. Uzak möhletde bu
           garaýyş <strong>Trust Mesh</strong> hökmünde göwrümlenýär: her ýurt öz
           ynam toruny saklap, umumy standartlar arkaly beýleki torlar bilen ynam

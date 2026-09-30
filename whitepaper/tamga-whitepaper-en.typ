@@ -1,6 +1,6 @@
 // Tamga Network — Whitepaper v3.0 (en). whitepaper/source/content.py dosyasından üretilir (generate.py) — elle düzenleme.
 // Build:  typst compile --root . tamga-whitepaper-en.typ ../public/whitepaper-en.pdf
-#import "template.typ": conf, codeblock, notebox, muted
+#import "template.typ": conf, codeblock, kvtable, chapter, notebox, muted
 
 #show: conf.with(
   lang: "en",
@@ -44,39 +44,34 @@ The Turkic world shares language, culture and history. A diploma issued in one s
 
 Every role of the EU architecture exists in Tamga. Where a state has not joined, Tamga holds the role provisionally and on the record: trusted-list operator, registrar, the “TR National Root CA (provisional operator: Tamga)” and the wallet provider. Institutions are attestation providers; employers, websites and gates are registered relying parties. The PID-provider slot is empty until a state fills it; meanwhile an identity credential comes from Tamga’s identity service (document and liveness check). There are no validator operators yet — hence no ledger. Side-by-side: #link("https://tamga.network/en/docs/eudi-comparison")[Tamga and the EUDI architecture].
 
+#chapter()
 = Trust model: signed trust lists
 
 A signature proves who signed; a *trust list* says whether that signer is a real institution, which document types it may issue, since when, and its current status. Lists are signed JWS files, *versioned and hash-chained*, never deleted, and carry a next-update date; verifiers check the signer against a root fingerprint published out of band. Every revocation-list publication and schema change is also written, at least hourly, to a public *anchor log*, so a rolled-back list can be detected. Details: #link("https://tamga.network/en/docs/trust-lists")[trust lists].
 
-#text(size: 8pt, fill: muted)[Published files]
-#codeblock(text(size: 7.5pt, raw(block: true, "https://trust.tamga.network/
-  lotl.jws              list of lists — national lists, schemas, wallet providers
-  tl-tr.jws             Türkiye — root CAs, issuers (+ authorizations), relying parties
-  tl-az / kz / kg / uz  reserved slots for the other member states
-  anchors.jsonl         anchor log — one signed line per event, at least hourly
-  keys/                 root fingerprints (the out-of-band trust anchor)
-  archive/              every past version, never deleted")))
+#kvtable("Published files — trust.tamga.network", (("lotl.jws", "list of lists — national lists, schemas, wallet providers"), ("tl-tr.jws", "Türkiye — root CAs, issuers (+ authorizations), relying parties"), ("tl-az · kz · kg · uz", "reserved slots for the other member states"), ("anchors.jsonl", "anchor log — one signed line per event, at least hourly"), ("keys/", "root fingerprints (the out-of-band trust anchor)"), ("archive/", "every past version, never deleted"),), mono: false)
 
 Identifiers are derived, not assigned, and do not change on handover or when the ledger arrives:
 
-#text(size: 8pt, fill: muted)[Identifiers]
-#codeblock(text(size: 7.5pt, raw(block: true, "ca_id      = keccak256(state_code ‖ SHA-256(root certificate))
-issuer_id  = keccak256(state_code ‖ SHA-256(issuer certificate))
-vct        = urn:tamga:<domain>:<Type>:<major>     e.g. urn:tamga:edu:DiplomaCredential:1
-schema_id  = keccak256(vct)
-person     = no identifier — a device key per credential copy")))
+#kvtable("Identifiers", (("ca_id", "keccak256(state_code ‖ SHA-256(root certificate))"), ("issuer_id", "keccak256(state_code ‖ SHA-256(issuer certificate))"), ("vct", "urn:tamga:<domain>:<Type>:<major> — e.g. urn:tamga:edu:DiplomaCredential:1"), ("schema_id", "keccak256(vct)"), ("person", "no identifier — a device key per credential copy"),), mono: true)
 
 = Credentials: SD-JWT VC and mdoc
 
 The main format is *SD-JWT VC* (IETF, #raw("dc+sd-jwt"), ES256). Each field is hidden behind a salted hash and revealed only with the holder’s approval; the header carries the institution’s X.509 chain; #raw("cnf") binds the copy to a device key. The identity credential is also issued as an *ISO 18013-5 mdoc*, so an age check can receive #raw("age_over_18") and nothing else. Document types are stable URNs; their definitions sit in a public catalogue and every credential carries a hash of its definition. See #link("https://tamga.network/en/docs/did-vc")[credentials].
 
-#text(size: 8pt, fill: muted)[An SD-JWT VC diploma (decoded, shortened)]
-#codeblock(text(size: 7.5pt, raw(block: true, "{ \"iss\": \"https://issuer.tamga.network/example-university\",
-  \"vct\": \"urn:tamga:edu:DiplomaCredential:1\",  \"vct#integrity\": \"sha256-…\",
-  \"iat\": 1790000000,  \"cnf\": { \"jwk\": { … } },          // device key of THIS copy
-  \"status\": { \"status_list\": { \"idx\": 48213, \"uri\": \"https://status.tamga.network/…\" } },
-  \"_sd\": [ \"…\", \"…\" ] }                                   // hidden fields: salted hashes
-header: x5c = the institution's X.509 certificate chain")))
+#codeblock("An SD-JWT VC diploma (decoded, shortened)", "{
+  \"iss\": \"https://issuer.tamga.network/example-university\",
+  \"vct\": \"urn:tamga:edu:DiplomaCredential:1\",
+  \"vct#integrity\": \"sha256-…\",
+  \"iat\": 1790000000,
+  \"cnf\": { \"jwk\": { … } },
+  \"status\": { \"status_list\": {
+    \"idx\": 48213,
+    \"uri\": \"https://status.tamga.network/…\" } },
+  \"_sd\": [ \"…\", \"…\" ]
+}")
+
+#kvtable("", (("cnf.jwk", "device key of this copy"), ("_sd", "hidden fields, as salted hashes"), ("header · x5c", "the institution's X.509 certificate chain"),), mono: false)
 
 The national ID number appears only in the identity credential; no diploma, card or ticket carries it.
 
@@ -91,14 +86,7 @@ The national ID number appears only in the identity credential; no diploma, card
 
 Every verification runs the same pipeline in the same order and stops at the first failure. Each step has a permanent code, so a rejection always states why.
 
-#text(size: 8pt, fill: muted)[Verification pipeline]
-#codeblock(text(size: 7.5pt, raw(block: true, "T0  request and answer belong together (nonce, audience, encryption)
-A   format   signature, certificate chain, device proof, hidden fields intact
-B   type     document type registered; definition hash matches the catalogue
-C   trust    issuer authorized for this type ON THE ISSUE DATE; category matches
-D   status   not revoked or suspended; list fresh and anchored
-E   policy   requested fields present; nothing beyond the verifier's scope
-→   ACCEPTED · REJECTED (failing step) · INDETERMINATE (could not check)")))
+#kvtable("Verification pipeline", (("T0", "request and answer belong together (nonce, audience, encryption)"), ("A · format", "signature, certificate chain, device proof, hidden fields intact"), ("B · type", "document type registered; definition hash matches the catalogue"), ("C · trust", "issuer authorized for this type on the issue date; category matches"), ("D · status", "not revoked or suspended; list fresh and anchored"), ("E · policy", "requested fields present; nothing beyond the verifier's scope"), ("→ outcome", "ACCEPTED · REJECTED (failing step) · INDETERMINATE (could not check)"),), mono: false)
 
 *INDETERMINATE* is never reported as REJECTED. If a list cannot be reached or is out of date, the verifier says “could not check right now” — the difference between “this diploma is fake” and “I cannot check” decides whether someone is hired. Authorization is judged on the *issue date*: a diploma issued while a university was active stays valid after a suspension, while new issuance stops at once.
 
@@ -106,6 +94,7 @@ E   policy   requested fields present; nothing beyond the verifier's scope
 
 Revocation uses the *IETF Token Status List*: two bits per credential copy — valid, revoked or suspended — at a *random* position. The issuer publishes at a *fixed interval*, never on demand, so timing reveals nothing about a person; each publication is anchored. Verifiers pre-fetch the lists, so checking a credential makes no call to the issuer or to the phone. A revocation reaches every verifier within about 90 minutes at most. Copies run out by design; the wallet asks before fetching fresh ones and never refreshes silently. See #link("https://tamga.network/en/docs/recovery-revocation")[recovery and revocation].
 
+#chapter()
 = Privacy by design
 
 - *Per-verifier copies.* Each verifier receives a different copy bound to a different key, so verifiers cannot link a person by comparing what they received.
@@ -120,6 +109,7 @@ Revocation uses the *IETF Token Status List*: two bits per credential copy — v
 
 For turnstiles and event gates Tamga uses a *pass*: registration once through a standard presentation, then a 60-second signed token shown as a QR code — no personal data in the token, replay rejected, and tickets can be single-use. A person-to-person check reverses OpenID4VP so the checker’s app starts a standard request. Both are versioned bridges; the target is ISO 18013-5 over NFC/BLE.
 
+#chapter()
 = From lists to a ledger
 
 A ledger adds something only when several independent parties run it. Tamga therefore starts with lists and adds a permissioned *Hyperledger Besu* network with *QBFT* consensus only once at least two independent validator operators agree in writing. Every list field maps to a contract record; the list history is replayed into the contracts and both are tested to give the same answers. Components read trust through one interface, so documents, wallets and the verification pipeline do not change. See #link("https://tamga.network/en/docs/blockchain")[what blockchain is — and isn’t].
@@ -135,15 +125,12 @@ These are designs under study, not part of the first release or the pilot; each 
 - *Derived pseudonyms and recovery* — hierarchical keys, envelope encryption, device recovery. See #link("https://tamga.network/en/docs/identity-layers")[identity layers].
 - *The value layer* — authorization between verified parties; settlement stays on regulated rails.
 
+#chapter()
 = Status and roadmap
 
 *Working today (first release, real cryptography):* issuance and presentation of diplomas and student cards; revocation and institution suspension; identity check and identity credential, also as mdoc; campus and event passes, single-use tickets; website sign-up and passkey sign-in; eight open-source packages. Tested on a phone.
 
-#text(size: 8pt, fill: muted)[Phases]
-#codeblock(text(size: 7.5pt, raw(block: true, "Phase B (today)   signed trust lists + anchor log · Tamga = provisional operator
-Pilot             one foundation university · issuer key at the university · lists, no ledger
-Phase 0           permissioned Besu/QBFT ledger once ≥ 2 independent validator operators sign
-Phase 1           member-state lists · close range (NFC/BLE) · Digital Credentials API")))
+#kvtable("Phases", (("Phase B (today)", "signed trust lists + anchor log · Tamga = provisional operator"), ("Pilot", "one foundation university · issuer key at the university · lists, no ledger"), ("Phase 0", "permissioned Besu/QBFT ledger once at least 2 independent validator operators sign"), ("Phase 1", "member-state lists · close range (NFC/BLE) · Digital Credentials API"),), mono: false)
 
 Every first-release shortcut — sample records, software keys, the issuer key held by Tamga, a single operator — is listed in a public deviation log and closed before the pilot. The pilot’s success and stop criteria are defined in advance.
 
