@@ -276,7 +276,7 @@ const en: HomeContent = {
     ),
   },
   ecosystem: {
-    eyebrow: "Ecosystem",
+    eyebrow: "Sectors",
     title: "Starts with TamgaID, grows with vertical platforms",
     description:
       "The infrastructure’s first end-user product is TamgaID — the wallet where a user creates their digital identity. On top of it, sector-specific platforms are built, all using the same trust layer. Education runs today; health, logistics and payments show where the same layer leads.",
@@ -548,7 +548,7 @@ const tr: HomeContent = {
     ),
   },
   ecosystem: {
-    eyebrow: "Ekosistem",
+    eyebrow: "Sektörler",
     title: "TamgaID ile başlar, dikey platformlarla büyür",
     description:
       "Altyapının son kullanıcıya açılan ilk ürünü TamgaID’dir — kullanıcının dijital kimliğini oluşturduğu cüzdan. Üzerine, hepsi aynı güven katmanını kullanan sektörel platformlar inşa edilir. Eğitim bugün çalışıyor; sağlık, lojistik ve ödeme aynı katmanın nereye uzandığını gösteriyor.",
@@ -821,7 +821,7 @@ const tk: HomeContent = {
     ),
   },
   ecosystem: {
-    eyebrow: "Ekoulgam",
+    eyebrow: "Pudaklar",
     title: "TamgaID bilen başlaýar, dik platformalar bilen ösýär",
     description:
       "Infrastrukturanyň soňky ulanyja açylýan ilkinji önümi TamgaID — ulanyjynyň sanly şahsyýetini döredýän gapjygy. Onuň üstünde, ählisi şol bir ynam gatlagyny ulanýan pudaklaýyn platformalar gurulýar. Bilim häzir işleýär; saglyk, logistika we töleg şol bir gatlagyň nirä barýandygyny görkezýär.",

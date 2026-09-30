@@ -1,16 +1,40 @@
 import type { Locale } from "@/i18n/routing";
 
 /*
- * Yol haritası — teknik aşamalar, tarihsiz (kamuya açık depo: takvim, iş planı yok). Kaynak: whitepaper v3.0 "Durum ve yol
+ * Yol haritası — aşamalar, tarihsiz (kamuya açık depo: takvim, iş planı yok). Kaynak: whitepaper v3.0 "Durum ve yol
  * haritası" (Faz B / Pilot / Faz 0 / Faz 1), tamga-network STATUS 42. tur, backlog Z1–Z5, DECISIONS D-BC-6.
+ * Kart simgeleri sayfada lucide adlarıyla eşlenir (ICONS).
  */
 
-export type RoadmapState = "done" | "now" | "next" | "later" | "research";
-export type RoadmapStage = {
+export type RoadmapState = "done" | "progress" | "planned" | "research";
+export type RoadmapIcon =
+  | "shield"
+  | "wallet"
+  | "list"
+  | "id"
+  | "ticket"
+  | "building"
+  | "package"
+  | "smartphone"
+  | "cpu"
+  | "key"
+  | "plug"
+  | "bluetooth"
+  | "globe"
+  | "graduation"
+  | "network"
+  | "flag"
+  | "eye"
+  | "user"
+  | "briefcase"
+  | "test";
+export type RoadmapCard = { icon: RoadmapIcon; title: string; desc: string };
+export type RoadmapPhase = {
+  n: string;
   state: RoadmapState;
   title: string;
   summary: string;
-  items: string[];
+  cards: RoadmapCard[];
 };
 
 export type RoadmapContent = {
@@ -18,8 +42,9 @@ export type RoadmapContent = {
   eyebrow: string;
   title: string;
   lead: string;
+  phaseLabel: string;
   labels: Record<RoadmapState, string>;
-  stages: RoadmapStage[];
+  phases: RoadmapPhase[];
   note: string;
 };
 
@@ -27,74 +52,159 @@ const en: RoadmapContent = {
   meta: {
     title: "Roadmap",
     description:
-      "Tamga Network roadmap: what works today, what comes before the pilot, the pilot, the move from lists to a ledger, and research directions.",
+      "Tamga Network roadmap: what is live today, what comes before the pilot, the pilot, and the move from lists to a shared ledger.",
   },
   eyebrow: "Roadmap",
   title: "From signed lists to a shared ledger",
-  lead: "Stages, not dates. Each stage closes the shortcuts of the one before; what is still a shortcut is written down openly.",
+  lead: "Stages, not dates. Each stage closes the shortcuts of the one before, and what is still a shortcut is written down openly.",
+  phaseLabel: "Phase",
   labels: {
-    done: "Working",
-    now: "In progress",
-    next: "Pilot",
-    later: "Later",
+    done: "Live",
+    progress: "In progress",
+    planned: "Planned",
     research: "Research",
   },
-  stages: [
+  phases: [
     {
+      n: "1",
       state: "done",
-      title: "Phase B — signed trust lists",
+      title: "Live today",
       summary: "The full flow works end to end with real cryptography.",
-      items: [
-        "issuing and presenting student credentials and diplomas; revocation and suspension",
-        "identity check and identity credential, also as ISO mdoc",
-        "campus and event passes, single-use tickets; website sign-up and passkey sign-in",
-        "Institution Console, signed issuer metadata, registration certificates",
-        "open-source packages on npm (pre-release 0.1.0)",
+      cards: [
+        {
+          icon: "shield",
+          title: "Issuing and verification",
+          desc: "student credentials and diplomas, revocation and suspension",
+        },
+        {
+          icon: "id",
+          title: "Identity credential",
+          desc: "remote identity check; also as ISO mdoc",
+        },
+        {
+          icon: "list",
+          title: "Signed trust lists",
+          desc: "institutions, verifiers and a public anchor log",
+        },
+        {
+          icon: "ticket",
+          title: "Passes and tickets",
+          desc: "campus and event gates, single-use tickets",
+        },
+        {
+          icon: "building",
+          title: "Institution Console",
+          desc: "issuing, revocation and statistics",
+        },
+        {
+          icon: "package",
+          title: "Open-source packages",
+          desc: "@tamga-network on npm, pre-release 0.1.0",
+        },
       ],
     },
     {
-      state: "now",
+      n: "2",
+      state: "progress",
       title: "Before the pilot",
       summary: "What an institution needs before real people use it.",
-      items: [
-        "Tamga Wallet on the App Store and Google Play",
-        "keys in the phone's secure hardware; device attestation (App Attest / Play Integrity) required",
-        "the institution's signing key in the institution's own key vault",
-        "the first connection to an institution's own lookup endpoint",
-        "showing credentials in person over Bluetooth and from the browser (coded, device testing next)",
+      cards: [
+        {
+          icon: "smartphone",
+          title: "Store app",
+          desc: "Tamga Wallet on the App Store and Google Play",
+        },
+        {
+          icon: "cpu",
+          title: "Secure hardware",
+          desc: "keys in the phone's secure chip; device attestation required",
+        },
+        {
+          icon: "key",
+          title: "Institution's key",
+          desc: "the signing key in the institution's own key vault",
+        },
+        {
+          icon: "plug",
+          title: "Authentic source",
+          desc: "the first link to an institution's own lookup endpoint",
+        },
+        {
+          icon: "bluetooth",
+          title: "In person and in the browser",
+          desc: "Bluetooth and the Digital Credentials API, on real phones",
+        },
       ],
     },
     {
-      state: "next",
+      n: "3",
+      state: "planned",
       title: "Pilot",
       summary:
         "One university, a limited group, success and stop criteria set in advance.",
-      items: [
-        "issuer key at the university; lists, no ledger",
-        "student credential and diploma; campus access",
-        "cross-testing with EU reference wallets and verifiers",
+      cards: [
+        {
+          icon: "graduation",
+          title: "University pilot",
+          desc: "student credential, diploma and campus access",
+        },
+        {
+          icon: "test",
+          title: "EU cross-testing",
+          desc: "with EU reference wallets and verifiers",
+        },
+        {
+          icon: "globe",
+          title: "Europass",
+          desc: "a Europass-compatible form of education credentials (under evaluation)",
+        },
       ],
     },
     {
-      state: "later",
-      title: "Phase 0 and Phase 1",
-      summary: "More operators, more states, more formats.",
-      items: [
-        "a permissioned Besu / QBFT ledger once at least two independent validator operators sign",
-        "member-state trust lists; each state registers its own institutions",
-        "close range over NFC; reader authentication",
-        "a Europass-compatible representation of education credentials (under evaluation)",
+      n: "4",
+      state: "planned",
+      title: "Network expansion",
+      summary: "More operators, more states.",
+      cards: [
+        {
+          icon: "network",
+          title: "Shared ledger",
+          desc: "permissioned Besu / QBFT once at least two independent operators join",
+        },
+        {
+          icon: "flag",
+          title: "Member-state lists",
+          desc: "each state registers its own institutions",
+        },
+        {
+          icon: "bluetooth",
+          title: "Close range over NFC",
+          desc: "with reader authentication",
+        },
       ],
     },
     {
+      n: "5",
       state: "research",
-      title: "Research directions",
+      title: "Research",
       summary:
         "Studied, not yet planned; independent security review before any use.",
-      items: [
-        "zero-knowledge credentials against tracking by the issuer",
-        "per-site pseudonyms; accountable disclosure",
-        "institution wallets (organisations as holders)",
+      cards: [
+        {
+          icon: "eye",
+          title: "Zero-knowledge credentials",
+          desc: "no tracking even by the issuer",
+        },
+        {
+          icon: "user",
+          title: "Per-site pseudonyms",
+          desc: "and accountable disclosure",
+        },
+        {
+          icon: "briefcase",
+          title: "Institution wallets",
+          desc: "organisations as credential holders",
+        },
       ],
     },
   ],
@@ -105,74 +215,159 @@ const tr: RoadmapContent = {
   meta: {
     title: "Yol haritası",
     description:
-      "Tamga Network yol haritası: bugün çalışanlar, pilottan önce tamamlanacaklar, pilot, listelerden deftere geçiş ve araştırma yönleri.",
+      "Tamga Network yol haritası: bugün yayında olanlar, pilottan önce tamamlanacaklar, pilot ve listelerden ortak deftere geçiş.",
   },
   eyebrow: "Yol haritası",
   title: "İmzalı listelerden ortak deftere",
   lead: "Tarih değil, aşama. Her aşama bir öncekinin kestirme yollarını kapatır; hâlâ kestirme olan açıkça yazılır.",
+  phaseLabel: "Aşama",
   labels: {
-    done: "Çalışıyor",
-    now: "Sürüyor",
-    next: "Pilot",
-    later: "Sonra",
+    done: "Yayında",
+    progress: "Devam ediyor",
+    planned: "Planlanıyor",
     research: "Araştırma",
   },
-  stages: [
+  phases: [
     {
+      n: "1",
       state: "done",
-      title: "Faz B — imzalı güven listeleri",
+      title: "Bugün yayında olanlar",
       summary: "Akışın tamamı gerçek kriptografiyle uçtan uca çalışıyor.",
-      items: [
-        "öğrenci belgesi ve diploma verme ve gösterme; iptal ve askıya alma",
-        "kimlik doğrulama ve kimlik belgesi, ISO mdoc olarak da",
-        "kampüs ve etkinlik geçiş kartları, tek kullanımlık biletler; web sitesine kayıt ve passkey ile giriş",
-        "Kurum Konsolu, imzalı kurum metadata'sı, kayıt sertifikaları",
-        "npm'de açık kaynak paketler (ön sürüm 0.1.0)",
+      cards: [
+        {
+          icon: "shield",
+          title: "Belge verme ve doğrulama",
+          desc: "öğrenci belgesi ve diploma, iptal ve askıya alma",
+        },
+        {
+          icon: "id",
+          title: "Kimlik belgesi",
+          desc: "uzaktan kimlik doğrulama; ISO mdoc olarak da",
+        },
+        {
+          icon: "list",
+          title: "İmzalı güven listeleri",
+          desc: "kurumlar, doğrulayıcılar ve herkese açık çapa günlüğü",
+        },
+        {
+          icon: "ticket",
+          title: "Geçiş kartları ve biletler",
+          desc: "kampüs ve etkinlik kapıları, tek kullanımlık biletler",
+        },
+        {
+          icon: "building",
+          title: "Kurum Konsolu",
+          desc: "belge verme, iptal ve istatistik",
+        },
+        {
+          icon: "package",
+          title: "Açık kaynak paketler",
+          desc: "npm'de @tamga-network, ön sürüm 0.1.0",
+        },
       ],
     },
     {
-      state: "now",
+      n: "2",
+      state: "progress",
       title: "Pilottan önce",
       summary: "Gerçek kişiler kullanmadan önce bir kurumun ihtiyacı olanlar.",
-      items: [
-        "Tamga Wallet'ın App Store ve Google Play sürümü",
-        "anahtarlar telefonun güvenli donanımında; cihaz kanıtı (App Attest / Play Integrity) zorunlu",
-        "kurumun imza anahtarı kurumun kendi anahtar kasasında",
-        "bir kurumun kendi sorgu ucuna ilk bağlantı",
-        "Bluetooth ile yüz yüze ve tarayıcıdan belge gösterme (kodlandı, sırada cihaz testi)",
+      cards: [
+        {
+          icon: "smartphone",
+          title: "Mağaza uygulaması",
+          desc: "Tamga Wallet App Store ve Google Play'de",
+        },
+        {
+          icon: "cpu",
+          title: "Güvenli donanım",
+          desc: "anahtarlar telefonun güvenli çipinde; cihaz kanıtı zorunlu",
+        },
+        {
+          icon: "key",
+          title: "Kurumun anahtarı",
+          desc: "imza anahtarı kurumun kendi anahtar kasasında",
+        },
+        {
+          icon: "plug",
+          title: "Yetkili kaynak",
+          desc: "bir kurumun kendi sorgu ucuna ilk bağlantı",
+        },
+        {
+          icon: "bluetooth",
+          title: "Yüz yüze ve tarayıcıda",
+          desc: "Bluetooth ve Digital Credentials API, gerçek telefonlarda",
+        },
       ],
     },
     {
-      state: "next",
+      n: "3",
+      state: "planned",
       title: "Pilot",
       summary:
         "Bir üniversite, sınırlı bir grup, başarı ve durdurma ölçütleri önceden belirli.",
-      items: [
-        "kurum anahtarı üniversitede; listeler, defter yok",
-        "öğrenci belgesi ve diploma; kampüs girişi",
-        "AB referans cüzdan ve doğrulayıcılarıyla karşılıklı test",
+      cards: [
+        {
+          icon: "graduation",
+          title: "Üniversite pilotu",
+          desc: "öğrenci belgesi, diploma ve kampüs girişi",
+        },
+        {
+          icon: "test",
+          title: "AB ile karşılıklı test",
+          desc: "AB referans cüzdan ve doğrulayıcılarıyla",
+        },
+        {
+          icon: "globe",
+          title: "Europass",
+          desc: "eğitim belgelerinin Europass uyumlu biçimi (değerlendiriliyor)",
+        },
       ],
     },
     {
-      state: "later",
-      title: "Faz 0 ve Faz 1",
-      summary: "Daha çok operatör, daha çok devlet, daha çok biçim.",
-      items: [
-        "en az iki bağımsız validator operatörü imzalayınca izinli Besu / QBFT defteri",
-        "üye devlet güven listeleri; her devlet kendi kurumlarını kaydeder",
-        "NFC ile yakın alan; okuyucu kimlik doğrulaması",
-        "eğitim belgelerinin Europass uyumlu bir temsili (değerlendiriliyor)",
+      n: "4",
+      state: "planned",
+      title: "Ağın genişlemesi",
+      summary: "Daha çok operatör, daha çok devlet.",
+      cards: [
+        {
+          icon: "network",
+          title: "Ortak defter",
+          desc: "en az iki bağımsız operatör katılınca izinli Besu / QBFT",
+        },
+        {
+          icon: "flag",
+          title: "Üye devlet listeleri",
+          desc: "her devlet kendi kurumlarını kaydeder",
+        },
+        {
+          icon: "bluetooth",
+          title: "NFC ile yakın alan",
+          desc: "okuyucu kimlik doğrulamasıyla",
+        },
       ],
     },
     {
+      n: "5",
       state: "research",
-      title: "Araştırma yönleri",
+      title: "Araştırma",
       summary:
         "İnceleniyor, henüz planlı değil; her kullanımdan önce bağımsız güvenlik incelemesi.",
-      items: [
-        "kurumun izlemesine karşı sıfır bilgili belgeler",
-        "site başına takma ad; hesap verebilir ifşa",
-        "kurum cüzdanları (belge sahibi olarak kurumlar)",
+      cards: [
+        {
+          icon: "eye",
+          title: "Sıfır bilgili belgeler",
+          desc: "belgeyi veren kurum bile izleyemez",
+        },
+        {
+          icon: "user",
+          title: "Site başına takma ad",
+          desc: "ve hesap verebilir ifşa",
+        },
+        {
+          icon: "briefcase",
+          title: "Kurum cüzdanları",
+          desc: "belge sahibi olarak kurumlar",
+        },
       ],
     },
   ],
@@ -183,74 +378,159 @@ const tk: RoadmapContent = {
   meta: {
     title: "Ýol kartasy",
     description:
-      "Tamga Network ýol kartasy: häzir işleýänler, pilotdan öň tamamlanjaklar, pilot, sanawlardan kitaba geçiş we gözleg ugurlary.",
+      "Tamga Network ýol kartasy: häzir işleýänler, pilotdan öň tamamlanjaklar, pilot we sanawlardan umumy kitaba geçiş.",
   },
   eyebrow: "Ýol kartasy",
   title: "Gol çekilen sanawlardan umumy kitaba",
   lead: "Sene däl, tapgyr. Her tapgyr öňküsiniň gysga ýollaryny ýapýar; heniz gysga ýol bolan zat açyk ýazylýar.",
+  phaseLabel: "Tapgyr",
   labels: {
     done: "Işleýär",
-    now: "Dowam edýär",
-    next: "Pilot",
-    later: "Soňra",
+    progress: "Dowam edýär",
+    planned: "Meýilleşdirilýär",
     research: "Gözleg",
   },
-  stages: [
+  phases: [
     {
+      n: "1",
       state: "done",
-      title: "B tapgyr — gol çekilen ynam sanawlary",
+      title: "Häzir işleýänler",
       summary: "Akymyň hemmesi hakyky kriptografiýa bilen başdan-aýak işleýär.",
-      items: [
-        "talyp resminamasyny we diplomy bermek we görkezmek; ýatyrmak we togtatmak",
-        "şahsyýet barlagy we şahsyýet resminamasy, ISO mdoc görnüşinde hem",
-        "kampus we çäre geçiş kartalary, bir gezeklik biletler; web saýta hasaba durmak we passkey bilen giriş",
-        "Gurama konsoly, gol çekilen gurama metadata-sy, hasaba alyş sertifikatlary",
-        "npm-de açyk çeşmeli paketler (deslapky wersiýa 0.1.0)",
+      cards: [
+        {
+          icon: "shield",
+          title: "Bermek we barlamak",
+          desc: "talyp resminamasy we diplom, ýatyrmak we togtatmak",
+        },
+        {
+          icon: "id",
+          title: "Şahsyýet resminamasy",
+          desc: "uzakdan şahsyýet barlagy; ISO mdoc görnüşinde hem",
+        },
+        {
+          icon: "list",
+          title: "Gol çekilen ynam sanawlary",
+          desc: "guramalar, barlaýjylar we açyk labyr žurnaly",
+        },
+        {
+          icon: "ticket",
+          title: "Geçiş kartalary we biletler",
+          desc: "kampus we çäre gapylary, bir gezeklik biletler",
+        },
+        {
+          icon: "building",
+          title: "Gurama konsoly",
+          desc: "resminama bermek, ýatyrmak we statistika",
+        },
+        {
+          icon: "package",
+          title: "Açyk çeşmeli paketler",
+          desc: "npm-de @tamga-network, deslapky wersiýa 0.1.0",
+        },
       ],
     },
     {
-      state: "now",
+      n: "2",
+      state: "progress",
       title: "Pilotdan öň",
       summary: "Hakyky adamlar ulanmazdan öň guramanyň zerur zatlary.",
-      items: [
-        "Tamga Wallet-iň App Store we Google Play wersiýasy",
-        "açarlar telefonyň howpsuz enjamynda; enjam subutnamasy (App Attest / Play Integrity) hökmany",
-        "guramanyň gol açary guramanyň öz açar ammarynda",
-        "guramanyň öz gözleg nokadyna ilkinji birikme",
-        "Bluetooth arkaly ýüzbe-ýüz we brauzerden resminama görkezmek (kodlandy, indiki ädim enjam synagy)",
+      cards: [
+        {
+          icon: "smartphone",
+          title: "Dükan programmasy",
+          desc: "Tamga Wallet App Store we Google Play-de",
+        },
+        {
+          icon: "cpu",
+          title: "Howpsuz enjam",
+          desc: "açarlar telefonyň howpsuz çipinde; enjam subutnamasy hökmany",
+        },
+        {
+          icon: "key",
+          title: "Guramanyň açary",
+          desc: "gol açary guramanyň öz açar ammarynda",
+        },
+        {
+          icon: "plug",
+          title: "Ygtyýarly çeşme",
+          desc: "guramanyň öz gözleg nokadyna ilkinji birikme",
+        },
+        {
+          icon: "bluetooth",
+          title: "Ýüzbe-ýüz we brauzerde",
+          desc: "Bluetooth we Digital Credentials API, hakyky telefonlarda",
+        },
       ],
     },
     {
-      state: "next",
+      n: "3",
+      state: "planned",
       title: "Pilot",
       summary:
         "Bir uniwersitet, çäkli topar, üstünlik we togtatma ölçegleri öňünden kesgitlenen.",
-      items: [
-        "guramanyň açary uniwersitetde; sanawlar, kitap ýok",
-        "talyp resminamasy we diplom; kampusa giriş",
-        "ÝB salgylanma gapjyklary we barlaýjylary bilen özara synag",
+      cards: [
+        {
+          icon: "graduation",
+          title: "Uniwersitet piloty",
+          desc: "talyp resminamasy, diplom we kampusa giriş",
+        },
+        {
+          icon: "test",
+          title: "ÝB bilen özara synag",
+          desc: "ÝB salgylanma gapjyklary we barlaýjylary bilen",
+        },
+        {
+          icon: "globe",
+          title: "Europass",
+          desc: "bilim resminamalarynyň Europass bilen gabat gelýän görnüşi (seredilýär)",
+        },
       ],
     },
     {
-      state: "later",
-      title: "0 we 1 tapgyrlar",
-      summary: "Has köp operator, has köp döwlet, has köp görnüş.",
-      items: [
-        "azyndan iki garaşsyz validator operatory gol çekende rugsatly Besu / QBFT kitaby",
-        "agza döwletleriň ynam sanawlary; her döwlet öz guramalaryny hasaba alýar",
-        "NFC arkaly ýakyn aralyk; okaýjynyň şahsyýetini barlamak",
-        "bilim resminamalarynyň Europass bilen gabat gelýän görnüşi (seredilýär)",
+      n: "4",
+      state: "planned",
+      title: "Toruň giňelmegi",
+      summary: "Has köp operator, has köp döwlet.",
+      cards: [
+        {
+          icon: "network",
+          title: "Umumy kitap",
+          desc: "azyndan iki garaşsyz operator goşulanda rugsatly Besu / QBFT",
+        },
+        {
+          icon: "flag",
+          title: "Agza döwletleriň sanawlary",
+          desc: "her döwlet öz guramalaryny hasaba alýar",
+        },
+        {
+          icon: "bluetooth",
+          title: "NFC arkaly ýakyn aralyk",
+          desc: "okaýjynyň şahsyýetini barlamak bilen",
+        },
       ],
     },
     {
+      n: "5",
       state: "research",
-      title: "Gözleg ugurlary",
+      title: "Gözleg",
       summary:
         "Öwrenilýär, heniz meýilleşdirilmedik; her ulanyşdan öň garaşsyz howpsuzlyk barlagy.",
-      items: [
-        "guramanyň yzarlamagyna garşy nol bilimli resminamalar",
-        "saýt başyna lakam; hasabatly açyklama",
-        "gurama gapjyklary (resminama eýesi hökmünde guramalar)",
+      cards: [
+        {
+          icon: "eye",
+          title: "Nol bilimli resminamalar",
+          desc: "resminamany beren gurama hem yzarlap bilmeýär",
+        },
+        {
+          icon: "user",
+          title: "Saýt başyna lakam",
+          desc: "we hasabatly açyklama",
+        },
+        {
+          icon: "briefcase",
+          title: "Gurama gapjyklary",
+          desc: "resminama eýesi hökmünde guramalar",
+        },
       ],
     },
   ],

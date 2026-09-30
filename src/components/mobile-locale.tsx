@@ -33,7 +33,8 @@ export function MobileLocale() {
   useEffect(() => {
     if (!open) return;
     const onDoc = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+      if (ref.current && !ref.current.contains(e.target as Node))
+        setOpen(false);
     };
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpen(false);
@@ -59,22 +60,29 @@ export function MobileLocale() {
   };
 
   return (
-    <div ref={ref} className="sm-locale">
+    <div ref={ref} className="relative">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-label={t("label")}
-        className="sm-locale-btn"
+        className="flex w-full items-center gap-2.5 rounded-md border border-border px-3 py-2.5 text-sm text-foreground"
       >
         <Flag locale={locale} />
         <span>{t(locale)}</span>
-        <ChevronDown size={16} className="sm-locale-chev" />
+        <ChevronDown
+          size={16}
+          aria-hidden
+          className={`ml-auto text-foreground-muted transition-transform ${open ? "rotate-180" : ""}`}
+        />
       </button>
 
       {open && (
-        <ul className="sm-locale-menu" role="listbox">
+        <ul
+          className="absolute inset-x-0 bottom-full z-10 mb-2 overflow-hidden rounded-md border border-border bg-background shadow-soft"
+          role="listbox"
+        >
           {routing.locales
             .filter((l) => l !== locale)
             .map((l) => (
@@ -83,7 +91,7 @@ export function MobileLocale() {
                   type="button"
                   disabled={isPending}
                   onClick={() => switchTo(l)}
-                  className="sm-locale-opt"
+                  className="flex w-full items-center gap-2.5 px-3 py-2.5 text-left text-sm text-foreground hover:bg-surface disabled:opacity-50"
                 >
                   <Flag locale={l} />
                   <span>{t(l)}</span>

@@ -4,6 +4,17 @@ Biçim: Keep a Changelog. Site dağıtımları tarihle anılır.
 
 ## [Yayınlanmadı]
 
+### Değişti (2026-09-30 — menüler, SDK, changelog, yol haritası)
+- Üst menü shadcn/ui kalıbıyla (Radix NavigationMenu): Dokümanlar · Geliştiriciler ▾ · Ekosistem ▾ · Proje ▾; açılır menülerde
+  renkli simgeli, açıklamalı, yan yana kutucuklar. Telefon menüsü sağdan açılan panel + açılır bölümler (Radix Dialog + Accordion);
+  eski StaggeredMenu ve gsap kaldırıldı.
+- Yeni `/sdk` sayfası: paket kartları (ad npm'i, "Belge" geliştirici belgesini yeni sekmede açar), kurulum, çalışan örnekler;
+  geliştirici belgesi SDK'ya bağlanır.
+- Changelog sürüm sürüm (v0.1.0 … v0.4.0; Özellik / Güvenlik etiketi, Eklendi / Değiştirildi / Düzeltildi); üç dilde "Changelog".
+- Yol haritası: aşama özeti + her aşamada durum rozetli (Yayında / Devam ediyor / Planlanıyor / Araştırma), simgeli kartlar.
+- Alt bilgi: Kaynaklar (Geliştiriciler, Tamga ARF, SDK, API, npm, GitHub), Ekosistem (kullanıcıya dönük servisler), Sektörler,
+  Şirket. Ağ adresleri tablosu Hakkında'dan ana sayfaya taşındı; ana sayfadaki sektör bölümü "Sektörler" oldu.
+
 ### Eklendi (2026-09-30 — menü, kurum sayfası, yol haritası, değişiklik günlüğü)
 - Üst menü: Ekosistem (ağın bütün alt alan adları, gruplu) ve Proje (Senaryolar, Yol haritası, Değişiklik günlüğü, Blog, Hakkında)
   açılır menüleri; sağda "Kurum olarak katıl" düğmesi. Ana sayfadaki "Bugün neler çalışıyor" düğmesi yerine aynı başvuru.

@@ -307,3 +307,29 @@ h1, h2, h3, h4 {
 .prose .not-prose ul li::before {
   content: none;
 }
+
+/* Açılır menü (Radix NavigationMenu): açılış ve kapanışta hafif soluklaşma */
+@keyframes nm-in { from { opacity: 0; transform: translateY(-4px) scale(0.98); } to { opacity: 1; transform: none; } }
+@keyframes nm-out { from { opacity: 1; } to { opacity: 0; transform: translateY(-4px) scale(0.98); } }
+.nm-viewport[data-state="open"] { animation: nm-in 160ms ease-out; }
+.nm-viewport[data-state="closed"] { animation: nm-out 120ms ease-in; }
+@media (prefers-reduced-motion: reduce) {
+  .nm-viewport[data-state] { animation: none; }
+}
+
+/* Telefon menüsü (Radix Dialog + Accordion) */
+@keyframes mn-in { from { transform: translateX(100%); } to { transform: none; } }
+@keyframes mn-out { from { transform: none; } to { transform: translateX(100%); } }
+@keyframes mn-fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes mn-fade-out { from { opacity: 1; } to { opacity: 0; } }
+@keyframes acc-down { from { height: 0; } to { height: var(--radix-accordion-content-height); } }
+@keyframes acc-up { from { height: var(--radix-accordion-content-height); } to { height: 0; } }
+.mobile-nav-panel[data-state="open"] { animation: mn-in 220ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+.mobile-nav-panel[data-state="closed"] { animation: mn-out 180ms ease-in; }
+.mobile-nav-overlay[data-state="open"] { animation: mn-fade-in 200ms ease-out; }
+.mobile-nav-overlay[data-state="closed"] { animation: mn-fade-out 160ms ease-in; }
+.mobile-nav-panel [data-state="open"][role="region"] { animation: acc-down 200ms ease-out; }
+.mobile-nav-panel [data-state="closed"][role="region"] { animation: acc-up 160ms ease-in; }
+@media (prefers-reduced-motion: reduce) {
+  .mobile-nav-panel[data-state], .mobile-nav-overlay[data-state], .mobile-nav-panel [role="region"][data-state] { animation: none; }
+}

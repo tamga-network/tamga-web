@@ -19,6 +19,7 @@ export const routing = defineRouting({
     "/issuers": "/issuers",
     "/roadmap": "/roadmap",
     "/changelog": "/changelog",
+    "/sdk": "/sdk",
     "/blog/[slug]": "/blog/[slug]",
     "/docs": "/docs",
     "/docs/why-new-model": "/docs/why-new-model",

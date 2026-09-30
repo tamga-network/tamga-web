@@ -28,6 +28,39 @@ import { SignInSection } from "@/components/sign-in-tamga";
 import { Reveal } from "@/components/reveal";
 import { Button, Card, SectionHeading } from "@/components/ui";
 import { getHomeContent, type HomeContent } from "@/content/home";
+import { EcosystemTable } from "@/components/ecosystem-table";
+import type { Locale } from "@/i18n/routing";
+
+const NET: Record<Locale, { eyebrow: string; title: string; lead: string }> = {
+  en: {
+    eyebrow: "Ecosystem",
+    title: "The network's public addresses",
+    lead: "Everything the network publishes and runs, in one place. Lists and catalogues are open to everyone; services speak open standards.",
+  },
+  tr: {
+    eyebrow: "Ekosistem",
+    title: "Ağın herkese açık adresleri",
+    lead: "Ağın yayınladığı ve çalıştırdığı her şey tek yerde. Listeler ve kataloglar herkese açık; servisler açık standartlarla konuşur.",
+  },
+  tk: {
+    eyebrow: "Ekoulgam",
+    title: "Toruň açyk salgylary",
+    lead: "Toruň çap edýän we işledýän ähli zady bir ýerde. Sanawlar we kataloglar hemmelere açyk; hyzmatlar açyk standartlar bilen gürleşýär.",
+  },
+};
+
+/** Ağın alt alan adları (üst menüdeki "Tüm adresler" buraya gelir). */
+function NetworkAddresses({ locale }: { locale: string }) {
+  const l: Locale = locale === "tr" || locale === "tk" ? locale : "en";
+  return (
+    <section id="ecosystem" className="border-y border-border bg-background-elevated/40">
+      <div className="shell scroll-mt-20 py-20 sm:py-24">
+        <SectionHeading eyebrow={NET[l].eyebrow} title={NET[l].title} description={NET[l].lead} />
+        <EcosystemTable locale={l} />
+      </div>
+    </section>
+  );
+}
 
 export default async function HomePage({
   params,
@@ -51,6 +84,7 @@ export default async function HomePage({
       <Credentials locale={locale} />
       <SignInSection locale={locale} />
       <Ecosystem c={c} />
+      <NetworkAddresses locale={locale} />
       <Today c={c} />
       <Positioning c={c} />
       <CTA c={c} />
@@ -386,7 +420,7 @@ function HowItWorks({ c, locale }: { c: HomeContent; locale: string }) {
 function Ecosystem({ c }: { c: HomeContent }) {
   const icons = [GraduationCap, HeartPulse, Truck, Wallet];
   return (
-    <section id="ecosystem" className="shell scroll-mt-20 py-20 sm:py-24">
+    <section id="sectors" className="shell scroll-mt-20 py-20 sm:py-24">
       <Reveal>
         <SectionHeading
           eyebrow={c.ecosystem.eyebrow}

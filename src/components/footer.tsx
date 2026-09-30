@@ -1,6 +1,7 @@
 import { getLocale, getTranslations } from "next-intl/server";
 import { arfUrl } from "@/lib/docs-nav";
-import { DEV_LINKS } from "@/lib/ecosystem";
+import { DEV_LINKS, SUBDOMAINS } from "@/lib/ecosystem";
+import type { Locale } from "@/i18n/routing";
 import { Link, type Href } from "@/i18n/navigation";
 import { LogoMark } from "./logo";
 import { SocialLinks } from "./social-icons";
@@ -16,46 +17,43 @@ type FItem = {
   external?: string;
 };
 
+/** Alt bilgideki ağ adresleri: kullanıcıya ve kurumlara dönük servisler (docs / ARF Kaynaklar'da; arka uçlar ana sayfa tablosunda). */
+const FOOTER_HOSTS = [
+  "trust.tamga.network",
+  "schemas.tamga.network",
+  "verify.tamga.network",
+  "console.tamga.network",
+  "id.tamga.network",
+];
+
 const COLUMNS: { titleKey: string; items: FItem[] }[] = [
-  {
-    titleKey: "ecosystem",
-    items: [
-      { label: "TamgaID", href: "/docs/tamga-id" },
-      { label: "Payments" },
-      { label: "Education" },
-      { label: "Health" },
-      { label: "Logistics" },
-    ],
-  },
   {
     titleKey: "resources",
     items: [
       { key: "devDocs", external: DEV_LINKS.devDocs },
-      { key: "sdk", href: "/docs/developers" },
+      { label: "Tamga ARF", external: "arf" },
+      { key: "sdk", href: "/sdk" },
       { key: "apiRef", external: DEV_LINKS.apiRef },
       { key: "npm", external: DEV_LINKS.npm },
       { label: "GitHub", external: DEV_LINKS.github },
-      { label: "Tamga ARF", external: "arf" },
     ],
   },
   {
-    titleKey: "network",
-    items: [
-      { key: "docs", href: "/docs" },
-      { key: "trustLists", href: "/docs/trust-lists" },
-      { key: "howItWorks", href: "/docs/how-tamga-works" },
-      { key: "eudiComparison", href: "/docs/eudi-comparison" },
-      { key: "issuers", href: "/issuers" },
-    ],
+    titleKey: "ecosystem",
+    items: [], // SUBDOMAINS'ten, dilde (aşağıda)
+  },
+  {
+    titleKey: "sectors",
+    items: [{ key: "education" }, { key: "health" }, { key: "payments" }, { key: "logistics" }],
   },
   {
     titleKey: "company",
     items: [
       { key: "about", href: "/about" },
+      { key: "issuers", href: "/issuers" },
       { key: "roadmap", href: "/roadmap" },
       { key: "changelog", href: "/changelog" },
       { key: "blog", href: "/blog" },
-      { key: "team" },
       { key: "careers" },
     ],
   },
@@ -65,6 +63,18 @@ export async function Footer() {
   const t = await getTranslations("footer");
   const locale = await getLocale();
   const label = (item: FItem) => (item.key ? t(item.key) : item.label);
+  const loc = (["en", "tr", "tk"].includes(locale) ? locale : "en") as Locale;
+  const columns = COLUMNS.map((c) =>
+    c.titleKey === "ecosystem"
+      ? {
+          ...c,
+          items: SUBDOMAINS.filter((d) => FOOTER_HOSTS.includes(d.host)).map((d): FItem => ({
+            label: d.name[loc],
+            external: d.url,
+          })),
+        }
+      : c,
+  );
 
   return (
     <footer className="mt-24 border-t border-border">
@@ -95,7 +105,7 @@ export async function Footer() {
         </div>
 
         <div className="grid grid-cols-2 gap-x-10 gap-y-8 sm:grid-cols-4 md:gap-x-14 lg:gap-x-20">
-          {COLUMNS.map((col) => (
+          {columns.map((col) => (
             <div key={col.titleKey}>
             <h4 className="mono-label mb-4">{t(col.titleKey)}</h4>
             <ul className="space-y-2.5">

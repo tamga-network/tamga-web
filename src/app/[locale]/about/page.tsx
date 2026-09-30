@@ -6,26 +6,7 @@ import { Reveal } from "@/components/reveal";
 import { AnimatedLogoMark } from "@/components/logo";
 import { PlatformDiagram } from "@/components/platform-diagram";
 import { getAboutContent } from "@/content/about";
-import { EcosystemTable } from "@/components/ecosystem-table";
-import type { Locale } from "@/i18n/routing";
 
-const ECO: Record<Locale, { eyebrow: string; title: string; lead: string }> = {
-  en: {
-    eyebrow: "Ecosystem",
-    title: "The network's public addresses",
-    lead: "Everything the network publishes and runs, in one place. Lists and catalogues are open to everyone; services speak open standards.",
-  },
-  tr: {
-    eyebrow: "Ekosistem",
-    title: "Ağın herkese açık adresleri",
-    lead: "Ağın yayınladığı ve çalıştırdığı her şey tek yerde. Listeler ve kataloglar herkese açık; servisler açık standartlarla konuşur.",
-  },
-  tk: {
-    eyebrow: "Ekoulgam",
-    title: "Toruň açyk salgylary",
-    lead: "Toruň çap edýän we işledýän ähli zady bir ýerde. Sanawlar we kataloglar hemmelere açyk; hyzmatlar açyk standartlar bilen gürleşýär.",
-  },
-};
 
 export async function generateMetadata({
   params,
@@ -46,8 +27,6 @@ export default async function AboutPage({
   setRequestLocale(locale);
   const c = getAboutContent(locale);
   const posIcons = [Layers, Landmark, ShieldCheck];
-  const ecoLocale: Locale = locale in ECO ? (locale as Locale) : "en";
-  const eco = ECO[ecoLocale];
 
   return (
     <>
@@ -141,15 +120,6 @@ export default async function AboutPage({
         </div>
       </section>
 
-      {/* Ecosystem */}
-      <section id="ecosystem" className="shell scroll-mt-24 py-16 sm:py-20">
-        <div className="max-w-2xl">
-          <p className="eyebrow mb-3">{eco.eyebrow}</p>
-          <h2 className="text-3xl font-semibold sm:text-4xl">{eco.title}</h2>
-          <p className="mt-4 text-lg leading-relaxed text-foreground-muted">{eco.lead}</p>
-        </div>
-        <EcosystemTable locale={ecoLocale} />
-      </section>
 
       {/* Why now */}
       <section className="border-t border-border bg-background-elevated/40">
