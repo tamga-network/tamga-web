@@ -47,3 +47,8 @@ and reference framework at [arf.tamga.network](https://arf.tamga.network).
   powershell -File whitepaper/build.ps1   # Typst binary under tools/ (not in the repository)
   ```
 - Manifesto PDF: `powershell -File manifesto/build.ps1`.
+
+## Licence
+
+Code: Apache-2.0 (`LICENSE`). Content (page texts, blog, whitepaper, manifesto): CC BY 4.0 (`LICENSE-docs`). The Tamga name
+and seal are not covered by these licences.
