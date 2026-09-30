@@ -11,6 +11,8 @@ export type Vertical = {
   scenarios: Scenario[];
   wallet: WalletMockData;
   flow: FlowNode[];
+  /** Henüz kurulmamış sektör: başlığın yanında görünür etiket (sayfaya çapayla gelen de görsün). */
+  vision?: string;
 };
 export type ScenariosContent = {
   meta: { title: string; description: string };
@@ -81,6 +83,7 @@ const en: ScenariosContent = {
     },
     {
       id: "health",
+      vision: "Vision — not built yet",
       icon: "health",
       eyebrow: "Health",
       name: "Health",
@@ -113,7 +116,7 @@ const en: ScenariosContent = {
           { k: "full_name", v: "hidden", tone: "hidden" },
         ],
         action: "Share with pharmacy",
-        status: "ZK proof · consent logged",
+        status: "selective disclosure · consent logged",
       },
       flow: [
         { icon: "health", label: "Health authority", sub: "Issuer (X.509)" },
@@ -123,6 +126,7 @@ const en: ScenariosContent = {
     },
     {
       id: "logistics",
+      vision: "Vision — not built yet",
       icon: "logistics",
       eyebrow: "Logistics",
       name: "Logistics",
@@ -166,6 +170,7 @@ const en: ScenariosContent = {
     },
     {
       id: "payments",
+      vision: "Vision — not built yet",
       icon: "payments",
       eyebrow: "Payments",
       name: "Payments",
@@ -269,6 +274,7 @@ const tr: ScenariosContent = {
     },
     {
       id: "health",
+      vision: "Vizyon — henüz kurulmadı",
       icon: "health",
       eyebrow: "Sağlık",
       name: "Sağlık",
@@ -301,7 +307,7 @@ const tr: ScenariosContent = {
           { k: "full_name", v: "gizli", tone: "hidden" },
         ],
         action: "Eczaneyle paylaş",
-        status: "ZK ispat · onay loglandı",
+        status: "seçici ifşa · onay kaydı",
       },
       flow: [
         { icon: "health", label: "Sağlık otoritesi", sub: "Issuer (X.509)" },
@@ -311,6 +317,7 @@ const tr: ScenariosContent = {
     },
     {
       id: "logistics",
+      vision: "Vizyon — henüz kurulmadı",
       icon: "logistics",
       eyebrow: "Lojistik",
       name: "Lojistik",
@@ -354,6 +361,7 @@ const tr: ScenariosContent = {
     },
     {
       id: "payments",
+      vision: "Vizyon — henüz kurulmadı",
       icon: "payments",
       eyebrow: "Ödeme",
       name: "Ödeme",
@@ -457,6 +465,7 @@ const tk: ScenariosContent = {
     },
     {
       id: "health",
+      vision: "Wizýa — entek gurulmady",
       icon: "health",
       eyebrow: "Saglyk",
       name: "Saglyk",
@@ -489,7 +498,7 @@ const tk: ScenariosContent = {
           { k: "full_name", v: "gizlin", tone: "hidden" },
         ],
         action: "Dermanhana bilen paýlaş",
-        status: "ZK subutnama · razylyk loglandy",
+        status: "saýlama açyklama · razylyk bellendi",
       },
       flow: [
         { icon: "health", label: "Saglyk edarasy", sub: "Issuer (X.509)" },
@@ -499,6 +508,7 @@ const tk: ScenariosContent = {
     },
     {
       id: "logistics",
+      vision: "Wizýa — entek gurulmady",
       icon: "logistics",
       eyebrow: "Logistika",
       name: "Logistika",
@@ -542,6 +552,7 @@ const tk: ScenariosContent = {
     },
     {
       id: "payments",
+      vision: "Wizýa — entek gurulmady",
       icon: "payments",
       eyebrow: "Töleg",
       name: "Töleg",
@@ -553,7 +564,7 @@ const tk: ScenariosContent = {
           body: "Töleýji KYC we sanksiýa-arassalygyny credential-gated barlag bilen subut edýär; gündelik ulanyşda pseudonim galýar. Geçirim bank relsinde amala aşýar — Tamga kimi we ygtyýary subut edýär, puly däl.",
         },
         {
-          title: "Escrow işe girizIji",
+          title: "Escrow işe giriziji",
           body: "'Eltilip berildi credential-y → bank tölegi açýar.' Borç we tassyklama zynjyrda; pul asla zynjyrda däl.",
         },
         {

@@ -352,9 +352,9 @@ const ROLES: Role[] = [
     icon: ScanLine,
     eu: "Intermediary",
     name: {
-      en: "Hosted verifier",
-      tr: "Barındırılan doğrulayıcı",
-      tk: "Ýerleşdirilen barlaýjy",
+      en: "Tamga Verify (hosted verifier)",
+      tr: "Tamga Verify (barındırılan doğrulayıcı)",
+      tk: "Tamga Verify (ýerleşdirilen barlaýjy)",
     },
     host: "verify.tamga.network",
     today: { en: "Tamga", tr: "Tamga", tk: "Tamga" },

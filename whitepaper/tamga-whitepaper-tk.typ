@@ -80,7 +80,7 @@ Milli şahsyýet belgisi diňe şahsyýet resminamasynda bar; hiç bir diplom, k
 - *Bermek (OpenID4VCI).* Gurama QR kody we şol ekranda PIN görkezýär — PIN baglanyşygyň içinde asla gitmeýär. Ýa-da gapjyk guramalaryň katalogyndan başlaýar we ilki adamyň şahsyýetini subut edýär. Gapjyk her biri başga enjam açaryna baglanan *on nusga* alýar.
 - *Diňe hakyky gapjyklar.* Guramalar gapjyk üpjün edijisinden gysga möhletli *gapjyk tassyklamasyny* (WUA) talap edýär.
 - *Hödürlemek (OpenID4VP, DCQL).* Barlaýjynyň haýyşy hasaba alnan sertifikaty bilen gol çekilendir. Gapjyk ony ynam sanawyna görä barlaýar, näme soralýandygyny takyk görkezýär we hasaba alnan çäkden daşary islendik zat üçin duýduryş berýär; soňra tassyklanan meýdanlar we açaryň şu telefondadygynyň subutnamasy bilen şifrlenen jogap iberýär.
-- *Web saýtlar.* Saýt adamy bir gezek gapjyk bilen hasaba alýar; soňra gündelik giriş *passkey* bilen bolýar we hiç bir meýdan paýlaşylmaýar. Serediň: #link("https://tamga.network/tk/docs/login-with-tamga")[Tamga bilen giriş].
+- *Web saýtlar.* Saýt adamy bir gezek gapjyk bilen hasaba alýar; soňra gündelik giriş *passkey* bilen bolýar we hiç bir meýdan paýlaşylmaýar. Serediň: #link("https://tamga.network/tk/docs/login-with-tamga")[Tamga bilen gir].
 
 = Barlag: bäş gatlak, üç netije
 

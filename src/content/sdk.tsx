@@ -96,7 +96,7 @@ export const EX: {
   {
     title: {
       en: "1 · “Sign in with Tamga” on a website",
-      tr: "1 · Web sitesine “Tamga ile giriş”",
+      tr: "1 · Web sitesine “Tamga ile giriş yap”",
       tk: "1 · Web saýta “Tamga bilen gir”",
     },
     text: {

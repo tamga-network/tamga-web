@@ -4,6 +4,12 @@ Biçim: Keep a Changelog. Site dağıtımları tarihle anılır.
 
 ## [Yayınlanmadı]
 
+### Değişti (2026-09-30 — Tamga Verify)
+- verify.tamga.network her yerde **Tamga Verify** adıyla: ekosistem listesi ve menüler, `/docs/roles` (aracı doğrulayıcı),
+  `/brand` ad tablosu (üç dil).
+- Altbilgi ve telefon menüsündeki sosyal medya simgelerinden yer tutucu hesaplar (X, LinkedIn, Instagram, Medium — hesaplar
+  henüz açılmadı) kaldırıldı; yalnız GitHub kalır. Hesap açılınca `social-icons.tsx` + JSON-LD `sameAs`'a eklenir.
+
 ### Düzeltildi (2026-09-30 — arama ve paylaşım)
 - **Canonical hatası:** her alt sayfa arama motoruna dilin ana sayfasını "asıl adres" diye bildiriyordu (docs, whitepaper, blog
   dizinden düşebilirdi). Artık her sayfa kendi adresini, üç dil eşini ve `x-default`'u verir (`src/lib/seo.ts` `pageMeta`).

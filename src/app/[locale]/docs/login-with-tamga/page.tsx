@@ -129,14 +129,14 @@ const CONTENT: Record<Locale, Content> = {
   },
   tr: {
     meta: {
-      title: "Tamga ile giriş",
+      title: "Tamga ile giriş yap",
       description:
         "Web sitesine cüzdanınla bir kez kaydol — yalnızca onayladığın alanlarla — sonra her gün hiçbir şey paylaşmayan bir passkey ile giriş yap.",
     },
     eyebrow: "Tamga nasıl çalışır",
-    title: "Tamga ile giriş",
+    title: "Tamga ile giriş yap",
     intro:
-      "“Google ile giriş yap”ı biliyorsun. “Tamga ile giriş” aynı görünür ama tersine çalışır: kimlik senin cüzdanındadır, site yalnızca onayladığın alanları alır ve ilk seferden sonra hiçbir şey almaz.",
+      "“Google ile giriş yap”ı biliyorsun. “Tamga ile giriş yap” aynı görünür ama tersine çalışır: kimlik senin cüzdanındadır, site yalnızca onayladığın alanları alır ve ilk seferden sonra hiçbir şey almaz.",
     body: (
       <>
         <h2>İki adım: bir kez kayıt, sonra passkey</h2>
@@ -157,7 +157,7 @@ const CONTENT: Record<Locale, Content> = {
             özeldir.
           </li>
           <li>
-            <strong>Yeni cihaz, passkey yok mu?</strong> “Tamga ile giriş” yalnızca hesap
+            <strong>Yeni cihaz, passkey yok mu?</strong> “Tamga ile giriş yap” yalnızca hesap
             anahtarını ister, sonra yeniden passkey eklersin.
           </li>
         </ol>
@@ -220,14 +220,14 @@ const CONTENT: Record<Locale, Content> = {
   },
   tk: {
     meta: {
-      title: "Tamga bilen giriş",
+      title: "Tamga bilen gir",
       description:
         "Web saýta gapjygyň bilen bir gezek hasaba dur — diňe tassyklan meýdanlaryň bilen — soňra her gün hiç zat paýlaşmaýan passkey bilen gir.",
     },
     eyebrow: "Tamga nähili işleýär",
-    title: "Tamga bilen giriş",
+    title: "Tamga bilen gir",
     intro:
-      "“Google bilen giriş” sana tanyş. “Tamga bilen giriş” şeýle görünýär, ýöne tersine işleýär: şahsyýet seniň gapjygyňda, saýt diňe tassyklan meýdanlaryňy alýar we ilkinji gezekden soň hiç zat almaýar.",
+      "“Google bilen gir” sana tanyş. “Tamga bilen gir” şeýle görünýär, ýöne tersine işleýär: şahsyýet seniň gapjygyňda, saýt diňe tassyklan meýdanlaryňy alýar we ilkinji gezekden soň hiç zat almaýar.",
     body: (
       <>
         <h2>Iki ädim: bir gezek hasaba durmak, soň passkey</h2>
@@ -249,7 +249,7 @@ const CONTENT: Record<Locale, Content> = {
             saýt üçin işleýär.
           </li>
           <li>
-            <strong>Täze enjam, passkey ýokmy?</strong> “Tamga bilen giriş” diňe hasap açaryny
+            <strong>Täze enjam, passkey ýokmy?</strong> “Tamga bilen gir” diňe hasap açaryny
             soraýar, soň ýene passkey goşýarsyň.
           </li>
         </ol>

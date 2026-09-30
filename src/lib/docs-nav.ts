@@ -134,8 +134,8 @@ const NAV: NavSectionSrc[] = [
         href: "/docs/login-with-tamga",
         title: {
           en: "Sign in with Tamga",
-          tr: "Tamga ile giriş",
-          tk: "Tamga bilen giriş",
+          tr: "Tamga ile giriş yap",
+          tk: "Tamga bilen gir",
         },
       },
     ],

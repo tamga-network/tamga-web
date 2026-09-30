@@ -122,11 +122,11 @@ export const SUBDOMAINS: Subdomain[] = [
     url: "https://verify.tamga.network",
     group: "services",
     std: "OpenID4VP",
-    name: { en: "Verifier", tr: "Doğrulayıcı", tk: "Barlaýjy" },
+    name: { en: "Tamga Verify", tr: "Tamga Verify", tk: "Tamga Verify" },
     desc: {
-      en: "reference verifier and the sign-in kit for websites",
-      tr: "referans doğrulayıcı ve web siteleri için giriş kiti",
-      tk: "salgylanma barlaýjysy we web saýtlar üçin giriş toplumy",
+      en: "hosted verifier and the “Sign in with Tamga” kit for websites",
+      tr: "barındırılan doğrulayıcı ve web siteleri için “Tamga ile giriş yap” kiti",
+      tk: "ýerleşdirilen barlaýjy we web saýtlar üçin “Tamga bilen gir” toplumy",
     },
   },
   {

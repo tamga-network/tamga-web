@@ -50,17 +50,12 @@ export type Social = {
   Icon: ComponentType<IconProps>;
 };
 
-/** Placeholder handles — swap for the real accounts when they exist. */
+/**
+ * Only accounts that exist. Social accounts (X, LinkedIn, Instagram, Medium) are not open yet — add a row here (the icons
+ * above are ready) and the same URL to `sameAs` in src/components/json-ld.tsx when one is opened.
+ */
 export const SOCIALS: Social[] = [
-  { label: "X", href: "https://x.com/tamganetwork", Icon: XIcon },
   { label: "GitHub", href: "https://github.com/tamga-network", Icon: GithubIcon },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/company/tamga-network",
-    Icon: LinkedinIcon,
-  },
-  { label: "Instagram", href: "https://instagram.com/tamganetwork", Icon: InstagramIcon },
-  { label: "Medium", href: "https://medium.com/@tamganetwork", Icon: MediumIcon },
 ];
 
 /** Reusable row of social icon links (footer, etc.). */

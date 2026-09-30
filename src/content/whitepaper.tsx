@@ -387,7 +387,7 @@ const tr: WhitepaperContent = {
             <li><strong>Verme (OpenID4VCI).</strong> Kurum bir QR kodu ve aynı ekranda bir PIN gösterir — PIN bağlantının içinde asla gitmez. Ya da cüzdan kurum dizininden başlar ve önce kişinin kimliğini kanıtlar. Cüzdan, her biri farklı bir cihaz anahtarına bağlı <strong>on kopya</strong> alır.</li>
             <li><strong>Yalnızca gerçek cüzdanlar.</strong> Kurumlar cüzdan sağlayıcısından kısa ömürlü bir <strong>cüzdan onayı</strong> (WUA) ister.</li>
             <li><strong>Sunum (OpenID4VP, DCQL).</strong> Doğrulayıcının isteği kayıtlı sertifikasıyla imzalıdır. Cüzdan onu güven listesine karşı denetler, tam olarak neyin istendiğini gösterir ve kayıtlı kapsamın dışındaki her şey için uyarır; ardından onaylanan alanlarla ve anahtarın bu telefonda olduğunun kanıtıyla şifreli bir cevap gönderir.</li>
-            <li><strong>Web siteleri.</strong> Site kişiyi bir kez cüzdanla kaydeder; günlük giriş ardından bir <strong>passkey</strong> ile olur ve hiçbir alan paylaşılmaz. Bkz. <Link href="/docs/login-with-tamga">Tamga ile giriş</Link>.</li>
+            <li><strong>Web siteleri.</strong> Site kişiyi bir kez cüzdanla kaydeder; günlük giriş ardından bir <strong>passkey</strong> ile olur ve hiçbir alan paylaşılmaz. Bkz. <Link href="/docs/login-with-tamga">Tamga ile giriş yap</Link>.</li>
           </ul>
         </>
       ),
@@ -612,7 +612,7 @@ const tk: WhitepaperContent = {
             <li><strong>Bermek (OpenID4VCI).</strong> Gurama QR kody we şol ekranda PIN görkezýär — PIN baglanyşygyň içinde asla gitmeýär. Ýa-da gapjyk guramalaryň katalogyndan başlaýar we ilki adamyň şahsyýetini subut edýär. Gapjyk her biri başga enjam açaryna baglanan <strong>on nusga</strong> alýar.</li>
             <li><strong>Diňe hakyky gapjyklar.</strong> Guramalar gapjyk üpjün edijisinden gysga möhletli <strong>gapjyk tassyklamasyny</strong> (WUA) talap edýär.</li>
             <li><strong>Hödürlemek (OpenID4VP, DCQL).</strong> Barlaýjynyň haýyşy hasaba alnan sertifikaty bilen gol çekilendir. Gapjyk ony ynam sanawyna görä barlaýar, näme soralýandygyny takyk görkezýär we hasaba alnan çäkden daşary islendik zat üçin duýduryş berýär; soňra tassyklanan meýdanlar we açaryň şu telefondadygynyň subutnamasy bilen şifrlenen jogap iberýär.</li>
-            <li><strong>Web saýtlar.</strong> Saýt adamy bir gezek gapjyk bilen hasaba alýar; soňra gündelik giriş <strong>passkey</strong> bilen bolýar we hiç bir meýdan paýlaşylmaýar. Serediň: <Link href="/docs/login-with-tamga">Tamga bilen giriş</Link>.</li>
+            <li><strong>Web saýtlar.</strong> Saýt adamy bir gezek gapjyk bilen hasaba alýar; soňra gündelik giriş <strong>passkey</strong> bilen bolýar we hiç bir meýdan paýlaşylmaýar. Serediň: <Link href="/docs/login-with-tamga">Tamga bilen gir</Link>.</li>
           </ul>
         </>
       ),

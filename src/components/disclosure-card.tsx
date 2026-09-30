@@ -60,7 +60,7 @@ const tk: DiscContent = {
 
 const content: Record<Locale, DiscContent> = { en, tr, tk };
 
-const ISSUER = "Identity provider · X.509 (TR)";
+const ISSUER = "Identity service · X.509 (TR)";
 const HOLDER = "p:8f2a…c19";
 const CLAIMS: { key: string; disclosed: boolean }[] = [
   { key: "age_over_18", disclosed: true },

@@ -142,7 +142,7 @@ const tr: Content = {
     { title: "Oltalamaya dayanıklı", body: "Çalınacak ya da sızacak bir şifre yok — giriş, cihazından gelen kriptografik bir kanıttır." },
     { title: "Gerektiğinde doğrulanmış", body: "Bir hizmet gerektirdiğinde, anonim bir hesap değil, kimlik belgesi doğrulanmış gerçek biri olduğunu bilebilir." },
   ],
-  link: "“Tamga ile giriş” nasıl çalışır",
+  link: "“Tamga ile giriş yap” nasıl çalışır",
   login: { signInTo: "Şuraya giriş:", app: "example.com", google: "Google ile devam et", apple: "Apple ile devam et", or: "veya", tamga: "Tamga ile giriş yap" },
   consent: {
     app: "example.com",
@@ -161,17 +161,17 @@ const tr: Content = {
 
 const tk: Content = {
   eyebrow: "Giriş",
-  title: "Tamga bilen giriň",
+  title: "Tamga bilen gir",
   description:
-    "“Google bilen giriş” ýaly, ýöne şahsyýet seniňki. Web-saýt diňe zerur meýdanlary soraýar; her birini razylyk ekranynda tassyklaýarsyň; saýt parolyňy ýa-da maglumat howzuny asla görmeýär.",
+    "“Google bilen gir” ýaly, ýöne şahsyýet seniňki. Web-saýt diňe zerur meýdanlary soraýar; her birini razylyk ekranynda tassyklaýarsyň; saýt parolyňy ýa-da maglumat howzuny asla görmeýär.",
   benefits: [
     { title: "Bir gezek hasaba dur, soň passkey", body: "Her saýt üçin täze parol ýok. Saýta bir gezek gapjygyň bilen hasaba durýarsyň; soňra gündelik giriş enjamyňdaky passkey bilen bolýar we hiç bir meýdan gaýtadan paýlaşylmaýar." },
     { title: "Nämäniň paýlaşyljagyny sen saýlaýarsyň", body: "Doglan senäni açman 18 ýaşdan uludygyňy subut et; salgy bermän ady paýlaş." },
     { title: "Fişinge çydamly", body: "Ogurlanjak ýa-da syzjak parol ýok — giriş enjamyňdan gelýän kriptografik subutnamadyr." },
     { title: "Gerek bolanda barlanan", body: "Hyzmat talap etse, anonim hasap däl, şahsyýet resminamasy barlanan hakyky adamdygyňy bilip bilýär." },
   ],
-  link: "“Tamga bilen giriş” nähili işleýär",
-  login: { signInTo: "Giriş:", app: "example.com", google: "Google bilen dowam et", apple: "Apple bilen dowam et", or: "ýa-da", tamga: "Tamga bilen giriň" },
+  link: "“Tamga bilen gir” nähili işleýär",
+  login: { signInTo: "Giriş:", app: "example.com", google: "Google bilen dowam et", apple: "Apple bilen dowam et", or: "ýa-da", tamga: "Tamga bilen gir" },
   consent: {
     app: "example.com",
     wants: "şulara girmek isleýär:",

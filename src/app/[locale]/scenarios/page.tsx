@@ -118,7 +118,14 @@ function VerticalSection({
       <div className="shell py-16 sm:py-20">
         {/* heading */}
         <Reveal>
-          <h2 className="font-serif text-2xl font-semibold sm:text-3xl">{v.name}</h2>
+          <div className="flex flex-wrap items-center gap-3">
+            <h2 className="font-serif text-2xl font-semibold sm:text-3xl">{v.name}</h2>
+            {v.vision && (
+              <span className="rounded-full border border-accent/50 bg-accent/10 px-2.5 py-0.5 font-mono text-[0.7rem] uppercase tracking-wide text-accent">
+                {v.vision}
+              </span>
+            )}
+          </div>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-foreground-muted">
             {v.intro}
           </p>
