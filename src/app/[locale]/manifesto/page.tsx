@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Download } from "lucide-react";
 import { Link } from "@/i18n/navigation";
@@ -12,7 +13,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const { meta } = getManifestoContent(locale);
-  return { title: meta.title, description: meta.description };
+  return pageMeta(locale, "/manifesto", { title: meta.title, description: meta.description });
 }
 
 export default async function ManifestoPage({

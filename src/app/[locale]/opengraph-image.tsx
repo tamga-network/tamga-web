@@ -1,17 +1,19 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
+import { getTranslations } from "next-intl/server";
 
-// Social share image — the header logo (hexagon seal + tamga glyph) on the brand
-// dark background, with the wordmark. Rendered to PNG at build time by next/og.
-export const alt = "Tamga Network — Digital Trust Infrastructure";
+// Paylaşım görseli: marka işareti (public/mark.svg — tek kaynaktan, npm run brand:sync) Obsidyen zeminde, ad ve dile göre
+// alt başlık. Renkler marka tablosundan: Obsidyen #17110F, Parşömen #F4EDE2, Altın #C8A24C.
+export const alt = "Tamga Network";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-// The logo mark, identical to the header LogoMark (src/components/logo.tsx):
-// gold hexagon seal + al-kızıl tamga glyph. Pure vector — no font needed.
-const MARK = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50 4 L86 24 V60 L50 96 L14 60 V24 Z' fill='none' stroke='#e0bf6f' stroke-width='3'/><path d='M50 22 V70 M32 40 L50 22 L68 40 M34 62 H66' fill='none' stroke='#e0554b' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/></svg>`;
-
-export default function Image() {
-  const markSrc = `data:image/svg+xml;base64,${Buffer.from(MARK).toString("base64")}`;
+export default async function Image({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "meta" });
+  const mark = readFileSync(join(process.cwd(), "public", "mark.svg"));
+  const markSrc = `data:image/svg+xml;base64,${mark.toString("base64")}`;
 
   return new ImageResponse(
     (
@@ -23,7 +25,7 @@ export default function Image() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "#131314",
+          background: "#17110F",
         }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -35,7 +37,7 @@ export default function Image() {
             fontSize: 92,
             fontWeight: 600,
             letterSpacing: -3,
-            color: "#f4f3f1",
+            color: "#F4EDE2",
           }}
         >
           Tamga Network
@@ -46,13 +48,13 @@ export default function Image() {
             marginTop: 16,
             fontSize: 30,
             letterSpacing: 10,
-            color: "#e0bf6f",
+            color: "#C8A24C",
           }}
         >
-          DIGITAL TRUST INFRASTRUCTURE
+          {t("tagline")}
         </div>
       </div>
     ),
-    { ...size }
+    { ...size },
   );
 }

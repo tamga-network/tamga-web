@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { setRequestLocale } from "next-intl/server";
 import { ArrowUpRight, BookOpen, Package } from "lucide-react";
 import { PageHeader } from "@/components/ui";
@@ -92,7 +93,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const u = UI[loc(locale)];
-  return { title: u.title, description: u.description };
+  return pageMeta(locale, "/sdk", { title: u.title, description: u.description });
 }
 
 export default async function SdkPage({

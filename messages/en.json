@@ -2,7 +2,8 @@
   "meta": {
     "title": "Tamga Network — Digital Trust Infrastructure",
     "description": "Tamga Network is a Digital Trust Infrastructure where individuals, organizations and digital assets can be reliably identified and build verifiable relationships. A sovereign, open-standards infrastructure for Türkiye and the Turkic world.",
-    "ogDescription": "The modern counterpart of the ancient seal: a sovereign, open-standards digital trust infrastructure for Türkiye and the Turkic world."
+    "ogDescription": "The modern counterpart of the ancient seal: a sovereign, open-standards digital trust infrastructure for Türkiye and the Turkic world.",
+    "tagline": "DIGITAL TRUST INFRASTRUCTURE"
   },
   "nav": {
     "manifesto": "Manifesto",
@@ -64,7 +65,8 @@
     "education": "Education",
     "health": "Health",
     "payments": "Payments",
-    "logistics": "Logistics"
+    "logistics": "Logistics",
+    "brand": "Brand"
   },
   "notFound": {
     "code": "404",

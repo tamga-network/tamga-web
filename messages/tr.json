@@ -2,7 +2,8 @@
   "meta": {
     "title": "Tamga Network — Dijital Güven Altyapısı",
     "description": "Tamga Network, bireylerin, kurumların ve dijital varlıkların güvenilir biçimde tanımlanıp doğrulanabilir ilişkiler kurabildiği bir Dijital Güven Altyapısıdır. Türkiye ve Türk dünyası için açık standartlara uyumlu, egemen bir altyapı.",
-    "ogDescription": "Kadim mührün çağdaş karşılığı: Türkiye ve Türk dünyası için açık standartlara uyumlu, egemen bir dijital güven altyapısı."
+    "ogDescription": "Kadim mührün çağdaş karşılığı: Türkiye ve Türk dünyası için açık standartlara uyumlu, egemen bir dijital güven altyapısı.",
+    "tagline": "DİJİTAL GÜVEN ALTYAPISI"
   },
   "nav": {
     "manifesto": "Manifesto",
@@ -64,7 +65,8 @@
     "education": "Eğitim",
     "health": "Sağlık",
     "payments": "Ödeme",
-    "logistics": "Lojistik"
+    "logistics": "Lojistik",
+    "brand": "Marka"
   },
   "notFound": {
     "code": "404",

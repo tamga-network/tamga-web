@@ -198,7 +198,7 @@ EN = {
                 "**Issuance (OpenID4VCI).** The institution shows a QR code with a PIN on the same screen — the PIN never travels inside the link. Or the wallet starts from the institution directory and proves the person’s identity first. The wallet receives **ten copies**, each bound to a different device key.",
                 "**Genuine wallets only.** Issuers require a short-lived **wallet unit attestation** from the wallet provider.",
                 "**Presentation (OpenID4VP, DCQL).** The verifier’s request is signed with its registered certificate. The wallet checks it against the trust list, shows exactly what is asked and warns about anything beyond the verifier’s registered scope, then sends an encrypted answer with the approved fields and a proof that the key is on this phone.",
-                "**Websites.** A site signs a person up once with the wallet; daily sign-in then uses a **passkey** and shares no fields. See [sign in with TamgaID](/docs/login-with-tamga).",
+                "**Websites.** A site signs a person up once with the wallet; daily sign-in then uses a **passkey** and shares no fields. See [sign in with Tamga](/docs/login-with-tamga).",
             ]),
         ]),
         "verification": ("Verification: five layers, three outcomes", [
@@ -313,7 +313,7 @@ TR = {
                 "**Verme (OpenID4VCI).** Kurum bir QR kodu ve aynı ekranda bir PIN gösterir — PIN bağlantının içinde asla gitmez. Ya da cüzdan kurum dizininden başlar ve önce kişinin kimliğini kanıtlar. Cüzdan, her biri farklı bir cihaz anahtarına bağlı **on kopya** alır.",
                 "**Yalnızca gerçek cüzdanlar.** Kurumlar cüzdan sağlayıcısından kısa ömürlü bir **cüzdan onayı** (WUA) ister.",
                 "**Sunum (OpenID4VP, DCQL).** Doğrulayıcının isteği kayıtlı sertifikasıyla imzalıdır. Cüzdan onu güven listesine karşı denetler, tam olarak neyin istendiğini gösterir ve kayıtlı kapsamın dışındaki her şey için uyarır; ardından onaylanan alanlarla ve anahtarın bu telefonda olduğunun kanıtıyla şifreli bir cevap gönderir.",
-                "**Web siteleri.** Site kişiyi bir kez cüzdanla kaydeder; günlük giriş ardından bir **passkey** ile olur ve hiçbir alan paylaşılmaz. Bkz. [TamgaID ile giriş](/docs/login-with-tamga).",
+                "**Web siteleri.** Site kişiyi bir kez cüzdanla kaydeder; günlük giriş ardından bir **passkey** ile olur ve hiçbir alan paylaşılmaz. Bkz. [Tamga ile giriş](/docs/login-with-tamga).",
             ]),
         ]),
         "verification": ("Doğrulama: beş katman, üç sonuç", [
@@ -428,7 +428,7 @@ TK = {
                 "**Bermek (OpenID4VCI).** Gurama QR kody we şol ekranda PIN görkezýär — PIN baglanyşygyň içinde asla gitmeýär. Ýa-da gapjyk guramalaryň katalogyndan başlaýar we ilki adamyň şahsyýetini subut edýär. Gapjyk her biri başga enjam açaryna baglanan **on nusga** alýar.",
                 "**Diňe hakyky gapjyklar.** Guramalar gapjyk üpjün edijisinden gysga möhletli **gapjyk tassyklamasyny** (WUA) talap edýär.",
                 "**Hödürlemek (OpenID4VP, DCQL).** Barlaýjynyň haýyşy hasaba alnan sertifikaty bilen gol çekilendir. Gapjyk ony ynam sanawyna görä barlaýar, näme soralýandygyny takyk görkezýär we hasaba alnan çäkden daşary islendik zat üçin duýduryş berýär; soňra tassyklanan meýdanlar we açaryň şu telefondadygynyň subutnamasy bilen şifrlenen jogap iberýär.",
-                "**Web saýtlar.** Saýt adamy bir gezek gapjyk bilen hasaba alýar; soňra gündelik giriş **passkey** bilen bolýar we hiç bir meýdan paýlaşylmaýar. Serediň: [TamgaID bilen giriş](/docs/login-with-tamga).",
+                "**Web saýtlar.** Saýt adamy bir gezek gapjyk bilen hasaba alýar; soňra gündelik giriş **passkey** bilen bolýar we hiç bir meýdan paýlaşylmaýar. Serediň: [Tamga bilen giriş](/docs/login-with-tamga).",
             ]),
         ]),
         "verification": ("Barlag: bäş gatlak, üç netije", [

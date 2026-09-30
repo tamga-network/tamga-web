@@ -95,9 +95,9 @@ export const EX: {
 }[] = [
   {
     title: {
-      en: "1 · “Sign in with TamgaID” on a website",
-      tr: "1 · Web sitesine “TamgaID ile giriş”",
-      tk: "1 · Web saýta “TamgaID bilen gir”",
+      en: "1 · “Sign in with Tamga” on a website",
+      tr: "1 · Web sitesine “Tamga ile giriş”",
+      tk: "1 · Web saýta “Tamga bilen gir”",
     },
     text: {
       en: "Your server opens the presentation with a short-lived assertion signed by your trust-list key; the page only shows the QR code; the approved values are handed to your server once.",

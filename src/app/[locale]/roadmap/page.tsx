@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { setRequestLocale } from "next-intl/server";
 import {
   BadgeCheck,
@@ -90,7 +91,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const { meta } = getRoadmapContent(locale);
-  return { title: meta.title, description: meta.description };
+  return pageMeta(locale, "/roadmap", { title: meta.title, description: meta.description });
 }
 
 export default async function RoadmapPage({

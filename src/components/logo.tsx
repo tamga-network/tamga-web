@@ -6,13 +6,19 @@ import { Link } from "@/i18n/navigation";
 const HEX = "M50 4 L86 24 V60 L50 96 L14 60 V24 Z";
 const GLYPH = "M50 22 V70 M32 40 L50 22 L68 40 M34 62 H66";
 
-/** Small static-ish mark for header / footer. */
+/**
+ * Small static-ish mark for header / footer. Same drawing as the single source
+ * (tamga-network/ops/brand/logo/mark.svg); `mono` draws it in the current text colour
+ * (e.g. white on the Al Kızıl "Sign in with Tamga" button).
+ */
 export function LogoMark({
   size = 28,
   className,
+  mono = false,
 }: {
   size?: number;
   className?: string;
+  mono?: boolean;
 }) {
   return (
     <svg
@@ -22,11 +28,11 @@ export function LogoMark({
       className={className}
       aria-hidden="true"
     >
-      <path d={HEX} fill="none" stroke="var(--gold-bright)" strokeWidth={3} />
+      <path d={HEX} fill="none" stroke={mono ? "currentColor" : "var(--gold-bright)"} strokeWidth={mono ? 4 : 3} />
       <path
         d={GLYPH}
         fill="none"
-        stroke="var(--primary)"
+        stroke={mono ? "currentColor" : "var(--primary)"}
         strokeWidth={5}
         strokeLinecap="round"
         strokeLinejoin="round"

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { Noto_Sans_Old_Turkic } from "next/font/google";
 import { setRequestLocale } from "next-intl/server";
 import { Reveal } from "@/components/reveal";
@@ -24,7 +25,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const c = getScenariosContent(locale);
-  return { title: c.meta.title, description: c.meta.description };
+  return pageMeta(locale, "/scenarios", { title: c.meta.title, description: c.meta.description });
 }
 
 export default async function ScenariosPage({

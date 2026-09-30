@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Download } from "lucide-react";
 import { LogoMark } from "@/components/logo";
@@ -11,7 +12,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const { meta } = getWhitepaperContent(locale);
-  return { title: meta.title, description: meta.description };
+  return pageMeta(locale, "/whitepaper", { title: meta.title, description: meta.description });
 }
 
 export default async function WhitepaperPage({

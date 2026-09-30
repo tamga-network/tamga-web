@@ -115,19 +115,27 @@ const NAV: NavSectionSrc[] = [
         },
       },
       {
+        href: "/docs/roles",
+        title: {
+          en: "Roles and terms",
+          tr: "Roller ve terimler",
+          tk: "Rollar we adalgalar",
+        },
+      },
+      {
         href: "/docs/tamga-id",
         title: {
-          en: "TamgaID and the ecosystem",
-          tr: "TamgaID ve ekosistem",
-          tk: "TamgaID we ekoulgam",
+          en: "Tamga Wallet",
+          tr: "Tamga Wallet",
+          tk: "Tamga Wallet",
         },
       },
       {
         href: "/docs/login-with-tamga",
         title: {
-          en: "Sign in with TamgaID",
-          tr: "TamgaID ile giriş",
-          tk: "TamgaID bilen giriş",
+          en: "Sign in with Tamga",
+          tr: "Tamga ile giriş",
+          tk: "Tamga bilen giriş",
         },
       },
     ],

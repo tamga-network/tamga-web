@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import type { ReactNode } from "react";
 import { setRequestLocale } from "next-intl/server";
 import { DocArticle, Callout, KeyTable } from "@/components/doc-article";
@@ -69,8 +70,8 @@ const CONTENT: Record<Locale, Content> = {
         <p>
           A <strong>pseudonym</strong> is the same person using separate,{" "}
           <strong>mutually unlinkable</strong> identities in different
-          applications. Your identity in TamgaHealth cannot be mathematically
-          correlated with your identity in TamgaPay. So the two applications cannot
+          applications. Your identity at a hospital cannot be mathematically
+          correlated with your identity at a bank. So the two applications cannot
           combine their data and profile you — this is called{" "}
           <strong>unlinkability</strong>.
         </p>
@@ -178,7 +179,7 @@ const CONTENT: Record<Locale, Content> = {
         <p>
           <strong>Pseudonym</strong> (takma kimlik), aynı kişinin farklı
           uygulamalarda <strong>birbirine bağlanamayan</strong> ayrı kimlikler
-          kullanmasıdır. TamgaHealth’teki kimliğinle TamgaPay’deki kimliğin
+          kullanmasıdır. Hastanedeki kimliğinle bankadaki kimliğin
           matematiksel olarak ilişkilendirilemez. Böylece iki uygulama verilerini
           birleştirip seni profilleyemez — buna <strong>unlinkability</strong>{" "}
           (bağlanamazlık) denir.
@@ -288,8 +289,8 @@ const CONTENT: Record<Locale, Content> = {
         <p>
           <strong>Pseudonym</strong> (lakam şahsyýet), şol bir adamyň dürli
           programmalarda <strong>biri-birine baglanyp bolmaýan</strong> aýry
-          şahsyýetler ulanmagydyr. TamgaHealth-däki şahsyýetiň bilen
-          TamgaPay-däki şahsyýetiň matematik taýdan baglanyşdyrylyp bilinmeýär.
+          şahsyýetler ulanmagydyr. Hassahanadaky şahsyýetiň bilen
+          bankdaky şahsyýetiň matematik taýdan baglanyşdyrylyp bilinmeýär.
           Şeýlelikde iki programma maglumatlaryny birleşdirip seni profilläp
           bilmeýär — muňa <strong>unlinkability</strong> (baglanyp bolmazlyk)
           diýilýär.
@@ -354,7 +355,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const c = CONTENT[locale as Locale] ?? CONTENT.en;
-  return { title: c.meta.title, description: c.meta.description };
+  return pageMeta(locale, "/docs/identity-layers", { title: c.meta.title, description: c.meta.description });
 }
 
 export default async function Page({

@@ -54,6 +54,7 @@ const COLUMNS: { titleKey: string; items: FItem[] }[] = [
       { key: "roadmap", href: "/roadmap" },
       { key: "changelog", href: "/changelog" },
       { key: "blog", href: "/blog" },
+      { key: "brand", href: "/brand" },
       { key: "careers" },
     ],
   },

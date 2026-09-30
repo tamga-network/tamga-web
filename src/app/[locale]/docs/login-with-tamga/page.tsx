@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import type { ReactNode } from "react";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
@@ -34,14 +35,14 @@ await post("/passkey/login/verify", { flow, response: await passkey.get(options)
 const CONTENT: Record<Locale, Content> = {
   en: {
     meta: {
-      title: "Sign in with TamgaID",
+      title: "Sign in with Tamga",
       description:
         "Sign up to a website once with your wallet — only the fields you approve — then sign in every day with a passkey that shares nothing.",
     },
     eyebrow: "How Tamga works",
-    title: "Sign in with TamgaID",
+    title: "Sign in with Tamga",
     intro:
-      "You already know “Sign in with Google”. “Sign in with TamgaID” looks the same, but works the other way round: the identity lives in your wallet, the site gets only the fields you approve, and after the first time it gets nothing at all.",
+      "You already know “Sign in with Google”. “Sign in with Tamga” looks the same, but works the other way round: the identity lives in your wallet, the site gets only the fields you approve, and after the first time it gets nothing at all.",
     body: (
       <>
         <h2>Two steps: sign up once, then a passkey</h2>
@@ -64,7 +65,7 @@ const CONTENT: Record<Locale, Content> = {
             works for that one site.
           </li>
           <li>
-            <strong>New device, no passkey?</strong> “Sign in with TamgaID” asks for the account
+            <strong>New device, no passkey?</strong> “Sign in with Tamga” asks for the account
             key only, then you add a passkey again.
           </li>
         </ol>
@@ -72,7 +73,7 @@ const CONTENT: Record<Locale, Content> = {
         <FlowStrip
           nodes={[
             { label: "Website", sub: "asks for fields" },
-            { label: "TamgaID", sub: "you approve" },
+            { label: "Tamga Wallet", sub: "you approve" },
             { label: "Verifier", sub: "checks the proof" },
             { label: "Passkey", sub: "daily sign-in" },
           ]}
@@ -128,14 +129,14 @@ const CONTENT: Record<Locale, Content> = {
   },
   tr: {
     meta: {
-      title: "TamgaID ile giriş",
+      title: "Tamga ile giriş",
       description:
         "Web sitesine cüzdanınla bir kez kaydol — yalnızca onayladığın alanlarla — sonra her gün hiçbir şey paylaşmayan bir passkey ile giriş yap.",
     },
     eyebrow: "Tamga nasıl çalışır",
-    title: "TamgaID ile giriş",
+    title: "Tamga ile giriş",
     intro:
-      "“Google ile giriş yap”ı biliyorsun. “TamgaID ile giriş” aynı görünür ama tersine çalışır: kimlik senin cüzdanındadır, site yalnızca onayladığın alanları alır ve ilk seferden sonra hiçbir şey almaz.",
+      "“Google ile giriş yap”ı biliyorsun. “Tamga ile giriş” aynı görünür ama tersine çalışır: kimlik senin cüzdanındadır, site yalnızca onayladığın alanları alır ve ilk seferden sonra hiçbir şey almaz.",
     body: (
       <>
         <h2>İki adım: bir kez kayıt, sonra passkey</h2>
@@ -156,7 +157,7 @@ const CONTENT: Record<Locale, Content> = {
             özeldir.
           </li>
           <li>
-            <strong>Yeni cihaz, passkey yok mu?</strong> “TamgaID ile giriş” yalnızca hesap
+            <strong>Yeni cihaz, passkey yok mu?</strong> “Tamga ile giriş” yalnızca hesap
             anahtarını ister, sonra yeniden passkey eklersin.
           </li>
         </ol>
@@ -164,7 +165,7 @@ const CONTENT: Record<Locale, Content> = {
         <FlowStrip
           nodes={[
             { label: "Web sitesi", sub: "alan ister" },
-            { label: "TamgaID", sub: "sen onaylarsın" },
+            { label: "Tamga Wallet", sub: "sen onaylarsın" },
             { label: "Doğrulayıcı", sub: "kanıtı denetler" },
             { label: "Passkey", sub: "günlük giriş" },
           ]}
@@ -219,14 +220,14 @@ const CONTENT: Record<Locale, Content> = {
   },
   tk: {
     meta: {
-      title: "TamgaID bilen giriş",
+      title: "Tamga bilen giriş",
       description:
         "Web saýta gapjygyň bilen bir gezek hasaba dur — diňe tassyklan meýdanlaryň bilen — soňra her gün hiç zat paýlaşmaýan passkey bilen gir.",
     },
     eyebrow: "Tamga nähili işleýär",
-    title: "TamgaID bilen giriş",
+    title: "Tamga bilen giriş",
     intro:
-      "“Google bilen giriş” sana tanyş. “TamgaID bilen giriş” şeýle görünýär, ýöne tersine işleýär: şahsyýet seniň gapjygyňda, saýt diňe tassyklan meýdanlaryňy alýar we ilkinji gezekden soň hiç zat almaýar.",
+      "“Google bilen giriş” sana tanyş. “Tamga bilen giriş” şeýle görünýär, ýöne tersine işleýär: şahsyýet seniň gapjygyňda, saýt diňe tassyklan meýdanlaryňy alýar we ilkinji gezekden soň hiç zat almaýar.",
     body: (
       <>
         <h2>Iki ädim: bir gezek hasaba durmak, soň passkey</h2>
@@ -248,7 +249,7 @@ const CONTENT: Record<Locale, Content> = {
             saýt üçin işleýär.
           </li>
           <li>
-            <strong>Täze enjam, passkey ýokmy?</strong> “TamgaID bilen giriş” diňe hasap açaryny
+            <strong>Täze enjam, passkey ýokmy?</strong> “Tamga bilen giriş” diňe hasap açaryny
             soraýar, soň ýene passkey goşýarsyň.
           </li>
         </ol>
@@ -256,7 +257,7 @@ const CONTENT: Record<Locale, Content> = {
         <FlowStrip
           nodes={[
             { label: "Web saýt", sub: "meýdan soraýar" },
-            { label: "TamgaID", sub: "sen tassyklaýarsyň" },
+            { label: "Tamga Wallet", sub: "sen tassyklaýarsyň" },
             { label: "Barlaýjy", sub: "subutnamany barlaýar" },
             { label: "Passkey", sub: "gündelik giriş" },
           ]}
@@ -319,7 +320,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const c = CONTENT[locale as Locale] ?? CONTENT.en;
-  return { title: c.meta.title, description: c.meta.description };
+  return pageMeta(locale, "/docs/login-with-tamga", { title: c.meta.title, description: c.meta.description });
 }
 
 export default async function Page({

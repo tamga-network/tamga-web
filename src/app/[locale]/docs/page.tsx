@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import type { ReactNode } from "react";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
@@ -129,7 +130,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const ui = UI[locale as Locale] ?? UI.en;
-  return { title: ui.meta.title, description: ui.meta.description };
+  return pageMeta(locale, "/docs", { title: ui.meta.title, description: ui.meta.description });
 }
 
 export default async function DocsIndexPage({

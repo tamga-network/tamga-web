@@ -4,6 +4,32 @@ Biçim: Keep a Changelog. Site dağıtımları tarihle anılır.
 
 ## [Yayınlanmadı]
 
+### Düzeltildi (2026-09-30 — arama ve paylaşım)
+- **Canonical hatası:** her alt sayfa arama motoruna dilin ana sayfasını "asıl adres" diye bildiriyordu (docs, whitepaper, blog
+  dizinden düşebilirdi). Artık her sayfa kendi adresini, üç dil eşini ve `x-default`'u verir (`src/lib/seo.ts` `pageMeta`).
+- Paylaşım önizlemesi sayfanın kendi başlığı ve açıklamasıyla (`og:url`, `og:locale` tr_TR/en_US/tk_TM); blog yazıları makale
+  türünde ve tarihli. Paylaşım görselinde alt başlık sayfanın dilinde.
+
+### Eklendi (2026-09-30 — marka, JSON-LD, simgeler)
+- `/brand` "Marka" sayfası: ad yazılışı, mühür (koyu/açık/tek renk/adla), renkler (HEX/RGB, koyu zemin tonları), yazılar
+  (başlık Sora, gövde IBM Plex Sans, kod IBM Plex Mono), "Tamga ile giriş yap" düğmesi, indirmeler, kullanım izni. Proje
+  menüsünde ve altbilgide.
+- JSON-LD: her sayfada `Organization` + `WebSite` (Google site adı ve bilgi paneli), blog yazılarında `BlogPosting`.
+- iPhone simgesi (`apple-touch-icon.png`), web manifest, tema rengi; simgeler tek kaynaktan (`npm run brand:sync` ←
+  `tamga-network/ops/brand/icons`).
+- "Tamga ile giriş yap" örnek düğmesi parmak izi yerine tek renk mühürle (marka sayfasındaki kural).
+
+### Değişti (2026-09-30 — renkler)
+- Zemin ve metin renkleri marka paletine bağlandı: açık temada Parşömen yüzeyler + Obsidyen metin, koyu temada Obsidyen zemin
+  + Parşömen metin (önceki nötr gri tonların yerine). Paylaşım görseli de Obsidyen / Parşömen / Altın.
+
+### Değişti (2026-09-30 — ürün adları)
+- Cüzdanın adı her yerde **Tamga Wallet**; "TamgaID" adı kaldırıldı. Web sitesi girişi "Tamga ile giriş yap" / "Tamga ile
+  kayıt ol" (en "Sign in with Tamga", tk "Tamga bilen gir"). `/docs/tamga-id` sayfası "Tamga Wallet" oldu (adres şimdilik aynı);
+  whitepaper PDF'leri yeniden derlendi.
+- Sözlük ve sayfalardan dikey platform adları (TamgaEducation, TamgaHealth, TamgaLogistics, TamgaPay) ve "Trust Graph"
+  çıkarıldı; yerine sektör anlatımı. "Trust Mesh" vizyon adı olarak kalır.
+
 ### Eklendi (2026-09-30 — bilinen kısayollar, lisans)
 - `/shortcuts` "Bilinen kısayollar": sapma kütüğünün kamuya açık, sade hâli (açık / daraldı / kapandı); ana sayfa, whitepaper
   ve blog "herkese açık liste" ifadeleri bu sayfaya bağlanır. Proje menüsünde.

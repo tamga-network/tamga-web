@@ -100,7 +100,7 @@ const en: AboutContent = {
     rows: [
       {
         k: "Layered model",
-        v: "Infrastructure = Tamga Network (like EBSI). Application/wallet = TamgaID (like the EUDI Wallet). Two separate but complementary layers.",
+        v: "Infrastructure = Tamga Network (like EBSI). Application/wallet = Tamga Wallet (like the EUDI Wallet). Two separate but complementary layers.",
       },
       {
         k: "States with equal power",
@@ -143,7 +143,7 @@ const en: AboutContent = {
     items: [
       { email: "info@tamga.network", label: "General", note: "Questions about the project and the network." },
       { email: "partners@tamga.network", label: "Partnerships", note: "Institutions, states and integration partners." },
-      { email: "support@tamga.network", label: "Support", note: "Help with TamgaID and our products." },
+      { email: "support@tamga.network", label: "Support", note: "Help with Tamga Wallet and our services." },
       { email: "security@tamga.network", label: "Security", note: "Responsible disclosure of vulnerabilities." },
     ],
   },
@@ -221,7 +221,7 @@ const tr: AboutContent = {
     rows: [
       {
         k: "Katmanlı model",
-        v: "Altyapı = Tamga Network (EBSI benzeri). Uygulama/cüzdan = TamgaID (EUDI benzeri). İkisi ayrı ama tamamlayıcı.",
+        v: "Altyapı = Tamga Network (EBSI benzeri). Uygulama/cüzdan = Tamga Wallet (EUDI benzeri). İkisi ayrı ama tamamlayıcı.",
       },
       {
         k: "Eşit güçlü devletler",
@@ -263,7 +263,7 @@ const tr: AboutContent = {
     items: [
       { email: "info@tamga.network", label: "Genel", note: "Proje ve ağ hakkındaki sorular." },
       { email: "partners@tamga.network", label: "İş birlikleri", note: "Kurumlar, devletler ve entegrasyon ortakları." },
-      { email: "support@tamga.network", label: "Destek", note: "TamgaID ve ürünlerimiz için yardım." },
+      { email: "support@tamga.network", label: "Destek", note: "Tamga Wallet ve hizmetlerimiz için yardım." },
       { email: "security@tamga.network", label: "Güvenlik", note: "Güvenlik açıklarının sorumlu bildirimi." },
     ],
   },
@@ -341,7 +341,7 @@ const tk: AboutContent = {
     rows: [
       {
         k: "Gatlakly model",
-        v: "Infrastruktura = Tamga Network (EBSI ýaly). Programma/gapjyk = TamgaID (EUDI ýaly). Ikisi aýry ýöne biri-birini doldurýan.",
+        v: "Infrastruktura = Tamga Network (EBSI ýaly). Programma/gapjyk = Tamga Wallet (EUDI ýaly). Ikisi aýry ýöne biri-birini doldurýan.",
       },
       {
         k: "Deň güýçli döwletler",
@@ -383,7 +383,7 @@ const tk: AboutContent = {
     items: [
       { email: "info@tamga.network", label: "Umumy", note: "Taslama we tor barada soraglar." },
       { email: "partners@tamga.network", label: "Hyzmatdaşlyk", note: "Edaralar, döwletler we integrasiýa hyzmatdaşlary." },
-      { email: "support@tamga.network", label: "Goldaw", note: "TamgaID we önümlerimiz üçin kömek." },
+      { email: "support@tamga.network", label: "Goldaw", note: "Tamga Wallet we hyzmatlarymyz üçin kömek." },
       { email: "security@tamga.network", label: "Howpsuzlyk", note: "Howpsuzlyk gowşaklyklarynyň jogapkärli habary." },
     ],
   },

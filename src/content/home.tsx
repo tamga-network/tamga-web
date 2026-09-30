@@ -247,7 +247,7 @@ const en: HomeContent = {
       {
         role: "Holder",
         label: "Carries",
-        body: "The party that stores and presents the credential in their wallet (TamgaID) — usually the individual.",
+        body: "The party that stores and presents the credential in their wallet (Tamga Wallet) — usually the individual.",
       },
       {
         role: "Verifier",
@@ -277,12 +277,12 @@ const en: HomeContent = {
   },
   ecosystem: {
     eyebrow: "Sectors",
-    title: "Starts with TamgaID, grows with vertical platforms",
+    title: "Starts with Tamga Wallet, grows across sectors",
     description:
-      "The infrastructure’s first end-user product is TamgaID — the wallet where a user creates their digital identity. On top of it, sector-specific platforms are built, all using the same trust layer. Education runs today; health, logistics and payments show where the same layer leads.",
-    tamgaIdTitle: "TamgaID",
+      "The infrastructure’s first end-user product is Tamga Wallet — the app where a person keeps and presents their credentials. Every sector uses the same trust layer. Education runs today; health, logistics and payments show where the same layer leads.",
+    tamgaIdTitle: "Tamga Wallet",
     tamgaIdBody:
-      "The wallet where a user keeps and presents their credentials. Like an EUDI Wallet: identity and diplomas, selective disclosure, a pass for turnstiles and event gates, and passwordless sign-in to websites. Free for individuals. Qualified e-signature is on the roadmap. TamgaID is not Tamga Network itself — it is the first door that opens onto it.",
+      "The wallet where a user keeps and presents their credentials. Like an EUDI Wallet: identity and diplomas, selective disclosure, a pass for turnstiles and event gates, and passwordless sign-in to websites. Free for individuals. Qualified e-signature is on the roadmap. Tamga Wallet is not Tamga Network itself — it is the first door that opens onto it.",
     verticals: [
       { name: "Education", body: "Diplomas, transcripts and academic titles produced as internationally verifiable credentials." },
       { name: "Health", body: "Physician credentials, patient consents and digital health records." },
@@ -335,7 +335,7 @@ const en: HomeContent = {
     title: "The EBSI of the Turkic world",
     lead: "If Europe’s infrastructure layer is EBSI, then Tamga Network is its counterpart for Türkiye and the Turkic world. Not a competitor, but interoperable. The same standards, our own sovereign network.",
     rows: [
-      { k: "Layered model", v: "Infrastructure = Tamga Network (like EBSI) · Application = TamgaID (like the EUDI Wallet)." },
+      { k: "Layered model", v: "Infrastructure = Tamga Network (like EBSI) · Application = Tamga Wallet (like the EUDI Wallet)." },
       { k: "States with equal power", v: "Target: the states of the Organization of Turkic States run the network with equal votes. Today Tamga operates the trust lists provisionally, on behalf of the states — every structure already has a slot for each member state." },
       { k: "Sovereignty-first governance", v: "Network membership by 2/3 validator vote · national registries governed only by their own state · cross-border recognition set unilaterally." },
       { k: "Accountable privacy", v: "Today: each verifier receives a different copy of your credential, so verifiers cannot link you to each other. Design goal (research): identity resolvable only by a court plus a multi-institution threshold — never by any single actor." },
@@ -519,7 +519,7 @@ const tr: HomeContent = {
       {
         role: "Holder",
         label: "Taşıyan",
-        body: "Belgeyi cüzdanında (TamgaID) saklayan ve sunan taraf; çoğunlukla birey.",
+        body: "Belgeyi cüzdanında (Tamga Wallet) saklayan ve sunan taraf; çoğunlukla birey.",
       },
       {
         role: "Verifier",
@@ -549,12 +549,12 @@ const tr: HomeContent = {
   },
   ecosystem: {
     eyebrow: "Sektörler",
-    title: "TamgaID ile başlar, dikey platformlarla büyür",
+    title: "Tamga Wallet ile başlar, sektörlere yayılır",
     description:
-      "Altyapının son kullanıcıya açılan ilk ürünü TamgaID’dir — kullanıcının dijital kimliğini oluşturduğu cüzdan. Üzerine, hepsi aynı güven katmanını kullanan sektörel platformlar inşa edilir. Eğitim bugün çalışıyor; sağlık, lojistik ve ödeme aynı katmanın nereye uzandığını gösteriyor.",
-    tamgaIdTitle: "TamgaID",
+      "Altyapının son kullanıcıya açılan ilk ürünü Tamga Wallet’tır — kişinin belgelerini sakladığı ve sunduğu uygulama. Her sektör aynı güven katmanını kullanır. Eğitim bugün çalışıyor; sağlık, lojistik ve ödeme aynı katmanın nereye uzandığını gösteriyor.",
+    tamgaIdTitle: "Tamga Wallet",
     tamgaIdBody:
-      "Kullanıcının belgelerini sakladığı ve sunduğu cüzdan. EUDI Wallet benzeri: kimlik ve diploma, seçici açıklama, turnike ve etkinlik kapısı için geçiş kartı, web sitelerine şifresiz giriş. Kişiler için ücretsiz. Nitelikli e-imza yol haritasında. TamgaID, Tamga Network’ün kendisi değildir — ona açılan ilk kapıdır.",
+      "Kullanıcının belgelerini sakladığı ve sunduğu cüzdan. EUDI Wallet benzeri: kimlik ve diploma, seçici açıklama, turnike ve etkinlik kapısı için geçiş kartı, web sitelerine şifresiz giriş. Kişiler için ücretsiz. Nitelikli e-imza yol haritasında. Tamga Wallet, Tamga Network’ün kendisi değildir — ona açılan ilk kapıdır.",
     verticals: [
       { name: "Eğitim", body: "Diploma, transkript ve akademik unvanların uluslararası doğrulanabilir belgeleri." },
       { name: "Sağlık", body: "Hekim yetkileri, hasta onayları ve dijital sağlık belgeleri." },
@@ -607,7 +607,7 @@ const tr: HomeContent = {
     title: "Türk dünyasının EBSI’si",
     lead: "Avrupa’nın altyapı katmanı EBSI ise, Tamga Network Türkiye ve Türk dünyası için onun karşılığıdır. Rakip değil, birlikte çalışabilir. Aynı standartlar, kendi egemen ağ.",
     rows: [
-      { k: "Katmanlı model", v: "Altyapı = Tamga Network (EBSI benzeri) · Uygulama = TamgaID (EUDI benzeri)." },
+      { k: "Katmanlı model", v: "Altyapı = Tamga Network (EBSI benzeri) · Uygulama = Tamga Wallet (EUDI benzeri)." },
       { k: "Eşit güçlü devletler", v: "Hedef: ağı Türk Devletleri Teşkilatı devletleri eşit oyla işletir. Bugün Tamga, güven listelerini devletler adına geçici operatör olarak yayınlar — her yapıda her üye devlet için şimdiden bir yer ayrılmıştır." },
       { k: "Egemenlik-öncelikli yönetişim", v: "Ağa üyelik 2/3 validator oyuyla · ulusal kayıtlar yalnızca ilgili devletin yetkisinde · sınır-ötesi tanıma tek taraflı belirlenir." },
       { k: "Hesap-verebilir mahremiyet", v: "Bugün: her doğrulayıcı belgenin farklı bir kopyasını alır; doğrulayıcılar seni birbirleriyle eşleştiremez. Tasarım hedefi (araştırma): kimlik yalnızca mahkeme + çok-kurumlu eşikle çözülebilsin — tek bir aktör asla açamasın." },
@@ -792,7 +792,7 @@ const tk: HomeContent = {
       {
         role: "Holder",
         label: "Göteriji",
-        body: "Resminamany gapjygynda (TamgaID) saklaýan we hödürleýän tarap; köplenç şahs.",
+        body: "Resminamany gapjygynda (Tamga Wallet) saklaýan we hödürleýän tarap; köplenç şahs.",
       },
       {
         role: "Verifier",
@@ -822,12 +822,12 @@ const tk: HomeContent = {
   },
   ecosystem: {
     eyebrow: "Pudaklar",
-    title: "TamgaID bilen başlaýar, dik platformalar bilen ösýär",
+    title: "Tamga Wallet bilen başlaýar, pudaklara ýaýraýar",
     description:
-      "Infrastrukturanyň soňky ulanyja açylýan ilkinji önümi TamgaID — ulanyjynyň sanly şahsyýetini döredýän gapjygy. Onuň üstünde, ählisi şol bir ynam gatlagyny ulanýan pudaklaýyn platformalar gurulýar. Bilim häzir işleýär; saglyk, logistika we töleg şol bir gatlagyň nirä barýandygyny görkezýär.",
-    tamgaIdTitle: "TamgaID",
+      "Infrastrukturanyň soňky ulanyja açylýan ilkinji önümi Tamga Wallet — adamyň resminamalaryny saklaýan we hödürleýän programmasy. Ähli pudaklar şol bir ynam gatlagyny ulanýar. Bilim häzir işleýär; saglyk, logistika we töleg şol bir gatlagyň nirä barýandygyny görkezýär.",
+    tamgaIdTitle: "Tamga Wallet",
     tamgaIdBody:
-      "Ulanyjynyň resminamalaryny saklaýan we hödürleýän gapjygy. EUDI Wallet ýaly: şahsyýet we diplom, saýlama açyklama, turniket we çäre gapysy üçin geçiş kartasy, web saýtlara parolsyz giriş. Adamlar üçin mugt. Kwalifisirlenen elektron gol ýol kartasynda. TamgaID Tamga Network-yň özi däl — oňa açylýan ilkinji gapydyr.",
+      "Ulanyjynyň resminamalaryny saklaýan we hödürleýän gapjygy. EUDI Wallet ýaly: şahsyýet we diplom, saýlama açyklama, turniket we çäre gapysy üçin geçiş kartasy, web saýtlara parolsyz giriş. Adamlar üçin mugt. Kwalifisirlenen elektron gol ýol kartasynda. Tamga Wallet Tamga Network-yň özi däl — oňa açylýan ilkinji gapydyr.",
     verticals: [
       { name: "Bilim", body: "Diplomlaryň, transkriptleriň we akademiki dereželeriň halkara barlanyp bilinýän resminamalary." },
       { name: "Saglyk", body: "Lukman ygtyýarlary, näsag razylyklary we sanly saglyk resminamalary." },
@@ -880,7 +880,7 @@ const tk: HomeContent = {
     title: "Türki dünýäsiniň EBSI-si",
     lead: "Ýewropanyň infrastruktura gatlagy EBSI bolsa, Tamga Network Türkiýe we türki dünýäsi üçin onuň garşylygydyr. Bäsdeş däl, bilelikde işleýän. Şol bir standartlar, öz özygtyýarly tory.",
     rows: [
-      { k: "Gatlakly model", v: "Infrastruktura = Tamga Network (EBSI ýaly) · Programma = TamgaID (EUDI ýaly)." },
+      { k: "Gatlakly model", v: "Infrastruktura = Tamga Network (EBSI ýaly) · Programma = Tamga Wallet (EUDI ýaly)." },
       { k: "Deň güýçli döwletler", v: "Maksat: tory Türki Döwletleriň Guramasynyň döwletleri deň ses bilen dolandyrýar. Häzir Tamga ynam sanawlaryny döwletleriň adyndan wagtlaýyn operator hökmünde çap edýär — her gurluşda her agza döwlet üçin eýýäm orun bar." },
       { k: "Özygtyýarlylyga esaslanýan dolandyryş", v: "Tora agzalyk 2/3 validator sesi bilen · milli hasaba alyşlar diňe degişli döwletiň ygtyýarynda · serhetaşa ykrar birtaraplaýyn kesgitlenýär." },
       { k: "Hasabatly gizlinlik", v: "Häzir: her barlaýjy resminamanyň başga nusgasyny alýar; barlaýjylar seni biri-biri bilen baglanyşdyryp bilmeýär. Dizaýn maksady (gözleg): şahsyýet diňe kazyýet + köp-guramaly bosaga bilen çözülip bilsin — hiç bir aktýor ýeke özi açyp bilmesin." },

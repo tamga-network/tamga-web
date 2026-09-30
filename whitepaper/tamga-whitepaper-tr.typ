@@ -80,7 +80,7 @@ Ulusal kimlik numarası yalnızca kimlik belgesinde bulunur; hiçbir diploma, ka
 - *Verme (OpenID4VCI).* Kurum bir QR kodu ve aynı ekranda bir PIN gösterir — PIN bağlantının içinde asla gitmez. Ya da cüzdan kurum dizininden başlar ve önce kişinin kimliğini kanıtlar. Cüzdan, her biri farklı bir cihaz anahtarına bağlı *on kopya* alır.
 - *Yalnızca gerçek cüzdanlar.* Kurumlar cüzdan sağlayıcısından kısa ömürlü bir *cüzdan onayı* (WUA) ister.
 - *Sunum (OpenID4VP, DCQL).* Doğrulayıcının isteği kayıtlı sertifikasıyla imzalıdır. Cüzdan onu güven listesine karşı denetler, tam olarak neyin istendiğini gösterir ve kayıtlı kapsamın dışındaki her şey için uyarır; ardından onaylanan alanlarla ve anahtarın bu telefonda olduğunun kanıtıyla şifreli bir cevap gönderir.
-- *Web siteleri.* Site kişiyi bir kez cüzdanla kaydeder; günlük giriş ardından bir *passkey* ile olur ve hiçbir alan paylaşılmaz. Bkz. #link("https://tamga.network/tr/docs/login-with-tamga")[TamgaID ile giriş].
+- *Web siteleri.* Site kişiyi bir kez cüzdanla kaydeder; günlük giriş ardından bir *passkey* ile olur ve hiçbir alan paylaşılmaz. Bkz. #link("https://tamga.network/tr/docs/login-with-tamga")[Tamga ile giriş].
 
 = Doğrulama: beş katman, üç sonuç
 

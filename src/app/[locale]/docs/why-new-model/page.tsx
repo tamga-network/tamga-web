@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import type { ReactNode } from "react";
 import { setRequestLocale } from "next-intl/server";
 import { DocArticle, Callout } from "@/components/doc-article";
@@ -264,7 +265,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const c = CONTENT[locale as Locale] ?? CONTENT.en;
-  return { title: c.meta.title, description: c.meta.description };
+  return pageMeta(locale, "/docs/why-new-model", { title: c.meta.title, description: c.meta.description });
 }
 
 export default async function Page({

@@ -21,6 +21,7 @@ export const routing = defineRouting({
     "/changelog": "/changelog",
     "/sdk": "/sdk",
     "/shortcuts": "/shortcuts",
+    "/brand": "/brand",
     "/blog/[slug]": "/blog/[slug]",
     "/docs": "/docs",
     "/docs/why-new-model": "/docs/why-new-model",
@@ -40,6 +41,7 @@ export const routing = defineRouting({
     "/docs/recovery-revocation": "/docs/recovery-revocation",
     "/docs/developers": "/docs/developers",
     "/docs/glossary": "/docs/glossary",
+    "/docs/roles": "/docs/roles",
   },
 });
 

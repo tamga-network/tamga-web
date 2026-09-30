@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { setRequestLocale } from "next-intl/server";
 import { Compass, Target, Landmark, Users, ShieldCheck, Layers, Mail } from "lucide-react";
 import { PageHeader, Card, Button } from "@/components/ui";
@@ -15,7 +16,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const { meta } = getAboutContent(locale);
-  return { title: meta.title, description: meta.description };
+  return pageMeta(locale, "/about", { title: meta.title, description: meta.description });
 }
 
 export default async function AboutPage({

@@ -13,7 +13,7 @@ export type WalletMockData = {
   status: string;
 };
 
-/** A stylized TamgaID app / wallet screen — a usage mockup, theme-aware. */
+/** A stylized Tamga Wallet app / wallet screen — a usage mockup, theme-aware. */
 export function WalletMock({ data }: { data: WalletMockData }) {
   return (
     <div className="mx-auto w-full max-w-[310px] rounded-[1.9rem] border border-border-strong bg-background-elevated p-2.5 shadow-soft">

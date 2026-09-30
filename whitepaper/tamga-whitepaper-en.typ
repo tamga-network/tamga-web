@@ -80,7 +80,7 @@ The national ID number appears only in the identity credential; no diploma, card
 - *Issuance (OpenID4VCI).* The institution shows a QR code with a PIN on the same screen — the PIN never travels inside the link. Or the wallet starts from the institution directory and proves the person’s identity first. The wallet receives *ten copies*, each bound to a different device key.
 - *Genuine wallets only.* Issuers require a short-lived *wallet unit attestation* from the wallet provider.
 - *Presentation (OpenID4VP, DCQL).* The verifier’s request is signed with its registered certificate. The wallet checks it against the trust list, shows exactly what is asked and warns about anything beyond the verifier’s registered scope, then sends an encrypted answer with the approved fields and a proof that the key is on this phone.
-- *Websites.* A site signs a person up once with the wallet; daily sign-in then uses a *passkey* and shares no fields. See #link("https://tamga.network/en/docs/login-with-tamga")[sign in with TamgaID].
+- *Websites.* A site signs a person up once with the wallet; daily sign-in then uses a *passkey* and shares no fields. See #link("https://tamga.network/en/docs/login-with-tamga")[sign in with Tamga].
 
 = Verification: five layers, three outcomes
 

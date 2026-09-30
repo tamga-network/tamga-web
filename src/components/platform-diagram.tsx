@@ -29,7 +29,7 @@ const en: Content = {
   description:
     "The issuer signs a credential into the holder's wallet; the holder presents it to any verifier, who checks it against the signed trust lists without ever contacting the issuer. Personal data never enters the lists.",
   issuerSub: "University · X.509",
-  holderSub: "Citizen · TamgaID",
+  holderSub: "Citizen · Tamga Wallet",
   verifierSub: "Employer · RP",
   principles: [
     "Personal data never in lists or logs",
@@ -44,7 +44,7 @@ const tr: Content = {
   description:
     "Issuer, belgeyi imzalayıp holder'ın cüzdanına verir; holder bunu herhangi bir verifier'a sunar, verifier ise issuer'a hiç ulaşmadan imzalı güven listelerine karşı doğrular. Kişisel veri listelere asla girmez.",
   issuerSub: "Üniversite · X.509",
-  holderSub: "Vatandaş · TamgaID",
+  holderSub: "Vatandaş · Tamga Wallet",
   verifierSub: "İşveren · RP",
   principles: [
     "Kişisel veri listede ve günlükte yok",
@@ -59,7 +59,7 @@ const tk: Content = {
   description:
     "Issuer resminamany imzalap holder-yň gapjygyna berýär; holder ony islendik verifier-e hödürleýär, verifier bolsa issuer-e ýüz tutman gol çekilen ynam sanawlaryna görä barlaýar. Şahsy maglumat sanawlara asla girmeýär.",
   issuerSub: "Uniwersitet · X.509",
-  holderSub: "Raýat · TamgaID",
+  holderSub: "Raýat · Tamga Wallet",
   verifierSub: "Iş beriji · RP",
   principles: [
     "Şahsy maglumat sanawda we žurnalda ýok",

@@ -7,20 +7,23 @@
   Tamga Network — Brand design system
   Palette (approved): Al Kızıl #B01E22 · Altın #C8A24C · Obsidyen #17110F
   Parşömen #F4EDE2 · Göktürk gök mavisi #2A6F8E
-  Type: IBM Plex Serif (display) · IBM Plex Sans (body) · IBM Plex Mono (labels)
+  Type: Sora (display / headings) · IBM Plex Sans (body) · IBM Plex Mono (code, labels)
+  Canvas and text come from the palette itself (tamga.network/brand): light = Parşömen surfaces + Obsidyen text,
+  dark = Obsidyen ground + Parşömen text. On dark grounds Al Kızıl and Altın use their lighter tints for text contrast
+  (WCAG AA); the core values stay for marks and fills.
 */
 
 :root {
-  /* Light — clean neutral canvas (replaces the warm "Parşömen") */
-  --background: #fafaf8;
+  /* Light — Parşömen canvas, Obsidyen text */
+  --background: #fbf8f3;
   --background-elevated: #ffffff;
-  --surface: #f3f2ef;
-  --surface-2: #eae8e3;
-  --foreground: #1c1b19;
-  --foreground-muted: #57534d;
-  --foreground-subtle: #7c776f;
-  --border: #e5e3dd;
-  --border-strong: #d2cfc8;
+  --surface: #f4ede2;      /* Parşömen */
+  --surface-2: #ebe2d4;
+  --foreground: #17110f;   /* Obsidyen */
+  --foreground-muted: #564b43;
+  --foreground-subtle: #7a6e64;
+  --border: #e6dccd;
+  --border-strong: #d5c7b3;
 
   --primary: #b01e22;      /* Al Kızıl */
   --primary-strong: #8a1619;
@@ -34,16 +37,16 @@
 }
 
 .dark {
-  /* Dark — clean neutral canvas (replaces the warm "Obsidyen") */
-  --background: #131314;
-  --background-elevated: #191919;
-  --surface: #1d1d1e;
-  --surface-2: #242425;
-  --foreground: #f4f3f1;
-  --foreground-muted: #b6b3ad;
-  --foreground-subtle: #86837d;
-  --border: #2b2b2d;
-  --border-strong: #3c3c3f;
+  /* Dark — Obsidyen ground, Parşömen text */
+  --background: #17110f;   /* Obsidyen */
+  --background-elevated: #1e1714;
+  --surface: #241c18;
+  --surface-2: #2c231e;
+  --foreground: #f4ede2;   /* Parşömen */
+  --foreground-muted: #bfb3a5;
+  --foreground-subtle: #8e8276;
+  --border: #33291f;
+  --border-strong: #463a2f;
 
   --primary: #e0554b;      /* brighter Al Kızıl for dark contrast */
   --primary-strong: #b01e22;

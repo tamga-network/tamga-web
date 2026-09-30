@@ -360,7 +360,7 @@ const POSTS: Post[] = [
               <strong>EUDI Wallet</strong>). Tamga Network mirrors exactly this model
               for Türkiye and the Turkic world:{" "}
               <strong>Tamga Network is the infrastructure</strong> and{" "}
-              <strong>TamgaID is the wallet</strong> that opens onto it. We are not a
+              <strong>Tamga Wallet is the wallet</strong> that opens onto it. We are not a
               competitor to EBSI — because we rest on the same open standards, we are
               designed to interoperate with it. The difference is sovereignty: data and
               governance stay in-country.
@@ -369,7 +369,7 @@ const POSTS: Post[] = [
             <p>
               A single monolithic product ages badly. By separating the sovereign
               network (the trust anchor), the open standards (VC, SD-JWT, X.509) and the
-              applications (wallet and vertical platforms), each layer can evolve on its
+              applications (the wallet and the services built on it), each layer can evolve on its
               own. States join the network; institutions register issuers; developers
               build apps — without any layer waiting on another.
             </p>
@@ -377,7 +377,7 @@ const POSTS: Post[] = [
             <ul>
               <li><strong>Phase 0 — Foundations.</strong> A foundation runs the initial validators; the architecture already commits to handing them to states over time (progressive decentralization).</li>
               <li><strong>Phase 1 — Identity + logistics, money-free.</strong> The first pilot proves value without touching payments: verified diplomas, credentials, and last-mile delivery a customer confirms from their own wallet.</li>
-              <li><strong>Phase 2 — Vertical platforms.</strong> Education, health and logistics run on the shared trust layer; institutions become full nodes.</li>
+              <li><strong>Phase 2 — Sectors.</strong> Education, health and logistics run on the shared trust layer; institutions become full nodes.</li>
               <li><strong>Phase 3 — Turkic world.</strong> States join as equal validators; cross-recognition turns a diploma issued in one country into a credential verifiable in another.</li>
             </ul>
             <p>
@@ -404,7 +404,7 @@ const POSTS: Post[] = [
               <strong>EUDI Wallet</strong>). Tamga Network bu modelin Türkiye ve Türk
               dünyası için tam karşılığıdır:{" "}
               <strong>Tamga Network altyapıdır</strong>,{" "}
-              <strong>TamgaID ise ona açılan cüzdandır</strong>. EBSI ile rakip değiliz
+              <strong>Tamga Wallet ise ona açılan cüzdandır</strong>. EBSI ile rakip değiliz
               — aynı açık standartlara dayandığımız için onunla birlikte çalışacak
               şekilde tasarlandık. Fark egemenliktir: veri ve yönetişim yurt içinde
               kalır.
@@ -412,8 +412,8 @@ const POSTS: Post[] = [
             <h2>“Katmanlı” olmak neden önemli</h2>
             <p>
               Tek parça bir ürün kötü yaşlanır. Egemen ağı (güven çıpası), açık
-              standartları (VC, SD-JWT, X.509) ve uygulamaları (cüzdan + dikey
-              platformlar) ayırarak her katman kendi başına gelişebilir. Devletler ağa
+              standartları (VC, SD-JWT, X.509) ve uygulamaları (cüzdan ve üzerine
+              kurulan hizmetler) ayırarak her katman kendi başına gelişebilir. Devletler ağa
               katılır; kurumlar issuer kaydolur; geliştiriciler uygulama kurar — hiçbir
               katman diğerini beklemeden.
             </p>
@@ -421,7 +421,7 @@ const POSTS: Post[] = [
             <ul>
               <li><strong>Faz 0 — Temeller.</strong> Başlangıç validator’larını bir vakıf çalıştırır; mimari, bunları zamanla devletlere devretmeyi baştan taahhüt eder (kademeli ademi merkeziyet).</li>
               <li><strong>Faz 1 — Kimlik + lojistik, parasız.</strong> İlk pilot, ödemeye hiç dokunmadan değer üretir: doğrulanmış diplomalar, credential’lar ve müşterinin kendi cüzdanıyla onayladığı son teslimat.</li>
-              <li><strong>Faz 2 — Dikey platformlar.</strong> Eğitim, sağlık ve lojistik aynı güven katmanında çalışır; kurumlar full node olur.</li>
+              <li><strong>Faz 2 — Sektörler.</strong> Eğitim, sağlık ve lojistik aynı güven katmanında çalışır; kurumlar full node olur.</li>
               <li><strong>Faz 3 — Türk dünyası.</strong> Devletler eşit validator olarak katılır; cross-recognition, bir ülkede verilen diplomayı başka ülkede doğrulanabilir bir belgeye çevirir.</li>
             </ul>
             <p>
@@ -447,7 +447,7 @@ const POSTS: Post[] = [
               <strong>EUDI Wallet</strong>). Tamga Network bu modeliň Türkiýe we türki
               dünýäsi üçin edil garşylygydyr:{" "}
               <strong>Tamga Network infrastrukturadyr</strong>,{" "}
-              <strong>TamgaID bolsa oňa açylýan gapjykdyr</strong>. EBSI bilen bäsdeş
+              <strong>Tamga Wallet bolsa oňa açylýan gapjykdyr</strong>. EBSI bilen bäsdeş
               däl — şol bir açyk standartlara daýanýandygymyz üçin onuň bilen bilelikde
               işlemäge niýetlenendir. Tapawut özygtyýarlylykdyr: maglumat we dolandyryş
               ýurt içinde galýar.
@@ -455,8 +455,8 @@ const POSTS: Post[] = [
             <h2>“Gatlakly” bolmak näme üçin möhüm</h2>
             <p>
               Bir bitewi önüm erbet garraýar. Özygtyýarly tory (ynam çyzygy), açyk
-              standartlary (VC, SD-JWT, X.509) we programmalary (gapjyk + dik
-              platformalar) aýryp, her gatlak öz-özünden ösüp bilýär. Döwletler tora
+              standartlary (VC, SD-JWT, X.509) we programmalary (gapjyk we onuň
+              üstünde gurlan hyzmatlar) aýryp, her gatlak öz-özünden ösüp bilýär. Döwletler tora
               goşulýar; guramalar issuer hasaba alýar; işläp düzüjiler programma gurýar —
               hiç bir gatlak beýlekisine garaşman.
             </p>
@@ -464,7 +464,7 @@ const POSTS: Post[] = [
             <ul>
               <li><strong>Faza 0 — Binýatlar.</strong> Başlangyç validatorlary bir gaznanyň işledýär; arhitektura olary wagtyň geçmegi bilen döwletlere geçirmegi öňünden borç edinýär.</li>
               <li><strong>Faza 1 — Şahsyýet + logistika, pulsuz.</strong> Ilkinji pilot tölege degmän gymmat öndürýär: barlanan diplomlar, credential-lar we müşderiniň öz gapjygy bilen tassyklaýan soňky eltip berişi.</li>
-              <li><strong>Faza 2 — Dik platformalar.</strong> Bilim, saglyk we logistika şol bir ynam gatlagynda işleýär; guramalar doly node bolýar.</li>
+              <li><strong>Faza 2 — Pudaklar.</strong> Bilim, saglyk we logistika şol bir ynam gatlagynda işleýär; guramalar doly node bolýar.</li>
               <li><strong>Faza 3 — Türki dünýäsi.</strong> Döwletler deň validator hökmünde goşulýar; cross-recognition bir ýurtda berlen diplomy başga ýurtda barlanýan resminama öwürýär.</li>
             </ul>
             <p>
@@ -520,7 +520,7 @@ const POSTS: Post[] = [
               principal, with per-transaction caps and an instant kill switch. “This
               agent’s responsible party is a real person verified by their state” is a
               guarantee no commercial platform can match. The full reasoning is in the{" "}
-              <Link href="/docs/tamga-id">TamgaID docs</Link>.
+              <Link href="/docs/tamga-id">Tamga Wallet page</Link>.
             </p>
           </>
         ),
@@ -561,7 +561,7 @@ const POSTS: Post[] = [
               iptal edilebilir bir yetki; işlem başına tavan ve anında bir kill switch
               ile. “Bu ajanın sorumlusu, devletinin doğruladığı gerçek bir kişidir”
               güvencesini hiçbir ticari platform veremez. Tüm gerekçe{" "}
-              <Link href="/docs/tamga-id">TamgaID dokümanında</Link>.
+              <Link href="/docs/tamga-id">Tamga Wallet sayfasında</Link>.
             </p>
           </>
         ),
@@ -602,7 +602,7 @@ const POSTS: Post[] = [
               ygtyýar; amal başyna çäk we dessine kill switch bilen. “Bu agentiň
               jogapkäri, döwletiniň barlan hakyky adamydyr” diýen kepili hiç bir söwda
               platformasy berip bilmeýär. Doly delil{" "}
-              <Link href="/docs/tamga-id">TamgaID resminamasynda</Link>.
+              <Link href="/docs/tamga-id">Tamga Wallet sahypasynda</Link>.
             </p>
           </>
         ),
@@ -924,7 +924,7 @@ const POSTS: Post[] = [
               The open question we are still working through is the concrete institutional
               mapping of governance bodies for each state — the subject of a dedicated
               governance document. Read the decision in{" "}
-              <Link href="/docs/how-tamga-works">Architecture and Trust Graph</Link>.
+              <Link href="/docs/how-tamga-works">Architecture</Link>.
             </p>
           </>
         ),
@@ -961,7 +961,7 @@ const POSTS: Post[] = [
             <p>
               Hâlâ üzerinde çalıştığımız açık konu, her devlet için yönetişim organlarının
               somut kurumsal eşlemesidir — ayrı bir yönetişim dokümanının konusu. Kararı{" "}
-              <Link href="/docs/how-tamga-works">Mimari ve Trust Graph</Link>’ta okuyun.
+              <Link href="/docs/how-tamga-works">Mimari</Link>’ta okuyun.
             </p>
           </>
         ),
@@ -996,7 +996,7 @@ const POSTS: Post[] = [
               Entek üstünde işleýän açyk mesele, her döwlet üçin dolandyryş edaralarynyň
               anyk kurumsal eşlemesidir — aýratyn dolandyryş resminamasynyň mowzugy.
               Karary{" "}
-              <Link href="/docs/how-tamga-works">Arhitektura we Trust Graph</Link>-da okaň.
+              <Link href="/docs/how-tamga-works">Arhitektura</Link>-da okaň.
             </p>
           </>
         ),
@@ -1529,7 +1529,7 @@ const POSTS: Post[] = [
               A verifier checks a credential with three free, public read queries — is the
               issuer valid, is it recognized, is it revoked — without ever contacting the
               issuer and without any personal data being on the chain. Details:{" "}
-              <Link href="/docs/how-tamga-works">Architecture and Trust Graph</Link>.
+              <Link href="/docs/how-tamga-works">Architecture</Link>.
             </p>
           </>
         ),
@@ -1566,7 +1566,7 @@ const POSTS: Post[] = [
               Bir doğrulayıcı, bir credential’ı üç ücretsiz, herkese açık okuma sorgusuyla
               kontrol eder — issuer geçerli mi, tanınıyor mu, revoke mu — issuer’a hiç
               ulaşmadan ve zincirde hiçbir kişisel veri olmadan. Ayrıntılar:{" "}
-              <Link href="/docs/how-tamga-works">Mimari ve Trust Graph</Link>.
+              <Link href="/docs/how-tamga-works">Mimari</Link>.
             </p>
           </>
         ),
@@ -1603,7 +1603,7 @@ const POSTS: Post[] = [
               Barlaýjy credential-y üç mugt, açyk okaýyş soragy bilen barlaýar — issuer
               güýçlümi, ykrar edilýärmi, revoke edilenmi — issuer-e ýüz tutman we zynjyrda
               hiç şahsy maglumat bolman. Jikme-jiklik:{" "}
-              <Link href="/docs/how-tamga-works">Arhitektura we Trust Graph</Link>.
+              <Link href="/docs/how-tamga-works">Arhitektura</Link>.
             </p>
           </>
         ),

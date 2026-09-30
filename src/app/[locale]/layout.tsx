@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
@@ -11,6 +11,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { THEME_COOKIE, type Theme } from "@/lib/theme";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { JsonLd, siteGraph } from "@/components/json-ld";
+import { pageMeta } from "@/lib/seo";
 
 const plexSans = IBM_Plex_Sans({
   variable: "--font-plex-sans",
@@ -47,37 +49,34 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
+  // Ana sayfanın bilgisi; alt sayfalar kendi canonical/OG'sini `pageMeta` ile verir (src/lib/seo.ts).
+  const home = pageMeta(locale, "/", { description: t("description") });
   return {
+    ...home,
     metadataBase: new URL(siteUrl),
+    applicationName: "Tamga Network",
     title: {
       default: t("title"),
       template: "%s · Tamga Network",
     },
-    description: t("description"),
-    openGraph: {
-      type: "website",
-      locale,
-      url: siteUrl,
-      siteName: "Tamga Network",
-      title: t("title"),
-      description: t("ogDescription"),
+    openGraph: { ...home.openGraph, title: t("title"), description: t("ogDescription") },
+    twitter: { ...home.twitter, title: t("title"), description: t("ogDescription") },
+    // Simgeler tek kaynaktan (tamga-network/ops/brand/icons → npm run brand:sync); favicon.ico dosya kuralıyla.
+    icons: {
+      icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+      apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: t("title"),
-      description: t("ogDescription"),
-    },
-    icons: { icon: [{ url: "/icon.svg", type: "image/svg+xml" }] },
-    alternates: {
-      canonical: `/${locale}`,
-      languages: {
-        tr: "/tr",
-        en: "/en",
-        tk: "/tk",
-      },
-    },
+    manifest: "/manifest.webmanifest",
+    formatDetection: { telephone: false, email: false, address: false },
   };
 }
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#17110F" },
+    { media: "(prefers-color-scheme: light)", color: "#F4EDE2" },
+  ],
+};
 
 export default async function LocaleLayout({
   children,
@@ -97,6 +96,7 @@ export default async function LocaleLayout({
   const cookieStore = await cookies();
   const theme: Theme =
     cookieStore.get(THEME_COOKIE)?.value === "light" ? "light" : "dark";
+  const t = await getTranslations({ locale, namespace: "meta" });
 
   return (
     <html
@@ -108,6 +108,7 @@ export default async function LocaleLayout({
       style={{ colorScheme: theme }}
     >
       <body className="flex min-h-full flex-col">
+        <JsonLd data={siteGraph(t("description"))} />
         <NextIntlClientProvider>
           <ThemeProvider initialTheme={theme}>
             <Header />

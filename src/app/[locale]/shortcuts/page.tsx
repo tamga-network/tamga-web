@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { setRequestLocale } from "next-intl/server";
 import {
   CircleCheck,
@@ -40,7 +41,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const p = SHORTCUTS_PAGE[loc(locale)];
-  return { title: p.title, description: p.description };
+  return pageMeta(locale, "/shortcuts", { title: p.title, description: p.description });
 }
 
 function Row({ s, l }: { s: Shortcut; l: Locale }) {

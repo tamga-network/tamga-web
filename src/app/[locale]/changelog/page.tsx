@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { setRequestLocale } from "next-intl/server";
 import { PageHeader } from "@/components/ui";
 import type { Locale } from "@/i18n/routing";
@@ -28,7 +29,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const p = CHANGELOG_PAGE[loc(locale)];
-  return { title: p.title, description: p.description };
+  return pageMeta(locale, "/changelog", { title: p.title, description: p.description });
 }
 
 export default async function ChangelogPage({

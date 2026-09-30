@@ -35,7 +35,7 @@ const en: ScenariosContent = {
   title: "Scenarios: one trust layer, four worlds",
   intro:
     "Education, health, logistics and payments all run on the same shared trust layer — X.509 institutions, people with no global identifier, credentials carried in the wallet. Education (diplomas, student cards, campus passes) and event tickets already run end to end today; health, logistics and payments show where the same layer leads.",
-  note: "Screens are illustrative mockups of the TamgaID wallet; example values only.",
+  note: "Screens are illustrative mockups of Tamga Wallet; example values only.",
   verticals: [
     {
       id: "education",
@@ -59,7 +59,7 @@ const en: ScenariosContent = {
         },
       ],
       wallet: {
-        app: "TamgaID",
+        app: "Tamga Wallet",
         cardLabel: "CREDENTIAL",
         badge: "VERIFIED",
         title: "University Diploma",
@@ -75,7 +75,7 @@ const en: ScenariosContent = {
       },
       flow: [
         { icon: "education", label: "University", sub: "Issuer (X.509)" },
-        { icon: "wallet", label: "Graduate", sub: "Holder (TamgaID)" },
+        { icon: "wallet", label: "Graduate", sub: "Holder (Tamga Wallet)" },
         { icon: "verifier", label: "Employer", sub: "Verifier" },
       ],
     },
@@ -101,7 +101,7 @@ const en: ScenariosContent = {
         },
       ],
       wallet: {
-        app: "TamgaID",
+        app: "Tamga Wallet",
         cardLabel: "CONSENT",
         badge: "VERIFIED",
         title: "Prescription authorization",
@@ -143,7 +143,7 @@ const en: ScenariosContent = {
         },
       ],
       wallet: {
-        app: "TamgaID",
+        app: "Tamga Wallet",
         cardLabel: "DELIVERY",
         badge: "CONFIRMED",
         title: "Shipment TR-5521",
@@ -186,7 +186,7 @@ const en: ScenariosContent = {
         },
       ],
       wallet: {
-        app: "TamgaID",
+        app: "Tamga Wallet",
         cardLabel: "PAYMENT",
         badge: "AUTHORIZED",
         title: "Authorize payment",
@@ -223,7 +223,7 @@ const tr: ScenariosContent = {
   title: "Senaryolar: tek güven katmanı, dört dünya",
   intro:
     "Eğitim, sağlık, lojistik ve ödeme; hepsi aynı ortak güven katmanı üzerinde çalışır — X.509 kurumlar, küresel tanımlayıcısı olmayan kişiler, cüzdanda taşınan belgeler. Eğitim (diploma, öğrenci belgesi, kampüs geçişi) ve etkinlik biletleri bugün uçtan uca çalışıyor; sağlık, lojistik ve ödeme aynı katmanın nereye uzandığını gösteriyor.",
-  note: "Ekranlar TamgaID cüzdanının temsilî mockup'larıdır; yalnızca örnek değerler.",
+  note: "Ekranlar Tamga Wallet uygulamasının temsilî mockup'larıdır; yalnızca örnek değerler.",
   verticals: [
     {
       id: "education",
@@ -247,7 +247,7 @@ const tr: ScenariosContent = {
         },
       ],
       wallet: {
-        app: "TamgaID",
+        app: "Tamga Wallet",
         cardLabel: "CREDENTIAL",
         badge: "VERIFIED",
         title: "Üniversite Diploması",
@@ -263,7 +263,7 @@ const tr: ScenariosContent = {
       },
       flow: [
         { icon: "education", label: "Üniversite", sub: "Issuer (X.509)" },
-        { icon: "wallet", label: "Mezun", sub: "Holder (TamgaID)" },
+        { icon: "wallet", label: "Mezun", sub: "Holder (Tamga Wallet)" },
         { icon: "verifier", label: "İşveren", sub: "Verifier" },
       ],
     },
@@ -289,7 +289,7 @@ const tr: ScenariosContent = {
         },
       ],
       wallet: {
-        app: "TamgaID",
+        app: "Tamga Wallet",
         cardLabel: "CONSENT",
         badge: "VERIFIED",
         title: "Reçete yetkilendirmesi",
@@ -331,7 +331,7 @@ const tr: ScenariosContent = {
         },
       ],
       wallet: {
-        app: "TamgaID",
+        app: "Tamga Wallet",
         cardLabel: "DELIVERY",
         badge: "CONFIRMED",
         title: "Sevkiyat TR-5521",
@@ -374,7 +374,7 @@ const tr: ScenariosContent = {
         },
       ],
       wallet: {
-        app: "TamgaID",
+        app: "Tamga Wallet",
         cardLabel: "PAYMENT",
         badge: "AUTHORIZED",
         title: "Ödemeyi yetkilendir",
@@ -411,7 +411,7 @@ const tk: ScenariosContent = {
   title: "Ssenariýalar: bir ynam gatlagy, dört dünýä",
   intro:
     "Bilim, saglyk, logistika we töleg; hemmesi şol bir umumy ynam gatlagynda işleýär — X.509 guramalar, global belgisi bolmadyk adamlar, gapjykda göterilýän resminamalar. Bilim (diplom, talyp resminamasy, kampus geçişi) we çäre biletleri eýýäm başdan-aýak işleýär; saglyk, logistika we töleg şol bir gatlagyň nirä barýandygyny görkezýär.",
-  note: "Ekranlar TamgaID gapjygynyň nusgalyk mockup-larydyr; diňe mysal bahalar.",
+  note: "Ekranlar Tamga Wallet programmasynyň nusgalyk mockup-larydyr; diňe mysal bahalar.",
   verticals: [
     {
       id: "education",
@@ -435,7 +435,7 @@ const tk: ScenariosContent = {
         },
       ],
       wallet: {
-        app: "TamgaID",
+        app: "Tamga Wallet",
         cardLabel: "CREDENTIAL",
         badge: "VERIFIED",
         title: "Uniwersitet diplomy",
@@ -477,7 +477,7 @@ const tk: ScenariosContent = {
         },
       ],
       wallet: {
-        app: "TamgaID",
+        app: "Tamga Wallet",
         cardLabel: "CONSENT",
         badge: "VERIFIED",
         title: "Recet ygtyýarlandyrma",
@@ -519,7 +519,7 @@ const tk: ScenariosContent = {
         },
       ],
       wallet: {
-        app: "TamgaID",
+        app: "Tamga Wallet",
         cardLabel: "DELIVERY",
         badge: "CONFIRMED",
         title: "Ýük TR-5521",
@@ -562,7 +562,7 @@ const tk: ScenariosContent = {
         },
       ],
       wallet: {
-        app: "TamgaID",
+        app: "Tamga Wallet",
         cardLabel: "PAYMENT",
         badge: "AUTHORIZED",
         title: "Tölegi ygtyýarlandyr",

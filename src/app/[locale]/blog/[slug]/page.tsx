@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { pageMeta, SITE_URL } from "@/lib/seo";
+import { JsonLd, ORGANIZATION } from "@/components/json-ld";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { notFound } from "next/navigation";
@@ -20,11 +22,12 @@ export async function generateMetadata({
   const { locale, slug } = await params;
   const post = getPost(slug, locale);
   if (!post) return {};
-  return {
-    title: post.title,
-    description: post.description,
-    openGraph: { title: post.title, description: post.description, type: "article" },
-  };
+  return pageMeta(
+    locale,
+    `/blog/${slug}`,
+    { title: post.title, description: post.description },
+    { type: "article", publishedTime: post.date, authors: ["Tamga Network"] },
+  );
 }
 
 export default async function BlogPostPage({
@@ -40,6 +43,21 @@ export default async function BlogPostPage({
 
   return (
     <article className="shell max-w-2xl py-16 sm:py-20">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          headline: post.title,
+          description: post.description,
+          datePublished: post.date,
+          inLanguage: locale,
+          url: `${SITE_URL}/${locale}/blog/${slug}`,
+          mainEntityOfPage: `${SITE_URL}/${locale}/blog/${slug}`,
+          image: `${SITE_URL}/og.png`,
+          author: { "@id": `${SITE_URL}/#organization` },
+          publisher: ORGANIZATION,
+        }}
+      />
       <Link
         href="/blog"
         className="mb-10 inline-flex items-center gap-1.5 text-sm text-foreground-muted transition-colors hover:text-foreground"

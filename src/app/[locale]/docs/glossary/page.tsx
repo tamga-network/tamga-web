@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { setRequestLocale } from "next-intl/server";
 import { DocArticle } from "@/components/doc-article";
+import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 
 type Group = { title: string; terms: { term: string; def: string }[] };
@@ -9,6 +11,8 @@ type Content = {
   eyebrow: string;
   title: string;
   intro: string;
+  /** Rol eşlemesine bağlantı: [ön metin, bağlantı metni] */
+  roles: [string, string];
   groups: Group[];
 };
 
@@ -23,15 +27,15 @@ const CONTENT: Record<Locale, Content> = {
     title: "Glossary",
     intro:
       "The core terms used across the Tamga Network ecosystem. When you get stuck on a concept, you can quickly look here.",
+    roles: ["For the EU roles and their Tamga counterparts, see", "Roles and terms"],
     groups: [
       {
         title: "Core concepts",
         terms: [
           { term: "Tamga Network", def: "A Digital Trust Infrastructure that unites digital identity, verifiable credentials, authorization and immutable records under a single architecture. It is not a blockchain network: today trust is anchored in signed trust lists; a permissioned ledger may be added later." },
           { term: "Digital Trust Infrastructure", def: "The layer that provides trust in the digital world as a shared infrastructure service. Instead of each application solving the trust problem separately, it provides a common trust layer." },
-          { term: "TamgaID", def: "The infrastructure’s first end-user product. The wallet where an individual creates, manages and uses their digital identity. TamgaID is not Tamga Network itself." },
+          { term: "Tamga Wallet", def: "Tamga’s wallet app and the infrastructure’s first end-user product. It keeps a person’s credentials on their phone and shares only the fields they approve. Tamga Wallet is not Tamga Network itself." },
           { term: "Trust Mesh", def: "Not a central authority, but a mesh of interoperable, independent trust networks. Each country keeps its own network while connecting through shared standards." },
-          { term: "Vertical Platform", def: "A sector-specific platform running on the shared trust infrastructure: TamgaEducation, TamgaHealth, TamgaLogistics, TamgaPay." },
         ],
       },
       {
@@ -56,7 +60,6 @@ const CONTENT: Record<Locale, Content> = {
           { term: "VC — Verifiable Credential", def: "A verifiable document. A digital document with an embedded digital signature that can be verified without going to the source (diploma, licence, etc.)." },
           { term: "SSI", def: "Self-Sovereign Identity. The approach where control of identity belongs not to a central institution but to the user themselves." },
           { term: "Issuer – Holder – Verifier", def: "The trust triangle. The Issuer issues and signs the credential; the Holder carries and presents it in their wallet; the Verifier checks the signature without going to the source." },
-          { term: "Trust Graph", def: "The trust graph formed by the verifiable links among identities, relationships, credentials and events." },
         ],
       },
       {
@@ -113,15 +116,15 @@ const CONTENT: Record<Locale, Content> = {
     title: "Sözlük",
     intro:
       "Tamga Network ekosisteminde geçen temel terimler. Bir kavrama takıldığında hızlıca buraya bakabilirsin.",
+    roles: ["AB rolleri ve Tamga'daki karşılıkları için:", "Roller ve terimler"],
     groups: [
       {
         title: "Temel kavramlar",
         terms: [
           { term: "Tamga Network", def: "Dijital kimlik, doğrulanabilir belgeler, yetkilendirme ve değiştirilemez kayıtları tek mimari altında birleştiren Dijital Güven Altyapısı. Bir blockchain ağı değildir: bugün güven imzalı güven listelerine dayanır; ileride izinli bir defter eklenebilir." },
           { term: "Digital Trust Infrastructure", def: "Dijital ortamda güveni ortak bir altyapı hizmeti olarak sunan katman. Her uygulamanın güven problemini ayrı çözmesi yerine ortak bir güven katmanı sağlar." },
-          { term: "TamgaID", def: "Altyapının son kullanıcıya açılan ilk ürünü. Bireyin dijital kimliğini oluşturduğu, yönettiği ve kullandığı cüzdan. TamgaID, Tamga Network’ün kendisi değildir." },
+          { term: "Tamga Wallet", def: "Tamga’nın cüzdan uygulaması; altyapının son kullanıcıya açılan ilk ürünü. Kişinin belgelerini telefonunda tutar ve yalnızca onayladığı alanları paylaşır. Tamga Wallet, Tamga Network’ün kendisi değildir." },
           { term: "Trust Mesh", def: "Merkezî bir otorite değil, birlikte çalışabilir bağımsız güven ağlarından oluşan örgü. Her ülke kendi ağını korurken ortak standartlarla bağlanır." },
-          { term: "Vertical Platform (Dikey Platform)", def: "Ortak güven altyapısı üzerinde çalışan sektöre özel platform: TamgaEducation, TamgaHealth, TamgaLogistics, TamgaPay." },
         ],
       },
       {
@@ -146,7 +149,6 @@ const CONTENT: Record<Locale, Content> = {
           { term: "VC — Verifiable Credential", def: "Doğrulanabilir belge. İçine dijital imza gömülü, kaynağa gitmeden doğrulanabilen dijital belge (diploma, ehliyet vb.)." },
           { term: "SSI", def: "Self-Sovereign Identity — öz-egemen kimlik. Kimliğin kontrolünün merkezî kuruma değil, kullanıcının kendisine ait olduğu yaklaşım." },
           { term: "Issuer – Holder – Verifier", def: "Güven üçgeni. Issuer belgeyi düzenler ve imzalar; Holder cüzdanında taşır ve sunar; Verifier imzayı kaynağa gitmeden doğrular." },
-          { term: "Trust Graph", def: "Kimlikler, ilişkiler, credential’lar ve olaylar arasındaki doğrulanabilir bağların oluşturduğu güven grafiği." },
         ],
       },
       {
@@ -203,15 +205,15 @@ const CONTENT: Record<Locale, Content> = {
     title: "Sözlük",
     intro:
       "Tamga Network ekoulgamynda ulanylýan esasy terminler. Bir düşünjä kürtdüreniňde çalt bu ýere seredip bilýärsiň.",
+    roles: ["ÝB rollary we olaryň Tamgadaky gabat gelýänleri üçin:", "Rollar we adalgalar"],
     groups: [
       {
         title: "Esasy düşünjeler",
         terms: [
           { term: "Tamga Network", def: "Sanly şahsyýeti, barlanyp bilinýän resminamalary, ygtyýarlandyrmany we üýtgedip bolmajak ýazgylary ýeke arhitekturada birleşdirýän Sanly Ynam Infrastrukturasy. Blokçeýn tory däl: häzir ynam gol çekilen ynam sanawlaryna daýanýar; soňra rugsatly kitap goşulyp biler." },
           { term: "Digital Trust Infrastructure", def: "Sanly gurşawda ynamy umumy infrastruktura hyzmaty hökmünde hödürleýän gatlak. Her programmanyň ynam meselesini aýry çözmegi ýerine umumy ynam gatlagyny üpjün edýär." },
-          { term: "TamgaID", def: "Infrastrukturanyň soňky ulanyja açylýan ilkinji önümi. Şahsyň sanly şahsyýetini döredýän, dolandyrýan we ulanýan gapjygy. TamgaID Tamga Network-iň özi däl." },
+          { term: "Tamga Wallet", def: "Tamga-nyň gapjyk programmasy; infrastrukturanyň soňky ulanyja açylýan ilkinji önümi. Adamyň resminamalaryny telefonynda saklaýar we diňe tassyklan meýdanlaryny paýlaşýar. Tamga Wallet Tamga Network-iň özi däl." },
           { term: "Trust Mesh", def: "Merkezi häkimiýet däl, bilelikde işleýän garaşsyz ynam torlaryndan ybarat örüm. Her ýurt öz toruny saklap umumy standartlar bilen baglanýar." },
-          { term: "Vertical Platform (Dik platforma)", def: "Umumy ynam infrastrukturasynda işleýän pudaklaýyn platforma: TamgaEducation, TamgaHealth, TamgaLogistics, TamgaPay." },
         ],
       },
       {
@@ -236,7 +238,6 @@ const CONTENT: Record<Locale, Content> = {
           { term: "VC — Verifiable Credential", def: "Barlanyp bilinýän resminama. Içine sanly gol gömlüp goýlan, çeşmä gitmän barlanyp bilinýän sanly resminama (diplom, şahadatnama we ş.m.)." },
           { term: "SSI", def: "Self-Sovereign Identity — öz-özygtyýarly şahsyýet. Şahsyýetiň gözegçiliginiň merkezi gurama däl-de, ulanyjynyň özüne degişli bolan çemeleşme." },
           { term: "Issuer – Holder – Verifier", def: "Ynam üçburçlugy. Issuer resminamany taýýarlaýar we gol çekýär; Holder gapjygynda göterýär we hödürleýär; Verifier goly çeşmä gitmän barlaýar." },
-          { term: "Trust Graph", def: "Şahsyýetleriň, gatnaşyklaryň, credential-laryň we wakalaryň arasyndaky barlanyp bilinýän baglanyşyklardan emele gelen ynam grafigi." },
         ],
       },
       {
@@ -292,7 +293,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const c = CONTENT[locale as Locale] ?? CONTENT.en;
-  return { title: c.meta.title, description: c.meta.description };
+  return pageMeta(locale, "/docs/glossary", { title: c.meta.title, description: c.meta.description });
 }
 
 export default async function Page({
@@ -304,7 +305,12 @@ export default async function Page({
   setRequestLocale(locale);
   const c = CONTENT[locale as Locale] ?? CONTENT.en;
   return (
-    <DocArticle href="/docs/glossary" eyebrow={c.eyebrow} title={c.title} intro={c.intro}>
+    <DocArticle href="/docs/glossary" eyebrow={c.eyebrow} title={c.title} intro={
+        <>
+          {c.intro} {c.roles[0]} <Link href="/docs/roles">{c.roles[1]}</Link>.
+        </>
+      }
+    >
       <div className="not-prose space-y-10">
         {c.groups.map((group) => (
           <section key={group.title}>

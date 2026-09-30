@@ -2,7 +2,8 @@
   "meta": {
     "title": "Tamga Network — Sanly Ynam Infrastrukturasy",
     "description": "Tamga Network — şahslaryň, guramalaryň we sanly emläkleriň ynamly kesgitlenip, barlanyp bilinýän gatnaşyklar gurup bilýän Sanly Ynam Infrastrukturasydyr. Türkiýe we türki dünýäsi üçin açyk standartlara laýyk, özygtyýarly infrastruktura.",
-    "ogDescription": "Gadymy tamganyň häzirki zaman garşylygy: Türkiýe we türki dünýäsi üçin açyk standartlara laýyk, özygtyýarly sanly ynam infrastrukturasy."
+    "ogDescription": "Gadymy tamganyň häzirki zaman garşylygy: Türkiýe we türki dünýäsi üçin açyk standartlara laýyk, özygtyýarly sanly ynam infrastrukturasy.",
+    "tagline": "SANLY YNAM INFRASTRUKTURASY"
   },
   "nav": {
     "manifesto": "Manifest",
@@ -64,7 +65,8 @@
     "education": "Bilim",
     "health": "Saglyk",
     "payments": "Tölegler",
-    "logistics": "Logistika"
+    "logistics": "Logistika",
+    "brand": "Marka"
   },
   "notFound": {
     "code": "404",

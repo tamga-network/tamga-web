@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { ArrowRight } from "lucide-react";
@@ -13,7 +14,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const ui = getBlogUi(locale);
-  return { title: ui.eyebrow, description: ui.description };
+  return pageMeta(locale, "/blog", { title: ui.eyebrow, description: ui.description });
 }
 
 export default async function BlogPage({

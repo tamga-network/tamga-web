@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import type { ReactNode } from "react";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
@@ -14,7 +15,7 @@ import type { Locale } from "@/i18n/routing";
 type L = Record<Locale, string>;
 
 const GOALS: { goal: L; pkg: string; href?: "/docs/login-with-tamga" }[] = [
-  { goal: { en: "Add “Sign up / Sign in with TamgaID” to a website", tr: "Web sitesine “TamgaID ile Kayıt Ol / Giriş Yap” eklemek", tk: "Web saýta “TamgaID bilen hasaba dur / gir” goşmak" }, pkg: "@tamga-network/verifier/web + your server", href: "/docs/login-with-tamga" },
+  { goal: { en: "Add “Sign up / Sign in with Tamga” to a website", tr: "Web sitesine “Tamga ile Kayıt Ol / Giriş Yap” eklemek", tk: "Web saýta “Tamga bilen hasaba dur / gir” goşmak" }, pkg: "@tamga-network/verifier/web + your server", href: "/docs/login-with-tamga" },
   { goal: { en: "Verify documents on your server (hiring, campus, age)", tr: "Sunucunda belge doğrulamak (işe alım, kampüs, yaş)", tk: "Serweriňde resminama barlamak (işe almak, kampus, ýaş)" }, pkg: "@tamga-network/verifier" },
   { goal: { en: "Issue your institution’s documents into people’s wallets", tr: "Kurumunun belgelerini kişilerin cüzdanına vermek", tk: "Guramaňyň resminamalaryny adamlaryň gapjygyna bermek" }, pkg: "@tamga-network/issuer/client (hosted) · @tamga-network/issuer (own service)" },
 ];
@@ -172,7 +173,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const u = UI[locale as Locale] ?? UI.en;
-  return { title: u.meta.title, description: u.meta.description };
+  return pageMeta(locale, "/docs/developers", { title: u.meta.title, description: u.meta.description });
 }
 
 export default async function Page({

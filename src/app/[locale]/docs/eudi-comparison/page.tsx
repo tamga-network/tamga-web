@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import type { ReactNode } from "react";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
@@ -194,7 +195,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const u = UI[locale as Locale] ?? UI.en;
-  return { title: u.meta.title, description: u.meta.description };
+  return pageMeta(locale, "/docs/eudi-comparison", { title: u.meta.title, description: u.meta.description });
 }
 
 export default async function Page({

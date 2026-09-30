@@ -10,7 +10,8 @@
     "check:i18n": "node scripts/check-i18n.mjs",
     "check": "npm run -s typecheck && npm run -s check:i18n && npm run -s check:examples",
     "examples:sync": "node scripts/sync-examples.mjs",
-    "check:examples": "node scripts/sync-examples.mjs --check"
+    "check:examples": "node scripts/sync-examples.mjs --check",
+    "brand:sync": "node scripts/sync-brand.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import type { ReactNode } from "react";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
@@ -72,7 +73,7 @@ const CONTENT: Record<Locale, Content> = {
             ledger once independent operators join.
           </li>
           <li>
-            <strong>TamgaID = the application layer</strong> (like the EUDI
+            <strong>Tamga Wallet = the application layer</strong> (like the EUDI
             Wallet). The citizen’s wallet.
           </li>
         </ul>
@@ -152,7 +153,7 @@ const CONTENT: Record<Locale, Content> = {
             operatörler katılınca izinli bir defter.
           </li>
           <li>
-            <strong>TamgaID = uygulama katmanı</strong> (EUDI Wallet benzeri).
+            <strong>Tamga Wallet = uygulama katmanı</strong> (EUDI Wallet benzeri).
             Vatandaşın cüzdanı.
           </li>
         </ul>
@@ -232,7 +233,7 @@ const CONTENT: Record<Locale, Content> = {
             operatorlar goşulanda rugsatly kitap.
           </li>
           <li>
-            <strong>TamgaID = programma gatlagy</strong> (EUDI Wallet ýaly).
+            <strong>Tamga Wallet = programma gatlagy</strong> (EUDI Wallet ýaly).
             Raýatyň gapjygy.
           </li>
         </ul>
@@ -263,7 +264,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const c = CONTENT[locale as Locale] ?? CONTENT.en;
-  return { title: c.meta.title, description: c.meta.description };
+  return pageMeta(locale, "/docs/eidas-eudi", { title: c.meta.title, description: c.meta.description });
 }
 
 export default async function Page({

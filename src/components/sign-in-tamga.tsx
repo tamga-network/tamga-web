@@ -25,7 +25,7 @@ type Content = {
   consent: ConsentData;
 };
 
-/** Mock of a website's sign-in options, with "Sign in with TamgaID" highlighted. */
+/** Mock of a website's sign-in options, with "Sign in with Tamga" highlighted. */
 function LoginButtonsMock({ d }: { d: LoginData }) {
   return (
     <div className="mx-auto w-full max-w-[300px] rounded-2xl border border-border-strong bg-background-elevated p-5 shadow-soft">
@@ -47,20 +47,20 @@ function LoginButtonsMock({ d }: { d: LoginData }) {
           <span className="h-px flex-1 bg-border" />
         </div>
         <div className="flex items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-[13px] font-medium text-primary-contrast shadow-sm">
-          <Fingerprint size={15} /> {d.tamga}
+          <LogoMark size={16} mono /> {d.tamga}
         </div>
       </div>
     </div>
   );
 }
 
-/** Mock of the TamgaID consent screen — the site gets only what you approve. */
+/** Mock of the Tamga Wallet consent screen — the site gets only what you approve. */
 export function ConsentMock({ d }: { d: ConsentData }) {
   return (
     <div className="mx-auto w-full max-w-[320px] overflow-hidden rounded-2xl border border-border-strong bg-background-elevated shadow-soft">
       <div className="flex items-center gap-2 border-b border-border px-5 py-3">
         <LogoMark size={16} />
-        <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-foreground-subtle">TamgaID</span>
+        <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-foreground-subtle">Tamga Wallet</span>
       </div>
       <div className="px-5 py-4">
         <p className="text-sm leading-snug text-foreground">
@@ -105,7 +105,7 @@ export function ConsentMock({ d }: { d: ConsentData }) {
 
 const en: Content = {
   eyebrow: "Sign in",
-  title: "Sign in with TamgaID",
+  title: "Sign in with Tamga",
   description:
     "Like “Sign in with Google”, but the identity is yours. A website asks for only the fields it needs; you approve each one on a consent screen; it never sees a password or a pool of your data.",
   benefits: [
@@ -114,8 +114,8 @@ const en: Content = {
     { title: "Phishing-resistant", body: "There is no password to steal or leak — sign-in is a cryptographic proof from your device." },
     { title: "Verified when it matters", body: "When a service must, it can know you are a real person whose identity document was checked — not an anonymous account." },
   ],
-  link: "How “Sign in with TamgaID” works",
-  login: { signInTo: "Sign in to", app: "example.com", google: "Continue with Google", apple: "Continue with Apple", or: "or", tamga: "Sign in with TamgaID" },
+  link: "How “Sign in with Tamga” works",
+  login: { signInTo: "Sign in to", app: "example.com", google: "Continue with Google", apple: "Continue with Apple", or: "or", tamga: "Sign in with Tamga" },
   consent: {
     app: "example.com",
     wants: "wants to access:",
@@ -133,7 +133,7 @@ const en: Content = {
 
 const tr: Content = {
   eyebrow: "Giriş",
-  title: "TamgaID ile giriş yap",
+  title: "Tamga ile giriş yap",
   description:
     "“Google ile giriş yap” gibi, ama kimlik senin. Bir web sitesi yalnızca ihtiyaç duyduğu alanları ister; her birini bir izin ekranında onaylarsın; site bir şifreni ya da veri havuzunu asla görmez.",
   benefits: [
@@ -142,8 +142,8 @@ const tr: Content = {
     { title: "Oltalamaya dayanıklı", body: "Çalınacak ya da sızacak bir şifre yok — giriş, cihazından gelen kriptografik bir kanıttır." },
     { title: "Gerektiğinde doğrulanmış", body: "Bir hizmet gerektirdiğinde, anonim bir hesap değil, kimlik belgesi doğrulanmış gerçek biri olduğunu bilebilir." },
   ],
-  link: "“TamgaID ile giriş” nasıl çalışır",
-  login: { signInTo: "Şuraya giriş:", app: "example.com", google: "Google ile devam et", apple: "Apple ile devam et", or: "veya", tamga: "TamgaID ile giriş yap" },
+  link: "“Tamga ile giriş” nasıl çalışır",
+  login: { signInTo: "Şuraya giriş:", app: "example.com", google: "Google ile devam et", apple: "Apple ile devam et", or: "veya", tamga: "Tamga ile giriş yap" },
   consent: {
     app: "example.com",
     wants: "şunlara erişmek istiyor:",
@@ -161,7 +161,7 @@ const tr: Content = {
 
 const tk: Content = {
   eyebrow: "Giriş",
-  title: "TamgaID bilen giriň",
+  title: "Tamga bilen giriň",
   description:
     "“Google bilen giriş” ýaly, ýöne şahsyýet seniňki. Web-saýt diňe zerur meýdanlary soraýar; her birini razylyk ekranynda tassyklaýarsyň; saýt parolyňy ýa-da maglumat howzuny asla görmeýär.",
   benefits: [
@@ -170,8 +170,8 @@ const tk: Content = {
     { title: "Fişinge çydamly", body: "Ogurlanjak ýa-da syzjak parol ýok — giriş enjamyňdan gelýän kriptografik subutnamadyr." },
     { title: "Gerek bolanda barlanan", body: "Hyzmat talap etse, anonim hasap däl, şahsyýet resminamasy barlanan hakyky adamdygyňy bilip bilýär." },
   ],
-  link: "“TamgaID bilen giriş” nähili işleýär",
-  login: { signInTo: "Giriş:", app: "example.com", google: "Google bilen dowam et", apple: "Apple bilen dowam et", or: "ýa-da", tamga: "TamgaID bilen giriň" },
+  link: "“Tamga bilen giriş” nähili işleýär",
+  login: { signInTo: "Giriş:", app: "example.com", google: "Google bilen dowam et", apple: "Apple bilen dowam et", or: "ýa-da", tamga: "Tamga bilen giriň" },
   consent: {
     app: "example.com",
     wants: "şulara girmek isleýär:",

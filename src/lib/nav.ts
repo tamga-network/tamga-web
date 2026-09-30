@@ -20,6 +20,7 @@ import {
   FileBadge,
   BadgeCheck,
   ListTodo,
+  Palette,
   type LucideIcon,
 } from "lucide-react";
 import type { Locale } from "@/i18n/routing";
@@ -200,6 +201,17 @@ export const PROJECT: NavItem[] = [
     icon: Info,
     tone: "neutral",
     href: "/about",
+  },
+  {
+    title: { en: "Brand", tr: "Marka", tk: "Marka" },
+    desc: {
+      en: "seal, colours, type, downloads",
+      tr: "mühür, renkler, yazı, indirmeler",
+      tk: "möhür, reňkler, şrift, ýüklemeler",
+    },
+    icon: Palette,
+    tone: "gold",
+    href: "/brand",
   },
   {
     title: {
