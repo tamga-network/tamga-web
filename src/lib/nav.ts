@@ -19,6 +19,7 @@ import {
   Smartphone,
   FileBadge,
   BadgeCheck,
+  ListTodo,
   type LucideIcon,
 } from "lucide-react";
 import type { Locale } from "@/i18n/routing";
@@ -151,6 +152,21 @@ export const PROJECT: NavItem[] = [
     icon: Map,
     tone: "primary",
     href: "/roadmap",
+  },
+  {
+    title: {
+      en: "Known shortcuts",
+      tr: "Bilinen kısayollar",
+      tk: "Belli gysga ýollar",
+    },
+    desc: {
+      en: "what is temporary, and how it closes",
+      tr: "ne geçici, nasıl kapanacak",
+      tk: "näme wagtlaýyn, nähili ýapylýar",
+    },
+    icon: ListTodo,
+    tone: "neutral",
+    href: "/shortcuts",
   },
   {
     title: { en: "Changelog", tr: "Changelog", tk: "Changelog" },

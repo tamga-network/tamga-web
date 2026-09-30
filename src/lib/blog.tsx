@@ -241,7 +241,7 @@ const POSTS: Post[] = [
             </ul>
             <h2>What is still a shortcut</h2>
             <p>
-              Every shortcut is recorded in a public deviation log and closes before the pilot: the
+              Every shortcut is recorded on the public <Link href="/shortcuts">known-shortcuts page</Link> and closes before the pilot: the
               student records are samples, keys live in software rather than the phone’s secure chip, the
               university’s signing key is held by Tamga, the wallet provider does not accept the app’s own
               statement about its platform (every wallet counts as software-level; with the App Store and
@@ -283,7 +283,7 @@ const POSTS: Post[] = [
             </ul>
             <h2>Hâlâ kestirme olanlar</h2>
             <p>
-              Her kestirme herkese açık bir sapma kütüğüne kayıtlıdır ve pilottan önce kapanır:
+              Her kestirme herkese açık <Link href="/shortcuts">bilinen kısayollar</Link> sayfasında kayıtlıdır ve pilottan önce kapanır:
               öğrenci kayıtları örnektir, anahtarlar telefonun güvenli çipinde değil yazılımda durur,
               üniversitenin imza anahtarını Tamga tutar, cüzdan sağlayıcısı uygulamanın kendi platform
               beyanını kabul etmez (her cüzdan yazılım seviyesinde sayılır; App Store ve Google Play sürümüyle
@@ -324,7 +324,7 @@ const POSTS: Post[] = [
             </ul>
             <h2>Heniz gysga ýol bolanlar</h2>
             <p>
-              Her gysga ýol açyk gyşarma sanawynda ýazylandyr we pilotdan öň ýapylýar: talyp
+              Her gysga ýol açyk <Link href="/shortcuts">belli gysga ýollar</Link> sahypasynda ýazylandyr we pilotdan öň ýapylýar: talyp
               ýazgylary nusgadyr, açarlar telefonyň howpsuz çipinde däl-de programmada durýar, uniwersitetiň gol
               açaryny Tamga saklaýar, gapjyk üpjün edijisi programmanyň öz platforma beýanyny kabul etmeýär (dükan wersiýasy bilen App Attest / Play Integrity hökmany bolar)
               we ýeke operator bar. Web giriş hasaba duran pursaty saýtlaryň arasynda şol bir hasap

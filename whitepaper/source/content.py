@@ -238,7 +238,7 @@ EN = {
         "status": ("Status and roadmap", [
             ("p", "**Working today (first release, real cryptography):** issuance and presentation of diplomas and student cards; revocation and institution suspension; identity check and identity credential, also as mdoc; campus and event passes, single-use tickets; website sign-up and passkey sign-in; eight open-source packages. Tested on a phone."),
             ("table", "Phases", "phases"),
-            ("p", "Every first-release shortcut — sample records, software keys, the issuer key held by Tamga, a single operator — is listed in a public deviation log and closed before the pilot. The pilot’s success and stop criteria are defined in advance."),
+            ("p", "Every first-release shortcut — sample records, software keys, the issuer key held by Tamga, a single operator — is listed on the public [known-shortcuts page](/shortcuts) and closed before the pilot. The pilot’s success and stop criteria are defined in advance."),
         ]),
         "limits": ("Known limits", [
             ("ul", [
@@ -353,7 +353,7 @@ TR = {
         "status": ("Durum ve yol haritası", [
             ("p", "**Bugün çalışan (ilk sürüm, gerçek kriptografi):** diploma ve öğrenci belgesi verme ve sunma; iptal ve kurum askısı; kimlik kontrolü ve kimlik belgesi, mdoc olarak da; kampüs ve etkinlik geçiş kartları, tek kullanımlık biletler; web sitesine kayıt ve passkey ile giriş; sekiz açık kaynak paket. Telefonda test edildi."),
             ("table", "Aşamalar", "phases"),
-            ("p", "İlk sürümdeki her kestirme — örnek kayıtlar, yazılımda anahtar, Tamga’da duran kurum anahtarı, tek operatör — herkese açık bir sapma kütüğünde listelenir ve pilottan önce kapatılır. Pilotun başarı ve durdurma ölçütleri önceden tanımlıdır."),
+            ("p", "İlk sürümdeki her kestirme — örnek kayıtlar, yazılımda anahtar, Tamga’da duran kurum anahtarı, tek operatör — herkese açık [bilinen kısayollar](/shortcuts) sayfasında listelenir ve pilottan önce kapatılır. Pilotun başarı ve durdurma ölçütleri önceden tanımlıdır."),
         ]),
         "limits": ("Bilinen sınırlar", [
             ("ul", [
@@ -468,7 +468,7 @@ TK = {
         "status": ("Ýagdaý we ýol kartasy", [
             ("p", "**Häzir işleýän (ilkinji wersiýa, hakyky kriptografiýa):** diplom we talyp resminamasyny bermek we hödürlemek; ýatyrylyş we guramanyň togtadylmagy; şahsyýet barlagy we şahsyýet resminamasy, mdoc görnüşinde hem; kampus we çäre geçiş kartalary, bir gezeklik biletler; web saýta hasaba durmak we passkey bilen giriş; sekiz açyk çeşmeli paket. Telefonda synagdan geçirildi."),
             ("table", "Tapgyrlar", "phases"),
-            ("p", "Ilkinji wersiýadaky her gysga ýol — nusga ýazgylar, programmada açar, Tamga-da duran guramanyň açary, ýeke operator — açyk gyşarma sanawynda görkezilýär we pilotdan öň ýapylýar. Pilotyň üstünlik we togtatma ölçegleri öňünden kesgitlenendir."),
+            ("p", "Ilkinji wersiýadaky her gysga ýol — nusga ýazgylar, programmada açar, Tamga-da duran guramanyň açary, ýeke operator — açyk [belli gysga ýollar](/shortcuts) sahypasynda görkezilýär we pilotdan öň ýapylýar. Pilotyň üstünlik we togtatma ölçegleri öňünden kesgitlenendir."),
         ]),
         "limits": ("Belli çäkler", [
             ("ul", [

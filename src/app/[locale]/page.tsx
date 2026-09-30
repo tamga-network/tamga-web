@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { setRequestLocale } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import {
   ArrowRight,
   ArrowDown,
@@ -509,7 +510,10 @@ function Today({ c }: { c: HomeContent }) {
       </div>
       <Reveal delay={0.2}>
         <p className="mt-6 max-w-3xl text-sm leading-relaxed text-foreground-muted">
-          {c.today.note}
+          {c.today.note}{" "}
+          <Link href="/shortcuts" className="link-underline text-foreground hover:text-primary">
+            →
+          </Link>
         </p>
       </Reveal>
     </section>

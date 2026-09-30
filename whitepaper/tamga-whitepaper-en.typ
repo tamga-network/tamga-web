@@ -132,7 +132,7 @@ These are designs under study, not part of the first release or the pilot; each 
 
 #kvtable("Phases", (("Phase B (today)", "signed trust lists + anchor log · Tamga = provisional operator"), ("Pilot", "one foundation university · issuer key at the university · lists, no ledger"), ("Phase 0", "permissioned Besu/QBFT ledger once at least 2 independent validator operators sign"), ("Phase 1", "member-state lists · close range (NFC/BLE) · Digital Credentials API"),), mono: false)
 
-Every first-release shortcut — sample records, software keys, the issuer key held by Tamga, a single operator — is listed in a public deviation log and closed before the pilot. The pilot’s success and stop criteria are defined in advance.
+Every first-release shortcut — sample records, software keys, the issuer key held by Tamga, a single operator — is listed on the public #link("https://tamga.network/en/shortcuts")[known-shortcuts page] and closed before the pilot. The pilot’s success and stop criteria are defined in advance.
 
 = Known limits
 

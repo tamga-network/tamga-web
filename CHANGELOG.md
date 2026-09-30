@@ -4,6 +4,15 @@ Biçim: Keep a Changelog. Site dağıtımları tarihle anılır.
 
 ## [Yayınlanmadı]
 
+### Eklendi (2026-09-30 — bilinen kısayollar, lisans)
+- `/shortcuts` "Bilinen kısayollar": sapma kütüğünün kamuya açık, sade hâli (açık / daraldı / kapandı); ana sayfa, whitepaper
+  ve blog "herkese açık liste" ifadeleri bu sayfaya bağlanır. Proje menüsünde.
+- `LICENSE` (Apache-2.0) ve `LICENSE-docs` (CC BY 4.0, içerik; ad ve mühür hariç).
+
+### Kaldırıldı (2026-09-30 — denetim)
+- `/components` iç vitrini ve yalnız orada kullanılan efekt bileşenleri; `public/logo-options` (özel depoya), create-next-app
+  görselleri, `DEPLOY-CHECKLIST.md` (açık maddeler backlog'a).
+
 ### Değişti (2026-09-30 — menüler, SDK, changelog, yol haritası)
 - Üst menü shadcn/ui kalıbıyla (Radix NavigationMenu): Dokümanlar · Geliştiriciler ▾ · Ekosistem ▾ · Proje ▾; açılır menülerde
   renkli simgeli, açıklamalı, yan yana kutucuklar. Telefon menüsü sağdan açılan panel + açılır bölümler (Radix Dialog + Accordion);

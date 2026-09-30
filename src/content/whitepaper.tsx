@@ -616,9 +616,10 @@ const en: WhitepaperContent = {
           />
           <p>
             Every first-release shortcut — sample records, software keys, the
-            issuer key held by Tamga, a single operator — is listed in a public
-            deviation log and closed before the pilot. The pilot’s success and
-            stop criteria are defined in advance.
+            issuer key held by Tamga, a single operator — is listed on the
+            public <Link href="/shortcuts">known-shortcuts page</Link> and
+            closed before the pilot. The pilot’s success and stop criteria are
+            defined in advance.
           </p>
         </>
       ),
@@ -1206,9 +1207,10 @@ const tr: WhitepaperContent = {
           />
           <p>
             İlk sürümdeki her kestirme — örnek kayıtlar, yazılımda anahtar,
-            Tamga’da duran kurum anahtarı, tek operatör — herkese açık bir sapma
-            kütüğünde listelenir ve pilottan önce kapatılır. Pilotun başarı ve
-            durdurma ölçütleri önceden tanımlıdır.
+            Tamga’da duran kurum anahtarı, tek operatör — herkese açık{" "}
+            <Link href="/shortcuts">bilinen kısayollar</Link> sayfasında
+            listelenir ve pilottan önce kapatılır. Pilotun başarı ve durdurma
+            ölçütleri önceden tanımlıdır.
           </p>
         </>
       ),
@@ -1811,9 +1813,10 @@ const tk: WhitepaperContent = {
           />
           <p>
             Ilkinji wersiýadaky her gysga ýol — nusga ýazgylar, programmada
-            açar, Tamga-da duran guramanyň açary, ýeke operator — açyk gyşarma
-            sanawynda görkezilýär we pilotdan öň ýapylýar. Pilotyň üstünlik we
-            togtatma ölçegleri öňünden kesgitlenendir.
+            açar, Tamga-da duran guramanyň açary, ýeke operator — açyk{" "}
+            <Link href="/shortcuts">belli gysga ýollar</Link> sahypasynda
+            görkezilýär we pilotdan öň ýapylýar. Pilotyň üstünlik we togtatma
+            ölçegleri öňünden kesgitlenendir.
           </p>
         </>
       ),

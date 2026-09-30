@@ -329,7 +329,7 @@ const en: HomeContent = {
         ],
       },
     ],
-    note: "Every first-release shortcut — sample records, software keys, a single operator — is listed openly in our deviation log and is closed before the pilot.",
+    note: "Every first-release shortcut — sample records, software keys, a single operator — is listed openly on our known-shortcuts page and is closed before the pilot.",
   },
   positioning: {
     title: "The EBSI of the Turkic world",
@@ -601,7 +601,7 @@ const tr: HomeContent = {
         ],
       },
     ],
-    note: "İlk sürümdeki her kestirme — örnek kayıtlar, yazılımda tutulan anahtar, tek operatör — sapma kütüğümüzde açıkça listelenir ve pilottan önce kapatılır.",
+    note: "İlk sürümdeki her kestirme — örnek kayıtlar, yazılımda tutulan anahtar, tek operatör — “Bilinen kısayollar” sayfamızda açıkça listelenir ve pilottan önce kapatılır.",
   },
   positioning: {
     title: "Türk dünyasının EBSI’si",
@@ -874,7 +874,7 @@ const tk: HomeContent = {
         ],
       },
     ],
-    note: "Ilkinji wersiýadaky her gysga ýol — nusga ýazgylar, programma üpjünçiliginde saklanýan açar, ýeke operator — gyşarma sanawymyzda açyk görkezilýär we pilotdan öň ýapylýar.",
+    note: "Ilkinji wersiýadaky her gysga ýol — nusga ýazgylar, programma üpjünçiliginde saklanýan açar, ýeke operator — “Belli gysga ýollar” sahypamyzda açyk görkezilýär we pilotdan öň ýapylýar.",
   },
   positioning: {
     title: "Türki dünýäsiniň EBSI-si",
