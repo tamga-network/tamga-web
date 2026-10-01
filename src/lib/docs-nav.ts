@@ -101,17 +101,9 @@ const NAV: NavSectionSrc[] = [
       {
         href: "/docs/eidas-eudi",
         title: {
-          en: "eIDAS, EUDI and EBSI",
-          tr: "eIDAS, EUDI ve EBSI",
-          tk: "eIDAS, EUDI we EBSI",
-        },
-      },
-      {
-        href: "/docs/eudi-comparison",
-        title: {
-          en: "Tamga and the EUDI architecture",
-          tr: "Tamga ve EUDI mimarisi",
-          tk: "Tamga we EUDI arhitekturasy",
+          en: "eIDAS 2.0 and the EUDI Wallet",
+          tr: "eIDAS 2.0 ve EUDI Wallet",
+          tk: "eIDAS 2.0 we EUDI Wallet",
         },
       },
       {
@@ -136,39 +128,6 @@ const NAV: NavSectionSrc[] = [
           en: "Sign in with Tamga",
           tr: "Tamga ile giriş yap",
           tk: "Tamga bilen gir",
-        },
-      },
-    ],
-  },
-  {
-    title: {
-      en: "Advanced Architecture",
-      tr: "İleri Mimari",
-      tk: "Ösen Arhitektura",
-    },
-    items: [
-      {
-        href: "/docs/identity-layers",
-        title: {
-          en: "Three-layer identity and pseudonyms",
-          tr: "Üç katmanlı kimlik ve pseudonym",
-          tk: "Üç gatlakly şahsyýet we pseudonym",
-        },
-      },
-      {
-        href: "/docs/accountable-disclosure",
-        title: {
-          en: "Accountable disclosure (escrow)",
-          tr: "Hesap verebilir ifşa (escrow)",
-          tk: "Hasabatly açyklama (escrow)",
-        },
-      },
-      {
-        href: "/docs/recovery-revocation",
-        title: {
-          en: "Recovery and revocation",
-          tr: "Kurtarma ve iptal",
-          tk: "Dikeldiş we ýatyrylyş",
         },
       },
     ],

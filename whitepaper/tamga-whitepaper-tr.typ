@@ -30,6 +30,8 @@ Yeni model bunu tersine çevirir: belge kişide kalır, yalnızca gerekli kanıt
 
 Türk dünyası dili, kültürü ve tarihi paylaşır. Bir devlette verilen diploma bir diğerinde doğrulanabilmeli; bir kurumun kimliğine sınır ötesinde güvenilebilmelidir. Tamga bu ortak zemini aynı standartlar üzerinde, her devleti egemen tutan bir yönetişimle kurar.
 
+Tamga, her biri tek başına ayakta durabilen üç katmanda kuruludur. Taban: belgeler, protokoller ve güven listeleri AB standartlarındadır; böylece uyumlu cüzdanlar ve doğrulayıcılar Tamga’daki kurumlarla çalışabilir. Onun üstünde *Tamga Network*, her devletin güven listesini toplayan ve devletlerin birbirini tanımasını sağlayan hafif bir federasyondur — bugün Türkiye listesini Tamga geçici olarak yayınlar; bir devlet kendi listesini yayınladığında ağ onu gösterir. Bu zeminde ağın ilk ve referans cüzdanı *Tamga Wallet* (AB uyumludur; “EUDI Wallet” bir AB üye devletinin sunduğu ya da tanıdığı cüzdanlara ayrılmış bir unvandır) ve kurumlara sunulan hizmetler çalışır: Kurum Konsolu ve Tamga Verify.
+
 = İlkeler
 
 - *Önce egemenlik* — her devlet kendi kaydının tek yazarıdır; ağ üyeliği 2/3 oyla; sınır ötesi tanıma tek taraflı belirlenir.
@@ -42,7 +44,7 @@ Türk dünyası dili, kültürü ve tarihi paylaşır. Bir devlette verilen dipl
 
 = Roller
 
-AB mimarisinin her rolü Tamga’da vardır. Bir devlet henüz katılmadıysa rolü Tamga geçici ve kayıtlı olarak üstlenir: güven listesi operatörü, kayıt otoritesi, “TR National Root CA (geçici operatör: Tamga)” ve cüzdan sağlayıcısı. Kurumlar belge sağlayıcılarıdır; işverenler, web siteleri ve kapılar kayıtlı doğrulayıcılardır. PID sağlayıcısı yeri bir devlet doldurana kadar boştur; bu arada kimlik belgesi Tamga kimlik servisinden gelir (belge ve canlılık kontrolü). Henüz validator operatörü yoktur — bu yüzden defter de yoktur. Yan yana: #link("https://tamga.network/tr/docs/eudi-comparison")[Tamga ve EUDI mimarisi].
+AB mimarisinin her rolü Tamga’da vardır. Bir devlet henüz katılmadıysa rolü Tamga geçici ve kayıtlı olarak üstlenir: güven listesi operatörü, kayıt otoritesi, “TR National Root CA (geçici operatör: Tamga)” ve cüzdan sağlayıcısı. Kurumlar belge sağlayıcılarıdır; işverenler, web siteleri ve kapılar kayıtlı doğrulayıcılardır. PID sağlayıcısı yeri bir devlet doldurana kadar boştur; bu arada kimlik belgesi Tamga kimlik servisinden gelir (belge ve canlılık kontrolü). Henüz validator operatörü yoktur — bu yüzden defter de yoktur. Yan yana: #link("https://tamga.network/tr/docs/roles")[roller ve terimler].
 
 #chapter()
 = Güven modeli: imzalı güven listeleri
@@ -92,7 +94,7 @@ Her doğrulama aynı hattı aynı sırayla çalıştırır ve ilk hatada durur. 
 
 = İptal ve yaşam döngüsü
 
-İptal *IETF Token Status List* ile yapılır: her belge kopyası için *rastgele* bir konumda iki bit — geçerli, iptal ya da askıda. Kurum listeyi *sabit aralıkla* yayınlar, asla istek üzerine değil; böylece zamanlama kişi hakkında hiçbir şey ele vermez; her yayın çapalanır. Doğrulayıcılar listeleri önceden çeker; bir belgeyi denetlemek ne kuruma ne telefona çağrı yapar. Bir iptal en geç yaklaşık 90 dakikada her doğrulayıcıya ulaşır. Kopyalar tasarım gereği tükenir; cüzdan yenilerini almadan önce sorar ve asla sessizce yenilemez. Bkz. #link("https://tamga.network/tr/docs/recovery-revocation")[kurtarma ve iptal].
+İptal *IETF Token Status List* ile yapılır: her belge kopyası için *rastgele* bir konumda iki bit — geçerli, iptal ya da askıda. Kurum listeyi *sabit aralıkla* yayınlar, asla istek üzerine değil; böylece zamanlama kişi hakkında hiçbir şey ele vermez; her yayın çapalanır. Doğrulayıcılar listeleri önceden çeker; bir belgeyi denetlemek ne kuruma ne telefona çağrı yapar. Bir iptal en geç yaklaşık 90 dakikada her doğrulayıcıya ulaşır. Kopyalar tasarım gereği tükenir; cüzdan yenilerini almadan önce sorar ve asla sessizce yenilemez. Bkz. #link("https://tamga.network/tr/docs/how-tamga-works")[mimari].
 
 #chapter()
 = Tasarımdan gelen mahremiyet
@@ -120,9 +122,7 @@ Defterdeki yönetişim ilkeleri izler: validator’lar eşit oylu devletlerdir; 
 
 Bunlar incelenen tasarımlardır; ilk sürümün ya da pilotun parçası değildir ve herhangi bir kullanımdan önce bağımsız güvenlik incelemesinden geçecektir.
 
-- Kurum eşleştirmesini ortadan kaldırmak için *sıfır bilgili belgeler* (ör. BBS\+). Bkz. #link("https://tamga.network/tr/docs/selective-disclosure")[seçici açıklama].
-- *Hesap verebilir ifşa* — takma adların yalnızca mahkeme ve çok kurumlu bir eşikle çözülebilmesi (DKG ve eşik ElGamal; anahtar asla yeniden kurulmaz). Bkz. #link("https://tamga.network/tr/docs/accountable-disclosure")[hesap verebilir ifşa].
-- *Türetilmiş takma adlar ve kurtarma* — hiyerarşik anahtarlar, zarf şifreleme, cihaz kurtarma. Bkz. #link("https://tamga.network/tr/docs/identity-layers")[kimlik katmanları].
+- *Sıfır bilgi ispatıyla sunum* — kurumun imzaladığı ve hiç değişmeyen bir mdoc hakkında “18 yaşından büyüğüm” gibi bir olguyu açık kaynak Longfellow ZK ile kanıtlamak; doğrulayıcı tarafı hazır, telefonda ispat üretimi mağaza sürümünden sonra. Bkz. #link("https://tamga.network/tr/docs/selective-disclosure")[seçici açıklama].
 - *Değer katmanı* — doğrulanmış taraflar arasında yetkilendirme; mutabakat düzenlenmiş raylarda kalır.
 
 #chapter()

@@ -30,6 +30,8 @@ With *eIDAS 2.0* every EU member state must offer its citizens a *European Digit
 
 The Turkic world shares language, culture and history. A diploma issued in one state should be verifiable in another; an institution’s identity should be trusted across borders. Tamga builds that shared foundation on the same standards, with governance that keeps every state sovereign.
 
+Tamga is built in three layers that each stand on their own. The base: credentials, protocols and trust lists follow the EU standards, so compatible wallets and verifiers can work with Tamga institutions. Above it, *Tamga Network* is a light federation that collects each state’s trust list and lets states recognise one another — today Tamga publishes Türkiye’s list provisionally, and when a state publishes its own, the network points to it. On that base run *Tamga Wallet*, the network’s first and reference wallet (EU-compatible; “EUDI Wallet” is a title reserved for wallets an EU member state provides or recognises), and services for institutions: the Institution Console and Tamga Verify.
+
 = Principles
 
 - *Sovereignty first* — each state is the only writer of its own registry; network membership by a 2/3 vote; cross-border recognition decided unilaterally.
@@ -42,7 +44,7 @@ The Turkic world shares language, culture and history. A diploma issued in one s
 
 = Roles
 
-Every role of the EU architecture exists in Tamga. Where a state has not joined, Tamga holds the role provisionally and on the record: trusted-list operator, registrar, the “TR National Root CA (provisional operator: Tamga)” and the wallet provider. Institutions are attestation providers; employers, websites and gates are registered relying parties. The PID-provider slot is empty until a state fills it; meanwhile an identity credential comes from Tamga’s identity service (document and liveness check). There are no validator operators yet — hence no ledger. Side-by-side: #link("https://tamga.network/en/docs/eudi-comparison")[Tamga and the EUDI architecture].
+Every role of the EU architecture exists in Tamga. Where a state has not joined, Tamga holds the role provisionally and on the record: trusted-list operator, registrar, the “TR National Root CA (provisional operator: Tamga)” and the wallet provider. Institutions are attestation providers; employers, websites and gates are registered relying parties. The PID-provider slot is empty until a state fills it; meanwhile an identity credential comes from Tamga’s identity service (document and liveness check). There are no validator operators yet — hence no ledger. Side-by-side: #link("https://tamga.network/en/docs/roles")[roles and terms].
 
 #chapter()
 = Trust model: signed trust lists
@@ -92,7 +94,7 @@ Every verification runs the same pipeline in the same order and stops at the fir
 
 = Revocation and lifecycle
 
-Revocation uses the *IETF Token Status List*: two bits per credential copy — valid, revoked or suspended — at a *random* position. The issuer publishes at a *fixed interval*, never on demand, so timing reveals nothing about a person; each publication is anchored. Verifiers pre-fetch the lists, so checking a credential makes no call to the issuer or to the phone. A revocation reaches every verifier within about 90 minutes at most. Copies run out by design; the wallet asks before fetching fresh ones and never refreshes silently. See #link("https://tamga.network/en/docs/recovery-revocation")[recovery and revocation].
+Revocation uses the *IETF Token Status List*: two bits per credential copy — valid, revoked or suspended — at a *random* position. The issuer publishes at a *fixed interval*, never on demand, so timing reveals nothing about a person; each publication is anchored. Verifiers pre-fetch the lists, so checking a credential makes no call to the issuer or to the phone. A revocation reaches every verifier within about 90 minutes at most. Copies run out by design; the wallet asks before fetching fresh ones and never refreshes silently. See #link("https://tamga.network/en/docs/how-tamga-works")[architecture].
 
 #chapter()
 = Privacy by design
@@ -120,9 +122,7 @@ Governance on the ledger follows the principles: validators are states with equa
 
 These are designs under study, not part of the first release or the pilot; each will pass an independent security review before any use.
 
-- *Zero-knowledge credentials* (e.g. BBS\+) to remove issuer linkability. See #link("https://tamga.network/en/docs/selective-disclosure")[selective disclosure].
-- *Accountable disclosure* — pseudonyms resolvable only by a court plus a multi-institution threshold (DKG and threshold ElGamal; the key is never reconstructed). See #link("https://tamga.network/en/docs/accountable-disclosure")[accountable disclosure].
-- *Derived pseudonyms and recovery* — hierarchical keys, envelope encryption, device recovery. See #link("https://tamga.network/en/docs/identity-layers")[identity layers].
+- *Zero-knowledge presentation* — proving a fact such as “over 18” about an unchanged, issuer-signed mdoc with the open-source Longfellow ZK system; the verifier side is ready, proof generation on the phone follows the store release. See #link("https://tamga.network/en/docs/selective-disclosure")[selective disclosure].
 - *The value layer* — authorization between verified parties; settlement stays on regulated rails.
 
 #chapter()

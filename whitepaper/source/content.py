@@ -166,6 +166,7 @@ EN = {
         "vision": ("Vision: from eIDAS 2.0 to the Turkic world", [
             ("p", "With **eIDAS 2.0** every EU member state must offer its citizens a **European Digital Identity Wallet**. Its architecture (the ARF) and profiles are becoming the de-facto standard for digital trust."),
             ("p", "The Turkic world shares language, culture and history. A diploma issued in one state should be verifiable in another; an institution’s identity should be trusted across borders. Tamga builds that shared foundation on the same standards, with governance that keeps every state sovereign."),
+            ("p", "Tamga is built in three layers that each stand on their own. The base: credentials, protocols and trust lists follow the EU standards, so compatible wallets and verifiers can work with Tamga institutions. Above it, **Tamga Network** is a light federation that collects each state’s trust list and lets states recognise one another — today Tamga publishes Türkiye’s list provisionally, and when a state publishes its own, the network points to it. On that base run **Tamga Wallet**, the network’s first and reference wallet (EU-compatible; “EUDI Wallet” is a title reserved for wallets an EU member state provides or recognises), and services for institutions: the Institution Console and Tamga Verify."),
         ]),
         "principles": ("Principles", [
             ("ul", [
@@ -179,7 +180,7 @@ EN = {
             ]),
         ]),
         "roles": ("Roles", [
-            ("p", "Every role of the EU architecture exists in Tamga. Where a state has not joined, Tamga holds the role provisionally and on the record: trusted-list operator, registrar, the “TR National Root CA (provisional operator: Tamga)” and the wallet provider. Institutions are attestation providers; employers, websites and gates are registered relying parties. The PID-provider slot is empty until a state fills it; meanwhile an identity credential comes from Tamga’s identity service (document and liveness check). There are no validator operators yet — hence no ledger. Side-by-side: [Tamga and the EUDI architecture](/docs/eudi-comparison)."),
+            ("p", "Every role of the EU architecture exists in Tamga. Where a state has not joined, Tamga holds the role provisionally and on the record: trusted-list operator, registrar, the “TR National Root CA (provisional operator: Tamga)” and the wallet provider. Institutions are attestation providers; employers, websites and gates are registered relying parties. The PID-provider slot is empty until a state fills it; meanwhile an identity credential comes from Tamga’s identity service (document and liveness check). There are no validator operators yet — hence no ledger. Side-by-side: [roles and terms](/docs/roles)."),
         ]),
         "trust": ("Trust model: signed trust lists", [
             ("p", "A signature proves who signed; a **trust list** says whether that signer is a real institution, which document types it may issue, since when, and its current status. Lists are signed JWS files, **versioned and hash-chained**, never deleted, and carry a next-update date; verifiers check the signer against a root fingerprint published out of band. Every revocation-list publication and schema change is also written, at least hourly, to a public **anchor log**, so a rolled-back list can be detected. Details: [trust lists](/docs/trust-lists)."),
@@ -207,7 +208,7 @@ EN = {
             ("p", "**INDETERMINATE** is never reported as REJECTED. If a list cannot be reached or is out of date, the verifier says “could not check right now” — the difference between “this diploma is fake” and “I cannot check” decides whether someone is hired. Authorization is judged on the **issue date**: a diploma issued while a university was active stays valid after a suspension, while new issuance stops at once."),
         ]),
         "revocation": ("Revocation and lifecycle", [
-            ("p", "Revocation uses the **IETF Token Status List**: two bits per credential copy — valid, revoked or suspended — at a **random** position. The issuer publishes at a **fixed interval**, never on demand, so timing reveals nothing about a person; each publication is anchored. Verifiers pre-fetch the lists, so checking a credential makes no call to the issuer or to the phone. A revocation reaches every verifier within about 90 minutes at most. Copies run out by design; the wallet asks before fetching fresh ones and never refreshes silently. See [recovery and revocation](/docs/recovery-revocation)."),
+            ("p", "Revocation uses the **IETF Token Status List**: two bits per credential copy — valid, revoked or suspended — at a **random** position. The issuer publishes at a **fixed interval**, never on demand, so timing reveals nothing about a person; each publication is anchored. Verifiers pre-fetch the lists, so checking a credential makes no call to the issuer or to the phone. A revocation reaches every verifier within about 90 minutes at most. Copies run out by design; the wallet asks before fetching fresh ones and never refreshes silently. See [architecture](/docs/how-tamga-works)."),
         ]),
         "privacy": ("Privacy by design", [
             ("ul", [
@@ -229,9 +230,7 @@ EN = {
         "research": ("Research directions", [
             ("p", "These are designs under study, not part of the first release or the pilot; each will pass an independent security review before any use."),
             ("ul", [
-                "**Zero-knowledge credentials** (e.g. BBS+) to remove issuer linkability. See [selective disclosure](/docs/selective-disclosure).",
-                "**Accountable disclosure** — pseudonyms resolvable only by a court plus a multi-institution threshold (DKG and threshold ElGamal; the key is never reconstructed). See [accountable disclosure](/docs/accountable-disclosure).",
-                "**Derived pseudonyms and recovery** — hierarchical keys, envelope encryption, device recovery. See [identity layers](/docs/identity-layers).",
+                "**Zero-knowledge presentation** — proving a fact such as “over 18” about an unchanged, issuer-signed mdoc with the open-source Longfellow ZK system; the verifier side is ready, proof generation on the phone follows the store release. See [selective disclosure](/docs/selective-disclosure).",
                 "**The value layer** — authorization between verified parties; settlement stays on regulated rails.",
             ]),
         ]),
@@ -281,6 +280,7 @@ TR = {
         "vision": ("Vizyon: eIDAS 2.0’dan Türk dünyasına", [
             ("p", "**eIDAS 2.0** ile her AB üye devleti vatandaşına bir **Avrupa Dijital Kimlik Cüzdanı** sunmak zorundadır. Bu cüzdanın mimarisi (ARF) ve profilleri dijital güvenin fiilî standardı hâline geliyor."),
             ("p", "Türk dünyası dili, kültürü ve tarihi paylaşır. Bir devlette verilen diploma bir diğerinde doğrulanabilmeli; bir kurumun kimliğine sınır ötesinde güvenilebilmelidir. Tamga bu ortak zemini aynı standartlar üzerinde, her devleti egemen tutan bir yönetişimle kurar."),
+            ("p", "Tamga, her biri tek başına ayakta durabilen üç katmanda kuruludur. Taban: belgeler, protokoller ve güven listeleri AB standartlarındadır; böylece uyumlu cüzdanlar ve doğrulayıcılar Tamga’daki kurumlarla çalışabilir. Onun üstünde **Tamga Network**, her devletin güven listesini toplayan ve devletlerin birbirini tanımasını sağlayan hafif bir federasyondur — bugün Türkiye listesini Tamga geçici olarak yayınlar; bir devlet kendi listesini yayınladığında ağ onu gösterir. Bu zeminde ağın ilk ve referans cüzdanı **Tamga Wallet** (AB uyumludur; “EUDI Wallet” bir AB üye devletinin sunduğu ya da tanıdığı cüzdanlara ayrılmış bir unvandır) ve kurumlara sunulan hizmetler çalışır: Kurum Konsolu ve Tamga Verify."),
         ]),
         "principles": ("İlkeler", [
             ("ul", [
@@ -294,7 +294,7 @@ TR = {
             ]),
         ]),
         "roles": ("Roller", [
-            ("p", "AB mimarisinin her rolü Tamga’da vardır. Bir devlet henüz katılmadıysa rolü Tamga geçici ve kayıtlı olarak üstlenir: güven listesi operatörü, kayıt otoritesi, “TR National Root CA (geçici operatör: Tamga)” ve cüzdan sağlayıcısı. Kurumlar belge sağlayıcılarıdır; işverenler, web siteleri ve kapılar kayıtlı doğrulayıcılardır. PID sağlayıcısı yeri bir devlet doldurana kadar boştur; bu arada kimlik belgesi Tamga kimlik servisinden gelir (belge ve canlılık kontrolü). Henüz validator operatörü yoktur — bu yüzden defter de yoktur. Yan yana: [Tamga ve EUDI mimarisi](/docs/eudi-comparison)."),
+            ("p", "AB mimarisinin her rolü Tamga’da vardır. Bir devlet henüz katılmadıysa rolü Tamga geçici ve kayıtlı olarak üstlenir: güven listesi operatörü, kayıt otoritesi, “TR National Root CA (geçici operatör: Tamga)” ve cüzdan sağlayıcısı. Kurumlar belge sağlayıcılarıdır; işverenler, web siteleri ve kapılar kayıtlı doğrulayıcılardır. PID sağlayıcısı yeri bir devlet doldurana kadar boştur; bu arada kimlik belgesi Tamga kimlik servisinden gelir (belge ve canlılık kontrolü). Henüz validator operatörü yoktur — bu yüzden defter de yoktur. Yan yana: [roller ve terimler](/docs/roles)."),
         ]),
         "trust": ("Güven modeli: imzalı güven listeleri", [
             ("p", "İmza kimin imzaladığını kanıtlar; **güven listesi** ise imzalayanın gerçek bir kurum olup olmadığını, hangi belge tiplerini ne zamandan beri verebileceğini ve güncel durumunu söyler. Listeler imzalı JWS dosyalarıdır, **sürümlü ve hash-zincirlidir**, silinmez ve bir sonraki güncelleme tarihi taşır; doğrulayıcı imzalayanı bant dışında yayınlanmış bir kök parmak iziyle karşılaştırır. Her iptal listesi yayını ve şema değişikliği ayrıca en az saatte bir herkese açık bir **çapa günlüğüne** yazılır; böylece geri sarılmış bir liste fark edilir. Ayrıntı: [güven listeleri](/docs/trust-lists)."),
@@ -322,7 +322,7 @@ TR = {
             ("p", "**INDETERMINATE** (belirsiz) asla REJECTED (red) olarak bildirilmez. Bir listeye ulaşılamazsa ya da liste güncel değilse doğrulayıcı “şu an denetlenemedi” der — “bu diploma sahte” ile “denetleyemiyorum” arasındaki fark birinin işe alınıp alınmamasıdır. Yetki **veriliş tarihine** göre değerlendirilir: üniversite etkinken verilmiş diploma askıdan sonra da geçerli kalır, yeni belge verme ise hemen durur."),
         ]),
         "revocation": ("İptal ve yaşam döngüsü", [
-            ("p", "İptal **IETF Token Status List** ile yapılır: her belge kopyası için **rastgele** bir konumda iki bit — geçerli, iptal ya da askıda. Kurum listeyi **sabit aralıkla** yayınlar, asla istek üzerine değil; böylece zamanlama kişi hakkında hiçbir şey ele vermez; her yayın çapalanır. Doğrulayıcılar listeleri önceden çeker; bir belgeyi denetlemek ne kuruma ne telefona çağrı yapar. Bir iptal en geç yaklaşık 90 dakikada her doğrulayıcıya ulaşır. Kopyalar tasarım gereği tükenir; cüzdan yenilerini almadan önce sorar ve asla sessizce yenilemez. Bkz. [kurtarma ve iptal](/docs/recovery-revocation)."),
+            ("p", "İptal **IETF Token Status List** ile yapılır: her belge kopyası için **rastgele** bir konumda iki bit — geçerli, iptal ya da askıda. Kurum listeyi **sabit aralıkla** yayınlar, asla istek üzerine değil; böylece zamanlama kişi hakkında hiçbir şey ele vermez; her yayın çapalanır. Doğrulayıcılar listeleri önceden çeker; bir belgeyi denetlemek ne kuruma ne telefona çağrı yapar. Bir iptal en geç yaklaşık 90 dakikada her doğrulayıcıya ulaşır. Kopyalar tasarım gereği tükenir; cüzdan yenilerini almadan önce sorar ve asla sessizce yenilemez. Bkz. [mimari](/docs/how-tamga-works)."),
         ]),
         "privacy": ("Tasarımdan gelen mahremiyet", [
             ("ul", [
@@ -344,9 +344,7 @@ TR = {
         "research": ("Araştırma yönleri", [
             ("p", "Bunlar incelenen tasarımlardır; ilk sürümün ya da pilotun parçası değildir ve herhangi bir kullanımdan önce bağımsız güvenlik incelemesinden geçecektir."),
             ("ul", [
-                "Kurum eşleştirmesini ortadan kaldırmak için **sıfır bilgili belgeler** (ör. BBS+). Bkz. [seçici açıklama](/docs/selective-disclosure).",
-                "**Hesap verebilir ifşa** — takma adların yalnızca mahkeme ve çok kurumlu bir eşikle çözülebilmesi (DKG ve eşik ElGamal; anahtar asla yeniden kurulmaz). Bkz. [hesap verebilir ifşa](/docs/accountable-disclosure).",
-                "**Türetilmiş takma adlar ve kurtarma** — hiyerarşik anahtarlar, zarf şifreleme, cihaz kurtarma. Bkz. [kimlik katmanları](/docs/identity-layers).",
+                "**Sıfır bilgi ispatıyla sunum** — kurumun imzaladığı ve hiç değişmeyen bir mdoc hakkında “18 yaşından büyüğüm” gibi bir olguyu açık kaynak Longfellow ZK ile kanıtlamak; doğrulayıcı tarafı hazır, telefonda ispat üretimi mağaza sürümünden sonra. Bkz. [seçici açıklama](/docs/selective-disclosure).",
                 "**Değer katmanı** — doğrulanmış taraflar arasında yetkilendirme; mutabakat düzenlenmiş raylarda kalır.",
             ]),
         ]),
@@ -396,6 +394,7 @@ TK = {
         "vision": ("Garaýyş: eIDAS 2.0-dan türki dünýäsine", [
             ("p", "**eIDAS 2.0** bilen ÝB-niň her agza döwleti raýatyna **Ýewropa Sanly Şahsyýet Gapjygyny** hödürlemäge borçly. Bu gapjygyň arhitekturasy (ARF) we profilleri sanly ynamyň hakyky standartyna öwrülýär."),
             ("p", "Türki dünýäsi dili, medeniýeti we taryhy paýlaşýar. Bir döwletde berlen diplom beýlekisinde barlanyp bilinmeli; guramanyň şahsyýetine serhetden aňyrda ynanyp bolmaly. Tamga bu umumy binýady şol bir standartlarda, her döwleti özygtyýarly saklaýan dolandyryş bilen gurýar."),
+            ("p", "Tamga her biri özbaşdak durup bilýän üç gatlakda gurulýar. Esas: resminamalar, protokollar we ynam sanawlary ÝB standartlaryna laýyk; şeýdip laýyk gapjyklar we barlaýjylar Tamga-daky guramalar bilen işläp bilýär. Onuň üstünde **Tamga Network** her döwletiň ynam sanawyny jemleýän we döwletleriň biri-birini ykrar etmegine mümkinçilik berýän ýeňil federasiýadyr — häzir Türkiýäniň sanawyny Tamga wagtlaýyn çap edýär; döwlet öz sanawyny çap edende tor şony görkezýär. Şu esasda toruň ilkinji we salgylanma gapjygy **Tamga Wallet** (ÝB bilen laýyk; “EUDI Wallet” ÝB agza döwletiniň hödürleýän ýa-da ykrar edýän gapjyklaryna degişli at) we guramalara hyzmatlar işleýär: Gurama konsoly we Tamga Verify."),
         ]),
         "principles": ("Ýörelgeler", [
             ("ul", [
@@ -409,7 +408,7 @@ TK = {
             ]),
         ]),
         "roles": ("Rollar", [
-            ("p", "ÝB arhitekturasynyň her roly Tamga-da bar. Döwlet heniz goşulmadyk bolsa, roly Tamga wagtlaýyn we hasaba alnan görnüşde öz üstüne alýar: ynam sanawynyň operatory, hasaba alyş edarasy, “TR National Root CA (wagtlaýyn operator: Tamga)” we gapjyk üpjün edijisi. Guramalar resminama üpjün edijilerdir; iş berijiler, web saýtlar we gapylar hasaba alnan barlaýjylardyr. PID üpjün edijisiniň orny döwlet ony doldurýança boş; şol wagt şahsyýet resminamasy Tamga şahsyýet hyzmatyndan gelýär (resminama we janlylyk barlagy). Heniz validator operatory ýok — şonuň üçin kitap hem ýok. Ýanaşyk: [Tamga we EUDI arhitekturasy](/docs/eudi-comparison)."),
+            ("p", "ÝB arhitekturasynyň her roly Tamga-da bar. Döwlet heniz goşulmadyk bolsa, roly Tamga wagtlaýyn we hasaba alnan görnüşde öz üstüne alýar: ynam sanawynyň operatory, hasaba alyş edarasy, “TR National Root CA (wagtlaýyn operator: Tamga)” we gapjyk üpjün edijisi. Guramalar resminama üpjün edijilerdir; iş berijiler, web saýtlar we gapylar hasaba alnan barlaýjylardyr. PID üpjün edijisiniň orny döwlet ony doldurýança boş; şol wagt şahsyýet resminamasy Tamga şahsyýet hyzmatyndan gelýär (resminama we janlylyk barlagy). Heniz validator operatory ýok — şonuň üçin kitap hem ýok. Ýanaşyk: [rollar we adalgalar](/docs/roles)."),
         ]),
         "trust": ("Ynam modeli: gol çekilen ynam sanawlary", [
             ("p", "Gol kimiň gol çekendigini subut edýär; **ynam sanawy** bolsa gol çekijiniň hakyky guramadygyny, haýsy resminama görnüşlerini haçandan bäri berip biljekdigini we häzirki ýagdaýyny aýdýar. Sanawlar gol çekilen JWS faýllarydyr, **wersiýaly we heş-zynjyrly**, pozulmaýar we indiki täzelenme senesini göterýär; barlaýjy gol çekijini aýratyn ýol bilen çap edilen kök barmak yzy bilen deňeşdirýär. Her ýatyrylyş sanawynyň çap edilmegi we shema üýtgeşmesi mundan başga-da azyndan sagatda bir gezek açyk **labyr žurnalyna** ýazylýar; şeýlelikde yza aýlanan sanaw anyklanýar. Jikme-jiklik: [ynam sanawlary](/docs/trust-lists)."),
@@ -437,7 +436,7 @@ TK = {
             ("p", "**INDETERMINATE** (kesgitsiz) asla REJECTED (ret) hökmünde habar berilmeýär. Sanawa ýetip bolmasa ýa-da sanaw täze bolmasa, barlaýjy “häzir barlap bolmady” diýýär — “bu diplom ýasama” bilen “barlap bilemok” arasyndaky tapawut kimdir biriniň işe alynmagyny kesgitleýär. Ygtyýar **berlen senesine** görä bahalandyrylýar: uniwersitet işjeň wagtynda berlen diplom togtadylandan soň hem güýjünde galýar, täze resminama bermek bolsa derrew togtaýar."),
         ]),
         "revocation": ("Ýatyrylyş we durmuş aýlawy", [
-            ("p", "Ýatyrylyş **IETF Token Status List** bilen edilýär: her resminama nusgasy üçin **tötänleýin** orunda iki bit — güýjünde, ýatyrylan ýa-da togtadylan. Gurama sanawy **kesgitli aralykda** çap edýär, asla haýyş boýunça däl; şeýlelikde wagty adam barada hiç zady aýan etmeýär; her çap edilişi labyrlanýar. Barlaýjylar sanawlary öňünden alýar; resminamany barlamak ne gurama, ne-de telefona çagyryş edýär. Ýatyrylyş iň giç takmynan 90 minutda her barlaýja ýetýär. Nusgalar dizaýn boýunça gutarýar; gapjyk täzelerini almazdan öň soraýar we asla ýuwaşlyk bilen täzelemeýär. Serediň: [dikeldiş we ýatyrylyş](/docs/recovery-revocation)."),
+            ("p", "Ýatyrylyş **IETF Token Status List** bilen edilýär: her resminama nusgasy üçin **tötänleýin** orunda iki bit — güýjünde, ýatyrylan ýa-da togtadylan. Gurama sanawy **kesgitli aralykda** çap edýär, asla haýyş boýunça däl; şeýlelikde wagty adam barada hiç zady aýan etmeýär; her çap edilişi labyrlanýar. Barlaýjylar sanawlary öňünden alýar; resminamany barlamak ne gurama, ne-de telefona çagyryş edýär. Ýatyrylyş iň giç takmynan 90 minutda her barlaýja ýetýär. Nusgalar dizaýn boýunça gutarýar; gapjyk täzelerini almazdan öň soraýar we asla ýuwaşlyk bilen täzelemeýär. Serediň: [arhitektura](/docs/how-tamga-works)."),
         ]),
         "privacy": ("Dizaýndan gelýän gizlinlik", [
             ("ul", [
@@ -459,9 +458,7 @@ TK = {
         "research": ("Gözleg ugurlary", [
             ("p", "Bular öwrenilýän dizaýnlardyr; ilkinji wersiýanyň ýa-da pilotyň bölegi däl we islendik ulanylyşdan öň garaşsyz howpsuzlyk barlagyndan geçer."),
             ("ul", [
-                "Gurama tarapyndan tanalmagy aradan aýyrmak üçin **nol bilimli resminamalar** (meselem, BBS+). Serediň: [saýlama açyklama](/docs/selective-disclosure).",
-                "**Hasabatly açyklama** — lakamlaryň diňe kazyýet we köp guramaly bosaga bilen çözülip bilinmegi (DKG we bosaga ElGamal; açar asla täzeden gurulmaýar). Serediň: [hasabatly açyklama](/docs/accountable-disclosure).",
-                "**Alnan lakamlar we dikeldiş** — iýerarhiki açarlar, konwert şifrlemesi, enjamy dikeltmek. Serediň: [şahsyýet gatlaklary](/docs/identity-layers).",
+                "**Nol bilimli subutnama bilen hödürlemek** — gurama gol çeken we üýtgemeýän mdoc barada “18 ýaşdan uly” ýaly bir hakykaty açyk çeşmeli Longfellow ZK bilen subut etmek; barlaýjy tarapy taýýar, telefonda subutnama döretmek dükan wersiýasyndan soň. Serediň: [saýlama açyklama](/docs/selective-disclosure).",
                 "**Baha gatlagy** — barlanan taraplaryň arasynda ygtyýarlandyrma; hasaplaşyk düzgünleşdirilen ýollarda galýar.",
             ]),
         ]),

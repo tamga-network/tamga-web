@@ -66,9 +66,9 @@ const CONTENT: Record<Locale, Content> = {
           <strong>Zero-Knowledge Proof (ZKP)</strong> takes this even further: it
           lets you prove something <strong>without giving its value at all</strong>.
           You can prove the claim “I’m over 18” without even showing the field
-          that contains your birth date. Tamga’s roadmap includes advanced privacy
-          technologies such as ZKP, anonymous credentials and confidential
-          computing.
+          that contains your birth date. Tamga uses the open-source Longfellow ZK system, the one the EU’s age-verification
+          profile builds on: the wallet proves a fact about the unchanged, issuer-signed mdoc, and two proofs cannot be linked
+          to each other. The verifier side is ready; generating the proof on the phone follows the store release.
         </p>
         <Callout title="What works today" tone="gold">
           Without zero-knowledge, Tamga already proves “over 18” without a birth date: the identity
@@ -136,9 +136,9 @@ const CONTENT: Record<Locale, Content> = {
           daha da ileri götürür: bir şeyi,{" "}
           <strong>o şeyin değerini hiç vermeden</strong> kanıtlamanı sağlar.
           “18’den büyüğüm” iddiasını, doğum tarihini içeren alanı hiç göstermeden
-          bile ispatlayabilirsin. Tamga’nın yol haritasında ZKP, anonim
-          credential’lar ve confidential computing gibi ileri mahremiyet
-          teknolojileri yer alır.
+          bile ispatlayabilirsin. Tamga, AB’nin yaş doğrulama profilinin de dayandığı açık kaynak Longfellow ZK sistemini
+          kullanır: cüzdan, kurumun imzaladığı ve hiç değişmeyen mdoc hakkında bir olguyu kanıtlar; iki ispat birbirine
+          bağlanamaz. Doğrulayıcı tarafı hazır; ispatın telefonda üretilmesi mağaza sürümünden sonra.
         </p>
         <Callout title="Bugün çalışan" tone="gold">
           Sıfır bilgi olmadan da Tamga bugün doğum tarihini vermeden “18 yaş üstü”nü kanıtlar:
@@ -206,9 +206,10 @@ const CONTENT: Record<Locale, Content> = {
           muny has-da öňe alyp gidýär: bir zady,{" "}
           <strong>şol zadyň bahasyny asla bermän</strong> subut etmäge mümkinçilik
           berýär. “18-den uly” dawasyny, doglan seneni saklaýan meýdany asla
-          görkezmän hem subut edip bilýärsiň. Tamga-nyň ýol kartasynda ZKP, anonim
-          credential-lar we confidential computing ýaly ösen gizlinlik
-          tehnologiýalary bar.
+          görkezmän hem subut edip bilýärsiň. Tamga ÝB-niň ýaş barlag profiliniň hem esaslanýan açyk çeşmeli Longfellow ZK
+          ulgamyny ulanýar: gapjyk gurama gol çeken we üýtgemeýän mdoc barada bir hakykaty subut edýär; iki subutnama
+          biri-biri bilen baglanyşdyrylyp bilinmeýär. Barlaýjy tarapy taýýar; subutnamany telefonda döretmek dükan
+          wersiýasyndan soň.
         </p>
         <Callout title="Häzir işleýän" tone="gold">
           Nol-bilimsiz hem Tamga häzir doglan senesini bermän “18 ýaşdan uly”-ny subut edýär:

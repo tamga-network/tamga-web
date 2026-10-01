@@ -282,7 +282,7 @@ const en: HomeContent = {
       "The infrastructure’s first end-user product is Tamga Wallet — the app where a person keeps and presents their credentials. Every sector uses the same trust layer. Education runs today; health, logistics and payments show where the same layer leads.",
     tamgaIdTitle: "Tamga Wallet",
     tamgaIdBody:
-      "The wallet where a user keeps and presents their credentials. Like an EUDI Wallet: identity and diplomas, selective disclosure, a pass for turnstiles and event gates, and passwordless sign-in to websites. Free for individuals. Qualified e-signature is on the roadmap. Tamga Wallet is not Tamga Network itself — it is the first door that opens onto it.",
+      "The wallet where a user keeps and presents their credentials. An EU-compatible wallet: identity and diplomas, selective disclosure, a pass for turnstiles and event gates, and passwordless sign-in to websites. Free for individuals. Qualified e-signature is on the roadmap. Tamga Wallet is not Tamga Network itself — it is the first door that opens onto it.",
     verticals: [
       { name: "Education", body: "Diplomas, transcripts and academic titles produced as internationally verifiable credentials." },
       { name: "Health", body: "Physician credentials, patient consents and digital health records." },
@@ -332,14 +332,15 @@ const en: HomeContent = {
     note: "Every first-release shortcut — sample records, software keys, a single operator — is listed openly on our known-shortcuts page and is closed before the pilot.",
   },
   positioning: {
-    title: "The EBSI of the Turkic world",
-    lead: "If Europe’s infrastructure layer is EBSI, then Tamga Network is its counterpart for Türkiye and the Turkic world. Not a competitor, but interoperable. The same standards, our own sovereign network.",
+    title: "EU-compatible, built for the Turkic world",
+    lead: "Tamga works in three layers. Every credential, protocol and trust list follows the EU’s eIDAS 2.0 / EUDI standards. On top of that, Tamga Network brings the trust lists of the Turkic states together. On that base run Tamga Wallet and our services for institutions.",
     rows: [
-      { k: "Layered model", v: "Infrastructure = Tamga Network (like EBSI) · Application = Tamga Wallet (like the EUDI Wallet)." },
-      { k: "States with equal power", v: "Target: the states of the Organization of Turkic States run the network with equal votes. Today Tamga operates the trust lists provisionally, on behalf of the states — every structure already has a slot for each member state." },
-      { k: "Sovereignty-first governance", v: "Network membership by 2/3 validator vote · national registries governed only by their own state · cross-border recognition set unilaterally." },
-      { k: "Accountable privacy", v: "Today: each verifier receives a different copy of your credential, so verifiers cannot link you to each other. Design goal (research): identity resolvable only by a court plus a multi-institution threshold — never by any single actor." },
-      { k: "Compatible yet independent", v: "Built on the eIDAS 2.0 / EUDI profiles; data and governance stay in-country, in a sovereign architecture." },
+      { k: "1 · EU-compatible base", v: "Credentials (SD-JWT VC, ISO mdoc), protocols (OpenID4VCI / OpenID4VP, HAIP) and signed trust lists follow EU standards, so compatible wallets and verifiers can work with Tamga institutions. Interoperability test results will be published once the tests are done." },
+      { k: "2 · Tamga Network — a federation", v: "Collects each state’s trust list and lets the states recognise one another. Today Tamga publishes Türkiye’s list provisionally, on behalf of the state. When a state or the body it authorises publishes its own list, the network points to it — for wallets and verifiers only the address changes." },
+      { k: "3 · Wallet and services", v: "Tamga Wallet is the network’s first and reference wallet — EU-compatible, not a national wallet. Institutions issue and verify credentials through the Institution Console and Tamga Verify, on open standards." },
+      { k: "Open to every compliant wallet", v: "The network does not pick wallets; it recognises any wallet provider that follows the published rules and passes the conformance tests." },
+      { k: "Sovereignty first", v: "Each state alone governs its own registry and decides which other states it recognises. A shared ledger comes only when at least two independent institutions run it." },
+      { k: "Privacy today", v: "Each verifier receives a different copy of your credential and each website a different pseudonym, so they cannot link you to one another." },
     ],
   },
   cta: {
@@ -554,7 +555,7 @@ const tr: HomeContent = {
       "Altyapının son kullanıcıya açılan ilk ürünü Tamga Wallet’tır — kişinin belgelerini sakladığı ve sunduğu uygulama. Her sektör aynı güven katmanını kullanır. Eğitim bugün çalışıyor; sağlık, lojistik ve ödeme aynı katmanın nereye uzandığını gösteriyor.",
     tamgaIdTitle: "Tamga Wallet",
     tamgaIdBody:
-      "Kullanıcının belgelerini sakladığı ve sunduğu cüzdan. EUDI Wallet benzeri: kimlik ve diploma, seçici açıklama, turnike ve etkinlik kapısı için geçiş kartı, web sitelerine şifresiz giriş. Kişiler için ücretsiz. Nitelikli e-imza yol haritasında. Tamga Wallet, Tamga Network’ün kendisi değildir — ona açılan ilk kapıdır.",
+      "Kullanıcının belgelerini sakladığı ve sunduğu cüzdan. AB uyumlu bir cüzdan: kimlik ve diploma, seçici açıklama, turnike ve etkinlik kapısı için geçiş kartı, web sitelerine şifresiz giriş. Kişiler için ücretsiz. Nitelikli e-imza yol haritasında. Tamga Wallet, Tamga Network’ün kendisi değildir — ona açılan ilk kapıdır.",
     verticals: [
       { name: "Eğitim", body: "Diploma, transkript ve akademik unvanların uluslararası doğrulanabilir belgeleri." },
       { name: "Sağlık", body: "Hekim yetkileri, hasta onayları ve dijital sağlık belgeleri." },
@@ -604,14 +605,15 @@ const tr: HomeContent = {
     note: "İlk sürümdeki her kestirme — örnek kayıtlar, yazılımda tutulan anahtar, tek operatör — “Bilinen kısayollar” sayfamızda açıkça listelenir ve pilottan önce kapatılır.",
   },
   positioning: {
-    title: "Türk dünyasının EBSI’si",
-    lead: "Avrupa’nın altyapı katmanı EBSI ise, Tamga Network Türkiye ve Türk dünyası için onun karşılığıdır. Rakip değil, birlikte çalışabilir. Aynı standartlar, kendi egemen ağ.",
+    title: "AB uyumlu, Türk dünyası için",
+    lead: "Tamga üç katmanda çalışır. Bütün belgeler, protokoller ve güven listeleri AB’nin eIDAS 2.0 / EUDI standartlarındadır. Bunun üstünde Tamga Network, Türk devletlerinin güven listelerini bir araya getirir. Bu zeminin üzerinde de Tamga Wallet ve kurumlara sunduğumuz hizmetler çalışır.",
     rows: [
-      { k: "Katmanlı model", v: "Altyapı = Tamga Network (EBSI benzeri) · Uygulama = Tamga Wallet (EUDI benzeri)." },
-      { k: "Eşit güçlü devletler", v: "Hedef: ağı Türk Devletleri Teşkilatı devletleri eşit oyla işletir. Bugün Tamga, güven listelerini devletler adına geçici operatör olarak yayınlar — her yapıda her üye devlet için şimdiden bir yer ayrılmıştır." },
-      { k: "Egemenlik-öncelikli yönetişim", v: "Ağa üyelik 2/3 validator oyuyla · ulusal kayıtlar yalnızca ilgili devletin yetkisinde · sınır-ötesi tanıma tek taraflı belirlenir." },
-      { k: "Hesap-verebilir mahremiyet", v: "Bugün: her doğrulayıcı belgenin farklı bir kopyasını alır; doğrulayıcılar seni birbirleriyle eşleştiremez. Tasarım hedefi (araştırma): kimlik yalnızca mahkeme + çok-kurumlu eşikle çözülebilsin — tek bir aktör asla açamasın." },
-      { k: "Uyumlu ama bağımsız", v: "eIDAS 2.0 / EUDI profilleri üzerine kurulu; veri ve yönetişim yurt içinde, egemen mimaride." },
+      { k: "1 · AB uyumlu taban", v: "Belgeler (SD-JWT VC, ISO mdoc), protokoller (OpenID4VCI / OpenID4VP, HAIP) ve imzalı güven listeleri AB standartlarındadır; uyumlu cüzdanlar ve doğrulayıcılar Tamga’daki kurumlarla çalışabilir. Birlikte çalışabilirlik test sonuçları testler yapıldığında yayınlanacak." },
+      { k: "2 · Tamga Network — bir federasyon", v: "Her devletin güven listesini toplar ve devletlerin birbirini tanımasını sağlar. Bugün Türkiye listesini Tamga, devlet adına geçici olarak yayınlar. Devlet ya da yetkilendirdiği kurum kendi listesini yayınladığında ağ onu gösterir — cüzdan ve doğrulayıcı için yalnız adres değişir." },
+      { k: "3 · Cüzdan ve hizmetler", v: "Tamga Wallet, ağın ilk ve referans cüzdanıdır — AB uyumludur, ulusal cüzdan değildir. Kurumlar belgelerini Kurum Konsolu ve Tamga Verify ile, açık standartlar üzerinde verir ve doğrular." },
+      { k: "Kurallara uyan her cüzdana açık", v: "Ağ cüzdan seçmez; yayınlanmış kurallara uyan ve uyum testlerini geçen her cüzdan sağlayıcısını tanır." },
+      { k: "Önce egemenlik", v: "Her devlet kendi kaydını yalnız kendisi yönetir ve hangi devletleri tanıyacağına kendisi karar verir. Ortak bir defter, ancak en az iki bağımsız kurum işlettiğinde gelir." },
+      { k: "Bugünkü gizlilik", v: "Her doğrulayıcı belgenin farklı bir kopyasını, her site farklı bir takma adı görür; seni birbirleriyle eşleştiremezler." },
     ],
   },
   cta: {
@@ -827,7 +829,7 @@ const tk: HomeContent = {
       "Infrastrukturanyň soňky ulanyja açylýan ilkinji önümi Tamga Wallet — adamyň resminamalaryny saklaýan we hödürleýän programmasy. Ähli pudaklar şol bir ynam gatlagyny ulanýar. Bilim häzir işleýär; saglyk, logistika we töleg şol bir gatlagyň nirä barýandygyny görkezýär.",
     tamgaIdTitle: "Tamga Wallet",
     tamgaIdBody:
-      "Ulanyjynyň resminamalaryny saklaýan we hödürleýän gapjygy. EUDI Wallet ýaly: şahsyýet we diplom, saýlama açyklama, turniket we çäre gapysy üçin geçiş kartasy, web saýtlara parolsyz giriş. Adamlar üçin mugt. Kwalifisirlenen elektron gol ýol kartasynda. Tamga Wallet Tamga Network-yň özi däl — oňa açylýan ilkinji gapydyr.",
+      "Ulanyjynyň resminamalaryny saklaýan we hödürleýän gapjygy. ÝB bilen laýyk gapjyk: şahsyýet we diplom, saýlama açyklama, turniket we çäre gapysy üçin geçiş kartasy, web saýtlara parolsyz giriş. Adamlar üçin mugt. Kwalifisirlenen elektron gol ýol kartasynda. Tamga Wallet Tamga Network-yň özi däl — oňa açylýan ilkinji gapydyr.",
     verticals: [
       { name: "Bilim", body: "Diplomlaryň, transkriptleriň we akademiki dereželeriň halkara barlanyp bilinýän resminamalary." },
       { name: "Saglyk", body: "Lukman ygtyýarlary, näsag razylyklary we sanly saglyk resminamalary." },
@@ -877,14 +879,15 @@ const tk: HomeContent = {
     note: "Ilkinji wersiýadaky her gysga ýol — nusga ýazgylar, programma üpjünçiliginde saklanýan açar, ýeke operator — “Belli gysga ýollar” sahypamyzda açyk görkezilýär we pilotdan öň ýapylýar.",
   },
   positioning: {
-    title: "Türki dünýäsiniň EBSI-si",
-    lead: "Ýewropanyň infrastruktura gatlagy EBSI bolsa, Tamga Network Türkiýe we türki dünýäsi üçin onuň garşylygydyr. Bäsdeş däl, bilelikde işleýän. Şol bir standartlar, öz özygtyýarly tory.",
+    title: "ÝB bilen laýyk, türki dünýäsi üçin",
+    lead: "Tamga üç gatlakda işleýär. Ähli resminamalar, protokollar we ynam sanawlary ÝB-niň eIDAS 2.0 / EUDI standartlaryna laýyk. Munuň üstünde Tamga Network türki döwletleriň ynam sanawlaryny bir ýere jemleýär. Şu esasda Tamga Wallet we guramalara hödürleýän hyzmatlarymyz işleýär.",
     rows: [
-      { k: "Gatlakly model", v: "Infrastruktura = Tamga Network (EBSI ýaly) · Programma = Tamga Wallet (EUDI ýaly)." },
-      { k: "Deň güýçli döwletler", v: "Maksat: tory Türki Döwletleriň Guramasynyň döwletleri deň ses bilen dolandyrýar. Häzir Tamga ynam sanawlaryny döwletleriň adyndan wagtlaýyn operator hökmünde çap edýär — her gurluşda her agza döwlet üçin eýýäm orun bar." },
-      { k: "Özygtyýarlylyga esaslanýan dolandyryş", v: "Tora agzalyk 2/3 validator sesi bilen · milli hasaba alyşlar diňe degişli döwletiň ygtyýarynda · serhetaşa ykrar birtaraplaýyn kesgitlenýär." },
-      { k: "Hasabatly gizlinlik", v: "Häzir: her barlaýjy resminamanyň başga nusgasyny alýar; barlaýjylar seni biri-biri bilen baglanyşdyryp bilmeýär. Dizaýn maksady (gözleg): şahsyýet diňe kazyýet + köp-guramaly bosaga bilen çözülip bilsin — hiç bir aktýor ýeke özi açyp bilmesin." },
-      { k: "Laýyk ýöne garaşsyz", v: "eIDAS 2.0 / EUDI profillerine esaslanýar; maglumat we dolandyryş ýurt içinde, özygtyýarly arhitekturada." },
+      { k: "1 · ÝB bilen laýyk esas", v: "Resminamalar (SD-JWT VC, ISO mdoc), protokollar (OpenID4VCI / OpenID4VP, HAIP) we gol çekilen ynam sanawlary ÝB standartlaryna laýyk; laýyk gapjyklar we barlaýjylar Tamga-daky guramalar bilen işläp bilýär. Bilelikde işleýiş synag netijeleri synaglar geçirilende çap ediler." },
+      { k: "2 · Tamga Network — federasiýa", v: "Her döwletiň ynam sanawyny jemleýär we döwletleriň biri-birini ykrar etmegine mümkinçilik berýär. Häzir Türkiýäniň sanawyny Tamga döwletiň adyndan wagtlaýyn çap edýär. Döwlet ýa-da ygtyýarlandyran guramasy öz sanawyny çap edende tor şony görkezýär — gapjyk we barlaýjy üçin diňe salgy üýtgeýär." },
+      { k: "3 · Gapjyk we hyzmatlar", v: "Tamga Wallet toruň ilkinji we salgylanma gapjygy — ÝB bilen laýyk, milli gapjyk däl. Guramalar resminamalaryny Gurama konsoly we Tamga Verify arkaly, açyk standartlarda berýär we barlaýar." },
+      { k: "Düzgüne eýerýän her gapjyga açyk", v: "Tor gapjyk saýlamaýar; çap edilen düzgünlere eýerýän we laýyklyk synaglaryndan geçen her gapjyk üpjün edijisini ykrar edýär." },
+      { k: "Ilki bilen özygtyýarlylyk", v: "Her döwlet öz hasaba alyşyny diňe özi dolandyrýar we haýsy döwletleri ykrar etjegini özi çözýär. Umumy kitap diňe azyndan iki garaşsyz gurama işledende gelýär." },
+      { k: "Häzirki gizlinlik", v: "Her barlaýjy resminamanyň başga nusgasyny, her saýt başga lakamy görýär; seni biri-biri bilen baglanyşdyryp bilmeýärler." },
     ],
   },
   cta: {

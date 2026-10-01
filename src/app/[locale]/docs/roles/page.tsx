@@ -590,7 +590,7 @@ const UI: Record<Locale, Ui> = {
     arf: "Tamga ARF §2 — ecosystem roles (the binding text)",
     arfHref: "https://arf.tamga.network/architecture#_2-ecosystem-roles",
     glossary: "Glossary",
-    eidas: "eIDAS, EUDI and EBSI",
+    eidas: "eIDAS 2.0 and the EUDI Wallet",
   },
   tr: {
     meta: {
@@ -630,7 +630,7 @@ const UI: Record<Locale, Ui> = {
     arf: "Tamga ARF §2 — ekosistem rolleri (bağlayıcı metin)",
     arfHref: "https://arf.tamga.network/tr/architecture#_2-ekosistem-rolleri",
     glossary: "Sözlük",
-    eidas: "eIDAS, EUDI ve EBSI",
+    eidas: "eIDAS 2.0 ve EUDI Wallet",
   },
   tk: {
     meta: {
@@ -670,7 +670,7 @@ const UI: Record<Locale, Ui> = {
     arf: "Tamga ARF §2 — ekoulgam rollary (hökmany tekst)",
     arfHref: "https://arf.tamga.network/architecture#_2-ecosystem-roles",
     glossary: "Sözlük",
-    eidas: "eIDAS, EUDI we EBSI",
+    eidas: "eIDAS 2.0 we EUDI Wallet",
   },
 };
 

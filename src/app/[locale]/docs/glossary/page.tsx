@@ -56,7 +56,6 @@ const CONTENT: Record<Locale, Content> = {
         title: "Identity and trust",
         terms: [
           { term: "Digital Identity", def: "The verifiable representation of an entity on the network (individual, institution, object). The starting point of the ecosystem." },
-          { term: "DID", def: "Decentralized Identifier. A unique identity address that can be verified without depending on a central authority (a W3C standard)." },
           { term: "VC — Verifiable Credential", def: "A verifiable document. A digital document with an embedded digital signature that can be verified without going to the source (diploma, licence, etc.)." },
           { term: "SSI", def: "Self-Sovereign Identity. The approach where control of identity belongs not to a central institution but to the user themselves." },
           { term: "Issuer – Holder – Verifier", def: "The trust triangle. The Issuer issues and signs the credential; the Holder carries and presents it in their wallet; the Verifier checks the signature without going to the source." },
@@ -78,10 +77,9 @@ const CONTENT: Record<Locale, Content> = {
         terms: [
           { term: "Permissioned network", def: "A blockchain network where the validators are specific and trusted. The ledger Tamga plans is one." },
           { term: "Consensus", def: "The mechanism by which the network’s nodes agree on the content of the next block. Tamga uses QBFT (the Byzantine Fault Tolerance family)." },
-          { term: "Hyperledger Besu", def: "The open-source, EVM-compatible client Tamga chose for its future ledger (once at least two independent operators join). The same technology family as Europe’s EBSI infrastructure." },
+          { term: "Hyperledger Besu", def: "The open-source, EVM-compatible client Tamga chose for its future ledger (once at least two independent operators join)." },
           { term: "eIDAS 2.0", def: "The EU’s electronic identity and trust services framework; it makes a digital identity wallet mandatory for every member state." },
           { term: "EUDI Wallet", def: "European Digital Identity Wallet — the EU citizen’s digital identity wallet (the application layer)." },
-          { term: "EBSI", def: "European Blockchain Services Infrastructure — the EU’s inter-institutional trust infrastructure (the infrastructure layer). Tamga’s positional counterpart." },
         ],
       },
       {
@@ -145,7 +143,6 @@ const CONTENT: Record<Locale, Content> = {
         title: "Kimlik ve güven",
         terms: [
           { term: "Digital Identity", def: "Ağ üzerindeki bir varlığın (birey, kurum, nesne) doğrulanabilir temsili. Ekosistemin başlangıç noktası." },
-          { term: "DID", def: "Decentralized Identifier — merkeziyetsiz tanımlayıcı. Merkezî bir otoriteye bağımlı olmadan doğrulanabilen benzersiz kimlik adresi (W3C standardı)." },
           { term: "VC — Verifiable Credential", def: "Doğrulanabilir belge. İçine dijital imza gömülü, kaynağa gitmeden doğrulanabilen dijital belge (diploma, ehliyet vb.)." },
           { term: "SSI", def: "Self-Sovereign Identity — öz-egemen kimlik. Kimliğin kontrolünün merkezî kuruma değil, kullanıcının kendisine ait olduğu yaklaşım." },
           { term: "Issuer – Holder – Verifier", def: "Güven üçgeni. Issuer belgeyi düzenler ve imzalar; Holder cüzdanında taşır ve sunar; Verifier imzayı kaynağa gitmeden doğrular." },
@@ -167,10 +164,9 @@ const CONTENT: Record<Locale, Content> = {
         terms: [
           { term: "İzinli (permissioned) ağ", def: "Doğrulayıcıların (validator) belirli ve güvenilir olduğu blockchain ağı. Tamga’nın planladığı defter böyledir." },
           { term: "Consensus", def: "Ağdaki node’ların bir sonraki bloğun içeriğinde uzlaşma mekanizması. Tamga QBFT (Byzantine Fault Tolerance ailesi) kullanır." },
-          { term: "Hyperledger Besu", def: "Tamga’nın gelecekteki defteri için seçtiği açık kaynaklı, EVM uyumlu istemci (en az iki bağımsız operatör katılınca). Avrupa’nın EBSI altyapısıyla aynı teknoloji ailesi." },
+          { term: "Hyperledger Besu", def: "Tamga’nın gelecekteki defteri için seçtiği açık kaynaklı, EVM uyumlu istemci (en az iki bağımsız operatör katılınca)." },
           { term: "eIDAS 2.0", def: "AB’nin elektronik kimlik ve güven hizmetleri çerçevesi; her üye devlete dijital kimlik cüzdanı zorunluluğu getirir." },
           { term: "EUDI Wallet", def: "European Digital Identity Wallet — AB vatandaşının dijital kimlik cüzdanı (uygulama katmanı)." },
-          { term: "EBSI", def: "European Blockchain Services Infrastructure — AB’nin kurumlar arası güven altyapısı (altyapı katmanı). Tamga’nın konumsal emsali." },
         ],
       },
       {
@@ -234,7 +230,6 @@ const CONTENT: Record<Locale, Content> = {
         title: "Şahsyýet we ynam",
         terms: [
           { term: "Digital Identity", def: "Tordaky bir subýektiň (şahs, gurama, zat) barlanyp bilinýän görkezmesi. Ekoulgamyň başlangyç nokady." },
-          { term: "DID", def: "Decentralized Identifier — merkezleşdirilmedik kesgitleýji. Merkezi häkimiýete bagly bolmazdan barlanyp bilinýän özboluşly şahsyýet salgysy (W3C standarty)." },
           { term: "VC — Verifiable Credential", def: "Barlanyp bilinýän resminama. Içine sanly gol gömlüp goýlan, çeşmä gitmän barlanyp bilinýän sanly resminama (diplom, şahadatnama we ş.m.)." },
           { term: "SSI", def: "Self-Sovereign Identity — öz-özygtyýarly şahsyýet. Şahsyýetiň gözegçiliginiň merkezi gurama däl-de, ulanyjynyň özüne degişli bolan çemeleşme." },
           { term: "Issuer – Holder – Verifier", def: "Ynam üçburçlugy. Issuer resminamany taýýarlaýar we gol çekýär; Holder gapjygynda göterýär we hödürleýär; Verifier goly çeşmä gitmän barlaýar." },
@@ -256,10 +251,9 @@ const CONTENT: Record<Locale, Content> = {
         terms: [
           { term: "Rugsatly (permissioned) tor", def: "Barlaýjylaryň (validator) belli we ynamly bolan blokçeýn tory. Tamga-nyň meýilleşdirýän kitaby şeýledir." },
           { term: "Consensus", def: "Tordaky node-laryň indiki blogyň mazmunynda ylalaşyk mehanizmi. Tamga QBFT (Byzantine Fault Tolerance maşgalasy) ulanýar." },
-          { term: "Hyperledger Besu", def: "Tamga-nyň geljekki kitaby üçin saýlan açyk çeşmeli, EVM laýyk müşderisi (azyndan iki garaşsyz operator goşulanda). Ýewropanyň EBSI infrastrukturasy bilen şol bir tehnologiýa maşgalasy." },
+          { term: "Hyperledger Besu", def: "Tamga-nyň geljekki kitaby üçin saýlan açyk çeşmeli, EVM laýyk müşderisi (azyndan iki garaşsyz operator goşulanda)." },
           { term: "eIDAS 2.0", def: "ÝB-niň elektron şahsyýet we ynam hyzmatlary çarçuwasy; her agza döwlete sanly şahsyýet gapjygy hökmanylygyny getirýär." },
           { term: "EUDI Wallet", def: "European Digital Identity Wallet — ÝB raýatynyň sanly şahsyýet gapjygy (programma gatlagy)." },
-          { term: "EBSI", def: "European Blockchain Services Infrastructure — ÝB-niň guramalar arasy ynam infrastrukturasy (infrastruktura gatlagy). Tamga-nyň ýerleşdiriş garşylygy." },
         ],
       },
       {

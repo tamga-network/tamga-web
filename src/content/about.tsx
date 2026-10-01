@@ -32,7 +32,7 @@ const en: AboutContent = {
   meta: {
     title: "About",
     description:
-      "What Tamga Network is, where its name comes from, and what it does and why. The EBSI of the Turkic world: a compatible yet independent Digital Trust Infrastructure.",
+      "What Tamga Network is, where its name comes from, and what it does and why. An EU-compatible Digital Trust Infrastructure for the Turkic world, in three layers.",
   },
   header: {
     eyebrow: "About",
@@ -86,29 +86,28 @@ const en: AboutContent = {
   },
   positioning: {
     eyebrow: "Positioning",
-    title: "The EBSI of the Turkic world",
+    title: "Three layers: EU-compatible, a federation, products",
     lead: (
       <>
-        The European Union’s infrastructure layer is{" "}
-        <strong className="text-foreground">EBSI</strong> (European Blockchain
-        Services Infrastructure), and its application layer is the{" "}
-        <strong className="text-foreground">EUDI Wallet</strong>. Tamga Network is
-        the counterpart of this layered model for the Turkic world — not a
-        competitor to EBSI, but interoperable with it.
+        Tamga is built in three layers that each stand on their own. The base is{" "}
+        <strong className="text-foreground">compatibility with the EU’s eIDAS 2.0 / EUDI standards</strong>; on top
+        of it, <strong className="text-foreground">Tamga Network</strong> brings the trust lists of the Turkic states
+        together; on that base run <strong className="text-foreground">Tamga Wallet</strong> and our services for
+        institutions.
       </>
     ),
     rows: [
       {
-        k: "Layered model",
-        v: "Infrastructure = Tamga Network (like EBSI). Application/wallet = Tamga Wallet (like the EUDI Wallet). Two separate but complementary layers.",
+        k: "EU-compatible base",
+        v: "Credentials, protocols and trust lists follow EU standards. An “EUDI Wallet” is a legal title for wallets that an EU member state provides or recognises; Tamga Wallet is an EU-compatible wallet, and we will show interoperability with test results.",
       },
       {
-        k: "States with equal power",
-        v: "Target: the states of the Organization of Turkic States run the network with equal votes. Today Tamga publishes the trust lists provisionally, on behalf of the states — every structure already has a slot for each member state.",
+        k: "Tamga Network — a light federation",
+        v: "Collects each state’s trust list and lets the states recognise one another. Today Tamga publishes Türkiye’s list provisionally, on behalf of the state; when the state or the body it authorises publishes its own, the network points to it. The network recognises any wallet that follows the published rules. A governance body and a shared ledger come as states join.",
       },
       {
-        k: "Compatible yet independent",
-        v: "Built on the eIDAS 2.0 / EUDI profiles; identity and trust data are managed in-country, in a sovereign architecture.",
+        k: "Products and services",
+        v: "Tamga Wallet is the network’s first and reference wallet. Institutions issue and verify credentials through the Institution Console and Tamga Verify; integration and developer support come with them — all on open standards, so no institution is tied to one app.",
       },
     ],
   },
@@ -153,7 +152,7 @@ const tr: AboutContent = {
   meta: {
     title: "Hakkında",
     description:
-      "Tamga Network nedir, ismi nereden gelir, neyi neden yapar. Türk dünyasının EBSI’si: uyumlu ama bağımsız bir Dijital Güven Altyapısı.",
+      "Tamga Network nedir, ismi nereden gelir, neyi neden yapar. Türk dünyası için AB uyumlu, üç katmanlı bir Dijital Güven Altyapısı.",
   },
   header: {
     eyebrow: "Hakkında",
@@ -206,30 +205,29 @@ const tr: AboutContent = {
     ),
   },
   positioning: {
-    eyebrow: "Konumlandırma",
-    title: "Türk dünyasının EBSI’si",
+    eyebrow: "Konumlanma",
+    title: "Üç katman: AB uyumu, federasyon, ürünler",
     lead: (
       <>
-        Avrupa Birliği’nin altyapı katmanı{" "}
-        <strong className="text-foreground">EBSI</strong> (European Blockchain
-        Services Infrastructure), uygulama katmanı ise{" "}
-        <strong className="text-foreground">EUDI Wallet</strong>’tır. Tamga
-        Network bu katmanlı modelin Türk dünyası için karşılığıdır — EBSI ile
-        rakip değil, birlikte çalışabilir.
+        Tamga, her biri tek başına ayakta durabilen üç katmanda kuruludur. Taban,{" "}
+        <strong className="text-foreground">AB’nin eIDAS 2.0 / EUDI standartlarıyla uyumdur</strong>; onun üstünde{" "}
+        <strong className="text-foreground">Tamga Network</strong> Türk devletlerinin güven listelerini bir araya
+        getirir; bu zeminde <strong className="text-foreground">Tamga Wallet</strong> ve kurumlara sunduğumuz
+        hizmetler çalışır.
       </>
     ),
     rows: [
       {
-        k: "Katmanlı model",
-        v: "Altyapı = Tamga Network (EBSI benzeri). Uygulama/cüzdan = Tamga Wallet (EUDI benzeri). İkisi ayrı ama tamamlayıcı.",
+        k: "AB uyumlu taban",
+        v: "Belgeler, protokoller ve güven listeleri AB standartlarındadır. “EUDI Wallet”, bir AB üye devletinin sunduğu ya da tanıdığı cüzdanlar için hukuki bir unvandır; Tamga Wallet AB uyumlu bir cüzdandır ve birlikte çalışabilirliği test sonuçlarıyla göstereceğiz.",
       },
       {
-        k: "Eşit güçlü devletler",
-        v: "Hedef: ağı Türk Devletleri Teşkilatı devletleri eşit oyla işletir. Bugün Tamga güven listelerini devletler adına geçici operatör olarak yayınlar — her yapıda her üye devlet için şimdiden bir yer ayrılmıştır.",
+        k: "Tamga Network — hafif bir federasyon",
+        v: "Her devletin güven listesini toplar ve devletlerin birbirini tanımasını sağlar. Bugün Türkiye listesini Tamga, devlet adına geçici olarak yayınlar; devlet ya da yetkilendirdiği kurum kendi listesini yayınladığında ağ onu gösterir. Ağ, yayınlanmış kurallara uyan her cüzdanı tanır. Yönetişim kurumu ve ortak defter, devletler katıldıkça gelir.",
       },
       {
-        k: "Uyumlu ama bağımsız",
-        v: "eIDAS 2.0 / EUDI profilleri üzerine kurulu; kimlik ve güven verisi yurt içinde, egemen bir mimaride yönetilir.",
+        k: "Ürünler ve hizmetler",
+        v: "Tamga Wallet ağın ilk ve referans cüzdanıdır. Kurumlar belgelerini Kurum Konsolu ve Tamga Verify ile verir ve doğrular; entegrasyon ve geliştirici desteği bunlarla gelir — hepsi açık standartlar üzerinde, hiçbir kurum tek bir uygulamaya bağlı kalmaz.",
       },
     ],
   },
@@ -273,7 +271,7 @@ const tk: AboutContent = {
   meta: {
     title: "Biz barada",
     description:
-      "Tamga Network näme, ady nireden gelýär, näme edýär we näme üçin. Türki dünýäsiniň EBSI-si: laýyk ýöne garaşsyz Sanly Ynam Infrastrukturasy.",
+      "Tamga Network näme, ady nireden gelýär, näme edýär we näme üçin. Türki dünýäsi üçin ÝB bilen laýyk, üç gatlakly Sanly Ynam Infrastrukturasy.",
   },
   header: {
     eyebrow: "Biz barada",
@@ -326,30 +324,29 @@ const tk: AboutContent = {
     ),
   },
   positioning: {
-    eyebrow: "Ýerleşdiriş",
-    title: "Türki dünýäsiniň EBSI-si",
+    eyebrow: "Orun",
+    title: "Üç gatlak: ÝB bilen laýyklyk, federasiýa, önümler",
     lead: (
       <>
-        Ýewropa Bileleşiginiň infrastruktura gatlagy{" "}
-        <strong className="text-foreground">EBSI</strong> (European Blockchain
-        Services Infrastructure), programma gatlagy bolsa{" "}
-        <strong className="text-foreground">EUDI Wallet</strong>-dir. Tamga
-        Network bu gatlakly modeliň türki dünýäsi üçin garşylygydyr — EBSI bilen
-        bäsdeş däl, bilelikde işleýän.
+        Tamga her biri özbaşdak durup bilýän üç gatlakda gurulýar. Esasy{" "}
+        <strong className="text-foreground">ÝB-niň eIDAS 2.0 / EUDI standartlaryna laýyklykdyr</strong>; onuň
+        üstünde <strong className="text-foreground">Tamga Network</strong> türki döwletleriň ynam sanawlaryny bir
+        ýere jemleýär; şu esasda <strong className="text-foreground">Tamga Wallet</strong> we guramalara
+        hödürleýän hyzmatlarymyz işleýär.
       </>
     ),
     rows: [
       {
-        k: "Gatlakly model",
-        v: "Infrastruktura = Tamga Network (EBSI ýaly). Programma/gapjyk = Tamga Wallet (EUDI ýaly). Ikisi aýry ýöne biri-birini doldurýan.",
+        k: "ÝB bilen laýyk esas",
+        v: "Resminamalar, protokollar we ynam sanawlary ÝB standartlaryna laýyk. “EUDI Wallet” ÝB agza döwletiniň hödürleýän ýa-da ykrar edýän gapjyklary üçin hukuk adydyr; Tamga Wallet ÝB bilen laýyk gapjykdyr we bilelikde işleýişi synag netijeleri bilen görkezeris.",
       },
       {
-        k: "Deň güýçli döwletler",
-        v: "Maksat: tory Türki Döwletleriň Guramasynyň döwletleri deň ses bilen dolandyrýar. Häzir Tamga ynam sanawlaryny döwletleriň adyndan wagtlaýyn operator hökmünde çap edýär — her gurluşda her agza döwlet üçin eýýäm orun bar.",
+        k: "Tamga Network — ýeňil federasiýa",
+        v: "Her döwletiň ynam sanawyny jemleýär we döwletleriň biri-birini ykrar etmegine mümkinçilik berýär. Häzir Türkiýäniň sanawyny Tamga döwletiň adyndan wagtlaýyn çap edýär; döwlet ýa-da ygtyýarlandyran guramasy öz sanawyny çap edende tor şony görkezýär. Tor çap edilen düzgünlere eýerýän her gapjygy ykrar edýär. Dolandyryş guramasy we umumy kitap döwletler goşulyşdygyça gelýär.",
       },
       {
-        k: "Laýyk ýöne garaşsyz",
-        v: "eIDAS 2.0 / EUDI profillerine esaslanýar; şahsyýet we ynam maglumaty ýurt içinde, özygtyýarly arhitekturada dolandyrylýar.",
+        k: "Önümler we hyzmatlar",
+        v: "Tamga Wallet toruň ilkinji we salgylanma gapjygy. Guramalar resminamalaryny Gurama konsoly we Tamga Verify arkaly berýär we barlaýar; integrasiýa we işläp düzüji goldawy şolar bilen gelýär — hemmesi açyk standartlarda, hiç bir gurama bir programma bagly galmaýar.",
       },
     ],
   },

@@ -87,7 +87,7 @@ const CONTENT: Record<Locale, Content> = {
           <strong>the user themselves</strong>. You carry your own documents; you
           decide what to share with whom. Tamga Network embraces this principle;
           in the following pages we’ll see the technologies that make it possible
-          (DID, VC, selective disclosure) one by one.
+          (X.509, verifiable credentials, selective disclosure) one by one.
         </p>
       </>
     ),
@@ -163,7 +163,7 @@ const CONTENT: Record<Locale, Content> = {
           <strong>kullanıcının kendisine</strong> ait olduğu yaklaşımdır.
           Belgelerini sen taşırsın, neyi kiminle paylaşacağına sen karar verirsin.
           Tamga Network bu ilkeyi benimser; sonraki sayfalarda bunu mümkün kılan
-          teknolojileri (DID, VC, seçici ifşa) tek tek göreceğiz.
+          teknolojileri (X.509, doğrulanabilir belgeler, seçici ifşa) tek tek göreceğiz.
         </p>
       </>
     ),
@@ -241,7 +241,7 @@ const CONTENT: Record<Locale, Content> = {
           <strong>ulanyjynyň özüne</strong> degişli bolan çemeleşmesidir.
           Resminamalaryňy özüň göterýärsiň, nämäni kim bilen paýlaşjagyňy özüň
           çözýärsiň. Tamga Network bu ýörelgäni kabul edýär; indiki sahypalarda
-          muny mümkin edýän tehnologiýalary (DID, VC, saýlama açyklama) birin-birin
+          muny mümkin edýän tehnologiýalary (X.509, barlanyp bilinýän resminamalar, saýlama açyklama) birin-birin
           göreris.
         </p>
       </>

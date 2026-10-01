@@ -17,240 +17,193 @@ type Content = {
 const CONTENT: Record<Locale, Content> = {
   en: {
     meta: {
-      title: "eIDAS, EUDI and EBSI",
+      title: "eIDAS 2.0 and the EUDI Wallet",
       description:
-        "The EU’s digital identity framework: eIDAS 2.0, the EUDI Wallet and EBSI. The layered model and where Tamga Network stands in this picture.",
+        "The EU’s digital identity framework — eIDAS 2.0, the EUDI Wallet and the trust lists behind it — and how Tamga builds on the same standards for the Turkic world.",
     },
     eyebrow: "How Tamga works",
-    title: "eIDAS, EUDI and EBSI",
+    title: "eIDAS 2.0 and the EUDI Wallet",
     intro:
-      "To understand Tamga Network’s position, you need to know Europe’s digital identity architecture. Because we don’t compete with it; we build the same standards for the Turkic world.",
+      "Tamga follows the same standards as Europe’s digital identity framework. To see where Tamga stands, it helps to know how that framework works.",
     body: (
       <>
         <h2>eIDAS 2.0 — the framework</h2>
         <p>
-          <strong>eIDAS</strong> (electronic IDentification, Authentication and
-          trust Services) is the European Union’s regulation on electronic
-          identity and trust services. <strong>eIDAS 2.0</strong> is the updated
-          framework that requires every member state to offer its citizens and
-          businesses a digital identity wallet.
+          <strong>eIDAS</strong> (electronic IDentification, Authentication and trust Services) is the European Union’s
+          regulation on electronic identity and trust services. <strong>eIDAS 2.0</strong> requires every member state to
+          offer its citizens and businesses a digital identity wallet, and defines how institutions issue and verify
+          credentials in it.
         </p>
 
-        <h2>EUDI Wallet — the application layer</h2>
+        <h2>The EUDI Wallet</h2>
         <p>
-          The <strong>European Digital Identity Wallet (EUDI Wallet)</strong> is
-          the wallet in which a citizen carries their identity data, diplomas,
-          driving licence and health documents on their own phone, and presents
-          them <Link href="/docs/selective-disclosure">selectively</Link> across
-          different services from banks to the public sector. In other words, the
-          EUDI Wallet is the <strong>application</strong> in the user’s hands.
+          The <strong>European Digital Identity Wallet (EUDI Wallet)</strong> is the wallet in which a person carries their
+          identity, diplomas, driving licence and other credentials on their own phone and presents them{" "}
+          <Link href="/docs/selective-disclosure">selectively</Link>. “EUDI Wallet” is a legal title: it belongs to wallets
+          that an EU member state provides or recognises and that are certified under EU rules.
         </p>
 
-        <h2>EBSI — the infrastructure layer</h2>
+        <h2>Trust lists — how a wallet knows who is real</h2>
         <p>
-          <strong>EBSI (European Blockchain Services Infrastructure)</strong> is
-          the <strong>infrastructure</strong> layer that provides trust between
-          Europe’s institutions and states. It is a permissioned blockchain
-          network (Hyperledger Besu + IBFT) that keeps track of who is authorized
-          to issue documents, institutions’ keys and their accreditations.
-          Individual credentials are not kept here; only trust registries.
+          The European Commission publishes a <strong>list of trusted lists (LOTL)</strong>. It points to each member state’s
+          trusted list, signed by that state. The national lists name who may issue person identity data (PID providers),
+          which wallet providers are approved, and who registers the organisations that ask for data. A wallet or verifier
+          trusts one key — the LOTL’s — and learns everything else from the signed lists. Details:{" "}
+          <Link href="/docs/trust-lists">trust lists</Link>.
         </p>
 
-        <Callout title="The layered model — the key insight" tone="gold">
-          The <strong>infrastructure layer</strong> (EBSI) provides trust between
-          states/institutions. The <strong>application layer</strong> (EUDI
-          Wallet) puts it into the citizen’s hands. The two are separate but
-          complementary — EUDI does not run “on top of” EBSI; they complete each
-          other.
-        </Callout>
-
-        <h2>So where is Tamga Network?</h2>
-        <p>We build the same layered model for Türkiye and the Turkic world:</p>
+        <h2>Where Tamga stands</h2>
         <ul>
           <li>
-            <strong>Tamga Network = the infrastructure layer</strong> (like EBSI).
-            Sovereign trust registries — today signed trust lists, later a permissioned
-            ledger once independent operators join.
+            <strong>EU-compatible base.</strong> Tamga credentials (SD-JWT VC, ISO mdoc), protocols (OpenID4VCI / OpenID4VP,
+            HAIP) and signed trust lists follow these standards.
           </li>
           <li>
-            <strong>Tamga Wallet = the application layer</strong> (like the EUDI
-            Wallet). The citizen’s wallet.
+            <strong>Tamga Network — a federation for the Turkic world.</strong> Like the Commission’s LOTL, Tamga’s list of
+            lists points to each state’s trust list. Today Tamga publishes Türkiye’s list provisionally, on behalf of the
+            state.
+          </li>
+          <li>
+            <strong>Tamga Wallet — an EU-compatible wallet.</strong> Outside the EU no wallet can carry the “EUDI Wallet”
+            title; Tamga Wallet speaks the same standards and will show it with interoperability tests.
           </li>
         </ul>
         <p>
-          That’s why we summarize our position in one sentence:{" "}
-          <strong>“the EBSI of the Turkic world.”</strong> We are not a competitor
-          to EBSI; because we rest on the same standards, we are designed to be{" "}
-          <strong>interoperable</strong> with it. The difference: data and
-          governance stay in-country, in a sovereign architecture.
+          Every role in the EU model and who holds it in Tamga today: <Link href="/docs/roles">roles and terms</Link>.
         </p>
 
-        <Callout title="Why “compatible yet independent”?" tone="accent">
-          As the world moves to the portable proof model, a country has two
-          options: import this transformation from outside, or produce its own
-          sovereign yet compatible infrastructure. Tamga chooses the latter — so a
-          verifiable bridge to the European market is built, and identity data is
-          not handed over to someone else’s infrastructure.
+        <Callout title="When a state publishes its own list" tone="gold">
+          When a state, or a body it authorises, publishes its own trust list, Tamga’s list of lists simply points to it.
+          For wallets and verifiers only the address and the signer change; credentials stay valid.
         </Callout>
       </>
     ),
   },
   tr: {
     meta: {
-      title: "eIDAS, EUDI ve EBSI",
+      title: "eIDAS 2.0 ve EUDI Wallet",
       description:
-        "Avrupa Birliği’nin dijital kimlik çerçevesi: eIDAS 2.0, EUDI Wallet ve EBSI. Katmanlı model ve Tamga Network’ün bu resimde nerede durduğu.",
+        "AB’nin dijital kimlik çerçevesi — eIDAS 2.0, EUDI Wallet ve arkasındaki güven listeleri — ve Tamga’nın aynı standartlar üzerine Türk dünyası için kurduğu yapı.",
     },
     eyebrow: "Tamga nasıl çalışır",
-    title: "eIDAS, EUDI ve EBSI",
+    title: "eIDAS 2.0 ve EUDI Wallet",
     intro:
-      "Tamga Network’ün konumunu anlamak için Avrupa’nın dijital kimlik mimarisini bilmek gerekir. Çünkü biz onunla rekabet etmiyoruz; aynı standartları Türk dünyası için kuruyoruz.",
+      "Tamga, Avrupa’nın dijital kimlik çerçevesiyle aynı standartları izler. Tamga’nın nerede durduğunu görmek için bu çerçevenin nasıl çalıştığını bilmek yardımcı olur.",
     body: (
       <>
         <h2>eIDAS 2.0 — çerçeve</h2>
         <p>
-          <strong>eIDAS</strong> (electronic IDentification, Authentication and
-          trust Services), Avrupa Birliği’nin elektronik kimlik ve güven
-          hizmetleri düzenlemesidir. <strong>eIDAS 2.0</strong> ise her üye
-          devletin vatandaşına ve işletmesine bir dijital kimlik cüzdanı sunmasını
-          zorunlu kılan güncellenmiş çerçevedir.
+          <strong>eIDAS</strong> (electronic IDentification, Authentication and trust Services), Avrupa Birliği’nin
+          elektronik kimlik ve güven hizmetleri tüzüğüdür. <strong>eIDAS 2.0</strong> her üye devletin vatandaşlarına ve
+          şirketlerine bir dijital kimlik cüzdanı sunmasını ister; kurumların bu cüzdana nasıl belge vereceğini ve nasıl
+          doğrulayacağını tanımlar.
         </p>
 
-        <h2>EUDI Wallet — uygulama katmanı</h2>
+        <h2>EUDI Wallet</h2>
         <p>
-          <strong>European Digital Identity Wallet (EUDI Wallet)</strong>,
-          vatandaşın kimlik bilgilerini, diplomalarını, ehliyetini ve sağlık
-          belgelerini kendi telefonunda taşıdığı; bunları bankalardan kamuya farklı
-          hizmetlerde{" "}
-          <Link href="/docs/selective-disclosure">seçici biçimde</Link> sunabildiği
-          cüzdandır. Yani EUDI Wallet, kullanıcının elindeki{" "}
-          <strong>uygulama</strong>dır.
+          <strong>Avrupa Dijital Kimlik Cüzdanı (EUDI Wallet)</strong>, kişinin kimliğini, diplomasını, ehliyetini ve diğer
+          belgelerini kendi telefonunda taşıdığı ve{" "}
+          <Link href="/docs/selective-disclosure">seçerek</Link> gösterdiği cüzdandır. “EUDI Wallet” hukuki bir unvandır:
+          bir AB üye devletinin sunduğu ya da tanıdığı ve AB kurallarına göre sertifikalanan cüzdanlara aittir.
         </p>
 
-        <h2>EBSI — altyapı katmanı</h2>
+        <h2>Güven listeleri — cüzdan kimin gerçek olduğunu nereden bilir</h2>
         <p>
-          <strong>EBSI (European Blockchain Services Infrastructure)</strong>,
-          Avrupa’nın kurumları ve devletleri arasındaki güveni sağlayan{" "}
-          <strong>altyapı</strong> katmanıdır. Kimlerin belge vermeye yetkili
-          olduğunu, kurumların anahtarlarını ve akreditasyonlarını tutan izinli bir
-          blockchain ağıdır (Hyperledger Besu + IBFT). Bireysel belgeler burada
-          tutulmaz; yalnızca güven registry’leri.
+          Avrupa Komisyonu bir <strong>listeler listesi (LOTL)</strong> yayınlar. Bu liste, her üye devletin kendi imzaladığı
+          güven listesini gösterir. Ulusal listeler kişi kimlik verisini kimin verebileceğini (PID sağlayıcıları), hangi
+          cüzdan sağlayıcılarının onaylı olduğunu ve veri isteyen kurumları kimin kaydettiğini söyler. Cüzdan ya da
+          doğrulayıcı tek bir anahtara — LOTL’ninkine — güvenir; gerisini imzalı listelerden öğrenir. Ayrıntı:{" "}
+          <Link href="/docs/trust-lists">güven listeleri</Link>.
         </p>
 
-        <Callout title="Katmanlı model — kilit kavrayış" tone="gold">
-          <strong>Altyapı katmanı</strong> (EBSI) devletler/kurumlar arası güveni
-          sağlar. <strong>Uygulama katmanı</strong> (EUDI Wallet) bunu vatandaşın
-          eline verir. İkisi ayrı ama tamamlayıcıdır — EUDI, EBSI’nin “üstünde”
-          çalışmaz; birbirini bütünler.
-        </Callout>
-
-        <h2>Peki Tamga Network nerede?</h2>
-        <p>Aynı katmanlı modeli Türkiye ve Türk dünyası için kuruyoruz:</p>
+        <h2>Tamga nerede duruyor</h2>
         <ul>
           <li>
-            <strong>Tamga Network = altyapı katmanı</strong> (EBSI benzeri). Güven
-            kayıtları egemen biçimde tutulur — bugün imzalı güven listeleri, bağımsız
-            operatörler katılınca izinli bir defter.
+            <strong>AB uyumlu taban.</strong> Tamga belgeleri (SD-JWT VC, ISO mdoc), protokolleri (OpenID4VCI / OpenID4VP,
+            HAIP) ve imzalı güven listeleri bu standartları izler.
           </li>
           <li>
-            <strong>Tamga Wallet = uygulama katmanı</strong> (EUDI Wallet benzeri).
-            Vatandaşın cüzdanı.
+            <strong>Tamga Network — Türk dünyası için bir federasyon.</strong> Komisyon’un LOTL’si gibi, Tamga’nın listeler
+            listesi de her devletin güven listesini gösterir. Bugün Türkiye listesini Tamga, devlet adına geçici olarak
+            yayınlar.
+          </li>
+          <li>
+            <strong>Tamga Wallet — AB uyumlu bir cüzdan.</strong> AB dışında hiçbir cüzdan “EUDI Wallet” unvanını taşıyamaz;
+            Tamga Wallet aynı standartları konuşur ve bunu birlikte çalışabilirlik testleriyle gösterecek.
           </li>
         </ul>
         <p>
-          Bu yüzden konumumuzu tek cümlede özetliyoruz:{" "}
-          <strong>“Türk dünyasının EBSI’si.”</strong> EBSI ile rakip değiliz; aynı
-          standartlara dayandığımız için onunla{" "}
-          <strong>birlikte çalışabilir</strong> olacak şekilde tasarlanıyoruz. Fark
-          şu: veri ve yönetişim yurt içinde, egemen bir mimaride kalır.
+          AB modelindeki her rol ve bugün Tamga’da kimde olduğu:{" "}
+          <Link href="/docs/roles">roller ve terimler</Link>.
         </p>
 
-        <Callout title="Neden “uyumlu ama bağımsız”?" tone="accent">
-          Dünya taşınabilir kanıt modeline geçerken bir ülkenin iki seçeneği var:
-          bu dönüşümü dışarıdan ithal etmek ya da kendi egemen ama uyumlu
-          altyapısını üretmek. Tamga ikincisini seçer — böylece hem Avrupa
-          pazarına doğrulanabilir bir köprü kurulur, hem de kimlik verisi bir
-          başkasının altyapısına teslim edilmez.
+        <Callout title="Bir devlet kendi listesini yayınladığında" tone="gold">
+          Bir devlet ya da yetkilendirdiği kurum kendi güven listesini yayınladığında, Tamga’nın listeler listesi yalnızca
+          onu gösterir. Cüzdan ve doğrulayıcı için yalnız adres ve imzacı değişir; belgeler geçerli kalır.
         </Callout>
       </>
     ),
   },
   tk: {
     meta: {
-      title: "eIDAS, EUDI we EBSI",
+      title: "eIDAS 2.0 we EUDI Wallet",
       description:
-        "ÝB-niň sanly şahsyýet çarçuwasy: eIDAS 2.0, EUDI Wallet we EBSI. Gatlakly model we Tamga Network-iň bu suratda nirede durýandygy.",
+        "ÝB-niň sanly şahsyýet çarçuwasy — eIDAS 2.0, EUDI Wallet we onuň arkasyndaky ynam sanawlary — we Tamga-nyň şol standartlarda türki dünýäsi üçin guran gurluşy.",
     },
     eyebrow: "Tamga nähili işleýär",
-    title: "eIDAS, EUDI we EBSI",
+    title: "eIDAS 2.0 we EUDI Wallet",
     intro:
-      "Tamga Network-iň ýagdaýyna düşünmek üçin Ýewropanyň sanly şahsyýet arhitekturasyny bilmeli. Sebäbi biz onuň bilen bäsleşmeýäris; şol bir standartlary türki dünýäsi üçin gurýarys.",
+      "Tamga Ýewropanyň sanly şahsyýet çarçuwasy bilen şol bir standartlara eýerýär. Tamga-nyň nirede durandygyny görmek üçin bu çarçuwanyň nähili işleýändigini bilmek peýdaly.",
     body: (
       <>
         <h2>eIDAS 2.0 — çarçuwa</h2>
         <p>
-          <strong>eIDAS</strong> (electronic IDentification, Authentication and
-          trust Services), Ýewropa Bileleşiginiň elektron şahsyýet we ynam
-          hyzmatlary düzgünnamasydyr. <strong>eIDAS 2.0</strong> bolsa her agza
-          döwletiň raýatyna we kärhanasyna sanly şahsyýet gapjygyny hödürlemegini
-          hökmany edýän täzelenen çarçuwadyr.
+          <strong>eIDAS</strong> (electronic IDentification, Authentication and trust Services) Ýewropa Bileleşiginiň
+          elektron şahsyýet we ynam hyzmatlary baradaky düzgünnamasy. <strong>eIDAS 2.0</strong> her agza döwletden
+          raýatlaryna we kompaniýalaryna sanly şahsyýet gapjygyny hödürlemegini talap edýär we guramalaryň oňa resminamany
+          nähili berjekdigini we barlajakdygyny kesgitleýär.
         </p>
 
-        <h2>EUDI Wallet — programma gatlagy</h2>
+        <h2>EUDI Wallet</h2>
         <p>
-          <strong>European Digital Identity Wallet (EUDI Wallet)</strong>,
-          raýatyň şahsyýet maglumatlaryny, diplomlaryny, sürüjilik şahadatnamasyny
-          we saglyk resminamalaryny öz telefonynda göterýän; olary banklardan
-          döwlet edaralaryna dürli hyzmatlarda{" "}
-          <Link href="/docs/selective-disclosure">saýlama görnüşde</Link>{" "}
-          hödürläp bilýän gapjygydyr. Ýagny EUDI Wallet, ulanyjynyň elindäki{" "}
-          <strong>programma</strong>dyr.
+          <strong>Ýewropa Sanly Şahsyýet Gapjygy (EUDI Wallet)</strong> adamyň şahsyýetini, diplomyny, sürüjilik
+          şahadatnamasyny we beýleki resminamalaryny öz telefonynda göterýän we{" "}
+          <Link href="/docs/selective-disclosure">saýlap</Link> görkezýän gapjygy. “EUDI Wallet” hukuk ady: ÝB agza
+          döwletiniň hödürleýän ýa-da ykrar edýän we ÝB düzgünleri boýunça sertifikatlaşdyrylan gapjyklaryna degişli.
         </p>
 
-        <h2>EBSI — infrastruktura gatlagy</h2>
+        <h2>Ynam sanawlary — gapjyk kimiň hakykydygyny nireden bilýär</h2>
         <p>
-          <strong>EBSI (European Blockchain Services Infrastructure)</strong>,
-          Ýewropanyň edaralary we döwletleri arasyndaky ynamy üpjün edýän{" "}
-          <strong>infrastruktura</strong> gatlagydyr. Kimleriň resminama bermäge
-          ygtyýarlydygyny, guramalaryň açarlaryny we akkreditasiýalaryny saklaýan
-          rugsatly blokçeýn torudyr (Hyperledger Besu + IBFT). Şahsy resminamalar
-          bu ýerde saklanmaýar; diňe ynam registrleri.
+          Ýewropa Komissiýasy <strong>sanawlaryň sanawyny (LOTL)</strong> çap edýär. Ol her agza döwletiň özi gol çeken ynam
+          sanawyny görkezýär. Milli sanawlar şahsy şahsyýet maglumatyny kimiň berip biljekdigini (PID üpjün edijileri),
+          haýsy gapjyk üpjün edijileriň tassyklanandygyny we maglumat soraýan guramalary kimiň hasaba alýandygyny aýdýar.
+          Gapjyk ýa-da barlaýjy diňe bir açara — LOTL-iňkä — ynanýar; galanyny gol çekilen sanawlardan öwrenýär.
+          Jikme-jiklik: <Link href="/docs/trust-lists">ynam sanawlary</Link>.
         </p>
 
-        <Callout title="Gatlakly model — esasy düşünje" tone="gold">
-          <strong>Infrastruktura gatlagy</strong> (EBSI) döwletler/guramalar
-          arasyndaky ynamy üpjün edýär. <strong>Programma gatlagy</strong> (EUDI
-          Wallet) muny raýatyň eline berýär. Ikisi aýry ýöne biri-birini doldurýan
-          — EUDI, EBSI-niň “üstünde” işlemeýär; biri-birini doldurýar.
-        </Callout>
-
-        <h2>Onda Tamga Network nirede?</h2>
-        <p>Şol bir gatlakly modeli Türkiýe we türki dünýäsi üçin gurýarys:</p>
+        <h2>Tamga nirede durýar</h2>
         <ul>
           <li>
-            <strong>Tamga Network = infrastruktura gatlagy</strong> (EBSI ýaly).
-            Özygtyýarly ynam hasaplary — häzir gol çekilen ynam sanawlary, garaşsyz
-            operatorlar goşulanda rugsatly kitap.
+            <strong>ÝB bilen laýyk esas.</strong> Tamga resminamalary (SD-JWT VC, ISO mdoc), protokollary (OpenID4VCI /
+            OpenID4VP, HAIP) we gol çekilen ynam sanawlary şu standartlara eýerýär.
           </li>
           <li>
-            <strong>Tamga Wallet = programma gatlagy</strong> (EUDI Wallet ýaly).
-            Raýatyň gapjygy.
+            <strong>Tamga Network — türki dünýäsi üçin federasiýa.</strong> Komissiýanyň LOTL-i ýaly, Tamga-nyň sanawlaryň
+            sanawy her döwletiň ynam sanawyny görkezýär. Häzir Türkiýäniň sanawyny Tamga döwletiň adyndan wagtlaýyn çap
+            edýär.
+          </li>
+          <li>
+            <strong>Tamga Wallet — ÝB bilen laýyk gapjyk.</strong> ÝB-den daşarda hiç bir gapjyk “EUDI Wallet” adyny
+            göterip bilmeýär; Tamga Wallet şol standartlarda gürleýär we muny bilelikde işleýiş synaglary bilen görkezer.
           </li>
         </ul>
         <p>
-          Şonuň üçin ýagdaýymyzy bir sözlemde jemleýäris:{" "}
-          <strong>“türki dünýäsiniň EBSI-si.”</strong> EBSI bilen bäsdeş däl; şol
-          bir standartlara daýanýandygymyz üçin onuň bilen{" "}
-          <strong>bilelikde işleýän</strong> boljak görnüşde taslanýarys. Tapawut
-          şu: maglumat we dolandyryş ýurt içinde, özygtyýarly arhitekturada galýar.
+          ÝB modelindäki her rol we häzir Tamga-da kimde: <Link href="/docs/roles">rollar we adalgalar</Link>.
         </p>
 
-        <Callout title="Näme üçin “laýyk ýöne garaşsyz”?" tone="accent">
-          Dünýä göçme subutnama modeline geçende ýurduň iki saýlawy bar: bu
-          özgerişi daşardan getirmek ýa-da öz özygtyýarly ýöne laýyk
-          infrastrukturasyny öndürmek. Tamga ikinjisini saýlaýar — şeýlelikde hem
-          Ýewropa bazaryna barlanyp bilinýän köpri gurulýar, hem-de şahsyýet
-          maglumaty başga biriniň infrastrukturasyna tabşyrylmaýar.
+        <Callout title="Döwlet öz sanawyny çap edende" tone="gold">
+          Döwlet ýa-da ygtyýarlandyran guramasy öz ynam sanawyny çap edende, Tamga-nyň sanawlaryň sanawy diňe şony
+          görkezýär. Gapjyk we barlaýjy üçin diňe salgy we gol çekiji üýtgeýär; resminamalar güýjünde galýar.
         </Callout>
       </>
     ),

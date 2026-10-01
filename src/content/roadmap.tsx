@@ -101,6 +101,11 @@ const en: RoadmapContent = {
           title: "Open-source packages",
           desc: "@tamga-network on npm, pre-release 0.1.0",
         },
+        {
+          icon: "user",
+          title: "Per-site pseudonyms",
+          desc: "every website sees a different, stable pseudonym",
+        },
       ],
     },
     {
@@ -174,7 +179,7 @@ const en: RoadmapContent = {
         {
           icon: "flag",
           title: "Member-state lists",
-          desc: "each state registers its own institutions",
+          desc: "each state publishes its own trust list; Tamga’s list of lists points to it",
         },
         {
           icon: "bluetooth",
@@ -192,13 +197,13 @@ const en: RoadmapContent = {
       cards: [
         {
           icon: "eye",
-          title: "Zero-knowledge credentials",
-          desc: "no tracking even by the issuer",
+          title: "Zero-knowledge proofs",
+          desc: "age proof without the birth date; verifier ready, phone after the store release",
         },
         {
-          icon: "user",
-          title: "Per-site pseudonyms",
-          desc: "and accountable disclosure",
+          icon: "key",
+          title: "Qualified e-signature",
+          desc: "signing from the wallet with a licensed provider",
         },
         {
           icon: "briefcase",
@@ -263,6 +268,11 @@ const tr: RoadmapContent = {
           icon: "package",
           title: "Açık kaynak paketler",
           desc: "npm'de @tamga-network, ön sürüm 0.1.0",
+        },
+        {
+          icon: "user",
+          title: "Site başına takma ad",
+          desc: "her site farklı ve kalıcı bir takma ad görür",
         },
       ],
     },
@@ -337,7 +347,7 @@ const tr: RoadmapContent = {
         {
           icon: "flag",
           title: "Üye devlet listeleri",
-          desc: "her devlet kendi kurumlarını kaydeder",
+          desc: "her devlet kendi güven listesini yayınlar; Tamga’nın listeler listesi onu gösterir",
         },
         {
           icon: "bluetooth",
@@ -355,13 +365,13 @@ const tr: RoadmapContent = {
       cards: [
         {
           icon: "eye",
-          title: "Sıfır bilgili belgeler",
-          desc: "belgeyi veren kurum bile izleyemez",
+          title: "Sıfır bilgi ispatı",
+          desc: "doğum tarihi olmadan yaş ispatı; doğrulayıcı hazır, telefon mağaza sürümünden sonra",
         },
         {
-          icon: "user",
-          title: "Site başına takma ad",
-          desc: "ve hesap verebilir ifşa",
+          icon: "key",
+          title: "Nitelikli e-imza",
+          desc: "lisanslı bir sağlayıcıyla cüzdandan imza",
         },
         {
           icon: "briefcase",
@@ -426,6 +436,11 @@ const tk: RoadmapContent = {
           icon: "package",
           title: "Açyk çeşmeli paketler",
           desc: "npm-de @tamga-network, deslapky wersiýa 0.1.0",
+        },
+        {
+          icon: "user",
+          title: "Saýt başyna lakam",
+          desc: "her saýt başga we hemişelik lakam görýär",
         },
       ],
     },
@@ -500,7 +515,7 @@ const tk: RoadmapContent = {
         {
           icon: "flag",
           title: "Agza döwletleriň sanawlary",
-          desc: "her döwlet öz guramalaryny hasaba alýar",
+          desc: "her döwlet öz ynam sanawyny çap edýär; Tamga-nyň sanawlaryň sanawy şony görkezýär",
         },
         {
           icon: "bluetooth",
@@ -518,13 +533,13 @@ const tk: RoadmapContent = {
       cards: [
         {
           icon: "eye",
-          title: "Nol bilimli resminamalar",
-          desc: "resminamany beren gurama hem yzarlap bilmeýär",
+          title: "Nol bilimli subutnama",
+          desc: "doglan senesiz ýaş subutnamasy; barlaýjy taýýar, telefon dükan wersiýasyndan soň",
         },
         {
-          icon: "user",
-          title: "Saýt başyna lakam",
-          desc: "we hasabatly açyklama",
+          icon: "key",
+          title: "Kwalifisirlenen elektron gol",
+          desc: "ygtyýarly üpjün ediji bilen gapjykdan gol çekmek",
         },
         {
           icon: "briefcase",

@@ -252,7 +252,7 @@ const POSTS: Post[] = [
             <p>
               Because trust infrastructure that hides its limits is not trustworthy. The side-by-side
               with the EU architecture — same, bridged, planned — is in{" "}
-              <Link href="/docs/eudi-comparison">Tamga and the EUDI architecture</Link>; the plan is in
+              <Link href="/docs/roles">roles and terms</Link>; the plan is in
               the <Link href="/whitepaper">whitepaper</Link>.
             </p>
           </>
@@ -293,7 +293,7 @@ const POSTS: Post[] = [
             <h2>Bunları neden söylüyoruz</h2>
             <p>
               Çünkü sınırlarını saklayan bir güven altyapısı güvenilir değildir. AB mimarisiyle yan yana
-              kıyas — aynı, köprü, planlı — <Link href="/docs/eudi-comparison">Tamga ve EUDI mimarisi</Link>{" "}
+              kıyas — aynı, köprü, planlı — <Link href="/docs/roles">roller ve terimler</Link>{" "}
               sayfasında; plan <Link href="/whitepaper">whitepaper</Link>’da.
             </p>
           </>
@@ -334,7 +334,7 @@ const POSTS: Post[] = [
             <p>
               Sebäbi çäklerini gizleýän ynam infrastrukturasy ynamdar däl. ÝB arhitekturasy bilen
               ýanaşyk deňeşdirme — şol bir, köpri, meýilleşdirilen —{" "}
-              <Link href="/docs/eudi-comparison">Tamga we EUDI arhitekturasy</Link> sahypasynda; meýilnama{" "}
+              <Link href="/docs/roles">rollar we adalgalar</Link> sahypasynda; meýilnama{" "}
               <Link href="/whitepaper">whitepaper</Link>-da.
             </p>
           </>
@@ -342,274 +342,6 @@ const POSTS: Post[] = [
       },
     },
   },
-  {
-    slug: "roadmap-turkic-world",
-    date: "2026-08-06",
-    i18n: {
-      en: {
-        title: "The EBSI of the Turkic world: our roadmap",
-        description:
-          "How a layered trust infrastructure grows from a single money-free pilot in Türkiye into a Trust Mesh across the Turkic world.",
-        tag: "Vision",
-        readingTime: "7 min",
-        body: (
-          <>
-            <p>
-              Europe built its digital-trust future as two layers: an infrastructure
-              layer (<strong>EBSI</strong>) and an application layer (the{" "}
-              <strong>EUDI Wallet</strong>). Tamga Network mirrors exactly this model
-              for Türkiye and the Turkic world:{" "}
-              <strong>Tamga Network is the infrastructure</strong> and{" "}
-              <strong>Tamga Wallet is the wallet</strong> that opens onto it. We are not a
-              competitor to EBSI — because we rest on the same open standards, we are
-              designed to interoperate with it. The difference is sovereignty: data and
-              governance stay in-country.
-            </p>
-            <h2>Why “layered” matters</h2>
-            <p>
-              A single monolithic product ages badly. By separating the sovereign
-              network (the trust anchor), the open standards (VC, SD-JWT, X.509) and the
-              applications (the wallet and the services built on it), each layer can evolve on its
-              own. States join the network; institutions register issuers; developers
-              build apps — without any layer waiting on another.
-            </p>
-            <h2>The phased plan</h2>
-            <ul>
-              <li><strong>Phase 0 — Foundations.</strong> A foundation runs the initial validators; the architecture already commits to handing them to states over time (progressive decentralization).</li>
-              <li><strong>Phase 1 — Identity + logistics, money-free.</strong> The first pilot proves value without touching payments: verified diplomas, credentials, and last-mile delivery a customer confirms from their own wallet.</li>
-              <li><strong>Phase 2 — Sectors.</strong> Education, health and logistics run on the shared trust layer; institutions become full nodes.</li>
-              <li><strong>Phase 3 — Turkic world.</strong> States join as equal validators; cross-recognition turns a diploma issued in one country into a credential verifiable in another.</li>
-            </ul>
-            <p>
-              In the long run this vision takes shape as a <strong>Trust Mesh</strong>:
-              not one central authority, but a mesh of interoperable, independent
-              networks. Read the full picture in the{" "}
-              <Link href="/whitepaper">whitepaper</Link> or explore the{" "}
-              <Link href="/scenarios">scenarios</Link>.
-            </p>
-          </>
-        ),
-      },
-      tr: {
-        title: "Türk dünyasının EBSI’si: yol haritamız",
-        description:
-          "Katmanlı bir güven altyapısı, Türkiye’deki parasız tek bir pilottan Türk dünyasına yayılan bir Trust Mesh’e nasıl büyür.",
-        tag: "Vizyon",
-        readingTime: "7 dk",
-        body: (
-          <>
-            <p>
-              Avrupa dijital güven geleceğini iki katman olarak kurdu: bir altyapı
-              katmanı (<strong>EBSI</strong>) ve bir uygulama katmanı (
-              <strong>EUDI Wallet</strong>). Tamga Network bu modelin Türkiye ve Türk
-              dünyası için tam karşılığıdır:{" "}
-              <strong>Tamga Network altyapıdır</strong>,{" "}
-              <strong>Tamga Wallet ise ona açılan cüzdandır</strong>. EBSI ile rakip değiliz
-              — aynı açık standartlara dayandığımız için onunla birlikte çalışacak
-              şekilde tasarlandık. Fark egemenliktir: veri ve yönetişim yurt içinde
-              kalır.
-            </p>
-            <h2>“Katmanlı” olmak neden önemli</h2>
-            <p>
-              Tek parça bir ürün kötü yaşlanır. Egemen ağı (güven çıpası), açık
-              standartları (VC, SD-JWT, X.509) ve uygulamaları (cüzdan ve üzerine
-              kurulan hizmetler) ayırarak her katman kendi başına gelişebilir. Devletler ağa
-              katılır; kurumlar issuer kaydolur; geliştiriciler uygulama kurar — hiçbir
-              katman diğerini beklemeden.
-            </p>
-            <h2>Aşamalı plan</h2>
-            <ul>
-              <li><strong>Faz 0 — Temeller.</strong> Başlangıç validator’larını bir vakıf çalıştırır; mimari, bunları zamanla devletlere devretmeyi baştan taahhüt eder (kademeli ademi merkeziyet).</li>
-              <li><strong>Faz 1 — Kimlik + lojistik, parasız.</strong> İlk pilot, ödemeye hiç dokunmadan değer üretir: doğrulanmış diplomalar, credential’lar ve müşterinin kendi cüzdanıyla onayladığı son teslimat.</li>
-              <li><strong>Faz 2 — Sektörler.</strong> Eğitim, sağlık ve lojistik aynı güven katmanında çalışır; kurumlar full node olur.</li>
-              <li><strong>Faz 3 — Türk dünyası.</strong> Devletler eşit validator olarak katılır; cross-recognition, bir ülkede verilen diplomayı başka ülkede doğrulanabilir bir belgeye çevirir.</li>
-            </ul>
-            <p>
-              Uzun vadede bu vizyon bir <strong>Trust Mesh</strong> olarak somutlaşır:
-              tek merkez değil, birlikte çalışabilir, bağımsız ağlardan oluşan bir örgü.
-              Tüm resmi <Link href="/whitepaper">whitepaper</Link>’da okuyabilir ya da{" "}
-              <Link href="/scenarios">senaryolara</Link> göz atabilirsiniz.
-            </p>
-          </>
-        ),
-      },
-      tk: {
-        title: "Türki dünýäsiniň EBSI-si: ýol kartamyz",
-        description:
-          "Gatlakly ynam infrastrukturasy Türkiýedäki pulsuz bir pilotdan türki dünýäsine ýaýraýan Trust Mesh-e nähili ösýär.",
-        tag: "Garaýyş",
-        readingTime: "7 min",
-        body: (
-          <>
-            <p>
-              Ýewropa sanly ynam geljegini iki gatlak hökmünde gurdy: infrastruktura
-              gatlagy (<strong>EBSI</strong>) we programma gatlagy (
-              <strong>EUDI Wallet</strong>). Tamga Network bu modeliň Türkiýe we türki
-              dünýäsi üçin edil garşylygydyr:{" "}
-              <strong>Tamga Network infrastrukturadyr</strong>,{" "}
-              <strong>Tamga Wallet bolsa oňa açylýan gapjykdyr</strong>. EBSI bilen bäsdeş
-              däl — şol bir açyk standartlara daýanýandygymyz üçin onuň bilen bilelikde
-              işlemäge niýetlenendir. Tapawut özygtyýarlylykdyr: maglumat we dolandyryş
-              ýurt içinde galýar.
-            </p>
-            <h2>“Gatlakly” bolmak näme üçin möhüm</h2>
-            <p>
-              Bir bitewi önüm erbet garraýar. Özygtyýarly tory (ynam çyzygy), açyk
-              standartlary (VC, SD-JWT, X.509) we programmalary (gapjyk we onuň
-              üstünde gurlan hyzmatlar) aýryp, her gatlak öz-özünden ösüp bilýär. Döwletler tora
-              goşulýar; guramalar issuer hasaba alýar; işläp düzüjiler programma gurýar —
-              hiç bir gatlak beýlekisine garaşman.
-            </p>
-            <h2>Tapgyrlaýyn meýilnama</h2>
-            <ul>
-              <li><strong>Faza 0 — Binýatlar.</strong> Başlangyç validatorlary bir gaznanyň işledýär; arhitektura olary wagtyň geçmegi bilen döwletlere geçirmegi öňünden borç edinýär.</li>
-              <li><strong>Faza 1 — Şahsyýet + logistika, pulsuz.</strong> Ilkinji pilot tölege degmän gymmat öndürýär: barlanan diplomlar, credential-lar we müşderiniň öz gapjygy bilen tassyklaýan soňky eltip berişi.</li>
-              <li><strong>Faza 2 — Pudaklar.</strong> Bilim, saglyk we logistika şol bir ynam gatlagynda işleýär; guramalar doly node bolýar.</li>
-              <li><strong>Faza 3 — Türki dünýäsi.</strong> Döwletler deň validator hökmünde goşulýar; cross-recognition bir ýurtda berlen diplomy başga ýurtda barlanýan resminama öwürýär.</li>
-            </ul>
-            <p>
-              Uzak möhletde bu garaýyş <strong>Trust Mesh</strong> hökmünde göwrümlenýär:
-              bir merkez däl, bilelikde işleýän garaşsyz torlaryň örümi. Doly suraty{" "}
-              <Link href="/whitepaper">whitepaper</Link>-de okap ýa-da{" "}
-              <Link href="/scenarios">ssenariýalara</Link> göz aýlap bilersiňiz.
-            </p>
-          </>
-        ),
-      },
-    },
-  },
-
-  {
-    slug: "authorization-not-settlement",
-    date: "2026-08-05",
-    i18n: {
-      en: {
-        title: "The value layer: authorization, not settlement",
-        description:
-          "Tamga does not issue a currency. It authorizes value movement while banks and CBDCs do the settling — and that is a deliberate design choice.",
-        tag: "Architecture",
-        readingTime: "7 min",
-        body: (
-          <>
-            <p>
-              A payment is really two things: <strong>authorization</strong> (“is this
-              party allowed, verified, within limits, not sanctioned?”) and{" "}
-              <strong>settlement</strong> (money actually changing hands). Tamga’s
-              natural strength is authorization. Settlement belongs to banks, central
-              banks and licensed institutions — and stepping into it would bring
-              central-bank conflict, multi-jurisdiction licensing and a censorship
-              problem.
-            </p>
-            <Fig label="the split">{DIAG.split}</Fig>
-            <p>
-              This is not “stay out of value forever.” It is “build the hooks, not the
-              feature.” Five architectural decisions taken today keep the door open at
-              near-zero cost, while remaining impossible to retrofit later:
-            </p>
-            <ul>
-              <li><strong>Smart-contract wallets</strong> from day one (not plain key-addresses).</li>
-              <li><strong>Separated keys</strong> — identity, asset and agent keys never mix.</li>
-              <li><strong>Scope-generic delegation</strong> — ready for <code>pay:*</code> later.</li>
-              <li><strong>Credential-gating</strong> as a reusable primitive.</li>
-              <li><strong>No native token</strong>, but permissioned token issuance stays possible.</li>
-            </ul>
-            <h2>Agents change the picture</h2>
-            <p>
-              AI agents will transact on our behalf. An agent has no identity of its own
-              — only a bounded, revocable delegation from a <strong>state-verified</strong>{" "}
-              principal, with per-transaction caps and an instant kill switch. “This
-              agent’s responsible party is a real person verified by their state” is a
-              guarantee no commercial platform can match. The full reasoning is in the{" "}
-              <Link href="/docs/tamga-id">Tamga Wallet page</Link>.
-            </p>
-          </>
-        ),
-      },
-      tr: {
-        title: "Değer katmanı: yetkilendirme, mutabakat değil",
-        description:
-          "Tamga para birimi çıkarmaz. Değer hareketini yetkilendirir; mutabakatı bankalar ve CBDC’ler yapar — ve bu bilinçli bir tasarım kararıdır.",
-        tag: "Mimari",
-        readingTime: "7 dk",
-        body: (
-          <>
-            <p>
-              Bir ödeme aslında iki şeydir: <strong>yetkilendirme</strong> (“bu taraf
-              yetkili mi, doğrulanmış mı, limit içinde mi, yaptırımda mı?”) ve{" "}
-              <strong>mutabakat</strong> (paranın fiilen el değiştirmesi). Tamga’nın
-              doğal gücü yetkilendirmededir. Mutabakat bankaların, merkez bankalarının
-              ve lisanslı kurumların işidir — oraya girmek merkez-bankası çatışması,
-              çok-yargı-alanı lisansı ve bir sansür problemi getirir.
-            </p>
-            <Fig label="the split">{DIAG.split}</Fig>
-            <p>
-              Bu “değere hiç girme” değildir. “Özelliği değil, kancaları inşa et”
-              demektir. Bugün alınan beş mimari karar, kapıyı neredeyse sıfır maliyetle
-              açık tutar; sonradan eklenmesi ise imkânsızdır:
-            </p>
-            <ul>
-              <li>İlk günden <strong>smart-contract cüzdanları</strong> (düz anahtar-adres değil).</li>
-              <li><strong>Ayrık anahtarlar</strong> — identity, asset ve agent anahtarları asla karışmaz.</li>
-              <li><strong>Scope-generic delegation</strong> — ileride <code>pay:*</code> için hazır.</li>
-              <li><strong>Credential-gating</strong> yeniden kullanılabilir bir primitif olarak.</li>
-              <li><strong>Kendi token yok</strong>, ama izinli token ihracı mümkün kalır.</li>
-            </ul>
-            <h2>Ajanlar resmi değiştiriyor</h2>
-            <p>
-              AI ajanları bizim adımıza işlem yapacak. Ajanın kendi kimliği yoktur —
-              yalnızca <strong>devletçe doğrulanmış</strong> bir veliden gelen sınırlı,
-              iptal edilebilir bir yetki; işlem başına tavan ve anında bir kill switch
-              ile. “Bu ajanın sorumlusu, devletinin doğruladığı gerçek bir kişidir”
-              güvencesini hiçbir ticari platform veremez. Tüm gerekçe{" "}
-              <Link href="/docs/tamga-id">Tamga Wallet sayfasında</Link>.
-            </p>
-          </>
-        ),
-      },
-      tk: {
-        title: "Baha gatlagy: ygtyýarlandyrma, hasaplaşyk däl",
-        description:
-          "Tamga pul birligini çykarmaýar. Baha hereketini ygtyýarlandyrýar; hasaplaşygy banklar we CBDC-ler edýär — bu bolsa bilkastdan saýlanan dizaýn kararydyr.",
-        tag: "Arhitektura",
-        readingTime: "7 min",
-        body: (
-          <>
-            <p>
-              Töleg aslynda iki zatdyr: <strong>ygtyýarlandyrma</strong> (“bu tarap
-              ygtyýarlymy, barlananmy, çäk içindemi, sanksiýadamy?”) we{" "}
-              <strong>hasaplaşyk</strong> (puluň hakykatdan el çalyşmagy). Tamga-nyň
-              tebigy güýji ygtyýarlandyrmada. Hasaplaşyk banklaryň, merkezi banklaryň we
-              ygtyýarly guramalaryň işidir — oňa girmek merkezi-bank çaknyşygyny, köp-
-              ýurisdiksiýa ygtyýarnamasyny we sensura meselesini getirýär.
-            </p>
-            <Fig label="the split">{DIAG.split}</Fig>
-            <p>
-              Bu “baha asla girme” däl. “Aýratynlygy däl, ilmekleri gur” diýmekdir. Şu
-              gün alnan bäş arhitektura karary gapyny takmynan nol çykdajy bilen açyk
-              saklaýar; soňra goşmak bolsa mümkin däl:
-            </p>
-            <ul>
-              <li>Ilkinji günden <strong>smart-contract gapjyklary</strong> (düz açar-salgy däl).</li>
-              <li><strong>Aýrylan açarlar</strong> — identity, asset we agent açarlary asla garyşmaýar.</li>
-              <li><strong>Scope-generic delegation</strong> — geljekde <code>pay:*</code> üçin taýýar.</li>
-              <li><strong>Credential-gating</strong> gaýtadan ulanylýan primitiw hökmünde.</li>
-              <li><strong>Öz token ýok</strong>, ýöne rugsatly token çykaryş mümkin galýar.</li>
-            </ul>
-            <h2>Agentler suraty üýtgedýär</h2>
-            <p>
-              AI agentleri biziň adymyzdan amal eder. Agentiň öz şahsyýeti ýok —
-              diňe <strong>döwletçe barlanan</strong> bir eýeden çäkli, ýatyrylýan
-              ygtyýar; amal başyna çäk we dessine kill switch bilen. “Bu agentiň
-              jogapkäri, döwletiniň barlan hakyky adamydyr” diýen kepili hiç bir söwda
-              platformasy berip bilmeýär. Doly delil{" "}
-              <Link href="/docs/tamga-id">Tamga Wallet sahypasynda</Link>.
-            </p>
-          </>
-        ),
-      },
-    },
-  },
-
   {
     slug: "selective-disclosure-zk",
     date: "2026-08-04",
@@ -734,153 +466,6 @@ const POSTS: Post[] = [
               iki barlaýjy şol bir adamy görendigini bilip bilmeýär. Bu primitiwler ýol
               kartamyzda; kämilleşdigiçe we barlagdan geçdigiçe girýär. Köpräk:{" "}
               <Link href="/docs/selective-disclosure">Saýlama açyklama we SD-JWT</Link>.
-            </p>
-          </>
-        ),
-      },
-    },
-  },
-
-  {
-    slug: "accountable-disclosure",
-    date: "2026-08-03",
-    i18n: {
-      en: {
-        title: "Accountable disclosure: privacy without impunity",
-        description:
-          "Not even the state should be able to unmask an identity alone or without a trace. How threshold cryptography makes sovereign access accountable.",
-        tag: "Technical",
-        readingTime: "7 min",
-        body: (
-          <>
-            <p>
-              The hardest question in a state-grade identity system is not “how do we
-              hide from the state.” The state can already see identity in the physical
-              world. The real question is: how do we prevent{" "}
-              <strong>any single actor — the state included — from unmasking a pseudonym
-              alone and without a trace</strong>? We call the answer{" "}
-              <em>accountable disclosure</em>.
-            </p>
-            <h2>A separate, encrypted escrow</h2>
-            <p>
-              In daily life a citizen acts through{" "}
-              <Link href="/docs/identity-layers">pairwise pseudonyms</Link> — unlinkable
-              across relationships. The mapping between a pseudonym and the root identity
-              lives in a separate, <strong>encrypted escrow</strong>, protected by
-              threshold cryptography. Crucially, the decryption key is{" "}
-              <strong>never reconstructed</strong>.
-            </p>
-            <Fig label="(t,n) threshold ElGamal over DKG">{DIAG.dkg}</Fig>
-            <h2>Who holds the shares</h2>
-            <p>
-              The guardians are an <strong>institutional set of five</strong> per state —
-              judiciary, data-protection authority, civil-registry authority, ombudsman
-              and a parliament-appointed member — with a <strong>3-of-5</strong> threshold
-              and a rule that at least one approving seat must be{" "}
-              <strong>non-executive</strong>. So the executive branch can never open an
-              identity on its own. Opening requires a court token (an X.509-signed object,
-              not paper) and leaves an immutable audit log.
-            </p>
-            <p>
-              There is an <strong>emergency mode</strong> (2-of-5, with mandatory
-              retroactive full-threshold confirmation within 48 hours, else auto-cancel
-              and alarm), and cross-border cases use a{" "}
-              <strong>“who / what” split key</strong>: your home state opens “who,” the
-              state where the event happened opens “what,” and neither can assemble the
-              full file alone. Details:{" "}
-              <Link href="/docs/accountable-disclosure">Accountable disclosure</Link>.
-            </p>
-          </>
-        ),
-      },
-      tr: {
-        title: "Accountable disclosure: cezasızlık olmadan mahremiyet",
-        description:
-          "Devlet dahil hiçbir aktör bir kimliği tek başına ve izsiz açamamalı. Threshold kriptografisi egemen erişimi nasıl hesap verebilir kılar.",
-        tag: "Teknik",
-        readingTime: "7 dk",
-        body: (
-          <>
-            <p>
-              Devlet-ölçeğinde bir kimlik sisteminde en zor soru “devletten nasıl
-              gizleniriz” değildir. Devlet zaten fiziksel dünyada kimliği görebilir. Asıl
-              soru şudur: <strong>devlet dahil hiçbir aktörün bir pseudonym’i tek başına
-              ve izsiz açamamasını</strong> nasıl sağlarız? Cevaba{" "}
-              <em>accountable disclosure</em> (hesap verebilir ifşa) diyoruz.
-            </p>
-            <h2>Ayrı, şifreli bir escrow</h2>
-            <p>
-              Günlük hayatta vatandaş{" "}
-              <Link href="/docs/identity-layers">pairwise pseudonym</Link>’lerle hareket
-              eder — ilişkiler arası bağlanamaz. Bir pseudonym ile kök kimlik arasındaki
-              eşleme ayrı, <strong>şifreli bir escrow</strong>’da tutulur ve threshold
-              kriptografisiyle korunur. Kritik nokta: şifre çözme anahtarı{" "}
-              <strong>asla yeniden kurulmaz</strong>.
-            </p>
-            <Fig label="(t,n) threshold ElGamal over DKG">{DIAG.dkg}</Fig>
-            <h2>Payları kim tutar</h2>
-            <p>
-              Guardian’lar devlet başına <strong>kurumsal bir 5’lidir</strong> — yargı,
-              veri-koruma otoritesi, nüfus/kimlik otoritesi, ombudsman ve
-              parlamento-atamalı bir üye — <strong>3-of-5</strong> eşiğiyle ve en az bir
-              onaylayan koltuğun <strong>non-executive (yürütme-dışı)</strong> olması
-              kuralıyla. Böylece yürütme erki bir kimliği tek başına açamaz. Açma, bir
-              court token (kâğıt değil, X.509 imzalı nesne) gerektirir ve değiştirilemez
-              bir audit log bırakır.
-            </p>
-            <p>
-              Bir <strong>emergency mode</strong> vardır (2-of-5, 48 saat içinde zorunlu
-              geriye-dönük tam-eşik onayı; yoksa otomatik iptal ve alarm) ve sınır-ötesi
-              vakalarda <strong>“who / what” split key</strong> kullanılır: tabiyet
-              devletin “who”yu, olayın gerçekleştiği devlet “what”ı açar; hiçbiri tam
-              dosyayı tek başına birleştiremez. Ayrıntı:{" "}
-              <Link href="/docs/accountable-disclosure">Hesap verebilir ifşa</Link>.
-            </p>
-          </>
-        ),
-      },
-      tk: {
-        title: "Accountable disclosure: jezasyzlyksyz gizlinlik",
-        description:
-          "Döwlet hem hiç bir aktýor şahsyýeti ýeke özi we yzsyz açyp bilmeli däl. Threshold kriptografiýa özygtyýarly elýeterliligi nähili hasabatly edýär.",
-        tag: "Tehniki",
-        readingTime: "7 min",
-        body: (
-          <>
-            <p>
-              Döwlet-derejeli şahsyýet ulgamynda iň kyn sowal “döwletden nähili
-              gizlenýäris” däl. Döwlet eýýäm fiziki dünýäde şahsyýeti görüp bilýär. Hakyky
-              sowal: <strong>döwlet hem hiç bir aktýoryň bir pseudonim-i ýeke özi we yzsyz
-              açyp bilmezligini</strong> nähili üpjün edýäris? Jogaba{" "}
-              <em>accountable disclosure</em> diýýäris.
-            </p>
-            <h2>Aýry, şifrlenen escrow</h2>
-            <p>
-              Gündelik durmuşda raýat{" "}
-              <Link href="/docs/identity-layers">pairwise pseudonim</Link>-ler bilen
-              hereket edýär — gatnaşyklaryň arasynda baglanmaýar. Pseudonim bilen kök
-              şahsyýetiň arasyndaky baglanyşyk aýry, <strong>şifrlenen escrow</strong>-da
-              saklanýar we threshold kriptografiýa bilen goralýar. Möhümi: şifr açar açary{" "}
-              <strong>asla gaýtadan gurulmaýar</strong>.
-            </p>
-            <Fig label="(t,n) threshold ElGamal over DKG">{DIAG.dkg}</Fig>
-            <h2>Paýlary kim saklaýar</h2>
-            <p>
-              Guardian-lar döwlet başyna <strong>kurumsal bäşlikdir</strong> — kazyýet,
-              maglumat-goragy edarasy, ilat/şahsyýet edarasy, ombudsman we
-              parlament-bellenen agza — <strong>3-of-5</strong> eşik bilen we azyndan bir
-              tassyklaýan orunlyk <strong>non-executive</strong> bolmaly kadasy bilen.
-              Şeýlelikde ýerine ýetiriji häkimiýet şahsyýeti ýeke özi açyp bilmeýär.
-              Açmak court token (kagyz däl, X.509 gol çekilen) talap edýär we üýtgedip
-              bolmajak audit log galdyrýar.
-            </p>
-            <p>
-              Bir <strong>emergency mode</strong> bar (2-of-5, 48 sagadyň içinde hökmany
-              yzyna doly-eşik tassyklamasy; bolmasa awtomatik ýatyrylýar we duýduryş
-              berilýär) we serhetaşa işlerde <strong>“who / what” split key</strong>
-              ulanylýar: tabyýet döwleti “who”-y, waka bolan döwlet “what”-y açýar;
-              hiç biri doly dosýany ýeke özi birleşdirip bilmeýär. Jikme-jiklik:{" "}
-              <Link href="/docs/accountable-disclosure">Hasabatly açyklama</Link>.
             </p>
           </>
         ),
@@ -1027,7 +612,6 @@ const POSTS: Post[] = [
             <h2>Three reasons</h2>
             <ul>
               <li><strong>A local EVM.</strong> A programmable execution layer means the future value scenarios (authorization, escrow triggers, tokenized deposits) are already possible — a capability, not a rebuild.</li>
-              <li><strong>The same stack as EBSI.</strong> Europe’s trust infrastructure is built on Besu-family technology. Sharing the stack makes interoperability a design goal rather than an afterthought.</li>
               <li><strong>Single-chain simplicity + full sovereignty.</strong> No bridges, no dependency on an external mainnet, and — thanks to the open licence — no vendor lock-in.</li>
             </ul>
             <h2>States as validators</h2>
@@ -1062,7 +646,6 @@ const POSTS: Post[] = [
             <h2>Üç gerekçe</h2>
             <ul>
               <li><strong>Yerel EVM.</strong> Programlanabilir bir yürütme katmanı, gelecekteki değer senaryolarını (yetkilendirme, escrow tetikleyicileri, tokenize mevduat) baştan mümkün kılar — bir yeniden-inşa değil, bir yetenek.</li>
-              <li><strong>EBSI ile aynı stack.</strong> Avrupa’nın güven altyapısı Besu-ailesi teknolojisi üzerine kurulu. Aynı stack’i paylaşmak, birlikte-çalışabilirliği sonradan akla gelen değil, tasarım hedefi yapar.</li>
               <li><strong>Tek-zincir sadeliği + tam egemenlik.</strong> Köprü yok, dış bir mainnet’e bağımlılık yok ve — açık lisans sayesinde — vendor lock-in yok.</li>
             </ul>
             <h2>Validator olarak devletler</h2>
@@ -1098,7 +681,6 @@ const POSTS: Post[] = [
             <h2>Üç delil</h2>
             <ul>
               <li><strong>Ýerli EVM.</strong> Programmirlenip bilinýän ýerine ýetiriş gatlagy geljekki baha ssenariýalaryny (ygtyýarlandyrma, escrow triggerleri, tokenleşen goýumlar) öňünden mümkin edýär — gaýtadan gurmak däl, ukyp.</li>
-              <li><strong>EBSI bilen şol bir stack.</strong> Ýewropanyň ynam infrastrukturasy Besu-maşgala tehnologiýasy üstünde gurlan. Şol bir stack-i paýlaşmak, bilelikde işlemegi dizaýn maksadyna öwürýär.</li>
               <li><strong>Bir zynjyrly ýönekeýlik + doly özygtyýarlylyk.</strong> Köpri ýok, daşarky mainnet-e garaşlylyk ýok we — açyk ygtyýarnama sebäpli — vendor lock-in ýok.</li>
             </ul>
             <h2>Validator hökmünde döwletler</h2>
@@ -1409,7 +991,7 @@ const POSTS: Post[] = [
               Tamga Network chooses the second — compatible yet independent. We deliberately
               align with eIDAS/EUDI so that when regulation arrives, we are ready; and we
               keep the infrastructure sovereign so that data and governance stay in-country.
-              Details: <Link href="/docs/eidas-eudi">eIDAS, EUDI and EBSI</Link>.
+              Details: <Link href="/docs/eidas-eudi">eIDAS 2.0 and the EUDI Wallet</Link>.
             </p>
           </>
         ),
@@ -1446,7 +1028,7 @@ const POSTS: Post[] = [
               Tamga Network ikinci yolu seçiyor — uyumlu ama bağımsız. eIDAS/EUDI’ye bilinçli
               olarak hizalanıyoruz ki regülasyon geldiğinde hazır olalım; ve altyapıyı egemen
               tutuyoruz ki veri ve yönetişim yurt içinde kalsın. Ayrıntılar:{" "}
-              <Link href="/docs/eidas-eudi">eIDAS, EUDI ve EBSI</Link>.
+              <Link href="/docs/eidas-eudi">eIDAS 2.0 ve EUDI Wallet</Link>.
             </p>
           </>
         ),
@@ -1483,7 +1065,7 @@ const POSTS: Post[] = [
               Tamga Network ikinji ýoly saýlaýar — laýyk ýöne garaşsyz. eIDAS/EUDI-ä bilkastdan
               gabat gelýäris, düzgünnama gelende taýýar bolar ýaly; we infrastrukturany
               özygtyýarly saklaýarys, maglumat we dolandyryş ýurt içinde galar ýaly.
-              Jikme-jiklik: <Link href="/docs/eidas-eudi">eIDAS, EUDI we EBSI</Link>.
+              Jikme-jiklik: <Link href="/docs/eidas-eudi">eIDAS 2.0 we EUDI Wallet</Link>.
             </p>
           </>
         ),

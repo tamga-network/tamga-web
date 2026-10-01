@@ -30,6 +30,8 @@ Täze model muny tersine öwürýär: resminama adamda galýar, diňe zerur subu
 
 Türki dünýäsi dili, medeniýeti we taryhy paýlaşýar. Bir döwletde berlen diplom beýlekisinde barlanyp bilinmeli; guramanyň şahsyýetine serhetden aňyrda ynanyp bolmaly. Tamga bu umumy binýady şol bir standartlarda, her döwleti özygtyýarly saklaýan dolandyryş bilen gurýar.
 
+Tamga her biri özbaşdak durup bilýän üç gatlakda gurulýar. Esas: resminamalar, protokollar we ynam sanawlary ÝB standartlaryna laýyk; şeýdip laýyk gapjyklar we barlaýjylar Tamga-daky guramalar bilen işläp bilýär. Onuň üstünde *Tamga Network* her döwletiň ynam sanawyny jemleýän we döwletleriň biri-birini ykrar etmegine mümkinçilik berýän ýeňil federasiýadyr — häzir Türkiýäniň sanawyny Tamga wagtlaýyn çap edýär; döwlet öz sanawyny çap edende tor şony görkezýär. Şu esasda toruň ilkinji we salgylanma gapjygy *Tamga Wallet* (ÝB bilen laýyk; “EUDI Wallet” ÝB agza döwletiniň hödürleýän ýa-da ykrar edýän gapjyklaryna degişli at) we guramalara hyzmatlar işleýär: Gurama konsoly we Tamga Verify.
+
 = Ýörelgeler
 
 - *Ilki özygtyýarlylyk* — her döwlet öz hasabynyň ýeke-täk ýazyjysydyr; tora agzalyk 2/3 ses bilen; serhetaşa ykrar birtaraplaýyn kesgitlenýär.
@@ -42,7 +44,7 @@ Türki dünýäsi dili, medeniýeti we taryhy paýlaşýar. Bir döwletde berlen
 
 = Rollar
 
-ÝB arhitekturasynyň her roly Tamga-da bar. Döwlet heniz goşulmadyk bolsa, roly Tamga wagtlaýyn we hasaba alnan görnüşde öz üstüne alýar: ynam sanawynyň operatory, hasaba alyş edarasy, “TR National Root CA (wagtlaýyn operator: Tamga)” we gapjyk üpjün edijisi. Guramalar resminama üpjün edijilerdir; iş berijiler, web saýtlar we gapylar hasaba alnan barlaýjylardyr. PID üpjün edijisiniň orny döwlet ony doldurýança boş; şol wagt şahsyýet resminamasy Tamga şahsyýet hyzmatyndan gelýär (resminama we janlylyk barlagy). Heniz validator operatory ýok — şonuň üçin kitap hem ýok. Ýanaşyk: #link("https://tamga.network/tk/docs/eudi-comparison")[Tamga we EUDI arhitekturasy].
+ÝB arhitekturasynyň her roly Tamga-da bar. Döwlet heniz goşulmadyk bolsa, roly Tamga wagtlaýyn we hasaba alnan görnüşde öz üstüne alýar: ynam sanawynyň operatory, hasaba alyş edarasy, “TR National Root CA (wagtlaýyn operator: Tamga)” we gapjyk üpjün edijisi. Guramalar resminama üpjün edijilerdir; iş berijiler, web saýtlar we gapylar hasaba alnan barlaýjylardyr. PID üpjün edijisiniň orny döwlet ony doldurýança boş; şol wagt şahsyýet resminamasy Tamga şahsyýet hyzmatyndan gelýär (resminama we janlylyk barlagy). Heniz validator operatory ýok — şonuň üçin kitap hem ýok. Ýanaşyk: #link("https://tamga.network/tk/docs/roles")[rollar we adalgalar].
 
 #chapter()
 = Ynam modeli: gol çekilen ynam sanawlary
@@ -92,7 +94,7 @@ Her barlag şol bir hatary şol bir tertipde işledýär we ilkinji säwlikde to
 
 = Ýatyrylyş we durmuş aýlawy
 
-Ýatyrylyş *IETF Token Status List* bilen edilýär: her resminama nusgasy üçin *tötänleýin* orunda iki bit — güýjünde, ýatyrylan ýa-da togtadylan. Gurama sanawy *kesgitli aralykda* çap edýär, asla haýyş boýunça däl; şeýlelikde wagty adam barada hiç zady aýan etmeýär; her çap edilişi labyrlanýar. Barlaýjylar sanawlary öňünden alýar; resminamany barlamak ne gurama, ne-de telefona çagyryş edýär. Ýatyrylyş iň giç takmynan 90 minutda her barlaýja ýetýär. Nusgalar dizaýn boýunça gutarýar; gapjyk täzelerini almazdan öň soraýar we asla ýuwaşlyk bilen täzelemeýär. Serediň: #link("https://tamga.network/tk/docs/recovery-revocation")[dikeldiş we ýatyrylyş].
+Ýatyrylyş *IETF Token Status List* bilen edilýär: her resminama nusgasy üçin *tötänleýin* orunda iki bit — güýjünde, ýatyrylan ýa-da togtadylan. Gurama sanawy *kesgitli aralykda* çap edýär, asla haýyş boýunça däl; şeýlelikde wagty adam barada hiç zady aýan etmeýär; her çap edilişi labyrlanýar. Barlaýjylar sanawlary öňünden alýar; resminamany barlamak ne gurama, ne-de telefona çagyryş edýär. Ýatyrylyş iň giç takmynan 90 minutda her barlaýja ýetýär. Nusgalar dizaýn boýunça gutarýar; gapjyk täzelerini almazdan öň soraýar we asla ýuwaşlyk bilen täzelemeýär. Serediň: #link("https://tamga.network/tk/docs/how-tamga-works")[arhitektura].
 
 #chapter()
 = Dizaýndan gelýän gizlinlik
@@ -120,9 +122,7 @@ Kitapdaky dolandyryş ýörelgelere eýerýär: validatorlar deň sesli döwletl
 
 Bular öwrenilýän dizaýnlardyr; ilkinji wersiýanyň ýa-da pilotyň bölegi däl we islendik ulanylyşdan öň garaşsyz howpsuzlyk barlagyndan geçer.
 
-- Gurama tarapyndan tanalmagy aradan aýyrmak üçin *nol bilimli resminamalar* (meselem, BBS\+). Serediň: #link("https://tamga.network/tk/docs/selective-disclosure")[saýlama açyklama].
-- *Hasabatly açyklama* — lakamlaryň diňe kazyýet we köp guramaly bosaga bilen çözülip bilinmegi (DKG we bosaga ElGamal; açar asla täzeden gurulmaýar). Serediň: #link("https://tamga.network/tk/docs/accountable-disclosure")[hasabatly açyklama].
-- *Alnan lakamlar we dikeldiş* — iýerarhiki açarlar, konwert şifrlemesi, enjamy dikeltmek. Serediň: #link("https://tamga.network/tk/docs/identity-layers")[şahsyýet gatlaklary].
+- *Nol bilimli subutnama bilen hödürlemek* — gurama gol çeken we üýtgemeýän mdoc barada “18 ýaşdan uly” ýaly bir hakykaty açyk çeşmeli Longfellow ZK bilen subut etmek; barlaýjy tarapy taýýar, telefonda subutnama döretmek dükan wersiýasyndan soň. Serediň: #link("https://tamga.network/tk/docs/selective-disclosure")[saýlama açyklama].
 - *Baha gatlagy* — barlanan taraplaryň arasynda ygtyýarlandyrma; hasaplaşyk düzgünleşdirilen ýollarda galýar.
 
 #chapter()

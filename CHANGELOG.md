@@ -4,6 +4,26 @@ Biçim: Keep a Changelog. Site dağıtımları tarihle anılır.
 
 ## [Yayınlanmadı]
 
+### Değişti (2026-10-01 — içerik temizliği ve konumlanma, ADR-0035)
+- **Konumlanma:** ana sayfa, Hakkında, whitepaper (vizyon), altbilgi ve Tamga Wallet sayfası üç katmanla anlatılır — AB uyumlu taban,
+  Tamga Network hafif federasyon (ülke güven listelerini toplar; kurallara uyan her cüzdanı tanır), Tamga Wallet + kurum hizmetleri.
+  Tamga Wallet "EUDI Wallet" ya da "ulusal cüzdan" diye sunulmaz; "AB uyumlu cüzdan" (PO4). "Türk dünyasının EBSI'si" anlatımı kalktı.
+- `/docs/eidas-eudi` "eIDAS 2.0 ve EUDI Wallet" olarak yeniden yazıldı: EBSI çıktı; LOTL → ulusal listeler; Tamga'nın yeri; devlet kendi
+  listesini yayınlayınca yalnız adres değişir.
+- Sözlük: EBSI ve DID maddeleri çıktı; Besu maddesinden EBSI karşılaştırması çıktı. Dijital kimlik sayfasında "DID, VC" yerine
+  "X.509, doğrulanabilir belgeler".
+- Seçici açıklama sayfası ve whitepaper araştırma bölümü: ZK artık Longfellow ile (doğrulayıcı hazır, telefon mağaza sonrası); BBS+,
+  hesap verebilir ifşa ve türetilmiş takma ad/kurtarma maddeleri çıktı.
+- Yol haritası: site başına takma ad "Yayında"; araştırmada nitelikli e-imza; üye devlet listeleri federasyon diliyle.
+
+### Kaldırıldı (2026-10-01 — eski tasarım)
+- Docs: `/docs/identity-layers` (eski türetme tasarımı) → `/docs/login-with-tamga`; `/docs/accountable-disclosure` (zincir dönemi
+  araştırması) ve `/docs/recovery-revocation` (24 kelime / zarf şifreleme tasarımı) → `/docs/how-tamga-works`; `/docs/eudi-comparison`
+  (roller sayfasıyla çakışma) → `/docs/roles`. "İleri Mimari" menü bölümü kalktı.
+- Blog: "The EBSI of the Turkic world: our roadmap" → `/roadmap`; "The value layer" ve "Accountable disclosure" → `/blog`. "Why Besu"
+  yazısından EBSI maddesi çıktı.
+- Kaldırılan adresler kalıcı (308) yönlendirmeyle en yakın sayfaya gider (`next.config.ts` `redirects`).
+
 ### Değişti (2026-10-01 — sıfır bilgi ispatı doğrulayıcısı)
 - `/sdk`: `@tamga-network/verifier` açıklamasına `/zk` alt yolu (sıfır bilgi ispatlı yaş doğrulama; üç dil).
 

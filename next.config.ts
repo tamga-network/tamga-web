@@ -55,6 +55,24 @@ const nextConfig: NextConfig = {
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },
+
+  // Kaldırılan sayfalar (2026-10-01, eski tasarım / ADR-0035 temizliği) → en yakın güncel sayfa; arama motorları 404 görmesin.
+  async redirects() {
+    const moved: [string, string][] = [
+      ["/docs/identity-layers", "/docs/login-with-tamga"],
+      ["/docs/accountable-disclosure", "/docs/how-tamga-works"],
+      ["/docs/recovery-revocation", "/docs/how-tamga-works"],
+      ["/docs/eudi-comparison", "/docs/roles"],
+      ["/blog/roadmap-turkic-world", "/roadmap"],
+      ["/blog/authorization-not-settlement", "/blog"],
+      ["/blog/accountable-disclosure", "/blog"],
+    ];
+    return moved.map(([from, to]) => ({
+      source: `/:locale(en|tr|tk)${from}`,
+      destination: `/:locale${to}`,
+      permanent: true,
+    }));
+  },
 };
 
 export default withNextIntl(nextConfig);

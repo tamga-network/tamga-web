@@ -31,15 +31,17 @@ const CONTENT: Record<Locale, Content> = {
         <p>
           <strong>Tamga Wallet</strong> is Tamga Network’s first end-user product:
           the app where a person keeps and presents their credentials. It is an
-          application like the <Link href="/docs/eidas-eudi">EUDI Wallet</Link>{" "}
-          and provides:
+          EU-compatible wallet: it speaks the same standards as the EU’s{" "}
+          <Link href="/docs/eidas-eudi">EUDI Wallets</Link> (that title belongs to wallets an EU member state provides or
+          recognises). It provides:
         </p>
         <ul>
           <li><strong>Verifiable credentials</strong> — storing and presenting <Link href="/docs/did-vc">VCs</Link>.</li>
           <li><strong>Selective disclosure</strong> — sharing <Link href="/docs/selective-disclosure">only the necessary field</Link>.</li>
           <li><strong>Passes and tickets</strong> — a QR pass for campus turnstiles and event gates; single-use tickets.</li>
           <li><strong>Sign-in</strong> — “Sign in with Tamga”: sign up to websites once, then sign in with a passkey (<Link href="/docs/login-with-tamga">how</Link>).</li>
-          <li><strong>E-signature (QES)</strong> — on the roadmap.</li>
+          <li><strong>Per-site pseudonyms</strong> — every website sees a different, stable pseudonym; sites cannot link you.</li>
+          <li><strong>Qualified e-signature</strong> — under study, with a licensed provider.</li>
           <li><strong>Identity management</strong> — control of keys, credentials and consents stays with the user.</li>
         </ul>
 
@@ -47,7 +49,8 @@ const CONTENT: Record<Locale, Content> = {
           <strong>Tamga Wallet is not Tamga Network itself.</strong> Tamga Network
           is the infrastructure (invisible, inter-institutional trust); Tamga
           Wallet is the first door that opens onto it (the application in the
-          user’s hands).
+          user’s hands). It is not a national wallet, and the network is not tied to it: any wallet that follows the
+          published rules can join.
         </Callout>
 
         <h2>One trust layer, every sector</h2>
@@ -91,22 +94,25 @@ const CONTENT: Record<Locale, Content> = {
         <p>
           <strong>Tamga Wallet</strong>, Tamga Network’ün son kullanıcıya açılan
           ilk ürünüdür: kişinin belgelerini sakladığı ve sunduğu cüzdan
-          uygulaması. <Link href="/docs/eidas-eudi">EUDI Wallet</Link> benzeri
-          bir uygulamadır ve şunları sağlar:
+          uygulaması. AB uyumlu bir cüzdandır: AB’nin{" "}
+          <Link href="/docs/eidas-eudi">EUDI Wallet</Link>’larıyla aynı standartları konuşur (bu unvan bir AB üye devletinin
+          sunduğu ya da tanıdığı cüzdanlara aittir). Şunları sağlar:
         </p>
         <ul>
           <li><strong>Doğrulanabilir belgeler</strong> — <Link href="/docs/did-vc">VC</Link>’lerin saklanması ve sunulması.</li>
           <li><strong>Seçici ifşa</strong> — <Link href="/docs/selective-disclosure">yalnızca gerekli alanın</Link> paylaşılması.</li>
           <li><strong>Geçiş kartı ve bilet</strong> — kampüs turnikesi ve etkinlik kapısı için QR geçiş kartı; tek kullanımlık bilet.</li>
           <li><strong>Giriş</strong> — “Tamga ile giriş yap”: web sitelerine bir kez kayıt, sonra passkey ile giriş (<Link href="/docs/login-with-tamga">nasıl</Link>).</li>
-          <li><strong>E-imza (QES)</strong> — yol haritasında.</li>
+          <li><strong>Site başına takma ad</strong> — her site farklı ve kalıcı bir takma ad görür; siteler seni eşleştiremez.</li>
+          <li><strong>Nitelikli e-imza</strong> — lisanslı bir sağlayıcıyla, inceleniyor.</li>
           <li><strong>Kimlik yönetimi</strong> — anahtarların, belgelerin ve onayların kontrolü kullanıcıda.</li>
         </ul>
 
         <Callout title="Önemli ayrım" tone="primary">
           <strong>Tamga Wallet, Tamga Network’ün kendisi değildir.</strong> Tamga
           Network altyapıdır (görünmez, kurumlar arası güven); Tamga Wallet ise o
-          altyapıya açılan ilk kapıdır (kullanıcının elindeki uygulama).
+          altyapıya açılan ilk kapıdır (kullanıcının elindeki uygulama). Ulusal cüzdan değildir ve ağ ona bağlı değildir:
+          yayınlanmış kurallara uyan her cüzdan ağa katılabilir.
         </Callout>
 
         <h2>Tek güven katmanı, her sektör</h2>
@@ -151,15 +157,17 @@ const CONTENT: Record<Locale, Content> = {
         <p>
           <strong>Tamga Wallet</strong>, Tamga Network-iň soňky ulanyja açylýan
           ilkinji önümidir: adamyň resminamalaryny saklaýan we hödürleýän gapjyk
-          programmasy. <Link href="/docs/eidas-eudi">EUDI Wallet</Link> ýaly
-          programma bolup, şulary üpjün edýär:
+          programmasy. ÝB bilen laýyk gapjykdyr: ÝB-niň{" "}
+          <Link href="/docs/eidas-eudi">EUDI Wallet</Link>-lary bilen şol bir standartlarda gürleýär (bu at ÝB agza
+          döwletiniň hödürleýän ýa-da ykrar edýän gapjyklaryna degişli). Şulary üpjün edýär:
         </p>
         <ul>
           <li><strong>Barlanyp bilinýän resminamalar</strong> — <Link href="/docs/did-vc">VC</Link>-leriň saklanmagy we hödürlenmegi.</li>
           <li><strong>Saýlama açyklama</strong> — <Link href="/docs/selective-disclosure">diňe zerur meýdanyň</Link> paýlaşylmagy.</li>
           <li><strong>Geçiş kartasy we bilet</strong> — kampus turniketi we çäre gapysy üçin QR geçiş kartasy; bir gezeklik bilet.</li>
           <li><strong>Giriş</strong> — “Tamga bilen gir”: web saýtlara bir gezek hasaba durmak, soň passkey bilen giriş (<Link href="/docs/login-with-tamga">nähili</Link>).</li>
-          <li><strong>E-gol (QES)</strong> — ýol kartasynda.</li>
+          <li><strong>Saýt başyna lakam</strong> — her saýt başga we hemişelik lakam görýär; saýtlar seni baglanyşdyryp bilmeýär.</li>
+          <li><strong>Kwalifisirlenen elektron gol</strong> — ygtyýarly üpjün ediji bilen, öwrenilýär.</li>
           <li><strong>Şahsyýet dolandyryşy</strong> — açarlaryň, resminamalaryň we razylyklaryň gözegçiligi ulanyjyda.</li>
         </ul>
 
@@ -167,7 +175,7 @@ const CONTENT: Record<Locale, Content> = {
           <strong>Tamga Wallet Tamga Network-iň özi däl.</strong> Tamga Network
           infrastrukturadyr (görünmeýän, guramalar arasy ynam); Tamga Wallet bolsa
           şol infrastruktura açylýan ilkinji gapydyr (ulanyjynyň elindäki
-          programma).
+          programma). Milli gapjyk däl we tor oňa bagly däl: çap edilen düzgünlere eýerýän her gapjyk tora goşulyp bilýär.
         </Callout>
 
         <h2>Bir ynam gatlagy, ähli pudaklar</h2>
