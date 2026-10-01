@@ -64,9 +64,9 @@ export const PACKAGES: { name: string; what: L }[] = [
   {
     name: "@tamga-network/verifier",
     what: {
-      en: "the verification pipeline (T0 + A–E), three outcomes, OpenID4VP requests; /web for the page kit",
-      tr: "doğrulama hattı (T0 + A–E), üç sonuç, OpenID4VP istekleri; sayfa kiti için /web",
-      tk: "barlag hatary (T0 + A–E), üç netije, OpenID4VP haýyşlary; sahypa toplumy üçin /web",
+      en: "the verification pipeline (T0 + A–E), three outcomes, OpenID4VP requests; /web for the page kit; /zk for zero-knowledge age proofs",
+      tr: "doğrulama hattı (T0 + A–E), üç sonuç, OpenID4VP istekleri; sayfa kiti için /web; sıfır bilgi ispatlı yaş doğrulama için /zk",
+      tk: "barlag hatary (T0 + A–E), üç netije, OpenID4VP haýyşlary; sahypa toplumy üçin /web; nol bilimli subutnama bilen ýaş barlagy üçin /zk",
     },
   },
   {

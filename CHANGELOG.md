@@ -4,6 +4,9 @@ Biçim: Keep a Changelog. Site dağıtımları tarihle anılır.
 
 ## [Yayınlanmadı]
 
+### Değişti (2026-10-01 — sıfır bilgi ispatı doğrulayıcısı)
+- `/sdk`: `@tamga-network/verifier` açıklamasına `/zk` alt yolu (sıfır bilgi ispatlı yaş doğrulama; üç dil).
+
 ### Değişti (2026-10-01 — site başına takma ad)
 - `/shortcuts`: S-17 **kapandı** (her site kendine özel takma ad alıyor; belge değeri gitmiyor). `/docs/login-with-tamga` (üç dil):
   hesap anahtarı site başına takma ad; yeni telefonda kimlik yeniden doğrulanınca aynı takma adlar döner. Whitepaper (üç dil, PDF)
