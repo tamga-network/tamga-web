@@ -71,7 +71,7 @@ export const LOGO_VARIANTS: LogoVariant[] = [
   },
   {
     id: "small",
-    label: { en: "Small mark — 32 px and below", tr: "Küçük işaret — 32 px ve altı", tk: "Kiçi belgi — 32 px we aşak" },
+    label: { en: "Small mark — icon files only", tr: "Küçük işaret — yalnız simge dosyaları", tk: "Kiçi belgi — diňe nyşan faýllary" },
     bg: "#F8F6F1",
     fg: "#1E5A78",
     small: true,
@@ -217,7 +217,7 @@ export const BRAND_PAGE: Record<Locale, BrandPage> = {
       rulesLabel: "Rules",
       rules: [
         "Keep clear space of at least 15 % of the mark’s width on every side.",
-        "At 32 px and below use the small mark: the inner lines of the full mark merge at that size.",
+        "On pages, headers and documents always use the full mark. The small mark is only for icon files of 32 px and below (browser tab, app list), where the inner lines would merge.",
         "Use only the colours on this page: Gök, light Gök on dark, black or white.",
         "Don’t rotate, stretch or redraw the mark; don’t add shadows, outlines or gradients.",
         "Don’t place it on busy photos or grounds with weak contrast.",
@@ -291,7 +291,7 @@ export const BRAND_PAGE: Record<Locale, BrandPage> = {
       rulesLabel: "Kurallar",
       rules: [
         "İşaretin her yanında, genişliğinin en az %15’i kadar boşluk bırakın.",
-        "32 px ve altında küçük işareti kullanın: tam işaretin iç çizgileri bu boyutta birbirine karışır.",
+        "Sayfalarda, başlıklarda ve belgelerde her zaman tam işaret kullanılır. Küçük işaret yalnız 32 px ve altındaki simge dosyaları içindir (tarayıcı sekmesi, uygulama listesi); bu boyutta tam işaretin iç çizgileri karışır.",
         "Yalnız bu sayfadaki renkleri kullanın: Gök, koyu zeminde açık Gök, siyah ya da beyaz.",
         "İşareti döndürmeyin, esnetmeyin, yeniden çizmeyin; gölge, dış çizgi ya da renk geçişi eklemeyin.",
         "Kalabalık fotoğrafların ya da zayıf kontrastlı zeminlerin üstüne koymayın.",
@@ -365,7 +365,7 @@ export const BRAND_PAGE: Record<Locale, BrandPage> = {
       rulesLabel: "Düzgünler",
       rules: [
         "Belginiň her tarapynda iň az giňliginiň 15 %-i boşluk goýuň.",
-        "32 px we aşakda kiçi belgini ulanyň: doly belginiň içki çyzyklary bu ölçegde birleşýär.",
+        "Sahypalarda, sözbaşylarda we resminamalarda hemişe doly belgi ulanylýar. Kiçi belgi diňe 32 px we aşakdaky nyşan faýllary üçindir (brauzer goýmasy, programma sanawy); bu ölçegde doly belginiň içki çyzyklary birleşýär.",
         "Diňe bu sahypadaky reňkleri ulanyň: Gök, garaňky fonda açyk Gök, gara ýa-da ak.",
         "Belgini öwürmäň, uzaltmaň, täzeden çyzmaň; kölege, gyra çyzygy ýa-da reňk geçişi goşmaň.",
         "Köp zatly suratlaryň ýa-da gowşak kontrastly fonlaryň üstünde goýmaň.",
