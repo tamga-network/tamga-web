@@ -18,9 +18,9 @@ export type Partner = {
 };
 
 export const PARTNERS: Partner[] = [
-  { name: "İstanbul Bilgi Üniversitesi", group: "institutions", url: "https://www.bilgi.edu.tr" },
-  { name: "SparkUp Tekmer", group: "ecosystem" },
-  { name: "Teknokratlar Derneği", group: "ecosystem" },
+  { name: "İstanbul Bilgi Üniversitesi", group: "institutions", url: "https://www.bilgi.edu.tr", logo: "/partners/istanbul-bilgi.png" },
+  { name: "BİLGİ Spark-Up TEKMER", group: "ecosystem", url: "https://tekmer.bilgi.org.tr", logo: "/partners/sparkup-tekmer.png" },
+  { name: "Teknokratlar Derneği", group: "ecosystem", url: "https://teknokratlar.org.tr", logo: "/partners/teknokratlar-dernegi.svg" },
 ];
 
 export const partnersIn = (group: PartnerGroup) => PARTNERS.filter((p) => p.group === group);

@@ -159,13 +159,15 @@ function PartnersBand({ c }: { c: HomeContent }) {
         {PARTNERS.length ? (
           <ul className="m-0 flex list-none flex-wrap items-center gap-x-10 gap-y-5 p-0">
             {PARTNERS.slice(0, 8).map((p) => (
-              <li key={p.name} className="flex h-10 items-center">
-                {p.logo ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={p.logo} alt={p.name} className="max-h-9 w-auto opacity-70 grayscale transition hover:opacity-100 hover:grayscale-0 dark:invert" />
-                ) : (
-                  <span className="font-serif font-semibold text-foreground-muted">{p.name}</span>
-                )}
+              <li key={p.name} className="flex h-12 items-center">
+                <a href={p.url ?? "/partners"} target={p.url ? "_blank" : undefined} rel={p.url ? "noopener noreferrer" : undefined} title={p.name} className="flex items-center rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
+                  {p.logo ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={p.logo} alt={p.name} className="max-h-11 max-w-40 w-auto opacity-70 grayscale transition hover:opacity-100 hover:grayscale-0 dark:invert" />
+                  ) : (
+                    <span className="font-serif font-semibold text-foreground-muted">{p.name}</span>
+                  )}
+                </a>
               </li>
             ))}
           </ul>
