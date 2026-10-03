@@ -2,7 +2,8 @@
 
 /*
  * shadcn/ui NavigationMenu (Radix) — sitenin renk belirteçleriyle. Klavye, odak ve ekran okuyucu desteği Radix'ten gelir.
- * Kaynak kalıp: ui.shadcn.com/docs/components/navigation-menu
+ * Kaynak kalıp: ui.shadcn.com/docs/components/navigation-menu. Açılır panel üst bandın tam genişliğinde, bandın hemen altında
+ * durur (geniş menü): kök konumlanmaz, panel en yakın konumlu ataya (yapışkan üst bant) göre yerleşir.
  */
 import * as React from "react";
 import { NavigationMenu as NM } from "radix-ui";
@@ -17,14 +18,14 @@ export function NavigationMenu({
   return (
     <NM.Root
       className={cn(
-        "relative z-10 flex max-w-max flex-1 items-center justify-center",
+        "z-10 flex max-w-max flex-1 items-center justify-center",
         className,
       )}
       {...props}
     >
       {children}
-      <div className="absolute left-1/2 top-full flex -translate-x-1/2 justify-center">
-        <NM.Viewport className="nm-viewport relative mt-2 h-[var(--radix-navigation-menu-viewport-height)] w-full origin-top overflow-hidden rounded-xl border border-border bg-background/95 shadow-soft backdrop-blur-md transition-[width,height] duration-200 md:w-[var(--radix-navigation-menu-viewport-width)]" />
+      <div className="absolute inset-x-0 top-full">
+        <NM.Viewport className="nm-viewport relative h-[var(--radix-navigation-menu-viewport-height)] w-full origin-top overflow-hidden border-b border-border bg-background shadow-soft transition-[height] duration-200 motion-reduce:transition-none" />
       </div>
     </NM.Root>
   );
@@ -70,7 +71,7 @@ export function NavigationMenuContent({
 }: React.ComponentProps<typeof NM.Content>) {
   return (
     <NM.Content
-      className={cn("left-0 top-0 w-full p-3 md:absolute md:w-auto", className)}
+      className={cn("left-0 top-0 w-full", className)}
       {...props}
     />
   );

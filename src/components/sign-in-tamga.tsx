@@ -218,7 +218,7 @@ export function SignInSection({ locale }: { locale: string }) {
             ))}
             <Reveal delay={0.28}>
               <Link
-                href="/docs/login-with-tamga"
+                href="/learn/unlinkability"
                 className="link-underline inline-flex items-center gap-1.5 pt-1 text-sm font-medium text-primary"
               >
                 {c.link} <ArrowRight size={15} />

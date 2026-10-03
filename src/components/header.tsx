@@ -1,10 +1,17 @@
 "use client";
 
-import { Link, usePathname } from "@/i18n/navigation";
+/*
+ * Üst bant: geniş açılır menüler (Ağ · Kurallar · Yönetişim · Geliştiriciler · Hakkında) + düz Blog bağlantısı; sağda dil,
+ * tema ve "Ağa katıl". Her panel bandın tam
+ * genişliğinde açılır: solda iki başlıklı grup (simge, kalın başlık, tek satır açıklama), sağda öne çıkan kart.
+ * Radix NavigationMenu: üzerine gelince ve tıklayınca/Enter ile açılır; Esc, dışarı tıklama ve sayfa değişimi kapatır;
+ * aynı anda tek panel açık; aria-expanded/aria-controls Radix'ten.
+ */
+import { Link, usePathname, type Href } from "@/i18n/navigation";
 import { useEffect, useState } from "react";
-import { useLocale, useTranslations } from "next-intl";
-import { ArrowUpRight } from "lucide-react";
-import { Logo } from "./logo";
+import { useLocale } from "next-intl";
+import { ArrowRight, ArrowUpRight, FileText } from "lucide-react";
+import { Logo, LogoMark } from "./logo";
 import { ThemeToggle } from "./theme-toggle";
 import { LocaleSwitcher } from "./locale-switcher";
 import { MobileNav } from "./mobile-nav";
@@ -15,73 +22,58 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  triggerCls,
 } from "./shadcn/navigation-menu";
 import type { Locale } from "@/i18n/routing";
-import { arfUrl } from "@/lib/docs-nav";
-import { ECOSYSTEM_GROUPS, type Subdomain } from "@/lib/ecosystem";
 import {
-  DEVELOPERS,
-  ECOSYSTEM_MENU,
-  HOST_ICON,
   MENU_LABELS,
-  PROJECT,
-  TONE_CLS,
+  MENUS,
+  type Featured,
+  type Menu,
   type NavItem,
 } from "@/lib/nav";
+import { opensInPlace, targetOf } from "@/lib/nav-target";
 import { cn } from "@/lib/utils";
 
-/** Menü kutucuğu: renkli simge + başlık + kısa açıklama. İç bağlantı ya da yeni sekmede dış bağlantı. */
-export function MenuTile({
-  item,
-  locale,
-  compact = false,
-}: {
-  item: NavItem;
-  locale: Locale;
-  compact?: boolean;
-}) {
-  const external = item.arf ? arfUrl(locale) : item.external;
+/** Panel maddesi: çizgi simge, kalın başlık, tek satır açıklama. */
+function MenuRow({ item, locale }: { item: NavItem; locale: Locale }) {
+  const { external, href } = targetOf(item, locale);
   const body = (
     <>
-      <span
-        className={cn(
-          "flex shrink-0 items-center justify-center rounded-lg ring-1",
-          compact ? "h-8 w-8" : "h-9 w-9",
-          TONE_CLS[item.tone],
-        )}
+      <item.icon
+        size={20}
+        strokeWidth={1.6}
         aria-hidden
-      >
-        <item.icon size={compact ? 16 : 18} />
-      </span>
+        className="mt-0.5 shrink-0 text-foreground-muted transition-colors group-hover/row:text-primary"
+      />
       <span className="min-w-0">
-        <span className="flex items-center gap-1 text-sm font-medium text-foreground">
+        <span className="flex items-center gap-1.5 text-[0.95rem] font-semibold text-foreground">
           {item.title[locale]}
-          {external && (
-            <ArrowUpRight size={12} aria-hidden className="opacity-50" />
+          {external && !opensInPlace(external) && (
+            <ArrowUpRight size={13} aria-hidden className="opacity-40" />
           )}
         </span>
-        <span className="mt-0.5 block text-xs leading-snug text-foreground-muted">
+        <span className="mt-1 block text-sm leading-snug text-foreground-muted">
           {item.desc[locale]}
         </span>
       </span>
     </>
   );
   const cls =
-    "flex items-start gap-3 rounded-lg p-2.5 outline-none transition-colors hover:bg-surface focus-visible:bg-surface";
+    "group/row -mx-3 flex items-start gap-3.5 rounded-lg px-3 py-3 outline-none transition-colors hover:bg-surface focus-visible:bg-surface focus-visible:ring-2 focus-visible:ring-primary/40";
   return (
     <NavigationMenuLink asChild>
       {external ? (
         <a
           href={external}
-          target="_blank"
-          rel="noopener noreferrer"
+          {...(opensInPlace(external)
+            ? {}
+            : { target: "_blank", rel: "noopener noreferrer" })}
           className={cls}
         >
           {body}
         </a>
       ) : (
-        <Link href={item.href!} className={cls}>
+        <Link href={href!} className={cls}>
           {body}
         </Link>
       )}
@@ -89,56 +81,121 @@ export function MenuTile({
   );
 }
 
-function EcosystemPanel({ locale }: { locale: Locale }) {
-  const groups: Subdomain["group"][] = ["trust", "services"];
+/** Sağdaki öne çıkan kart. */
+function FeaturedCard({ f, locale }: { f: Featured; locale: Locale }) {
+  const { external, href } = targetOf(f, locale);
+  const visual =
+    f.visual === "code" ? (
+      <pre className="whitespace-pre-wrap break-words rounded-lg bg-ink-band px-4 py-3 font-mono text-[0.72rem] leading-relaxed text-ink-band-fg">
+        <span className="select-none text-ink-band-muted">$ </span>
+        {f.code}
+      </pre>
+    ) : f.visual === "doc" ? (
+      <div className="mx-auto flex h-[7.5rem] w-24 flex-col gap-1.5 rounded-md border border-border bg-background p-3 shadow-soft">
+        <FileText
+          size={18}
+          strokeWidth={1.6}
+          aria-hidden
+          className="text-primary"
+        />
+        <span className="mt-1 h-1.5 w-full rounded bg-border" />
+        <span className="h-1.5 w-4/5 rounded bg-border" />
+        <span className="h-1.5 w-full rounded bg-border" />
+        <span className="h-1.5 w-3/5 rounded bg-border" />
+      </div>
+    ) : (
+      <div className="relative mx-auto grid h-28 w-28 place-items-center">
+        <span
+          aria-hidden
+          className="absolute inset-0 rounded-full bg-primary/15 blur-xl"
+        />
+        <span className="relative grid h-24 w-24 place-items-center rounded-full border border-primary/30 bg-background">
+          <LogoMark size={48} />
+        </span>
+      </div>
+    );
+  const cls =
+    "group/feat flex h-full flex-col gap-5 rounded-xl border border-border bg-surface p-6 outline-none transition-colors hover:border-primary/50 focus-visible:ring-2 focus-visible:ring-primary/40";
+  const inner = (
+    <>
+      <span className="font-mono text-[0.7rem] font-medium uppercase tracking-[0.14em] text-primary">
+        {f.eyebrow[locale]}
+      </span>
+      <div className="flex flex-1 items-center py-1">
+        {<div className="w-full">{visual}</div>}
+      </div>
+      <div>
+        <p className="flex items-center gap-2 font-serif text-lg font-semibold tracking-[-0.01em] text-foreground">
+          {f.title[locale]}
+          <ArrowRight
+            size={16}
+            aria-hidden
+            className="text-primary transition-transform group-hover/feat:translate-x-0.5"
+          />
+        </p>
+        <p className="mt-1.5 text-sm leading-relaxed text-foreground-muted">
+          {f.text[locale]}
+        </p>
+      </div>
+    </>
+  );
   return (
-    <div className="w-[min(40rem,90vw)]">
-      <div className="grid grid-cols-2 gap-x-4">
-        {groups.map((g) => (
-          <div key={g}>
-            <p className="mono-label px-2.5 pb-1 pt-1 text-foreground-subtle">
-              {ECOSYSTEM_GROUPS[g][locale]}
-            </p>
-            {ECOSYSTEM_MENU.filter((s) => s.group === g).map((s) => {
-              const ic = HOST_ICON[s.host];
-              return (
-                <MenuTile
-                  key={s.host}
-                  compact
-                  locale={locale}
-                  item={{
-                    title: s.name,
-                    desc: { en: s.host, tr: s.host, tk: s.host },
-                    icon: ic.icon,
-                    tone: ic.tone,
-                    external: s.url,
-                  }}
-                />
-              );
-            })}
-          </div>
-        ))}
+    <NavigationMenuLink asChild>
+      {external ? (
+        <a
+          href={external}
+          {...(opensInPlace(external)
+            ? {}
+            : { target: "_blank", rel: "noopener noreferrer" })}
+          className={cls}
+        >
+          {inner}
+        </a>
+      ) : (
+        <Link href={href!} className={cls}>
+          {inner}
+        </Link>
+      )}
+    </NavigationMenuLink>
+  );
+}
+
+/** Bandın tam genişliğinde açılan panel. */
+function MegaPanel({ menu, locale }: { menu: Menu; locale: Locale }) {
+  // İki grup tek ızgarada: aynı sıradaki maddeler iki sütunda aynı satırda durur (satır yüksekliği ikisinin büyüğü).
+  const [a, b] = menu.groups;
+  const rows = Math.max(a.items.length, b.items.length);
+  const label = (g: typeof a) => (
+    <p className="mb-3 font-mono text-[0.7rem] font-medium uppercase tracking-[0.14em] text-primary">
+      {g.label[locale]}
+    </p>
+  );
+  const cell = (item: (typeof a.items)[number] | undefined, key: string) => (
+    <div key={key} className="flex [&>*]:flex-1">
+      {item && <MenuRow item={item} locale={locale} />}
+    </div>
+  );
+  return (
+    <div className="shell grid gap-10 py-10 lg:grid-cols-[minmax(0,2fr)_20rem] xl:gap-14">
+      <div className="grid grid-cols-2 content-start gap-x-10 gap-y-1 xl:gap-x-14">
+        {label(a)}
+        {label(b)}
+        {Array.from({ length: rows }, (_, i) => [
+          cell(a.items[i], `a${i}`),
+          cell(b.items[i], `b${i}`),
+        ])}
       </div>
-      <div className="mt-2 border-t border-border px-2.5 pt-2.5">
-        <NavigationMenuLink asChild>
-          <Link
-            href={{ pathname: "/", hash: "ecosystem" }}
-            className="text-xs text-foreground-muted hover:text-foreground"
-          >
-            {MENU_LABELS[locale].all} →
-          </Link>
-        </NavigationMenuLink>
-      </div>
+      <FeaturedCard f={menu.featured} locale={locale} />
     </div>
   );
 }
 
 export function Header() {
-  const t = useTranslations("nav");
   const locale = useLocale() as Locale;
   const L = MENU_LABELS[locale];
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState("");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -146,75 +203,49 @@ export function Header() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  const docsActive = pathname.startsWith("/docs");
+  // Sayfa değişince açık panel kapanır.
+  useEffect(() => setOpen(""), [pathname]);
 
   return (
     <header
       className={cn(
         "sticky top-0 z-50 border-b transition-colors duration-300",
-        scrolled
-          ? "border-border bg-background/80 backdrop-blur-md"
-          : "border-transparent bg-transparent",
+        scrolled || open
+          ? "border-border bg-background/95 backdrop-blur-md"
+          : "border-transparent bg-background",
       )}
     >
-      <div className="shell flex h-16 items-center justify-between gap-4">
+      <div className="shell flex h-[4.25rem] items-center justify-between gap-4">
         <Logo />
 
-        <NavigationMenu className="hidden md:flex">
+        <NavigationMenu
+          className="hidden xl:flex"
+          value={open}
+          onValueChange={setOpen}
+        >
           <NavigationMenuList>
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild>
-                <Link
-                  href="/docs"
-                  className={cn(triggerCls, docsActive && "text-foreground")}
-                >
-                  {L.docs}
-                </Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-
-            <NavigationMenuItem value="dev">
-              <NavigationMenuTrigger>{L.developers}</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <div className="grid w-[min(34rem,90vw)] grid-cols-2 gap-1">
-                  {DEVELOPERS.map((d) => (
-                    <MenuTile key={d.title.en} item={d} locale={locale} />
-                  ))}
-                </div>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-
-            <NavigationMenuItem value="eco">
-              <NavigationMenuTrigger>{L.ecosystem}</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <EcosystemPanel locale={locale} />
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-
-            <NavigationMenuItem value="project">
-              <NavigationMenuTrigger>{L.project}</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <div className="grid w-[min(44rem,90vw)] grid-cols-2 gap-1 lg:grid-cols-3">
-                  {PROJECT.filter((p) => p.href !== "/issuers").map((p) => (
-                    <MenuTile key={p.title.en} item={p} locale={locale} />
-                  ))}
-                </div>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
+            {MENUS.map((m) => (
+              <NavigationMenuItem key={m.key} value={m.key}>
+                <NavigationMenuTrigger>{m.label[locale]}</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <MegaPanel menu={m} locale={locale} />
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            ))}
           </NavigationMenuList>
         </NavigationMenu>
 
         <div className="flex items-center gap-2">
-          <div className="hidden items-center gap-2 md:flex">
+          <div className="hidden items-center gap-2 xl:flex">
             <LocaleSwitcher />
             <ThemeToggle />
           </div>
           <Link
-            href="/issuers"
-            className="hidden whitespace-nowrap rounded-md bg-primary px-3.5 py-2 text-sm font-medium text-primary-contrast shadow-sm transition-colors hover:bg-primary-strong lg:inline-flex"
+            href="/join"
+            className="hidden min-h-10 items-center gap-1.5 whitespace-nowrap rounded-md bg-primary px-4 text-sm font-semibold text-primary-contrast transition-colors hover:bg-primary-strong sm:inline-flex"
           >
-            {t("joinIssuer")}
+            {L.joinCta}
+            <ArrowRight size={14} aria-hidden />
           </Link>
           <MobileNav />
         </div>

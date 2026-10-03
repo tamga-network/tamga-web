@@ -1,10 +1,10 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
 import { getTranslations } from "next-intl/server";
 
-// Paylaşım görseli: marka işareti (public/mark.svg — tek kaynaktan, npm run brand:sync) Obsidyen zeminde, ad ve dile göre
-// alt başlık. Renkler marka tablosundan: Obsidyen #17110F, Parşömen #F4EDE2, Altın #C8A24C.
+// Paylaşım görseli: ağ işareti (açık Gök, public/brand/tamga-network-on-dark.svg — npm run brand:sync; yoksa public/mark.svg)
+// koyu bant #101820 üstünde, ad ve dile göre alt başlık. Renkler: açık Gök #6FB3D2, metin #F4F7F9.
 export const alt = "Tamga Network";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
@@ -12,7 +12,8 @@ export const contentType = "image/png";
 export default async function Image({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
-  const mark = readFileSync(join(process.cwd(), "public", "mark.svg"));
+  const onDark = join(process.cwd(), "public", "brand", "tamga-network-on-dark.svg");
+  const mark = readFileSync(existsSync(onDark) ? onDark : join(process.cwd(), "public", "mark.svg"));
   const markSrc = `data:image/svg+xml;base64,${mark.toString("base64")}`;
 
   return new ImageResponse(
@@ -25,11 +26,11 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "#17110F",
+          background: "#101820",
         }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={markSrc} width={280} height={280} alt="" />
+        <img src={markSrc} width={250} height={238} alt="" />
         <div
           style={{
             display: "flex",
@@ -37,7 +38,7 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
             fontSize: 92,
             fontWeight: 600,
             letterSpacing: -3,
-            color: "#F4EDE2",
+            color: "#F4F7F9",
           }}
         >
           Tamga Network
@@ -48,7 +49,7 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
             marginTop: 16,
             fontSize: 30,
             letterSpacing: 10,
-            color: "#C8A24C",
+            color: "#6FB3D2",
           }}
         >
           {t("tagline")}

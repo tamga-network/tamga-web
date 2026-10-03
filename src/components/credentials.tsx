@@ -38,7 +38,7 @@ const en: CredContent = {
 const tr: CredContent = {
   eyebrow: "Doğrulanabilir Belgeler",
   title: "Bir kez doğrula. Her yerde sun.",
-  body: "Belge bir kez düzenlenir ve imzalanır. Yalnızca seçtiğin alanları açarsın — gerisi tuzlanmış özet olarak gizli kalır — ve herhangi bir doğrulayıcı, düzenleyene hiç geri dönmeden imzayı kriptografik olarak denetler.",
+  body: "Belge bir kez düzenlenir ve imzalanır. Yalnızca seçtiğin alanları açarsın — gerisi salted hash olarak gizli kalır — ve herhangi bir doğrulayıcı, düzenleyene hiç geri dönmeden imzayı kriptografik olarak denetler.",
   link: "Seçici ifşa nasıl çalışır",
   cardHeading: "Belge",
   verified: "Doğrulandı",
@@ -49,7 +49,7 @@ const tr: CredContent = {
     { k: "tutan", v: "cihaz anahtarı · bu doğrulayıcının kopyası", accent: true },
     { k: "açıklanan", v: "degree · graduation_year ✓" },
     { k: "gizlenen", v: "gpa · student_no · birth_date" },
-    { k: "kanıt", v: "SD-JWT VC · seçici açıklama", divider: true },
+    { k: "kanıt", v: "SD-JWT VC · seçici paylaşım", divider: true },
   ],
   footnote: "Örnek: üniversite diploması. Düzenleyen, ulusal güven listesinde kayıtlı bir X.509 kurumu; her doğrulayıcı farklı bir kopya alır, bu yüzden doğrulayıcılar belge sahibini birbirleriyle eşleştiremez.",
 };
@@ -58,7 +58,7 @@ const tk: CredContent = {
   eyebrow: "Barlanýan resminamalar",
   title: "Bir gezek barla. Islendik ýerde hödürle.",
   body: "Resminama bir gezek berilýär we gol çekilýär. Diňe saýlan meýdanlaryňy açýarsyň — galanlary duzlanan haş hökmünde gizlin galýar — we islendik barlaýjy, berijä asla dolanman goly kriptografik taýdan barlaýar.",
-  link: "Saýlama açyklama nähili işleýär",
+  link: "Saýlap paýlaşmak nähili işleýär",
   cardHeading: "Resminama",
   verified: "Barlandy",
   rows: [
@@ -68,7 +68,7 @@ const tk: CredContent = {
     { k: "eýe", v: "enjam açary · şu barlaýjynyň nusgasy", accent: true },
     { k: "açylan", v: "degree · graduation_year ✓" },
     { k: "gizlenen", v: "gpa · student_no · birth_date" },
-    { k: "subutnama", v: "SD-JWT VC · saýlama açyklama", divider: true },
+    { k: "subutnama", v: "SD-JWT VC · saýlap paýlaşmak", divider: true },
   ],
   footnote: "Mysal: uniwersitet diplomy. Beriji — milli ynam sanawynda hasaba alnan X.509 gurama; her barlaýjy başga nusga alýar, şonuň üçin barlaýjylar eýäni biri-biri bilen baglanyşdyryp bilmeýär.",
 };
@@ -91,7 +91,7 @@ export function Credentials({ locale }: { locale: string }) {
               {c.body}
             </p>
             <Link
-              href="/docs/selective-disclosure"
+              href="/learn/selective-disclosure"
               className="link-underline mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-primary"
             >
               {c.link} <ArrowRight size={15} />

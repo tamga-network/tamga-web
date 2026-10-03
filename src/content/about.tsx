@@ -71,13 +71,13 @@ const en: AboutContent = {
   },
   mission: {
     title: "Mission",
-    body: "To turn the problem of identity, authorization and document verification — the problem every application solves again and again — into a shared infrastructure service. To build a world where trust is provided by a shared layer, not by each application alone.",
+    body: "To turn the problem of identity, authorization and document verification — the problem every application solves again and again — into a shared, open infrastructure. To build a world where trust is provided by a shared layer, not by each application alone.",
   },
   vision: {
     title: "Vision",
     body: (
       <>
-        A <strong className="text-foreground">Trust Mesh</strong> that starts in
+        A <strong className="text-foreground">trust network</strong> that starts in
         Türkiye and opens to the Turkic world, where each country keeps its own
         sovereign trust network while connecting to others through shared
         standards. Verifiable identity, diplomas and documents across borders.
@@ -86,14 +86,14 @@ const en: AboutContent = {
   },
   positioning: {
     eyebrow: "Positioning",
-    title: "Three layers: EU-compatible, a federation, products",
+    title: "Three layers: EU-compatible, a federation, wallets on the network",
     lead: (
       <>
         Tamga is built in three layers that each stand on their own. The base is{" "}
         <strong className="text-foreground">compatibility with the EU’s eIDAS 2.0 / EUDI standards</strong>; on top
         of it, <strong className="text-foreground">Tamga Network</strong> brings the trust lists of the Turkic states
-        together; on that base run <strong className="text-foreground">Tamga Wallet</strong> and our services for
-        institutions.
+        together; on that base run <strong className="text-foreground">the wallets on the network</strong> (the first is
+        Tamga Wallet) and the network’s reference services.
       </>
     ),
     rows: [
@@ -106,8 +106,8 @@ const en: AboutContent = {
         v: "Collects each state’s trust list and lets the states recognise one another. Today Tamga publishes Türkiye’s list provisionally, on behalf of the state; when the state or the body it authorises publishes its own, the network points to it. The network recognises any wallet that follows the published rules. A governance body and a shared ledger come as states join.",
       },
       {
-        k: "Products and services",
-        v: "Tamga Wallet is the network’s first and reference wallet. Institutions issue and verify credentials through the Institution Console and Tamga Verify; integration and developer support come with them — all on open standards, so no institution is tied to one app.",
+        k: "Wallets on the network and the team that builds it",
+        v: "Any wallet that follows the network’s rules works on the network; Tamga Wallet is the first and reference wallet. The team that builds the network runs the reference services — the Institution Console, Tamga Verify, trust-list publication — and publishes the code as open-source packages, so no institution is tied to one app.",
       },
     ],
   },
@@ -131,7 +131,7 @@ const en: AboutContent = {
         </p>
       </>
     ),
-    ctaDocs: "Learn the concepts from scratch →",
+    ctaDocs: "Learn from scratch →",
     ctaWhitepaper: "Whitepaper (PDF)",
     ctaManifesto: "Manifesto",
   },
@@ -141,8 +141,7 @@ const en: AboutContent = {
     lead: "Reach the right desk directly. We usually reply within a few business days.",
     items: [
       { email: "info@tamga.network", label: "General", note: "Questions about the project and the network." },
-      { email: "partners@tamga.network", label: "Partnerships", note: "Institutions, states and integration partners." },
-      { email: "support@tamga.network", label: "Support", note: "Help with Tamga Wallet and our services." },
+      { email: "partners@tamga.network", label: "Membership", note: "Joining the network: institutions, wallet providers and states." },
       { email: "security@tamga.network", label: "Security", note: "Responsible disclosure of vulnerabilities." },
     ],
   },
@@ -191,7 +190,7 @@ const tr: AboutContent = {
   },
   mission: {
     title: "Misyon",
-    body: "Kimlik, yetkilendirme ve belge doğrulama problemini — her uygulamanın tekrar tekrar çözdüğü bu problemi — ortak bir altyapı hizmetine dönüştürmek. Güveni tek tek uygulamaların değil, ortak bir katmanın sağladığı bir dünya kurmak.",
+    body: "Kimlik, yetkilendirme ve belge doğrulama problemini — her uygulamanın tekrar tekrar çözdüğü bu problemi — ortak ve açık bir altyapıya dönüştürmek. Güveni tek tek uygulamaların değil, ortak bir katmanın sağladığı bir dünya kurmak.",
   },
   vision: {
     title: "Vizyon",
@@ -199,21 +198,21 @@ const tr: AboutContent = {
       <>
         Türkiye’den başlayıp Türk dünyasına açılan; her ülkenin kendi egemen
         güven ağını koruyarak ortak standartlarla birbirine bağlandığı bir{" "}
-        <strong className="text-foreground">Trust Mesh</strong>. Sınır ötesinde
+        <strong className="text-foreground">güven ağı</strong>. Sınır ötesinde
         doğrulanabilir kimlik, diploma ve belge.
       </>
     ),
   },
   positioning: {
     eyebrow: "Konumlanma",
-    title: "Üç katman: AB uyumu, federasyon, ürünler",
+    title: "Üç katman: AB uyumu, federasyon, ağdaki cüzdanlar",
     lead: (
       <>
         Tamga, her biri tek başına ayakta durabilen üç katmanda kuruludur. Taban,{" "}
         <strong className="text-foreground">AB’nin eIDAS 2.0 / EUDI standartlarıyla uyumdur</strong>; onun üstünde{" "}
         <strong className="text-foreground">Tamga Network</strong> Türk devletlerinin güven listelerini bir araya
-        getirir; bu zeminde <strong className="text-foreground">Tamga Wallet</strong> ve kurumlara sunduğumuz
-        hizmetler çalışır.
+        getirir; bu zeminde <strong className="text-foreground">ağdaki cüzdanlar</strong> (ilki Tamga Wallet) ve ağın
+        referans hizmetleri çalışır.
       </>
     ),
     rows: [
@@ -226,8 +225,8 @@ const tr: AboutContent = {
         v: "Her devletin güven listesini toplar ve devletlerin birbirini tanımasını sağlar. Bugün Türkiye listesini Tamga, devlet adına geçici olarak yayınlar; devlet ya da yetkilendirdiği kurum kendi listesini yayınladığında ağ onu gösterir. Ağ, yayınlanmış kurallara uyan her cüzdanı tanır. Yönetişim kurumu ve ortak defter, devletler katıldıkça gelir.",
       },
       {
-        k: "Ürünler ve hizmetler",
-        v: "Tamga Wallet ağın ilk ve referans cüzdanıdır. Kurumlar belgelerini Kurum Konsolu ve Tamga Verify ile verir ve doğrular; entegrasyon ve geliştirici desteği bunlarla gelir — hepsi açık standartlar üzerinde, hiçbir kurum tek bir uygulamaya bağlı kalmaz.",
+        k: "Ağdaki cüzdanlar ve ağı geliştiren ekip",
+        v: "Ağın kurallarına uyan her cüzdan ağda çalışır; Tamga Wallet ilk ve referans cüzdandır. Ağı geliştiren ekip referans hizmetleri işletir — Kurum Konsolu, Tamga Verify, güven listesi yayını — ve kodu açık kaynak paketler olarak yayınlar; hiçbir kurum tek bir uygulamaya bağlı kalmaz.",
       },
     ],
   },
@@ -238,7 +237,7 @@ const tr: AboutContent = {
         <p>
           Avrupa Birliği, eIDAS 2.0 ile taşınabilir dijital kanıt modelini
           kıtasal ölçekte zorunlu hâle getirdi. SD-JWT VC, ISO mdoc,
-          OpenID4VC ve seçici açıklama artık akademik kavramlar değil, uygulanan
+          OpenID4VC ve seçici paylaşım artık akademik kavramlar değil, uygulanan
           gereksinimler.
         </p>
         <p>
@@ -250,7 +249,7 @@ const tr: AboutContent = {
         </p>
       </>
     ),
-    ctaDocs: "Kavramları sıfırdan öğren →",
+    ctaDocs: "Sıfırdan öğren →",
     ctaWhitepaper: "Whitepaper (PDF)",
     ctaManifesto: "Manifesto",
   },
@@ -260,8 +259,7 @@ const tr: AboutContent = {
     lead: "Doğrudan doğru birime yazın. Genellikle birkaç iş günü içinde yanıt veriyoruz.",
     items: [
       { email: "info@tamga.network", label: "Genel", note: "Proje ve ağ hakkındaki sorular." },
-      { email: "partners@tamga.network", label: "İş birlikleri", note: "Kurumlar, devletler ve entegrasyon ortakları." },
-      { email: "support@tamga.network", label: "Destek", note: "Tamga Wallet ve hizmetlerimiz için yardım." },
+      { email: "partners@tamga.network", label: "Katılım", note: "Ağa katılım: kurumlar, cüzdan sağlayıcılar ve devletler." },
       { email: "security@tamga.network", label: "Güvenlik", note: "Güvenlik açıklarının sorumlu bildirimi." },
     ],
   },
@@ -310,7 +308,7 @@ const tk: AboutContent = {
   },
   mission: {
     title: "Wezipe",
-    body: "Şahsyýet, ygtyýarlandyrma we resminama barlagy meselesini — her programmanyň gaýta-gaýta çözýän bu meselesini — umumy infrastruktura hyzmatyna öwürmek. Ynamy her programmanyň däl-de, umumy gatlagyň üpjün edýän dünýäsini gurmak.",
+    body: "Şahsyýet, ygtyýarlandyrma we resminama barlagy meselesini — her programmanyň gaýta-gaýta çözýän bu meselesini — umumy we açyk infrastruktura öwürmek. Ynamy her programmanyň däl-de, umumy gatlagyň üpjün edýän dünýäsini gurmak.",
   },
   vision: {
     title: "Garaýyş",
@@ -318,21 +316,21 @@ const tk: AboutContent = {
       <>
         Türkiýeden başlap türki dünýäsine açylýan; her ýurduň öz özygtyýarly ynam
         toruny saklap, umumy standartlar bilen biri-birine baglanýan{" "}
-        <strong className="text-foreground">Trust Mesh</strong>. Serhetden aňry
+        <strong className="text-foreground">ynam tory</strong>. Serhetden aňry
         barlanyp bilinýän şahsyýet, diplom we resminama.
       </>
     ),
   },
   positioning: {
     eyebrow: "Orun",
-    title: "Üç gatlak: ÝB bilen laýyklyk, federasiýa, önümler",
+    title: "Üç gatlak: ÝB bilen laýyklyk, federasiýa, tordaky gapjyklar",
     lead: (
       <>
         Tamga her biri özbaşdak durup bilýän üç gatlakda gurulýar. Esasy{" "}
         <strong className="text-foreground">ÝB-niň eIDAS 2.0 / EUDI standartlaryna laýyklykdyr</strong>; onuň
         üstünde <strong className="text-foreground">Tamga Network</strong> türki döwletleriň ynam sanawlaryny bir
-        ýere jemleýär; şu esasda <strong className="text-foreground">Tamga Wallet</strong> we guramalara
-        hödürleýän hyzmatlarymyz işleýär.
+        ýere jemleýär; şu esasda <strong className="text-foreground">tordaky gapjyklar</strong> (ilkinjisi Tamga
+        Wallet) we toruň salgylanma hyzmatlary işleýär.
       </>
     ),
     rows: [
@@ -345,8 +343,8 @@ const tk: AboutContent = {
         v: "Her döwletiň ynam sanawyny jemleýär we döwletleriň biri-birini ykrar etmegine mümkinçilik berýär. Häzir Türkiýäniň sanawyny Tamga döwletiň adyndan wagtlaýyn çap edýär; döwlet ýa-da ygtyýarlandyran guramasy öz sanawyny çap edende tor şony görkezýär. Tor çap edilen düzgünlere eýerýän her gapjygy ykrar edýär. Dolandyryş guramasy we umumy kitap döwletler goşulyşdygyça gelýär.",
       },
       {
-        k: "Önümler we hyzmatlar",
-        v: "Tamga Wallet toruň ilkinji we salgylanma gapjygy. Guramalar resminamalaryny Gurama konsoly we Tamga Verify arkaly berýär we barlaýar; integrasiýa we işläp düzüji goldawy şolar bilen gelýär — hemmesi açyk standartlarda, hiç bir gurama bir programma bagly galmaýar.",
+        k: "Tordaky gapjyklar we tory gurýan topar",
+        v: "Toruň düzgünlerine eýerýän her gapjyk torda işleýär; Tamga Wallet ilkinji we salgylanma gapjykdyr. Tory gurýan topar salgylanma hyzmatlaryny işledýär — Gurama konsoly, Tamga Verify, ynam sanawynyň çap edilmegi — we kody açyk çeşmeli paketler hökmünde çap edýär; hiç bir gurama bir programma bagly galmaýar.",
       },
     ],
   },
@@ -369,7 +367,7 @@ const tk: AboutContent = {
         </p>
       </>
     ),
-    ctaDocs: "Düşünjeleri başdan öwren →",
+    ctaDocs: "Başdan öwren →",
     ctaWhitepaper: "Whitepaper (PDF)",
     ctaManifesto: "Manifest",
   },
@@ -379,8 +377,7 @@ const tk: AboutContent = {
     lead: "Göni degişli bölüme ýazyň. Adatça birnäçe iş gününiň içinde jogap berýäris.",
     items: [
       { email: "info@tamga.network", label: "Umumy", note: "Taslama we tor barada soraglar." },
-      { email: "partners@tamga.network", label: "Hyzmatdaşlyk", note: "Edaralar, döwletler we integrasiýa hyzmatdaşlary." },
-      { email: "support@tamga.network", label: "Goldaw", note: "Tamga Wallet we hyzmatlarymyz üçin kömek." },
+      { email: "partners@tamga.network", label: "Goşulmak", note: "Tora goşulmak: guramalar, gapjyk üpjün edijiler we döwletler." },
       { email: "security@tamga.network", label: "Howpsuzlyk", note: "Howpsuzlyk gowşaklyklarynyň jogapkärli habary." },
     ],
   },

@@ -41,8 +41,8 @@ export const PACKAGES: { name: string; what: L }[] = [
     name: "@tamga-network/sd-jwt",
     what: {
       en: "SD-JWT VC: selective disclosure, device binding, format checks",
-      tr: "SD-JWT VC: seçici açıklama, cihaz bağı, biçim denetimleri",
-      tk: "SD-JWT VC: saýlama açyklama, enjam baglanyşygy, görnüş barlaglary",
+      tr: "SD-JWT VC: seçici paylaşım, cihaz bağı, biçim denetimleri",
+      tk: "SD-JWT VC: saýlap paýlaşmak, enjam baglanyşygy, görnüş barlaglary",
     },
   },
   {

@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { routing } from "@/i18n/routing";
 import { getPathname } from "@/i18n/navigation";
-import { docHrefs } from "@/lib/docs-nav";
+import { learnSlugs } from "@/content/learn";
 import { allSlugs } from "@/lib/blog";
 
 const BASE = "https://tamga.network";
@@ -16,21 +16,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/manifesto",
     "/scenarios",
     "/whitepaper",
-    "/docs",
+    "/learn",
     "/blog",
-    "/issuers",
+    "/join",
+    "/network",
+    "/partners",
+    "/events",
     "/roadmap",
     "/changelog",
     "/sdk",
-    "/shortcuts",
     "/brand",
   ];
-  const docRoutes = docHrefs.filter((h) => h !== "/docs") as unknown as SHref[];
+  // Öğren sayfaları (eski /docs genel belgeleri Learn'e taşındığı için site haritasında yok)
+  const learnRoutes: SHref[] = learnSlugs().map((slug) => ({ pathname: "/learn/[slug]", params: { slug } }));
   const blogRoutes: SHref[] = allSlugs().map((slug) => ({
     pathname: "/blog/[slug]",
     params: { slug },
   }));
-  const hrefs: SHref[] = [...staticHrefs, ...docRoutes, ...blogRoutes];
+  const hrefs: SHref[] = [...staticHrefs, ...learnRoutes, ...blogRoutes];
 
   const now = new Date();
   const entries: MetadataRoute.Sitemap = [];

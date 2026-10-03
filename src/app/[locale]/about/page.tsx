@@ -138,7 +138,7 @@ export default async function AboutPage({
           </div>
           <Reveal delay={0.12}>
             <div className="mt-12 flex flex-wrap gap-3">
-              <Button href="/docs">{c.whyNow.ctaDocs}</Button>
+              <Button href="/learn">{c.whyNow.ctaDocs}</Button>
               <Button href="/whitepaper" variant="outline">
                 {c.whyNow.ctaWhitepaper}
               </Button>
@@ -151,7 +151,7 @@ export default async function AboutPage({
       </section>
 
       {/* Contact */}
-      <section className="shell py-16 sm:py-20">
+      <section id="contact" className="shell scroll-mt-24 py-16 sm:py-20">
         <Reveal>
           <div className="max-w-2xl">
             <p className="eyebrow mb-3">{c.contact.eyebrow}</p>

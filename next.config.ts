@@ -66,6 +66,7 @@ const nextConfig: NextConfig = {
       ["/blog/roadmap-turkic-world", "/roadmap"],
       ["/blog/authorization-not-settlement", "/blog"],
       ["/blog/accountable-disclosure", "/blog"],
+      ["/issuers", "/join"], // 2026-10-02: "Kurum olarak katıl" → "Ağa katıl"
     ];
     return moved.map(([from, to]) => ({
       source: `/:locale(en|tr|tk)${from}`,

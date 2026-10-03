@@ -1,25 +1,25 @@
 "use client";
 
 /*
- * Telefon menüsü: sağdan açılan panel (Radix Dialog) + açılır bölümler (Radix Accordion). shadcn/ui Sheet + Accordion kalıbı.
- * Odak panel içinde kalır, Esc kapatır; bağlantıya dokununca panel kapanır.
+ * Telefon menüsü: bütün ekranı kaplayan katman (Radix Dialog; sayfa kaydırması kilitli, güvenli alan payları) + açılır
+ * bölümler (Radix Accordion). Odak içeride kalır; Esc, bağlantıya dokunma, sayfa değişimi ve ekran masaüstü genişliğine
+ * (xl, 1280 px) çıkınca kendiliğinden kapanır. Bölümler üst menüyle aynı (lib/nav MENUS):
+ * her bölümde iki başlıklı grup ve masaüstündeki öne çıkan kartın bağlantısı (son madde); altta Blog ve "Ağa katıl".
  */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Accordion, Dialog } from "radix-ui";
-import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
-import { Link } from "@/i18n/navigation";
+import { ArrowRight, ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
+import { Link, usePathname } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
-import { arfUrl } from "@/lib/docs-nav";
 import {
-  DEVELOPERS,
-  ECOSYSTEM_MENU,
-  HOST_ICON,
   MENU_LABELS,
-  PROJECT,
+  MENUS,
   TONE_CLS,
+  featuredItem,
   type NavItem,
 } from "@/lib/nav";
+import { opensInPlace, targetOf } from "@/lib/nav-target";
 import { cn } from "@/lib/utils";
 import { LogoMark } from "./logo";
 import { MobileLocale } from "./mobile-locale";
@@ -35,7 +35,7 @@ function Row({
   locale: Locale;
   onGo: () => void;
 }) {
-  const external = item.arf ? arfUrl(locale) : item.external;
+  const { external, href } = targetOf(item, locale);
   const inner = (
     <>
       <span
@@ -50,7 +50,7 @@ function Row({
       <span className="min-w-0 flex-1">
         <span className="flex items-center gap-1 text-[0.95rem] text-foreground">
           {item.title[locale]}
-          {external && (
+          {external && !opensInPlace(external) && (
             <ArrowUpRight size={12} aria-hidden className="opacity-50" />
           )}
         </span>
@@ -65,15 +65,16 @@ function Row({
   return external ? (
     <a
       href={external}
-      target="_blank"
-      rel="noopener noreferrer"
+      {...(opensInPlace(external)
+        ? {}
+        : { target: "_blank", rel: "noopener noreferrer" })}
       className={cls}
       onClick={onGo}
     >
       {inner}
     </a>
   ) : (
-    <Link href={item.href!} className={cls} onClick={onGo}>
+    <Link href={href!} className={cls} onClick={onGo}>
       {inner}
     </Link>
   );
@@ -113,19 +114,37 @@ export function MobileNav() {
   const t = useTranslations("nav");
   const L = MENU_LABELS[locale];
   const close = () => setOpen(false);
+  const pathname = usePathname();
+
+  // Sayfa değişince kapan
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  // Masaüstü genişliğine (xl = 1280 px, üst menünün göründüğü eşik) çıkınca kapan
+  useEffect(() => {
+    if (!open) return;
+    const mq = window.matchMedia("(min-width: 1280px)");
+    const onChange = (e: MediaQueryListEvent | MediaQueryList) => {
+      if (e.matches) setOpen(false);
+    };
+    onChange(mq);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, [open]);
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger
-        className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border text-foreground md:hidden"
+        className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border text-foreground xl:hidden"
         aria-label={t("menu")}
       >
         <Menu size={20} aria-hidden />
       </Dialog.Trigger>
       <Dialog.Portal>
-        <Dialog.Overlay className="mobile-nav-overlay fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm" />
-        <Dialog.Content className="mobile-nav-panel fixed inset-y-0 right-0 z-[61] flex w-[min(24rem,100vw)] flex-col border-l border-border bg-background shadow-soft outline-none">
-          <div className="flex h-16 shrink-0 items-center justify-between border-b border-border px-4">
+        <Dialog.Overlay className="mobile-nav-overlay fixed inset-0 z-[60] bg-background" />
+        <Dialog.Content className="mobile-nav-panel fixed inset-0 z-[61] flex h-[100dvh] w-full flex-col bg-background pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)] pt-[env(safe-area-inset-top)] outline-none">
+          <div className="shell flex h-16 shrink-0 items-center justify-between border-b border-border">
             <Link
               href="/"
               onClick={close}
@@ -134,7 +153,7 @@ export function MobileNav() {
             >
               <LogoMark size={28} />
               <span className="font-serif text-lg font-semibold text-foreground">
-                Tamga
+                Tamga Network
               </span>
             </Link>
             <Dialog.Close
@@ -149,54 +168,41 @@ export function MobileNav() {
             Tamga Network
           </Dialog.Description>
 
-          <div className="flex-1 overflow-y-auto px-4">
-            <Link
-              href="/docs"
-              onClick={close}
-              className="flex items-center justify-between border-b border-border py-4 text-lg font-medium text-foreground"
-            >
-              {L.docs}
-            </Link>
+          <div className="shell flex-1 overflow-y-auto overscroll-contain">
             <Accordion.Root type="single" collapsible>
-              <Section value="dev" title={L.developers}>
-                {DEVELOPERS.map((d) => (
-                  <Row key={d.title.en} item={d} locale={locale} onGo={close} />
-                ))}
-              </Section>
-              <Section value="eco" title={L.ecosystem}>
-                {ECOSYSTEM_MENU.map((s) => {
-                  const ic = HOST_ICON[s.host];
-                  return (
-                    <Row
-                      key={s.host}
-                      locale={locale}
-                      onGo={close}
-                      item={{
-                        title: s.name,
-                        desc: { en: s.host, tr: s.host, tk: s.host },
-                        icon: ic.icon,
-                        tone: ic.tone,
-                        external: s.url,
-                      }}
-                    />
-                  );
-                })}
-              </Section>
-              <Section value="project" title={L.project}>
-                {PROJECT.filter((p) => p.href !== "/issuers").map((p) => (
-                  <Row key={p.title.en} item={p} locale={locale} onGo={close} />
-                ))}
-              </Section>
+              {MENUS.map((m) => (
+                <Section key={m.key} value={m.key} title={m.label[locale]}>
+                  {m.groups.map((g) => (
+                    <div key={g.label.en} className="pb-2">
+                      <p className="px-2 pb-1 pt-2 font-mono text-[0.68rem] font-medium uppercase tracking-[0.14em] text-primary">
+                        {g.label[locale]}
+                      </p>
+                      {g.items.map((item) => (
+                        <Row
+                          key={item.title.en}
+                          item={item}
+                          locale={locale}
+                          onGo={close}
+                        />
+                      ))}
+                    </div>
+                  ))}
+                  <div className="border-t border-border/60 pt-1">
+                    <Row item={featuredItem(m)} locale={locale} onGo={close} />
+                  </div>
+                </Section>
+              ))}
             </Accordion.Root>
           </div>
 
-          <div className="shrink-0 space-y-4 border-t border-border p-4">
+          <div className="shell shrink-0 space-y-4 border-t border-border py-4">
             <Link
-              href="/issuers"
+              href="/join"
               onClick={close}
-              className="flex w-full items-center justify-center rounded-md bg-primary px-4 py-3 text-sm font-medium text-primary-contrast"
+              className="flex w-full items-center justify-center gap-1.5 rounded-md bg-primary px-4 py-3 text-sm font-medium text-primary-contrast"
             >
-              {t("joinIssuer")}
+              {L.joinCta}
+              <ArrowRight size={14} aria-hidden />
             </Link>
             <div className="flex items-center gap-2">
               <div className="flex-1">
@@ -204,7 +210,7 @@ export function MobileNav() {
               </div>
               <ThemeToggle />
             </div>
-            <SocialLinks size={18} />
+            <SocialLinks size={20} soonLabel={L.soon} label={L.social} />
           </div>
         </Dialog.Content>
       </Dialog.Portal>

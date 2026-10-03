@@ -26,9 +26,9 @@ npm run examples:sync   # copy the tested code examples from the tamga-network r
 | Route | Content |
 |---|---|
 | `/` | Home: the problem, what Tamga is, Europe, the Turkic world, how it works, sectors, the network's public addresses, status |
-| `/docs/*` | Concepts from scratch, how Tamga works, trust lists, eIDAS/EUDI, Tamga Wallet, developers, glossary |
+| `/learn`, `/learn/*` | Learn: a step-by-step path from digital identity to Tamga Network (7 chapters) |
 | `/sdk` | The open-source `@tamga-network/*` packages, installation and working examples |
-| `/issuers` | For institutions: what it takes to issue credentials with Tamga |
+| `/join` | Join the network: institutions (issuers, verifiers), wallet providers, states (`/issuers` redirects here) |
 | `/whitepaper`, `/manifesto` | Online and as PDF in three languages |
 | `/roadmap`, `/changelog` | Stages of the network; every release |
 | `/scenarios`, `/about`, `/blog` | Everyday scenarios, the name and mission, articles |

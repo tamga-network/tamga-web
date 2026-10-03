@@ -108,7 +108,7 @@ const en: ScenariosContent = {
         cardLabel: "CONSENT",
         badge: "VERIFIED",
         title: "Prescription authorization",
-        subtitle: "Ministry of Health · X.509 (TR)",
+        subtitle: "Example health authority · X.509 (TR)",
         rows: [
           { k: "prescriber", v: "licensed", tone: "disclosed" },
           { k: "age_over_18", v: "true", tone: "disclosed" },
@@ -183,7 +183,7 @@ const en: ScenariosContent = {
         },
         {
           title: "Escrow trigger",
-          body: "'Delivered credential → bank releases payment.' The obligation and its confirmation live on-chain; the funds never do. Minimal legal friction, maximal auditability.",
+          body: "'Delivered credential → bank releases payment.' The obligation and its confirmation live in signed credentials; the funds never touch the network. Minimal legal friction, maximal auditability.",
         },
         {
           title: "AI agent payments with a kill switch",
@@ -299,7 +299,7 @@ const tr: ScenariosContent = {
         cardLabel: "CONSENT",
         badge: "VERIFIED",
         title: "Reçete yetkilendirmesi",
-        subtitle: "Sağlık Bakanlığı · X.509 (TR)",
+        subtitle: "Örnek sağlık kurumu · X.509 (TR)",
         rows: [
           { k: "prescriber", v: "lisanslı", tone: "disclosed" },
           { k: "age_over_18", v: "true", tone: "disclosed" },
@@ -374,7 +374,7 @@ const tr: ScenariosContent = {
         },
         {
           title: "Escrow tetikleyici",
-          body: "'Teslim edildi credential'ı → banka ödemeyi serbest bırakır.' Yükümlülük ve teyidi zincirde; para asla zincirde değil. Asgari hukuki sürtünme, azami denetlenebilirlik.",
+          body: "'Teslim edildi credential'ı → banka ödemeyi serbest bırakır.' Yükümlülük ve teslim teyidi imzalı belgelerde; para hiçbir zaman ağda değil. Asgari hukuki sürtünme, azami denetlenebilirlik.",
         },
         {
           title: "Kill switch'li AI agent ödemeleri",
@@ -455,7 +455,7 @@ const tk: ScenariosContent = {
           { k: "holder", v: "p:8f2…c19", tone: "accent" },
         ],
         action: "Iş berijä hödürle",
-        status: "SD-JWT · saýlama açyklama",
+        status: "SD-JWT · saýlap paýlaşmak",
       },
       flow: [
         { icon: "education", label: "Uniwersitet", sub: "Issuer (X.509)" },
@@ -490,7 +490,7 @@ const tk: ScenariosContent = {
         cardLabel: "CONSENT",
         badge: "VERIFIED",
         title: "Recet ygtyýarlandyrma",
-        subtitle: "Saglyk ministrligi · X.509 (TR)",
+        subtitle: "Nusga saglyk edarasy · X.509 (TR)",
         rows: [
           { k: "prescriber", v: "ygtyýarly", tone: "disclosed" },
           { k: "age_over_18", v: "true", tone: "disclosed" },
@@ -498,7 +498,7 @@ const tk: ScenariosContent = {
           { k: "full_name", v: "gizlin", tone: "hidden" },
         ],
         action: "Dermanhana bilen paýlaş",
-        status: "saýlama açyklama · razylyk bellendi",
+        status: "saýlap paýlaşmak · razylyk bellendi",
       },
       flow: [
         { icon: "health", label: "Saglyk edarasy", sub: "Issuer (X.509)" },
@@ -565,7 +565,7 @@ const tk: ScenariosContent = {
         },
         {
           title: "Escrow işe giriziji",
-          body: "'Eltilip berildi credential-y → bank tölegi açýar.' Borç we tassyklama zynjyrda; pul asla zynjyrda däl.",
+          body: "'Eltilip berildi credential-y → bank tölegi açýar.' Borç we tassyklama gol çekilen resminamalarda; pul hiç haçan torda däl.",
         },
         {
           title: "Kill switch bilen AI agent tölegleri",

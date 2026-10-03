@@ -34,7 +34,10 @@ def jsx_inline(t):
         elif m.group(2) is not None:
             res.append("<code>" + jsx_text(m.group(2)) + "</code>")
         else:
-            res.append('<Link href="' + m.group(4) + '">' + jsx_text(m.group(3)) + "</Link>")
+            if m.group(4).startswith("http"):
+                res.append('<a href="' + m.group(4) + '">' + jsx_text(m.group(3)) + "</a>")
+            else:
+                res.append('<Link href="' + m.group(4) + '">' + jsx_text(m.group(3)) + "</Link>")
         pos = m.end()
     res.append(jsx_text(t[pos:]))
     return "".join(res)
@@ -68,9 +71,9 @@ import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 
 /*
- * Whitepaper v3.0 (2026-09-27). Aynı içerik whitepaper/tamga-whitepaper-{en,tr,tk}.typ (PDF) ile birebir;
- * ikisi de whitepaper/source/content.py dosyasından üretilir (generate.py) — elle düzenleme. Kaynaklar: tamga-network DECISIONS §0, ADR-0009…0014, FW-ARF-0001,
- * SPEC-TRUST-0001, SPEC-API-0001, PM-GTM-0001; sapma kütüğü docs/delivery/09 §6.
+ * Whitepaper v1.0 (2026-10-03). Aynı içerik whitepaper/tamga-whitepaper-{en,tr,tk}.typ (PDF) ile birebir;
+ * ikisi de whitepaper/source/content.py dosyasından üretilir (generate.py) — elle düzenleme. Kaynaklar: tamga-network DECISIONS §0,
+ * ADR-0009…0014, ADR-0031, ADR-0032, ADR-0035…0038, Tamga ARF 1.0 (FW-ARF-0001…0006), SPEC-TRUST-0001, SPEC-API-0001, SPEC-PROTO-0002.
  */
 
 export type WhitepaperSection = { id: string; n: string; title: string; body: ReactNode };
@@ -182,7 +185,7 @@ def ty_inline(t, lang):
         elif m.group(2) is not None:
             res.append("#raw(" + ty_str(m.group(2)) + ")")
         else:
-            url = "https://tamga.network/" + lang + m.group(4)
+            url = m.group(4) if m.group(4).startswith("http") else "https://tamga.network/" + lang + m.group(4)
             res.append("#link(" + ty_str(url) + ")[" + ty_text(m.group(3)) + "]")
         pos = m.end()
     res.append(ty_text(t[pos:]))
@@ -190,7 +193,7 @@ def ty_inline(t, lang):
 
 
 def typst(lang, d):
-    L = [f"// Tamga Network — Whitepaper v3.0 ({lang}). whitepaper/source/content.py dosyasından üretilir (generate.py) — elle düzenleme.",
+    L = [f"// Tamga Network — Whitepaper v1.0 ({lang}). whitepaper/source/content.py dosyasından üretilir (generate.py) — elle düzenleme.",
          f"// Build:  typst compile --root . tamga-whitepaper-{lang}.typ ../public/whitepaper-{lang}.pdf",
          '#import "template.typ": conf, codeblock, kvtable, chapter, notebox, muted', "",
          "#show: conf.with(",

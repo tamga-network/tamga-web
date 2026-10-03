@@ -76,7 +76,7 @@ function ScenariosHero({ c }: { c: ScenariosContent }) {
         className="pointer-events-none absolute inset-0 opacity-70 [mask-image:radial-gradient(120%_105%_at_50%_0%,#000_35%,transparent_82%)]"
       >
         <LetterGlitch
-          glitchColors={["#b01e22", "#c8a24c", "#2a6f8e"]}
+          glitchColors={["#1E5A78", "#C8A24C", "#6FB3D2"]}
           characters={ORKHON_CHARS}
           fontFamily={orkhon.style.fontFamily}
         />

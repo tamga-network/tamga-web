@@ -15,7 +15,7 @@ export default async function NotFound() {
       <p className="mt-4 max-w-md text-foreground-muted">{t("body")}</p>
       <div className="mt-8 flex gap-3">
         <Button href="/">{t("home")}</Button>
-        <Button href="/docs" variant="outline">
+        <Button href="/learn" variant="outline">
           {t("docs")}
         </Button>
       </div>

@@ -3,7 +3,7 @@ import { pageMeta } from "@/lib/seo";
 import { setRequestLocale } from "next-intl/server";
 import { ArrowUpRight, BookOpen, Package } from "lucide-react";
 import { PageHeader } from "@/components/ui";
-import { CodeTabs } from "@/components/code-tools";
+import { CodeWindowTabs as CodeTabs } from "@/components/code-window";
 import type { Locale } from "@/i18n/routing";
 import { COPY, EX, INSTALL, PACKAGES, npmUrl, pkgDocsUrl } from "@/content/sdk";
 import { DEV_LINKS } from "@/lib/ecosystem";
@@ -35,7 +35,7 @@ const UI: Record<
     eyebrow: "SDK",
     lead: "Open-source TypeScript packages for everything on the network: verifying, issuing, trust lists and the wallet core. Apache-2.0, following the EUDI profiles.",
     hInstall: "Install",
-    pInstall: "Pre-release 0.1.0 — the API may change before 1.0.",
+    pInstall: "Pre-release (0.x) — the API may change before 1.0.",
     hPkgs: "Packages",
     pPkgs:
       "Each package name opens its npm page; “Docs” opens its reference on the developer docs.",
@@ -53,7 +53,7 @@ const UI: Record<
     eyebrow: "SDK",
     lead: "Ağdaki her iş için açık kaynak TypeScript paketleri: doğrulama, belge verme, güven listeleri ve cüzdan çekirdeği. Apache-2.0, EUDI profillerine uygun.",
     hInstall: "Kurulum",
-    pInstall: "Ön sürüm 0.1.0 — 1.0'a kadar arayüz değişebilir.",
+    pInstall: "Ön sürüm (0.x) — 1.0'a kadar arayüz değişebilir.",
     hPkgs: "Paketler",
     pPkgs:
       "Paket adı npm sayfasını açar; “Belge” geliştirici belgelerindeki başvurusunu açar.",
@@ -71,7 +71,7 @@ const UI: Record<
     eyebrow: "SDK",
     lead: "Torda her iş üçin açyk çeşmeli TypeScript paketleri: barlamak, resminama bermek, ynam sanawlary we gapjyk ýadrosy. Apache-2.0, EUDI profillerine laýyk.",
     hInstall: "Gurnamak",
-    pInstall: "Deslapky wersiýa 0.1.0 — 1.0-a çenli interfeýs üýtgäp biler.",
+    pInstall: "Deslapky wersiýa (0.x) — 1.0-a çenli interfeýs üýtgäp biler.",
     hPkgs: "Paketler",
     pPkgs:
       "Paketiň ady npm sahypasyny açýar; “Resminama” işläp düzüji resminamalaryndaky salgylanmany açýar.",

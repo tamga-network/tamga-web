@@ -93,7 +93,7 @@ export default async function ManifestoPage({
           </Link>
           <span className="text-border-strong">·</span>
           <Link
-            href="/docs"
+            href="/learn"
             className="link-underline text-foreground-muted hover:text-foreground"
           >
             {c.linkDocs}

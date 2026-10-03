@@ -1,9 +1,9 @@
 {
   "meta": {
-    "title": "Tamga Network — Sanly Ynam Infrastrukturasy",
-    "description": "Tamga Network — şahslaryň, guramalaryň we sanly emläkleriň ynamly kesgitlenip, barlanyp bilinýän gatnaşyklar gurup bilýän Sanly Ynam Infrastrukturasydyr. Türkiýe we türki dünýäsi üçin açyk standartlara laýyk, özygtyýarly infrastruktura.",
-    "ogDescription": "Gadymy tamganyň häzirki zaman garşylygy: Türkiýe we türki dünýäsi üçin açyk standartlara laýyk, özygtyýarly sanly ynam infrastrukturasy.",
-    "tagline": "SANLY YNAM INFRASTRUKTURASY"
+    "title": "Tamga Network — Türki dünýäsi üçin umumy ynam tory",
+    "description": "Tamga Network — türki dünýäsi üçin umumy ynam tory: guramalaryň berýän sanly resminamalary serhet tanaman, birnäçe sekuntda we adamyň şahsy durmuşy goralyp barlanýar. Açyk düzgünler, gol çekilen sanawlar, ÝB bilen laýyk.",
+    "ogDescription": "Gadymy tamganyň häzirki zaman garşylygy: türki dünýäsi üçin açyk, ÝB bilen laýyk ynam tory.",
+    "tagline": "UMUMY YNAM TORY"
   },
   "nav": {
     "manifesto": "Manifest",
@@ -15,8 +15,8 @@
     "ecosystem": "Ekoulgam",
     "project": "Taslama",
     "roadmap": "Ýol kartasy",
-    "changelog": "Changelog",
-    "joinIssuer": "Gurama hökmünde goşul",
+    "changelog": "Wersiýa bellikleri",
+    "joinNetwork": "Tora goşul",
     "allAddresses": "Ähli salgylar",
     "menu": "Menýuny aç"
   },
@@ -29,8 +29,8 @@
     "contents": "Mazmuny"
   },
   "footer": {
-    "tagline": "ÝB bilen laýyk Sanly Ynam Infrastrukturasy. Gadymy tamganyň häzirki zaman garşylygyny Türkiýe we türki dünýäsi üçin gurýarys.",
-    "slogan": "Building Trust Infrastructure for the Digital World.",
+    "tagline": "Türki dünýäsi üçin açyk, ÝB bilen laýyk ynam tory.",
+    "slogan": "Türki dünýäsi üçin umumy ynam tory.",
     "project": "Taslama",
     "resources": "Çeşmeler",
     "standards": "Standartlar",
@@ -58,27 +58,35 @@
     "npm": "npm paketleri",
     "apiRef": "API",
     "roadmap": "Ýol kartasy",
-    "changelog": "Changelog",
-    "issuers": "Gurama hökmünde goşul",
+    "changelog": "Wersiýa bellikleri",
+    "join": "Tora goşul",
     "developerHub": "Işläp düzüjiler",
     "sectors": "Pudaklar",
     "education": "Bilim",
     "health": "Saglyk",
     "payments": "Tölegler",
     "logistics": "Logistika",
-    "brand": "Marka"
+    "brand": "Marka",
+    "partners": "Hyzmatdaşlar",
+    "scenarios": "Ssenariler",
+    "addresses": "Tor salgylary",
+    "events": "Çäreler",
+    "docsLink": "Resminamalar",
+    "soon": "Ýakynda",
+    "social": "Sosial media"
   },
   "notFound": {
     "code": "404",
     "title": "Bu tamga hiç ýere äkitmeýär",
-    "body": "Gözleýän sahypaňyz tapylmady. Baş sahypa dolanyp ýa-da resminamalara göz aýlap bilersiňiz.",
+    "body": "Gözleýän sahypaňyz tapylmady. Baş sahypa dolanyp ýa-da Öwren bölüminden başlap bilersiňiz.",
     "home": "Baş sahypa",
-    "docs": "Resminamalar"
+    "docs": "Öwren"
   },
   "langSwitcher": {
     "label": "Dil",
     "tr": "Türkçe",
     "en": "English",
-    "tk": "Türkmençe"
+    "tk": "Türkmençe",
+    "menuLabel": "Dil saýlaň"
   }
 }

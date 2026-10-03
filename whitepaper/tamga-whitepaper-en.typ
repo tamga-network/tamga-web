@@ -1,4 +1,4 @@
-// Tamga Network — Whitepaper v3.0 (en). whitepaper/source/content.py dosyasından üretilir (generate.py) — elle düzenleme.
+// Tamga Network — Whitepaper v1.0 (en). whitepaper/source/content.py dosyasından üretilir (generate.py) — elle düzenleme.
 // Build:  typst compile --root . tamga-whitepaper-en.typ ../public/whitepaper-en.pdf
 #import "template.typ": conf, codeblock, kvtable, chapter, notebox, muted
 
@@ -6,8 +6,8 @@
   lang: "en",
   title: [A Digital Trust Infrastructure \ for Türkiye and the Turkic World],
   subtitle: [A sovereign reference architecture on the EU’s EUDI profiles — X.509 institutions, signed trust lists today, a permissioned ledger when independent operators join.],
-  labels: (abstract: "Executive summary", contents: "Contents", version: "WHITEPAPER · VERSION 3.0"),
-  footer-right: "Whitepaper v3.0",
+  labels: (abstract: "Executive summary", contents: "Contents", version: "WHITEPAPER · VERSION 1.0"),
+  footer-right: "Whitepaper v1.0",
   abstract: [
     Tamga Network is a *Digital Trust Infrastructure*: institutions issue documents — diplomas, student cards, identity credentials, tickets — into a person’s phone, the person shares only the fields a verifier needs, and the verifier checks them in seconds without contacting the issuer.
 
@@ -22,7 +22,7 @@
 
 For decades people proved who they are by handing over copies. Copies pile up on servers and slip out of control; every bank, employer and university rebuilds the same verification; and authenticity is left to how convincing a copy looks.
 
-The new model reverses this: the document stays with the person, only the necessary proof is shared, and verification is cryptographic — without asking the source. See #link("https://tamga.network/en/docs/why-new-model")[why a new model].
+The new model reverses this: the document stays with the person, only the necessary proof is shared, and verification is cryptographic — without asking the source. See #link("https://tamga.network/en/learn/paper-to-digital")[why a new model].
 
 = Vision: from eIDAS 2.0 to the Turkic world
 
@@ -30,7 +30,7 @@ With *eIDAS 2.0* every EU member state must offer its citizens a *European Digit
 
 The Turkic world shares language, culture and history. A diploma issued in one state should be verifiable in another; an institution’s identity should be trusted across borders. Tamga builds that shared foundation on the same standards, with governance that keeps every state sovereign.
 
-Tamga is built in three layers that each stand on their own. The base: credentials, protocols and trust lists follow the EU standards, so compatible wallets and verifiers can work with Tamga institutions. Above it, *Tamga Network* is a light federation that collects each state’s trust list and lets states recognise one another — today Tamga publishes Türkiye’s list provisionally, and when a state publishes its own, the network points to it. On that base run *Tamga Wallet*, the network’s first and reference wallet (EU-compatible; “EUDI Wallet” is a title reserved for wallets an EU member state provides or recognises), and services for institutions: the Institution Console and Tamga Verify.
+Tamga is built in three layers that each stand on their own. The base: credentials, protocols and trust lists follow the EU standards, so compatible wallets and verifiers can work with Tamga institutions. Above it, *Tamga Network* is a light federation that collects each state’s trust list and lets states recognise one another — today Tamga publishes Türkiye’s list provisionally, and when a state publishes its own, the network points to it. On that base run *Tamga Wallet*, the network’s first and reference wallet and a separate product (EU-compatible; “EUDI Wallet” is a title reserved for wallets an EU member state provides or recognises), and service providers that follow the network’s rules; they are not part of the network but its participants. The network sells nothing: it runs the rules, the trust lists, open code and reference services such as the Institution Console and Tamga Verify; commercial services are offered by companies outside the network.
 
 = Principles
 
@@ -44,22 +44,24 @@ Tamga is built in three layers that each stand on their own. The base: credentia
 
 = Roles
 
-Every role of the EU architecture exists in Tamga. Where a state has not joined, Tamga holds the role provisionally and on the record: trusted-list operator, registrar, the “TR National Root CA (provisional operator: Tamga)” and the wallet provider. Institutions are attestation providers; employers, websites and gates are registered relying parties. The PID-provider slot is empty until a state fills it; meanwhile an identity credential comes from Tamga’s identity service (document and liveness check). There are no validator operators yet — hence no ledger. Side-by-side: #link("https://tamga.network/en/docs/roles")[roles and terms].
+Every role of the EU architecture exists in Tamga. Where a state has not joined, Tamga holds the role provisionally and on the record: trusted-list operator, registrar and the “TR National Root CA (provisional operator: Tamga)”. Institutions are attestation providers; employers, websites and gates are registered relying parties. The PID-provider slot is empty until a state fills it; meanwhile an identity credential comes from Tamga’s identity service (document and liveness check). The network does not pick wallets, it recognises them: any wallet provider that follows the published rules and passes the conformance tests can be listed; the first is Tamga Wallet. There are no validator operators yet — hence no ledger. Side-by-side: #link("https://tamga.network/en/learn/roles")[roles and terms].
 
 #chapter()
 = Trust model: signed trust lists
 
-A signature proves who signed; a *trust list* says whether that signer is a real institution, which document types it may issue, since when, and its current status. Lists are signed JWS files, *versioned and hash-chained*, never deleted, and carry a next-update date; verifiers check the signer against a root fingerprint published out of band. Every revocation-list publication and schema change is also written, at least hourly, to a public *anchor log*, so a rolled-back list can be detected. Details: #link("https://tamga.network/en/docs/trust-lists")[trust lists].
+A signature proves who signed; a *trust list* says whether that signer is a real institution, which document types it may issue, since when, and its current status. Lists are signed JWS files, *versioned and hash-chained*, never deleted, and carry a next-update date; verifiers check the signer against a root fingerprint published out of band. Every revocation-list publication and schema change is also written, at least hourly, to a public *anchor log*, so a rolled-back list can be detected. Details: #link("https://tamga.network/en/learn/trust-lists")[trust lists].
 
-#kvtable("Published files — trust.tamga.network", (("lotl.jws", "list of lists — national lists, schemas, wallet providers"), ("tl-tr.jws", "Türkiye — root CAs, issuers (+ authorizations), relying parties"), ("tl-az · kz · kg · uz", "reserved slots for the other member states"), ("anchors.jsonl", "anchor log — one signed line per event, at least hourly"), ("keys/", "root fingerprints (the out-of-band trust anchor)"), ("archive/", "every past version, never deleted"),), mono: false)
+#kvtable("Published files — trust.tamga.network", (("lotl.jws", "list of lists — national lists, external lists, schemas, wallet providers, accepted ZK circuits"), ("tl-tr.jws", "Türkiye — root CAs, issuers (+ authorizations), relying parties"), ("tl-az · kz · kg · uz", "reserved slots for the other member states"), ("anchors.jsonl", "anchor log — one signed line per event, at least hourly"), ("keys/", "root fingerprints (the out-of-band trust anchor)"), ("archive/", "every past version, never deleted"),), mono: false)
 
 Identifiers are derived, not assigned, and do not change on handover or when the ledger arrives:
 
 #kvtable("Identifiers", (("ca_id", "keccak256(state_code ‖ SHA-256(root certificate))"), ("issuer_id", "keccak256(state_code ‖ SHA-256(issuer certificate))"), ("vct", "urn:tamga:<domain>:<Type>:<major> — e.g. urn:tamga:edu:DiplomaCredential:1"), ("schema_id", "keccak256(vct)"), ("person", "no identifier — a device key per credential copy"),), mono: true)
 
+*Federation.* The list of lists can also point to a list published by another operator — a state, an institution it authorises, or the EU: its address, a signer pinned in Tamga’s signed list of lists, and a scope saying which roles and document types it may vouch for. The list stays with its owner; when a state publishes its own list, wallets and verifiers see only the address and the signer change. The first format read is ETSI TS 119 602, so verifiers can also recognise the EU identity credential (PID) and the mobile driving licence (mDL). No external list is in the list of lists today; each one is added only with an approval on the record. See #link("https://tamga.network/en/learn/federation")[federation].
+
 = Credentials: SD-JWT VC and mdoc
 
-The main format is *SD-JWT VC* (IETF, #raw("dc+sd-jwt"), ES256). Each field is hidden behind a salted hash and revealed only with the holder’s approval; the header carries the institution’s X.509 chain; #raw("cnf") binds the copy to a device key. The identity credential is also issued as an *ISO 18013-5 mdoc*, so an age check can receive #raw("age_over_18") and nothing else. Document types are stable URNs; their definitions sit in a public catalogue and every credential carries a hash of its definition. See #link("https://tamga.network/en/docs/did-vc")[credentials].
+The main format is *SD-JWT VC* (IETF, #raw("dc+sd-jwt"), ES256). Each field is hidden behind a salted hash and revealed only with the holder’s approval; the header carries the institution’s X.509 chain; #raw("cnf") binds the copy to a device key. The identity credential is also issued as an *ISO 18013-5 mdoc*, so an age check can receive #raw("age_over_18") and nothing else. Document types are stable URNs; their definitions sit in a public catalogue and every credential carries a hash of its definition. See #link("https://tamga.network/en/learn/verifiable-credentials")[credentials].
 
 #codeblock("An SD-JWT VC diploma (decoded, shortened)", "{
   \"iss\": \"https://issuer.tamga.network/example-university\",
@@ -81,8 +83,8 @@ The national ID number appears only in the identity credential; no diploma, card
 
 - *Issuance (OpenID4VCI).* The institution shows a QR code with a PIN on the same screen — the PIN never travels inside the link. Or the wallet starts from the institution directory and proves the person’s identity first. The wallet receives *ten copies*, each bound to a different device key.
 - *Genuine wallets only.* Issuers require a short-lived *wallet unit attestation* from the wallet provider.
-- *Presentation (OpenID4VP, DCQL).* The verifier’s request is signed with its registered certificate. The wallet checks it against the trust list, shows exactly what is asked and warns about anything beyond the verifier’s registered scope, then sends an encrypted answer with the approved fields and a proof that the key is on this phone.
-- *Websites.* A site signs a person up once with the wallet; daily sign-in then uses a *passkey* and shares no fields. See #link("https://tamga.network/en/docs/login-with-tamga")[sign in with Tamga].
+- *Presentation (OpenID4VP, DCQL).* The verifier’s request is signed with its registered certificate. The wallet checks it against the trust list, shows exactly what is asked and warns about anything beyond the verifier’s registered scope. Where the verifier offers alternatives (#raw("credential_sets"), #raw("claim_sets")), the wallet shows them as options; a credential missing a requested field is never sent, and the wallet tells the person why the request cannot be met. The answer is encrypted and carries only the approved fields and a proof that the key is on this phone.
+- *Websites.* A site signs a person up once with the wallet, under a pseudonym of its own: the wallet derives a separate, stable pseudonym for each site, so two sites cannot match a person, and the same pseudonyms return on a new phone after the identity check. Daily sign-in then uses a *passkey* and shares no fields. See #link("https://tamga.network/en/learn/unlinkability")[sign in with Tamga].
 
 = Verification: five layers, three outcomes
 
@@ -94,7 +96,7 @@ Every verification runs the same pipeline in the same order and stops at the fir
 
 = Revocation and lifecycle
 
-Revocation uses the *IETF Token Status List*: two bits per credential copy — valid, revoked or suspended — at a *random* position. The issuer publishes at a *fixed interval*, never on demand, so timing reveals nothing about a person; each publication is anchored. Verifiers pre-fetch the lists, so checking a credential makes no call to the issuer or to the phone. A revocation reaches every verifier within about 90 minutes at most. Copies run out by design; the wallet asks before fetching fresh ones and never refreshes silently. See #link("https://tamga.network/en/docs/how-tamga-works")[architecture].
+Revocation uses the *IETF Token Status List*: two bits per credential copy — valid, revoked or suspended — at a *random* position. The issuer publishes at a *fixed interval*, never on demand, so timing reveals nothing about a person; each publication is anchored. Verifiers pre-fetch the lists, so checking a credential makes no call to the issuer or to the phone. A revocation reaches every verifier within about 90 minutes at most. Copies run out by design; the wallet asks before fetching fresh ones and never refreshes silently. See #link("https://tamga.network/en/learn/revocation")[revocation].
 
 #chapter()
 = Privacy by design
@@ -103,9 +105,9 @@ Revocation uses the *IETF Token Status List*: two bits per credential copy — v
 - *Selective disclosure* by default; predicates such as #raw("age_over_18") where the format allows.
 - *Identity checks are isolated.* Only the identity service talks to the identity-verification provider; after issuing it keeps no photos, only an opaque hashed record (a subject reference and a document-number hash). Institutions match a person through the identity credential, not through the provider.
 - *No personal data in logs or public addresses.* Revocation-list addresses never encode the institution; logs record what happened, never to whom.
-- *Websites* get a separate pseudonym per site as the account key; no document value is sent and sites cannot match a person.
+- *Websites* get a separate pseudonym per site as the account key; neither the identity-document number nor its hash is sent, and sites cannot match a person.
 
-#notebox[Residual risk, stated openly: the same issuer colluding with several verifiers could still link a person. Closing this requires zero-knowledge credentials (see research directions).]
+#notebox[Residual risk, stated openly: the same issuer colluding with several verifiers could still link a person. Zero-knowledge presentation closes this; on the wallet side it follows the store release (see zero-knowledge proofs below).]
 
 = Close range: passes and age checks
 
@@ -114,36 +116,39 @@ For turnstiles and event gates Tamga uses a *pass*: registration once through a 
 #chapter()
 = From lists to a ledger
 
-A ledger adds something only when several independent parties run it. Tamga therefore starts with lists and adds a permissioned *Hyperledger Besu* network with *QBFT* consensus only once at least two independent validator operators agree in writing. Every list field maps to a contract record; the list history is replayed into the contracts and both are tested to give the same answers. Components read trust through one interface, so documents, wallets and the verification pipeline do not change. See #link("https://tamga.network/en/docs/blockchain")[what blockchain is — and isn’t].
+A ledger adds something only when several independent parties run it. Tamga therefore starts with lists and adds a permissioned *Hyperledger Besu* network with *QBFT* consensus only once at least two independent validator operators agree in writing. Every list field maps to a contract record; the list history is replayed into the contracts and both are tested to give the same answers. Components read trust through one interface, so documents, wallets and the verification pipeline do not change. See #link("https://tamga.network/en/learn/what-is-blockchain")[what blockchain is — and isn’t].
 
 Governance on the ledger follows the principles: validators are states with equal votes; new members by a 2/3 vote; each state alone registers or suspends its own institutions; recognition of foreign institutions is decided by each state.
 
-= Research directions
+= Zero-knowledge proofs and research directions
 
-These are designs under study, not part of the first release or the pilot; each will pass an independent security review before any use.
+*Zero-knowledge presentation (decided).* The wallet proves a fact such as “over 18” about an unchanged, issuer-signed mdoc with the open-source Longfellow ZK system — the system the EU age-verification work also builds on. The verifier sees only that the statement is true and which institution issued the credential; two presentations cannot be linked. Only reviewed circuits whose identifiers are published in the signed trust list are accepted. The verifier side is built; proof generation on the phone follows the store release, and where a proof is not possible the ordinary presentation continues. See #link("https://tamga.network/en/learn/zero-knowledge-proofs")[zero-knowledge proofs].
 
-- *Zero-knowledge presentation* — proving a fact such as “over 18” about an unchanged, issuer-signed mdoc with the open-source Longfellow ZK system; the verifier side is ready, proof generation on the phone follows the store release. See #link("https://tamga.network/en/docs/selective-disclosure")[selective disclosure].
-- *The value layer* — authorization between verified parties; settlement stays on regulated rails.
+*Research direction: the value layer.* Authorization between verified parties; settlement stays on regulated rails. It is not part of the first release or the pilot and will pass an independent security review before any use.
 
 #chapter()
 = Status and roadmap
 
-*Working today (first release, real cryptography):* issuance and presentation of diplomas and student cards; revocation and institution suspension; identity check and identity credential, also as mdoc; campus and event passes, single-use tickets; website sign-up and passkey sign-in; eight open-source packages. Tested on a phone.
+*Working today (first release, real cryptography):* issuance and presentation of diplomas and student cards; revocation and institution suspension; identity check and identity credential, also as mdoc; campus and event passes, single-use tickets; website sign-up with a per-site pseudonym and passkey sign-in; zero-knowledge age proofs on the verifier side; eight open-source packages. Tested on a phone.
 
-#kvtable("Phases", (("Phase B (today)", "signed trust lists + anchor log · Tamga = provisional operator"), ("Pilot", "one foundation university · issuer key at the university · lists, no ledger"), ("Phase 0", "permissioned Besu/QBFT ledger once at least 2 independent validator operators sign"), ("Phase 1", "member-state lists · close range (NFC/BLE) · Digital Credentials API"),), mono: false)
+#kvtable("Phases", (("List stage (today)", "signed trust lists + anchor log · Tamga = provisional operator"), ("Pilot", "the first issuing institution is a university · issuer key at the university · lists, no ledger"), ("Phase 0", "permissioned Besu/QBFT ledger once at least 2 independent validator operators sign"), ("Phase 1", "member-state lists · close range (NFC/BLE) · Digital Credentials API"),), mono: false)
 
-Every first-release shortcut — sample records, software keys, the issuer key held by Tamga, a single operator — is listed on the public #link("https://tamga.network/en/shortcuts")[known-shortcuts page] and closed before the pilot. The pilot’s success and stop criteria are defined in advance.
+The known limits of the first release are recorded and closed before the pilot. The pilot’s success and stop criteria are defined in advance.
+
+A separate test network, *sandbox.tamga.network*, is being prepared: its own test root and lists, sample institutions, fake people and sample credentials of every type. No wallet or verifier on the real network trusts it. See the #link("https://docs.tamga.network/guides/sandbox")[sandbox guide].
 
 = Known limits
 
 - In this phase the trust anchor rests on one operator’s signature. The public log, transparency report and audits deter misuse; they cannot make it impossible.
 - A revocation takes effect within about 90 minutes at most.
-- Issuer linkability remains until zero-knowledge credentials are adopted.
-- First release only: keys in software and the issuer key held by Tamga — both close before the pilot.
-- Until Tamga Wallet is on the App Store and Google Play, the phone’s own claim of secure hardware is not accepted; with the store release App Attest / Play Integrity become mandatory.
+- Issuer linkability remains until zero-knowledge presentation reaches the wallet.
+- The identity service could in theory compute a person’s pseudonym at a given site; key protection and audit limit this, and zero-knowledge proofs will remove it.
+- Until the wallets on the network (the first is Tamga Wallet) are in the app stores, a phone’s own claim of secure hardware is not accepted; from a wallet’s store release, App Attest / Play Integrity become mandatory.
 
-= Open source and further reading
+= Rules, open source and further reading
 
-Code is Apache-2.0 and documentation CC BY 4.0. The packages #raw("@tamga-network/*") cover trust lists, credential formats, issuing, verification and the wallet core; the integration guides are in the #link("https://tamga.network/en/docs/developers")[developer docs]. Concepts are explained from scratch in the #link("https://tamga.network/en/docs")[documentation]; the #link("https://tamga.network/en/docs/glossary")[glossary] is a quick reference and the #link("https://tamga.network/en/manifesto")[manifesto] gives the “why”.
+The network’s rules are published as the *Tamga ARF 1.0*: the main document, the Trust Framework, the *Tamga Rulebook* and the rulebooks that branch from it for each document type — Education, Identity and Event Ticket — at #link("https://arf.tamga.network")[arf.tamga.network]. See also #link("https://tamga.network/en/learn/rules-and-rulebooks")[rules and rulebooks].
 
-#notebox[This is a living document (v3.0). It changes as decisions mature; the trust model is what stays.]
+Code is Apache-2.0 and documentation CC BY 4.0. The packages #raw("@tamga-network/*") cover trust lists, credential formats, issuing, verification and the wallet core; integration guides and specifications are in the #link("https://docs.tamga.network")[developer documentation]. Concepts are explained from scratch in #link("https://tamga.network/en/learn")[Learn]; the #link("https://docs.tamga.network/glossary")[glossary] is a quick reference and the #link("https://tamga.network/en/manifesto")[manifesto] gives the “why”.
+
+#notebox[This is a living document (v1.0). It changes as decisions mature; the trust model is what stays.]

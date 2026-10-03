@@ -8,8 +8,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: "Digital Trust Infrastructure — verifiable credentials on open standards.",
     start_url: "/",
     display: "standalone",
-    background_color: "#17110F",
-    theme_color: "#17110F",
+    background_color: "#101820",
+    theme_color: "#101820",
     icons: [
       { src: "/icon-192.png", sizes: "192x192", type: "image/png" },
       { src: "/icon-512.png", sizes: "512x512", type: "image/png" },

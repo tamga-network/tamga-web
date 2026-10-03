@@ -2,24 +2,16 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
-import { useEffect, useRef, useState, useTransition } from "react";
-import { ChevronDown } from "lucide-react";
+import { useState, useTransition } from "react";
+import { Check, ChevronDown, Languages } from "lucide-react";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
+import { Flag } from "./flag";
 
-const FLAG: Record<string, string> = { en: "gb", tr: "tr", tk: "tm" };
-
-function Flag({ locale }: { locale: string }) {
-  return (
-    <span
-      className={`fi fi-${FLAG[locale]} rounded-[3px]`}
-      style={{ width: "1.35em", height: "1em" }}
-      aria-hidden="true"
-    />
-  );
-}
-
-/** Full-width, colored language dropdown for the mobile menu panel. */
+/**
+ * Telefon menüsünde dil seçimi: tek satır ("Dil · Türkçe"); dokununca diller alt alta açılır — bayrak + dilin kendi adı.
+ * Liste routing.locales'ten kurulur: yeni Türk dilleri eklendiğinde düzen değişmez.
+ */
 export function MobileLocale() {
   const locale = useLocale();
   const t = useTranslations("langSwitcher");
@@ -28,24 +20,6 @@ export function MobileLocale() {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!open) return;
-    const onDoc = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node))
-        setOpen(false);
-    };
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
-    };
-    document.addEventListener("mousedown", onDoc);
-    document.addEventListener("keydown", onKey);
-    return () => {
-      document.removeEventListener("mousedown", onDoc);
-      document.removeEventListener("keydown", onKey);
-    };
-  }, [open]);
 
   const switchTo = (next: string) => {
     setOpen(false);
@@ -60,44 +34,57 @@ export function MobileLocale() {
   };
 
   return (
-    <div ref={ref} className="relative">
+    <div className="rounded-lg border border-border">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        aria-haspopup="listbox"
         aria-expanded={open}
-        aria-label={t("label")}
-        className="flex w-full items-center gap-2.5 rounded-md border border-border px-3 py-2.5 text-sm text-foreground"
+        aria-controls="mobile-locale-list"
+        className="flex h-11 w-full items-center gap-3 px-3 text-left text-sm text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
       >
-        <Flag locale={locale} />
-        <span>{t(locale)}</span>
+        <Languages size={17} aria-hidden className="text-foreground-muted" />
+        <span className="flex-1">{t("label")}</span>
+        <span className="flex items-center gap-2 text-foreground-muted">
+          <Flag locale={locale} />
+          {t(locale)}
+        </span>
         <ChevronDown
           size={16}
           aria-hidden
-          className={`ml-auto text-foreground-muted transition-transform ${open ? "rotate-180" : ""}`}
+          className={`text-foreground-muted transition-transform duration-200 ${open ? "rotate-180" : ""}`}
         />
       </button>
-
       {open && (
         <ul
-          className="absolute inset-x-0 bottom-full z-10 mb-2 overflow-hidden rounded-md border border-border bg-background shadow-soft"
-          role="listbox"
+          id="mobile-locale-list"
+          aria-label={t("menuLabel")}
+          className="border-t border-border p-1.5"
         >
-          {routing.locales
-            .filter((l) => l !== locale)
-            .map((l) => (
-              <li key={l} role="option">
+          {routing.locales.map((l) => {
+            const active = l === locale;
+            return (
+              <li key={l}>
                 <button
                   type="button"
+                  lang={l}
                   disabled={isPending}
                   onClick={() => switchTo(l)}
-                  className="flex w-full items-center gap-2.5 px-3 py-2.5 text-left text-sm text-foreground hover:bg-surface disabled:opacity-50"
+                  aria-current={active ? "true" : undefined}
+                  className={`flex h-11 w-full items-center gap-3 rounded-md px-2.5 text-left text-sm transition-colors focus-visible:outline-2 focus-visible:outline-primary disabled:opacity-50 ${
+                    active
+                      ? "bg-surface text-foreground"
+                      : "text-foreground-muted active:bg-surface"
+                  }`}
                 >
                   <Flag locale={l} />
-                  <span>{t(l)}</span>
+                  <span className="flex-1">{t(l)}</span>
+                  {active && (
+                    <Check size={15} aria-hidden className="text-primary" />
+                  )}
                 </button>
               </li>
-            ))}
+            );
+          })}
         </ul>
       )}
     </div>

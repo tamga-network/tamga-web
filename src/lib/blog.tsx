@@ -102,7 +102,7 @@ const POSTS: Post[] = [
             </p>
             <h2>What we do instead</h2>
             <p>
-              We publish <Link href="/docs/trust-lists">signed trust lists</Link> — the model the EU
+              We publish <Link href="/learn/trust-lists">signed trust lists</Link> — the model the EU
               uses for its own trusted lists. They are versioned and hash-chained, nothing is ever
               deleted, and every revocation-list publication and schema change goes into a public,
               hourly <strong>anchor log</strong>. A list that was rolled back or rewritten is
@@ -120,7 +120,7 @@ const POSTS: Post[] = [
               operators agree in writing. Until then we say it plainly: the anchor rests on one
               operator’s signature; the public log, transparency report and audits deter misuse but
               do not make it impossible. Details in the{" "}
-              <Link href="/whitepaper">whitepaper v3.0</Link>.
+              <Link href="/whitepaper">whitepaper v1.0</Link>.
             </p>
           </>
         ),
@@ -146,7 +146,7 @@ const POSTS: Post[] = [
             </p>
             <h2>Bunun yerine ne yapıyoruz</h2>
             <p>
-              <Link href="/docs/trust-lists">İmzalı güven listeleri</Link> yayınlıyoruz — AB’nin kendi
+              <Link href="/learn/trust-lists">İmzalı güven listeleri</Link> yayınlıyoruz — AB’nin kendi
               güven listeleri için kullandığı model. Listeler sürümlü ve hash-zincirlidir, hiçbir şey
               silinmez; her iptal listesi yayını ve şema değişikliği herkese açık, saatlik bir{" "}
               <strong>çapa günlüğüne</strong> yazılır. Geri sarılmış ya da yeniden yazılmış bir listeyi
@@ -163,7 +163,7 @@ const POSTS: Post[] = [
               İzinli bir Besu/QBFT defteri, en az iki bağımsız validator operatörü yazılı kabul
               verdiğinde başlatılır. O zamana kadar açıkça söylüyoruz: çapa tek operatörün imzasına
               dayanır; herkese açık günlük, şeffaflık raporu ve denetim kötüye kullanımı caydırır ama
-              imkânsız kılmaz. Ayrıntı <Link href="/whitepaper">whitepaper v3.0</Link>’da.
+              imkânsız kılmaz. Ayrıntı <Link href="/whitepaper">whitepaper v1.0</Link>’da.
             </p>
           </>
         ),
@@ -189,7 +189,7 @@ const POSTS: Post[] = [
             </p>
             <h2>Ýerine näme edýäris</h2>
             <p>
-              <Link href="/docs/trust-lists">Gol çekilen ynam sanawlaryny</Link> çap edýäris — ÝB-niň
+              <Link href="/learn/trust-lists">Gol çekilen ynam sanawlaryny</Link> çap edýäris — ÝB-niň
               öz ynam sanawlary üçin ulanýan modeli. Sanawlar wersiýaly we heş-zynjyrly, hiç zat
               pozulmaýar; her ýatyrylyş sanawynyň çap edilmegi we shema üýtgeşmesi açyk, sagatlaýyn{" "}
               <strong>labyr žurnalyna</strong> ýazylýar. Yza aýlanan ýa-da täzeden ýazylan sanawy
@@ -206,7 +206,7 @@ const POSTS: Post[] = [
               Rugsatly Besu/QBFT kitaby azyndan iki garaşsyz validator operatory ýazmaça razylyk
               berende başladylýar. Oňa çenli aç-açan aýdýarys: labyr bir operatoryň goluna daýanýar;
               açyk žurnal, açyklyk hasabaty we barlaglar hyýanatçylygyň öňüni alýar, ýöne ony mümkin
-              däl etmeýär. Jikme-jiklik <Link href="/whitepaper">whitepaper v3.0</Link>-da.
+              däl etmeýär. Jikme-jiklik <Link href="/whitepaper">whitepaper v1.0</Link>-da.
             </p>
           </>
         ),
@@ -241,7 +241,7 @@ const POSTS: Post[] = [
             </ul>
             <h2>What is still a shortcut</h2>
             <p>
-              Every shortcut is recorded on the public <Link href="/shortcuts">known-shortcuts page</Link> and closes before the pilot: the
+              Every shortcut is recorded and closes before the pilot: the
               student records are samples, keys live in software rather than the phone’s secure chip, the
               university’s signing key is held by Tamga, the wallet provider does not accept the app’s own
               statement about its platform (every wallet counts as software-level; with the App Store and
@@ -252,7 +252,7 @@ const POSTS: Post[] = [
             <p>
               Because trust infrastructure that hides its limits is not trustworthy. The side-by-side
               with the EU architecture — same, bridged, planned — is in{" "}
-              <Link href="/docs/roles">roles and terms</Link>; the plan is in
+              <Link href="/learn/roles">roles and terms</Link>; the plan is in
               the <Link href="/whitepaper">whitepaper</Link>.
             </p>
           </>
@@ -283,7 +283,7 @@ const POSTS: Post[] = [
             </ul>
             <h2>Hâlâ kestirme olanlar</h2>
             <p>
-              Her kestirme herkese açık <Link href="/shortcuts">bilinen kısayollar</Link> sayfasında kayıtlıdır ve pilottan önce kapanır:
+              Her kestirme kayıt altındadır ve pilottan önce kapanır:
               öğrenci kayıtları örnektir, anahtarlar telefonun güvenli çipinde değil yazılımda durur,
               üniversitenin imza anahtarını Tamga tutar, cüzdan sağlayıcısı uygulamanın kendi platform
               beyanını kabul etmez (her cüzdan yazılım seviyesinde sayılır; App Store ve Google Play sürümüyle
@@ -293,7 +293,7 @@ const POSTS: Post[] = [
             <h2>Bunları neden söylüyoruz</h2>
             <p>
               Çünkü sınırlarını saklayan bir güven altyapısı güvenilir değildir. AB mimarisiyle yan yana
-              kıyas — aynı, köprü, planlı — <Link href="/docs/roles">roller ve terimler</Link>{" "}
+              kıyas — aynı, köprü, planlı — <Link href="/learn/roles">roller ve terimler</Link>{" "}
               sayfasında; plan <Link href="/whitepaper">whitepaper</Link>’da.
             </p>
           </>
@@ -324,7 +324,7 @@ const POSTS: Post[] = [
             </ul>
             <h2>Heniz gysga ýol bolanlar</h2>
             <p>
-              Her gysga ýol açyk <Link href="/shortcuts">belli gysga ýollar</Link> sahypasynda ýazylandyr we pilotdan öň ýapylýar: talyp
+              Her gysga ýol ýazga alnandyr we pilotdan öň ýapylýar: talyp
               ýazgylary nusgadyr, açarlar telefonyň howpsuz çipinde däl-de programmada durýar, uniwersitetiň gol
               açaryny Tamga saklaýar, gapjyk üpjün edijisi programmanyň öz platforma beýanyny kabul etmeýär (dükan wersiýasy bilen App Attest / Play Integrity hökmany bolar)
               we ýeke operator bar. Web giriş hasaba duran pursaty saýtlaryň arasynda şol bir hasap
@@ -334,7 +334,7 @@ const POSTS: Post[] = [
             <p>
               Sebäbi çäklerini gizleýän ynam infrastrukturasy ynamdar däl. ÝB arhitekturasy bilen
               ýanaşyk deňeşdirme — şol bir, köpri, meýilleşdirilen —{" "}
-              <Link href="/docs/roles">rollar we adalgalar</Link> sahypasynda; meýilnama{" "}
+              <Link href="/learn/roles">rollar we adalgalar</Link> sahypasynda; meýilnama{" "}
               <Link href="/whitepaper">whitepaper</Link>-da.
             </p>
           </>
@@ -383,7 +383,7 @@ const POSTS: Post[] = [
               <strong>unlinkable</strong> — two verifiers cannot tell they saw the same
               person. These primitives are on our roadmap and enter as they mature and
               pass audit. More:{" "}
-              <Link href="/docs/selective-disclosure">Selective disclosure and SD-JWT</Link>.
+              <Link href="/learn/selective-disclosure">Selective disclosure and SD-JWT</Link>.
             </p>
           </>
         ),
@@ -424,7 +424,7 @@ const POSTS: Post[] = [
               BBS+ imzalarıyla sunumlar aynı zamanda <strong>unlinkable</strong> hale
               gelir — iki doğrulayıcı aynı kişiyi gördüğünü anlayamaz. Bu primitifler yol
               haritamızda; olgunlaştıkça ve denetimden geçtikçe girer. Daha fazlası:{" "}
-              <Link href="/docs/selective-disclosure">Seçici ifşa ve SD-JWT</Link>.
+              <Link href="/learn/selective-disclosure">Seçici ifşa ve SD-JWT</Link>.
             </p>
           </>
         ),
@@ -465,7 +465,7 @@ const POSTS: Post[] = [
               BBS+ imzalary bilen hödürlemeler hem <strong>unlinkable</strong> bolýar —
               iki barlaýjy şol bir adamy görendigini bilip bilmeýär. Bu primitiwler ýol
               kartamyzda; kämilleşdigiçe we barlagdan geçdigiçe girýär. Köpräk:{" "}
-              <Link href="/docs/selective-disclosure">Saýlama açyklama we SD-JWT</Link>.
+              <Link href="/learn/selective-disclosure">Saýlap paýlaşmak we SD-JWT</Link>.
             </p>
           </>
         ),
@@ -509,7 +509,7 @@ const POSTS: Post[] = [
               The open question we are still working through is the concrete institutional
               mapping of governance bodies for each state — the subject of a dedicated
               governance document. Read the decision in{" "}
-              <Link href="/docs/how-tamga-works">Architecture</Link>.
+              <Link href="/learn/what-is-tamga-network">Architecture</Link>.
             </p>
           </>
         ),
@@ -546,7 +546,7 @@ const POSTS: Post[] = [
             <p>
               Hâlâ üzerinde çalıştığımız açık konu, her devlet için yönetişim organlarının
               somut kurumsal eşlemesidir — ayrı bir yönetişim dokümanının konusu. Kararı{" "}
-              <Link href="/docs/how-tamga-works">Mimari</Link>’ta okuyun.
+              <Link href="/learn/what-is-tamga-network">Mimari</Link>’ta okuyun.
             </p>
           </>
         ),
@@ -581,7 +581,7 @@ const POSTS: Post[] = [
               Entek üstünde işleýän açyk mesele, her döwlet üçin dolandyryş edaralarynyň
               anyk kurumsal eşlemesidir — aýratyn dolandyryş resminamasynyň mowzugy.
               Karary{" "}
-              <Link href="/docs/how-tamga-works">Arhitektura</Link>-da okaň.
+              <Link href="/learn/what-is-tamga-network">Arhitektura</Link>-da okaň.
             </p>
           </>
         ),
@@ -738,7 +738,7 @@ const POSTS: Post[] = [
               EVM addresses, kept separate from identity. The set of anchored roots and
               registered issuers is our <strong>Trusted List</strong> — the analogue of the
               EU’s List of Trusted Lists. More in{" "}
-              <Link href="/docs/did-vc">Identifiers and credentials</Link>.
+              <Link href="/learn/verifiable-credentials">Identifiers and credentials</Link>.
             </p>
           </>
         ),
@@ -777,7 +777,7 @@ const POSTS: Post[] = [
               EVM adresleridir, kimlikten ayrı tutulur. Çıpalı kökler ve kayıtlı issuer’lar
               kümesi bizim <strong>Trusted List</strong>’imizdir — AB’nin List of Trusted
               Lists muadili. Daha fazlası:{" "}
-              <Link href="/docs/did-vc">Tanımlayıcılar ve credential</Link>.
+              <Link href="/learn/verifiable-credentials">Tanımlayıcılar ve credential</Link>.
             </p>
           </>
         ),
@@ -814,7 +814,7 @@ const POSTS: Post[] = [
               ýeke-täk ýüpe düzülip bilmeýär. Zynjyr hasaplary bolsa adaty EVM salgylarydyr,
               şahsyýetden aýry saklanýar. Çyzyklanan kökler we hasaba alnan issuer-leriň
               toplumy biziň <strong>Trusted List</strong>-imizdir. Köpräk:{" "}
-              <Link href="/docs/did-vc">DID we VC</Link>.
+              <Link href="/learn/verifiable-credentials">DID we VC</Link>.
             </p>
           </>
         ),
@@ -862,7 +862,7 @@ const POSTS: Post[] = [
               eIDAS 2.0. The question is no longer “will this transformation happen” but{" "}
               <strong>“who will be a producer in it.”</strong> We choose to be a producer
               for Türkiye and the Turkic world. Start with the{" "}
-              <Link href="/docs">documentation</Link>, the{" "}
+              <Link href="/learn">documentation</Link>, the{" "}
               <Link href="/manifesto">manifesto</Link>, or the{" "}
               <Link href="/whitepaper">whitepaper</Link>.
             </p>
@@ -903,7 +903,7 @@ const POSTS: Post[] = [
               Soru artık “bu dönüşüm olacak mı” değil,{" "}
               <strong>“bu dönüşümde kim üretici olacak.”</strong> Biz Türkiye ve Türk
               dünyası için üretici olmayı seçiyoruz.{" "}
-              <Link href="/docs">Dokümanlar</Link>,{" "}
+              <Link href="/learn">Dokümanlar</Link>,{" "}
               <Link href="/manifesto">manifesto</Link> ya da{" "}
               <Link href="/whitepaper">whitepaper</Link> ile başlayın.
             </p>
@@ -944,7 +944,7 @@ const POSTS: Post[] = [
               Sowal indi “bu özgeriş boljakmy” däl,{" "}
               <strong>“bu özgerişde kim öndüriji bolar.”</strong> Biz Türkiýe we türki
               dünýäsi üçin öndüriji bolmagy saýlaýarys.{" "}
-              <Link href="/docs">Resminamalar</Link>,{" "}
+              <Link href="/learn">Resminamalar</Link>,{" "}
               <Link href="/manifesto">manifest</Link> ýa-da{" "}
               <Link href="/whitepaper">whitepaper</Link> bilen başlaň.
             </p>
@@ -972,7 +972,7 @@ const POSTS: Post[] = [
               trust are established in the digital world. The framework requires every
               member state to offer its citizens an <strong>EUDI Wallet</strong> — citizens
               carry identity, diplomas and health documents on their phone and share them{" "}
-              <Link href="/docs/selective-disclosure">selectively</Link>.
+              <Link href="/learn/selective-disclosure">selectively</Link>.
             </p>
             <p>
               W3C Verifiable Credentials and SD-JWT are no longer academic concepts but
@@ -991,7 +991,7 @@ const POSTS: Post[] = [
               Tamga Network chooses the second — compatible yet independent. We deliberately
               align with eIDAS/EUDI so that when regulation arrives, we are ready; and we
               keep the infrastructure sovereign so that data and governance stay in-country.
-              Details: <Link href="/docs/eidas-eudi">eIDAS 2.0 and the EUDI Wallet</Link>.
+              Details: <Link href="/learn/eidas">eIDAS 2.0 and the EUDI Wallet</Link>.
             </p>
           </>
         ),
@@ -1010,7 +1010,7 @@ const POSTS: Post[] = [
               kurulacağına dair fiilî bir standart ortaya koyar. Çerçeve, her üye devletin
               vatandaşına bir <strong>EUDI Wallet</strong> sunmasını öngörür — vatandaş
               kimliğini, diplomasını ve sağlık belgelerini telefonunda taşır ve bunları{" "}
-              <Link href="/docs/selective-disclosure">seçici biçimde</Link> paylaşır.
+              <Link href="/learn/selective-disclosure">seçici biçimde</Link> paylaşır.
             </p>
             <p>
               W3C Verifiable Credentials ve SD-JWT artık akademik kavramlar değil, uygulanan,
@@ -1028,7 +1028,7 @@ const POSTS: Post[] = [
               Tamga Network ikinci yolu seçiyor — uyumlu ama bağımsız. eIDAS/EUDI’ye bilinçli
               olarak hizalanıyoruz ki regülasyon geldiğinde hazır olalım; ve altyapıyı egemen
               tutuyoruz ki veri ve yönetişim yurt içinde kalsın. Ayrıntılar:{" "}
-              <Link href="/docs/eidas-eudi">eIDAS 2.0 ve EUDI Wallet</Link>.
+              <Link href="/learn/eidas">eIDAS 2.0 ve EUDI Wallet</Link>.
             </p>
           </>
         ),
@@ -1047,7 +1047,7 @@ const POSTS: Post[] = [
               guruljakdygy barada hakyky standart goýýar. Çarçuwa her agza döwletiň raýatyna
               bir <strong>EUDI Wallet</strong> hödürlemegini talap edýär — raýat şahsyýetini,
               diplomyny we saglyk resminamalaryny telefonynda göterýär we olary{" "}
-              <Link href="/docs/selective-disclosure">saýlama görnüşde</Link> paýlaşýar.
+              <Link href="/learn/selective-disclosure">saýlama görnüşde</Link> paýlaşýar.
             </p>
             <p>
               W3C Verifiable Credentials we SD-JWT indi akademiki düşünjeler däl, ulanylýan,
@@ -1065,7 +1065,7 @@ const POSTS: Post[] = [
               Tamga Network ikinji ýoly saýlaýar — laýyk ýöne garaşsyz. eIDAS/EUDI-ä bilkastdan
               gabat gelýäris, düzgünnama gelende taýýar bolar ýaly; we infrastrukturany
               özygtyýarly saklaýarys, maglumat we dolandyryş ýurt içinde galar ýaly.
-              Jikme-jiklik: <Link href="/docs/eidas-eudi">eIDAS 2.0 we EUDI Wallet</Link>.
+              Jikme-jiklik: <Link href="/learn/eidas">eIDAS 2.0 we EUDI Wallet</Link>.
             </p>
           </>
         ),
@@ -1111,7 +1111,7 @@ const POSTS: Post[] = [
               A verifier checks a credential with three free, public read queries — is the
               issuer valid, is it recognized, is it revoked — without ever contacting the
               issuer and without any personal data being on the chain. Details:{" "}
-              <Link href="/docs/how-tamga-works">Architecture</Link>.
+              <Link href="/learn/what-is-tamga-network">Architecture</Link>.
             </p>
           </>
         ),
@@ -1148,7 +1148,7 @@ const POSTS: Post[] = [
               Bir doğrulayıcı, bir credential’ı üç ücretsiz, herkese açık okuma sorgusuyla
               kontrol eder — issuer geçerli mi, tanınıyor mu, revoke mu — issuer’a hiç
               ulaşmadan ve zincirde hiçbir kişisel veri olmadan. Ayrıntılar:{" "}
-              <Link href="/docs/how-tamga-works">Mimari</Link>.
+              <Link href="/learn/what-is-tamga-network">Mimari</Link>.
             </p>
           </>
         ),
@@ -1185,7 +1185,7 @@ const POSTS: Post[] = [
               Barlaýjy credential-y üç mugt, açyk okaýyş soragy bilen barlaýar — issuer
               güýçlümi, ykrar edilýärmi, revoke edilenmi — issuer-e ýüz tutman we zynjyrda
               hiç şahsy maglumat bolman. Jikme-jiklik:{" "}
-              <Link href="/docs/how-tamga-works">Arhitektura</Link>.
+              <Link href="/learn/what-is-tamga-network">Arhitektura</Link>.
             </p>
           </>
         ),
@@ -1267,14 +1267,14 @@ const BLOG_UI: Record<Locale, BlogUi> = {
       <>
         Written before the decisions of 24 September 2026. Parts of this post describe an earlier
         design — for example a blockchain as today’s trust anchor, or W3C formats. The current
-        architecture is in the <Link href="/whitepaper">whitepaper v3.0</Link> and the{" "}
-        <Link href="/docs/how-tamga-works">documentation</Link>.
+        architecture is in the <Link href="/whitepaper">whitepaper v1.0</Link> and the{" "}
+        <Link href="/learn/what-is-tamga-network">documentation</Link>.
       </>
     ),
     footer: (
       <>
         Tamga Network — Digital Trust Infrastructure.{" "}
-        <Link href="/docs" className="text-primary link-underline">
+        <Link href="/learn" className="text-primary link-underline">
           Learn from scratch →
         </Link>
       </>
@@ -1291,14 +1291,14 @@ const BLOG_UI: Record<Locale, BlogUi> = {
       <>
         24 Eylül 2026 kararlarından önce yazıldı. Bu yazının bazı kısımları önceki bir tasarımı
         anlatır — örneğin bugünün güven çapası olarak blockchain ya da W3C biçimleri. Güncel mimari{" "}
-        <Link href="/whitepaper">whitepaper v3.0</Link>’da ve{" "}
-        <Link href="/docs/how-tamga-works">belgelerde</Link>.
+        <Link href="/whitepaper">whitepaper v1.0</Link>’da ve{" "}
+        <Link href="/learn/what-is-tamga-network">belgelerde</Link>.
       </>
     ),
     footer: (
       <>
         Tamga Network — Dijital Güven Altyapısı.{" "}
-        <Link href="/docs" className="text-primary link-underline">
+        <Link href="/learn" className="text-primary link-underline">
           Sıfırdan öğren →
         </Link>
       </>
@@ -1315,14 +1315,14 @@ const BLOG_UI: Record<Locale, BlogUi> = {
       <>
         2026-njy ýylyň 24-nji sentýabryndaky kararlardan öň ýazyldy. Bu ýazgynyň käbir bölekleri
         öňki dizaýny beýan edýär — meselem, häzirki ynam labyry hökmünde blokçeýn ýa-da W3C
-        görnüşleri. Häzirki arhitektura <Link href="/whitepaper">whitepaper v3.0</Link>-da we{" "}
-        <Link href="/docs/how-tamga-works">resminamalarda</Link>.
+        görnüşleri. Häzirki arhitektura <Link href="/whitepaper">whitepaper v1.0</Link>-da we{" "}
+        <Link href="/learn/what-is-tamga-network">resminamalarda</Link>.
       </>
     ),
     footer: (
       <>
         Tamga Network — Sanly Ynam Infrastrukturasy.{" "}
-        <Link href="/docs" className="text-primary link-underline">
+        <Link href="/learn" className="text-primary link-underline">
           Başdan öwren →
         </Link>
       </>

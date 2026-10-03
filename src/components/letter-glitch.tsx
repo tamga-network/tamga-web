@@ -21,7 +21,7 @@ type Props = {
 };
 
 export function LetterGlitch({
-  glitchColors = ["#b01e22", "#c8a24c", "#2a6f8e"],
+  glitchColors = ["#1E5A78", "#C8A24C", "#6FB3D2"],
   className = "",
   glitchSpeed = 50,
   centerVignette = false,

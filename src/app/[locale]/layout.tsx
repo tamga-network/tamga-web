@@ -3,9 +3,8 @@ import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { setRequestLocale, getTranslations } from "next-intl/server";
-import { IBM_Plex_Sans, IBM_Plex_Mono, Sora } from "next/font/google";
+import { IBM_Plex_Sans, IBM_Plex_Mono, Onest } from "next/font/google";
 import "../globals.css";
-import "flag-icons/css/flag-icons.min.css";
 import { routing } from "@/i18n/routing";
 import { ThemeProvider } from "@/components/theme-provider";
 import { THEME_COOKIE, type Theme } from "@/lib/theme";
@@ -16,22 +15,22 @@ import { pageMeta } from "@/lib/seo";
 
 const plexSans = IBM_Plex_Sans({
   variable: "--font-plex-sans",
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin", "latin-ext", "cyrillic"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
-// Display / headings — Sora (modern geometric sans, replaces the old serif).
-const sora = Sora({
-  variable: "--font-sora",
-  subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600", "700"],
+// Başlıklar — Onest (Türkçe, Türkmence, Azerbaycanca ve Kiril: Kazakça, Kırgızca).
+const onest = Onest({
+  variable: "--font-onest",
+  subsets: ["latin", "latin-ext", "cyrillic"],
+  weight: ["500", "600", "700"],
   display: "swap",
 });
 
 const plexMono = IBM_Plex_Mono({
   variable: "--font-plex-mono",
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin", "latin-ext", "cyrillic"],
   weight: ["400", "500"],
   display: "swap",
 });
@@ -73,8 +72,8 @@ export async function generateMetadata({
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#17110F" },
-    { media: "(prefers-color-scheme: light)", color: "#F4EDE2" },
+    { media: "(prefers-color-scheme: dark)", color: "#0E151B" },
+    { media: "(prefers-color-scheme: light)", color: "#F8F6F1" },
   ],
 };
 
@@ -95,7 +94,7 @@ export default async function LocaleLayout({
   // <html class> on first paint — no flash, and no inline theme <script>.
   const cookieStore = await cookies();
   const theme: Theme =
-    cookieStore.get(THEME_COOKIE)?.value === "light" ? "light" : "dark";
+    cookieStore.get(THEME_COOKIE)?.value === "dark" ? "dark" : "light";
   const t = await getTranslations({ locale, namespace: "meta" });
 
   return (
@@ -104,7 +103,7 @@ export default async function LocaleLayout({
       dir="ltr"
       suppressHydrationWarning
       data-scroll-behavior="smooth"
-      className={`${theme} ${plexSans.variable} ${sora.variable} ${plexMono.variable} h-full antialiased`}
+      className={`${theme} ${plexSans.variable} ${onest.variable} ${plexMono.variable} h-full antialiased`}
       style={{ colorScheme: theme }}
     >
       <body className="flex min-h-full flex-col">

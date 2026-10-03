@@ -1,7 +1,7 @@
 import type { Locale } from "@/i18n/routing";
 
 /*
- * Yol haritası — aşamalar, tarihsiz (kamuya açık depo: takvim, iş planı yok). Kaynak: whitepaper v3.0 "Durum ve yol
+ * Yol haritası — aşamalar, tarihsiz (kamuya açık depo: takvim, iş planı yok). Kaynak: whitepaper v1.0 "Durum ve yol
  * haritası" (Faz B / Pilot / Faz 0 / Faz 1), tamga-network STATUS 42. tur, backlog Z1–Z5, DECISIONS D-BC-6.
  * Kart simgeleri sayfada lucide adlarıyla eşlenir (ICONS).
  */
@@ -56,7 +56,7 @@ const en: RoadmapContent = {
   },
   eyebrow: "Roadmap",
   title: "From signed lists to a shared ledger",
-  lead: "Stages, not dates. Each stage closes the shortcuts of the one before, and what is still a shortcut is written down openly.",
+  lead: "Stages, not dates. Each stage completes and strengthens the one before.",
   phaseLabel: "Phase",
   labels: {
     done: "Live",
@@ -97,9 +97,19 @@ const en: RoadmapContent = {
           desc: "issuing, revocation and statistics",
         },
         {
+          icon: "list",
+          title: "Rules 1.0",
+          desc: "Tamga ARF 1.0, the Tamga Rulebook and the credential-type rulebooks; docs in two languages",
+        },
+        {
+          icon: "globe",
+          title: "Federation",
+          desc: "reading external trust lists (ETSI TS 119 602)",
+        },
+        {
           icon: "package",
           title: "Open-source packages",
-          desc: "@tamga-network on npm, pre-release 0.1.0",
+          desc: "@tamga-network on npm, pre-release (0.x)",
         },
         {
           icon: "user",
@@ -116,8 +126,8 @@ const en: RoadmapContent = {
       cards: [
         {
           icon: "smartphone",
-          title: "Store app",
-          desc: "Tamga Wallet on the App Store and Google Play",
+          title: "Wallets in the stores",
+          desc: "wallets on the network in the app stores (the first: Tamga Wallet)",
         },
         {
           icon: "cpu",
@@ -224,7 +234,7 @@ const tr: RoadmapContent = {
   },
   eyebrow: "Yol haritası",
   title: "İmzalı listelerden ortak deftere",
-  lead: "Tarih değil, aşama. Her aşama bir öncekinin kestirme yollarını kapatır; hâlâ kestirme olan açıkça yazılır.",
+  lead: "Tarih değil, aşama. Her aşama bir öncekini tamamlar ve güçlendirir.",
   phaseLabel: "Aşama",
   labels: {
     done: "Yayında",
@@ -265,9 +275,19 @@ const tr: RoadmapContent = {
           desc: "belge verme, iptal ve istatistik",
         },
         {
+          icon: "list",
+          title: "Kurallar 1.0",
+          desc: "Tamga ARF 1.0, Tamga Rulebook ve belge türü rulebook'ları; belgeler iki dilde",
+        },
+        {
+          icon: "globe",
+          title: "Federasyon",
+          desc: "dış güven listelerini okuma (ETSI TS 119 602)",
+        },
+        {
           icon: "package",
           title: "Açık kaynak paketler",
-          desc: "npm'de @tamga-network, ön sürüm 0.1.0",
+          desc: "npm'de @tamga-network, ön sürüm (0.x)",
         },
         {
           icon: "user",
@@ -284,8 +304,8 @@ const tr: RoadmapContent = {
       cards: [
         {
           icon: "smartphone",
-          title: "Mağaza uygulaması",
-          desc: "Tamga Wallet App Store ve Google Play'de",
+          title: "Mağazadaki cüzdanlar",
+          desc: "ağdaki cüzdanlar uygulama mağazalarında (ilki Tamga Wallet)",
         },
         {
           icon: "cpu",
@@ -392,7 +412,7 @@ const tk: RoadmapContent = {
   },
   eyebrow: "Ýol kartasy",
   title: "Gol çekilen sanawlardan umumy kitaba",
-  lead: "Sene däl, tapgyr. Her tapgyr öňküsiniň gysga ýollaryny ýapýar; heniz gysga ýol bolan zat açyk ýazylýar.",
+  lead: "Sene däl, tapgyr. Her tapgyr öňküsini tamamlaýar we berkidýär.",
   phaseLabel: "Tapgyr",
   labels: {
     done: "Işleýär",
@@ -433,9 +453,19 @@ const tk: RoadmapContent = {
           desc: "resminama bermek, ýatyrmak we statistika",
         },
         {
+          icon: "list",
+          title: "Düzgünler 1.0",
+          desc: "Tamga ARF 1.0, Tamga Rulebook we resminama görnüşleriniň rulebook-lary; resminamalar iki dilde",
+        },
+        {
+          icon: "globe",
+          title: "Federasiýa",
+          desc: "daşky ynam sanawlaryny okamak (ETSI TS 119 602)",
+        },
+        {
           icon: "package",
           title: "Açyk çeşmeli paketler",
-          desc: "npm-de @tamga-network, deslapky wersiýa 0.1.0",
+          desc: "npm-de @tamga-network, deslapky wersiýa (0.x)",
         },
         {
           icon: "user",
@@ -452,8 +482,8 @@ const tk: RoadmapContent = {
       cards: [
         {
           icon: "smartphone",
-          title: "Dükan programmasy",
-          desc: "Tamga Wallet App Store we Google Play-de",
+          title: "Dükandaky gapjyklar",
+          desc: "tordaky gapjyklar programma dükanlarynda (ilkinjisi Tamga Wallet)",
         },
         {
           icon: "cpu",

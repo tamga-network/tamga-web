@@ -36,7 +36,7 @@ export default async function WhitepaperPage({
               Tamga Network
             </p>
             <p className="mono-label" lang="en">
-              Whitepaper · v1.0 · {new Date().getFullYear()}
+              Whitepaper · v1.0 · 2026-10-03
             </p>
           </div>
         </div>

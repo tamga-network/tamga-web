@@ -13,11 +13,16 @@ export type Subdomain = {
   /** Kullanılan standart ya da biçim (tabloda, varsa) */
   std?: string;
   group: "learn" | "trust" | "services";
+  /** Kimin için (ağ adresleri sayfası) */
+  serves: L;
+  /** Ağın değil, Tamga Wallet'ın adresi (cüzdan deposuna taşınacak) */
+  wallet?: true;
 };
 
 export const SUBDOMAINS: Subdomain[] = [
   {
     host: "docs.tamga.network",
+    serves: { en: "Developers", tr: "Geliştiriciler", tk: "Işläp düzüjiler" },
     url: "https://docs.tamga.network",
     group: "learn",
     name: {
@@ -26,25 +31,27 @@ export const SUBDOMAINS: Subdomain[] = [
       tk: "Işläp düzüji resminamalary",
     },
     desc: {
-      en: "specifications, decisions, packages and API references",
-      tr: "spesifikasyonlar, kararlar, paketler ve API başvuruları",
-      tk: "spesifikasiýalar, kararlar, paketler we API salgylanmalary",
+      en: "guides, specifications, decisions, packages and API references",
+      tr: "rehberler, şartnameler, kararlar, paketler ve API başvuruları",
+      tk: "gollanmalar, spesifikasiýalar, kararlar, paketler we API salgylanmalary",
     },
   },
   {
     host: "arf.tamga.network",
+    serves: { en: "States, institutions, auditors", tr: "Devletler, kurumlar, denetçiler", tk: "Döwletler, guramalar, auditorlar" },
     url: "https://arf.tamga.network",
     group: "learn",
     name: { en: "Tamga ARF", tr: "Tamga ARF", tk: "Tamga ARF" },
     desc: {
-      en: "architecture and reference framework, trust framework and rulebooks",
-      tr: "mimari ve referans çerçevesi, güven çerçevesi ve kural kitapları",
-      tk: "arhitektura we salgylanma çarçuwasy, ynam çarçuwasy we düzgünnamalar",
+      en: "architecture and reference framework, Trust Framework, the Tamga Rulebook and the credential-type rulebooks",
+      tr: "mimari ve referans çerçevesi, Trust Framework, Tamga Rulebook ve belge türü rulebook'ları",
+      tk: "arhitektura we salgylanma çarçuwasy, Trust Framework, Tamga Rulebook we resminama görnüşleriniň rulebook-lary",
     },
   },
   {
     host: "trust.tamga.network",
-    url: "https://trust.tamga.network/lotl.jws",
+    serves: { en: "Wallets and verifiers", tr: "Cüzdanlar ve doğrulayıcılar", tk: "Gapjyklar we barlaýjylar" },
+    url: "https://trust.tamga.network/",
     group: "trust",
     std: "ETSI TS 119 612",
     name: { en: "Trust lists", tr: "Güven listeleri", tk: "Ynam sanawlary" },
@@ -56,6 +63,7 @@ export const SUBDOMAINS: Subdomain[] = [
   },
   {
     host: "schemas.tamga.network",
+    serves: { en: "Issuers and verifiers", tr: "Belge verenler ve doğrulayıcılar", tk: "Resminama berijiler we barlaýjylar" },
     url: "https://schemas.tamga.network/v1/catalogue.json",
     group: "trust",
     std: "SD-JWT VC Type Metadata",
@@ -72,6 +80,7 @@ export const SUBDOMAINS: Subdomain[] = [
   },
   {
     host: "status.tamga.network",
+    serves: { en: "Verifiers and wallets", tr: "Doğrulayıcılar ve cüzdanlar", tk: "Barlaýjylar we gapjyklar" },
     url: "https://status.tamga.network",
     group: "trust",
     std: "Token Status List",
@@ -88,6 +97,7 @@ export const SUBDOMAINS: Subdomain[] = [
   },
   {
     host: "issuer.tamga.network",
+    serves: { en: "Institutions", tr: "Kurumlar", tk: "Guramalar" },
     url: "https://issuer.tamga.network",
     group: "services",
     std: "OpenID4VCI",
@@ -104,6 +114,7 @@ export const SUBDOMAINS: Subdomain[] = [
   },
   {
     host: "console.tamga.network",
+    serves: { en: "Institution staff", tr: "Kurum personeli", tk: "Gurama işgärleri" },
     url: "https://console.tamga.network",
     group: "services",
     name: {
@@ -119,6 +130,7 @@ export const SUBDOMAINS: Subdomain[] = [
   },
   {
     host: "verify.tamga.network",
+    serves: { en: "Websites and verifiers", tr: "Web siteleri ve doğrulayıcılar", tk: "Web saýtlar we barlaýjylar" },
     url: "https://verify.tamga.network",
     group: "services",
     std: "OpenID4VP",
@@ -131,6 +143,7 @@ export const SUBDOMAINS: Subdomain[] = [
   },
   {
     host: "id.tamga.network",
+    serves: { en: "People getting an identity credential", tr: "Kimlik belgesi alan kişiler", tk: "Şahsyýet resminamasyny alýan adamlar" },
     url: "https://id.tamga.network",
     group: "services",
     name: {
@@ -146,6 +159,8 @@ export const SUBDOMAINS: Subdomain[] = [
   },
   {
     host: "wallet.tamga.network",
+    serves: { en: "Tamga Wallet apps", tr: "Tamga Wallet uygulamaları", tk: "Tamga Wallet programmalary" },
+    wallet: true,
     url: "https://wallet.tamga.network",
     group: "services",
     name: {

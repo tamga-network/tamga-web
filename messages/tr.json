@@ -1,9 +1,9 @@
 {
   "meta": {
-    "title": "Tamga Network — Dijital Güven Altyapısı",
-    "description": "Tamga Network, bireylerin, kurumların ve dijital varlıkların güvenilir biçimde tanımlanıp doğrulanabilir ilişkiler kurabildiği bir Dijital Güven Altyapısıdır. Türkiye ve Türk dünyası için açık standartlara uyumlu, egemen bir altyapı.",
-    "ogDescription": "Kadim mührün çağdaş karşılığı: Türkiye ve Türk dünyası için açık standartlara uyumlu, egemen bir dijital güven altyapısı.",
-    "tagline": "DİJİTAL GÜVEN ALTYAPISI"
+    "title": "Tamga Network — Türk dünyası için ortak güven ağı",
+    "description": "Tamga Network, Türk dünyası için ortak güven ağı: kurumların verdiği dijital belgeler sınır tanımadan, saniyeler içinde ve kişinin mahremiyeti korunarak doğrulanır. Açık kurallar, imzalı listeler, AB uyumlu.",
+    "ogDescription": "Kadim mührün çağdaş karşılığı: Türk dünyası için açık, AB uyumlu bir güven ağı.",
+    "tagline": "ORTAK GÜVEN AĞI"
   },
   "nav": {
     "manifesto": "Manifesto",
@@ -15,8 +15,8 @@
     "ecosystem": "Ekosistem",
     "project": "Proje",
     "roadmap": "Yol haritası",
-    "changelog": "Changelog",
-    "joinIssuer": "Kurum olarak katıl",
+    "changelog": "Sürüm notları",
+    "joinNetwork": "Ağa katıl",
     "allAddresses": "Tüm adresler",
     "menu": "Menüyü aç"
   },
@@ -29,8 +29,8 @@
     "contents": "İçindekiler"
   },
   "footer": {
-    "tagline": "AB uyumlu Dijital Güven Altyapısı. Kadim mührün çağdaş karşılığını Türkiye ve Türk dünyası için inşa ediyoruz.",
-    "slogan": "Building Trust Infrastructure for the Digital World.",
+    "tagline": "Türk dünyası için açık, AB uyumlu güven ağı.",
+    "slogan": "Türk dünyası için ortak güven ağı.",
     "project": "Proje",
     "resources": "Kaynaklar",
     "standards": "Standartlar",
@@ -58,27 +58,35 @@
     "npm": "npm paketleri",
     "apiRef": "API",
     "roadmap": "Yol haritası",
-    "changelog": "Changelog",
-    "issuers": "Kurum olarak katıl",
+    "changelog": "Sürüm notları",
+    "join": "Ağa katıl",
     "developerHub": "Geliştiriciler",
     "sectors": "Sektörler",
     "education": "Eğitim",
     "health": "Sağlık",
     "payments": "Ödeme",
     "logistics": "Lojistik",
-    "brand": "Marka"
+    "brand": "Marka",
+    "partners": "Partnerler",
+    "scenarios": "Senaryolar",
+    "addresses": "Ağ adresleri",
+    "events": "Etkinlikler",
+    "docsLink": "Belgeler",
+    "soon": "Yakında",
+    "social": "Sosyal medya"
   },
   "notFound": {
     "code": "404",
     "title": "Bu mühür bir yere bağlanmıyor",
-    "body": "Aradığınız sayfa bulunamadı. Ana sayfaya dönebilir ya da dokümanlara göz atabilirsiniz.",
+    "body": "Aradığınız sayfa bulunamadı. Ana sayfaya dönebilir ya da Öğren bölümünden başlayabilirsiniz.",
     "home": "Ana sayfa",
-    "docs": "Dokümanlar"
+    "docs": "Öğren"
   },
   "langSwitcher": {
     "label": "Dil",
     "tr": "Türkçe",
     "en": "English",
-    "tk": "Türkmençe"
+    "tk": "Türkmençe",
+    "menuLabel": "Dil seçin"
   }
 }

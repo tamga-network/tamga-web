@@ -20,7 +20,7 @@ const en: ManifestoContent = {
     description:
       "The Tamga Network Manifesto — the modern counterpart of the ancient seal. A call to turn digital trust into a shared, sovereign and interoperable infrastructure.",
   },
-  mastheadSub: "Manifesto · v1.0",
+  mastheadSub: "Manifesto · v1.0 · 2026-10-03",
   eyebrow: "Manifesto",
   title: "We are building the modern counterpart of the ancient seal",
   lead: (
@@ -150,7 +150,7 @@ const tr: ManifestoContent = {
     description:
       "Tamga Network Manifestosu — kadim mührün çağdaş karşılığı. Dijital güveni ortak, egemen ve birlikte çalışabilir bir altyapıya dönüştürme çağrısı.",
   },
-  mastheadSub: "Manifesto · v1.0",
+  mastheadSub: "Manifesto · v1.0 · 2026-10-03",
   eyebrow: "Manifesto",
   title: "Kadim mührün çağdaş karşılığını inşa ediyoruz",
   lead: (
@@ -213,7 +213,7 @@ const tr: ManifestoContent = {
       title: "Açık standartlar, üretici bağımsızlığı",
       body: (
         <>
-          SD-JWT VC, ISO mdoc, OpenID4VC, X.509 ve seçici açıklama — EUDI profilleri. Belirli bir
+          SD-JWT VC, ISO mdoc, OpenID4VC, X.509 ve seçici paylaşım — EUDI profilleri. Belirli bir
           şirketin ürününe değil, dünyanın üzerinde uzlaştığı açık standartlara
           bağlıyız. Kilitlenme yok; birlikte çalışabilirlik esas.
         </>
@@ -275,7 +275,7 @@ const tk: ManifestoContent = {
     description:
       "Tamga Network Manifesti — gadymy möhüriň häzirki zaman garşylygy. Sanly ynamy umumy, özygtyýarly we bilelikde işleýän infrastruktura öwürmäge çagyryş.",
   },
-  mastheadSub: "Manifest · v1.0",
+  mastheadSub: "Manifest · v1.0 · 2026-10-03",
   eyebrow: "Manifest",
   title: "Gadymy möhüriň häzirki zaman garşylygyny gurýarys",
   lead: (
@@ -338,7 +338,7 @@ const tk: ManifestoContent = {
       title: "Açyk standartlar, öndürijiden garaşsyzlyk",
       body: (
         <>
-          SD-JWT VC, ISO mdoc, OpenID4VC, X.509 we saýlama açyklama — EUDI profilleri. Belli bir
+          SD-JWT VC, ISO mdoc, OpenID4VC, X.509 we saýlap paýlaşmak — EUDI profilleri. Belli bir
           kompaniýanyň önümine däl, dünýäniň ylalaşan açyk standartlaryna
           ygrarlydyrys. Baglanyşyk ýok; bilelikde işlemek esasdyr.
         </>

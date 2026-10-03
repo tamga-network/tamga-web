@@ -1,9 +1,9 @@
 {
   "meta": {
-    "title": "Tamga Network — Digital Trust Infrastructure",
-    "description": "Tamga Network is a Digital Trust Infrastructure where individuals, organizations and digital assets can be reliably identified and build verifiable relationships. A sovereign, open-standards infrastructure for Türkiye and the Turkic world.",
-    "ogDescription": "The modern counterpart of the ancient seal: a sovereign, open-standards digital trust infrastructure for Türkiye and the Turkic world.",
-    "tagline": "DIGITAL TRUST INFRASTRUCTURE"
+    "title": "Tamga Network — A shared trust network for the Turkic world",
+    "description": "Tamga Network is a shared trust network for the Turkic world: digital credentials issued by institutions are verified across borders in seconds, with the person's privacy protected. Open rules, signed lists, EU-compatible.",
+    "ogDescription": "The modern counterpart of the ancient seal: an open, EU-compatible trust network for the Turkic world.",
+    "tagline": "SHARED TRUST NETWORK"
   },
   "nav": {
     "manifesto": "Manifesto",
@@ -15,8 +15,8 @@
     "ecosystem": "Ecosystem",
     "project": "Project",
     "roadmap": "Roadmap",
-    "changelog": "Changelog",
-    "joinIssuer": "Become an issuer",
+    "changelog": "Release notes",
+    "joinNetwork": "Join the network",
     "allAddresses": "All addresses",
     "menu": "Open menu"
   },
@@ -29,8 +29,8 @@
     "contents": "Contents"
   },
   "footer": {
-    "tagline": "EU-compatible Digital Trust Infrastructure. We are building the modern counterpart of the ancient seal for Türkiye and the Turkic world.",
-    "slogan": "Building Trust Infrastructure for the Digital World.",
+    "tagline": "An open, EU-compatible trust network for the Turkic world.",
+    "slogan": "A shared trust network for the Turkic world.",
     "project": "Project",
     "resources": "Resources",
     "standards": "Standards",
@@ -58,27 +58,35 @@
     "npm": "npm packages",
     "apiRef": "API",
     "roadmap": "Roadmap",
-    "changelog": "Changelog",
-    "issuers": "Become an issuer",
+    "changelog": "Release notes",
+    "join": "Join the network",
     "developerHub": "Developers",
     "sectors": "Sectors",
     "education": "Education",
     "health": "Health",
     "payments": "Payments",
     "logistics": "Logistics",
-    "brand": "Brand"
+    "brand": "Brand",
+    "partners": "Partners",
+    "scenarios": "Scenarios",
+    "addresses": "Network addresses",
+    "events": "Events",
+    "docsLink": "Documentation",
+    "soon": "Soon",
+    "social": "Social media"
   },
   "notFound": {
     "code": "404",
     "title": "This seal leads nowhere",
-    "body": "The page you are looking for could not be found. You can return home or browse the documentation.",
+    "body": "The page you are looking for could not be found. You can return home or start with Learn.",
     "home": "Home",
-    "docs": "Docs"
+    "docs": "Learn"
   },
   "langSwitcher": {
     "label": "Language",
     "tr": "Türkçe",
     "en": "English",
-    "tk": "Türkmençe"
+    "tk": "Türkmençe",
+    "menuLabel": "Choose language"
   }
 }
