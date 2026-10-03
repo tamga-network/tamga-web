@@ -157,13 +157,21 @@ function PartnersBand({ c }: { c: HomeContent }) {
           </h2>
         </div>
         {PARTNERS.length ? (
-          <ul className="m-0 grid w-full list-none grid-cols-3 items-center gap-x-5 gap-y-5 p-0 md:flex md:w-auto md:flex-wrap md:gap-x-10">
+          <ul className="m-0 grid w-full list-none grid-cols-2 items-center gap-x-5 sm:grid-cols-4 gap-y-5 p-0 md:flex md:w-auto md:flex-wrap md:gap-x-10">
             {PARTNERS.slice(0, 8).map((p) => (
               <li key={p.name} className="flex h-12 min-w-0 items-center justify-center md:justify-start">
                 <a href={p.url ?? "/partners"} target={p.url ? "_blank" : undefined} rel={p.url ? "noopener noreferrer" : undefined} title={p.name} className="flex h-full min-w-0 max-w-full items-center rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
                   {p.logo ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={p.logo} alt={p.name} className="max-h-10 w-auto max-w-full object-contain opacity-70 md:max-h-11 md:max-w-40 grayscale transition hover:opacity-100 hover:grayscale-0 dark:invert" />
+                    p.withName ? (
+                      <span className="flex items-center gap-2 text-foreground-muted opacity-80 grayscale transition hover:opacity-100 hover:grayscale-0">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={p.logo} alt="" className="h-8 w-auto dark:invert" />
+                        <span className="font-semibold tracking-[-0.01em] whitespace-nowrap">{p.name}</span>
+                      </span>
+                    ) : (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={p.logo} alt={p.name} className="max-h-10 w-auto max-w-full object-contain opacity-70 md:max-h-11 md:max-w-40 grayscale transition hover:opacity-100 hover:grayscale-0 dark:invert" />
+                    )
                   ) : (
                     <span className="font-serif font-semibold text-foreground-muted">{p.name}</span>
                   )}

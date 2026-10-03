@@ -210,7 +210,13 @@ export default async function PartnersPage({
                   {partnersIn(g.key as PartnerGroup).map((p) => (
                     <li key={p.name} className="group relative flex min-h-24 items-center justify-center rounded-xl border border-border bg-background-elevated px-4 py-5">
                       {p.url ? <a href={p.url} target="_blank" rel="noopener noreferrer" aria-label={p.name} className="absolute inset-0 rounded-xl focus-visible:outline-2 focus-visible:outline-primary" /> : null}
-                      {p.logo ? (
+                      {p.logo && p.withName ? (
+                        <span className="flex items-center gap-2.5 opacity-80 grayscale transition group-hover:opacity-100 group-hover:grayscale-0">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src={p.logo} alt="" className="h-10 w-auto dark:invert" />
+                          <span className="text-lg font-semibold tracking-[-0.01em]">{p.name}</span>
+                        </span>
+                      ) : p.logo ? (
                         // eslint-disable-next-line @next/next/no-img-element
                         <img src={p.logo} alt={p.name} className="max-h-12 max-w-full w-auto opacity-80 grayscale transition group-hover:opacity-100 group-hover:grayscale-0 dark:invert" />
                       ) : (
