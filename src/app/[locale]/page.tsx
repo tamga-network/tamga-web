@@ -157,13 +157,13 @@ function PartnersBand({ c }: { c: HomeContent }) {
           </h2>
         </div>
         {PARTNERS.length ? (
-          <ul className="m-0 flex list-none flex-wrap items-center gap-x-10 gap-y-5 p-0">
+          <ul className="m-0 grid w-full list-none grid-cols-3 items-center gap-x-5 gap-y-5 p-0 md:flex md:w-auto md:flex-wrap md:gap-x-10">
             {PARTNERS.slice(0, 8).map((p) => (
-              <li key={p.name} className="flex h-12 items-center">
-                <a href={p.url ?? "/partners"} target={p.url ? "_blank" : undefined} rel={p.url ? "noopener noreferrer" : undefined} title={p.name} className="flex items-center rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
+              <li key={p.name} className="flex h-12 min-w-0 items-center justify-center md:justify-start">
+                <a href={p.url ?? "/partners"} target={p.url ? "_blank" : undefined} rel={p.url ? "noopener noreferrer" : undefined} title={p.name} className="flex h-full min-w-0 max-w-full items-center rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
                   {p.logo ? (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img src={p.logo} alt={p.name} className="max-h-11 max-w-40 w-auto opacity-70 grayscale transition hover:opacity-100 hover:grayscale-0 dark:invert" />
+                    <img src={p.logo} alt={p.name} className="max-h-10 w-auto max-w-full object-contain opacity-70 md:max-h-11 md:max-w-40 grayscale transition hover:opacity-100 hover:grayscale-0 dark:invert" />
                   ) : (
                     <span className="font-serif font-semibold text-foreground-muted">{p.name}</span>
                   )}
@@ -214,7 +214,7 @@ function StandardsBand({ c }: { c: HomeContent }) {
             {c.standards.title}
           </h2>
         </div>
-        <ul className="m-0 grid list-none grid-cols-2 gap-x-8 gap-y-5 p-0 sm:grid-cols-3 xl:grid-cols-6">
+        <ul className="m-0 grid list-none grid-cols-2 gap-x-8 gap-y-5 p-0 sm:grid-cols-3">
           {STANDARDS.map((x) => (
             <li key={x.body} className="grid gap-1">
               <span className="font-semibold tracking-[-0.01em] text-foreground-muted">{x.body}</span>
