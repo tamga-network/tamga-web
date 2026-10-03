@@ -39,6 +39,7 @@ export type HomeContent = {
     listNote: string;
   };
   partners: { eyebrow: string; title: string; empty: string; join: string; all: string };
+  standards: { eyebrow: string; title: string };
   why: { eyebrow: string; title: string; lead: string; problems: Item[]; purposeTitle: string; purpose: string };
   philosophy: { eyebrow: string; title: string; items: Item[] };
   how: { eyebrow: string; title: string; lead: string; flow: FlowLabels; steps: Item[] };
@@ -90,11 +91,15 @@ const tr: HomeContent = {
     listNote: "Her devlet kendi listesini kendisi yayınlar. Bugün Türkiye listesini Tamga, devlet adına geçici olarak işletir.",
   },
   partners: {
-    eyebrow: "Ağda yer alanlar",
-    title: "Ağa katılan kurumlar",
+    eyebrow: "Partnerler",
+    title: "Birlikte çalıştığımız kurumlar",
     empty: "İlk partnerlerimizi yakında duyuracağız.",
     join: "Ağa katıl",
     all: "Partnerler",
+  },
+  standards: {
+    eyebrow: "Açık standartlar",
+    title: "Dayandığımız standartlar",
   },
   why: {
     eyebrow: "Neden Tamga Network?",
@@ -359,11 +364,15 @@ const en: HomeContent = {
     listNote: "Every state publishes its own list. Today Tamga runs the Türkiye list provisionally, on behalf of the state.",
   },
   partners: {
-    eyebrow: "On the network",
-    title: "Institutions on the network",
+    eyebrow: "Partners",
+    title: "Organisations we work with",
     empty: "We will announce our first partners soon.",
     join: "Join the network",
     all: "Partners",
+  },
+  standards: {
+    eyebrow: "Open standards",
+    title: "The standards we build on",
   },
   why: {
     eyebrow: "Why Tamga Network?",
@@ -628,11 +637,15 @@ const tk: HomeContent = {
     listNote: "Her döwlet öz sanawyny özi çap edýär. Häzir Türkiýäniň sanawyny Tamga döwletiň adyndan wagtlaýyn işledýär.",
   },
   partners: {
-    eyebrow: "Torda barlar",
-    title: "Tora goşulan guramalar",
+    eyebrow: "Hyzmatdaşlar",
+    title: "Bilelikde işleýän guramalarymyz",
     empty: "Ilkinji hyzmatdaşlarymyzy ýakyn wagtda yglan ederis.",
     join: "Tora goşul",
     all: "Hyzmatdaşlar",
+  },
+  standards: {
+    eyebrow: "Açyk standartlar",
+    title: "Esaslanýan standartlarymyz",
   },
   why: {
     eyebrow: "Näme üçin Tamga Network?",

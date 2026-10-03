@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
-import { ArrowRight, Building2, Code, Wallet } from "lucide-react";
+import { ArrowRight, Building2, Code, Sprout, Wallet } from "lucide-react";
 import { PageHeader } from "@/components/ui";
 import { Link } from "@/i18n/navigation";
 import { pageMeta } from "@/lib/seo";
@@ -61,6 +61,12 @@ const C: Record<
         title: "Technology and implementation partners",
         desc: "Organisations that build on the open packages and help institutions join.",
       },
+      {
+        key: "ecosystem",
+        icon: Sprout,
+        title: "Ecosystem",
+        desc: "Technology centres, associations and communities that support the network.",
+      },
     ],
     ctaTitle: "Would you like to take part?",
     ctaText:
@@ -93,6 +99,12 @@ const C: Record<
         title: "Teknoloji ve uygulama ortakları",
         desc: "Açık paketler üzerine çözüm geliştiren ve kurumların katılımına yardım eden kuruluşlar.",
       },
+      {
+        key: "ecosystem",
+        icon: Sprout,
+        title: "Ekosistem",
+        desc: "Ağı destekleyen teknoloji merkezleri, dernekler ve topluluklar.",
+      },
     ],
     ctaTitle: "Siz de katılmak ister misiniz?",
     ctaText:
@@ -124,6 +136,12 @@ const C: Record<
         icon: Code,
         title: "Tehnologiýa we durmuşa geçiriş hyzmatdaşlary",
         desc: "Açyk paketleriň üstünde çözgüt döredýän we guramalaryň goşulmagyna kömek edýän edaralar.",
+      },
+      {
+        key: "ecosystem",
+        icon: Sprout,
+        title: "Ekoulgam",
+        desc: "Tory goldaýan tehnologiýa merkezleri, birleşikler we jemgyýetler.",
       },
     ],
     ctaTitle: "Siz hem goşulmak isleýärsiňizmi?",

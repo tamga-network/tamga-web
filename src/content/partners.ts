@@ -5,7 +5,7 @@
  */
 import type { Locale } from "@/i18n/routing";
 
-export type PartnerGroup = "institutions" | "wallets" | "technology";
+export type PartnerGroup = "institutions" | "wallets" | "technology" | "ecosystem";
 
 export type Partner = {
   name: string;
@@ -17,6 +17,10 @@ export type Partner = {
   note?: Partial<Record<Locale, string>>;
 };
 
-export const PARTNERS: Partner[] = [];
+export const PARTNERS: Partner[] = [
+  { name: "İstanbul Bilgi Üniversitesi", group: "institutions", url: "https://www.bilgi.edu.tr" },
+  { name: "SparkUp Tekmer", group: "ecosystem" },
+  { name: "Teknokratlar Derneği", group: "ecosystem" },
+];
 
 export const partnersIn = (group: PartnerGroup) => PARTNERS.filter((p) => p.group === group);

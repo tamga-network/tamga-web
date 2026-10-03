@@ -47,6 +47,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     <>
       <Hero c={c} locale={locale} />
       <PartnersBand c={c} />
+      <StandardsBand c={c} />
       <Why c={c} />
       <Philosophy c={c} />
       <How c={c} locale={locale} />
@@ -181,6 +182,44 @@ function PartnersBand({ c }: { c: HomeContent }) {
             </div>
           </div>
         )}
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ standards */
+
+/**
+ * Dayandığımız standartlar: kuruluş adı + kullandığımız şartname. Logo kullanılmaz (kuruluşların logoları onay ya da üyelik
+ * izlenimi verir; kurumlarla bir ilişki yoktur). Yalnız gerçekten uygulanan standartlar.
+ */
+const STANDARDS: { body: string; specs: string }[] = [
+  { body: "OpenID Foundation", specs: "OpenID4VCI · OpenID4VP · HAIP" },
+  { body: "IETF", specs: "SD-JWT VC · Token Status List" },
+  { body: "ISO/IEC", specs: "18013-5 mdoc" },
+  { body: "ETSI", specs: "Trust lists · TS 119 612" },
+  { body: "W3C", specs: "WebAuthn · passkeys" },
+  { body: "eIDAS 2.0", specs: "EUDI ARF" },
+];
+
+function StandardsBand({ c }: { c: HomeContent }) {
+  return (
+    <section aria-labelledby="home-standards" className="border-b border-border">
+      <div className="shell grid gap-6 py-9 lg:grid-cols-[minmax(0,3fr)_minmax(0,9fr)] lg:items-center">
+        <div className="grid gap-1.5">
+          <span className="font-mono text-xs uppercase tracking-[0.14em] text-foreground-subtle">{c.standards.eyebrow}</span>
+          <h2 id="home-standards" className="text-lg font-semibold tracking-[-0.01em]">
+            {c.standards.title}
+          </h2>
+        </div>
+        <ul className="m-0 grid list-none grid-cols-2 gap-x-8 gap-y-5 p-0 sm:grid-cols-3 xl:grid-cols-6">
+          {STANDARDS.map((x) => (
+            <li key={x.body} className="grid gap-1">
+              <span className="font-semibold tracking-[-0.01em] text-foreground-muted">{x.body}</span>
+              <span className="font-mono text-[11px] leading-snug text-foreground-subtle">{x.specs}</span>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
