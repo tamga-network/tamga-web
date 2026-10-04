@@ -8,6 +8,7 @@ import {
   Code,
   FileBadge,
   FileText,
+  FlaskConical,
   Fingerprint,
   Handshake,
   GraduationCap,
@@ -37,6 +38,7 @@ import type { Locale } from "@/i18n/routing";
 import type { Href } from "@/i18n/navigation";
 import { GithubIcon } from "@/components/github-icon";
 import { DEV_LINKS, SUBDOMAINS } from "./ecosystem";
+import { SANDBOX_HOST, SANDBOX_URL } from "./docs-nav";
 
 /*
  * Üst menü, telefon menüsü ve alt bilgi tek kaynaktan: MENUS. Her menü iki başlıklı grup + öne çıkan kart.
@@ -507,6 +509,17 @@ const DEV_MENU: Menu = {
           external: docs("/guides/"),
         },
         {
+          title: { en: "Sandbox", tr: "Sandbox", tk: "Sandbox" },
+          desc: {
+            en: "Test network: try your wallet with sample institutions and credentials.",
+            tr: "Test ağı: cüzdanını örnek kurumlar ve belgelerle dene.",
+            tk: "Synag ulgamy: gapjygyňy nusga guramalar we resminamalar bilen synap gör.",
+          },
+          icon: FlaskConical,
+          tone: "neutral",
+          external: SANDBOX_URL,
+        },
+        {
           title: {
             en: "Code examples",
             tr: "Kod örnekleri",
@@ -737,6 +750,7 @@ export const HOST_ICON: Record<string, { icon: LucideIcon; tone: Tone }> = {
   "verify.tamga.network": { icon: ScanLine, tone: "accent" },
   "id.tamga.network": { icon: Fingerprint, tone: "primary" },
   "wallet.tamga.network": { icon: Smartphone, tone: "neutral" },
+  [SANDBOX_HOST]: { icon: FlaskConical, tone: "neutral" },
 };
 export const ECOSYSTEM_MENU = SUBDOMAINS.filter((s) => s.group !== "learn");
 

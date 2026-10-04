@@ -1,0 +1,5 @@
+# Tamga Network — security contact (RFC 9116)
+Contact: mailto:security@tamga.network
+Expires: 2027-10-04T00:00:00.000Z
+Preferred-Languages: en, tr
+Canonical: https://tamga.network/.well-known/security.txt

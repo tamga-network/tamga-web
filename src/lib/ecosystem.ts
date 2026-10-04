@@ -1,4 +1,5 @@
 import type { Locale } from "@/i18n/routing";
+import { SANDBOX_HOST, SANDBOX_URL } from "./docs-nav";
 
 type L = Record<Locale, string>;
 
@@ -17,6 +18,8 @@ export type Subdomain = {
   serves: L;
   /** Ağın değil, Tamga Wallet'ın adresi (cüzdan deposuna taşınacak) */
   wallet?: true;
+  /** Henüz kurulmadı ("Yakında" gösterilir) */
+  soon?: boolean;
 };
 
 export const SUBDOMAINS: Subdomain[] = [
@@ -175,6 +178,24 @@ export const SUBDOMAINS: Subdomain[] = [
     },
   },
 ];
+
+/**
+ * Test ağı. SUBDOMAINS'te değil (menülerde ve tablolarda gerçek ağ adresleriyle karışmasın); yalnız /network sayfasında
+ * listelenir. Adres ve "Yakında" durumu docs-nav.ts'teki SANDBOX_LIVE'dan.
+ */
+export const SANDBOX_SUBDOMAIN: Subdomain = {
+  host: SANDBOX_HOST,
+  serves: { en: "Developers and testers", tr: "Geliştiriciler ve deneyenler", tk: "Işläp düzüjiler we synaýanlar" },
+  url: SANDBOX_URL,
+  group: "services",
+  soon: SANDBOX_URL.startsWith("https://docs."),
+  name: { en: "Sandbox", tr: "Sandbox", tk: "Sandbox" },
+  desc: {
+    en: "separate test network: sample institutions, made-up people and test credentials; no real wallet or verifier trusts it",
+    tr: "ayrı test ağı: örnek kurumlar, uydurma kişiler ve test belgeleri; gerçek hiçbir cüzdan ya da doğrulayıcı ona güvenmez",
+    tk: "aýry synag ulgamy: nusga guramalar, oýlanyp tapylan adamlar we synag resminamalary; hiç bir hakyky gapjyk ýa-da barlaýjy oňa ynanmaýar",
+  },
+};
 
 export const ECOSYSTEM_GROUPS: Record<Subdomain["group"], L> = {
   learn: { en: "Read", tr: "Okuyun", tk: "Okaň" },

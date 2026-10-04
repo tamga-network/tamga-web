@@ -33,7 +33,7 @@ const FOOTER: { menu: string; items: string[] }[] = [
   },
   {
     menu: "dev",
-    items: ["Docs", "Get started", "Packages", "API reference", "GitHub"],
+    items: ["Docs", "Get started", "Sandbox", "Packages", "API reference", "GitHub"],
   },
   { menu: "about", items: ["About", "Partners", "Events", "Blog", "Contact"] },
 ];
