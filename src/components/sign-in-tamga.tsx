@@ -1,4 +1,4 @@
-import { ArrowRight, Check, Fingerprint, Lock } from "lucide-react";
+import { ArrowRight, Check, Fingerprint, Lock, Wallet } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { LogoMark } from "./logo";
 import { Reveal } from "./reveal";
@@ -7,6 +7,8 @@ import type { Locale } from "@/i18n/routing";
 
 export type ConsentField = { label: string; state: "shared" | "proven" | "hidden" };
 export type ConsentData = {
+  /** Generic wallet label: the network runs no wallet (ADR-0042) */
+  wallet: string;
   app: string;
   wants: string;
   fields: ConsentField[];
@@ -54,13 +56,13 @@ function LoginButtonsMock({ d }: { d: LoginData }) {
   );
 }
 
-/** Mock of the Tamga Wallet consent screen — the site gets only what you approve. */
+/** Mock of a wallet's consent screen (any wallet on the network) — the site gets only what you approve. */
 export function ConsentMock({ d }: { d: ConsentData }) {
   return (
     <div className="mx-auto w-full max-w-[320px] overflow-hidden rounded-2xl border border-border-strong bg-background-elevated shadow-soft">
       <div className="flex items-center gap-2 border-b border-border px-5 py-3">
-        <LogoMark size={16} />
-        <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-foreground-subtle">Tamga Wallet</span>
+        <Wallet size={16} aria-hidden className="text-primary" />
+        <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-foreground-subtle">{d.wallet}</span>
       </div>
       <div className="px-5 py-4">
         <p className="text-sm leading-snug text-foreground">
@@ -117,6 +119,7 @@ const en: Content = {
   link: "How “Sign in with Tamga” works",
   login: { signInTo: "Sign in to", app: "example.com", google: "Continue with Google", apple: "Continue with Apple", or: "or", tamga: "Sign in with Tamga" },
   consent: {
+    wallet: "Your wallet",
     app: "example.com",
     wants: "wants to access:",
     fields: [
@@ -145,6 +148,7 @@ const tr: Content = {
   link: "“Tamga ile giriş yap” nasıl çalışır",
   login: { signInTo: "Şuraya giriş:", app: "example.com", google: "Google ile devam et", apple: "Apple ile devam et", or: "veya", tamga: "Tamga ile giriş yap" },
   consent: {
+    wallet: "Cüzdanın",
     app: "example.com",
     wants: "şunlara erişmek istiyor:",
     fields: [
@@ -173,6 +177,7 @@ const tk: Content = {
   link: "“Tamga bilen gir” nähili işleýär",
   login: { signInTo: "Giriş:", app: "example.com", google: "Google bilen dowam et", apple: "Apple bilen dowam et", or: "ýa-da", tamga: "Tamga bilen gir" },
   consent: {
+    wallet: "Gapjygyň",
     app: "example.com",
     wants: "şulara girmek isleýär:",
     fields: [

@@ -954,8 +954,15 @@ export const CHAPTER_7: LearnPage[] = [
             <li>
               <strong>Geliştirin.</strong> Açık kaynak cüzdan çekirdeğini
               kullanabilirsiniz; zorunlu değildir. Şartnameye uyan her yazılım
-              geçerlidir. Geliştirirken ağın deneme cüzdan sağlayıcısıyla
-              çalışabilirsiniz.
+              geçerlidir. Cüzdan sağlayıcınızı siz işletirsiniz; ağ cüzdan
+              işletmez.
+            </li>
+            <li>
+              <strong>Sandbox&apos;ta deneyin.</strong> Cüzdan sağlayıcınız
+              sandbox listesine kaydedilir (bugün başvuruyla) ve cüzdanınızı
+              oradaki örnek kurumlarla, kimlik servisiyle ve doğrulayıcıyla
+              uçtan uca denersiniz. Kendi kendine kayıt ve adresinizi
+              verdiğiniz otomatik uyum testi planlanıyor.
             </li>
             <li>
               <strong>Cüzdan çözümünü beyan edin.</strong> Hangi platformlar,
@@ -1063,8 +1070,16 @@ export const CHAPTER_7: LearnPage[] = [
             <li>
               <strong>Build.</strong> You may use the open-source wallet core;
               you don&apos;t have to. Any software that follows the
-              specification is valid. While building you can work with the
-              network&apos;s trial wallet provider.
+              specification is valid. You run your own wallet provider; the
+              network doesn&apos;t run wallets.
+            </li>
+            <li>
+              <strong>Test in the sandbox.</strong> Your wallet provider is
+              registered in the sandbox list (on request, for now) and you try
+              your wallet end to end against the sample institutions, the
+              identity service and the verifier there. Self-registration and an
+              automatic conformance test, where you give your address, are
+              planned.
             </li>
             <li>
               <strong>Declare your wallet solution.</strong> Which platforms,
@@ -1154,7 +1169,12 @@ export const CHAPTER_7: LearnPage[] = [
           <h2>Ädimme-ädim</h2>
           <ol>
             <li>Tamga Rulebook-daky gapjyk düzgünlerini okaň.</li>
-            <li>Işläp düzüň; açyk kodly gapjyk ýadrosy hökmany däl.</li>
+            <li>Işläp düzüň; açyk kodly gapjyk ýadrosy hökmany däl. Gapjyk üpjün edijiňizi özüňiz işledýärsiňiz.</li>
+            <li>
+              Sandbox-da synaň: üpjün edijiňiz sandbox sanawyna hasaba alynýar
+              (häzir haýyş boýunça), gapjygyňyzy nusga guramalar, şahsyýet
+              hyzmaty we barlaýjy bilen synap görýärsiňiz.
+            </li>
             <li>
               Gapjyk çözgüdini yglan ediň: platformalar, howpsuz enjam, gulp
               usuly, ätiýaçlyk.
@@ -1191,9 +1211,9 @@ export const CHAPTER_7: LearnPage[] = [
         tk: "Synagdan geçen üpjün edijiniň açary sanawlaryň sanawyna goşulýar; Tamga Wallet hem şol ýoldan geçýär.",
       },
       {
-        tr: "Denemeler ayrı bir test ağında (sandbox) yapılır: uydurma kişiler, ayrı güven kökü ve gerçekçi olsun diye gerçek adlı örnek kurumlar (İstanbul Bilgi Üniversitesi, Bubilet, Paribu Cineverse — bu kurumlarla bir ilişki ya da anlaşma yoktur); oradaki belge test anahtarıyla imzalıdır, hiçbir yerde geçmez.",
-        en: "Testing happens on a separate test network (the sandbox): made-up people, its own trust root and, to keep it realistic, example institutions under real names (İstanbul Bilgi Üniversitesi, Bubilet, Paribu Cineverse — there is no relationship or agreement with them); a credential from there is signed with a test key and is not valid anywhere.",
-        tk: "Synaglar aýry synag ulgamynda (sandbox) geçirilýär: oýlanyp tapylan adamlar, aýry ynam köki we hakyky bolar ýaly hakyky atly nusga guramalar (İstanbul Bilgi Üniversitesi, Bubilet, Paribu Cineverse — bu guramalar bilen hiç hili gatnaşyk ýa-da ylalaşyk ýok); ondaky resminama synag açary bilen gol çekilen, hiç ýerde geçmeýär.",
+        tr: "Denemeler ayrı bir test ağında (sandbox) yapılır: uydurma kişiler, ayrı güven kökü ve gerçekçi olsun diye gerçek adlı örnek kurumlar (İstanbul Bilgi Üniversitesi, Bubilet, Paribu Cineverse; İstanbul Bilgi Üniversitesi pilot ortağımızdır, diğer ikisiyle bir ilişki ya da anlaşma yoktur); oradaki belge test anahtarıyla imzalıdır, hiçbir yerde geçmez.",
+        en: "Testing happens on a separate test network (the sandbox): made-up people, its own trust root and, to keep it realistic, example institutions under real names (İstanbul Bilgi Üniversitesi, Bubilet, Paribu Cineverse; İstanbul Bilgi Üniversitesi is our pilot partner, and there is no relationship or agreement with the other two); a credential from there is signed with a test key and is not valid anywhere.",
+        tk: "Synaglar aýry synag ulgamynda (sandbox) geçirilýär: oýlanyp tapylan adamlar, aýry ynam köki we hakyky bolar ýaly hakyky atly nusga guramalar (İstanbul Bilgi Üniversitesi, Bubilet, Paribu Cineverse; İstanbul Bilgi Üniversitesi biziň pilot hyzmatdaşymyz, beýleki ikisi bilen hiç hili gatnaşyk ýa-da ylalaşyk ýok); ondaky resminama synag açary bilen gol çekilen, hiç ýerde geçmeýär.",
       },
     ],
     deeper: [

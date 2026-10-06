@@ -54,8 +54,8 @@ export default async function ChangelogPage({
         <ol className="relative mx-auto max-w-4xl">
           {RELEASES.map((r, i) => (
             <li
-              key={r.version}
-              id={r.version}
+              key={r.id ?? r.version}
+              id={r.id ?? r.version}
               className="relative grid scroll-mt-24 gap-4 border-l border-border pb-14 pl-8 last:pb-0 md:grid-cols-[10rem_1fr] md:gap-10 md:border-l-0 md:pl-0"
             >
               {/* Sol: sürüm ve tarih */}
@@ -65,7 +65,7 @@ export default async function ChangelogPage({
                   className="absolute -left-[0.4rem] top-1.5 h-3 w-3 rotate-45 border-2 border-primary bg-background md:hidden"
                 />
                 <a
-                  href={`#${r.version}`}
+                  href={`#${r.id ?? r.version}`}
                   className="font-mono text-2xl font-semibold text-foreground hover:text-primary"
                 >
                   {r.version}

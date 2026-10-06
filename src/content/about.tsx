@@ -99,7 +99,7 @@ const en: AboutContent = {
     rows: [
       {
         k: "EU-compatible base",
-        v: "Credentials, protocols and trust lists follow EU standards. An “EUDI Wallet” is a legal title for wallets that an EU member state provides or recognises; Tamga Wallet is an EU-compatible wallet, and we will show interoperability with test results.",
+        v: "Credentials, protocols and trust lists follow EU standards. An “EUDI Wallet” is a legal title for wallets that an EU member state provides or recognises; Tamga Wallet, the network’s first wallet, is EU-compatible; interoperability will be shown with test results.",
       },
       {
         k: "Tamga Network — a light federation",
@@ -107,7 +107,7 @@ const en: AboutContent = {
       },
       {
         k: "Wallets on the network and the team that builds it",
-        v: "Any wallet that follows the network’s rules works on the network; Tamga Wallet is the first and reference wallet. The team that builds the network runs the reference services — the Institution Console, Tamga Verify, trust-list publication — and publishes the code as open-source packages, so no institution is tied to one app.",
+        v: "Any wallet that follows the network’s rules works on the network; Tamga Wallet is the first, a separate product that the network does not run. The team that builds the network runs the reference services — the Institution Console, Tamga Verify, trust-list publication — and publishes the code as open-source packages, so no institution is tied to one app.",
       },
     ],
   },
@@ -218,7 +218,7 @@ const tr: AboutContent = {
     rows: [
       {
         k: "AB uyumlu taban",
-        v: "Belgeler, protokoller ve güven listeleri AB standartlarındadır. “EUDI Wallet”, bir AB üye devletinin sunduğu ya da tanıdığı cüzdanlar için hukuki bir unvandır; Tamga Wallet AB uyumlu bir cüzdandır ve birlikte çalışabilirliği test sonuçlarıyla göstereceğiz.",
+        v: "Belgeler, protokoller ve güven listeleri AB standartlarındadır. “EUDI Wallet”, bir AB üye devletinin sunduğu ya da tanıdığı cüzdanlar için hukuki bir unvandır; ağın ilk cüzdanı Tamga Wallet AB uyumludur; birlikte çalışabilirlik test sonuçlarıyla gösterilecek.",
       },
       {
         k: "Tamga Network — hafif bir federasyon",
@@ -226,7 +226,7 @@ const tr: AboutContent = {
       },
       {
         k: "Ağdaki cüzdanlar ve ağı geliştiren ekip",
-        v: "Ağın kurallarına uyan her cüzdan ağda çalışır; Tamga Wallet ilk ve referans cüzdandır. Ağı geliştiren ekip referans hizmetleri işletir — Kurum Konsolu, Tamga Verify, güven listesi yayını — ve kodu açık kaynak paketler olarak yayınlar; hiçbir kurum tek bir uygulamaya bağlı kalmaz.",
+        v: "Ağın kurallarına uyan her cüzdan ağda çalışır; ilki Tamga Wallet’tır; ağın işletmediği ayrı bir üründür. Ağı geliştiren ekip referans hizmetleri işletir — Kurum Konsolu, Tamga Verify, güven listesi yayını — ve kodu açık kaynak paketler olarak yayınlar; hiçbir kurum tek bir uygulamaya bağlı kalmaz.",
       },
     ],
   },
@@ -336,7 +336,7 @@ const tk: AboutContent = {
     rows: [
       {
         k: "ÝB bilen laýyk esas",
-        v: "Resminamalar, protokollar we ynam sanawlary ÝB standartlaryna laýyk. “EUDI Wallet” ÝB agza döwletiniň hödürleýän ýa-da ykrar edýän gapjyklary üçin hukuk adydyr; Tamga Wallet ÝB bilen laýyk gapjykdyr we bilelikde işleýişi synag netijeleri bilen görkezeris.",
+        v: "Resminamalar, protokollar we ynam sanawlary ÝB standartlaryna laýyk. “EUDI Wallet” ÝB agza döwletiniň hödürleýän ýa-da ykrar edýän gapjyklary üçin hukuk adydyr; toruň ilkinji gapjygy Tamga Wallet ÝB bilen laýyk; bilelikde işleýşi synag netijeleri bilen görkeziler.",
       },
       {
         k: "Tamga Network — ýeňil federasiýa",
@@ -344,7 +344,7 @@ const tk: AboutContent = {
       },
       {
         k: "Tordaky gapjyklar we tory gurýan topar",
-        v: "Toruň düzgünlerine eýerýän her gapjyk torda işleýär; Tamga Wallet ilkinji we salgylanma gapjykdyr. Tory gurýan topar salgylanma hyzmatlaryny işledýär — Gurama konsoly, Tamga Verify, ynam sanawynyň çap edilmegi — we kody açyk çeşmeli paketler hökmünde çap edýär; hiç bir gurama bir programma bagly galmaýar.",
+        v: "Toruň düzgünlerine eýerýän her gapjyk torda işleýär; ilkinjisi Tamga Wallet; tor ony işletmeýär, ol aýry önüm. Tory gurýan topar salgylanma hyzmatlaryny işledýär — Gurama konsoly, Tamga Verify, ynam sanawynyň çap edilmegi — we kody açyk çeşmeli paketler hökmünde çap edýär; hiç bir gurama bir programma bagly galmaýar.",
       },
     ],
   },

@@ -8,6 +8,8 @@ import { LetterGlitch } from "@/components/letter-glitch";
 import {
   getScenariosContent,
   type Vertical,
+  type VerticalTone,
+  type StepStatus,
   type ScenariosContent,
 } from "@/content/scenarios";
 import type { Locale } from "@/i18n/routing";
@@ -57,7 +59,13 @@ export default async function ScenariosPage({
       </div>
 
       {c.verticals.map((v, i) => (
-        <VerticalSection key={v.id} v={v} flip={i % 2 === 1} last={i === c.verticals.length - 1} />
+        <VerticalSection
+          key={v.id}
+          v={v}
+          labels={c.statusLabels}
+          flip={i % 2 === 1}
+          last={i === c.verticals.length - 1}
+        />
       ))}
 
       <p className="shell pb-16 pt-4 text-center font-mono text-xs text-foreground-subtle">
@@ -99,12 +107,28 @@ function ScenariosHero({ c }: { c: ScenariosContent }) {
   );
 }
 
+// Durum etiketlerinin rengi: ana senaryo ve bugün çalışan Gök, karar aşaması altın, vizyon/araştırma nötr.
+const TONE: Record<VerticalTone, string> = {
+  main: "border-primary bg-primary text-primary-contrast",
+  today: "border-primary/50 bg-primary/10 text-primary",
+  proposed: "border-gold-bright/60 bg-gold-bright/10 text-gold",
+  vision: "border-border-strong bg-surface text-foreground-muted",
+  research: "border-border-strong bg-surface text-foreground-muted",
+};
+const STEP: Record<StepStatus, string> = {
+  today: "border-primary/40 text-primary",
+  pilot: "border-gold-bright/60 text-gold",
+  later: "border-border-strong text-foreground-subtle",
+};
+
 function VerticalSection({
   v,
+  labels,
   flip,
   last,
 }: {
   v: Vertical;
+  labels: Record<StepStatus, string>;
   flip: boolean;
   last: boolean;
 }) {
@@ -120,11 +144,11 @@ function VerticalSection({
         <Reveal>
           <div className="flex flex-wrap items-center gap-3">
             <h2 className="font-serif text-2xl font-semibold sm:text-3xl">{v.name}</h2>
-            {v.vision && (
-              <span className="rounded-full border border-accent/50 bg-accent/10 px-2.5 py-0.5 font-mono text-[0.7rem] uppercase tracking-wide text-accent">
-                {v.vision}
-              </span>
-            )}
+            <span
+              className={`rounded-full border px-2.5 py-0.5 font-mono text-[0.7rem] uppercase tracking-wide ${TONE[v.tone]}`}
+            >
+              {v.badge}
+            </span>
           </div>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-foreground-muted">
             {v.intro}
@@ -142,6 +166,13 @@ function VerticalSection({
                       {i + 1}
                     </span>
                     <div>
+                      {s.status && (
+                        <span
+                          className={`mb-1.5 inline-block rounded-full border px-2 py-px font-mono text-[0.65rem] uppercase tracking-wide ${STEP[s.status]}`}
+                        >
+                          {labels[s.status]}
+                        </span>
+                      )}
                       <h3 className="text-base font-semibold text-foreground">{s.title}</h3>
                       <p className="mt-1.5 text-sm leading-relaxed text-foreground-muted">
                         {s.body}
@@ -151,6 +182,14 @@ function VerticalSection({
                 </div>
               </Reveal>
             ))}
+            {v.callout && (
+              <Reveal delay={v.scenarios.length * 0.06}>
+                <aside className="rounded-r-xl border border-border border-l-[3px] border-l-primary bg-primary/5 p-5">
+                  <h3 className="text-base font-semibold text-foreground">{v.callout.title}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-foreground-muted">{v.callout.body}</p>
+                </aside>
+              </Reveal>
+            )}
           </div>
 
           {/* visuals: wallet mockup + role flow */}

@@ -149,6 +149,11 @@ const en: RoadmapContent = {
           title: "In person and in the browser",
           desc: "Bluetooth and the Digital Credentials API, on real phones",
         },
+        {
+          icon: "eye",
+          title: "Zero-knowledge proofs",
+          desc: "age proof without the birth date; verifier ready, phone after the store release",
+        },
       ],
     },
     {
@@ -205,11 +210,6 @@ const en: RoadmapContent = {
       summary:
         "Studied, not yet planned; independent security review before any use.",
       cards: [
-        {
-          icon: "eye",
-          title: "Zero-knowledge proofs",
-          desc: "age proof without the birth date; verifier ready, phone after the store release",
-        },
         {
           icon: "key",
           title: "Qualified e-signature",
@@ -327,6 +327,11 @@ const tr: RoadmapContent = {
           title: "Yüz yüze ve tarayıcıda",
           desc: "Bluetooth ve Digital Credentials API, gerçek telefonlarda",
         },
+        {
+          icon: "eye",
+          title: "Sıfır bilgi ispatı",
+          desc: "doğum tarihi olmadan yaş ispatı; doğrulayıcı hazır, telefon mağaza sürümünden sonra",
+        },
       ],
     },
     {
@@ -383,11 +388,6 @@ const tr: RoadmapContent = {
       summary:
         "İnceleniyor, henüz planlı değil; her kullanımdan önce bağımsız güvenlik incelemesi.",
       cards: [
-        {
-          icon: "eye",
-          title: "Sıfır bilgi ispatı",
-          desc: "doğum tarihi olmadan yaş ispatı; doğrulayıcı hazır, telefon mağaza sürümünden sonra",
-        },
         {
           icon: "key",
           title: "Nitelikli e-imza",
@@ -505,6 +505,11 @@ const tk: RoadmapContent = {
           title: "Ýüzbe-ýüz we brauzerde",
           desc: "Bluetooth we Digital Credentials API, hakyky telefonlarda",
         },
+        {
+          icon: "eye",
+          title: "Nol bilimli subutnama",
+          desc: "doglan senesiz ýaş subutnamasy; barlaýjy taýýar, telefon dükan wersiýasyndan soň",
+        },
       ],
     },
     {
@@ -561,11 +566,6 @@ const tk: RoadmapContent = {
       summary:
         "Öwrenilýär, heniz meýilleşdirilmedik; her ulanyşdan öň garaşsyz howpsuzlyk barlagy.",
       cards: [
-        {
-          icon: "eye",
-          title: "Nol bilimli subutnama",
-          desc: "doglan senesiz ýaş subutnamasy; barlaýjy taýýar, telefon dükan wersiýasyndan soň",
-        },
         {
           icon: "key",
           title: "Kwalifisirlenen elektron gol",

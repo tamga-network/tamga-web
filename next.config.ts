@@ -67,6 +67,14 @@ const nextConfig: NextConfig = {
       ["/blog/authorization-not-settlement", "/blog"],
       ["/blog/accountable-disclosure", "/blog"],
       ["/issuers", "/join"], // 2026-10-02: "Kurum olarak katıl" → "Ağa katıl"
+      // 2026-10-06: 24 Eylül öncesi tasarımı anlatan blog yazıları kaldırıldı → konuyu bugün anlatan sayfa
+      ["/blog/selective-disclosure-zk", "/learn/selective-disclosure"],
+      ["/blog/sovereignty-first-governance", "/learn/governance"],
+      ["/blog/why-besu-qbft", "/blog/why-no-blockchain-yet"],
+      ["/blog/x509-institutional-identity", "/learn/certificates"],
+      ["/blog/introducing-tamga-network", "/learn/what-is-tamga-network"],
+      ["/blog/why-eidas-2-matters", "/learn/eidas"],
+      ["/blog/why-no-personal-data-on-chain", "/learn/data-minimisation"],
     ];
     return moved.map(([from, to]) => ({
       source: `/:locale(en|tr|tk)${from}`,

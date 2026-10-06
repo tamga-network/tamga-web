@@ -288,7 +288,7 @@ const tr: HomeContent = {
     title: "Ağa üç kapıdan girilir.",
     items: [
       { kicker: "Kurumlar", title: "Belge verin, belge doğrulayın.", body: "Kaydınızı yapın, anahtarınızı listeye ekletin, ilk belgenizi verin.", cta: "Kurum olarak katıl", href: "/join" },
-      { kicker: "Cüzdan sağlayıcılar", title: "Cüzdanınızı ağa tanıtın.", body: "Ağ cüzdan seçmez, tanır. Kurallara uyan ve uyum testlerini geçen her cüzdan listeye girer.", cta: "Uyum testlerine başla", href: "/join" },
+      { kicker: "Cüzdan sağlayıcılar", title: "Cüzdanınızı ağa tanıtın.", body: "Ağ cüzdan seçmez, tanır. Kurallara uyan ve uyum testlerini geçen her cüzdan listeye girer. Cüzdanınızı önce sandbox'ta deneyin.", cta: "Uyum testlerine başla", href: "/join" },
       { kicker: "Devletler", title: "Listenizi kendiniz yayınlayın.", body: "Kendi güven listenizi yayınladığınızda ağ onu gösterir; cüzdanlar için yalnız adres değişir.", cta: "Federasyonu incele", href: "/learn/trust-lists" },
     ],
   },
@@ -561,7 +561,7 @@ const en: HomeContent = {
     title: "Three doors into the network.",
     items: [
       { kicker: "Institutions", title: "Issue and verify credentials.", body: "Register, get your key on the list, issue your first credential.", cta: "Join as an institution", href: "/join" },
-      { kicker: "Wallet providers", title: "Get your wallet recognised.", body: "The network doesn't pick wallets; it recognises them. Every wallet that follows the rules and passes the conformance tests is listed.", cta: "Start conformance tests", href: "/join" },
+      { kicker: "Wallet providers", title: "Get your wallet recognised.", body: "The network doesn't pick wallets; it recognises them. Every wallet that follows the rules and passes the conformance tests is listed. Test your wallet in the sandbox first.", cta: "Start conformance tests", href: "/join" },
       { kicker: "States", title: "Publish your own list.", body: "When you publish your own trust list, the network points to it; for wallets only the address changes.", cta: "Explore the federation", href: "/learn/trust-lists" },
     ],
   },
@@ -834,7 +834,7 @@ const tk: HomeContent = {
     title: "Tora üç gapydan girilýär.",
     items: [
       { kicker: "Guramalar", title: "Resminama beriň we barlaň.", body: "Hasaba duruň, açaryňyzy sanawa goşduryň, ilkinji resminamaňyzy beriň.", cta: "Gurama hökmünde goşul", href: "/join" },
-      { kicker: "Gapjyk üpjün edijiler", title: "Gapjygyňyzy tora tanadyň.", body: "Tor gapjyk saýlamaýar, ykrar edýär. Düzgünlere eýerýän we laýyklyk synaglaryndan geçen her gapjyk sanawa girýär.", cta: "Laýyklyk synaglaryna başla", href: "/join" },
+      { kicker: "Gapjyk üpjün edijiler", title: "Gapjygyňyzy tora tanadyň.", body: "Tor gapjyk saýlamaýar, ykrar edýär. Düzgünlere eýerýän we laýyklyk synaglaryndan geçen her gapjyk sanawa girýär. Gapjygyňyzy ilki sandbox-da synaň.", cta: "Laýyklyk synaglaryna başla", href: "/join" },
       { kicker: "Döwletler", title: "Sanawyňyzy özüňiz çap ediň.", body: "Öz ynam sanawyňyzy çap edeniňizde tor ony görkezýär; gapjyklar üçin diňe salgy üýtgeýär.", cta: "Federasiýany öwren", href: "/learn/trust-lists" },
     ],
   },

@@ -5,18 +5,28 @@ import { PageHeader } from "@/components/ui";
 import { LogoMark } from "@/components/logo";
 import type { Locale } from "@/i18n/routing";
 import { pageMeta } from "@/lib/seo";
-import { APP_ICON, BRAND_PAGE, FONTS, LOGO_VARIANTS, SAMPLES, SWATCHES, type LogoVariant, type Swatch } from "@/content/brand";
+import {
+  APP_ICON,
+  APP_ICON_ALT,
+  BRAND_PAGE,
+  FONTS,
+  LOCKUPS,
+  LOGO_VARIANTS,
+  SAMPLES,
+  SWATCHES,
+  type LogoVariant,
+  type Swatch,
+} from "@/content/brand";
 
 const loc = (l: string): Locale => (l === "tr" || l === "tk" ? l : "en");
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const p = BRAND_PAGE[loc(locale)];
-  return pageMeta(locale, "/brand", { title: p.title, description: p.description });
+  return pageMeta(locale, "/brand", {
+    title: p.title,
+    description: p.description,
+  });
 }
 
 function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
@@ -50,15 +60,7 @@ function VariantCard({ v, l, download }: { v: LogoVariant; l: Locale; download: 
   return (
     <figure className="overflow-hidden rounded-xl border border-border bg-background-elevated">
       <div className="flex h-48 items-center justify-center gap-6" style={{ background: v.bg, color: v.fg }}>
-        {v.small ? (
-          <>
-            <LogoMark size={16} mono />
-            <LogoMark size={24} mono />
-            <LogoMark size={32} mono />
-          </>
-        ) : (
-          <LogoMark size={104} mono />
-        )}
+        <LogoMark size={104} mono />
       </div>
       <figcaption className="grid gap-3 border-t border-border p-4">
         <span className="text-sm font-medium text-foreground">{v.label[l]}</span>
@@ -73,7 +75,11 @@ function SwatchRow({ s, l, labels }: { s: Swatch; l: Locale; labels: { hex: stri
     <div className="grid gap-4 border-b border-border py-4 last:border-b-0 sm:grid-cols-[9rem_minmax(0,1fr)_minmax(0,1fr)] sm:items-center">
       <div
         className="flex h-20 items-end rounded-lg p-3 font-serif text-sm font-semibold"
-        style={{ background: s.hex, color: s.text, boxShadow: s.border ? "inset 0 0 0 1px var(--border)" : undefined }}
+        style={{
+          background: s.hex,
+          color: s.text,
+          boxShadow: s.border ? "inset 0 0 0 1px var(--border)" : undefined,
+        }}
       >
         {s.name[l]}
       </div>
@@ -140,17 +146,67 @@ export default async function BrandPage({ params }: { params: Promise<{ locale: 
                 <VariantCard key={v.id} v={v} l={l} download={p.logo.download} />
               ))}
             </div>
-            <div className="mt-4 grid gap-5 rounded-xl border border-border bg-background-elevated p-5 sm:grid-cols-[auto_1fr] sm:items-center">
-              <span className="flex h-24 w-24 items-center justify-center rounded-[22px] bg-[#1E5A78] text-white">
-                <LogoMark size={56} mono />
-              </span>
-              <div className="grid gap-3">
-                <div>
-                  <p className="font-medium text-foreground">{p.logo.appIcon}</p>
-                  <p className="text-sm text-foreground-muted">{p.logo.appIconBody}</p>
+            <div className="mt-4 grid gap-4 lg:grid-cols-2">
+              {[
+                {
+                  bg: "bg-[#1E5A78] text-white",
+                  t: p.logo.appIcon,
+                  b: p.logo.appIconBody,
+                  f: APP_ICON.files,
+                },
+                {
+                  bg: "bg-[#14120F] text-[#C8A24C]",
+                  t: p.logo.appIconAlt,
+                  b: p.logo.appIconAltBody,
+                  f: APP_ICON_ALT.files,
+                },
+              ].map((ic) => (
+                <div
+                  key={ic.t}
+                  className="grid gap-5 rounded-xl border border-border bg-background-elevated p-5 sm:grid-cols-[auto_1fr] sm:items-center"
+                >
+                  <span className={`flex h-24 w-24 items-center justify-center rounded-[22px] shadow-lg ${ic.bg}`}>
+                    <LogoMark size={56} mono />
+                  </span>
+                  <div className="grid gap-3">
+                    <div>
+                      <p className="font-medium text-foreground">{ic.t}</p>
+                      <p className="text-sm text-foreground-muted">{ic.b}</p>
+                    </div>
+                    <Files files={ic.f} label={`${p.logo.download}: ${ic.t}`} />
+                  </div>
                 </div>
-                <Files files={APP_ICON.files} label={`${p.logo.download}: ${p.logo.appIcon}`} />
-              </div>
+              ))}
+            </div>
+            <h3 className="mt-10 font-serif text-xl font-semibold tracking-[-0.02em] text-foreground">{p.logo.lockup}</h3>
+            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-foreground-muted">{p.logo.lockupBody}</p>
+            <div className="mt-5 grid gap-4 md:grid-cols-2">
+              {LOCKUPS.filter((lu) => !lu.vertical).map((lu) => (
+                <figure key={lu.id} className="overflow-hidden rounded-xl border border-border bg-background-elevated">
+                  <div className="flex h-36 items-center justify-center px-8" style={{ background: lu.bg }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element -- düz SVG dosyası, indirilen dosyanın kendisi */}
+                    <img src={`/brand/${lu.file}`} alt="Tamga Network" className="h-10 w-auto max-w-full sm:h-12" />
+                  </div>
+                  <figcaption className="grid gap-3 border-t border-border p-4">
+                    <span className="text-sm font-medium text-foreground">{lu.label[l]}</span>
+                    <Files files={lu.files} label={`${p.logo.download}: ${p.logo.lockup} · ${lu.label[l]}`} />
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {LOCKUPS.filter((lu) => lu.vertical).map((lu) => (
+                <figure key={lu.id} className="overflow-hidden rounded-xl border border-border bg-background-elevated">
+                  <div className="flex h-56 items-center justify-center p-6" style={{ background: lu.bg }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element -- düz SVG dosyası, indirilen dosyanın kendisi */}
+                    <img src={`/brand/${lu.file}`} alt="Tamga Network" className="h-36 w-auto max-w-full" />
+                  </div>
+                  <figcaption className="grid gap-3 border-t border-border p-4">
+                    <span className="text-sm font-medium text-foreground">{lu.label[l]}</span>
+                    <Files files={lu.files} label={`${p.logo.download}: ${p.logo.lockup} · ${lu.label[l]}`} />
+                  </figcaption>
+                </figure>
+              ))}
             </div>
             <p className="mono-label mt-8 mb-3">{p.logo.rulesLabel}</p>
             <ul className="grid gap-2 sm:grid-cols-2">
@@ -235,7 +291,10 @@ export default async function BrandPage({ params }: { params: Promise<{ locale: 
             <p className="mt-4 flex flex-wrap items-center gap-2 text-sm text-foreground-muted">
               <span className="mono-label">{p.name.wrongLabel}</span>
               {p.name.wrong.map((w) => (
-                <span key={w} className="rounded-md border border-border px-2 py-0.5 font-mono text-xs line-through decoration-primary">
+                <span
+                  key={w}
+                  className="rounded-md border border-border px-2 py-0.5 font-mono text-xs line-through decoration-primary"
+                >
                   {w}
                 </span>
               ))}
@@ -249,7 +308,7 @@ export default async function BrandPage({ params }: { params: Promise<{ locale: 
             <p className="max-w-2xl leading-relaxed text-foreground-muted">{p.button.body}</p>
             <div className="mt-6 grid gap-6 rounded-xl border border-border bg-background-elevated p-6 md:grid-cols-[auto_1fr] md:items-center">
               <span className="inline-flex min-h-11 items-center justify-center gap-2.5 rounded-md bg-[#1E5A78] px-5 text-sm font-semibold text-white">
-                <LogoMark size={18} mono /> {p.button.label}
+                <LogoMark size={20} mono /> {p.button.label}
               </span>
               <ul className="space-y-2">
                 {p.button.rules.map((r) => (

@@ -16,8 +16,6 @@ export type Subdomain = {
   group: "learn" | "trust" | "services";
   /** Kimin için (ağ adresleri sayfası) */
   serves: L;
-  /** Ağın değil, Tamga Wallet'ın adresi (cüzdan deposuna taşınacak) */
-  wallet?: true;
   /** Henüz kurulmadı ("Yakında" gösterilir) */
   soon?: boolean;
 };
@@ -160,23 +158,6 @@ export const SUBDOMAINS: Subdomain[] = [
       tk: "uzakdan şahsyýet barlagy (resminama + janlylyk) we şahsyýet resminamasy",
     },
   },
-  {
-    host: "wallet.tamga.network",
-    serves: { en: "Tamga Wallet apps", tr: "Tamga Wallet uygulamaları", tk: "Tamga Wallet programmalary" },
-    wallet: true,
-    url: "https://wallet.tamga.network",
-    group: "services",
-    name: {
-      en: "Wallet provider",
-      tr: "Cüzdan sağlayıcı",
-      tk: "Gapjyk üpjün edijisi",
-    },
-    desc: {
-      en: "vouches that a wallet is the genuine app on a genuine device",
-      tr: "cüzdanın gerçek uygulama ve gerçek cihaz olduğuna kefil olur",
-      tk: "gapjygyň hakyky programma we hakyky enjam bolandygyna kepil geçýär",
-    },
-  },
 ];
 
 /**
@@ -185,15 +166,15 @@ export const SUBDOMAINS: Subdomain[] = [
  */
 export const SANDBOX_SUBDOMAIN: Subdomain = {
   host: SANDBOX_HOST,
-  serves: { en: "Developers and testers", tr: "Geliştiriciler ve deneyenler", tk: "Işläp düzüjiler we synaýanlar" },
+  serves: { en: "Wallet, institution and verifier developers", tr: "Cüzdan, kurum ve doğrulayıcı geliştiricileri", tk: "Gapjyk, gurama we barlaýjy işläp düzüjileri" },
   url: SANDBOX_URL,
   group: "services",
   soon: SANDBOX_URL.startsWith("https://docs."),
   name: { en: "Sandbox", tr: "Sandbox", tk: "Sandbox" },
   desc: {
-    en: "separate test network: sample institutions, made-up people and test credentials; no real wallet or verifier trusts it",
-    tr: "ayrı test ağı: örnek kurumlar, uydurma kişiler ve test belgeleri; gerçek hiçbir cüzdan ya da doğrulayıcı ona güvenmez",
-    tk: "aýry synag ulgamy: nusga guramalar, oýlanyp tapylan adamlar we synag resminamalary; hiç bir hakyky gapjyk ýa-da barlaýjy oňa ynanmaýar",
+    en: "separate test network: sample institutions, made-up people and test credentials; wallet developers register their own wallet provider and test their wallet here; no real wallet or verifier trusts it",
+    tr: "ayrı test ağı: örnek kurumlar, uydurma kişiler ve test belgeleri; cüzdan geliştiricileri kendi cüzdan sağlayıcılarını kaydettirip cüzdanlarını burada dener; gerçek hiçbir cüzdan ya da doğrulayıcı ona güvenmez",
+    tk: "aýry synag ulgamy: nusga guramalar, oýlanyp tapylan adamlar we synag resminamalary; gapjyk işläp düzüjileri öz gapjyk üpjün edijisini hasaba aldyryp, gapjygyny şu ýerde synaýar; hiç bir hakyky gapjyk ýa-da barlaýjy oňa ynanmaýar",
   },
 };
 

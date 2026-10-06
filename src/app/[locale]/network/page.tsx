@@ -21,7 +21,6 @@ const C: Record<
     std: string;
     live: string;
     soon: string;
-    wallet: string;
   }
 > = {
   en: {
@@ -33,7 +32,6 @@ const C: Record<
     std: "Standard",
     live: "Live",
     soon: "Soon",
-    wallet: "Tamga Wallet's address; moves to the wallet's own domain.",
   },
   tr: {
     title: "Ağ adresleri",
@@ -44,7 +42,6 @@ const C: Record<
     std: "Standart",
     live: "Yayında",
     soon: "Yakında",
-    wallet: "Tamga Wallet'ın adresi; cüzdanın kendi alan adına taşınacak.",
   },
   tk: {
     title: "Tor salgylary",
@@ -55,7 +52,6 @@ const C: Record<
     std: "Standart",
     live: "Işleýär",
     soon: "Ýakynda",
-    wallet: "Tamga Wallet-iň salgysy; gapjygyň öz domenine geçiriler.",
   },
 };
 
@@ -106,7 +102,6 @@ function Card({ d, locale }: { d: Subdomain; locale: Locale }) {
             {d.soon ? c.soon : c.live}
           </dd>
         </div>
-        {d.wallet && <dd className="pt-1 text-foreground-subtle">{c.wallet}</dd>}
       </dl>
     </a>
   );

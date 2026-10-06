@@ -11,7 +11,16 @@ if (!existsSync(src)) {
   console.log("brand:sync: ../tamga-network/ops/brand/icons yok — atlandı");
   process.exit(0);
 }
-const files = ["icon.svg", "mark.svg", "apple-touch-icon.png", "icon-192.png", "icon-512.png", "icon-maskable-512.png", "logo-512.png", "og.png"];
+const files = [
+  "icon.svg",
+  "mark.svg",
+  "apple-touch-icon.png",
+  "icon-192.png",
+  "icon-512.png",
+  "icon-maskable-512.png",
+  "logo-512.png",
+  "og.png",
+];
 for (const f of files) copyFileSync(join(src, f), join(web, "public", f));
 copyFileSync(join(src, "favicon.ico"), join(web, "src", "app", "favicon.ico"));
 console.log(`brand:sync: ${files.length + 1} dosya`);
@@ -30,11 +39,13 @@ console.log(`brand:sync: ${files.length + 1} dosya`);
       copyFileSync(join(kit, "svg", f), join(out, f));
       n++;
     }
-    for (const f of readdirSync(join(kit, "png")).filter((x) => /-(512|1024)\.png$/.test(x))) {
+    for (const f of readdirSync(join(kit, "png")).filter((x) =>
+      /(-(512|1024|1600)|-lockup-vertical(-black|-white)?)\.png$/.test(x),
+    )) {
       copyFileSync(join(kit, "png", f), join(out, f));
       n++;
     }
-    for (const f of ["icon-512.png", "icon.svg"]) {
+    for (const f of ["icon-512.png", "icon.svg", "icon-obsidian-512.png", "icon-obsidian.svg"]) {
       copyFileSync(join(kit, "icons", f), join(out, `tamga-network-app-${f}`));
       n++;
     }

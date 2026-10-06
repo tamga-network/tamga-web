@@ -30,7 +30,7 @@ With *eIDAS 2.0* every EU member state must offer its citizens a *European Digit
 
 The Turkic world shares language, culture and history. A diploma issued in one state should be verifiable in another; an institution’s identity should be trusted across borders. Tamga builds that shared foundation on the same standards, with governance that keeps every state sovereign.
 
-Tamga is built in three layers that each stand on their own. The base: credentials, protocols and trust lists follow the EU standards, so compatible wallets and verifiers can work with Tamga institutions. Above it, *Tamga Network* is a light federation that collects each state’s trust list and lets states recognise one another — today Tamga publishes Türkiye’s list provisionally, and when a state publishes its own, the network points to it. On that base run *Tamga Wallet*, the network’s first and reference wallet and a separate product (EU-compatible; “EUDI Wallet” is a title reserved for wallets an EU member state provides or recognises), and service providers that follow the network’s rules; they are not part of the network but its participants. The network sells nothing: it runs the rules, the trust lists, open code and reference services such as the Institution Console and Tamga Verify; commercial services are offered by companies outside the network.
+Tamga is built in three layers that each stand on their own. The base: credentials, protocols and trust lists follow the EU standards, so compatible wallets and verifiers can work with Tamga institutions. Above it, *Tamga Network* is a light federation that collects each state’s trust list and lets states recognise one another — today Tamga publishes Türkiye’s list provisionally, and when a state publishes its own, the network points to it. On that base run *Tamga Wallet*, the network’s first wallet and a separate product (EU-compatible; “EUDI Wallet” is a title reserved for wallets an EU member state provides or recognises), and service providers that follow the network’s rules; they are not part of the network but its participants. The network sells nothing: it runs the rules, the trust lists, open code and reference services such as the Institution Console and Tamga Verify; commercial services are offered by companies outside the network.
 
 = Principles
 
@@ -96,7 +96,7 @@ Every verification runs the same pipeline in the same order and stops at the fir
 
 = Revocation and lifecycle
 
-Revocation uses the *IETF Token Status List*: two bits per credential copy — valid, revoked or suspended — at a *random* position. The issuer publishes at a *fixed interval*, never on demand, so timing reveals nothing about a person; each publication is anchored. Verifiers pre-fetch the lists, so checking a credential makes no call to the issuer or to the phone. A revocation reaches every verifier within about 90 minutes at most. Copies run out by design; the wallet asks before fetching fresh ones and never refreshes silently. See #link("https://tamga.network/en/learn/revocation")[revocation].
+Revocation uses the *IETF Token Status List*: two bits per credential copy — valid, revoked or suspended — at a *random* position. The issuer publishes at a *fixed interval*, never on demand, so timing reveals nothing about a person; each publication is anchored. Verifiers pre-fetch the lists, so checking a credential makes no call to the issuer or to the phone. A revocation reaches every verifier within about 90 minutes at most. Copies run out by design; when a credential comes with a refresh token, the wallet renews its copies in the background at the threshold the issuer announces, and a renewal shares nothing new. Credentials renewed by presenting the identity credential need the person's approval and PIN. See #link("https://tamga.network/en/learn/revocation")[revocation].
 
 #chapter()
 = Privacy by design
@@ -135,7 +135,7 @@ Governance on the ledger follows the principles: validators are states with equa
 
 The known limits of the first release are recorded and closed before the pilot. The pilot’s success and stop criteria are defined in advance.
 
-A separate test network, *sandbox.tamga.network*, is being prepared: its own test root and lists, sample institutions, fake people and sample credentials of every type. No wallet or verifier on the real network trusts it. See the #link("https://docs.tamga.network/guides/sandbox")[sandbox guide].
+A separate test network, *sandbox.tamga.network*, is live: its own test root and lists, sample institutions, fake people and sample credentials of every type. No wallet or verifier on the real network trusts it. Wallet, institution and verifier developers all test there: a wallet developer registers their own wallet provider in the sandbox list and tries the wallet against the sample institutions, the identity service and the verifier. See the #link("https://docs.tamga.network/guides/sandbox")[sandbox guide].
 
 = Known limits
 

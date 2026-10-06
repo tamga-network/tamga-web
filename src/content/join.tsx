@@ -70,6 +70,7 @@ const en: JoinContent = {
       who: "EU-compatible wallets",
       body: "Any wallet that follows the network's wallet rules can carry Tamga credentials. Tamga Wallet is the network's first wallet, not the only one.",
       items: [
+        "your own wallet provider, registered first in the sandbox list and tested there end to end",
         "registration as a wallet provider in the trust list",
         "wallet instance and key attestations",
         "conformance tests against the reference verifier",
@@ -223,6 +224,7 @@ const tr: JoinContent = {
       who: "AB uyumlu cüzdanlar",
       body: "Ağın cüzdan kurallarına uyan her cüzdan Tamga belgelerini taşıyabilir. Tamga Wallet ağın ilk cüzdanıdır, tek cüzdanı değil.",
       items: [
+        "kendi cüzdan sağlayıcınız; önce sandbox listesine kaydedilir ve orada uçtan uca denenir",
         "güven listesinde cüzdan sağlayıcı kaydı",
         "cüzdan örneği kanıtı ve anahtar kanıtı",
         "referans doğrulayıcıya karşı uyum testleri",
@@ -370,6 +372,7 @@ const tk: JoinContent = {
       who: "ÝB bilen gabat gelýän gapjyklar",
       body: "Toruň gapjyk düzgünlerine eýerýän her gapjyk Tamga resminamalaryny göterip biler. Tamga Wallet toruň ilkinji gapjygy, ýeke-täk gapjygy däl.",
       items: [
+        "öz gapjyk üpjün edijiňiz; ilki sandbox sanawyna hasaba alynýar we şol ýerde başdan-aýak synalýar",
         "ynam sanawynda gapjyk üpjün ediji ýazgysy",
         "gapjyk nusgasynyň we açaryň subutnamasy",
         "salgylanma barlaýja garşy laýyklyk synaglary",

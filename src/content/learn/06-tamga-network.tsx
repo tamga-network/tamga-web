@@ -424,7 +424,8 @@ export const CHAPTER_6: LearnPage[] = [
           <h3>Cüzdan sağlayıcısı</h3>
           <p>
             Cüzdan uygulamasını yapan ve yöneten kuruluş. Ağın cüzdan kurallarına uyduğunu uyum testleriyle gösterir ve listeye
-            girer. Ağ cüzdan seçmez; kurallara uyan her cüzdan sağlayıcısını tanır.
+            girer. Her cüzdan kendi cüzdan sağlayıcısını işletir; ağ hiçbirini işletmez (ağın ilk cüzdanı Tamga Wallet da kendisininkini
+            işletir). Ağ cüzdan seçmez; kurallara uyan her cüzdan sağlayıcısını tanır.
           </p>
           <h2>Devlet</h2>
           <p>
@@ -486,7 +487,8 @@ export const CHAPTER_6: LearnPage[] = [
           <h3>Wallet provider</h3>
           <p>
             The organisation that builds and runs a wallet app. It shows through conformance tests that it follows the network’s
-            wallet rules and is then listed. The network doesn’t pick wallets; it recognises every wallet provider that follows the
+            wallet rules and is then listed. Each wallet runs its own wallet provider; the network runs none (Tamga Wallet, the
+            network’s first wallet, runs its own too). The network doesn’t pick wallets; it recognises every wallet provider that follows the
             rules.
           </p>
           <h2>State</h2>
@@ -535,7 +537,7 @@ export const CHAPTER_6: LearnPage[] = [
             ýazylan maglumatlary sorap bilýär.
           </p>
           <h3>Gapjyk üpjün ediji</h3>
-          <p>Gapjyk programmasyny edýän gurama. Laýyklyk synaglaryndan geçip sanawa girýär; tor düzgünlere eýerýän her gapjygy ykrar edýär.</p>
+          <p>Gapjyk programmasyny edýän gurama. Laýyklyk synaglaryndan geçip sanawa girýär. Her gapjyk öz gapjyk üpjün edijisini işledýär; tor hiç birini işletmeýär (Tamga Wallet hem özüňkini işledýär). Tor düzgünlere eýerýän her gapjygy ykrar edýär.</p>
           <h2>Döwlet</h2>
           <p>
             Ýurduň öz ynam sanawynyň eýesi. Sanawda kimiň boljagyny we haýsy ýurtlaryň sanawlaryny ykrar etjegini çözýär.
@@ -1165,9 +1167,9 @@ export const CHAPTER_6: LearnPage[] = [
     minutes: 4,
     title: { tr: "İlk cüzdan: Tamga Wallet", en: "The first wallet: Tamga Wallet", tk: "Ilkinji gapjyk: Tamga Wallet" },
     summary: {
-      tr: "Ağın ilk ve örnek cüzdanı; ağın kurallarına her cüzdan gibi uyar, tek cüzdan değildir.",
-      en: "The network's first and example wallet; it follows the network's rules like any other wallet and is not the only one.",
-      tk: "Toruň ilkinji we nusga gapjygy; toruň düzgünlerine beýleki gapjyklar ýaly eýerýär, ýeke-täk gapjyk däl.",
+      tr: "Ağın ilk cüzdanı; ağ onu işletmez, ağın kurallarına her cüzdan gibi uyar, tek cüzdan değildir.",
+      en: "The network's first wallet; the network doesn't run it, it follows the network's rules like any other wallet and is not the only one.",
+      tk: "Toruň ilkinji gapjygy; tor ony işletmeýär, toruň düzgünlerine beýleki gapjyklar ýaly eýerýär, ýeke-täk gapjyk däl.",
     },
     diagram: "disclosure",
     body: {
@@ -1182,7 +1184,8 @@ export const CHAPTER_6: LearnPage[] = [
           <p>
             Tamga Wallet ayrı bir üründür; kendi ekibi, kendi kararları ve kendi sitesi vardır. Ağa diğer her cüzdan gibi katılır:
             cüzdan kurallarına uyduğunu gösterir ve cüzdan sağlayıcısı olarak listeye girer. Ağ ona bir ayrıcalık tanımaz; kurallara
-            uyan her cüzdan ağda aynı haklara sahiptir.
+            uyan her cüzdan ağda aynı haklara sahiptir. Ağ cüzdan işletmez: uygulamayı, cüzdan sağlayıcısını ve sitesini Tamga
+            Wallet kendisi işletir; cüzdanın tanıtımı kendi sitesindedir.
           </p>
           <h2>Ne işe yarar?</h2>
           <ul>
@@ -1198,7 +1201,7 @@ export const CHAPTER_6: LearnPage[] = [
               cüzdanlara ayrılmıştır; Tamga Wallet bu unvanı kullanmaz ve ulusal kimlik cüzdanı değildir.
             </p>
           </Callout>
-          <h2>Neden örnek cüzdan?</h2>
+          <h2>İlk cüzdan neden önemli?</h2>
           <p>
             Kurallar kâğıt üzerinde doğru olabilir, ama gerçek bir telefonda, gerçek bir kullanıcıyla çalışmaları gerekir. Tamga
             Wallet bu kuralların uygulanabilir olduğunu gösterir ve başka cüzdan yapmak isteyenlere örnek olur. Cüzdan
@@ -1223,7 +1226,8 @@ export const CHAPTER_6: LearnPage[] = [
           <p>
             Tamga Wallet is a separate product with its own team, its own decisions and its own site. It joins the network like any
             other wallet: it shows that it follows the wallet rules and is listed as a wallet provider. The network gives it no
-            privilege; every wallet that follows the rules has the same rights on the network.
+            privilege; every wallet that follows the rules has the same rights on the network. The network runs no wallet: Tamga
+            Wallet runs its own app, wallet provider and site, and the wallet is presented on its own site.
           </p>
           <h2>What does it do?</h2>
           <ul>
@@ -1239,7 +1243,7 @@ export const CHAPTER_6: LearnPage[] = [
               EU member state; Tamga Wallet doesn’t use that title and is not a national identity wallet.
             </p>
           </Callout>
-          <h2>Why an example wallet?</h2>
+          <h2>Why does a first wallet matter?</h2>
           <p>
             Rules can be right on paper, but they have to work on a real phone with a real user. Tamga Wallet shows that these rules
             can be implemented and serves as an example for others who want to build a wallet. Any team that wants to become a wallet
@@ -1257,7 +1261,7 @@ export const CHAPTER_6: LearnPage[] = [
         <>
           <p>Toruň işleýändigini görkezmegiň iň gowy ýoly ony ulanýan gapjykdyr. Tamga Wallet bu toruň ilkinji gapjygy: ÝB bilen laýyk programma.</p>
           <h2>Toruň bölegi däl, gatnaşyjysy</h2>
-          <p>Tamga Wallet aýry önüm; öz topary we öz sahypasy bar. Tora beýleki gapjyklar ýaly goşulýar; tor oňa hiç hili artykmaçlyk bermeýär.</p>
+          <p>Tamga Wallet aýry önüm; öz topary we öz sahypasy bar. Tora beýleki gapjyklar ýaly goşulýar; tor oňa hiç hili artykmaçlyk bermeýär. Tor gapjyk işletmeýär: programmany, gapjyk üpjün edijini we sahypany Tamga Wallet özi işledýär.</p>
           <h2>Näme üçin gerek?</h2>
           <ul>
             <li>Guramalardan resminama almak.</li>
@@ -1268,7 +1272,7 @@ export const CHAPTER_6: LearnPage[] = [
           <Callout kind="info" locale="tk">
             <p>Tamga Wallet “ÝB bilen laýyk” gapjyk. “EUDI Wallet” ady ÝB agza döwletleriniň gapjyklaryna degişli.</p>
           </Callout>
-          <h2>Näme üçin nusga gapjyk?</h2>
+          <h2>Ilkinji gapjyk näme üçin möhüm?</h2>
           <p>Ol düzgünleriň hakyky telefonda işleýändigini görkezýär. Gapjyk etmek isleýän her topar şol bir paketleri we synaglary ulanyp bilýär.</p>
           <Callout kind="turkic" locale="tk">
             <p>Toruň maksady bir gapjyk däl, türki dünýäsiniň dürli ýurtlaryndan köp laýyk gapjyk.</p>
@@ -1278,9 +1282,9 @@ export const CHAPTER_6: LearnPage[] = [
     },
     keyPoints: [
       {
-        tr: "Tamga Wallet ağın ilk ve örnek cüzdanıdır; ayrı bir üründür ve ağa diğer cüzdanlar gibi katılır.",
-        en: "Tamga Wallet is the network’s first and example wallet; it is a separate product and joins like any other wallet.",
-        tk: "Tamga Wallet toruň ilkinji we nusga gapjygy; aýry önüm.",
+        tr: "Tamga Wallet ağın ilk cüzdanıdır; ayrı bir üründür, ağ onu işletmez ve ağa diğer cüzdanlar gibi katılır.",
+        en: "Tamga Wallet is the network’s first wallet; it is a separate product, the network doesn’t run it, and it joins like any other wallet.",
+        tk: "Tamga Wallet toruň ilkinji gapjygy; aýry önüm, tor ony işletmeýär.",
       },
       {
         tr: "Belgeler telefonda durur; kişi yalnız gerekeni gösterir ve her siteye ayrı takma adla girer.",
@@ -1297,6 +1301,7 @@ export const CHAPTER_6: LearnPage[] = [
       { label: { tr: "Cüzdan kuralları", en: "Wallet rules", tk: "Gapjyk düzgünleri" }, href: "/specifications/wallet", kind: "docs" },
       { label: { tr: "Cüzdan geliştirmek", en: "Building a wallet", tk: "Gapjyk düzmek" }, href: "/guides/build-a-wallet", kind: "docs" },
       { label: { tr: "ADR-0030: ürün adları", en: "ADR-0030: product names", tk: "ADR-0030: önüm atlary" }, href: "/adr/0030-product-names", kind: "docs" },
+      { label: { tr: "ADR-0042: ağ ve cüzdanlar", en: "ADR-0042: network and wallets", tk: "ADR-0042: tor we gapjyklar" }, href: "/adr/0042-network-and-wallets", kind: "docs" },
     ],
   },
 ];

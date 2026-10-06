@@ -30,7 +30,7 @@ Yeni model bunu tersine çevirir: belge kişide kalır, yalnızca gerekli kanıt
 
 Türk dünyası dili, kültürü ve tarihi paylaşır. Bir devlette verilen diploma bir diğerinde doğrulanabilmeli; bir kurumun kimliğine sınır ötesinde güvenilebilmelidir. Tamga bu ortak zemini aynı standartlar üzerinde, her devleti egemen tutan bir yönetişimle kurar.
 
-Tamga, her biri tek başına ayakta durabilen üç katmanda kuruludur. Taban: belgeler, protokoller ve güven listeleri AB standartlarındadır; böylece uyumlu cüzdanlar ve doğrulayıcılar Tamga’daki kurumlarla çalışabilir. Onun üstünde *Tamga Network*, her devletin güven listesini toplayan ve devletlerin birbirini tanımasını sağlayan hafif bir federasyondur — bugün Türkiye listesini Tamga geçici olarak yayınlar; bir devlet kendi listesini yayınladığında ağ onu gösterir. Bu zeminde ağın ilk ve referans cüzdanı olan, ayrı bir ürün olarak gelişen *Tamga Wallet* (AB uyumludur; “EUDI Wallet” bir AB üye devletinin sunduğu ya da tanıdığı cüzdanlara ayrılmış bir unvandır) ve ağın kurallarına uyan hizmet sağlayıcılar çalışır; bunlar ağın parçası değil, katılımcılarıdır. Ağ bir şey satmaz: kuralları, güven listelerini, açık kodu ve Kurum Konsolu, Tamga Verify gibi referans hizmetleri işletir; ticari hizmetleri ağın dışındaki şirketler sunar.
+Tamga, her biri tek başına ayakta durabilen üç katmanda kuruludur. Taban: belgeler, protokoller ve güven listeleri AB standartlarındadır; böylece uyumlu cüzdanlar ve doğrulayıcılar Tamga’daki kurumlarla çalışabilir. Onun üstünde *Tamga Network*, her devletin güven listesini toplayan ve devletlerin birbirini tanımasını sağlayan hafif bir federasyondur — bugün Türkiye listesini Tamga geçici olarak yayınlar; bir devlet kendi listesini yayınladığında ağ onu gösterir. Bu zeminde ağın ilk cüzdanı olan, ayrı bir ürün olarak gelişen *Tamga Wallet* (AB uyumludur; “EUDI Wallet” bir AB üye devletinin sunduğu ya da tanıdığı cüzdanlara ayrılmış bir unvandır) ve ağın kurallarına uyan hizmet sağlayıcılar çalışır; bunlar ağın parçası değil, katılımcılarıdır. Ağ bir şey satmaz: kuralları, güven listelerini, açık kodu ve Kurum Konsolu, Tamga Verify gibi referans hizmetleri işletir; ticari hizmetleri ağın dışındaki şirketler sunar.
 
 = İlkeler
 
@@ -96,7 +96,7 @@ Her doğrulama aynı hattı aynı sırayla çalıştırır ve ilk hatada durur. 
 
 = İptal ve yaşam döngüsü
 
-İptal *IETF Token Status List* ile yapılır: her belge kopyası için *rastgele* bir konumda iki bit — geçerli, iptal ya da askıda. Kurum listeyi *sabit aralıkla* yayınlar, asla istek üzerine değil; böylece zamanlama kişi hakkında hiçbir şey ele vermez; her yayın çapalanır. Doğrulayıcılar listeleri önceden çeker; bir belgeyi denetlemek ne kuruma ne telefona çağrı yapar. Bir iptal en geç yaklaşık 90 dakikada her doğrulayıcıya ulaşır. Kopyalar tasarım gereği tükenir; cüzdan yenilerini almadan önce sorar ve asla sessizce yenilemez. Bkz. #link("https://tamga.network/tr/learn/revocation")[iptal].
+İptal *IETF Token Status List* ile yapılır: her belge kopyası için *rastgele* bir konumda iki bit — geçerli, iptal ya da askıda. Kurum listeyi *sabit aralıkla* yayınlar, asla istek üzerine değil; böylece zamanlama kişi hakkında hiçbir şey ele vermez; her yayın çapalanır. Doğrulayıcılar listeleri önceden çeker; bir belgeyi denetlemek ne kuruma ne telefona çağrı yapar. Bir iptal en geç yaklaşık 90 dakikada her doğrulayıcıya ulaşır. Kopyalar tasarım gereği tükenir; yenileme belirteciyle verilen belgelerde cüzdan, kurumun ilan ettiği eşikte yeni kopyaları arka planda kendiliğinden alır ve yenileme yeni bir bilgi paylaşmaz. Kimlik belgesi sunularak yenilenen belgeler ise kişinin onayı ve PIN'iyle yenilenir. Bkz. #link("https://tamga.network/tr/learn/revocation")[iptal].
 
 #chapter()
 = Tasarımdan gelen mahremiyet
@@ -135,7 +135,7 @@ Defterdeki yönetişim ilkeleri izler: validator’lar eşit oylu devletlerdir; 
 
 İlk sürümün bilinen sınırları kayıt altındadır ve pilottan önce kapanır. Pilotun başarı ve durdurma ölçütleri önceden tanımlıdır.
 
-Gerçek ağdan tamamen ayrı bir test ağı, *sandbox.tamga.network*, hazırlanıyor: kendi test kökü ve listeleri, örnek kurumlar, sahte kişiler ve her türden örnek belgeler. Gerçek ağdaki hiçbir cüzdan ya da doğrulayıcı ona güvenmez. Bkz. #link("https://docs.tamga.network/tr/guides/sandbox")[sandbox rehberi].
+Gerçek ağdan tamamen ayrı bir test ağı, *sandbox.tamga.network*, yayında: kendi test kökü ve listeleri, örnek kurumlar, sahte kişiler ve her türden örnek belgeler. Gerçek ağdaki hiçbir cüzdan ya da doğrulayıcı ona güvenmez. Cüzdan, kurum ve doğrulayıcı geliştiricilerinin hepsi orada dener: cüzdan geliştiricisi kendi cüzdan sağlayıcısını sandbox listesine kaydettirir ve cüzdanını örnek kurumlarla, kimlik servisiyle ve doğrulayıcıyla dener. Bkz. #link("https://docs.tamga.network/tr/guides/sandbox")[sandbox rehberi].
 
 = Bilinen sınırlar
 

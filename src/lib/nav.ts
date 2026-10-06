@@ -27,7 +27,6 @@ import {
   Scale,
   ScanLine,
   ShieldCheck,
-  Smartphone,
   SquareTerminal,
   Ticket,
   Users,
@@ -511,9 +510,9 @@ const DEV_MENU: Menu = {
         {
           title: { en: "Sandbox", tr: "Sandbox", tk: "Sandbox" },
           desc: {
-            en: "Test network: try your wallet with sample institutions and credentials.",
-            tr: "Test ağı: cüzdanını örnek kurumlar ve belgelerle dene.",
-            tk: "Synag ulgamy: gapjygyňy nusga guramalar we resminamalar bilen synap gör.",
+            en: "Test network for wallet, institution and verifier developers: sample institutions and credentials.",
+            tr: "Cüzdan, kurum ve doğrulayıcı geliştiricileri için test ağı: örnek kurumlar ve belgeler.",
+            tk: "Gapjyk, gurama we barlaýjy işläp düzüjileri üçin synag ulgamy: nusga guramalar we resminamalar.",
           },
           icon: FlaskConical,
           tone: "neutral",
@@ -749,7 +748,6 @@ export const HOST_ICON: Record<string, { icon: LucideIcon; tone: Tone }> = {
   "console.tamga.network": { icon: Building2, tone: "gold" },
   "verify.tamga.network": { icon: ScanLine, tone: "accent" },
   "id.tamga.network": { icon: Fingerprint, tone: "primary" },
-  "wallet.tamga.network": { icon: Smartphone, tone: "neutral" },
   [SANDBOX_HOST]: { icon: FlaskConical, tone: "neutral" },
 };
 export const ECOSYSTEM_MENU = SUBDOMAINS.filter((s) => s.group !== "learn");

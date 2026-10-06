@@ -3,6 +3,7 @@ import type { Locale } from "@/i18n/routing";
 /*
  * Changelog — ağın sürümleri (sade dille). Sürüm numaraları ağın yayınlarıdır (paket sürümleri npm'de ayrıdır).
  * Kaynak: tamga-network CHANGELOG.md (1.0.0 = 2026-10-02 ilk yayın; öncesi özel arşivde). Yeni sürüm en üste; her metin üç dilde.
+ * Duyuruya kadar sürüm 1.0.0 kalır; aynı sürüm içindeki tarihli güncellemeler ayrı kayıt olur ve `id` ile ayrılır.
  */
 
 type L = Record<Locale, string>;
@@ -12,6 +13,8 @@ export type ReleaseKind = "feature" | "security" | "fix";
 export type SectionKind = "added" | "changed" | "fixed" | "security";
 
 export type Release = {
+  /** Bağlantı çapası; aynı sürümde birden çok kayıt varsa (ör. "v1.0.0-2026-10-06") */
+  id?: string;
   version: string;
   date: string;
   kind: ReleaseKind;
@@ -85,6 +88,47 @@ export const CHANGELOG_PAGE: Record<
 };
 
 export const RELEASES: Release[] = [
+  {
+    id: "v1.0.0-2026-10-06",
+    version: "v1.0.0",
+    date: "2026-10-06",
+    kind: "feature",
+    title: {
+      en: "Network and wallets separated",
+      tr: "Ağ ve cüzdanlar ayrıldı",
+      tk: "Tor we gapjyklar aýryldy",
+    },
+    sections: {
+      changed: {
+        en: [
+          "Tamga Network runs no wallet (ADR-0042). It lists wallets in its trust list; Tamga Wallet, the network's first wallet, is a separate project and joins like any other wallet. The network's wallet services (on the main network and in the sandbox) were removed: every wallet runs its own wallet provider, and Tamga Wallet runs its own.",
+          "One sandbox for everyone: wallet, institution and verifier developers test on sandbox.tamga.network. A wallet developer registers their own wallet provider in the sandbox list (on request, for now) and tests against the sample institutions, the identity service and the verifier.",
+          "One favicon: the network's mark is the same at every size.",
+        ],
+        tr: [
+          "Tamga Network cüzdan işletmez (ADR-0042). Cüzdanları güven listesinde listeler; ağın ilk cüzdanı Tamga Wallet ayrı bir projedir ve ağa her cüzdan gibi katılır. Ağın cüzdan hizmetleri (gerçek ağda ve sandbox'ta) kaldırıldı: her cüzdan kendi cüzdan sağlayıcısını işletir, Tamga Wallet da kendisininkini.",
+          "Herkes için tek sandbox: cüzdan, kurum ve doğrulayıcı geliştiricileri sandbox.tamga.network'te dener. Cüzdan geliştiricisi kendi cüzdan sağlayıcısını sandbox listesine kaydettirir (şimdilik başvuruyla) ve örnek kurumlarla, kimlik servisiyle ve doğrulayıcıyla dener.",
+          "Tek favicon: ağın işareti her boyutta aynı.",
+        ],
+        tk: [
+          "Tamga Network gapjyk işletmeýär (ADR-0042). Gapjyklary ynam sanawynda görkezýär; toruň ilkinji gapjygy Tamga Wallet aýry taslama we tora beýleki gapjyklar ýaly goşulýar. Toruň gapjyk hyzmatlary (hakyky torda we sandbox-da) aýryldy: her gapjyk öz gapjyk üpjün edijisini işledýär, Tamga Wallet hem özüňkini.",
+          "Hemmeler üçin bir sandbox: gapjyk, gurama we barlaýjy işläp düzüjileri sandbox.tamga.network-da synaýar. Gapjyk işläp düzüjisi öz gapjyk üpjün edijisini sandbox sanawyna hasaba aldyrýar (häzirlikçe haýyş boýunça) we nusga guramalar, şahsyýet hyzmaty we barlaýjy bilen synaýar.",
+          "Bir favicon: toruň belgisi ähli ölçeglerde birmeňzeş.",
+        ],
+      },
+      added: {
+        en: [
+          "New open package @tamga-network/zk: the wallet side of zero-knowledge proofs for mdoc credentials, made on the device (first use: proving “over 18” without the birth date; ADR-0032). Verification is in @tamga-network/verifier/zk.",
+        ],
+        tr: [
+          "Yeni açık paket @tamga-network/zk: mdoc belgeleri için sıfır bilgi ispatının cüzdan tarafı, cihazda üretilir (ilk kullanım: doğum tarihini vermeden “18 yaş üstü” kanıtı; ADR-0032). Doğrulama @tamga-network/verifier/zk'dadır.",
+        ],
+        tk: [
+          "Täze açyk paket @tamga-network/zk: mdoc resminamalary üçin nol bilimli subutnamanyň gapjyk tarapy, enjamda döredilýär (ilkinji ulanylyşy: doglan senäni açman “18 ýaşdan uly” subutnamasy; ADR-0032). Barlag @tamga-network/verifier/zk-da.",
+        ],
+      },
+    },
+  },
   {
     version: "v1.0.0",
     date: "2026-10-02",

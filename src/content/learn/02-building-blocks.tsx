@@ -1417,7 +1417,7 @@ export const CHAPTER_2: LearnPage[] = [
           <Callout kind="info" locale="tr">
             <p>
               Tamga Network cüzdan seçmez, cüzdanları tanır. Ağın cüzdan kurallarına uyan ve uyum testlerini geçen her cüzdan
-              ağda çalışır. Ağın ilk ve örnek cüzdanı Tamga Wallet&apos;tır; ama tek seçenek değildir.
+              ağda çalışır. Ağın ilk cüzdanı Tamga Wallet&apos;tır; ama tek seçenek değildir ve ağ onu işletmez.
             </p>
           </Callout>
           <Callout kind="turkic" locale="tr">
@@ -1477,8 +1477,8 @@ export const CHAPTER_2: LearnPage[] = [
           <Callout kind="info" locale="en">
             <p>
               Tamga Network does not pick wallets; it recognises them. Any wallet that follows the network&apos;s wallet rules
-              and passes the conformance tests works on the network. The network&apos;s first and example wallet is Tamga
-              Wallet, but it is not the only choice.
+              and passes the conformance tests works on the network. The network&apos;s first wallet is Tamga
+              Wallet, but it is not the only choice and the network doesn&apos;t run it.
             </p>
           </Callout>
           <Callout kind="turkic" locale="en">
@@ -1508,7 +1508,7 @@ export const CHAPTER_2: LearnPage[] = [
             guramalardan täzeden alýarsyňyz; saýtlardaky lakamlaryňyz yzyna gelýär.
           </p>
           <Callout kind="info" locale="tk">
-            <p>Tamga Network gapjyk saýlamaýar, tanaýar. Ilkinji we nusga gapjyk Tamga Wallet, ýöne ýeke-täk däl.</p>
+            <p>Tamga Network gapjyk saýlamaýar, tanaýar. Ilkinji gapjyk Tamga Wallet, ýöne ýeke-täk däl we tor ony işletmeýär.</p>
           </Callout>
         </>
       ),
@@ -1525,8 +1525,8 @@ export const CHAPTER_2: LearnPage[] = [
         tk: "Tapan adam resminamalary ulanyp bilmeýär.",
       },
       {
-        tr: "Ağ kurallara uyan her cüzdanı tanır; ilk ve örnek cüzdan Tamga Wallet.",
-        en: "The network recognises every compliant wallet; the first and example one is Tamga Wallet.",
+        tr: "Ağ kurallara uyan her cüzdanı tanır; ilk cüzdan Tamga Wallet.",
+        en: "The network recognises every compliant wallet; the first one is Tamga Wallet.",
         tk: "Tor her düzgünli gapjygy tanaýar.",
       },
     ],

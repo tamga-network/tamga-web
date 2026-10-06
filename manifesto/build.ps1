@@ -9,7 +9,7 @@ $typst = (Get-ChildItem -Path (Join-Path $web 'tools') -Recurse -Filter 'typst.e
 # Brand fonts (IBM Plex Sans / Mono; Onest when added): tools/fonts (gitignored) or the workspace font folder.
 # Missing fonts fall back to Typst's built-in fonts.
 $fontArgs = @()
-foreach ($f in @((Join-Path $web 'tools/fonts'), (Join-Path $web '../../marketing/brand/fonts'))) {
+foreach ($f in @((Join-Path $web 'tools/fonts'), (Join-Path $web '../../marketing/shared/fonts'))) {
   if (Test-Path $f) { $fontArgs += @('--font-path', (Resolve-Path $f).Path) }
 }
 

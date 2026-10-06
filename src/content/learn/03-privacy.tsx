@@ -1757,8 +1757,8 @@ export const CHAPTER_3: LearnPage[] = [
           <ul>
             <li>
               <strong>Cüzdanı sıfırlamak:</strong> kişi cüzdanı sıfırladığında
-              cihazdaki bütün veriler ve Tamga hizmetlerindeki kaydı (kimlik
-              servisi ve cüzdan sağlayıcısındaki kayıt) silinir.
+              cihazdaki bütün veriler ve kaydı (ağın kimlik servisinde ve
+              cüzdanın kendi cüzdan sağlayıcısında) silinir.
             </li>
             <li>
               <strong>Kurumdan silme talebi:</strong> kişi, belge gösterdiği bir
@@ -1869,8 +1869,8 @@ export const CHAPTER_3: LearnPage[] = [
           <ul>
             <li>
               <strong>Resetting the wallet:</strong> all data on the device, and
-              the person's records in Tamga's services (the identity service and
-              the wallet provider), are deleted.
+              the person's records (in the network's identity service and in the
+              wallet's own wallet provider), are deleted.
             </li>
             <li>
               <strong>Deletion requests:</strong> from the wallet, the person

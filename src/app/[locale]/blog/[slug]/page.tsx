@@ -5,7 +5,7 @@ import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
-import { allSlugs, getPost, getBlogUi, formatDate, isEarlierDesign } from "@/lib/blog";
+import { allSlugs, getPost, getBlogUi, formatDate } from "@/lib/blog";
 import { routing } from "@/i18n/routing";
 
 export function generateStaticParams() {
@@ -81,11 +81,6 @@ export default async function BlogPostPage({
         {post.description}
       </p>
 
-      {isEarlierDesign(post.date) && (
-        <aside className="mt-8 rounded-r-lg border border-border border-l-[3px] border-l-gold-bright bg-surface/50 p-4 text-sm leading-relaxed text-foreground-muted">
-          {ui.earlierDesign}
-        </aside>
-      )}
 
       <div className="prose mt-10 border-t border-border pt-10">{post.body}</div>
 
