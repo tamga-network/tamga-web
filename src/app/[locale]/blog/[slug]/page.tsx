@@ -53,7 +53,7 @@ export default async function BlogPostPage({
           inLanguage: locale,
           url: `${SITE_URL}/${locale}/blog/${slug}`,
           mainEntityOfPage: `${SITE_URL}/${locale}/blog/${slug}`,
-          image: `${SITE_URL}/og.png`,
+          image: `${SITE_URL}/${locale}/opengraph-image`,
           author: { "@id": `${SITE_URL}/#organization` },
           publisher: ORGANIZATION,
         }}

@@ -4,7 +4,7 @@ import type { Locale } from "@/i18n/routing";
  * "Ağa katıl" sayfası (eski /issuers, 2026-10-02). Üç kapı: kurumlar (belge veren / doğrulayıcı), cüzdan sağlayıcılar,
  * devletler ve ülke listeleri. Kaynak: tamga-network ADR-0016 (barındırılan belge verme API'si), ADR-0020 (yetkili kaynak
  * kurumda), ADR-0024 (katılımcı kayıt verisi), ADR-0025 (cüzdan ve anahtar kanıtı), ADR-0026 (kayıt sertifikaları),
- * ADR-0036 (federasyon: dış listeler, dış cüzdan sağlayıcıları), PM-GOV-0001/G1 (imza anahtarı ağda durmaz).
+ * ADR-0036 (federasyon: dış listeler, dış cüzdan sağlayıcıları), ADR-0041 (sandbox'ta test kurumu), PM-GOV-0001/G1 (imza anahtarı ağda durmaz).
  * Ücret, takvim ve iş bilgisi yazılmaz (kamuya açık depo).
  */
 
@@ -60,6 +60,7 @@ const en: JoinContent = {
       who: "issuers and verifiers",
       body: "Universities, hospitals, chambers, public bodies, companies and event organisers issue credentials; employers, websites and gates verify them.",
       items: [
+        "try first: create a test institution in the sandbox (sandbox.tamga.network)",
         "registration data and an X.509 certificate",
         "an entry in the signed trust list",
         "hosted issuance or your own server (open-source packages)",
@@ -214,6 +215,7 @@ const tr: JoinContent = {
       who: "belge veren ve doğrulayıcı",
       body: "Üniversiteler, hastaneler, meslek odaları, kamu kurumları, şirketler ve etkinlik düzenleyicileri belge verir; işverenler, web siteleri ve kapılar doğrular.",
       items: [
+        "önce deneyin: sandbox'ta bir test kurumu açın (sandbox.tamga.network)",
         "kayıt bilgileri ve X.509 sertifikası",
         "imzalı güven listesinde kayıt",
         "barındırılan belge verme ya da kendi sunucunuz (açık kaynak paketler)",
@@ -225,7 +227,7 @@ const tr: JoinContent = {
       body: "Ağın cüzdan kurallarına uyan her cüzdan Tamga belgelerini taşıyabilir. Tamga Wallet ağın ilk cüzdanıdır, tek cüzdanı değil.",
       items: [
         "kendi cüzdan sağlayıcınız; önce sandbox listesine kaydedilir ve orada uçtan uca denenir",
-        "güven listesinde cüzdan sağlayıcı kaydı",
+        "güven listesinde cüzdan sağlayıcısı kaydı",
         "cüzdan örneği kanıtı ve anahtar kanıtı",
         "referans doğrulayıcıya karşı uyum testleri",
       ],
@@ -333,7 +335,7 @@ const tr: JoinContent = {
     "İşverenler, web siteleri ve kapılar kayıtlı doğrulayıcı olarak katılır: her kullanım için hangi belgeyi ve alanları istediklerini, amacı ve gizlilik politikalarını kaydederler. Doğrulayıcı kaydından fazlasını isterse cüzdan kişiyi uyarır.",
   apply: {
     title: "Başvuru",
-    body: "Kurumunuzun adını ve nasıl katılmak istediğinizi (belge vermek, doğrulamak, cüzdan sağlayıcı ya da ülke listesi) yazarak bize ulaşın. Eksiksiz gereksinim rehberiyle dönüyoruz.",
+    body: "Kurumunuzun adını ve nasıl katılmak istediğinizi (belge vermek, doğrulamak, cüzdan sağlayıcısı olmak ya da ülke listesi) yazarak bize ulaşın. Eksiksiz gereksinim rehberiyle dönüyoruz.",
     mail: "partners@tamga.network",
     subject: "Tamga Network'e katılım",
     docs: "https://docs.tamga.network",
@@ -362,6 +364,7 @@ const tk: JoinContent = {
       who: "resminama berijiler we barlaýjylar",
       body: "Uniwersitetler, hassahanalar, hünär palatalary, döwlet edaralary, kompaniýalar we çäre guraýjylar resminama berýär; iş berijiler, web saýtlar we gapylar barlaýar.",
       items: [
+        "ilki synap görüň: sandbox-da synag guramasyny açyň (sandbox.tamga.network)",
         "hasaba alyş maglumatlary we X.509 sertifikaty",
         "gol çekilen ynam sanawynda ýazgy",
         "ýerleşdirilen resminama beriş ýa-da öz serweriňiz (açyk çeşmeli paketler)",

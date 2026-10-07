@@ -647,7 +647,7 @@ export const CHAPTER_2: LearnPage[] = [
     deeper: [
       { label: { tr: "Sözlük", en: "Glossary", tk: "Sözlük" }, href: "/glossary", kind: "docs" },
       {
-        label: { tr: "Belge biçimi ve protokoller", en: "Credential format and protocols", tk: "Resminama görnüşi" },
+        label: { tr: "Belge biçimi ve protokoller", en: "Credential format and protocols", tk: "Resminama görnüşi we protokollar" },
         href: "/specifications/credential-format",
         kind: "docs",
       },
@@ -658,7 +658,7 @@ export const CHAPTER_2: LearnPage[] = [
     chapter: 2,
     order: 2,
     minutes: 4,
-    title: { tr: "Dijital imza", en: "Digital signatures", tk: "Sanly gol" },
+    title: { tr: "Dijital imza", en: "Digital signatures", tk: "Sanly gollar" },
     summary: {
       tr: "Dijital imza iki soruyu cevaplar: bunu kim imzaladı ve imzadan sonra değişti mi?",
       en: "A digital signature answers two questions: who signed this, and has it changed since?",
@@ -805,7 +805,7 @@ export const CHAPTER_2: LearnPage[] = [
       {
         tr: "Doğrulayan imzayı açık anahtarla, kuruma sormadan denetler.",
         en: "The verifier checks it with the public key, without asking the issuer.",
-        tk: "Barlaýjy guramadan soraman barlaýar.",
+        tk: "Barlaýjy ony açyk açar bilen, beriji guramadan soraman barlaýar.",
       },
       {
         tr: "Açık anahtarın kime ait olduğunu güven listesi söyler.",
@@ -995,7 +995,7 @@ export const CHAPTER_2: LearnPage[] = [
       {
         tr: "Her devlet kendi kökünün sahibidir; Tamga bugün Türkiye kökünü geçici olarak işletir.",
         en: "Each state owns its root; today Tamga operates the Türkiye root provisionally.",
-        tk: "Her döwlet öz kökünüň eýesi.",
+        tk: "Her döwlet öz kökünüň eýesi; häzir Türkiýäniň köküni Tamga wagtlaýyn işledýär.",
       },
     ],
     deeper: [
@@ -1332,24 +1332,24 @@ export const CHAPTER_2: LearnPage[] = [
       {
         tr: "SD-JWT VC internet için: JSON tabanlı, alan alan seçici paylaşım.",
         en: "SD-JWT VC is for the internet: JSON-based, field-by-field disclosure.",
-        tk: "SD-JWT VC internet üçin.",
+        tk: "SD-JWT VC internet üçin: JSON esasly, meýdan-meýdan paýlaşmak.",
       },
       {
         tr: "mdoc yüz yüze için: ISO/IEC 18013-5, QR ve Bluetooth, çevrim dışı.",
         en: "mdoc is for in person: ISO/IEC 18013-5, QR and Bluetooth, offline.",
-        tk: "mdoc ýüzbe-ýüz üçin.",
+        tk: "mdoc ýüzbe-ýüz üçin: ISO/IEC 18013-5, QR we Bluetooth, internetsiz.",
       },
       {
         tr: "Kurallar iki biçimde de aynıdır; AB de ikisini birlikte ister.",
         en: "The rules are the same in both; the EU requires both as well.",
-        tk: "Düzgünler ikisinde-de birmeňzeş.",
+        tk: "Düzgünler ikisinde-de birmeňzeş; ÝB hem ikisini bile talap edýär.",
       },
     ],
     deeper: [
       { label: { tr: "Belge biçimleri", en: "Credential formats", tk: "Resminama görnüşleri" }, href: "/concepts/credential-formats", kind: "docs" },
       { label: { tr: "SD-JWT VC profili", en: "SD-JWT VC profile", tk: "SD-JWT VC profili" }, href: "/specifications/sd-jwt-vc", kind: "docs" },
       {
-        label: { tr: "Kimlik belgesi için mdoc (ADR-0013)", en: "mdoc for the identity credential (ADR-0013)", tk: "mdoc (ADR-0013)" },
+        label: { tr: "Kimlik belgesi için mdoc (ADR-0013)", en: "mdoc for the identity credential (ADR-0013)", tk: "Şahsyýet resminamasy üçin mdoc (ADR-0013)" },
         href: "/adr/0013-mdoc-dual-format-for-identity",
         kind: "docs",
       },
@@ -1527,14 +1527,14 @@ export const CHAPTER_2: LearnPage[] = [
       {
         tr: "Ağ kurallara uyan her cüzdanı tanır; ilk cüzdan Tamga Wallet.",
         en: "The network recognises every compliant wallet; the first one is Tamga Wallet.",
-        tk: "Tor her düzgünli gapjygy tanaýar.",
+        tk: "Tor düzgünlere laýyk her gapjygy tanaýar; ilkinjisi Tamga Wallet.",
       },
     ],
     deeper: [
       { label: { tr: "Cüzdan geliştirmek", en: "Building a wallet", tk: "Gapjyk döretmek" }, href: "/guides/build-a-wallet", kind: "docs" },
       { label: { tr: "Cüzdan kuralları", en: "Wallet rules", tk: "Gapjyk düzgünleri" }, href: "/specifications/wallet", kind: "docs" },
       {
-        label: { tr: "Cüzdan ve anahtar kanıtı (ADR-0025)", en: "Wallet and key attestation (ADR-0025)", tk: "Gapjyk subutnamasy (ADR-0025)" },
+        label: { tr: "Cüzdan ve anahtar kanıtı (ADR-0025)", en: "Wallet and key attestation (ADR-0025)", tk: "Gapjyk we açar subutnamasy (ADR-0025)" },
         href: "/adr/0025-wallet-instance-and-key-attestations",
         kind: "docs",
       },
@@ -1723,17 +1723,17 @@ export const CHAPTER_2: LearnPage[] = [
       {
         tr: "Belge almak: teklif → cüzdan kanıtı → imzalı belge, birkaç tek kullanımlık kopya (OpenID4VCI).",
         en: "Receiving: offer → wallet attestation → signed credential, as several single-use copies (OpenID4VCI).",
-        tk: "Almak: teklip → subutnama → gol çekilen resminama.",
+        tk: "Almak: teklip → gapjyk subutnamasy → gol çekilen resminama, birnäçe bir gezeklik nusga görnüşinde (OpenID4VCI).",
       },
       {
         tr: "Göstermek: imzalı istek → onay ekranı → yalnız seçilen alanlar → saniyeler içinde denetim (OpenID4VP).",
         en: "Presenting: signed request → consent screen → only chosen fields → checked in seconds (OpenID4VP).",
-        tk: "Görkezmek: haýyş → razylyk → diňe saýlanan meýdanlar.",
+        tk: "Görkezmek: gol çekilen haýyş → razylyk ekrany → diňe saýlanan meýdanlar → birnäçe sekuntda barlanýar (OpenID4VP).",
       },
       {
         tr: "Doğrulayan yalnız kaydında bildirdiği bilgileri isteyebilir; fazlasında cüzdan uyarır.",
         en: "A verifier may ask only for what it registered; the wallet warns about anything more.",
-        tk: "Barlaýjy diňe bildireni sorap bilýär.",
+        tk: "Barlaýjy diňe hasaba alnanda bildiren zadyny sorap bilýär; artykmaç zat soralsa gapjyk duýduryş berýär.",
       },
     ],
     deeper: [
@@ -1902,24 +1902,24 @@ export const CHAPTER_2: LearnPage[] = [
       {
         tr: "Kurum iptal ettiği belgenin konumunu iptal listesinde 1 yapar; liste imzalı ve herkese açıktır.",
         en: "The issuer sets a revoked credential's position to 1 in a signed, public status list.",
-        tk: "Gurama ýatyran resminamasynyň ýerini 1 edýär.",
+        tk: "Gurama ýatyran resminamasynyň ornuny gol çekilen, açyk ýatyrylyş sanawynda 1 edýär.",
       },
       {
         tr: "Doğrulayan listeyi indirir; kurum hangi belgenin denetlendiğini öğrenmez.",
         en: "The verifier downloads the list; the issuer never learns which credential was checked.",
-        tk: "Gurama haýsy resminamanyň barlanandygyny bilmeýär.",
+        tk: "Barlaýjy sanawy göçürip alýar; gurama haýsy resminamanyň barlanandygyny hiç haçan bilmeýär.",
       },
       {
         tr: "Emin olunamayan durum 'belirsiz'dir, asla 'geçerli' sayılmaz; cüzdan kopyaları kendiliğinden yeniler.",
         en: "An unconfirmed case is 'indeterminate', never 'valid'; the wallet refreshes copies on its own.",
-        tk: "Anyklanmadyk ýagdaý hiç haçan 'dogry' däl.",
+        tk: "Anyklanmadyk ýagdaý 'näbelli' bolýar, hiç haçan 'dogry' däl; gapjyk nusgalary özbaşdak täzeleýär.",
       },
     ],
     deeper: [
       { label: { tr: "İptal ve tazelik", en: "Revocation and freshness", tk: "Ýatyrmak we täzelik" }, href: "/concepts/revocation", kind: "docs" },
-      { label: { tr: "İptal listesi şartnamesi", en: "Status list specification", tk: "Ýatyrylan sanaw" }, href: "/specifications/status-list", kind: "docs" },
+      { label: { tr: "İptal listesi şartnamesi", en: "Status list specification", tk: "Ýatyrylyş sanawynyň spesifikasiýasy" }, href: "/specifications/status-list", kind: "docs" },
       {
-        label: { tr: "Otomatik kopya yenileme (ADR-0023)", en: "Automatic copy refresh (ADR-0023)", tk: "Nusga täzelemek (ADR-0023)" },
+        label: { tr: "Otomatik kopya yenileme (ADR-0023)", en: "Automatic copy refresh (ADR-0023)", tk: "Nusgalary awtomatik täzelemek (ADR-0023)" },
         href: "/adr/0023-automatic-copy-refresh",
         kind: "docs",
       },

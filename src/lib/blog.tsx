@@ -195,7 +195,7 @@ const POSTS: Post[] = [
               university’s signing key is held by Tamga, the wallet provider does not accept the app’s own
               statement about its platform (every wallet counts as software-level; with the App Store and
               Google Play release, App Attest / Play Integrity become mandatory), and there is a single operator. The website sign-in still
-              uses one account value across sites at sign-up; a per-site pseudonym is on the roadmap. <em>(Update, 2026-10-06: per-site pseudonyms are now live.)</em>
+              uses one account value across sites at sign-up; a per-site pseudonym is on the roadmap. <em>(Update, 2026-10-06: per-site pseudonyms are now live. The network runs no wallet provider: each wallet runs its own (ADR-0042). On the real network, Tamga does not hold institutions’ signing keys (Tamga ARF §3).)</em>
             </p>
             <h2>Why say all this</h2>
             <p>
@@ -237,7 +237,7 @@ const POSTS: Post[] = [
               üniversitenin imza anahtarını Tamga tutar, cüzdan sağlayıcısı uygulamanın kendi platform
               beyanını kabul etmez (her cüzdan yazılım seviyesinde sayılır; App Store ve Google Play sürümüyle
               App Attest / Play Integrity zorunlu olur) ve tek bir operatör vardır. Web girişi kayıt anında siteler arasında aynı
-              hesap değerini kullanır; site başına takma ad yol haritasındadır. <em>(Güncelleme, 2026-10-06: site başına takma ad artık çalışıyor.)</em>
+              hesap değerini kullanır; site başına takma ad yol haritasındadır. <em>(Güncelleme, 2026-10-06: site başına takma ad artık çalışıyor. Ağ cüzdan sağlayıcısı işletmez: her cüzdan kendininkini işletir (ADR-0042). Gerçek ağda kurumların imza anahtarını Tamga tutmaz (Tamga ARF §3).)</em>
             </p>
             <h2>Bunları neden söylüyoruz</h2>
             <p>
@@ -275,9 +275,9 @@ const POSTS: Post[] = [
             <p>
               Her gysga ýol ýazga alnandyr we pilotdan öň ýapylýar: talyp
               ýazgylary nusgadyr, açarlar telefonyň howpsuz çipinde däl-de programmada durýar, uniwersitetiň gol
-              açaryny Tamga saklaýar, gapjyk üpjün edijisi programmanyň öz platforma beýanyny kabul etmeýär (dükan wersiýasy bilen App Attest / Play Integrity hökmany bolar)
+              açaryny Tamga saklaýar, gapjyk üpjün edijisi programmanyň öz platforma beýanyny kabul etmeýär (her gapjyk programma derejesinde hasaplanýar; App Store we Google Play wersiýasy bilen App Attest / Play Integrity hökmany bolar)
               we ýeke operator bar. Web giriş hasaba duran pursaty saýtlaryň arasynda şol bir hasap
-              bahasyny ulanýar; her saýt üçin lakam ýol kartasynda. <em>(Täzelenme, 2026-10-06: her saýt üçin lakam indi işleýär.)</em>
+              bahasyny ulanýar; her saýt üçin lakam ýol kartasynda. <em>(Täzelenme, 2026-10-06: her saýt üçin lakam indi işleýär. Tor gapjyk üpjün edijisini işletmeýär: her gapjyk özüňkini işledýär (ADR-0042). Hakyky torda guramalaryň gol açaryny Tamga saklamaýar (Tamga ARF §3).)</em>
             </p>
             <h2>Näme üçin bulary aýdýarys</h2>
             <p>

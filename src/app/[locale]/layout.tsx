@@ -72,7 +72,7 @@ export async function generateMetadata({
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#0E151B" },
+    { media: "(prefers-color-scheme: dark)", color: "#101820" },
     { media: "(prefers-color-scheme: light)", color: "#F8F6F1" },
   ],
 };
@@ -96,6 +96,7 @@ export default async function LocaleLayout({
   const theme: Theme =
     cookieStore.get(THEME_COOKIE)?.value === "dark" ? "dark" : "light";
   const t = await getTranslations({ locale, namespace: "meta" });
+  const tc = await getTranslations({ locale, namespace: "common" });
 
   return (
     <html
@@ -110,8 +111,16 @@ export default async function LocaleLayout({
         <JsonLd data={siteGraph(t("description"))} />
         <NextIntlClientProvider>
           <ThemeProvider initialTheme={theme}>
+            <a
+              href="#main"
+              className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-primary-contrast"
+            >
+              {tc("skipToContent")}
+            </a>
             <Header />
-            <main className="flex-1">{children}</main>
+            <main id="main" tabIndex={-1} className="flex-1 focus:outline-none">
+              {children}
+            </main>
             <Footer />
           </ThemeProvider>
         </NextIntlClientProvider>

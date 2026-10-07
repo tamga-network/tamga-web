@@ -69,7 +69,8 @@ const en: RoadmapContent = {
       n: "1",
       state: "done",
       title: "Live today",
-      summary: "The full flow works end to end with real cryptography.",
+      summary:
+        "The full flow works end to end with real cryptography, in the sandbox, on the network's live software; the first real institution joins with the pilot.",
       cards: [
         {
           icon: "shield",
@@ -109,12 +110,17 @@ const en: RoadmapContent = {
         {
           icon: "package",
           title: "Open-source packages",
-          desc: "@tamga-network on npm, pre-release (0.x)",
+          desc: "@tamga-network: an early pre-release (0.1.0) on npm today; the 1.0 packages at launch",
         },
         {
           icon: "user",
           title: "Per-site pseudonyms",
           desc: "every website sees a different, stable pseudonym",
+        },
+        {
+          icon: "test",
+          title: "Sandbox",
+          desc: "one test network for wallet, institution and verifier developers",
         },
       ],
     },
@@ -247,7 +253,8 @@ const tr: RoadmapContent = {
       n: "1",
       state: "done",
       title: "Bugün yayında olanlar",
-      summary: "Akışın tamamı gerçek kriptografiyle uçtan uca çalışıyor.",
+      summary:
+        "Akışın tamamı gerçek kriptografiyle, sandbox'ta, ağın canlıdaki yazılımıyla uçtan uca çalışıyor; gerçek ağdaki ilk kurum pilotla katılır.",
       cards: [
         {
           icon: "shield",
@@ -287,12 +294,17 @@ const tr: RoadmapContent = {
         {
           icon: "package",
           title: "Açık kaynak paketler",
-          desc: "npm'de @tamga-network, ön sürüm (0.x)",
+          desc: "@tamga-network: npm'de bugün erken bir ön sürüm (0.1.0); 1.0 paketleri duyuruda",
         },
         {
           icon: "user",
           title: "Site başına takma ad",
           desc: "her site farklı ve kalıcı bir takma ad görür",
+        },
+        {
+          icon: "test",
+          title: "Sandbox",
+          desc: "cüzdan, kurum ve doğrulayıcı geliştiricileri için tek test ağı",
         },
       ],
     },
@@ -425,7 +437,8 @@ const tk: RoadmapContent = {
       n: "1",
       state: "done",
       title: "Häzir işleýänler",
-      summary: "Akymyň hemmesi hakyky kriptografiýa bilen başdan-aýak işleýär.",
+      summary:
+        "Akymyň hemmesi hakyky kriptografiýa bilen, sandbox-da, toruň işleýän programma üpjünçiligi bilen başdan-aýak işleýär; hakyky tordaky ilkinji gurama pilot bilen goşulýar.",
       cards: [
         {
           icon: "shield",
@@ -465,12 +478,17 @@ const tk: RoadmapContent = {
         {
           icon: "package",
           title: "Açyk çeşmeli paketler",
-          desc: "npm-de @tamga-network, deslapky wersiýa (0.x)",
+          desc: "@tamga-network: npm-de häzir irki deslapky wersiýa (0.1.0); 1.0 paketleri yglan edilende",
         },
         {
           icon: "user",
           title: "Saýt başyna lakam",
           desc: "her saýt başga we hemişelik lakam görýär",
+        },
+        {
+          icon: "test",
+          title: "Sandbox",
+          desc: "gapjyk, gurama we barlaýjy işläp düzüjileri üçin bir synag tory",
         },
       ],
     },

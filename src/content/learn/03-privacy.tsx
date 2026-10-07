@@ -1089,6 +1089,12 @@ export const CHAPTER_3: LearnPage[] = [
             </p>
           </Callout>
 
+          <Callout kind="info" title="Durum" locale="tr">
+            <p>
+              Doğrulayıcı tarafı canlıda; cüzdan tarafı cüzdanların mağaza
+              sürümüyle gelir.
+            </p>
+          </Callout>
           <h2>Her yerde çalışır mı?</h2>
           <p>
             İspat üretmek telefonda biraz hesap gücü ister; çok eski cihazlar ya
@@ -1193,6 +1199,12 @@ export const CHAPTER_3: LearnPage[] = [
             </p>
           </Callout>
 
+          <Callout kind="info" title="Status" locale="en">
+            <p>
+              The verifier side is live; the wallet side comes with the
+              wallets' store release.
+            </p>
+          </Callout>
           <h2>Does it work everywhere?</h2>
           <p>
             Producing a proof takes some computing power on the phone, and some
@@ -1267,6 +1279,12 @@ export const CHAPTER_3: LearnPage[] = [
             enjamlarda gapjyk diňe "18 ýaşdan uly: hawa" meýdanly bir gezeklik
             nusga görkezýär.
           </p>
+          <Callout kind="info" title="Ýagdaý" locale="tk">
+            <p>
+              Barlaýjy tarapy işleýär; gapjyk tarapy gapjyklaryň dükan
+              wersiýasy bilen gelýär.
+            </p>
+          </Callout>
           <Callout kind="turkic" locale="tk">
             <p>
               Aşgabatly talyp Stambuldaky onlaýn platforma ýaşyny subut etmeli:

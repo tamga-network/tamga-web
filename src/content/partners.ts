@@ -20,7 +20,7 @@ export type Partner = {
 };
 
 export const PARTNERS: Partner[] = [
-  { name: "İstanbul Bilgi Üniversitesi", group: "institutions", url: "https://www.bilgi.edu.tr", logo: "/partners/istanbul-bilgi.png" },
+  { name: "İstanbul Bilgi Üniversitesi", group: "institutions", url: "https://www.bilgi.edu.tr", logo: "/partners/istanbul-bilgi.png", note: { en: "Pilot partner (education)", tr: "Pilot ortağımız (eğitim)", tk: "Pilot hyzmatdaşymyz (bilim)" } },
   { name: "Tamga Wallet", group: "wallets", logo: "/partners/tamga-wallet.svg", withName: true },
   { name: "BİLGİ Spark-Up TEKMER", group: "ecosystem", url: "https://tekmer.bilgi.org.tr", logo: "/partners/sparkup-tekmer.png" },
   { name: "Teknokratlar Derneği", group: "ecosystem", url: "https://teknokratlar.org.tr", logo: "/partners/teknokratlar-dernegi.svg" },

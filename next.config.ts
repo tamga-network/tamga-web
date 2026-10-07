@@ -59,10 +59,14 @@ const nextConfig: NextConfig = {
   // Kaldırılan sayfalar (2026-10-01, eski tasarım / ADR-0035 temizliği) → en yakın güncel sayfa; arama motorları 404 görmesin.
   async redirects() {
     const moved: [string, string][] = [
-      ["/docs/identity-layers", "/docs/login-with-tamga"],
-      ["/docs/accountable-disclosure", "/docs/how-tamga-works"],
-      ["/docs/recovery-revocation", "/docs/how-tamga-works"],
-      ["/docs/eudi-comparison", "/docs/roles"],
+      // Eski /docs/* sayfaları (2026-10-01'de kaldırıldı) → bugünkü /learn sayfası; kalanlar aşağıdaki catch-all ile /learn'e.
+      ["/docs/identity-layers", "/learn/unlinkability"],
+      ["/docs/login-with-tamga", "/learn/unlinkability"],
+      ["/docs/accountable-disclosure", "/learn/selective-disclosure"],
+      ["/docs/recovery-revocation", "/learn/revocation"],
+      ["/docs/how-tamga-works", "/learn/what-is-tamga-network"],
+      ["/docs/eudi-comparison", "/learn/roles"],
+      ["/docs/roles", "/learn/roles"],
       ["/blog/roadmap-turkic-world", "/roadmap"],
       ["/blog/authorization-not-settlement", "/blog"],
       ["/blog/accountable-disclosure", "/blog"],
@@ -76,11 +80,14 @@ const nextConfig: NextConfig = {
       ["/blog/why-eidas-2-matters", "/learn/eidas"],
       ["/blog/why-no-personal-data-on-chain", "/learn/data-minimisation"],
     ];
-    return moved.map(([from, to]) => ({
-      source: `/:locale(en|tr|tk)${from}`,
-      destination: `/:locale${to}`,
-      permanent: true,
-    }));
+    return [
+      ...moved.map(([from, to]) => ({
+        source: `/:locale(en|tr|tk)${from}`,
+        destination: `/:locale${to}`,
+        permanent: true,
+      })),
+      { source: "/:locale(en|tr|tk)/docs/:path*", destination: "/:locale/learn", permanent: true },
+    ];
   },
 };
 

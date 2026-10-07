@@ -53,7 +53,7 @@ export default async function WhitepaperPage({
 
       {/* Title */}
       <header className="mt-12">
-        <p className="eyebrow mb-4" lang="en">
+        <p className="eyebrow mb-4">
           {c.eyebrow}
         </p>
         <h1 className="text-balance text-4xl font-semibold leading-tight sm:text-5xl">

@@ -67,7 +67,7 @@ export type HomeContent = {
     arf: string;
     blog: string;
   };
-  dev: { eyebrow: string; title: string; lead: string; docs: string; github: string; copy: string; copied: string };
+  dev: { eyebrow: string; title: string; lead: string; npmNote: string; docs: string; github: string; copy: string; copied: string };
   eu: { eyebrow: string; title: string; head: [string, string, string]; rows: EuRow[] };
 };
 
@@ -325,6 +325,7 @@ const tr: HomeContent = {
     eyebrow: "Geliştiriciler",
     title: "İki paket, beş dakika.",
     lead: "Bir belgeyi kendi sunucunuzda doğrulayın. Barındırılan doğrulayıcıyı kullanırsanız sunucu kodu bile gerekmez.",
+    npmNote: "npm'deki paketler bugün erken bir ön sürüm (0.1.0); burada anlatılan 1.0 paketleri duyuruda yayımlanır.",
     docs: "Belgelere git",
     github: "GitHub",
     copy: "Kopyala",
@@ -598,6 +599,7 @@ const en: HomeContent = {
     eyebrow: "Developers",
     title: "Two packages, five minutes.",
     lead: "Verify a credential on your own server. With the hosted verifier you don't even need server code.",
+    npmNote: "The packages on npm today are an early pre-release (0.1.0); the 1.0 packages described here are published at launch.",
     docs: "Go to the docs",
     github: "GitHub",
     copy: "Copy",
@@ -871,6 +873,7 @@ const tk: HomeContent = {
     eyebrow: "Işläp düzüjiler",
     title: "Iki paket, bäş minut.",
     lead: "Resminamany öz serweriňizde barlaň. Ýerleşdirilen barlaýjyny ulansaňyz, serwer kody hem gerek däl.",
+    npmNote: "npm-däki paketler häzir irki deslapky wersiýa (0.1.0); bu ýerde beýan edilen 1.0 paketleri yglan edilende çap edilýär.",
     docs: "Resminamalara geç",
     github: "GitHub",
     copy: "Göçür",

@@ -50,7 +50,7 @@ const en: ScenariosContent = {
   title: "Scenarios: education first, one trust layer",
   intro:
     "Education is the network's first and main scenario: a student's documents from enrolment to the first job application. Tickets, website sign-in and age checks run on the same layer today. Health is at the decision stage; work, public services, logistics and payments show where the layer can go. Every scenario carries its status.",
-  note: "Screens are illustrative mockups of a wallet on the network; example values only. “Works today” means it runs end to end on the network and in the sandbox; the first real institution joins with the pilot.",
+  note: "Screens are illustrative mockups of a wallet on the network; example values only. “Works today” means it runs end to end in the sandbox, on the network's live software; the first real institution joins with the pilot.",
   statusLabels: { today: "Works today", pilot: "With the pilot", later: "Later" },
   verticals: [
     {
@@ -448,7 +448,7 @@ const tr: ScenariosContent = {
   title: "Senaryolar: önce eğitim, tek güven katmanı",
   intro:
     "Ağın ilk ve ana senaryosu eğitim: bir öğrencinin belgeleri, kayıttan ilk iş başvurusuna kadar. Bilet, sitelere giriş ve yaş kontrolü bugün aynı katman üzerinde çalışıyor. Sağlık karar aşamasında; iş, kamu hizmetleri, lojistik ve ödeme katmanın nereye uzanabileceğini gösteriyor. Her senaryonun yanında durumu yazıyor.",
-  note: "Ekranlar ağdaki bir cüzdanın temsilî tasarımlarıdır; değerler örnektir. “Bugün çalışıyor”, ağda ve sandbox'ta uçtan uca çalıştığı anlamına gelir; gerçek ağdaki ilk kurum pilotla katılır.",
+  note: "Ekranlar ağdaki bir cüzdanın temsilî tasarımlarıdır; değerler örnektir. “Bugün çalışıyor”, sandbox'ta, ağın canlıdaki yazılımıyla uçtan uca çalıştığı anlamına gelir; gerçek ağdaki ilk kurum pilotla katılır.",
   statusLabels: { today: "Bugün çalışıyor", pilot: "Pilotla", later: "Sonra" },
   verticals: [
     {
@@ -489,7 +489,7 @@ const tr: ScenariosContent = {
         {
           status: "today",
           title: "Diploma geri alınırsa, üniversite kapanırsa",
-          body: "Üniversite bir diplomayı iptal ederse her doğrulayıcı bunu yayımlanan durum listesinden en geç yaklaşık 90 dakikada öğrenir; üniversite kimin kontrol ettiğini hiç öğrenmez. Bir üniversitenin yetkisi sonradan askıya alınırsa, o tarihten önce verdiği diplomalar geçerli kalır: yetki, veriliş tarihine göre değerlendirilir.",
+          body: "Üniversite bir diplomayı iptal ederse her doğrulayıcı bunu yayımlanan iptal listesinden en geç yaklaşık 90 dakikada öğrenir; üniversite kimin kontrol ettiğini hiç öğrenmez. Bir üniversitenin yetkisi sonradan askıya alınırsa, o tarihten önce verdiği diplomalar geçerli kalır: yetki, veriliş tarihine göre değerlendirilir.",
         },
         {
           status: "later",
@@ -846,7 +846,7 @@ const tk: ScenariosContent = {
   title: "Ssenariýalar: ilki bilim, bir ynam gatlagy",
   intro:
     "Toruň ilkinji we esasy ssenariýasy bilim: talybyň resminamalary, hasaba alnyşdan ilkinji işe ýüz tutmaga çenli. Bilet, saýtlara giriş we ýaş barlagy şu gün şol bir gatlakda işleýär. Saglyk karar tapgyrynda; iş, döwlet hyzmatlary, logistika we töleg gatlagyň nirä ýetip biljekdigini görkezýär. Her ssenariýanyň ýanynda ýagdaýy ýazylýar.",
-  note: "Ekranlar tordaky bir gapjygyň şertli dizaýnlarydyr; bahalar mysal. “Şu gün işleýär” — torda we sandbox-da başdan-aýak işleýär diýmekdir; hakyky tordaky ilkinji gurama pilot bilen goşulýar.",
+  note: "Ekranlar tordaky bir gapjygyň şertli dizaýnlarydyr; bahalar mysal. “Şu gün işleýär” — sandbox-da, toruň işleýän programma üpjünçiligi bilen başdan-aýak işleýär diýmekdir; hakyky tordaky ilkinji gurama pilot bilen goşulýar.",
   statusLabels: { today: "Şu gün işleýär", pilot: "Pilot bilen", later: "Soňra" },
   verticals: [
     {

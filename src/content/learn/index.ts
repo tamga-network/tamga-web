@@ -179,6 +179,8 @@ export type LearnUi = {
   home: string;
   callout: { info: string; turkic: string; caution: string };
   backToPath: string;
+  /** Gövde kısaltılmışsa sayfanın başında gösterilen not (şimdilik yalnız tk) */
+  abridged?: string;
 };
 
 export const LEARN_UI: Record<Locale, LearnUi> = {
@@ -386,6 +388,7 @@ export const LEARN_UI: Record<Locale, LearnUi> = {
       caution: "Üns beriň",
     },
     backToPath: "Öwreniş ýoluna dolan",
+    abridged: "Gysga wersiýa; doly tekst iňlis dilinde.",
   },
 };
 

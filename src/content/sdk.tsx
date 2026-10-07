@@ -12,7 +12,8 @@ export const npmUrl = (name: string) => `https://www.npmjs.com/package/${name}`;
 export const pkgDocsUrl = (name: string) =>
   `https://docs.tamga.network/packages/${name.replace("@tamga-network/", "")}`;
 
-export const PACKAGES: { name: string; what: L }[] = [
+/* soon: npm'deki erken ön sürümde (0.1.0) yok; 1.0 yayınıyla gelir. */
+export const PACKAGES: { name: string; what: L; soon?: L }[] = [
   {
     name: "@tamga-network/core",
     what: {
@@ -64,9 +65,9 @@ export const PACKAGES: { name: string; what: L }[] = [
   {
     name: "@tamga-network/verifier",
     what: {
-      en: "the verification pipeline (T0 + A–E), three outcomes, OpenID4VP requests; /web for the page kit; /zk for zero-knowledge age proofs",
-      tr: "doğrulama hattı (T0 + A–E), üç sonuç, OpenID4VP istekleri; sayfa kiti için /web; sıfır bilgi ispatlı yaş doğrulama için /zk",
-      tk: "barlag hatary (T0 + A–E), üç netije, OpenID4VP haýyşlary; sahypa toplumy üçin /web; nol bilimli subutnama bilen ýaş barlagy üçin /zk",
+      en: "the verification pipeline (T0 + A–E), three outcomes, OpenID4VP requests; /web for the page kit; /zk for zero-knowledge age proofs (with the 1.0 release)",
+      tr: "doğrulama hattı (T0 + A–E), üç sonuç, OpenID4VP istekleri; sayfa kiti için /web; sıfır bilgi ispatlı yaş doğrulama için /zk (1.0 yayınıyla)",
+      tk: "barlag hatary (T0 + A–E), üç netije, OpenID4VP haýyşlary; sahypa toplumy üçin /web; nol bilimli subutnama bilen ýaş barlagy üçin /zk (1.0 neşiri bilen)",
     },
   },
   {
@@ -75,6 +76,19 @@ export const PACKAGES: { name: string; what: L }[] = [
       en: "wallet core for Node and React Native: keys, receiving, local checks, presenting",
       tr: "Node ve React Native için cüzdan çekirdeği: anahtarlar, alma, yerel denetim, sunma",
       tk: "Node we React Native üçin gapjyk ýadrosy: açarlar, almak, ýerli barlag, hödürlemek",
+    },
+  },
+  {
+    name: "@tamga-network/zk",
+    what: {
+      en: "wallet-side zero-knowledge prover (ISO mdoc, first use: over 18): Android native ready, iOS pending",
+      tr: "cüzdan tarafı sıfır bilgi ispatçısı (ISO mdoc, ilk kullanım: 18 yaş üstü): Android yerel ispatçı hazır, iOS bekliyor",
+      tk: "gapjyk tarapynda nol bilimli subutnama düzüji (ISO mdoc, ilkinji ulanylyşy: 18 ýaşdan uly): Android ýerli düzüji taýýar, iOS garaşylýar",
+    },
+    soon: {
+      en: "With the 1.0 release",
+      tr: "1.0 yayınıyla",
+      tk: "1.0 neşiri bilen",
     },
   },
 ];

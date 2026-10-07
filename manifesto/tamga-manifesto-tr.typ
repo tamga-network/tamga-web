@@ -69,8 +69,8 @@
       body: [
         _Tamga_, Türk boylarının kadim mührüydü — mülkiyeti, aidiyeti ve yetkiyi
         doğrulayan işaret. Doğrulanabilir dijital belge bunun çağdaş karşılığıdır.
-        Ortak dil, kültür ve tarih mirasını paylaşan *~170 milyon nüfuslu Türk
-        dünyası*, ortak bir dijital güven zemini için doğal bir topraktır.
+        Ortak dil, kültür ve tarih mirasını paylaşan *Türk dünyasının
+        halkları*, ortak bir dijital güven zemini için doğal bir topraktır.
       ],
     ),
     (

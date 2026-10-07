@@ -42,6 +42,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const languages = Object.fromEntries(
       routing.locales.map((l) => [l, `${BASE}${getPathname({ href, locale: l })}`]),
     );
+    languages["x-default"] = `${BASE}${getPathname({ href, locale: routing.defaultLocale })}`;
     for (const locale of routing.locales) {
       entries.push({
         url: `${BASE}${getPathname({ href, locale })}`,

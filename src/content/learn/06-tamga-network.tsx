@@ -374,9 +374,9 @@ export const CHAPTER_6: LearnPage[] = [
     minutes: 6,
     title: { tr: "Ağda kim ne yapar?", en: "Who does what", tk: "Torda kim näme edýär?" },
     summary: {
-      tr: "İşletmeci, kayıt kurumu, belge veren, doğrulayan, cüzdan sağlayıcısı, kişi ve devlet: her rol sade dille.",
-      en: "Operator, registrar, issuer, verifier, wallet provider, person and state: each role in plain words.",
-      tk: "Operator, hasaba alyş edarasy, resminama beriji, barlaýjy, gapjyk üpjün ediji, adam we döwlet: her rol ýönekeý dilde.",
+      tr: "İşletmeci, kayıt kurumu, belge veren, yetkili kaynak, doğrulayan, cüzdan sağlayıcısı, kişi ve devlet: her rol sade dille.",
+      en: "Operator, registrar, issuer, authentic source, verifier, wallet provider, person and state: each role in plain words.",
+      tk: "Operator, hasaba alyş edarasy, resminama beriji, ygtyýarly çeşme, barlaýjy, gapjyk üpjün ediji, adam we döwlet: her rol ýönekeý dilde.",
     },
     diagram: "roles",
     body: {
@@ -552,12 +552,12 @@ export const CHAPTER_6: LearnPage[] = [
       {
         tr: "Ağı işletmeci ve kayıt kurumu yürütür; belgeyi belge veren üretir, bilgi yetkili kaynaktan gelir.",
         en: "The operator and the registrar run the network; the issuer produces the credential, the data comes from the authentic source.",
-        tk: "Tory operator we hasaba alyş edarasy alyp barýar; resminamany beriji öndürýär.",
+        tk: "Tory operator we hasaba alyş edarasy alyp barýar; resminamany beriji öndürýär, maglumat ygtyýarly çeşmeden gelýär.",
       },
       {
         tr: "Kişi belgesinin sahibidir; doğrulayıcı yalnız kaydında yazanı isteyebilir; cüzdan sağlayıcısı uyum testleriyle listeye girer.",
         en: "The person owns the credential; a verifier may ask only for what its registration allows; wallet providers are listed after conformance tests.",
-        tk: "Adam resminamanyň eýesi; barlaýjy diňe hasabyndaky zady sorap bilýär.",
+        tk: "Adam resminamanyň eýesi; barlaýjy diňe hasabyndaky zady sorap bilýär; gapjyk üpjün edijiler laýyklyk synaglaryndan soň sanawa girýär.",
       },
       {
         tr: "Her devlet kendi listesinin sahibidir; katılana kadar geçici işletmeci onun adına çalışır.",

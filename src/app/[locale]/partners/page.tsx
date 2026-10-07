@@ -47,7 +47,7 @@ const C: Record<
         key: "institutions",
         icon: Building2,
         title: "Institutions",
-        desc: "Universities, public bodies and companies that issue or verify credentials on the network.",
+        desc: "Universities, public bodies and companies that issue or verify credentials on the network, or are preparing to (pilot partners).",
       },
       {
         key: "wallets",
@@ -85,7 +85,7 @@ const C: Record<
         key: "institutions",
         icon: Building2,
         title: "Kurumlar",
-        desc: "Ağda belge veren ya da doğrulayan üniversiteler, kamu kurumları ve şirketler.",
+        desc: "Ağda belge veren ya da doğrulayan, ya da buna hazırlanan (pilot ortaklar) üniversiteler, kamu kurumları ve şirketler.",
       },
       {
         key: "wallets",
@@ -123,7 +123,7 @@ const C: Record<
         key: "institutions",
         icon: Building2,
         title: "Guramalar",
-        desc: "Torda resminama berýän ýa-da barlaýan uniwersitetler, döwlet edaralary we kompaniýalar.",
+        desc: "Torda resminama berýän ýa-da barlaýan, ýa-da oňa taýýarlanýan (pilot hyzmatdaşlar) uniwersitetler, döwlet edaralary we kompaniýalar.",
       },
       {
         key: "wallets",
@@ -174,7 +174,8 @@ export default async function PartnersPage({
 }) {
   const { locale: raw } = await params;
   setRequestLocale(raw);
-  const c = C[pick(raw)];
+  const l = pick(raw);
+  const c = C[l];
 
   return (
     <>
@@ -208,7 +209,7 @@ export default async function PartnersPage({
               {partnersIn(g.key as PartnerGroup).length ? (
                 <ul className="m-0 grid list-none grid-cols-2 gap-3 p-0 sm:grid-cols-3">
                   {partnersIn(g.key as PartnerGroup).map((p) => (
-                    <li key={p.name} className="group relative flex min-h-24 items-center justify-center rounded-xl border border-border bg-background-elevated px-4 py-5">
+                    <li key={p.name} className="group relative flex min-h-24 flex-col items-center justify-center gap-3 rounded-xl border border-border bg-background-elevated px-4 py-5">
                       {p.url ? <a href={p.url} target="_blank" rel="noopener noreferrer" aria-label={p.name} className="absolute inset-0 rounded-xl focus-visible:outline-2 focus-visible:outline-primary" /> : null}
                       {p.logo && p.withName ? (
                         <span className="flex items-center gap-2.5 opacity-80 grayscale transition group-hover:opacity-100 group-hover:grayscale-0">
@@ -222,6 +223,9 @@ export default async function PartnersPage({
                       ) : (
                         <span className="font-serif font-semibold">{p.name}</span>
                       )}
+                      {p.note?.[l] ? (
+                        <span className="text-center text-xs text-foreground-muted">{p.note[l]}</span>
+                      ) : null}
                     </li>
                   ))}
                 </ul>

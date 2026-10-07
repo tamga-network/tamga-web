@@ -574,6 +574,7 @@ async function Developers({ c, locale }: { c: HomeContent; locale: string }) {
           <h2 className={`${h2} text-ink-band-fg`}>{c.dev.title}</h2>
           <p className="text-lg leading-relaxed text-ink-band-muted">{c.dev.lead}</p>
           <CodeWindow code={INSTALL_CMD} lang="sh" filename="terminal" numbers={false} dark copyLabel={c.dev.copy} copiedLabel={c.dev.copied} />
+          <p className="-mt-2 text-sm leading-relaxed text-ink-band-muted">{c.dev.npmNote}</p>
           <div className="flex flex-wrap gap-3">
             <a
               href={docsUrl(locale)}

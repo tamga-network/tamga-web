@@ -44,7 +44,7 @@ Tamga, her biri tek başına ayakta durabilen üç katmanda kuruludur. Taban: be
 
 = Roller
 
-AB mimarisinin her rolü Tamga’da vardır. Bir devlet henüz katılmadıysa rolü Tamga geçici ve kayıtlı olarak üstlenir: güven listesi operatörü, kayıt otoritesi ve “TR National Root CA (geçici operatör: Tamga)”. Kurumlar belge sağlayıcılarıdır; işverenler, web siteleri ve kapılar kayıtlı doğrulayıcılardır. PID sağlayıcısı yeri bir devlet doldurana kadar boştur; bu arada kimlik belgesi Tamga kimlik servisinden gelir (belge ve canlılık kontrolü). Ağ cüzdanları seçmez, tanır: yayınlanmış kurallara uyan ve uyum testlerini geçen her cüzdan sağlayıcısı listeye girebilir; ilki Tamga Wallet’tır. Henüz validator operatörü yoktur — bu yüzden defter de yoktur. Yan yana: #link("https://tamga.network/tr/learn/roles")[roller ve terimler].
+AB mimarisinin her rolü Tamga’da vardır. Bir devlet henüz katılmadıysa rolü Tamga geçici ve kayıtlı olarak üstlenir: güven listesi operatörü, kayıt otoritesi ve “TR National Root CA (geçici operatör: Tamga)”. Kurumlar belge sağlayıcılarıdır; işverenler, web siteleri ve kapılar kayıtlı doğrulayıcılardır. PID sağlayıcısı yeri bir devlet doldurana kadar boştur; bu arada kimlik belgesi Tamga kimlik servisinden gelir (belge ve canlılık kontrolü). Ağ cüzdanları seçmez, tanır: yayınlanmış kurallara uyan ve uyum testlerini geçen her cüzdan sağlayıcısı listeye girebilir; ilki Tamga Wallet’tır. Her cüzdan kendi cüzdan sağlayıcısını işletir; ağ hiçbirini işletmez. Henüz validator operatörü yoktur — bu yüzden defter de yoktur. Yan yana: #link("https://tamga.network/tr/learn/roles")[roller ve terimler].
 
 #chapter()
 = Güven modeli: imzalı güven listeleri
@@ -129,13 +129,13 @@ Defterdeki yönetişim ilkeleri izler: validator’lar eşit oylu devletlerdir; 
 #chapter()
 = Durum ve yol haritası
 
-*Bugün çalışan (ilk sürüm, gerçek kriptografi):* diploma ve öğrenci belgesi verme ve sunma; iptal ve kurum askısı; kimlik kontrolü ve kimlik belgesi, mdoc olarak da; kampüs ve etkinlik geçiş kartları, tek kullanımlık biletler; siteye özel takma adla web sitesine kayıt ve passkey ile giriş; doğrulayıcı tarafında sıfır bilgi ispatıyla yaş kontrolü; sekiz açık kaynak paket. Telefonda test edildi.
+*Bugün çalışan (ilk sürüm, gerçek kriptografi):* diploma ve öğrenci belgesi verme ve sunma; iptal ve kurum askısı; kimlik kontrolü ve kimlik belgesi, mdoc olarak da; kampüs ve etkinlik geçiş kartları, tek kullanımlık biletler; siteye özel takma adla web sitesine kayıt ve passkey ile giriş; doğrulayıcı tarafında sıfır bilgi ispatıyla yaş kontrolü; dokuz açık kaynak paket. Telefonda test edildi.
 
 #kvtable("Aşamalar", (("Liste aşaması (bugün)", "imzalı güven listeleri + çapa günlüğü · Tamga = geçici operatör"), ("Pilot", "ilk belge veren kurum bir üniversite · kurum anahtarı üniversitede · listeler, defter yok"), ("Faz 0", "en az 2 bağımsız validator operatörü imzalayınca izinli Besu/QBFT defteri"), ("Faz 1", "üye devlet listeleri · yakın alan (NFC/BLE) · Digital Credentials API"),), mono: false)
 
 İlk sürümün bilinen sınırları kayıt altındadır ve pilottan önce kapanır. Pilotun başarı ve durdurma ölçütleri önceden tanımlıdır.
 
-Gerçek ağdan tamamen ayrı bir test ağı, *sandbox.tamga.network*, yayında: kendi test kökü ve listeleri, örnek kurumlar, sahte kişiler ve her türden örnek belgeler. Gerçek ağdaki hiçbir cüzdan ya da doğrulayıcı ona güvenmez. Cüzdan, kurum ve doğrulayıcı geliştiricilerinin hepsi orada dener: cüzdan geliştiricisi kendi cüzdan sağlayıcısını sandbox listesine kaydettirir ve cüzdanını örnek kurumlarla, kimlik servisiyle ve doğrulayıcıyla dener. Bkz. #link("https://docs.tamga.network/tr/guides/sandbox")[sandbox rehberi].
+Gerçek ağdan tamamen ayrı bir test ağı, *sandbox.tamga.network*, yayında: kendi test kökü ve listeleri, örnek kurumlar, sahte kişiler ve her türden örnek belgeler, hızlı denemenin yanında isteğe bağlı gerçek kimlik doğrulama (günlük ve aylık tavanlı) ve test kurumu hesapları. Gerçek ağdaki hiçbir cüzdan ya da doğrulayıcı ona güvenmez. Cüzdan, kurum ve doğrulayıcı geliştiricilerinin hepsi orada dener: cüzdan geliştiricisi kendi cüzdan sağlayıcısını sandbox listesine kaydettirir ve cüzdanını örnek kurumlarla, kimlik servisiyle ve doğrulayıcıyla dener. Bkz. #link("https://docs.tamga.network/tr/guides/sandbox")[sandbox rehberi].
 
 = Bilinen sınırlar
 

@@ -172,9 +172,9 @@ export const SANDBOX_SUBDOMAIN: Subdomain = {
   soon: SANDBOX_URL.startsWith("https://docs."),
   name: { en: "Sandbox", tr: "Sandbox", tk: "Sandbox" },
   desc: {
-    en: "separate test network: sample institutions, made-up people and test credentials; wallet developers register their own wallet provider and test their wallet here; no real wallet or verifier trusts it",
-    tr: "ayrı test ağı: örnek kurumlar, uydurma kişiler ve test belgeleri; cüzdan geliştiricileri kendi cüzdan sağlayıcılarını kaydettirip cüzdanlarını burada dener; gerçek hiçbir cüzdan ya da doğrulayıcı ona güvenmez",
-    tk: "aýry synag ulgamy: nusga guramalar, oýlanyp tapylan adamlar we synag resminamalary; gapjyk işläp düzüjileri öz gapjyk üpjün edijisini hasaba aldyryp, gapjygyny şu ýerde synaýar; hiç bir hakyky gapjyk ýa-da barlaýjy oňa ynanmaýar",
+    en: "separate test network: sample institutions, made-up people and test credentials, an optional real identity check (daily and monthly caps) next to the quick test, and test institution accounts; wallet developers register their own wallet provider and test their wallet here; no real wallet or verifier trusts it",
+    tr: "ayrı test ağı: örnek kurumlar, uydurma kişiler ve test belgeleri, hızlı denemenin yanında isteğe bağlı gerçek kimlik doğrulama (günlük ve aylık tavanlı) ve test kurumu hesapları; cüzdan geliştiricileri kendi cüzdan sağlayıcılarını kaydettirip cüzdanlarını burada dener; gerçek hiçbir cüzdan ya da doğrulayıcı ona güvenmez",
+    tk: "aýry synag ulgamy: nusga guramalar, oýlanyp tapylan adamlar we synag resminamalary, çalt synagyň ýanynda islege bagly hakyky şahsyýet barlagy (gündelik we aýlyk çägi bilen) we synag gurama hasaplary; gapjyk işläp düzüjileri öz gapjyk üpjün edijisini hasaba aldyryp, gapjygyny şu ýerde synaýar; hiç bir hakyky gapjyk ýa-da barlaýjy oňa ynanmaýar",
   },
 };
 

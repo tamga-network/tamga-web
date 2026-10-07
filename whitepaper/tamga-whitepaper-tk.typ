@@ -44,7 +44,7 @@ Tamga her biri özbaşdak durup bilýän üç gatlakda gurulýar. Esas: resminam
 
 = Rollar
 
-ÝB arhitekturasynyň her roly Tamga-da bar. Döwlet heniz goşulmadyk bolsa, roly Tamga wagtlaýyn we hasaba alnan görnüşde öz üstüne alýar: ynam sanawynyň operatory, hasaba alyş edarasy we “TR National Root CA (wagtlaýyn operator: Tamga)”. Guramalar resminama üpjün edijilerdir; iş berijiler, web saýtlar we gapylar hasaba alnan barlaýjylardyr. PID üpjün edijisiniň orny döwlet ony doldurýança boş; şol wagt şahsyýet resminamasy Tamga şahsyýet hyzmatyndan gelýär (resminama we janlylyk barlagy). Tor gapjyklary saýlamaýar, ykrar edýär: çap edilen düzgünlere eýerýän we laýyklyk synaglaryndan geçen islendik gapjyk üpjün edijisi sanawa girip biler; ilkinjisi Tamga Wallet. Heniz validator operatory ýok — şonuň üçin kitap hem ýok. Ýanaşyk: #link("https://tamga.network/tk/learn/roles")[rollar we adalgalar].
+ÝB arhitekturasynyň her roly Tamga-da bar. Döwlet heniz goşulmadyk bolsa, roly Tamga wagtlaýyn we hasaba alnan görnüşde öz üstüne alýar: ynam sanawynyň operatory, hasaba alyş edarasy we “TR National Root CA (wagtlaýyn operator: Tamga)”. Guramalar resminama üpjün edijilerdir; iş berijiler, web saýtlar we gapylar hasaba alnan barlaýjylardyr. PID üpjün edijisiniň orny döwlet ony doldurýança boş; şol wagt şahsyýet resminamasy Tamga şahsyýet hyzmatyndan gelýär (resminama we janlylyk barlagy). Tor gapjyklary saýlamaýar, ykrar edýär: çap edilen düzgünlere eýerýän we laýyklyk synaglaryndan geçen islendik gapjyk üpjün edijisi sanawa girip biler; ilkinjisi Tamga Wallet. Her gapjyk öz gapjyk üpjün edijisini işledýär; tor hiç birini işletmeýär. Heniz validator operatory ýok — şonuň üçin kitap hem ýok. Ýanaşyk: #link("https://tamga.network/tk/learn/roles")[rollar we adalgalar].
 
 #chapter()
 = Ynam modeli: gol çekilen ynam sanawlary
@@ -129,13 +129,13 @@ Kitapdaky dolandyryş ýörelgelere eýerýär: validatorlar deň sesli döwletl
 #chapter()
 = Ýagdaý we ýol kartasy
 
-*Häzir işleýän (ilkinji wersiýa, hakyky kriptografiýa):* diplom we talyp resminamasyny bermek we hödürlemek; ýatyrylyş we guramanyň togtadylmagy; şahsyýet barlagy we şahsyýet resminamasy, mdoc görnüşinde hem; kampus we çäre geçiş kartalary, bir gezeklik biletler; saýta degişli lakam bilen web saýta hasaba durmak we passkey bilen giriş; barlaýjy tarapynda nol bilimli subutnama bilen ýaş barlagy; sekiz açyk çeşmeli paket. Telefonda synagdan geçirildi.
+*Häzir işleýän (ilkinji wersiýa, hakyky kriptografiýa):* diplom we talyp resminamasyny bermek we hödürlemek; ýatyrylyş we guramanyň togtadylmagy; şahsyýet barlagy we şahsyýet resminamasy, mdoc görnüşinde hem; kampus we çäre geçiş kartalary, bir gezeklik biletler; saýta degişli lakam bilen web saýta hasaba durmak we passkey bilen giriş; barlaýjy tarapynda nol bilimli subutnama bilen ýaş barlagy; dokuz açyk çeşmeli paket. Telefonda synagdan geçirildi.
 
 #kvtable("Tapgyrlar", (("Sanaw tapgyry (häzir)", "gol çekilen ynam sanawlary + labyr žurnaly · Tamga = wagtlaýyn operator"), ("Pilot", "ilkinji resminama beriji gurama uniwersitet · guramanyň açary uniwersitetde · sanawlar, kitap ýok"), ("0 tapgyr", "azyndan 2 garaşsyz validator operatory gol çekende rugsatly Besu/QBFT kitaby"), ("1 tapgyr", "agza döwletleriň sanawlary · ýakyn aralyk (NFC/BLE) · Digital Credentials API"),), mono: false)
 
 Ilkinji wersiýanyň belli çäkleri ýazga alnandyr we pilotdan öň ýapylýar. Pilotyň üstünlik we togtatma ölçegleri öňünden kesgitlenendir.
 
-Hakyky tordan doly aýry synag tory, *sandbox.tamga.network*, işleýär: öz synag köki we sanawlary, nusga guramalar, ýasama adamlar we her görnüşden nusga resminamalar. Hakyky tordaky hiç bir gapjyk ýa-da barlaýjy oňa ynanmaýar. Gapjyk, gurama we barlaýjy döredijileriniň hemmesi şol ýerde synag geçirýär: gapjyk döredijisi öz gapjyk üpjün edijisini sandbox sanawyna hasaba aldyrýar we gapjygyny nusga guramalar, şahsyýet hyzmaty we barlaýjy bilen synaýar. Serediň: #link("https://docs.tamga.network/guides/sandbox")[sandbox gollanmasy] (iňlis dilinde).
+Hakyky tordan doly aýry synag tory, *sandbox.tamga.network*, işleýär: öz synag köki we sanawlary, nusga guramalar, ýasama adamlar we her görnüşden nusga resminamalar, çalt synagyň ýanynda islege bagly hakyky şahsyýet barlagy (gündelik we aýlyk çägi bilen) we synag gurama hasaplary. Hakyky tordaky hiç bir gapjyk ýa-da barlaýjy oňa ynanmaýar. Gapjyk, gurama we barlaýjy işläp düzüjileriniň hemmesi şol ýerde synaýar: gapjyk işläp düzüjisi öz gapjyk üpjün edijisini sandbox sanawyna hasaba aldyrýar we gapjygyny nusga guramalar, şahsyýet hyzmaty we barlaýjy bilen synap görýär. Serediň: #link("https://docs.tamga.network/guides/sandbox")[sandbox gollanmasy] (iňlis dilinde).
 
 = Belli çäkler
 

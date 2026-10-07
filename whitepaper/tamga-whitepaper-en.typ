@@ -44,7 +44,7 @@ Tamga is built in three layers that each stand on their own. The base: credentia
 
 = Roles
 
-Every role of the EU architecture exists in Tamga. Where a state has not joined, Tamga holds the role provisionally and on the record: trusted-list operator, registrar and the “TR National Root CA (provisional operator: Tamga)”. Institutions are attestation providers; employers, websites and gates are registered relying parties. The PID-provider slot is empty until a state fills it; meanwhile an identity credential comes from Tamga’s identity service (document and liveness check). The network does not pick wallets, it recognises them: any wallet provider that follows the published rules and passes the conformance tests can be listed; the first is Tamga Wallet. There are no validator operators yet — hence no ledger. Side-by-side: #link("https://tamga.network/en/learn/roles")[roles and terms].
+Every role of the EU architecture exists in Tamga. Where a state has not joined, Tamga holds the role provisionally and on the record: trusted-list operator, registrar and the “TR National Root CA (provisional operator: Tamga)”. Institutions are attestation providers; employers, websites and gates are registered relying parties. The PID-provider slot is empty until a state fills it; meanwhile an identity credential comes from Tamga’s identity service (document and liveness check). The network does not pick wallets, it recognises them: any wallet provider that follows the published rules and passes the conformance tests can be listed; the first is Tamga Wallet. Each wallet runs its own wallet provider; the network runs none. There are no validator operators yet — hence no ledger. Side-by-side: #link("https://tamga.network/en/learn/roles")[roles and terms].
 
 #chapter()
 = Trust model: signed trust lists
@@ -129,13 +129,13 @@ Governance on the ledger follows the principles: validators are states with equa
 #chapter()
 = Status and roadmap
 
-*Working today (first release, real cryptography):* issuance and presentation of diplomas and student cards; revocation and institution suspension; identity check and identity credential, also as mdoc; campus and event passes, single-use tickets; website sign-up with a per-site pseudonym and passkey sign-in; zero-knowledge age proofs on the verifier side; eight open-source packages. Tested on a phone.
+*Working today (first release, real cryptography):* issuance and presentation of diplomas and student cards; revocation and institution suspension; identity check and identity credential, also as mdoc; campus and event passes, single-use tickets; website sign-up with a per-site pseudonym and passkey sign-in; zero-knowledge age proofs on the verifier side; nine open-source packages. Tested on a phone.
 
 #kvtable("Phases", (("List stage (today)", "signed trust lists + anchor log · Tamga = provisional operator"), ("Pilot", "the first issuing institution is a university · issuer key at the university · lists, no ledger"), ("Phase 0", "permissioned Besu/QBFT ledger once at least 2 independent validator operators sign"), ("Phase 1", "member-state lists · close range (NFC/BLE) · Digital Credentials API"),), mono: false)
 
 The known limits of the first release are recorded and closed before the pilot. The pilot’s success and stop criteria are defined in advance.
 
-A separate test network, *sandbox.tamga.network*, is live: its own test root and lists, sample institutions, fake people and sample credentials of every type. No wallet or verifier on the real network trusts it. Wallet, institution and verifier developers all test there: a wallet developer registers their own wallet provider in the sandbox list and tries the wallet against the sample institutions, the identity service and the verifier. See the #link("https://docs.tamga.network/guides/sandbox")[sandbox guide].
+A separate test network, *sandbox.tamga.network*, is live: its own test root and lists, sample institutions, fake people and sample credentials of every type, an optional real identity check (daily and monthly caps) next to the quick test, and test institution accounts. No wallet or verifier on the real network trusts it. Wallet, institution and verifier developers all test there: a wallet developer registers their own wallet provider in the sandbox list and tries the wallet against the sample institutions, the identity service and the verifier. See the #link("https://docs.tamga.network/guides/sandbox")[sandbox guide].
 
 = Known limits
 

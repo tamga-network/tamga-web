@@ -158,6 +158,14 @@ export default async function LearnPageView({
           </p>
         </header>
 
+        {ui.abridged && page.body?.[locale] ? (
+          <p className="mt-6 rounded-lg border border-border bg-surface px-4 py-2.5 text-sm text-foreground-muted">
+            <a href={`/en/learn/${page.slug}`} hrefLang="en" className="underline decoration-border-strong underline-offset-2 hover:text-foreground">
+              {ui.abridged}
+            </a>
+          </p>
+        ) : null}
+
         {page.diagram ? <Figure diagram={page.diagram} locale={raw} /> : null}
 
         {body ? (
