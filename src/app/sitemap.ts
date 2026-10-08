@@ -28,21 +28,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/brand",
   ];
   // Öğren sayfaları (eski /docs genel belgeleri Learn'e taşındığı için site haritasında yok)
-  const learnRoutes: SHref[] = learnSlugs().map((slug) => ({ pathname: "/learn/[slug]", params: { slug } }));
+  const learnRoutes: SHref[] = learnSlugs().map((slug) => ({
+    pathname: "/learn/[slug]",
+    params: { slug },
+  }));
   const hrefs: SHref[] = [...staticHrefs, ...learnRoutes];
 
-  const now = new Date();
   const entries: MetadataRoute.Sitemap = [];
 
   for (const href of hrefs) {
     const languages = Object.fromEntries(
-      routing.locales.map((l) => [l, `${BASE}${getPathname({ href, locale: l })}`]),
+      routing.locales.map((l) => [
+        l,
+        `${BASE}${getPathname({ href, locale: l })}`,
+      ]),
     );
-    languages["x-default"] = `${BASE}${getPathname({ href, locale: routing.defaultLocale })}`;
+    languages["x-default"] =
+      `${BASE}${getPathname({ href, locale: routing.defaultLocale })}`;
+    // Sabit sayfalarda lastmod yok: her derlemede "bugün" yazmak Google'ın lastmod'a güvenmemesine yol açar.
     for (const locale of routing.locales) {
       entries.push({
         url: `${BASE}${getPathname({ href, locale })}`,
-        lastModified: now,
         changeFrequency: "monthly",
         priority: href === "/" ? 1 : 0.7,
         alternates: { languages },
@@ -53,7 +59,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Blog: yalnız yayımlanan yazılar ve yalnız yazının gerçekten yazıldığı diller (tk çevirisi yoksa tk adresi yok).
   for (const p of PUBLISHED) {
     const path = blogPath(p.slug);
-    const languages: Record<string, string> = Object.fromEntries(p.locales.map((l) => [l, `${BASE}/${l}${path}`]));
+    const languages: Record<string, string> = Object.fromEntries(
+      p.locales.map((l) => [l, `${BASE}/${l}${path}`]),
+    );
     languages["x-default"] = `${BASE}/${routing.defaultLocale}${path}`;
     for (const locale of p.locales) {
       entries.push({
