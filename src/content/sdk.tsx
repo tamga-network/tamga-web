@@ -12,7 +12,7 @@ export const npmUrl = (name: string) => `https://www.npmjs.com/package/${name}`;
 export const pkgDocsUrl = (name: string) =>
   `https://docs.tamga.network/packages/${name.replace("@tamga-network/", "")}`;
 
-/* soon: npm'deki erken ön sürümde (0.1.0) yok; 1.0 yayınıyla gelir. */
+/* soon: npm'de henüz yok (zk'nın ilk yayını elle yapılır); yayımlanınca `soon` kaldırılır. */
 export const PACKAGES: { name: string; what: L; soon?: L }[] = [
   {
     name: "@tamga-network/core",
@@ -65,9 +65,9 @@ export const PACKAGES: { name: string; what: L; soon?: L }[] = [
   {
     name: "@tamga-network/verifier",
     what: {
-      en: "the verification pipeline (T0 + A–E), three outcomes, OpenID4VP requests; /web for the page kit; /zk for zero-knowledge age proofs (with the 1.0 release)",
-      tr: "doğrulama hattı (T0 + A–E), üç sonuç, OpenID4VP istekleri; sayfa kiti için /web; sıfır bilgi ispatlı yaş doğrulama için /zk (1.0 yayınıyla)",
-      tk: "barlag hatary (T0 + A–E), üç netije, OpenID4VP haýyşlary; sahypa toplumy üçin /web; nol bilimli subutnama bilen ýaş barlagy üçin /zk (1.0 neşiri bilen)",
+      en: "the verification pipeline (T0 + A–E), three outcomes, OpenID4VP requests; /web for the page kit; /zk for zero-knowledge age proofs",
+      tr: "doğrulama hattı (T0 + A–E), üç sonuç, OpenID4VP istekleri; sayfa kiti için /web; sıfır bilgi ispatlı yaş doğrulama için /zk",
+      tk: "barlag hatary (T0 + A–E), üç netije, OpenID4VP haýyşlary; sahypa toplumy üçin /web; nol bilimli subutnama bilen ýaş barlagy üçin /zk",
     },
   },
   {
@@ -86,9 +86,9 @@ export const PACKAGES: { name: string; what: L; soon?: L }[] = [
       tk: "gapjyk tarapynda nol bilimli subutnama düzüji (ISO mdoc, ilkinji ulanylyşy: 18 ýaşdan uly): Android ýerli düzüji taýýar, iOS garaşylýar",
     },
     soon: {
-      en: "With the 1.0 release",
-      tr: "1.0 yayınıyla",
-      tk: "1.0 neşiri bilen",
+      en: "Coming with 0.2.0",
+      tr: "0.2.0 ile geliyor",
+      tk: "0.2.0 bilen gelýär",
     },
   },
 ];

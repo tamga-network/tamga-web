@@ -118,13 +118,13 @@ export const RELEASES: Release[] = [
       },
       added: {
         en: [
-          "New open package @tamga-network/zk (published on npm with the 1.0 release): the wallet side of zero-knowledge proofs for mdoc credentials, made on the device (first use: proving “over 18” without the birth date; ADR-0032). Verification is in @tamga-network/verifier/zk.",
+          "New open package @tamga-network/zk (on npm with the 0.2.0 test release): the wallet side of zero-knowledge proofs for mdoc credentials, made on the device (first use: proving “over 18” without the birth date; ADR-0032). Verification is in @tamga-network/verifier/zk.",
         ],
         tr: [
-          "Yeni açık paket @tamga-network/zk (npm'de 1.0 yayınıyla yayımlanır): mdoc belgeleri için sıfır bilgi ispatının cüzdan tarafı, cihazda üretilir (ilk kullanım: doğum tarihini vermeden “18 yaş üstü” kanıtı; ADR-0032). Doğrulama @tamga-network/verifier/zk'dadır.",
+          "Yeni açık paket @tamga-network/zk (npm'de 0.2.0 deneme sürümüyle): mdoc belgeleri için sıfır bilgi ispatının cüzdan tarafı, cihazda üretilir (ilk kullanım: doğum tarihini vermeden “18 yaş üstü” kanıtı; ADR-0032). Doğrulama @tamga-network/verifier/zk'dadır.",
         ],
         tk: [
-          "Täze açyk paket @tamga-network/zk (npm-de 1.0 neşiri bilen çap edilýär): mdoc resminamalary üçin nol bilimli subutnamanyň gapjyk tarapy, enjamda döredilýär (ilkinji ulanylyşy: doglan senäni açman “18 ýaşdan uly” subutnamasy; ADR-0032). Barlag @tamga-network/verifier/zk-da.",
+          "Täze açyk paket @tamga-network/zk (npm-de 0.2.0 synag wersiýasy bilen): mdoc resminamalary üçin nol bilimli subutnamanyň gapjyk tarapy, enjamda döredilýär (ilkinji ulanylyşy: doglan senäni açman “18 ýaşdan uly” subutnamasy; ADR-0032). Barlag @tamga-network/verifier/zk-da.",
         ],
       },
     },
