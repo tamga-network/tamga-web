@@ -5,7 +5,7 @@ import { PageHeader } from "@/components/ui";
 import { pageMeta } from "@/lib/seo";
 import type { Locale } from "@/i18n/routing";
 import { pastEvents, pickL, upcomingEvents } from "@/content/events";
-import { formatDate } from "@/lib/blog";
+import { formatDate } from "@/lib/blog-format";
 
 /*
  * Etkinlikler: Tamga'nın düzenlediği ve katıldığı konuşmalar, atölyeler ve toplantılar. İskelet — yalnız gerçek, tarihi

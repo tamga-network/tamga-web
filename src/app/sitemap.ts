@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { routing } from "@/i18n/routing";
 import { getPathname } from "@/i18n/navigation";
 import { learnSlugs } from "@/content/learn";
-import { allSlugs } from "@/lib/blog";
+import { PUBLISHED, blogPath } from "@/lib/blog";
 
 const BASE = "https://tamga.network";
 
@@ -29,11 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
   // Öğren sayfaları (eski /docs genel belgeleri Learn'e taşındığı için site haritasında yok)
   const learnRoutes: SHref[] = learnSlugs().map((slug) => ({ pathname: "/learn/[slug]", params: { slug } }));
-  const blogRoutes: SHref[] = allSlugs().map((slug) => ({
-    pathname: "/blog/[slug]",
-    params: { slug },
-  }));
-  const hrefs: SHref[] = [...staticHrefs, ...learnRoutes, ...blogRoutes];
+  const hrefs: SHref[] = [...staticHrefs, ...learnRoutes];
 
   const now = new Date();
   const entries: MetadataRoute.Sitemap = [];
@@ -49,6 +45,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: now,
         changeFrequency: "monthly",
         priority: href === "/" ? 1 : 0.7,
+        alternates: { languages },
+      });
+    }
+  }
+
+  // Blog: yalnız yayımlanan yazılar ve yalnız yazının gerçekten yazıldığı diller (tk çevirisi yoksa tk adresi yok).
+  for (const p of PUBLISHED) {
+    const path = blogPath(p.slug);
+    const languages: Record<string, string> = Object.fromEntries(p.locales.map((l) => [l, `${BASE}/${l}${path}`]));
+    languages["x-default"] = `${BASE}/${routing.defaultLocale}${path}`;
+    for (const locale of p.locales) {
+      entries.push({
+        url: `${BASE}/${locale}${path}`,
+        lastModified: new Date(`${p.updated ?? p.date}T00:00:00Z`),
+        changeFrequency: "monthly",
+        priority: 0.7,
         alternates: { languages },
       });
     }

@@ -19,27 +19,45 @@ export function pageMeta(
   locale: string,
   path: string,
   m: Metadata & { title?: string; description?: string },
-  og?: { type?: "website" | "article"; publishedTime?: string; authors?: string[] },
+  og?: {
+    type?: "website" | "article";
+    publishedTime?: string;
+    modifiedTime?: string;
+    authors?: string[];
+    section?: string;
+    /** Sayfaya özel paylaşım görseli (mutlak ya da kök göreli adres); yoksa dilin genel görseli. */
+    image?: string;
+    /** Sayfanın gerçekten var olduğu diller (hreflang); yoksa üç dil. */
+    locales?: readonly string[];
+    /** Canonical'ın dili (ör. çevirisi olmayan sayfada İngilizce asıl). */
+    canonicalLocale?: string;
+    noindex?: boolean;
+  },
 ): Metadata {
   const title = m.title;
   const description = m.description;
   const full = title ? `${title} · ${SITE_NAME}` : undefined;
-  const languages: Record<string, string> = Object.fromEntries(routing.locales.map((l) => [l, url(l, path)]));
+  const langs = og?.locales ?? routing.locales;
+  const languages: Record<string, string> = Object.fromEntries(langs.map((l) => [l, url(l, path)]));
   languages["x-default"] = url(routing.defaultLocale, path);
-  const image = { url: `${SITE_URL}/${locale}/opengraph-image`, width: 1200, height: 630, alt: SITE_NAME, type: "image/png" };
+  const imageUrl = og?.image ? (og.image.startsWith("/") ? `${SITE_URL}${og.image}` : og.image) : `${SITE_URL}/${locale}/opengraph-image`;
+  const image = { url: imageUrl, width: 1200, height: 630, alt: title ?? SITE_NAME, type: "image/png" };
   return {
     ...m,
-    alternates: { canonical: url(locale, path), languages },
+    ...(og?.noindex ? { robots: { index: false, follow: true } } : {}),
+    alternates: { canonical: url(og?.canonicalLocale ?? locale, path), languages },
     openGraph: {
       type: og?.type ?? "website",
       siteName: SITE_NAME,
       url: url(locale, path),
       locale: OG_LOCALE[locale] ?? OG_LOCALE.en,
-      alternateLocale: routing.locales.filter((l) => l !== locale).map((l) => OG_LOCALE[l]),
+      alternateLocale: langs.filter((l) => l !== locale).map((l) => OG_LOCALE[l]),
       ...(full ? { title: full } : {}),
       ...(description ? { description } : {}),
       ...(og?.publishedTime ? { publishedTime: og.publishedTime } : {}),
+      ...(og?.modifiedTime ? { modifiedTime: og.modifiedTime } : {}),
       ...(og?.authors ? { authors: og.authors } : {}),
+      ...(og?.section ? { section: og.section } : {}),
       images: [image],
     },
     twitter: {

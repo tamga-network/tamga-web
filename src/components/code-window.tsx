@@ -49,6 +49,8 @@ export async function CodeWindow({
   copyLabel = "Copy",
   copiedLabel = "Copied",
   className = "",
+  badge,
+  label,
 }: {
   code: string;
   lang?: CodeLang;
@@ -58,6 +60,10 @@ export async function CodeWindow({
   copyLabel?: string;
   copiedLabel?: string;
   className?: string;
+  /** Pencere çubuğunda dosya adının yanında küçük etiket (ör. dil adı). */
+  badge?: string;
+  /** Kod alanının erişilebilir adı (verilirse adlandırılmış bölge; shiki pre zaten odaklanabilir). */
+  label?: string;
 }) {
   const html = await highlight(code, lang);
   return (
@@ -65,9 +71,18 @@ export async function CodeWindow({
       <figcaption className={bar(dark)}>
         <Dots />
         <span className="min-w-0 flex-1 truncate font-mono text-xs opacity-80">{filename ?? lang}</span>
+        {badge ? (
+          <span className="hidden shrink-0 rounded border border-current/20 px-1.5 py-0.5 font-mono text-[10.5px] uppercase tracking-[0.08em] opacity-60 sm:inline">
+            {badge}
+          </span>
+        ) : null}
         <CodeCopy text={code} label={copyLabel} done={copiedLabel} dark={dark} />
       </figcaption>
-      <div className="font-mono text-[13px] leading-[1.7]" dangerouslySetInnerHTML={{ __html: html }} />
+      <div
+        className="font-mono text-[13px] leading-[1.7]"
+        {...(label ? { role: "region", "aria-label": label } : {})}
+        dangerouslySetInnerHTML={{ __html: html }}
+      />
     </figure>
   );
 }
