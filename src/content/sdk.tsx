@@ -85,11 +85,6 @@ export const PACKAGES: { name: string; what: L; soon?: L }[] = [
       tr: "cüzdan tarafı sıfır bilgi ispatçısı (ISO mdoc, ilk kullanım: 18 yaş üstü): Android yerel ispatçı hazır, iOS bekliyor",
       tk: "gapjyk tarapynda nol bilimli subutnama düzüji (ISO mdoc, ilkinji ulanylyşy: 18 ýaşdan uly): Android ýerli düzüji taýýar, iOS garaşylýar",
     },
-    soon: {
-      en: "Coming with 0.2.0",
-      tr: "0.2.0 ile geliyor",
-      tk: "0.2.0 bilen gelýär",
-    },
   },
 ];
 
