@@ -88,7 +88,6 @@ export async function Footer() {
           <SocialLinks
             size={19}
             className="mt-6"
-            soonLabel={t("soon")}
             label={t("social")}
           />
         </div>

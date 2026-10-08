@@ -68,53 +68,40 @@ const ICONS: Record<SocialKey, ComponentType<IconProps>> = {
 };
 
 /**
- * Sosyal medya simgeleri (alt bilgi, telefon menüsü). Adresler src/lib/social.ts'te; adresi boş hesap tıklanamaz
- * "Yakında" simgesi olarak görünür ("#" bağlantısı kullanılmaz).
+ * Sosyal medya simgeleri (alt bilgi, telefon menüsü). Adresler src/lib/social.ts'te; adresi boş hesap hiç
+ * gösterilmez (pasif "yakında" simgesi yok).
  */
 export function SocialLinks({
   size = 18,
   className = "",
-  soonLabel = "Soon",
   label = "Social media",
 }: {
   size?: number;
   className?: string;
-  soonLabel?: string;
   label?: string;
 }) {
+  const keys = SOCIAL_ORDER.filter((key) => SOCIAL_URLS[key]);
+  if (keys.length === 0) return null;
   return (
     <ul
       aria-label={label}
       className={`flex flex-wrap items-center gap-4 ${className}`}
     >
-      {SOCIAL_ORDER.map((key) => {
+      {keys.map((key) => {
         const Icon = ICONS[key];
-        const url = SOCIAL_URLS[key];
         const name = SOCIAL_LABELS[key];
         return (
           <li key={key}>
-            {url ? (
-              <a
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={name}
-                title={name}
-                className="inline-flex text-foreground-subtle transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-              >
-                <Icon width={size} height={size} />
-              </a>
-            ) : (
-              <span
-                role="img"
-                aria-label={`${name} (${soonLabel})`}
-                aria-disabled="true"
-                title={`${name} · ${soonLabel}`}
-                className="inline-flex cursor-default text-foreground-subtle opacity-45"
-              >
-                <Icon width={size} height={size} />
-              </span>
-            )}
+            <a
+              href={SOCIAL_URLS[key]}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={name}
+              title={name}
+              className="inline-flex text-foreground-subtle transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            >
+              <Icon width={size} height={size} />
+            </a>
           </li>
         );
       })}

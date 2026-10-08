@@ -25,7 +25,12 @@ export const ORGANIZATION = {
     width: 512,
     height: 512,
   },
-  sameAs: ["https://github.com/tamga-network", "https://www.npmjs.com/org/tamga-network"],
+  sameAs: [
+    "https://github.com/tamga-network",
+    "https://www.npmjs.com/org/tamga-network",
+    "https://www.linkedin.com/company/tamganetwork/",
+    "https://www.instagram.com/tamganetwork/",
+  ],
 };
 
 /** Her sayfada: kurum + site (Google site adı ve bilgi paneli bunlardan okunur). */

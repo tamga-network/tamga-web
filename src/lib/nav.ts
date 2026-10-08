@@ -761,24 +761,21 @@ export const TONE_CLS: Record<Tone, string> = {
 
 export const MENU_LABELS: Record<
   Locale,
-  { ecosystem: string; joinCta: string; soon: string; social: string }
+  { ecosystem: string; joinCta: string; social: string }
 > = {
   en: {
     ecosystem: "Network addresses",
     joinCta: "Join the network",
-    soon: "Soon",
     social: "Social media",
   },
   tr: {
     ecosystem: "Ağ adresleri",
     joinCta: "Ağa katıl",
-    soon: "Yakında",
     social: "Sosyal medya",
   },
   tk: {
     ecosystem: "Tor salgylary",
     joinCta: "Tora goşul",
-    soon: "Ýakynda",
     social: "Sosial media",
   },
 };

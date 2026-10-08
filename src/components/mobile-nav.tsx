@@ -210,7 +210,7 @@ export function MobileNav() {
               </div>
               <ThemeToggle />
             </div>
-            <SocialLinks size={20} soonLabel={L.soon} label={L.social} />
+            <SocialLinks size={20} label={L.social} />
           </div>
         </Dialog.Content>
       </Dialog.Portal>
