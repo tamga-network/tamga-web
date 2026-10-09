@@ -96,7 +96,7 @@ Every verification runs the same pipeline in the same order and stops at the fir
 
 = Revocation and lifecycle
 
-Revocation uses the *IETF Token Status List*: two bits per credential copy — valid, revoked or suspended — at a *random* position. The issuer publishes at a *fixed interval*, never on demand, so timing reveals nothing about a person; each publication is anchored. Verifiers pre-fetch the lists, so checking a credential makes no call to the issuer or to the phone. A revocation reaches every verifier within about 90 minutes at most. Copies run out by design; when a credential comes with a refresh token, the wallet renews its copies in the background at the threshold the issuer announces, and a renewal shares nothing new. Credentials renewed by presenting the identity credential need the person's approval and PIN. See #link("https://tamga.network/en/learn/revocation")[revocation].
+Revocation uses the *IETF Token Status List*: two bits per credential copy — valid, revoked or suspended — at a *random* position. The issuer publishes at a *fixed interval*, never on demand, so timing reveals nothing about a person; each publication is anchored. Verifiers pre-fetch the lists, so checking a credential makes no call to the issuer or to the phone. Lists are republished every 2 minutes and each is valid for 6 hours: while the status server is up, a revocation reaches verifiers within a few minutes, and a short outage does not stop verification. Copies run out by design; when a credential comes with a refresh token, the wallet renews its copies in the background at the threshold the issuer announces, and a renewal shares nothing new. Credentials renewed by presenting the identity credential need the person's approval and PIN. See #link("https://tamga.network/en/learn/revocation")[revocation].
 
 #chapter()
 = Privacy by design
@@ -140,7 +140,8 @@ A separate test network, *sandbox.tamga.network*, is live: its own test root and
 = Known limits
 
 - In this phase the trust anchor rests on one operator’s signature. The public log, transparency report and audits deter misuse; they cannot make it impossible.
-- A revocation takes effect within about 90 minutes at most.
+- While the status server is up, a revocation takes effect within a few minutes (2-minute publication interval plus the verifier’s prefetch interval).
+- The revocation of an identity credential presented with a zero-knowledge proof cannot be checked in the presentation. Decision: short-lived copies valid for at most 24 hours, not refreshed once the credential is revoked; until this is implemented a verifier accepts such a presentation only if its policy explicitly allows it.
 - Issuer linkability remains until zero-knowledge presentation reaches the wallet.
 - The identity service could in theory compute a person’s pseudonym at a given site; key protection and audit limit this, and zero-knowledge proofs will remove it.
 - Until the wallets on the network (the first is Tamga Wallet) are in the app stores, a phone’s own claim of secure hardware is not accepted; from a wallet’s store release, App Attest / Play Integrity become mandatory.

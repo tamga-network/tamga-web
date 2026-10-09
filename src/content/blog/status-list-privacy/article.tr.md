@@ -9,7 +9,7 @@ draft: false
 related: haip-and-token-status-list, how-trust-lists-work, zero-knowledge-in-tamga, what-the-network-never-sees
 ---
 
-<!-- Kaynak: SPEC-CRED-0003 1.0.0 (§2 status claim'i sd never; §3.3 bits=2 ve değerler; §3.4 ayrı status anahtarı; §5.1 değişiklik olmasa da sabit aralık, §5.3 aralık dışı yayın yok, acil durumda sertifika askısı; §6.1 rastgele idx; §6.2 kapasite ≥100.000, doluluk ≤%80; §6.3 opak URI; §6.4 yalnız türe göre bölme; §7.1 geçersiz / doğrulanamadı ayrımı; §9.1 doğrulama başına çekim yasak, SDK'da ön çekim varsayılan; §9.3 sürü mahremiyeti ve küçük kurum sorunu; §9.4 idx korelasyonu → toplu kopya; §10.2 barındırılan status tüm iptalleri görür; S1–S14). @tamga-network/sd-jwt status list module (MIN_CAPACITY, MAX_FILL, IndexAllocator randomInt, newListId opak). concepts/revocation (status.tamga.network/{opak}, PrefetchStatusCache, INDETERMINATE). ARF mimari §5.4 (pilotta aralık 60 dk, etkisi en geç 90 dk; adres kurumu, yılı, grubu göstermez), §4.5 (IP kaydı yok, kayıtlarda liste konumu yok), §7.2. SPEC-WALLET-0001 WL5; SPEC-PROTO-0001 PR6, PR10; SPEC-API-0001 AP4. ADR-0032 ZK4/K6. Canlı çapa günlüğü anchors.jsonl "status_list" satırları 2026-10-08'de bakıldı. Dış: IETF Token Status List taslağı (sürü mahremiyeti bölümü), HAIP 1.0. Aralık değeri yalnız ARF'den (pilot değeri), bugünkü kurulumdan değil. -->
+<!-- Kaynak: SPEC-CRED-0003 1.0.0 (§2 status claim'i sd never; §3.3 bits=2 ve değerler; §3.4 ayrı status anahtarı; §5.1 değişiklik olmasa da sabit aralık, §5.3 aralık dışı yayın yok, acil durumda sertifika askısı; §6.1 rastgele idx; §6.2 kapasite ≥100.000, doluluk ≤%80; §6.3 opak URI; §6.4 yalnız türe göre bölme; §7.1 geçersiz / doğrulanamadı ayrımı; §9.1 doğrulama başına çekim yasak, SDK'da ön çekim varsayılan; §9.3 sürü mahremiyeti ve küçük kurum sorunu; §9.4 idx korelasyonu → toplu kopya; §10.2 barındırılan status tüm iptalleri görür; S1–S14). @tamga-network/sd-jwt status list module (MIN_CAPACITY, MAX_FILL, IndexAllocator randomInt, newListId opak). concepts/revocation (status.tamga.network/{opak}, PrefetchStatusCache, INDETERMINATE). ARF mimari §5.4 (2026-10-09: aralık 2 dk, iptal birkaç dakikada etkili, liste 6 sa geçerli; adres kurumu, yılı, grubu göstermez), §4.5 (IP kaydı yok, kayıtlarda liste konumu yok), §7.2. SPEC-WALLET-0001 WL5; SPEC-PROTO-0001 PR6, PR10; SPEC-API-0001 AP4. ADR-0032 ZK4/K6. Canlı çapa günlüğü anchors.jsonl "status_list" satırları 2026-10-08'de bakıldı. Dış: IETF Token Status List taslağı (sürü mahremiyeti bölümü), HAIP 1.0. ADR-0044 (ZK için ≤ 24 sa kısa ömürlü kopyalar, uygulama sırada). -->
 
 Durum listesi (status list), doğrulayıcının bir belgenin iptal edilip edilmediğini, belgeyi veren kuruma hiç sormadan öğrenmesini sağlar. Tamga Network'te her kurum, IETF Token Status List biçiminde imzalı ve büyük bir bit dizisi yayımlar; her belge bu dizide rastgele bir konumu gösterir. Doğrulayıcılar listelerin tamamını önceden indirir ve biti kendi kopyalarından okur. Böylece kurum, belgenin ne zaman, nerede ve kime gösterildiğini hiçbir zaman öğrenemez.
 
@@ -72,7 +72,7 @@ Her liste iki zaman sınırı taşır. `ttl` tazelik hedefidir: bir kopyanın ye
 
 Bir kurum yalnız iptal yaptığında yayın yapsaydı, yayının kendisi haber olurdu: "Örnek Üniversitesi'nde 14.00 ile 15.00 arasında bir iptal oldu." Dışarıdan bir bilgiyle, örneğin bir disiplin kararının tarihiyle birleşince bu, tek bir kişiye kadar daralabilir.
 
-Bu yüzden her liste, bir şey değişsin değişmesin, sabit aralıklarla yeniden yayımlanır. Dışarıdan bakınca her aralık aynı görünür: yeni bir sürüm var. Aralığı ve bir iptalin doğrulayıcılara en geç ne zaman ulaşacağını Tamga ARF belirler ([ARF §5.4](https://arf.tamga.network/tr/architecture)).
+Bu yüzden her liste, bir şey değişsin değişmesin, sabit aralıklarla yeniden yayımlanır. Dışarıdan bakınca her aralık aynı görünür: yeni bir sürüm var. Aralık 2 dakikadır; durum sunucusu çalışırken bir iptal doğrulayıcılara birkaç dakikada ulaşır, yayımlanan her liste 6 saat geçerlidir ([ARF §5.4](https://arf.tamga.network/tr/architecture)).
 
 ![Bir durum listesinin tek yayın döngüsü](/blog/status-list-privacy/tr/fig-dongu.png)
 
@@ -86,7 +86,7 @@ Sıra numarası belgenin ömrü boyunca değişmez. Bir kişi aynı belgeyi iki 
 
 Cevap toplu belge vermedir. Diploma dahil her belge 10 kopya olarak verilir; her kopyanın kendi cihaz anahtarı ve kendi rastgele sıra numarası vardır. Cüzdan aynı doğrulayıcıya hep aynı kopyayı, her farklı doğrulayıcıya farklı bir kopyayı gösterir (WL5 kuralı). Kopyalarla sıra numaraları arasındaki eşleme belgeyi verenin veritabanında kalır, hiçbir zaman dışarı çıkmaz (PR10). Belge iptal edilince bütün kopyalarının bitleri aynı planlı yayında, o aralıkta değişen başka her şeyle birlikte değişir.
 
-Sıfır bilgi ispatıyla yapılan sunum bir adım daha ileri gider: hiçbir sıra numarası açmaz. Bedeli, doğrulayıcının iptali denetleyememesidir; bu yüzden bu yolla gösterilen belgeler kısa ömürlü tutulur ([Tamga'da sıfır bilgi ispatları](/blog/zero-knowledge-in-tamga)).
+Sıfır bilgi ispatıyla yapılan sunum bir adım daha ileri gider: hiçbir sıra numarası açmaz. Bedeli, doğrulayıcının iptali denetleyememesidir. Karar, sıfır bilgiyle yalnız en çok 24 saat geçerli ve belge iptal edilince yenilenmeyen kısa ömürlü kopyaların sunulmasıdır ([ADR-0044](https://docs.tamga.network/tr/adr/0044-zk-short-lived-copies)). Bu uygulanana kadar doğrulayıcı böyle bir sunumu yalnız politikası açıkça izin veriyorsa kabul eder ([Tamga'da sıfır bilgi ispatları](/blog/zero-knowledge-in-tamga)).
 
 ## Kim neyi görebilir?
 
@@ -123,11 +123,11 @@ Hayır. Doğrulayıcılar durum listelerini önceden indirir ve kendi kopyaları
 
 ### Bir iptal ne kadar sürede etkili olur?
 
-Bir yayın aralığı artı doğrulayıcının yenileme süresi içinde. Listeler sabit aralıklarla yayımlanır; Tamga ARF bir iptalin doğrulayıcılara ulaşması için bir üst sınır koyar.
+Bir yayın aralığı artı doğrulayıcının yenileme süresi içinde. Listeler 2 dakikada bir yeniden yayımlanır; durum sunucusu çalışırken bu birkaç dakikadır.
 
 ### Liste indirilemezse ne olur?
 
-Doğrulayıcı son geçerli kopyasını, o kopyanın süresi bitene kadar kullanır. Sonrasında sonuç "iptal edilmiş" değil, "şu an doğrulanamadı"dır.
+Doğrulayıcı son geçerli kopyasını, o kopyanın süresi (yayından 6 saat sonra) bitene kadar kullanır. Sonrasında sonuç "iptal edilmiş" değil, "şu an doğrulanamadı"dır.
 
 ### Acil bir durumda neden hemen yayımlanmıyor?
 

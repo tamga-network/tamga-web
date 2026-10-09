@@ -211,7 +211,7 @@ EN = {
             ("p", "**INDETERMINATE** is never reported as REJECTED. If a list cannot be reached or is out of date, the verifier says “could not check right now” — the difference between “this diploma is fake” and “I cannot check” decides whether someone is hired. Authorization is judged on the **issue date**: a diploma issued while a university was active stays valid after a suspension, while new issuance stops at once."),
         ]),
         "revocation": ("Revocation and lifecycle", [
-            ("p", "Revocation uses the **IETF Token Status List**: two bits per credential copy — valid, revoked or suspended — at a **random** position. The issuer publishes at a **fixed interval**, never on demand, so timing reveals nothing about a person; each publication is anchored. Verifiers pre-fetch the lists, so checking a credential makes no call to the issuer or to the phone. A revocation reaches every verifier within about 90 minutes at most. Copies run out by design; when a credential comes with a refresh token, the wallet renews its copies in the background at the threshold the issuer announces, and a renewal shares nothing new. Credentials renewed by presenting the identity credential need the person's approval and PIN. See [revocation](/learn/revocation)."),
+            ("p", "Revocation uses the **IETF Token Status List**: two bits per credential copy — valid, revoked or suspended — at a **random** position. The issuer publishes at a **fixed interval**, never on demand, so timing reveals nothing about a person; each publication is anchored. Verifiers pre-fetch the lists, so checking a credential makes no call to the issuer or to the phone. Lists are republished every 2 minutes and each is valid for 6 hours: while the status server is up, a revocation reaches verifiers within a few minutes, and a short outage does not stop verification. Copies run out by design; when a credential comes with a refresh token, the wallet renews its copies in the background at the threshold the issuer announces, and a renewal shares nothing new. Credentials renewed by presenting the identity credential need the person's approval and PIN. See [revocation](/learn/revocation)."),
         ]),
         "privacy": ("Privacy by design", [
             ("ul", [
@@ -243,7 +243,8 @@ EN = {
         "limits": ("Known limits", [
             ("ul", [
                 "In this phase the trust anchor rests on one operator’s signature. The public log, transparency report and audits deter misuse; they cannot make it impossible.",
-                "A revocation takes effect within about 90 minutes at most.",
+                "While the status server is up, a revocation takes effect within a few minutes (2-minute publication interval plus the verifier’s prefetch interval).",
+                "The revocation of an identity credential presented with a zero-knowledge proof cannot be checked in the presentation. Decision: short-lived copies valid for at most 24 hours, not refreshed once the credential is revoked; until this is implemented a verifier accepts such a presentation only if its policy explicitly allows it.",
                 "Issuer linkability remains until zero-knowledge presentation reaches the wallet.",
                 "The identity service could in theory compute a person’s pseudonym at a given site; key protection and audit limit this, and zero-knowledge proofs will remove it.",
                 "Until the wallets on the network (the first is Tamga Wallet) are in the app stores, a phone’s own claim of secure hardware is not accepted; from a wallet’s store release, App Attest / Play Integrity become mandatory.",
@@ -325,7 +326,7 @@ TR = {
             ("p", "**INDETERMINATE** (belirsiz) asla REJECTED (red) olarak bildirilmez. Bir listeye ulaşılamazsa ya da liste güncel değilse doğrulayıcı “şu an denetlenemedi” der — “bu diploma sahte” ile “denetleyemiyorum” arasındaki fark birinin işe alınıp alınmamasıdır. Yetki **veriliş tarihine** göre değerlendirilir: üniversite etkinken verilmiş diploma askıdan sonra da geçerli kalır, yeni belge verme ise hemen durur."),
         ]),
         "revocation": ("İptal ve yaşam döngüsü", [
-            ("p", "İptal **IETF Token Status List** ile yapılır: her belge kopyası için **rastgele** bir konumda iki bit — geçerli, iptal ya da askıda. Kurum listeyi **sabit aralıkla** yayınlar, asla istek üzerine değil; böylece zamanlama kişi hakkında hiçbir şey ele vermez; her yayın çapalanır. Doğrulayıcılar listeleri önceden çeker; bir belgeyi denetlemek ne kuruma ne telefona çağrı yapar. Bir iptal en geç yaklaşık 90 dakikada her doğrulayıcıya ulaşır. Kopyalar tasarım gereği tükenir; yenileme belirteciyle verilen belgelerde cüzdan, kurumun ilan ettiği eşikte yeni kopyaları arka planda kendiliğinden alır ve yenileme yeni bir bilgi paylaşmaz. Kimlik belgesi sunularak yenilenen belgeler ise kişinin onayı ve PIN'iyle yenilenir. Bkz. [iptal](/learn/revocation)."),
+            ("p", "İptal **IETF Token Status List** ile yapılır: her belge kopyası için **rastgele** bir konumda iki bit — geçerli, iptal ya da askıda. Kurum listeyi **sabit aralıkla** yayınlar, asla istek üzerine değil; böylece zamanlama kişi hakkında hiçbir şey ele vermez; her yayın çapalanır. Doğrulayıcılar listeleri önceden çeker; bir belgeyi denetlemek ne kuruma ne telefona çağrı yapar. Listeler 2 dakikada bir yeniden yayınlanır ve her biri 6 saat geçerlidir: durum sunucusu çalışırken bir iptal birkaç dakikada doğrulayıcılara ulaşır, kısa bir kesinti doğrulamayı durdurmaz. Kopyalar tasarım gereği tükenir; yenileme belirteciyle verilen belgelerde cüzdan, kurumun ilan ettiği eşikte yeni kopyaları arka planda kendiliğinden alır ve yenileme yeni bir bilgi paylaşmaz. Kimlik belgesi sunularak yenilenen belgeler ise kişinin onayı ve PIN'iyle yenilenir. Bkz. [iptal](/learn/revocation)."),
         ]),
         "privacy": ("Tasarımdan gelen mahremiyet", [
             ("ul", [
@@ -357,7 +358,8 @@ TR = {
         "limits": ("Bilinen sınırlar", [
             ("ul", [
                 "Bu aşamada güven çapası tek operatörün imzasına dayanır. Herkese açık günlük, şeffaflık raporu ve denetim kötüye kullanımı caydırır; imkânsız kılamaz.",
-                "Bir iptal en geç yaklaşık 90 dakikada etkili olur.",
+                "Durum sunucusu çalışırken bir iptal birkaç dakikada etkili olur (2 dakikalık yayın aralığı + doğrulayıcının ön çekim aralığı).",
+                "Sıfır bilgi ispatıyla sunulan kimlik belgesinin iptali sunumda denetlenemez. Karar: en çok 24 saat geçerli, belge iptal edilince yenilenmeyen kısa ömürlü kopyalar; bu uygulanana kadar doğrulayıcı böyle bir sunumu yalnız politikası açıkça izin veriyorsa kabul eder.",
                 "Sıfır bilgi ispatıyla sunum cüzdana gelene kadar kurum eşleştirmesi riski kalır.",
                 "Kimlik servisi teorik olarak bir kişinin belirli bir sitedeki takma adını hesaplayabilir; anahtar koruması ve denetim bunu sınırlar, sıfır bilgi ispatı ileride kaldırır.",
                 "Ağdaki cüzdanlar (ilki Tamga Wallet) uygulama mağazalarında yayınlanana kadar telefonun “güvenli donanımdayım” beyanı kabul edilmez; bir cüzdanın mağaza sürümüyle App Attest / Play Integrity zorunlu olur.",
@@ -439,7 +441,7 @@ TK = {
             ("p", "**INDETERMINATE** (kesgitsiz) asla REJECTED (ret) hökmünde habar berilmeýär. Sanawa ýetip bolmasa ýa-da sanaw täze bolmasa, barlaýjy “häzir barlap bolmady” diýýär — “bu diplom ýasama” bilen “barlap bilemok” arasyndaky tapawut kimdir biriniň işe alynmagyny kesgitleýär. Ygtyýar **berlen senesine** görä bahalandyrylýar: uniwersitet işjeň wagtynda berlen diplom togtadylandan soň hem güýjünde galýar, täze resminama bermek bolsa derrew togtaýar."),
         ]),
         "revocation": ("Ýatyrylyş we durmuş aýlawy", [
-            ("p", "Ýatyrylyş **IETF Token Status List** bilen edilýär: her resminama nusgasy üçin **tötänleýin** orunda iki bit — güýjünde, ýatyrylan ýa-da togtadylan. Gurama sanawy **kesgitli aralykda** çap edýär, asla haýyş boýunça däl; şeýlelikde wagty adam barada hiç zady aýan etmeýär; her çap edilişi labyrlanýar. Barlaýjylar sanawlary öňünden alýar; resminamany barlamak ne gurama, ne-de telefona çagyryş edýär. Ýatyrylyş iň giç takmynan 90 minutda her barlaýja ýetýär. Nusgalar dizaýn boýunça gutarýar; täzeleme belgisi (refresh token) bilen berlen resminamalarda gapjyk täze nusgalary beriji yglan eden çäkde fonda özbaşdak alýar we täzeleme täze hiç zat paýlaşmaýar. Şahsyýet resminamasyny görkezmek bilen täzelenýän resminamalar adamyň razylygy we PIN-i bilen täzelenýär. Serediň: [ýatyrylyş](/learn/revocation)."),
+            ("p", "Ýatyrylyş **IETF Token Status List** bilen edilýär: her resminama nusgasy üçin **tötänleýin** orunda iki bit — güýjünde, ýatyrylan ýa-da togtadylan. Gurama sanawy **kesgitli aralykda** çap edýär, asla haýyş boýunça däl; şeýlelikde wagty adam barada hiç zady aýan etmeýär; her çap edilişi labyrlanýar. Barlaýjylar sanawlary öňünden alýar; resminamany barlamak ne gurama, ne-de telefona çagyryş edýär. Sanawlar her 2 minutda täzeden çap edilýär we her biri 6 sagat güýjünde: ýagdaý serweri işleýän wagty ýatyrylyş birnäçe minutda barlaýjylara ýetýär, gysga kesilme barlagy saklamaýar. Nusgalar dizaýn boýunça gutarýar; täzeleme belgisi (refresh token) bilen berlen resminamalarda gapjyk täze nusgalary beriji yglan eden çäkde fonda özbaşdak alýar we täzeleme täze hiç zat paýlaşmaýar. Şahsyýet resminamasyny görkezmek bilen täzelenýän resminamalar adamyň razylygy we PIN-i bilen täzelenýär. Serediň: [ýatyrylyş](/learn/revocation)."),
         ]),
         "privacy": ("Dizaýndan gelýän gizlinlik", [
             ("ul", [
@@ -471,7 +473,8 @@ TK = {
         "limits": ("Belli çäkler", [
             ("ul", [
                 "Bu tapgyrda ynam labyry bir operatoryň goluna daýanýar. Açyk žurnal, açyklyk hasabaty we barlaglar hyýanatçylygyň öňüni alýar; ony mümkin däl edip bilmeýär.",
-                "Ýatyrylyş iň giç takmynan 90 minutda güýje girýär.",
+                "Ýagdaý serweri işleýän wagty ýatyrylyş birnäçe minutda güýje girýär (2 minutlyk çap aralygy + barlaýjynyň öňünden alyş aralygy).",
+                "Nol bilimli subutnama bilen hödürlenen şahsyýet resminamasynyň ýatyrylyşy hödürlemede barlanyp bilinmeýär. Karar: iň köp 24 sagat güýjünde bolan, resminama ýatyrylanda täzelenmeýän gysga ömürli nusgalar; bu durmuşa geçirilýänçä barlaýjy şeýle hödürlemäni diňe syýasaty aç-açan rugsat berse kabul edýär.",
                 "Nol bilimli subutnama bilen hödürlemek gapjyga gelýänçä gurama tarapyndan tanalmak töwekgelçiligi galýar.",
                 "Şahsyýet hyzmaty nazary taýdan adamyň belli bir saýtdaky lakamyny hasaplap biler; açar goragy we barlag muny çäklendirýär, nol bilimli subutnama ony geljekde aýyrar.",
                 "Tordaky gapjyklar (ilkinjisi Tamga Wallet) programma dükanlarynda çykýança telefonyň “howpsuz enjamdadyryn” diýen beýany kabul edilmeýär; gapjygyň dükan wersiýasy bilen App Attest / Play Integrity hökmany bolar.",

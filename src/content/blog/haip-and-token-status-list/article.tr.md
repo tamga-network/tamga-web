@@ -68,8 +68,8 @@ Belge bir gösterge taşır, liste de bitleri:
   "iss": "https://issuer.tamga.network/example-university",
   "sub": "https://status.tamga.network/3f9a2c",
   "iat": 1791446400,
-  "exp": 1791626400,
-  "ttl": 3600,
+  "exp": 1791468000,
+  "ttl": 120,
   "status_list": { "bits": 2, "lst": "eNrt…" }
 }
 ```
@@ -106,7 +106,7 @@ Taslak `bits` için 1, 2, 4 ya da 8'e izin verir. Tamga hep 2 kullanır, çünk�
 
 Durum listesinin gizliliği sürüden gelir: listeyi indiren doğrulayıcı, içindeki kayıtlardan herhangi birini denetliyor olabilir. Tamga'nın kuralları sürüyü gerçek kılar; aynı kuralların kişinin gözünden anlatımı [İzlemeden iptal](/blog/status-list-privacy) yazısında.
 
-- **Büyük listeler.** En az 100.000 kayıt; kayıtların %80'i dağıtılınca yeni liste. Liste oluşturulurken kapasitenin %1'i rastgele sıralarda, geçerli değerle "dağıtılmış" işaretlenir; yeni listedeki ilk belge yalnız kalmaz.
+- **Büyük listeler.** En az 100.000 kayıt; kayıtların %80'i dağıtılınca yeni liste. Kullanılmayan sıralar geçerli belgelerle aynı `0x00` değerini taşır; dışarıdan bakan kaç sıranın dağıtıldığını göremez.
 - **Rastgele sıralar.** `idx` listenin kapasitesi içinde rastgele çekilir. Sıralı numara kayıt sırasını ve aşağı yukarı tarihi ele verirdi, `awarding_date` gizli kalsa bile. HAIP de her belgenin kendine ait, benzersiz ve tahmin edilemez bir sırası olmasını ister.
 - **Anlamsız adresler.** Liste adresi her gösterimde görünür, yani o da bir alandır. `/sl/2026-muhendislik` yılı ve fakülteyi sızdırırdı; Tamga liste kimlikleri rastgele dizgilerdir, eşleşme kurumda kalır.
 - **Yalnız türe göre bölme.** Yeni liste, öncekisi dolunca açılır; yıla ya da bölüme göre asla.
@@ -120,10 +120,10 @@ Gizliliğin öbür yarısı indirmedir. Doğrulayıcı her denetimde listeyi ind
 
 | Kural | Tamga değeri | Neden |
 |---|---|---|
-| Yayın aralığı | sabit; hiçbir şey değişmese de korunur | yalnız iptalde yayımlamak "az önce bir iptal oldu" diye sızdırırdı |
+| Yayın aralığı | sabit, 2 dakika; hiçbir şey değişmese de korunur | yalnız iptalde yayımlamak "az önce bir iptal oldu" diye sızdırırdı; kısa aralık iptali birkaç dakikada görünür kılar |
 | Acil yayın | yapılmaz | sabit ritmi bozardı; acil durumda kurum sertifikası askıya alınır ya da şema iptal edilir |
-| `ttl` | 3600 sn | doğrulayıcının kopyasını yeniden indirmeden kullanabileceği süre |
-| `exp` | `iat` + 50 saat | kesin sınır; bir hafta sonu kesintisi doğrulamayı durdurmasın |
+| `ttl` | 120 sn (yayın aralığı) | doğrulayıcının kopyasını yeniden indirmeden kullanabileceği süre |
+| `exp` | `iat` + 6 saat | kesin sınır; durum sunucusunun kısa bir kesintisi doğrulamayı durdurmasın; referans doğrulayıcı politikalarının azami belirteç yaşına eşittir |
 | Önbellek başlıkları | `exp` ve `ttl` karşısında yok sayılır | belirtecin kendi alanları belirler |
 | İmza anahtarı | belge anahtarından ayrı, aynı X.509 zinciri | sızan durum anahtarı sahte durum yayımlar, sahte diploma değil |
 
@@ -133,7 +133,7 @@ Her yayın önce durum sunucusuna yazılır, sonra özeti kaydedilir. Bugün bu 
 
 İptal denetimleri Tamga hattının D1–D6 adımlarıdır: `status.status_list` okunur, belirteç önceden indirilmiş önbellekten alınır, imzası güven listesinde o kurum için kayıtlı durum anahtarına karşı doğrulanır; `sub`, tazelik ve kayıtlı özet denetlenir, sonra bitler okunur. Liste indirilemiyorsa ya da `exp` geçmişse sonuç `STATUS_UNREACHABLE` ya da `STATUS_STALE` gibi bir gerekçeyle **INDETERMINATE**'tir. "Bu diploma iptal edildi" ile "şu an denetleyemiyorum" bir insan hakkında farklı kararlara yol açar; farklı gösterilmelidir. Çevrim dışında doğrulayıcı önbellekteki belirteç ve bilinen son kayıtla devam edebilir; son eşitleme zamanını gösterir ve sonucu "çevrim dışı doğrulandı" diye işaretler.
 
-Sıfır bilgili yaş ispatı sırası olmayan tek durumdur: ispat, bir liste sırasını belirleyebilecek hiçbir şey açmaz; durum "uygulanamaz" diye bildirilir ve ispat bunun yerine kısa ömürlü bir belgeye dayanır ([ADR-0032](https://docs.tamga.network/tr/adr/0032-zk-mdoc-presentation)).
+Sıfır bilgili yaş ispatı sırası olmayan tek durumdur: ispat, bir liste sırasını belirleyebilecek hiçbir şey açmaz; durum "uygulanamaz" diye bildirilir. Karar, sıfır bilgiyle yalnız en çok 24 saat geçerli ve belge iptal edilince yenilenmeyen kısa ömürlü kopyaların sunulmasıdır ([ADR-0044](https://docs.tamga.network/tr/adr/0044-zk-short-lived-copies)); bu uygulanana kadar doğrulayıcı böyle bir ispatı yalnız politikası açıkça izin veriyorsa kabul eder ([ADR-0032](https://docs.tamga.network/tr/adr/0032-zk-mdoc-presentation)).
 
 ## Sık sorulan sorular
 

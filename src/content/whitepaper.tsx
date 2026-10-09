@@ -187,7 +187,7 @@ const en: WhitepaperContent = {
       title: "Revocation and lifecycle",
       body: (
         <>
-          <p>Revocation uses the <strong>IETF Token Status List</strong>: two bits per credential copy — valid, revoked or suspended — at a <strong>random</strong> position. The issuer publishes at a <strong>fixed interval</strong>, never on demand, so timing reveals nothing about a person; each publication is anchored. Verifiers pre-fetch the lists, so checking a credential makes no call to the issuer or to the phone. A revocation reaches every verifier within about 90 minutes at most. Copies run out by design; when a credential comes with a refresh token, the wallet renews its copies in the background at the threshold the issuer announces, and a renewal shares nothing new. Credentials renewed by presenting the identity credential need the person's approval and PIN. See <Link href="/learn/revocation">revocation</Link>.</p>
+          <p>Revocation uses the <strong>IETF Token Status List</strong>: two bits per credential copy — valid, revoked or suspended — at a <strong>random</strong> position. The issuer publishes at a <strong>fixed interval</strong>, never on demand, so timing reveals nothing about a person; each publication is anchored. Verifiers pre-fetch the lists, so checking a credential makes no call to the issuer or to the phone. Lists are republished every 2 minutes and each is valid for 6 hours: while the status server is up, a revocation reaches verifiers within a few minutes, and a short outage does not stop verification. Copies run out by design; when a credential comes with a refresh token, the wallet renews its copies in the background at the threshold the issuer announces, and a renewal shares nothing new. Credentials renewed by presenting the identity credential need the person's approval and PIN. See <Link href="/learn/revocation">revocation</Link>.</p>
         </>
       ),
     },
@@ -261,7 +261,8 @@ const en: WhitepaperContent = {
         <>
           <ul>
             <li>In this phase the trust anchor rests on one operator’s signature. The public log, transparency report and audits deter misuse; they cannot make it impossible.</li>
-            <li>A revocation takes effect within about 90 minutes at most.</li>
+            <li>While the status server is up, a revocation takes effect within a few minutes (2-minute publication interval plus the verifier’s prefetch interval).</li>
+            <li>The revocation of an identity credential presented with a zero-knowledge proof cannot be checked in the presentation. Decision: short-lived copies valid for at most 24 hours, not refreshed once the credential is revoked; until this is implemented a verifier accepts such a presentation only if its policy explicitly allows it.</li>
             <li>Issuer linkability remains until zero-knowledge presentation reaches the wallet.</li>
             <li>The identity service could in theory compute a person’s pseudonym at a given site; key protection and audit limit this, and zero-knowledge proofs will remove it.</li>
             <li>Until the wallets on the network (the first is Tamga Wallet) are in the app stores, a phone’s own claim of secure hardware is not accepted; from a wallet’s store release, App Attest / Play Integrity become mandatory.</li>
@@ -411,7 +412,7 @@ const tr: WhitepaperContent = {
       title: "İptal ve yaşam döngüsü",
       body: (
         <>
-          <p>İptal <strong>IETF Token Status List</strong> ile yapılır: her belge kopyası için <strong>rastgele</strong> bir konumda iki bit — geçerli, iptal ya da askıda. Kurum listeyi <strong>sabit aralıkla</strong> yayınlar, asla istek üzerine değil; böylece zamanlama kişi hakkında hiçbir şey ele vermez; her yayın çapalanır. Doğrulayıcılar listeleri önceden çeker; bir belgeyi denetlemek ne kuruma ne telefona çağrı yapar. Bir iptal en geç yaklaşık 90 dakikada her doğrulayıcıya ulaşır. Kopyalar tasarım gereği tükenir; yenileme belirteciyle verilen belgelerde cüzdan, kurumun ilan ettiği eşikte yeni kopyaları arka planda kendiliğinden alır ve yenileme yeni bir bilgi paylaşmaz. Kimlik belgesi sunularak yenilenen belgeler ise kişinin onayı ve PIN'iyle yenilenir. Bkz. <Link href="/learn/revocation">iptal</Link>.</p>
+          <p>İptal <strong>IETF Token Status List</strong> ile yapılır: her belge kopyası için <strong>rastgele</strong> bir konumda iki bit — geçerli, iptal ya da askıda. Kurum listeyi <strong>sabit aralıkla</strong> yayınlar, asla istek üzerine değil; böylece zamanlama kişi hakkında hiçbir şey ele vermez; her yayın çapalanır. Doğrulayıcılar listeleri önceden çeker; bir belgeyi denetlemek ne kuruma ne telefona çağrı yapar. Listeler 2 dakikada bir yeniden yayınlanır ve her biri 6 saat geçerlidir: durum sunucusu çalışırken bir iptal birkaç dakikada doğrulayıcılara ulaşır, kısa bir kesinti doğrulamayı durdurmaz. Kopyalar tasarım gereği tükenir; yenileme belirteciyle verilen belgelerde cüzdan, kurumun ilan ettiği eşikte yeni kopyaları arka planda kendiliğinden alır ve yenileme yeni bir bilgi paylaşmaz. Kimlik belgesi sunularak yenilenen belgeler ise kişinin onayı ve PIN'iyle yenilenir. Bkz. <Link href="/learn/revocation">iptal</Link>.</p>
         </>
       ),
     },
@@ -485,7 +486,8 @@ const tr: WhitepaperContent = {
         <>
           <ul>
             <li>Bu aşamada güven çapası tek operatörün imzasına dayanır. Herkese açık günlük, şeffaflık raporu ve denetim kötüye kullanımı caydırır; imkânsız kılamaz.</li>
-            <li>Bir iptal en geç yaklaşık 90 dakikada etkili olur.</li>
+            <li>Durum sunucusu çalışırken bir iptal birkaç dakikada etkili olur (2 dakikalık yayın aralığı + doğrulayıcının ön çekim aralığı).</li>
+            <li>Sıfır bilgi ispatıyla sunulan kimlik belgesinin iptali sunumda denetlenemez. Karar: en çok 24 saat geçerli, belge iptal edilince yenilenmeyen kısa ömürlü kopyalar; bu uygulanana kadar doğrulayıcı böyle bir sunumu yalnız politikası açıkça izin veriyorsa kabul eder.</li>
             <li>Sıfır bilgi ispatıyla sunum cüzdana gelene kadar kurum eşleştirmesi riski kalır.</li>
             <li>Kimlik servisi teorik olarak bir kişinin belirli bir sitedeki takma adını hesaplayabilir; anahtar koruması ve denetim bunu sınırlar, sıfır bilgi ispatı ileride kaldırır.</li>
             <li>Ağdaki cüzdanlar (ilki Tamga Wallet) uygulama mağazalarında yayınlanana kadar telefonun “güvenli donanımdayım” beyanı kabul edilmez; bir cüzdanın mağaza sürümüyle App Attest / Play Integrity zorunlu olur.</li>
@@ -635,7 +637,7 @@ const tk: WhitepaperContent = {
       title: "Ýatyrylyş we durmuş aýlawy",
       body: (
         <>
-          <p>Ýatyrylyş <strong>IETF Token Status List</strong> bilen edilýär: her resminama nusgasy üçin <strong>tötänleýin</strong> orunda iki bit — güýjünde, ýatyrylan ýa-da togtadylan. Gurama sanawy <strong>kesgitli aralykda</strong> çap edýär, asla haýyş boýunça däl; şeýlelikde wagty adam barada hiç zady aýan etmeýär; her çap edilişi labyrlanýar. Barlaýjylar sanawlary öňünden alýar; resminamany barlamak ne gurama, ne-de telefona çagyryş edýär. Ýatyrylyş iň giç takmynan 90 minutda her barlaýja ýetýär. Nusgalar dizaýn boýunça gutarýar; täzeleme belgisi (refresh token) bilen berlen resminamalarda gapjyk täze nusgalary beriji yglan eden çäkde fonda özbaşdak alýar we täzeleme täze hiç zat paýlaşmaýar. Şahsyýet resminamasyny görkezmek bilen täzelenýän resminamalar adamyň razylygy we PIN-i bilen täzelenýär. Serediň: <Link href="/learn/revocation">ýatyrylyş</Link>.</p>
+          <p>Ýatyrylyş <strong>IETF Token Status List</strong> bilen edilýär: her resminama nusgasy üçin <strong>tötänleýin</strong> orunda iki bit — güýjünde, ýatyrylan ýa-da togtadylan. Gurama sanawy <strong>kesgitli aralykda</strong> çap edýär, asla haýyş boýunça däl; şeýlelikde wagty adam barada hiç zady aýan etmeýär; her çap edilişi labyrlanýar. Barlaýjylar sanawlary öňünden alýar; resminamany barlamak ne gurama, ne-de telefona çagyryş edýär. Sanawlar her 2 minutda täzeden çap edilýär we her biri 6 sagat güýjünde: ýagdaý serweri işleýän wagty ýatyrylyş birnäçe minutda barlaýjylara ýetýär, gysga kesilme barlagy saklamaýar. Nusgalar dizaýn boýunça gutarýar; täzeleme belgisi (refresh token) bilen berlen resminamalarda gapjyk täze nusgalary beriji yglan eden çäkde fonda özbaşdak alýar we täzeleme täze hiç zat paýlaşmaýar. Şahsyýet resminamasyny görkezmek bilen täzelenýän resminamalar adamyň razylygy we PIN-i bilen täzelenýär. Serediň: <Link href="/learn/revocation">ýatyrylyş</Link>.</p>
         </>
       ),
     },
@@ -709,7 +711,8 @@ const tk: WhitepaperContent = {
         <>
           <ul>
             <li>Bu tapgyrda ynam labyry bir operatoryň goluna daýanýar. Açyk žurnal, açyklyk hasabaty we barlaglar hyýanatçylygyň öňüni alýar; ony mümkin däl edip bilmeýär.</li>
-            <li>Ýatyrylyş iň giç takmynan 90 minutda güýje girýär.</li>
+            <li>Ýagdaý serweri işleýän wagty ýatyrylyş birnäçe minutda güýje girýär (2 minutlyk çap aralygy + barlaýjynyň öňünden alyş aralygy).</li>
+            <li>Nol bilimli subutnama bilen hödürlenen şahsyýet resminamasynyň ýatyrylyşy hödürlemede barlanyp bilinmeýär. Karar: iň köp 24 sagat güýjünde bolan, resminama ýatyrylanda täzelenmeýän gysga ömürli nusgalar; bu durmuşa geçirilýänçä barlaýjy şeýle hödürlemäni diňe syýasaty aç-açan rugsat berse kabul edýär.</li>
             <li>Nol bilimli subutnama bilen hödürlemek gapjyga gelýänçä gurama tarapyndan tanalmak töwekgelçiligi galýar.</li>
             <li>Şahsyýet hyzmaty nazary taýdan adamyň belli bir saýtdaky lakamyny hasaplap biler; açar goragy we barlag muny çäklendirýär, nol bilimli subutnama ony geljekde aýyrar.</li>
             <li>Tordaky gapjyklar (ilkinjisi Tamga Wallet) programma dükanlarynda çykýança telefonyň “howpsuz enjamdadyryn” diýen beýany kabul edilmeýär; gapjygyň dükan wersiýasy bilen App Attest / Play Integrity hökmany bolar.</li>

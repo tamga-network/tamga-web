@@ -90,7 +90,7 @@ The rejections in the second row were tested on purpose in the first desktop tri
 
 To check revocation, the verifier needs the credential's position in the institution's [status list](/blog/status-list-privacy). That position is fixed per credential, so revealing it would make two presentations linkable again, which is the very thing the proof is meant to prevent. The circuit therefore does not check revocation (rule ZK4).
 
-Tamga's interim answer has two parts. The rules call for credentials presented this way to be short-lived, so that a revoked credential stops being usable soon (ZK4). And the verifier's policy must say explicitly whether it accepts a presentation whose revocation cannot be checked:
+Tamga's answer has two parts. The decision ([ADR-0044](https://docs.tamga.network/adr/0044-zk-short-lived-copies), the EU ARF's short-lived attestation path) is that a zero-knowledge presentation uses only short-lived copies of the identity credential, valid for at most 24 hours and refreshed by the wallet on its own; once the credential is revoked no new copy is issued, so the last one stops working within a day. That is not implemented yet. Until it is, the verifier's policy must say explicitly whether it accepts a presentation whose revocation cannot be checked; if the field is left out, it counts as `false`:
 
 ```ts title="Policy for an over-18 check with a zero-knowledge proof"
 const policy: Policy = {
@@ -141,7 +141,7 @@ For a sense of scale, the first trial on a desktop machine measured 518 ms to pr
 
 - **Only equality.** The first and only predicate today is `age_over_18 = true`. Next in line are `age_over_21`, nationality, and enrolment or graduation in education credentials, all equality checks. Ranges ("born before") are not in Longfellow yet.
 - **The institution stays visible.** The verifier still learns which institution issued the credential. Proving "some accredited institution" without naming it is out of scope for now.
-- **No revocation check**, as explained above; the rules rely on short lifetimes until a private revocation proof is decided.
+- **No revocation check**, as explained above; short-lived copies of at most 24 hours are decided but not implemented yet, and a private revocation proof waits for the EU.
 - **Size.** About 350 KB per proof rules out QR codes.
 - **iOS** is not ready yet.
 

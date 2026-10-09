@@ -96,7 +96,7 @@ Her barlag şol bir hatary şol bir tertipde işledýär we ilkinji säwlikde to
 
 = Ýatyrylyş we durmuş aýlawy
 
-Ýatyrylyş *IETF Token Status List* bilen edilýär: her resminama nusgasy üçin *tötänleýin* orunda iki bit — güýjünde, ýatyrylan ýa-da togtadylan. Gurama sanawy *kesgitli aralykda* çap edýär, asla haýyş boýunça däl; şeýlelikde wagty adam barada hiç zady aýan etmeýär; her çap edilişi labyrlanýar. Barlaýjylar sanawlary öňünden alýar; resminamany barlamak ne gurama, ne-de telefona çagyryş edýär. Ýatyrylyş iň giç takmynan 90 minutda her barlaýja ýetýär. Nusgalar dizaýn boýunça gutarýar; täzeleme belgisi (refresh token) bilen berlen resminamalarda gapjyk täze nusgalary beriji yglan eden çäkde fonda özbaşdak alýar we täzeleme täze hiç zat paýlaşmaýar. Şahsyýet resminamasyny görkezmek bilen täzelenýän resminamalar adamyň razylygy we PIN-i bilen täzelenýär. Serediň: #link("https://tamga.network/tk/learn/revocation")[ýatyrylyş].
+Ýatyrylyş *IETF Token Status List* bilen edilýär: her resminama nusgasy üçin *tötänleýin* orunda iki bit — güýjünde, ýatyrylan ýa-da togtadylan. Gurama sanawy *kesgitli aralykda* çap edýär, asla haýyş boýunça däl; şeýlelikde wagty adam barada hiç zady aýan etmeýär; her çap edilişi labyrlanýar. Barlaýjylar sanawlary öňünden alýar; resminamany barlamak ne gurama, ne-de telefona çagyryş edýär. Sanawlar her 2 minutda täzeden çap edilýär we her biri 6 sagat güýjünde: ýagdaý serweri işleýän wagty ýatyrylyş birnäçe minutda barlaýjylara ýetýär, gysga kesilme barlagy saklamaýar. Nusgalar dizaýn boýunça gutarýar; täzeleme belgisi (refresh token) bilen berlen resminamalarda gapjyk täze nusgalary beriji yglan eden çäkde fonda özbaşdak alýar we täzeleme täze hiç zat paýlaşmaýar. Şahsyýet resminamasyny görkezmek bilen täzelenýän resminamalar adamyň razylygy we PIN-i bilen täzelenýär. Serediň: #link("https://tamga.network/tk/learn/revocation")[ýatyrylyş].
 
 #chapter()
 = Dizaýndan gelýän gizlinlik
@@ -140,7 +140,8 @@ Hakyky tordan doly aýry synag tory, *sandbox.tamga.network*, işleýär: öz sy
 = Belli çäkler
 
 - Bu tapgyrda ynam labyry bir operatoryň goluna daýanýar. Açyk žurnal, açyklyk hasabaty we barlaglar hyýanatçylygyň öňüni alýar; ony mümkin däl edip bilmeýär.
-- Ýatyrylyş iň giç takmynan 90 minutda güýje girýär.
+- Ýagdaý serweri işleýän wagty ýatyrylyş birnäçe minutda güýje girýär (2 minutlyk çap aralygy \+ barlaýjynyň öňünden alyş aralygy).
+- Nol bilimli subutnama bilen hödürlenen şahsyýet resminamasynyň ýatyrylyşy hödürlemede barlanyp bilinmeýär. Karar: iň köp 24 sagat güýjünde bolan, resminama ýatyrylanda täzelenmeýän gysga ömürli nusgalar; bu durmuşa geçirilýänçä barlaýjy şeýle hödürlemäni diňe syýasaty aç-açan rugsat berse kabul edýär.
 - Nol bilimli subutnama bilen hödürlemek gapjyga gelýänçä gurama tarapyndan tanalmak töwekgelçiligi galýar.
 - Şahsyýet hyzmaty nazary taýdan adamyň belli bir saýtdaky lakamyny hasaplap biler; açar goragy we barlag muny çäklendirýär, nol bilimli subutnama ony geljekde aýyrar.
 - Tordaky gapjyklar (ilkinjisi Tamga Wallet) programma dükanlarynda çykýança telefonyň “howpsuz enjamdadyryn” diýen beýany kabul edilmeýär; gapjygyň dükan wersiýasy bilen App Attest / Play Integrity hökmany bolar.

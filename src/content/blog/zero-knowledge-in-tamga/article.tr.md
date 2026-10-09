@@ -90,7 +90,7 @@ Tamga sıfır bilgide de üç değerli sonucu korur: doğrulayıcı tarafında b
 
 İptali denetlemek için doğrulayıcının belgenin, kurumun [durum listesindeki](/blog/status-list-privacy) konumunu bilmesi gerekir. Bu konum her belge için sabittir; onu açmak iki sunumu yeniden birbirine bağlanabilir kılar, ki ispatın önlemek istediği tam olarak budur. Bu yüzden devre iptali denetlemez (ZK4 kuralı).
 
-Tamga'nın şimdilik cevabı iki parçalı. Kurallar bu yolla gösterilen belgelerin kısa ömürlü olmasını ister; böylece iptal edilmiş bir belge kısa sürede kullanılamaz hâle gelir (ZK4). Ayrıca doğrulayıcının politikası, iptali denetlenemeyen bir sunumu kabul edip etmediğini açıkça söylemek zorundadır:
+Tamga'nın cevabı iki parçalı. Karar ([ADR-0044](https://docs.tamga.network/tr/adr/0044-zk-short-lived-copies), AB ARF'nin kısa ömürlü belge yolu): sıfır bilgi ispatıyla sunum yalnız kimlik belgesinin en çok 24 saat geçerli, cüzdanın kendiliğinden yenilediği kısa ömürlü kopyalarıyla yapılır; belge iptal edilince yeni kopya verilmez, son kopya bir gün içinde kullanılamaz olur. Bu henüz uygulanmadı. O zamana kadar doğrulayıcının politikası, iptali denetlenemeyen bir sunumu kabul edip etmediğini açıkça söylemek zorundadır; alan yazılmazsa `false` sayılır:
 
 ```ts title="Sıfır bilgi ispatıyla 18 yaş denetimi politikası"
 const policy: Policy = {
@@ -141,7 +141,7 @@ iOS kütüphanesi çıkana kadar paketi içeren bir iOS uygulaması normal derle
 
 - **Yalnız eşitlik.** Bugünkü ilk ve tek yüklem `age_over_18 = true`. Sırada `age_over_21`, uyruk ve eğitim belgelerinde kayıt ya da mezuniyet var; hepsi eşitlik denetimi. Aralıklar ("şu tarihten önce doğmuş") henüz Longfellow'da yok.
 - **Kurum görünür kalır.** Doğrulayıcı belgeyi hangi kurumun verdiğini yine öğrenir. "Akredite bir kurum" diyip adını söylememek şimdilik kapsam dışı.
-- **İptal denetimi yok**, yukarıda anlatıldığı gibi; gizli iptal ispatına karar verilene kadar kurallar kısa ömre dayanıyor.
+- **İptal denetimi yok**, yukarıda anlatıldığı gibi; en çok 24 saatlik kısa ömürlü kopyalara karar verildi ama henüz uygulanmadı, gizli iptal ispatı AB'nin kararını bekliyor.
 - **Boyut.** İspat başına yaklaşık 350 KB, QR kodu dışarıda bırakır.
 - **iOS** henüz hazır değil.
 

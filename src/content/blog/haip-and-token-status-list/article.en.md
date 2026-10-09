@@ -9,7 +9,7 @@ draft: false
 related: status-list-privacy, openid4vp-dcql-deep-dive, openid4vci-deep-dive, sd-jwt-vc-deep-dive, why-no-blockchain-yet
 ---
 
-<!-- Sources: HAIP 1.0 Final (24 Dec 2025) §3–8 (flows, FAPI2/PKCE/PAR, DPoP + DPoP-Nonce, scope, signed metadata, wallet attestation shared sub, key attestations, x509_hash, DCQL, ECDH-ES P-256, A128GCM+A256GCM, ephemeral keys, aki, JAR request_uri, direct_post.jwt, same-device rules, dc_api.jwt, mso_mdoc / dc+sd-jwt, x5c without trust anchor, status_list, unique unpredictable index, KB-JWT always, ES256 / -7 -9, SHA-256). ADR-0034 (K1–K5, CI1–CI6, renewal order). draft-ietf-oauth-status-list-21 (21 Jun 2026; RFC Editor queue per datatracker 2026-10-08; title "Token Status List (TSL)"): §4 bit packing LSB-first, DEFLATE/ZLIB, bits 1/2/4/8, JWT claims sub/iat/exp/ttl/status_list, aggregation_uri, §7 status types (0x03 application specific), §12 herd privacy. SPEC-CRED-0003 v1.0.0 (cites draft-20): bits=2, 100,000 min, 80% fill, 1% noise, random idx, opaque URI, split by type only, 1 h fixed cadence, no emergency publish, exp = iat + 50 h, ttl 3600, prefetch, aggregation recommended, separate status key, Ş1–Ş10, S1–S14, anchors.jsonl today. SPEC-API-0001 D1–D6, INDETERMINATE reasons, ZK NOT_APPLICABLE. Compression figures computed for this post with zlib level 9 (same call as @tamga-network/sd-jwt). -->
+<!-- Sources: HAIP 1.0 Final (24 Dec 2025) §3–8 (flows, FAPI2/PKCE/PAR, DPoP + DPoP-Nonce, scope, signed metadata, wallet attestation shared sub, key attestations, x509_hash, DCQL, ECDH-ES P-256, A128GCM+A256GCM, ephemeral keys, aki, JAR request_uri, direct_post.jwt, same-device rules, dc_api.jwt, mso_mdoc / dc+sd-jwt, x5c without trust anchor, status_list, unique unpredictable index, KB-JWT always, ES256 / -7 -9, SHA-256). ADR-0034 (K1–K5, CI1–CI6, renewal order). draft-ietf-oauth-status-list-21 (21 Jun 2026; RFC Editor queue per datatracker 2026-10-08; title "Token Status List (TSL)"): §4 bit packing LSB-first, DEFLATE/ZLIB, bits 1/2/4/8, JWT claims sub/iat/exp/ttl/status_list, aggregation_uri, §7 status types (0x03 application specific), §12 herd privacy. SPEC-CRED-0003 v1.0.0 (cites draft-20): bits=2, 100,000 min, 80% fill, random idx, opaque URI, split by type only, 2-min fixed cadence, no emergency publish, exp = iat + 6 h, ttl 120 (2026-10-09: 1% noise rule removed), prefetch, aggregation recommended, separate status key, Ş1–Ş10, S1–S14, anchors.jsonl today. SPEC-API-0001 D1–D6, INDETERMINATE reasons, ZK NOT_APPLICABLE. Compression figures computed for this post with zlib level 9 (same call as @tamga-network/sd-jwt). -->
 
 **HAIP** (OpenID4VC High Assurance Interoperability Profile) 1.0 takes the many options in OpenID4VCI, OpenID4VP, SD-JWT VC and ISO mdoc and fixes one set for high-assurance use: which formats, algorithms, client identifiers, encryption and attestations every party must support. **Token Status List** is the revocation mechanism that set relies on: each credential points to a position in a large, signed, compressed bit list that verifiers download in advance, so checking a credential never tells the issuer where or when it was shown.
 
@@ -68,8 +68,8 @@ A credential carries a pointer, and the list carries the bits:
   "iss": "https://issuer.tamga.network/example-university",
   "sub": "https://status.tamga.network/3f9a2c",
   "iat": 1791446400,
-  "exp": 1791626400,
-  "ttl": 3600,
+  "exp": 1791468000,
+  "ttl": 120,
   "status_list": { "bits": 2, "lst": "eNrt…" }
 }
 ```
@@ -106,7 +106,7 @@ The draft allows `bits` of 1, 2, 4 or 8. Tamga always uses 2, because suspension
 
 The privacy of a status list comes from the herd: a verifier downloading a list could be checking any of its entries. Tamga's rules make the herd real; the same rules seen from the person's side are in [Revocation without tracking](/blog/status-list-privacy).
 
-- **Big lists.** At least 100,000 entries, and a new list once 80% are allocated. When a list is created, 1% of its capacity is marked allocated at random positions with the valid value, so the first credential on a new list is not alone.
+- **Big lists.** At least 100,000 entries, and a new list once 80% are allocated. Unused positions carry the same `0x00` as valid credentials, so nobody looking from outside can tell how many positions are allocated.
 - **Random indices.** `idx` is drawn at random within the list's capacity. A sequential index would reveal enrolment order and roughly the date, even if `awarding_date` stays hidden. HAIP also requires every credential to have its own unique, unpredictable index.
 - **Opaque URIs.** The list URI is visible in every presentation, so it is a claim. `/sl/2026-engineering` would leak year and faculty; Tamga list identifiers are random strings, and the mapping stays with the issuer.
 - **Split by type only.** A new list opens when the previous one is full, never per year or per department.
@@ -120,10 +120,10 @@ The other half of the privacy story is fetching. If a verifier downloaded the li
 
 | Rule | Tamga value | Why |
 |---|---|---|
-| Publication interval | fixed, and kept even if nothing changed | publishing only on revocation would leak "a revocation happened just now" |
+| Publication interval | fixed at 2 minutes, kept even if nothing changed | publishing only on revocation would leak "a revocation happened just now"; a short interval makes a revocation visible within minutes |
 | Emergency publication | not done | it would break the fixed rhythm; urgent cases use issuer certificate suspension or schema revocation |
-| `ttl` | 3600 s | how long a verifier may use its copy before refetching |
-| `exp` | `iat` + 50 hours | absolute limit, so a weekend outage doesn't stop verification |
+| `ttl` | 120 s (the interval) | how long a verifier may use its copy before refetching |
+| `exp` | `iat` + 6 hours | absolute limit, so a short status server outage doesn't stop verification; it equals the maximum token age of the reference verifier policies |
 | Cache headers | ignored in favour of `exp` and `ttl` | the token's own claims decide |
 | Signing key | separate from the credential key, same X.509 chain | a leaked status key can fake a status, not a diploma |
 
@@ -133,7 +133,7 @@ Each publication is written to the status server first and its hash recorded sec
 
 Revocation checks run as steps D1–D6 of Tamga's pipeline: read `status.status_list`, take the token from the prefetch cache, verify its signature against the status key registered for that institution in the trust list, check `sub`, freshness and the recorded hash, then read the bits. When the list can't be fetched, or `exp` has passed, the outcome is **INDETERMINATE**, with a reason such as `STATUS_UNREACHABLE` or `STATUS_STALE`. "This diploma was revoked" and "I can't check right now" lead to different decisions about a person and must be shown differently. Offline, a verifier may continue from its cached token and last known record, show the time of the last synchronisation, and mark the result as verified offline.
 
-Zero-knowledge age proofs are the one case without an index: the proof reveals nothing that could identify a list position, so the status is reported as not applicable and the proof relies on a short-lived credential instead ([ADR-0032](https://docs.tamga.network/adr/0032-zk-mdoc-presentation)).
+Zero-knowledge age proofs are the one case without an index: the proof reveals nothing that could identify a list position, so the status is reported as not applicable. The decision is to present with zero knowledge only short-lived copies, valid for at most 24 hours and not refreshed once the credential is revoked ([ADR-0044](https://docs.tamga.network/adr/0044-zk-short-lived-copies)); until that is implemented, a verifier accepts such a proof only when its policy explicitly says so ([ADR-0032](https://docs.tamga.network/adr/0032-zk-mdoc-presentation)).
 
 ## Frequently asked questions
 

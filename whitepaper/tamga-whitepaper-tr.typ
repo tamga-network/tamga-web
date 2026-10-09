@@ -96,7 +96,7 @@ Her doğrulama aynı hattı aynı sırayla çalıştırır ve ilk hatada durur. 
 
 = İptal ve yaşam döngüsü
 
-İptal *IETF Token Status List* ile yapılır: her belge kopyası için *rastgele* bir konumda iki bit — geçerli, iptal ya da askıda. Kurum listeyi *sabit aralıkla* yayınlar, asla istek üzerine değil; böylece zamanlama kişi hakkında hiçbir şey ele vermez; her yayın çapalanır. Doğrulayıcılar listeleri önceden çeker; bir belgeyi denetlemek ne kuruma ne telefona çağrı yapar. Bir iptal en geç yaklaşık 90 dakikada her doğrulayıcıya ulaşır. Kopyalar tasarım gereği tükenir; yenileme belirteciyle verilen belgelerde cüzdan, kurumun ilan ettiği eşikte yeni kopyaları arka planda kendiliğinden alır ve yenileme yeni bir bilgi paylaşmaz. Kimlik belgesi sunularak yenilenen belgeler ise kişinin onayı ve PIN'iyle yenilenir. Bkz. #link("https://tamga.network/tr/learn/revocation")[iptal].
+İptal *IETF Token Status List* ile yapılır: her belge kopyası için *rastgele* bir konumda iki bit — geçerli, iptal ya da askıda. Kurum listeyi *sabit aralıkla* yayınlar, asla istek üzerine değil; böylece zamanlama kişi hakkında hiçbir şey ele vermez; her yayın çapalanır. Doğrulayıcılar listeleri önceden çeker; bir belgeyi denetlemek ne kuruma ne telefona çağrı yapar. Listeler 2 dakikada bir yeniden yayınlanır ve her biri 6 saat geçerlidir: durum sunucusu çalışırken bir iptal birkaç dakikada doğrulayıcılara ulaşır, kısa bir kesinti doğrulamayı durdurmaz. Kopyalar tasarım gereği tükenir; yenileme belirteciyle verilen belgelerde cüzdan, kurumun ilan ettiği eşikte yeni kopyaları arka planda kendiliğinden alır ve yenileme yeni bir bilgi paylaşmaz. Kimlik belgesi sunularak yenilenen belgeler ise kişinin onayı ve PIN'iyle yenilenir. Bkz. #link("https://tamga.network/tr/learn/revocation")[iptal].
 
 #chapter()
 = Tasarımdan gelen mahremiyet
@@ -140,7 +140,8 @@ Gerçek ağdan tamamen ayrı bir test ağı, *sandbox.tamga.network*, yayında: 
 = Bilinen sınırlar
 
 - Bu aşamada güven çapası tek operatörün imzasına dayanır. Herkese açık günlük, şeffaflık raporu ve denetim kötüye kullanımı caydırır; imkânsız kılamaz.
-- Bir iptal en geç yaklaşık 90 dakikada etkili olur.
+- Durum sunucusu çalışırken bir iptal birkaç dakikada etkili olur (2 dakikalık yayın aralığı \+ doğrulayıcının ön çekim aralığı).
+- Sıfır bilgi ispatıyla sunulan kimlik belgesinin iptali sunumda denetlenemez. Karar: en çok 24 saat geçerli, belge iptal edilince yenilenmeyen kısa ömürlü kopyalar; bu uygulanana kadar doğrulayıcı böyle bir sunumu yalnız politikası açıkça izin veriyorsa kabul eder.
 - Sıfır bilgi ispatıyla sunum cüzdana gelene kadar kurum eşleştirmesi riski kalır.
 - Kimlik servisi teorik olarak bir kişinin belirli bir sitedeki takma adını hesaplayabilir; anahtar koruması ve denetim bunu sınırlar, sıfır bilgi ispatı ileride kaldırır.
 - Ağdaki cüzdanlar (ilki Tamga Wallet) uygulama mağazalarında yayınlanana kadar telefonun “güvenli donanımdayım” beyanı kabul edilmez; bir cüzdanın mağaza sürümüyle App Attest / Play Integrity zorunlu olur.

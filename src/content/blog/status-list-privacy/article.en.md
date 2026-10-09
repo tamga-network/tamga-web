@@ -9,7 +9,7 @@ draft: false
 related: haip-and-token-status-list, how-trust-lists-work, zero-knowledge-in-tamga, what-the-network-never-sees
 ---
 
-<!-- Sources: SPEC-CRED-0003 1.0.0 (§2 status claim sd never; §3.3 bits=2, values; §3.4 separate status key; §5.1 fixed cadence even without change, §5.3 no emergency publish, suspend certificate instead; §6.1 random idx; §6.2 capacity ≥100,000, fill ≤80%; §6.3 opaque URI; §6.4 split by type only; §7.1 invalid vs cannot verify; §9.1 per-verification fetch forbidden, SDK prefetch default; §9.3 herd privacy and small-institution problem; §9.4 idx correlation → batch copies; §10.2 hosted status sees all revocations; S1–S14). @tamga-network/sd-jwt status list module (MIN_CAPACITY, MAX_FILL, IndexAllocator randomInt, newListId opaque). concepts/revocation (status.tamga.network/{opaque}, PrefetchStatusCache, INDETERMINATE). ARF architecture §5.4 (pilot interval 60 min, effect within 90 min; addresses reveal neither institution, year nor group), §4.5 (no IP records, no list positions in records), §7.2. SPEC-WALLET-0001 WL5; SPEC-PROTO-0001 PR6, PR10; SPEC-API-0001 AP4. ADR-0032 ZK4/K6. Live anchor log anchors.jsonl kind "status_list" lines checked 2026-10-08. External: IETF Token Status List draft (herd privacy section), HAIP 1.0. Interval figure taken only from the ARF (pilot value), not from today's deployment. -->
+<!-- Sources: SPEC-CRED-0003 1.0.0 (§2 status claim sd never; §3.3 bits=2, values; §3.4 separate status key; §5.1 fixed cadence even without change, §5.3 no emergency publish, suspend certificate instead; §6.1 random idx; §6.2 capacity ≥100,000, fill ≤80%; §6.3 opaque URI; §6.4 split by type only; §7.1 invalid vs cannot verify; §9.1 per-verification fetch forbidden, SDK prefetch default; §9.3 herd privacy and small-institution problem; §9.4 idx correlation → batch copies; §10.2 hosted status sees all revocations; S1–S14). @tamga-network/sd-jwt status list module (MIN_CAPACITY, MAX_FILL, IndexAllocator randomInt, newListId opaque). concepts/revocation (status.tamga.network/{opaque}, PrefetchStatusCache, INDETERMINATE). ARF architecture §5.4 (2026-10-09: interval 2 min, revocation effective within a few minutes, list valid 6 h; addresses reveal neither institution, year nor group), §4.5 (no IP records, no list positions in records), §7.2. SPEC-WALLET-0001 WL5; SPEC-PROTO-0001 PR6, PR10; SPEC-API-0001 AP4. ADR-0032 ZK4/K6. Live anchor log anchors.jsonl kind "status_list" lines checked 2026-10-08. External: IETF Token Status List draft (herd privacy section), HAIP 1.0. ADR-0044 (ZK short-lived copies ≤ 24 h, implementation pending). -->
 
 A status list lets a verifier find out whether a credential has been revoked without contacting the institution that issued it. In Tamga Network each institution publishes one large, signed bit string in the IETF Token Status List format; every credential points to a random position in it. Verifiers download whole lists in advance and read the bit from their own copy, so the institution never learns when, where or to whom a credential was shown.
 
@@ -72,7 +72,7 @@ Each list token carries two time limits. `ttl` is the freshness target: how long
 
 If an institution republished only when it revoked something, the publication itself would be news: "a revocation happened at Example University between 14:00 and 15:00". Combined with outside knowledge, such as the date of a disciplinary decision, that can narrow things down to one person.
 
-So every list is republished on a fixed interval whether or not anything changed. From the outside, every interval looks the same: there is a new version. The interval and the longest time a revocation may take to reach verifiers are fixed in the Tamga ARF ([ARF §5.4](https://arf.tamga.network/architecture)).
+So every list is republished on a fixed interval whether or not anything changed. From the outside, every interval looks the same: there is a new version. The interval is 2 minutes, so while the status server is up a revocation reaches verifiers within a few minutes; each published list is valid for 6 hours ([ARF §5.4](https://arf.tamga.network/architecture)).
 
 ![One publication cycle of a status list](/blog/status-list-privacy/en/fig-dongu.png)
 
@@ -86,7 +86,7 @@ The index is fixed for the life of a credential. If a person showed the same cre
 
 The answer is batch issuance. Every credential, a diploma included, is issued as 10 copies, and each copy has its own device key and its own random index. The wallet shows the same copy to the same verifier and a different copy to each different verifier (rule WL5). The mapping between copies and indexes stays in the issuer's database and never leaves it (PR10). When a credential is revoked, all of its copies' bits change in the same scheduled publication, alongside whatever else changed in that interval.
 
-A zero-knowledge presentation goes one step further: it reveals no index at all. The cost is that the verifier cannot check revocation, which is why credentials presented this way are kept short-lived ([Zero-knowledge proofs in Tamga](/blog/zero-knowledge-in-tamga)).
+A zero-knowledge presentation goes one step further: it reveals no index at all. The cost is that the verifier cannot check revocation. The decision is to present with zero knowledge only short-lived copies, valid for at most 24 hours and not refreshed once the credential is revoked ([ADR-0044](https://docs.tamga.network/adr/0044-zk-short-lived-copies)). Until that is implemented, a verifier accepts such a presentation only if its policy explicitly allows it ([Zero-knowledge proofs in Tamga](/blog/zero-knowledge-in-tamga)).
 
 ## Who can see what?
 
@@ -123,11 +123,11 @@ They can see that some positions changed between two versions. They cannot tell 
 
 ### How quickly does a revocation take effect?
 
-Within one publication interval plus the verifier's refresh. Lists are published at fixed intervals, and the Tamga ARF sets an upper limit on how long a revocation may take to reach verifiers.
+Within one publication interval plus the verifier's refresh. Lists are republished every 2 minutes, so while the status server is up this is a few minutes.
 
 ### What happens if the list cannot be downloaded?
 
-The verifier keeps using its last good copy until that copy expires. After that the result is "cannot be verified right now", not "revoked".
+The verifier keeps using its last good copy until that copy expires, 6 hours after it was published. After that the result is "cannot be verified right now", not "revoked".
 
 ### Why not publish immediately in an emergency?
 

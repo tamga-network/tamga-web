@@ -4,7 +4,7 @@ import type { WalletMockData, FlowNode } from "@/components/scenario-visuals";
 /* Senaryolar (2026-10-06 yeniden yazım, proje yönetimi onayı): eğitim ana senaryo (öğrenci yolculuğu, adım adım durum);
    bugün çalışanlar ARF 1.0 §2.8 "Yayında" listesinden (bilet + tek kullanımlık kapı, siteye giriş + takma ad, yaş kontrolü,
    Tamga Verify); sağlık ADR-0028 (Proposed) → "karar aşamasında"; iş ve kamu → vizyon; lojistik ve ödeme → araştırma
-   (whitepaper §13 değer katmanı). Eğitim kaynakları: Education Rulebook, WP §8 (veriliş tarihi kuralı), §9 (iptal ≤ ~90 dk),
+   (whitepaper §13 değer katmanı). Eğitim kaynakları: Education Rulebook, WP §8 (veriliş tarihi kuralı), §9 (iptal birkaç dakikada; 2026-10-09: aralık 2 dk),
    §11 (60 sn geçiş), ADR-0023, partners.ts (pilot ortak). Bugün "çalışıyor" = ağda ve sandbox'ta uçtan uca; gerçek ağda ilk
    kurum pilotla. */
 
@@ -91,7 +91,7 @@ const en: ScenariosContent = {
         {
           status: "today",
           title: "When a diploma is withdrawn, and when a university closes",
-          body: "If the university revokes a diploma, every verifier learns it within about 90 minutes from the published status list, and the university never learns who checked. If a university is later suspended, diplomas it issued before that date stay valid: authority is judged on the issue date.",
+          body: "If the university revokes a diploma, every verifier learns it within a few minutes from the published status list, and the university never learns who checked. If a university is later suspended, diplomas it issued before that date stay valid: authority is judged on the issue date.",
         },
         {
           status: "later",
@@ -489,7 +489,7 @@ const tr: ScenariosContent = {
         {
           status: "today",
           title: "Diploma geri alınırsa, üniversite kapanırsa",
-          body: "Üniversite bir diplomayı iptal ederse her doğrulayıcı bunu yayımlanan iptal listesinden en geç yaklaşık 90 dakikada öğrenir; üniversite kimin kontrol ettiğini hiç öğrenmez. Bir üniversitenin yetkisi sonradan askıya alınırsa, o tarihten önce verdiği diplomalar geçerli kalır: yetki, veriliş tarihine göre değerlendirilir.",
+          body: "Üniversite bir diplomayı iptal ederse her doğrulayıcı bunu yayımlanan iptal listesinden birkaç dakikada öğrenir; üniversite kimin kontrol ettiğini hiç öğrenmez. Bir üniversitenin yetkisi sonradan askıya alınırsa, o tarihten önce verdiği diplomalar geçerli kalır: yetki, veriliş tarihine göre değerlendirilir.",
         },
         {
           status: "later",
@@ -887,7 +887,7 @@ const tk: ScenariosContent = {
         {
           status: "today",
           title: "Diplom yzyna alnanda, uniwersitet ýapylanda",
-          body: "Uniwersitet diplomy ýatyrsa, her barlaýjy muny çap edilen ýagdaý sanawyndan iň giç takmynan 90 minutda bilýär; uniwersitet kimiň barlandygyny hiç haçan bilmeýär. Uniwersitetiň ygtyýary soňra togtadylsa, şol senä çenli beren diplomlary güýjünde galýar: ygtyýar berlen senesine görä bahalandyrylýar.",
+          body: "Uniwersitet diplomy ýatyrsa, her barlaýjy muny çap edilen ýagdaý sanawyndan birnäçe minutda bilýär; uniwersitet kimiň barlandygyny hiç haçan bilmeýär. Uniwersitetiň ygtyýary soňra togtadylsa, şol senä çenli beren diplomlary güýjünde galýar: ygtyýar berlen senesine görä bahalandyrylýar.",
         },
         {
           status: "later",
