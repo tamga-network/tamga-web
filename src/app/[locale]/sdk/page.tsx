@@ -9,7 +9,7 @@ import { COPY, EX, INSTALL, PACKAGES, npmUrl, pkgDocsUrl } from "@/content/sdk";
 import { DEV_LINKS } from "@/lib/ecosystem";
 
 /* npm'deki deneme sürümü (kararlı 1.0.0 hazır olunca) — pInstall/pPkgs bunu söyler; paketlerin package.json sürümüyle aynı tutulur. */
-const VERSION = "0.3.0";
+const VERSION = "0.3.1";
 
 const UI: Record<
   Locale,
@@ -37,10 +37,10 @@ const UI: Record<
     lead: "Open-source TypeScript packages for everything on the network: verifying, issuing, trust lists and the wallet core. Apache-2.0, following the EUDI profiles.",
     hInstall: "Install",
     pInstall:
-      "The packages are published on npm as the 0.3.0 test release; the stable 1.0.0 comes when everything is ready. In test releases the API may change.",
+      "The packages are published on npm as the 0.3.1 test release; the stable 1.0.0 comes when everything is ready. In test releases the API may change.",
     hPkgs: "Packages",
     pPkgs:
-      "Each package name opens its npm page; “Docs” opens its reference on the developer docs. The version shown (0.3.0) is the current test release.",
+      "Each package name opens its npm page; “Docs” opens its reference on the developer docs. The version shown (0.3.1) is the current test release.",
     docs: "Docs",
     hCode: "Working examples",
     pCode:
@@ -56,10 +56,10 @@ const UI: Record<
     lead: "Ağdaki her iş için açık kaynak TypeScript paketleri: doğrulama, belge verme, güven listeleri ve cüzdan çekirdeği. Apache-2.0, EUDI profillerine uygun.",
     hInstall: "Kurulum",
     pInstall:
-      "Paketler npm'de 0.3.0 deneme sürümüyle yayımlanır; kararlı 1.0.0 hazır olunca gelir. Deneme sürümünde arayüz değişebilir.",
+      "Paketler npm'de 0.3.1 deneme sürümüyle yayımlanır; kararlı 1.0.0 hazır olunca gelir. Deneme sürümünde arayüz değişebilir.",
     hPkgs: "Paketler",
     pPkgs:
-      "Paket adı npm sayfasını açar; “Belge” geliştirici belgelerindeki başvurusunu açar. Gösterilen sürüm (0.3.0) güncel deneme sürümüdür.",
+      "Paket adı npm sayfasını açar; “Belge” geliştirici belgelerindeki başvurusunu açar. Gösterilen sürüm (0.3.1) güncel deneme sürümüdür.",
     docs: "Belge",
     hCode: "Çalışan örnekler",
     pCode:
@@ -75,10 +75,10 @@ const UI: Record<
     lead: "Torda her iş üçin açyk çeşmeli TypeScript paketleri: barlamak, resminama bermek, ynam sanawlary we gapjyk ýadrosy. Apache-2.0, EUDI profillerine laýyk.",
     hInstall: "Gurnamak",
     pInstall:
-      "Paketler npm-de 0.3.0 synag wersiýasy bilen çap edilýär; durnukly 1.0.0 taýýar bolanda geler. Synag wersiýasynda interfeýs üýtgäp biler.",
+      "Paketler npm-de 0.3.1 synag wersiýasy bilen çap edilýär; durnukly 1.0.0 taýýar bolanda geler. Synag wersiýasynda interfeýs üýtgäp biler.",
     hPkgs: "Paketler",
     pPkgs:
-      "Paketiň ady npm sahypasyny açýar; “Resminama” işläp düzüji resminamalaryndaky salgylanmany açýar. Görkezilen wersiýa (0.3.0) häzirki synag wersiýasydyr.",
+      "Paketiň ady npm sahypasyny açýar; “Resminama” işläp düzüji resminamalaryndaky salgylanmany açýar. Görkezilen wersiýa (0.3.1) häzirki synag wersiýasydyr.",
     docs: "Resminama",
     hCode: "Işleýän mysallar",
     pCode:

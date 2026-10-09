@@ -97,23 +97,29 @@ export const RELEASES: Release[] = [
     date: "2026-10-09",
     kind: "fix",
     title: {
-      en: "Final OpenID4VCI/VP and HAIP alignment, packages 0.3.0",
-      tr: "OpenID4VCI/VP ve HAIP son sürümüne uyum, paketler 0.3.0",
-      tk: "OpenID4VCI/VP we HAIP soňky wersiýasyna laýyklyk, paketler 0.3.0",
+      en: "Final OpenID4VCI/VP and HAIP alignment, packages 0.3.1",
+      tr: "OpenID4VCI/VP ve HAIP son sürümüne uyum, paketler 0.3.1",
+      tk: "OpenID4VCI/VP we HAIP soňky wersiýasyna laýyklyk, paketler 0.3.1",
     },
     sections: {
       changed: {
         en: [
+          "Revocation lists stay valid for 6 hours and are still republished every 2 minutes: a revocation shows within minutes, and a short server outage no longer stops checks (verifiers on 0.3.1).",
+          "Zero-knowledge presentations are accepted only when the verifier's policy says so; short-lived ZK copies that close the revocation gap are decided (ADR-0044) and come in 0.4.0.",
           "Issuance follows OpenID4VCI 1.0 Final: key attestations use the type key-attestation+jwt, error codes match the standard (unknown_credential_configuration, invalid_nonce, credential_request_denied), and the nonce comes only from the nonce endpoint.",
-          "The @tamga-network/* packages are on npm as the 0.3.0 test release; the stable 1.0.0 comes when everything is ready.",
+          "The @tamga-network/* packages are on npm as the 0.3.1 test release; the stable 1.0.0 comes when everything is ready.",
         ],
         tr: [
+          "İptal listeleri 6 saat geçerli, yine 2 dakikada bir yenilenir: iptal birkaç dakikada görünür, sunucunun kısa kesintisi kontrolleri durdurmaz (0.3.1 kullanan doğrulayıcılarda).",
+          "Sıfır bilgi ispatıyla gösterim yalnız doğrulayıcının kuralı açıkça kabul ediyorsa geçer; iptal açığını kapatan kısa ömürlü ZK kopyaları kararlaştırıldı (ADR-0044), 0.4.0 ile gelir.",
           "Belge verme OpenID4VCI 1.0 Final'e uyar: anahtar kanıtının türü key-attestation+jwt, hata kodları standarttaki gibi (unknown_credential_configuration, invalid_nonce, credential_request_denied), tek kullanımlık değer (nonce) yalnız kendi ucundan alınır.",
-          "@tamga-network/* paketleri npm'de 0.3.0 deneme sürümünde; kararlı 1.0.0 hazır olunca gelir.",
+          "@tamga-network/* paketleri npm'de 0.3.1 deneme sürümünde; kararlı 1.0.0 hazır olunca gelir.",
         ],
         tk: [
+          "Ýatyrma sanawlary 6 sagat güýjüne eýe we her 2 minutda täzelenýär: ýatyrma birnäçe minutda görünýär, serweriň gysga kesilmesi barlaglary saklamaýar (0.3.1 ulanýan barlaýjylarda).",
+          "Nol bilimli subutnama bilen görkezmek diňe barlaýjynyň düzgüni aç-açan kabul etse geçýär; ýatyrma boşlugyny ýapýan gysga ömürli ZK nusgalary karar edildi (ADR-0044), 0.4.0 bilen geler.",
           "Resminama bermek OpenID4VCI 1.0 Final-a laýyk: açar subutnamasynyň görnüşi key-attestation+jwt, ýalňyşlyk kodlary standartdaky ýaly (unknown_credential_configuration, invalid_nonce, credential_request_denied), birgezeklik baha (nonce) diňe öz nokadyndan alynýar.",
-          "@tamga-network/* paketleri npm-de 0.3.0 synag wersiýasynda; durnukly 1.0.0 taýýar bolanda geler.",
+          "@tamga-network/* paketleri npm-de 0.3.1 synag wersiýasynda; durnukly 1.0.0 taýýar bolanda geler.",
         ],
       },
     },
