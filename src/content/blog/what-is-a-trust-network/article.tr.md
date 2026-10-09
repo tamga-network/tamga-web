@@ -9,7 +9,7 @@ draft: false
 related: how-trust-lists-work, join-as-an-institution, network-as-a-foundation, why-no-blockchain-yet
 ---
 
-<!-- Kaynak: tamga-network README (kâr amacı gütmez, vakıf, cüzdan işletmez, paketler npm'de 0.2.0 deneme sürümü, kararlı 1.0.0 hazır olunca); ADR-0035 (AB uyumlu, "EUDI Wallet" unvanı yok; cüzdanları kurala göre tanır), ADR-0037 K1 (ağın işleri: kurallar, güven, katalog, açık kod, referans servisler; satılmaz), ADR-0042 (cüzdan işletmez, listeler), ADR-0020 (kişi kaydı yok, yetkili kaynak), ADR-0009 (defter ≥2 bağımsız işletmeciyle), ADR-0036 (dış listeler, henüz eklenen yok), ADR-0038/0041 (sandbox, kendi kendine test kurumu); concepts/trust-lists, concepts/revocation (önceden indirme); SPEC-TRUST-0001 (TL11 kişisel veri yok; işletmeci provisional, on_behalf_of); SPEC-API-0001 (C3, INDETERMINATE); guides/verify-on-server (ZK doğrulama pakette); sandbox rehberi (age-zk örnek doğrulayıcı); ARF §8.3. Canlı: trust.tamga.network/tl-tr.json operator.status provisional (2026-10-08). Dış: AB güven listeleri, AB ARF GitHub. -->
+<!-- Kaynak: tamga-network README (kâr amacı gütmez, vakıf, cüzdan işletmez, paketler npm'de 0.3.0 deneme sürümü, kararlı 1.0.0 hazır olunca); ADR-0035 (AB uyumlu, "EUDI Wallet" unvanı yok; cüzdanları kurala göre tanır), ADR-0037 K1 (ağın işleri: kurallar, güven, katalog, açık kod, referans servisler; satılmaz), ADR-0042 (cüzdan işletmez, listeler), ADR-0020 (kişi kaydı yok, yetkili kaynak), ADR-0009 (defter ≥2 bağımsız işletmeciyle), ADR-0036 (dış listeler, henüz eklenen yok), ADR-0038/0041 (sandbox, kendi kendine test kurumu); concepts/trust-lists, concepts/revocation (önceden indirme); SPEC-TRUST-0001 (TL11 kişisel veri yok; işletmeci provisional, on_behalf_of); SPEC-API-0001 (C3, INDETERMINATE); guides/verify-on-server (ZK doğrulama pakette); sandbox rehberi (age-zk örnek doğrulayıcı); ARF §8.3. Canlı: trust.tamga.network/tl-tr.json operator.status provisional (2026-10-08). Dış: AB güven listeleri, AB ARF GitHub. -->
 
 Güven ağı, bir dijital belgenin gerçek ve yetkili bir kurumdan geldiğini kimseye telefon açmadan denetlemeyi sağlayan ortak katmandır. Tamga Network, Türkiye ve Türk dünyası için bu katmandır ve AB'nin eIDAS 2.0 standartları üzerine kuruludur. Kuralları yazar, imzalı güven listelerini yayımlar, belge türü kataloğunu tutar, açık kaynak paketleri ve bir referans doğrulayıcıyı sunar, bir de test ağı işletir. Kişilerin belgelerini tutmaz, cüzdan işletmez, kimin neyi kime gösterdiğini görmez.
 
@@ -38,7 +38,7 @@ Altı iş, hepsi herkese açık ([ADR-0037](https://docs.tamga.network/tr/adr/00
 1. **Kurallar.** Tamga ARF (Mimari ve Referans Çerçevesi), Güven Çerçevesi (Trust Framework) ve kural kitapları her rolün ne yapacağını söyler. Her kural numaralıdır ve [arf.tamga.network](https://arf.tamga.network/tr/)'te yayımlanır.
 2. **İmzalı güven listeleri.** Listelerin listesi ve Türkiye listesi; kayıtlı kurumları ve her birinin verebileceği belge türlerini, kayıtlı doğrulayıcıları ve her birinin isteyebileceği alanları, tanınan cüzdan sağlayıcıları sayar. `trust.tamga.network` adresinde sürümlü, özet zincirli ve imzalı olarak yayımlanır. İşleyişi: [İmzalı bir güven listesi nasıl çalışır?](/blog/how-trust-lists-work)
 3. **Şema kataloğu.** Öğrenci belgesi, diploma, etkinlik bileti, kimlik doğrulama belgesi gibi belge türleri `schemas.tamga.network` adresindeki herkese açık katalogda bir kez tanımlanır. Böylece her cüzdan ve doğrulayıcı bir diplomayı aynı biçimde okur.
-4. **Açık paketler.** `@tamga-network/*` paketleri güven listelerini, SD-JWT VC'yi, ISO mdoc'u, belge vermeyi, doğrulamayı, cüzdan çekirdeğini ve sıfır bilgi ispatını kapsar. Apache-2.0 lisanslı açık kaynaktır; npm'de 0.2.0 deneme sürümüyle yayımlanır, kararlı 1.0.0 hazır olunca gelir. Deneme sürümünde arayüz değişebilir.
+4. **Açık paketler.** `@tamga-network/*` paketleri güven listelerini, SD-JWT VC'yi, ISO mdoc'u, belge vermeyi, doğrulamayı, cüzdan çekirdeğini ve sıfır bilgi ispatını kapsar. Apache-2.0 lisanslı açık kaynaktır; npm'de 0.3.0 deneme sürümüyle yayımlanır, kararlı 1.0.0 hazır olunca gelir. Deneme sürümünde arayüz değişebilir.
 5. **Referans servisler.** Güven listesi yayıncısı ve kayıt aracı, Kurum Konsolu ile birlikte barındırılan belge verme servisi, barındırılan doğrulayıcı (Tamga Verify) ve geçici kimlik servisi. Ağın çalışması ve kurumların katılabilmesi için vardır; satılmaz.
 6. **Sandbox.** Gerçek ağdan tamamen ayrı bir test ağı: [sandbox.tamga.network](https://sandbox.tamga.network). Kendi test kök sertifikası, örnek kurumları ve uydurma kişileri vardır. Bir kurum orada birkaç dakikada kendi test kurumunu açabilir.
 
@@ -79,7 +79,7 @@ Hayır. Bugün güven çapası imzalı, sürümlü, özet zincirli listeler ve h
 | Barındırılan doğrulayıcı (Tamga Verify) | `verify.tamga.network` adresinde canlı |
 | Sıfır bilgi ispatıyla yaş kontrolü | Tamga Verify'da canlı (`age-over-18-zk` politikası); cüzdan tarafında Android ispat kütüphanesi hazır, iOS bekliyor |
 | Kendi test kurumunu açabilen sandbox | `sandbox.tamga.network` adresinde canlı |
-| `@tamga-network/*` paketleri | npm'de 0.2.0 deneme sürümü; kararlı 1.0.0 hazır olunca |
+| `@tamga-network/*` paketleri | npm'de 0.3.0 deneme sürümü; kararlı 1.0.0 hazır olunca |
 | Dış listeler (başka devletler, AB) | tasarlandı; eklenen yok |
 | Ortak defter | ikinci bağımsız işletmeciyi bekliyor |
 

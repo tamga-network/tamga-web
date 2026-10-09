@@ -63,7 +63,8 @@ export const CHANGELOG_PAGE: Record<
 > = {
   en: {
     title: "Release notes",
-    description: "Tamga Network releases: rules, documentation, open packages, trust lists and services.",
+    description:
+      "Tamga Network releases: rules, documentation, open packages, trust lists and services.",
     eyebrow: "Release notes",
     lead: "Every release of the network, newest first. Package versions are listed separately on npm. Tamga Wallet keeps its own release notes.",
     more: "Package changelog on GitHub",
@@ -71,7 +72,8 @@ export const CHANGELOG_PAGE: Record<
   },
   tr: {
     title: "Sürüm notları",
-    description: "Tamga Network sürümleri: kurallar, belgeler, açık paketler, güven listeleri ve servisler.",
+    description:
+      "Tamga Network sürümleri: kurallar, belgeler, açık paketler, güven listeleri ve servisler.",
     eyebrow: "Sürüm notları",
     lead: "Ağın her sürümü, en yenisi üstte. Paket sürümleri npm'de ayrıca listelenir. Tamga Wallet kendi sürüm notlarını tutar.",
     more: "GitHub'da paket değişiklikleri",
@@ -79,7 +81,8 @@ export const CHANGELOG_PAGE: Record<
   },
   tk: {
     title: "Wersiýa bellikleri",
-    description: "Tamga Network wersiýalary: düzgünler, resminamalar, açyk paketler, ynam sanawlary we hyzmatlar.",
+    description:
+      "Tamga Network wersiýalary: düzgünler, resminamalar, açyk paketler, ynam sanawlary we hyzmatlar.",
     eyebrow: "Wersiýa bellikleri",
     lead: "Toruň her wersiýasy, iň täzesi ýokarda. Paket wersiýalary npm-de aýratyn görkezilýär. Tamga Wallet öz wersiýa belliklerini saklaýar.",
     more: "GitHub-da paket üýtgeşmeleri",
@@ -88,6 +91,33 @@ export const CHANGELOG_PAGE: Record<
 };
 
 export const RELEASES: Release[] = [
+  {
+    id: "v1.0.0-2026-10-09",
+    version: "v1.0.0",
+    date: "2026-10-09",
+    kind: "fix",
+    title: {
+      en: "Final OpenID4VCI/VP and HAIP alignment, packages 0.3.0",
+      tr: "OpenID4VCI/VP ve HAIP son sürümüne uyum, paketler 0.3.0",
+      tk: "OpenID4VCI/VP we HAIP soňky wersiýasyna laýyklyk, paketler 0.3.0",
+    },
+    sections: {
+      changed: {
+        en: [
+          "Issuance follows OpenID4VCI 1.0 Final: key attestations use the type key-attestation+jwt, error codes match the standard (unknown_credential_configuration, invalid_nonce, credential_request_denied), and the nonce comes only from the nonce endpoint.",
+          "The @tamga-network/* packages are on npm as the 0.3.0 test release; the stable 1.0.0 comes when everything is ready.",
+        ],
+        tr: [
+          "Belge verme OpenID4VCI 1.0 Final'e uyar: anahtar kanıtının türü key-attestation+jwt, hata kodları standarttaki gibi (unknown_credential_configuration, invalid_nonce, credential_request_denied), tek kullanımlık değer (nonce) yalnız kendi ucundan alınır.",
+          "@tamga-network/* paketleri npm'de 0.3.0 deneme sürümünde; kararlı 1.0.0 hazır olunca gelir.",
+        ],
+        tk: [
+          "Resminama bermek OpenID4VCI 1.0 Final-a laýyk: açar subutnamasynyň görnüşi key-attestation+jwt, ýalňyşlyk kodlary standartdaky ýaly (unknown_credential_configuration, invalid_nonce, credential_request_denied), birgezeklik baha (nonce) diňe öz nokadyndan alynýar.",
+          "@tamga-network/* paketleri npm-de 0.3.0 synag wersiýasynda; durnukly 1.0.0 taýýar bolanda geler.",
+        ],
+      },
+    },
+  },
   {
     id: "v1.0.0-2026-10-06",
     version: "v1.0.0",
