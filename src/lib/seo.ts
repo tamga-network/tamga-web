@@ -14,6 +14,14 @@ export const SITE_NAME = "Tamga Network";
 export const OG_LOCALE: Record<string, string> = { en: "en_US", tr: "tr_TR", tk: "tk_TM" };
 
 const url = (locale: string, path: string) => `${SITE_URL}/${locale}${path === "/" ? "" : path}`;
+const IMAGE_TYPES: Record<string, string> = {
+  png: "image/png",
+  jpg: "image/jpeg",
+  jpeg: "image/jpeg",
+  webp: "image/webp",
+  gif: "image/gif",
+  avif: "image/avif",
+};
 
 export function pageMeta(
   locale: string,
@@ -41,7 +49,14 @@ export function pageMeta(
   const languages: Record<string, string> = Object.fromEntries(langs.map((l) => [l, url(l, path)]));
   languages["x-default"] = url(routing.defaultLocale, path);
   const imageUrl = og?.image ? (og.image.startsWith("/") ? `${SITE_URL}${og.image}` : og.image) : `${SITE_URL}/${locale}/opengraph-image`;
-  const image = { url: imageUrl, width: 1200, height: 630, alt: title ?? SITE_NAME, type: "image/png" };
+  // Üretilen paylaşım görselleri (opengraph-image, blog og.png) 1200×630 PNG; başka görselin (ör. blog kapağı) boyutu bilinmez —
+  // yanlış boyut/tip bildirilmez, tip uzantıdan.
+  const generated = !og?.image || /\/og\.png$/.test(imageUrl);
+  const ext = /\.(\w+)$/.exec(imageUrl.split(/[?#]/)[0])?.[1]?.toLowerCase();
+  const type = ext ? IMAGE_TYPES[ext] : undefined;
+  const image = generated
+    ? { url: imageUrl, width: 1200, height: 630, alt: title ?? SITE_NAME, type: "image/png" }
+    : { url: imageUrl, alt: title ?? SITE_NAME, ...(type ? { type } : {}) };
   return {
     ...m,
     ...(og?.noindex ? { robots: { index: false, follow: true } } : {}),

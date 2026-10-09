@@ -495,9 +495,10 @@ function load(): BlogPost[] {
           errors.push(`${p.slug}: ${lang} site içi bağlantıda dil öneki yazılmaz: ${x[1]}`);
           continue;
         }
+        // /blog/rss.xml: sayfanın kendi dilindeki akış olarak çizilir (rich.tsx SmartLink → /<dil>/blog/rss.xml)
+        if (href === "/blog/rss.xml") continue;
         let bm: RegExpExecArray | null;
         if ((bm = /^\/blog\/([a-z0-9-]+)$/.exec(href))) {
-          if (bm[1] === "rss.xml") continue;
           const target = bySlug.get(bm[1]);
           if (!target) errors.push(`${p.slug}: ${lang} bağlantı kırık ${href}`);
           else if (!p.draft && target.draft) errors.push(`${p.slug}: ${lang} yayımlanan yazı taslağa bağlanıyor ${href}`);
