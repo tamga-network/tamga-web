@@ -92,6 +92,47 @@ export const CHANGELOG_PAGE: Record<
 
 export const RELEASES: Release[] = [
   {
+    id: "v1.0.0-2026-10-12",
+    version: "v1.0.0",
+    date: "2026-10-12",
+    kind: "feature",
+    title: {
+      en: "EU PID attribute names, short-lived ZK copies, packages 0.4.0",
+      tr: "AB kimlik alan adları, kısa ömürlü ZK kopyaları, paketler 0.4.0",
+      tk: "ÝB şahsyýet meýdan atlary, gysga ömürli ZK nusgalary, paketler 0.4.0",
+    },
+    sections: {
+      changed: {
+        en: [
+          "The identity credential uses the EU PID attribute names: birthdate, and nationalities as a list (ADR-0045).",
+          "The @tamga-network/* packages are on npm as the 0.4.0 test release; the stable 1.0.0 comes when everything is ready.",
+        ],
+        tr: [
+          "Kimlik belgesi AB kimlik (PID) alan adlarını kullanır: birthdate ve liste olarak nationalities (ADR-0045).",
+          "@tamga-network/* paketleri npm'de 0.4.0 deneme sürümünde; kararlı 1.0.0 hazır olunca gelir.",
+        ],
+        tk: [
+          "Şahsyýet resminamasy ÝB şahsyýet (PID) meýdan atlaryny ulanýar: birthdate we sanaw hökmünde nationalities (ADR-0045).",
+          "@tamga-network/* paketleri npm-de 0.4.0 synag wersiýasynda; durnukly 1.0.0 taýýar bolanda geler.",
+        ],
+      },
+      added: {
+        en: [
+          "Zero-knowledge over-18 checks use short-lived copies (at most 24 hours, refreshed silently by the wallet). A revoked identity stops getting copies, so it can no longer pass a ZK check (ADR-0044).",
+          "The rulebooks follow the EU attestation rulebook template; new Contact Rulebook, Revocation Policy and Wallet Attestation Policy on arf.tamga.network.",
+        ],
+        tr: [
+          "Sıfır bilgi ispatıyla 18+ kontrolü kısa ömürlü kopyalarla yapılır (en çok 24 saat, cüzdan sessizce yeniler). İptal edilen kimlik yeni kopya alamaz, ZK kontrolünden de geçemez (ADR-0044).",
+          "Kural kitapları AB belge kural kitabı şablonuna uyar; arf.tamga.network'te yeni İletişim Belgesi Kural Kitabı, İptal Politikası ve Cüzdan Kanıtı Politikası.",
+        ],
+        tk: [
+          "Nol bilimli subutnama bilen 18+ barlagy gysga ömürli nusgalar bilen geçirilýär (iň köp 24 sagat, gapjyk sessiz täzeleýär). Ýatyrylan şahsyýet täze nusga alyp bilmeýär, ZK barlagyndan hem geçip bilmeýär (ADR-0044).",
+          "Düzgünnamalar ÝB resminama düzgünnamasy şablonyna laýyk; arf.tamga.network-da täze Aragatnaşyk Resminamasy Düzgünnamasy, Ýatyrma Syýasaty we Gapjyk Subutnamasy Syýasaty.",
+        ],
+      },
+    },
+  },
+  {
     id: "v1.0.0-2026-10-09",
     version: "v1.0.0",
     date: "2026-10-09",
