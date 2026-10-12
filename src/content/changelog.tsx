@@ -92,6 +92,47 @@ export const CHANGELOG_PAGE: Record<
 
 export const RELEASES: Release[] = [
   {
+    id: "v1.0.0-2026-10-13",
+    version: "v1.0.0",
+    date: "2026-10-13",
+    kind: "feature",
+    title: {
+      en: "Embedded disclosure policy, EU trusted-list reader, packages 0.5.0",
+      tr: "Belgeye gömülü paylaşım kuralı, AB güven listesi okuyucusu, paketler 0.5.0",
+      tk: "Resminama goşulan paýlaşma düzgüni, ÝB ynam sanawy okaýjysy, paketler 0.5.0",
+    },
+    sections: {
+      added: {
+        en: [
+          "Institutions can set who may receive a credential type (embedded disclosure policy, ADR-0046). The wallet checks it offline against the verifier's registration certificate; if it doesn't match, it warns and starts with \"don't share\". The policy is never sent to the verifier.",
+          "The trust packages read the EU's trusted-list format (ETSI TS 119 612, XML) with signature verification, and the Attestation Revocation List.",
+          "Wallets read issuer preferences (required key attestations, preferred maintenance periods); phone-to-phone presentation moved into the wallet core.",
+        ],
+        tr: [
+          'Kurumlar bir belge türünü kimlerin alabileceğini belirleyebilir (gömülü paylaşım kuralı, ADR-0046). Cüzdan bunu internete çıkmadan doğrulayıcının kayıt belgesine göre denetler; uymazsa uyarır ve "paylaşma" ile başlar. Kural doğrulayıcıya hiç gönderilmez.',
+          "Güven paketleri AB güven listesi biçimini (ETSI TS 119 612, XML) imza denetimiyle ve AB iptal listesini (Attestation Revocation List) okur.",
+          "Cüzdanlar kurumun tercihlerini (gerekli anahtar kanıtı, tercih edilen bakım süreleri) okur; telefondan telefona gösterme cüzdan çekirdeğine taşındı.",
+        ],
+        tk: [
+          'Guramalar bir resminama görnüşini kimleriň alyp biljekdigini kesgitläp bilýär (goşulan paýlaşma düzgüni, ADR-0046). Gapjyk muny internete çykman barlaýjynyň hasaba alyş resminamasyna görä barlaýar; gabat gelmese duýdurýar we "paýlaşma" bilen başlaýar. Düzgün barlaýja hiç iberilmeýär.',
+          "Ynam paketleri ÝB ynam sanawy görnüşini (ETSI TS 119 612, XML) gol barlagy bilen we ÝB ýatyrma sanawyny (Attestation Revocation List) okaýar.",
+          "Gapjyklar guramanyň isleglerini (gerek açar subutnamasy, ileri tutulýan hyzmat möhletleri) okaýar; telefondan telefona görkezmek gapjyk özenine geçirildi.",
+        ],
+      },
+      changed: {
+        en: [
+          "The @tamga-network/* packages are on npm as the 0.5.0 test release; the stable 1.0.0 comes when everything is ready.",
+        ],
+        tr: [
+          "@tamga-network/* paketleri npm'de 0.5.0 deneme sürümünde; kararlı 1.0.0 hazır olunca gelir.",
+        ],
+        tk: [
+          "@tamga-network/* paketleri npm-de 0.5.0 synag wersiýasynda; durnukly 1.0.0 taýýar bolanda geler.",
+        ],
+      },
+    },
+  },
+  {
     id: "v1.0.0-2026-10-12",
     version: "v1.0.0",
     date: "2026-10-12",
