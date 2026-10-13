@@ -92,6 +92,50 @@ export const CHANGELOG_PAGE: Record<
 
 export const RELEASES: Release[] = [
   {
+    id: "v1.0.0-2026-10-13-2",
+    version: "v1.0.0",
+    date: "2026-10-13",
+    kind: "security",
+    title: {
+      en: "EU format alignment and security fixes, packages 0.5.2",
+      tr: "AB biçim uyumu ve güvenlik düzeltmeleri, paketler 0.5.2",
+      tk: "ÝB görnüş laýyklygy we howpsuzlyk düzedişleri, paketler 0.5.2",
+    },
+    sections: {
+      changed: {
+        en: [
+          "Presentation requests follow the EU profile: issued-at time in the signed header, the certificate chain without the root, and one registration certificate per request.",
+          "Wallet attestations are read only in the standard EU form; identity-service credentials require a revocation entry for the wallet.",
+          "The @tamga-network/* packages are on npm as the 0.5.2 test release (0.5.1 was not published; its content is in 0.5.2).",
+        ],
+        tr: [
+          "Sunum istekleri AB profiline uyar: imzalı başlıkta düzenlenme zamanı, kök sertifikasız zincir ve istek başına tek kayıt sertifikası.",
+          "Cüzdan kanıtları yalnız standart AB biçiminde okunur; kimlik servisi belgeleri cüzdan için iptal kaydı ister.",
+          "@tamga-network/* paketleri npm'de 0.5.2 deneme sürümünde (0.5.1 yayımlanmadı; içeriği 0.5.2'de).",
+        ],
+        tk: [
+          "Görkeziş haýyşlary ÝB profiline laýyk: gol çekilen sözbaşyda berlen wagty, kök şahadatnamasyz zynjyr we her haýyşa bir hasaba alyş şahadatnamasy.",
+          "Gapjyk subutnamalary diňe standart ÝB görnüşinde okalýar; şahsyýet hyzmatynyň resminamalary gapjyk üçin ýatyrma ýazgysyny talap edýär.",
+          "@tamga-network/* paketleri npm-de 0.5.2 synag wersiýasynda (0.5.1 çap edilmedi; mazmuny 0.5.2-de).",
+        ],
+      },
+      security: {
+        en: [
+          "Revocation-list fetching re-checks every redirect and connects only to the checked address; issuer-controlled addresses can no longer reach internal networks.",
+          "A revoked wallet unit is detected even when its provider publishes a too-small status list.",
+        ],
+        tr: [
+          "İptal listesi alınırken her yönlendirme yeniden denetlenir ve yalnız denetlenen adrese bağlanılır; belge verenin denetlediği adresler artık iç ağlara ulaşamaz.",
+          "Sağlayıcı fazla küçük bir durum listesi yayımlasa bile iptal edilmiş cüzdan birimi görülür.",
+        ],
+        tk: [
+          "Ýatyrma sanawy alnanda her gönükdirme gaýtadan barlanýar we diňe barlanan salga birikilýär; resminama berijiniň dolandyrýan salgylary indi içki torlara ýetip bilmeýär.",
+          "Üpjünçi gaty kiçi ýagdaý sanawyny çap etse-de ýatyrylan gapjyk birligi görünýär.",
+        ],
+      },
+    },
+  },
+  {
     id: "v1.0.0-2026-10-13",
     version: "v1.0.0",
     date: "2026-10-13",
