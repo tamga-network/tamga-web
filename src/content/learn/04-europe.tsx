@@ -322,6 +322,14 @@ export const CHAPTER_4: LearnPage[] = [
             bir belge, Avrupa'daki yazılımlarla birlikte çalışmaya uygun olur; bu uyum birlikte çalışabilirlik testleriyle
             gösterilir. Ağın konumu bir kararla yazılıdır: önce AB uyumu, onun üstünde Türk dünyasının hafif bir güven ağı.
           </p>
+          <p>
+            Birlikte çalışmak, hukuken tanınmak demek değildir. eIDAS'ın 5f maddesi AB içindeki kurumların AB cüzdanlarını kabul
+            etmesini düzenler; AB dışındaki bir cüzdanın ya da güven listesinin tanınması için bir yol değildir. AB dışı için tek açık
+            dayanak 14. maddedir: yalnız güven hizmetlerini (ör. nitelikli e-imza) kapsar ve Birlik ile o ülke arasında bir anlaşma
+            ister; tarafları devletlerdir. Tamga Network bu anlaşmanın tarafı olamaz. Ağın işi teknik hazırlıktır: ETSI biçiminde
+            listeler, ETSI profilli sertifikalar ve devletlere devredilebilecek roller. Bugün bir AB doğrulayıcısı Tamga belgelerini
+            ancak kendi isteğiyle, güven listemizi kendi güven kaynağına ekleyerek kabul edebilir.
+          </p>
         </>
       ),
       en: (
@@ -384,6 +392,15 @@ export const CHAPTER_4: LearnPage[] = [
             through interoperability tests. The network's position is set down in a decision: EU compatibility first, and on top of
             it a light trust network for the Turkic world.
           </p>
+          <p>
+            Working together is not the same as legal recognition. Article 5f of eIDAS governs how bodies inside the EU accept EU
+            wallets; it is not a way to recognise a wallet or a trusted list from outside the EU. For countries outside the EU the
+            only open basis is Article 14: it covers trust services only (for example qualified e-signatures) and requires an
+            agreement between the Union and that country, whose parties are states. Tamga Network cannot be a party to it. The
+            network's job is technical preparation: lists in ETSI formats, certificates with ETSI profiles and roles that can be
+            handed over to states. Today an EU relying party can accept Tamga credentials only of its own accord, by adding our
+            trusted list to its own trust source.
+          </p>
         </>
       ),
       tk: (
@@ -439,6 +456,15 @@ export const CHAPTER_4: LearnPage[] = [
             Tamga Network ÝB edarasy däl we eIDAS-yň çäginde däl. Emma şol bir arhitekturany bilkastlaýyn ulanýar: resminama
             formatlary, bermek we görkezmek protokollary, ynam sanawlary ÝB standartlarynda. Şeýlelik bilen türki dünýäde berlen
             resminama Ýewropadaky programmalar bilen bilelikde işlemäge laýyk bolýar; bu laýyklyk synaglar bilen görkezilýär.
+          </p>
+          <p>
+            Bilelikde işlemek hukuky taýdan ykrar edilmek däldir. eIDAS-yň 5f maddasy ÝB-niň içindäki edaralaryň ÝB gapjyklaryny
+            kabul etmegini düzgünleşdirýär; ÝB-den daşardaky gapjygy ýa-da ynam sanawyny ykrar etmegiň ýoly däl. ÝB-den daşary
+            ýurtlar üçin ýeke-täk açyk esas 14-nji maddadyr: diňe ynam hyzmatlaryny (meselem, kwalifisirlenen elektron gol) öz içine
+            alýar we Bileleşik bilen şol ýurduň arasynda şertnama talap edýär; onuň taraplary döwletlerdir. Tamga Network şol
+            şertnamanyň tarapy bolup bilmeýär. Toruň işi tehniki taýýarlykdyr: ETSI görnüşindäki sanawlar, ETSI profilli
+            şahadatnamalar we döwletlere geçirilip bilinjek rollar. Häzir ÝB-däki barlaýjy Tamga resminamalaryny diňe öz islegi
+            bilen, ynam sanawymyzy öz ynam çeşmesine goşup kabul edip biler.
           </p>
         </>
       ),
@@ -1305,9 +1331,9 @@ export const CHAPTER_4: LearnPage[] = [
         tk: "2026-njy ýylyň ahyrynda gapjyklar, 2027-nji ýylyň ahyrynda kabul etmek borjy, 2028-de has berk düzgünler.",
       },
       {
-        tr: "Tamga AB'nin her adımını izler ve kendi kurallarına işler; amaç, Türk dünyasının belgelerinin Avrupa'da da geçerli olabilmesi.",
-        en: "Tamga follows every EU step and writes it into its own rules, so that credentials from the Turkic world can work in Europe too.",
-        tk: "Tamga ÝB-niň her ädimini yzarlaýar we öz düzgünlerine girizýär.",
+        tr: "Tamga AB'nin her adımını izler ve kendi kurallarına işler; böylece belgeler Avrupa yazılımıyla teknik olarak çalışır. Hukuki tanınma ise devletler arası anlaşma ister (eIDAS Madde 14).",
+        en: "Tamga follows every EU step and writes it into its own rules, so that credentials work with European software. Legal recognition, however, needs an agreement between states (eIDAS Article 14).",
+        tk: "Tamga ÝB-niň her ädimini yzarlaýar we öz düzgünlerine girizýär; hukuky ykrar edilmek üçin döwletleriň arasynda şertnama gerek (eIDAS 14-nji madda).",
       },
     ],
     deeper: [

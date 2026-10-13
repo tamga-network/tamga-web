@@ -354,9 +354,9 @@ export const CHAPTER_6: LearnPage[] = [
         tk: "Tor ýurtlara umumy dil we düzgünler berýär; her döwlet öz sanawynyň eýesidir.",
       },
       {
-        tr: "AB standartlarını kullanmak, Türk dünyasının belgelerinin Avrupa’da da tanınmasının yolunu açar.",
-        en: "Using EU standards opens the way for Turkic-world credentials to be recognised in Europe too.",
-        tk: "ÝB standartlaryny ulanmak resminamalaryň Ýewropada hem ykrar edilmegine ýol açýar.",
+        tr: "AB standartlarını kullanmak, Türk dünyasının belgelerinin Avrupa yazılımıyla teknik olarak okunmasını sağlar; AB’de hukuki tanınma ise devletler arası anlaşma ister (eIDAS Madde 14).",
+        en: "Using EU standards lets European software read Turkic-world credentials; legal recognition in the EU needs an agreement between states (eIDAS Article 14).",
+        tk: "ÝB standartlaryny ulanmak resminamalaryň Ýewropa programmalary bilen tehniki taýdan okalmagyny üpjün edýär; ÝB-de hukuky ykrar edilmek üçin döwletleriň arasynda şertnama gerek (eIDAS 14-nji madda).",
       },
     ],
     deeper: [
