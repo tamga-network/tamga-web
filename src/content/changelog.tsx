@@ -92,6 +92,53 @@ export const CHANGELOG_PAGE: Record<
 
 export const RELEASES: Release[] = [
   {
+    id: "v1.0.0-2026-10-14",
+    version: "v1.0.0",
+    date: "2026-10-14",
+    kind: "feature",
+    title: {
+      en: "EU alignment: no suspension for identity, browser verification on iPhone, packages 0.6.0",
+      tr: "AB uyumu: kimlikte askıya alma yok, iPhone'da tarayıcıdan doğrulama, paketler 0.6.0",
+      tk: "ÝB laýyklygy: şahsyýetde togtatma ýok, iPhone-da brauzerden barlag, paketler 0.6.0",
+    },
+    sections: {
+      changed: {
+        en: [
+          "Identity-service credentials can no longer be suspended, only revoked (EU rule for identity credentials); mdoc credentials use the EU status-list format (CWT).",
+          'Requests without a registration certificate show a warning and default to "don\'t share"; from 2028-08-11 they are refused.',
+          "The @tamga-network/* packages are on npm as the 0.6.0 test release.",
+        ],
+        tr: [
+          "Kimlik servisinin belgeleri artık askıya alınamaz, yalnız iptal edilir (AB'nin kimlik belgesi kuralı); mdoc belgeleri AB iptal listesi biçimini (CWT) kullanır.",
+          'Kayıt sertifikası olmayan istekler uyarı gösterir ve "paylaşma" ile başlar; 2028-08-11\'den sonra reddedilir.',
+          "@tamga-network/* paketleri npm'de 0.6.0 deneme sürümünde.",
+        ],
+        tk: [
+          "Şahsyýet hyzmatynyň resminamalary indi togtadylyp bilinmeýär, diňe ýatyrylýar (ÝB-niň şahsyýet resminamasy düzgüni); mdoc resminamalary ÝB ýatyrma sanawy görnüşini (CWT) ulanýar.",
+          'Hasaba alyş şahadatnamasy bolmadyk haýyşlar duýduryş görkezýär we "paýlaşma" bilen başlaýar; 2028-08-11-den soň ret edilýär.',
+          "@tamga-network/* paketleri npm-de 0.6.0 synag wersiýasynda.",
+        ],
+      },
+      added: {
+        en: [
+          "Browser verification on iPhone and Mac Safari (ISO/IEC 18013-7 Annex C); on desktop the browser path is the default and the QR code stays as a fallback.",
+          "Phone-to-phone presentations use the EU presentation offer (TS9): a request asking for more than offered gets nothing.",
+          "Face-to-face readers must be anchored in the trust list before a request is shown as verified.",
+        ],
+        tr: [
+          "iPhone ve Mac Safari'de tarayıcıdan doğrulama (ISO/IEC 18013-7 Ek C); masaüstünde varsayılan yol tarayıcı, QR yedekte kalır.",
+          "Telefondan telefona gösterim AB sunum teklifini (TS9) kullanır: tekliften fazlasını isteyen hiçbir şey alamaz.",
+          "Yüz yüze okuyucular, istekleri doğrulanmış gösterilmeden önce güven listesine bağlanmalıdır.",
+        ],
+        tk: [
+          "iPhone we Mac Safari-de brauzerden barlag (ISO/IEC 18013-7 C goşundy); stolüsti kompýuterde esasy ýol brauzer, QR ätiýaçda galýar.",
+          "Telefondan telefona görkezmek ÝB görkeziş teklibini (TS9) ulanýar: teklipden köpüni soraýan hiç zat alyp bilmeýär.",
+          "Ýüzbe-ýüz okaýjylar, haýyşlary tassyklanan görkezilmezden öň ynam sanawyna baglanmalydyr.",
+        ],
+      },
+    },
+  },
+  {
     id: "v1.0.0-2026-10-13-2",
     version: "v1.0.0",
     date: "2026-10-13",
