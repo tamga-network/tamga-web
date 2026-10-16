@@ -9,10 +9,14 @@ import { EXAMPLES } from "@/content/examples.generated";
 type L = Record<Locale, string>;
 
 export const npmUrl = (name: string) => `https://www.npmjs.com/package/${name}`;
+/* docs.tamga.network'te sayfası olmayan paketler (zk) depo README'sine gider. */
+const DOCS_OVERRIDE: Record<string, string> = {
+  "@tamga-network/zk": "https://github.com/tamga-network/tamga-network/tree/main/packages/zk#readme",
+};
 export const pkgDocsUrl = (name: string) =>
-  `https://docs.tamga.network/packages/${name.replace("@tamga-network/", "")}`;
+  DOCS_OVERRIDE[name] ?? `https://docs.tamga.network/packages/${name.replace("@tamga-network/", "")}`;
 
-/* soon: npm'de henüz yok (zk'nın ilk yayını elle yapılır); yayımlanınca `soon` kaldırılır. */
+/* soon: npm'de henüz olmayan paket için; bugün dokuz paketin hepsi npm'de (0.6.0). */
 export const PACKAGES: { name: string; what: L; soon?: L }[] = [
   {
     name: "@tamga-network/core",

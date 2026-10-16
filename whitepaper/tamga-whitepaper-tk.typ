@@ -131,7 +131,7 @@ Kitapdaky dolandyryş ýörelgelere eýerýär: validatorlar deň sesli döwletl
 
 *Häzir işleýän (ilkinji wersiýa, hakyky kriptografiýa):* diplom we talyp resminamasyny bermek we hödürlemek; ýatyrylyş we guramanyň togtadylmagy; şahsyýet barlagy we şahsyýet resminamasy, mdoc görnüşinde hem; kampus we çäre geçiş kartalary, bir gezeklik biletler; saýta degişli lakam bilen web saýta hasaba durmak we passkey bilen giriş; barlaýjy tarapynda nol bilimli subutnama bilen ýaş barlagy; dokuz açyk çeşmeli paket. Telefonda synagdan geçirildi.
 
-#kvtable("Tapgyrlar", (("Sanaw tapgyry (häzir)", "gol çekilen ynam sanawlary + labyr žurnaly · Tamga = wagtlaýyn operator"), ("Pilot", "ilkinji resminama beriji gurama uniwersitet · guramanyň açary uniwersitetde · sanawlar, kitap ýok"), ("0 tapgyr", "azyndan 2 garaşsyz validator operatory gol çekende rugsatly Besu/QBFT kitaby"), ("1 tapgyr", "agza döwletleriň sanawlary · ýakyn aralyk (NFC/BLE) · Digital Credentials API"),), mono: false)
+#kvtable("Tapgyrlar", (("Sanaw tapgyry (häzir)", "gol çekilen ynam sanawlary + labyr žurnaly · Tamga = wagtlaýyn operator"), ("Pilot", "ilkinji resminama beriji gurama uniwersitet · guramanyň açary uniwersitetde · hakyky telefonlarda Bluetooth we Digital Credentials API · sanawlar, kitap ýok"), ("0 tapgyr", "azyndan 2 garaşsyz validator operatory gol çekende rugsatly Besu/QBFT kitaby"), ("1 tapgyr", "agza döwletleriň sanawlary · okaýjy barlagly NFC arkaly ýakyn aralyk"),), mono: false)
 
 Ilkinji wersiýanyň belli çäkleri ýazga alnandyr we pilotdan öň ýapylýar. Pilotyň üstünlik we togtatma ölçegleri öňünden kesgitlenendir.
 
@@ -141,7 +141,7 @@ Hakyky tordan doly aýry synag tory, *sandbox.tamga.network*, işleýär: öz sy
 
 - Bu tapgyrda ynam labyry bir operatoryň goluna daýanýar. Açyk žurnal, açyklyk hasabaty we barlaglar hyýanatçylygyň öňüni alýar; ony mümkin däl edip bilmeýär.
 - Ýagdaý serweri işleýän wagty ýatyrylyş birnäçe minutda güýje girýär (2 minutlyk çap aralygy \+ barlaýjynyň öňünden alyş aralygy).
-- Nol bilimli subutnama bilen hödürlenen şahsyýet resminamasynyň ýatyrylyşy hödürlemede barlanyp bilinmeýär. Karar: iň köp 24 sagat güýjünde bolan, resminama ýatyrylanda täzelenmeýän gysga ömürli nusgalar; bu durmuşa geçirilýänçä barlaýjy şeýle hödürlemäni diňe syýasaty aç-açan rugsat berse kabul edýär.
+- Nol bilimli subutnama bilen hödürlenen şahsyýet resminamasynyň ýatyrylyşy hödürlemede barlanyp bilinmeýär. Onuň ýerine subutnama iň köp 24 sagat güýjünde bolan we resminama ýatyrylanda täzelenmeýän gysga ömürli nusganyň üstünden düzülýär (ADR-0044, durmuşa geçirildi): ýatyrylyş şeýle hödürlemä iň giç 24 sagatda ýetýär.
 - Nol bilimli subutnama bilen hödürlemek gapjyga gelýänçä gurama tarapyndan tanalmak töwekgelçiligi galýar.
 - Şahsyýet hyzmaty nazary taýdan adamyň belli bir saýtdaky lakamyny hasaplap biler; açar goragy we barlag muny çäklendirýär, nol bilimli subutnama ony geljekde aýyrar.
 - Tordaky gapjyklar (ilkinjisi Tamga Wallet) programma dükanlarynda çykýança telefonyň “howpsuz enjamdadyryn” diýen beýany kabul edilmeýär; gapjygyň dükan wersiýasy bilen App Attest / Play Integrity hökmany bolar.

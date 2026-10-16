@@ -255,7 +255,7 @@ const tr: HomeContent = {
   verify: {
     eyebrow: "Kendiniz deneyin",
     title: "Güven, bir imza kadar açık.",
-    lead: "Liste her değişiklikte yeniden imzalanır ve bir öncekine hash ile bağlanır; herkese açık çapa günlüğüne her saat bir satır eklenir. Kimse sessizce değiştiremez; herkes doğrulayabilir.",
+    lead: "Liste her değişiklikte yeniden imzalanır ve bir öncekine hash ile bağlanır; herkese açık çapa günlüğüne en az saatte bir satır eklenir. Kimse sessizce değiştiremez; herkes doğrulayabilir.",
     button: "İmzayı doğrula",
     how: "Nasıl çalışır",
     sample: "lotl.jws · örnek",
@@ -530,7 +530,7 @@ const en: HomeContent = {
   verify: {
     eyebrow: "Try it yourself",
     title: "Trust, as open as a signature.",
-    lead: "The list is re-signed on every change and chained to the previous one by hash; the public anchor log gets a new line every hour. No one can change it silently; anyone can verify it.",
+    lead: "The list is re-signed on every change and chained to the previous one by hash; the public anchor log gets a new line at least every hour. No one can change it silently; anyone can verify it.",
     button: "Verify the signature",
     how: "How it works",
     sample: "lotl.jws · sample",
@@ -805,7 +805,7 @@ const tk: HomeContent = {
   verify: {
     eyebrow: "Özüň synap gör",
     title: "Ynam, gol ýaly açyk.",
-    lead: "Sanaw her üýtgände täzeden gol çekilýär we öňkisine hash bilen baglanýar; açyk labyr žurnalyna her sagatda bir setir goşulýar. Hiç kim ony ýuwaşlyk bilen üýtgedip bilmez; her kim barlap biler.",
+    lead: "Sanaw her üýtgände täzeden gol çekilýär we öňkisine hash bilen baglanýar; açyk labyr žurnalyna azyndan sagatda bir setir goşulýar. Hiç kim ony ýuwaşlyk bilen üýtgedip bilmez; her kim barlap biler.",
     button: "Goly barla",
     how: "Nähili işleýär",
     sample: "lotl.jws · nusga",

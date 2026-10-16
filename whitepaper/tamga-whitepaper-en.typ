@@ -131,7 +131,7 @@ Governance on the ledger follows the principles: validators are states with equa
 
 *Working today (first release, real cryptography):* issuance and presentation of diplomas and student cards; revocation and institution suspension; identity check and identity credential, also as mdoc; campus and event passes, single-use tickets; website sign-up with a per-site pseudonym and passkey sign-in; zero-knowledge age proofs on the verifier side; nine open-source packages. Tested on a phone.
 
-#kvtable("Phases", (("List stage (today)", "signed trust lists + anchor log · Tamga = provisional operator"), ("Pilot", "the first issuing institution is a university · issuer key at the university · lists, no ledger"), ("Phase 0", "permissioned Besu/QBFT ledger once at least 2 independent validator operators sign"), ("Phase 1", "member-state lists · close range (NFC/BLE) · Digital Credentials API"),), mono: false)
+#kvtable("Phases", (("List stage (today)", "signed trust lists + anchor log · Tamga = provisional operator"), ("Pilot", "the first issuing institution is a university · issuer key at the university · Bluetooth and the Digital Credentials API on real phones · lists, no ledger"), ("Phase 0", "permissioned Besu/QBFT ledger once at least 2 independent validator operators sign"), ("Phase 1", "member-state lists · close range over NFC with reader authentication"),), mono: false)
 
 The known limits of the first release are recorded and closed before the pilot. The pilot’s success and stop criteria are defined in advance.
 
@@ -141,7 +141,7 @@ A separate test network, *sandbox.tamga.network*, is live: its own test root and
 
 - In this phase the trust anchor rests on one operator’s signature. The public log, transparency report and audits deter misuse; they cannot make it impossible.
 - While the status server is up, a revocation takes effect within a few minutes (2-minute publication interval plus the verifier’s prefetch interval).
-- The revocation of an identity credential presented with a zero-knowledge proof cannot be checked in the presentation. Decision: short-lived copies valid for at most 24 hours, not refreshed once the credential is revoked; until this is implemented a verifier accepts such a presentation only if its policy explicitly allows it.
+- The revocation of an identity credential presented with a zero-knowledge proof cannot be checked in the presentation. Instead, the proof is made over a short-lived copy valid for at most 24 hours that is not renewed once the credential is revoked (ADR-0044, implemented): a revocation reaches such a presentation within 24 hours.
 - Issuer linkability remains until zero-knowledge presentation reaches the wallet.
 - The identity service could in theory compute a person’s pseudonym at a given site; key protection and audit limit this, and zero-knowledge proofs will remove it.
 - Until the wallets on the network (the first is Tamga Wallet) are in the app stores, a phone’s own claim of secure hardware is not accepted; from a wallet’s store release, App Attest / Play Integrity become mandatory.

@@ -121,21 +121,21 @@ TABLES = {
     "phases": {
         "en": [
             ("List stage (today)", "signed trust lists + anchor log · Tamga = provisional operator"),
-            ("Pilot", "the first issuing institution is a university · issuer key at the university · lists, no ledger"),
+            ("Pilot", "the first issuing institution is a university · issuer key at the university · Bluetooth and the Digital Credentials API on real phones · lists, no ledger"),
             ("Phase 0", "permissioned Besu/QBFT ledger once at least 2 independent validator operators sign"),
-            ("Phase 1", "member-state lists · close range (NFC/BLE) · Digital Credentials API"),
+            ("Phase 1", "member-state lists · close range over NFC with reader authentication"),
         ],
         "tr": [
             ("Liste aşaması (bugün)", "imzalı güven listeleri + çapa günlüğü · Tamga = geçici operatör"),
-            ("Pilot", "ilk belge veren kurum bir üniversite · kurum anahtarı üniversitede · listeler, defter yok"),
+            ("Pilot", "ilk belge veren kurum bir üniversite · kurum anahtarı üniversitede · gerçek telefonlarda Bluetooth ve Digital Credentials API · listeler, defter yok"),
             ("Faz 0", "en az 2 bağımsız validator operatörü imzalayınca izinli Besu/QBFT defteri"),
-            ("Faz 1", "üye devlet listeleri · yakın alan (NFC/BLE) · Digital Credentials API"),
+            ("Faz 1", "üye devlet listeleri · okuyucu doğrulamalı NFC ile yakın alan"),
         ],
         "tk": [
             ("Sanaw tapgyry (häzir)", "gol çekilen ynam sanawlary + labyr žurnaly · Tamga = wagtlaýyn operator"),
-            ("Pilot", "ilkinji resminama beriji gurama uniwersitet · guramanyň açary uniwersitetde · sanawlar, kitap ýok"),
+            ("Pilot", "ilkinji resminama beriji gurama uniwersitet · guramanyň açary uniwersitetde · hakyky telefonlarda Bluetooth we Digital Credentials API · sanawlar, kitap ýok"),
             ("0 tapgyr", "azyndan 2 garaşsyz validator operatory gol çekende rugsatly Besu/QBFT kitaby"),
-            ("1 tapgyr", "agza döwletleriň sanawlary · ýakyn aralyk (NFC/BLE) · Digital Credentials API"),
+            ("1 tapgyr", "agza döwletleriň sanawlary · okaýjy barlagly NFC arkaly ýakyn aralyk"),
         ],
     },
 }
@@ -244,7 +244,7 @@ EN = {
             ("ul", [
                 "In this phase the trust anchor rests on one operator’s signature. The public log, transparency report and audits deter misuse; they cannot make it impossible.",
                 "While the status server is up, a revocation takes effect within a few minutes (2-minute publication interval plus the verifier’s prefetch interval).",
-                "The revocation of an identity credential presented with a zero-knowledge proof cannot be checked in the presentation. Decision: short-lived copies valid for at most 24 hours, not refreshed once the credential is revoked; until this is implemented a verifier accepts such a presentation only if its policy explicitly allows it.",
+                "The revocation of an identity credential presented with a zero-knowledge proof cannot be checked in the presentation. Instead, the proof is made over a short-lived copy valid for at most 24 hours that is not renewed once the credential is revoked (ADR-0044, implemented): a revocation reaches such a presentation within 24 hours.",
                 "Issuer linkability remains until zero-knowledge presentation reaches the wallet.",
                 "The identity service could in theory compute a person’s pseudonym at a given site; key protection and audit limit this, and zero-knowledge proofs will remove it.",
                 "Until the wallets on the network (the first is Tamga Wallet) are in the app stores, a phone’s own claim of secure hardware is not accepted; from a wallet’s store release, App Attest / Play Integrity become mandatory.",
@@ -359,7 +359,7 @@ TR = {
             ("ul", [
                 "Bu aşamada güven çapası tek operatörün imzasına dayanır. Herkese açık günlük, şeffaflık raporu ve denetim kötüye kullanımı caydırır; imkânsız kılamaz.",
                 "Durum sunucusu çalışırken bir iptal birkaç dakikada etkili olur (2 dakikalık yayın aralığı + doğrulayıcının ön çekim aralığı).",
-                "Sıfır bilgi ispatıyla sunulan kimlik belgesinin iptali sunumda denetlenemez. Karar: en çok 24 saat geçerli, belge iptal edilince yenilenmeyen kısa ömürlü kopyalar; bu uygulanana kadar doğrulayıcı böyle bir sunumu yalnız politikası açıkça izin veriyorsa kabul eder.",
+                "Sıfır bilgi ispatıyla sunulan kimlik belgesinin iptali sunumda denetlenemez. Bunun yerine ispat, en çok 24 saat geçerli ve belge iptal edilince yenilenmeyen kısa ömürlü bir kopya üzerinden yapılır (ADR-0044, uygulandı): iptal böyle bir sunuma en geç 24 saatte yansır.",
                 "Sıfır bilgi ispatıyla sunum cüzdana gelene kadar kurum eşleştirmesi riski kalır.",
                 "Kimlik servisi teorik olarak bir kişinin belirli bir sitedeki takma adını hesaplayabilir; anahtar koruması ve denetim bunu sınırlar, sıfır bilgi ispatı ileride kaldırır.",
                 "Ağdaki cüzdanlar (ilki Tamga Wallet) uygulama mağazalarında yayınlanana kadar telefonun “güvenli donanımdayım” beyanı kabul edilmez; bir cüzdanın mağaza sürümüyle App Attest / Play Integrity zorunlu olur.",
@@ -474,7 +474,7 @@ TK = {
             ("ul", [
                 "Bu tapgyrda ynam labyry bir operatoryň goluna daýanýar. Açyk žurnal, açyklyk hasabaty we barlaglar hyýanatçylygyň öňüni alýar; ony mümkin däl edip bilmeýär.",
                 "Ýagdaý serweri işleýän wagty ýatyrylyş birnäçe minutda güýje girýär (2 minutlyk çap aralygy + barlaýjynyň öňünden alyş aralygy).",
-                "Nol bilimli subutnama bilen hödürlenen şahsyýet resminamasynyň ýatyrylyşy hödürlemede barlanyp bilinmeýär. Karar: iň köp 24 sagat güýjünde bolan, resminama ýatyrylanda täzelenmeýän gysga ömürli nusgalar; bu durmuşa geçirilýänçä barlaýjy şeýle hödürlemäni diňe syýasaty aç-açan rugsat berse kabul edýär.",
+                "Nol bilimli subutnama bilen hödürlenen şahsyýet resminamasynyň ýatyrylyşy hödürlemede barlanyp bilinmeýär. Onuň ýerine subutnama iň köp 24 sagat güýjünde bolan we resminama ýatyrylanda täzelenmeýän gysga ömürli nusganyň üstünden düzülýär (ADR-0044, durmuşa geçirildi): ýatyrylyş şeýle hödürlemä iň giç 24 sagatda ýetýär.",
                 "Nol bilimli subutnama bilen hödürlemek gapjyga gelýänçä gurama tarapyndan tanalmak töwekgelçiligi galýar.",
                 "Şahsyýet hyzmaty nazary taýdan adamyň belli bir saýtdaky lakamyny hasaplap biler; açar goragy we barlag muny çäklendirýär, nol bilimli subutnama ony geljekde aýyrar.",
                 "Tordaky gapjyklar (ilkinjisi Tamga Wallet) programma dükanlarynda çykýança telefonyň “howpsuz enjamdadyryn” diýen beýany kabul edilmeýär; gapjygyň dükan wersiýasy bilen App Attest / Play Integrity hökmany bolar.",

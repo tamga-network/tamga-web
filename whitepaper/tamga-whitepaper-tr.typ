@@ -131,7 +131,7 @@ Defterdeki yönetişim ilkeleri izler: validator’lar eşit oylu devletlerdir; 
 
 *Bugün çalışan (ilk sürüm, gerçek kriptografi):* diploma ve öğrenci belgesi verme ve sunma; iptal ve kurum askısı; kimlik kontrolü ve kimlik belgesi, mdoc olarak da; kampüs ve etkinlik geçiş kartları, tek kullanımlık biletler; siteye özel takma adla web sitesine kayıt ve passkey ile giriş; doğrulayıcı tarafında sıfır bilgi ispatıyla yaş kontrolü; dokuz açık kaynak paket. Telefonda test edildi.
 
-#kvtable("Aşamalar", (("Liste aşaması (bugün)", "imzalı güven listeleri + çapa günlüğü · Tamga = geçici operatör"), ("Pilot", "ilk belge veren kurum bir üniversite · kurum anahtarı üniversitede · listeler, defter yok"), ("Faz 0", "en az 2 bağımsız validator operatörü imzalayınca izinli Besu/QBFT defteri"), ("Faz 1", "üye devlet listeleri · yakın alan (NFC/BLE) · Digital Credentials API"),), mono: false)
+#kvtable("Aşamalar", (("Liste aşaması (bugün)", "imzalı güven listeleri + çapa günlüğü · Tamga = geçici operatör"), ("Pilot", "ilk belge veren kurum bir üniversite · kurum anahtarı üniversitede · gerçek telefonlarda Bluetooth ve Digital Credentials API · listeler, defter yok"), ("Faz 0", "en az 2 bağımsız validator operatörü imzalayınca izinli Besu/QBFT defteri"), ("Faz 1", "üye devlet listeleri · okuyucu doğrulamalı NFC ile yakın alan"),), mono: false)
 
 İlk sürümün bilinen sınırları kayıt altındadır ve pilottan önce kapanır. Pilotun başarı ve durdurma ölçütleri önceden tanımlıdır.
 
@@ -141,7 +141,7 @@ Gerçek ağdan tamamen ayrı bir test ağı, *sandbox.tamga.network*, yayında: 
 
 - Bu aşamada güven çapası tek operatörün imzasına dayanır. Herkese açık günlük, şeffaflık raporu ve denetim kötüye kullanımı caydırır; imkânsız kılamaz.
 - Durum sunucusu çalışırken bir iptal birkaç dakikada etkili olur (2 dakikalık yayın aralığı \+ doğrulayıcının ön çekim aralığı).
-- Sıfır bilgi ispatıyla sunulan kimlik belgesinin iptali sunumda denetlenemez. Karar: en çok 24 saat geçerli, belge iptal edilince yenilenmeyen kısa ömürlü kopyalar; bu uygulanana kadar doğrulayıcı böyle bir sunumu yalnız politikası açıkça izin veriyorsa kabul eder.
+- Sıfır bilgi ispatıyla sunulan kimlik belgesinin iptali sunumda denetlenemez. Bunun yerine ispat, en çok 24 saat geçerli ve belge iptal edilince yenilenmeyen kısa ömürlü bir kopya üzerinden yapılır (ADR-0044, uygulandı): iptal böyle bir sunuma en geç 24 saatte yansır.
 - Sıfır bilgi ispatıyla sunum cüzdana gelene kadar kurum eşleştirmesi riski kalır.
 - Kimlik servisi teorik olarak bir kişinin belirli bir sitedeki takma adını hesaplayabilir; anahtar koruması ve denetim bunu sınırlar, sıfır bilgi ispatı ileride kaldırır.
 - Ağdaki cüzdanlar (ilki Tamga Wallet) uygulama mağazalarında yayınlanana kadar telefonun “güvenli donanımdayım” beyanı kabul edilmez; bir cüzdanın mağaza sürümüyle App Attest / Play Integrity zorunlu olur.
