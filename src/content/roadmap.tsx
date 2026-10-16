@@ -105,7 +105,7 @@ const en: RoadmapContent = {
         {
           icon: "globe",
           title: "Federation",
-          desc: "reading external trust lists (ETSI TS 119 602)",
+          desc: "reading external trust lists (ETSI TS 119 602 and the EU's TS 119 612 XML lists)",
         },
         {
           icon: "package",
@@ -121,6 +121,11 @@ const en: RoadmapContent = {
           icon: "test",
           title: "Sandbox",
           desc: "one test network for wallet, institution and verifier developers",
+        },
+        {
+          icon: "wallet",
+          title: "Listed wallets",
+          desc: "the network lists wallet providers; the first, Tamga Wallet's, is active in the trust list",
         },
       ],
     },
@@ -289,7 +294,7 @@ const tr: RoadmapContent = {
         {
           icon: "globe",
           title: "Federasyon",
-          desc: "dış güven listelerini okuma (ETSI TS 119 602)",
+          desc: "dış güven listelerini okuma (ETSI TS 119 602 ve AB'nin TS 119 612 XML listeleri)",
         },
         {
           icon: "package",
@@ -305,6 +310,11 @@ const tr: RoadmapContent = {
           icon: "test",
           title: "Sandbox",
           desc: "cüzdan, kurum ve doğrulayıcı geliştiricileri için tek test ağı",
+        },
+        {
+          icon: "wallet",
+          title: "Listeli cüzdanlar",
+          desc: "ağ cüzdan sağlayıcılarını listeler; ilki, Tamga Wallet'ınki, güven listesinde etkin",
         },
       ],
     },
@@ -473,7 +483,7 @@ const tk: RoadmapContent = {
         {
           icon: "globe",
           title: "Federasiýa",
-          desc: "daşky ynam sanawlaryny okamak (ETSI TS 119 602)",
+          desc: "daşky ynam sanawlaryny okamak (ETSI TS 119 602 we ÝB-niň TS 119 612 XML sanawlary)",
         },
         {
           icon: "package",
@@ -489,6 +499,11 @@ const tk: RoadmapContent = {
           icon: "test",
           title: "Sandbox",
           desc: "gapjyk, gurama we barlaýjy işläp düzüjileri üçin bir synag tory",
+        },
+        {
+          icon: "wallet",
+          title: "Sanawdaky gapjyklar",
+          desc: "tor gapjyk üpjün edijilerini sanawa goşýar; birinjisi, Tamga Wallet-iňki, ynam sanawynda işjeň",
         },
       ],
     },

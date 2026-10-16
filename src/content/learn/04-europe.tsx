@@ -579,7 +579,7 @@ export const CHAPTER_4: LearnPage[] = [
           <h2>Bugün neredeyiz</h2>
           <p>
             AB'nin takvimine göre her üye devlet 2026 sonuna kadar vatandaşlarına en az bir sertifikalı EUDI Wallet sunmuş olmalı.
-            Bu sayfa hazırlanırken (Eylül 2026) sertifikalı cüzdan henüz yayımlanmamıştı; ülkeler deneme ve sertifikasyon
+            Bu sayfa güncellenirken (Ekim 2026) sertifikalı cüzdan henüz yayımlanmamıştı; ülkeler deneme ve sertifikasyon
             aşamasındaydı. Takvimin ayrıntısı bu bölümün son sayfasında.
           </p>
         </>
@@ -640,7 +640,7 @@ export const CHAPTER_4: LearnPage[] = [
           <h2>Where things stand</h2>
           <p>
             Under the EU timeline, every member state must offer its citizens at least one certified EUDI Wallet by the end of 2026.
-            When this page was written (September 2026), no certified wallet had been published yet; countries were testing and
+            When this page was last updated (October 2026), no certified wallet had been published yet; countries were testing and
             going through certification. The last page of this chapter gives the full timeline.
           </p>
         </>
@@ -692,7 +692,7 @@ export const CHAPTER_4: LearnPage[] = [
           <h2>Häzir nirede</h2>
           <p>
             ÝB senenamasyna görä her agza döwlet 2026-njy ýylyň ahyryna çenli iň bolmanda bir sertifikatly EUDI Wallet hödürlemeli.
-            Bu sahypa taýýarlananda (sentýabr 2026) sertifikatly gapjyk entek çap edilmändi.
+            Bu sahypa täzelenende (oktýabr 2026) sertifikatly gapjyk entek çap edilmändi.
           </p>
         </>
       ),
@@ -1210,7 +1210,7 @@ export const CHAPTER_4: LearnPage[] = [
           </ul>
           <h2>Bugün neredeyiz</h2>
           <p>
-            Bu sayfa hazırlanırken (Eylül 2026) tüzük ve uygulama tüzüklerinin büyük bölümü yürürlükteydi; Ağustos 2026'daki
+            Bu sayfa güncellenirken (Ekim 2026) tüzük ve uygulama tüzüklerinin büyük bölümü yürürlükteydi; Ağustos 2026'daki
             güncelleme paketiyle cüzdan kanıtları ve sunum profilleri netleşmişti. Sertifikalı bir EUDI Wallet ise henüz
             yayımlanmamıştı. Mimari başvuru belgesi ARF'nin en güncel sürümü 3.0.0'dı (Temmuz 2026).
           </p>
@@ -1256,7 +1256,7 @@ export const CHAPTER_4: LearnPage[] = [
           </ul>
           <h2>Where things stand</h2>
           <p>
-            When this page was written (September 2026), the regulation and most implementing acts were in force; the August 2026
+            When this page was last updated (October 2026), the regulation and most implementing acts were in force; the August 2026
             update package had settled the wallet attestations and the presentation profiles. No certified EUDI Wallet had been
             published yet. The latest version of the ARF reference document was 3.0.0 (July 2026).
           </p>
@@ -1301,7 +1301,7 @@ export const CHAPTER_4: LearnPage[] = [
           </ul>
           <h2>Häzir nirede</h2>
           <p>
-            Bu sahypa taýýarlananda (sentýabr 2026) düzgünnamalaryň köpüsi güýje girdi, emma sertifikatly EUDI Wallet entek çap
+            Bu sahypa täzelenende (oktýabr 2026) düzgünnamalaryň köpüsi güýje girdi, emma sertifikatly EUDI Wallet entek çap
             edilmändi. ARF-iň soňky wersiýasy 3.0.0 (iýul 2026).
           </p>
           <Callout kind="turkic" locale="tk">

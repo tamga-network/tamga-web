@@ -1,15 +1,16 @@
 # Changelog — tamga-web
 
-Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Site deployments are named by date.
+Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). The site stays at 1.0.0 until the public announcement;
+changes before it are folded into this release. The user-facing release notes are at `/changelog`.
 
-## [1.0.0] — 2026-10-02
+## [1.0.0] — 2026-10-16
 
-First release of tamga.network with the network's 1.0 documentation set.
+tamga.network with the network's 1.0 documentation set, in English, Turkish and Turkmen.
 
-- New design: N1 mark, Gök palette, Onest + IBM Plex; mega menus; entry-level homepage with the animated "How it works".
-- Learn (`/learn`): a step-by-step path from digital identity to Tamga Network; replaces the old `/docs` pages.
-- Pages: Network addresses (`/network`), Partners (`/partners`), Events (`/events`), Join (`/join`), Brand (`/brand`).
-- Three languages: English, Turkish, Turkmen.
-- 2026-10-06: Brand page — horizontal and stacked logotypes, alternative app icon, "Sign in with Tamga" with the full mark;
-  one favicon (full mark at every size) across all network sites. Network/wallet separation (ADR-0042) in all languages:
-  the network runs no wallet; the sandbox serves wallet, institution and verifier developers; changelog entry.
+- Design: N1 mark at every size (one favicon across the network's sites), Gök palette, Onest + IBM Plex; mega menus;
+  entry-level homepage with the animated "How it works".
+- Pages: Learn (`/learn`, a step-by-step path from digital identity to Tamga Network), Network addresses (`/network`),
+  Partners, Events, Join, Brand, Roadmap, SDK, Release notes, Blog, Whitepaper and Manifesto.
+- Content follows the network's current state: the network runs no wallet and lists wallet providers (ADR-0042; Tamga
+  Wallet's provider is listed as active); one sandbox for wallet, institution and verifier developers; the
+  `@tamga-network/*` packages at the 0.6.0 test release.
