@@ -4,6 +4,7 @@ slug: status-list-privacy
 description: Tamga Network'ün durum listeleri, belgenin nerede gösterildiğini kuruma söylemeden iptal denetimini nasıl yapar, bu gizlilik nerede biter?
 date: 2026-10-08
 lang: tr
+updated: 2026-10-19
 category: privacy
 draft: false
 related: haip-and-token-status-list, how-trust-lists-work, zero-knowledge-in-tamga, what-the-network-never-sees
@@ -21,7 +22,7 @@ Diploma için bu, üniversitenin her mezununun hangi işverenlere başvurduğunu
 
 ## Token Status List nasıl çalışır?
 
-[IETF Token Status List](https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/), belgeyi verenin imzaladığı, sıkıştırılmış bir küçük sayı dizisidir. Tamga her girdi için hep iki bit kullanır; bu da dört değer verir: `0` geçerli, `1` kalıcı iptal, `2` askıda (geri alınabilir), `3` kullanılmaz; doğrulayıcı bu değeri iptal sayar. Tek bit yerine iki bit seçilmesinin nedeni şu: bir üniversite soruşturma sürerken diplomayı kalıcı iptal etmek yerine askıya alabilsin.
+[IETF Token Status List](https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/), belgeyi verenin imzaladığı, sıkıştırılmış bir küçük sayı dizisidir. Ekim 2026'dan beri bit sayısı belge türüne göre değişir (ADR-0048, paketler 0.6.0). Kimlik servisinin belgeleri askıya alınamaz; onların listeleri tek bit kullanır: `0` geçerli, `1` iptal. Kurumların listeleri iki bit kullanır; bu da dört değer verir: `0` geçerli, `1` kalıcı iptal, `2` askıda (geri alınabilir), `3` kullanılmaz; doğrulayıcı bu değeri iptal sayar. `2` değeri yalnız şeması askıya izin veren türlerde, örneğin diplomada, kullanılır. Askı, bir üniversitenin soruşturma sürerken diplomayı kalıcı iptal etmek yerine bekletebilmesi için var.
 
 Her belge listedeki yerini gösteren bir işaret taşır. Bu işaret seçici açıklamayla gizlenemez; her sunumda belgeyle birlikte gider, çünkü doğrulayıcının ona ihtiyacı vardır.
 
@@ -38,7 +39,7 @@ Her belge listedeki yerini gösteren bir işaret taşır. Bu işaret seçici aç
 }
 ```
 
-Doğrulayıcı `uri` adresindeki listeyi alır, imzasını kurumun [imzalı güven listesindeki](/blog/how-trust-lists-work) kaydına göre denetler, özetini çapa günlüğüyle karşılaştırır, listeyi açar ve `idx` konumundaki iki biti okur. Listenin kendisi, belgeleri imzalayan anahtardan ayrı bir durum anahtarıyla imzalanır. Durum anahtarı çalınırsa sahte durum yayımlanabilir ama sahte diploma üretilemez.
+Doğrulayıcı `uri` adresindeki listeyi alır, imzasını kurumun [imzalı güven listesindeki](/blog/how-trust-lists-work) kaydına göre denetler, özetini çapa günlüğüyle karşılaştırır, listeyi açar ve `idx` konumundaki girdiyi okur. Listenin kendisi, belgeleri imzalayan anahtardan ayrı bir durum anahtarıyla imzalanır. Durum anahtarı çalınırsa sahte durum yayımlanabilir ama sahte diploma üretilemez.
 
 ## Sürü mahremiyeti nedir, sürü ne kadar büyük?
 

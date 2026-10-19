@@ -4,6 +4,7 @@ slug: zero-knowledge-in-tamga
 description: How Tamga Network checks "over 18" with a Longfellow zero-knowledge proof, why circuits sit in the signed trust list, and what works today.
 date: 2026-10-08
 lang: en
+updated: 2026-10-19
 category: privacy
 draft: false
 related: status-list-privacy, iso-mdoc-deep-dive, openid4vp-dcql-deep-dive, add-verification-to-your-site
@@ -90,7 +91,7 @@ The rejections in the second row were tested on purpose in the first desktop tri
 
 To check revocation, the verifier needs the credential's position in the institution's [status list](/blog/status-list-privacy). That position is fixed per credential, so revealing it would make two presentations linkable again, which is the very thing the proof is meant to prevent. The circuit therefore does not check revocation (rule ZK4).
 
-Tamga's answer has two parts. The decision ([ADR-0044](https://docs.tamga.network/adr/0044-zk-short-lived-copies), the EU ARF's short-lived attestation path) is that a zero-knowledge presentation uses only short-lived copies of the identity credential, valid for at most 24 hours and refreshed by the wallet on its own; once the credential is revoked no new copy is issued, so the last one stops working within a day. That is not implemented yet. Until it is, the verifier's policy must say explicitly whether it accepts a presentation whose revocation cannot be checked; if the field is left out, it counts as `false`:
+Tamga's answer has two parts. The decision ([ADR-0044](https://docs.tamga.network/adr/0044-zk-short-lived-copies), the EU ARF's short-lived attestation path) is that a zero-knowledge presentation uses only short-lived copies of the identity credential, valid for at most 24 hours and refreshed by the wallet on its own; once the credential is revoked no new copy is issued, so the last one stops working within a day. **Update, 19 October 2026:** this is now implemented (packages 0.4.0, 9 October 2026). Zero-knowledge presentations use short-lived copies of a separate credential type, and Tamga Verify's `age-over-18-zk` policy accepts them without an extra flag. For a proof over a long-lived credential, the policy must still say explicitly whether it accepts a presentation whose revocation cannot be checked; if the field is left out, it counts as `false`, as in this earlier example:
 
 ```ts title="Policy for an over-18 check with a zero-knowledge proof"
 const policy: Policy = {
@@ -133,7 +134,7 @@ The wallet first produces its usual device-signed response for the session, with
 | iOS library | pending; it needs macOS to build |
 | Device testing and on-device measurements | with the app-store release |
 
-Until the iOS library exists, an iOS app with the package builds normally and reports that no prover is available, and the wallet presents the classic way. Tamga Wallet, one of the wallets on the network, has the prover wired in; proving stays switched off until the phone libraries and circuit files are in place.
+Until the iOS library exists, an iOS app with the package builds normally and reports that no prover is available, and the wallet presents the classic way. Tamga Wallet, one of the wallets on the network, has the prover wired in; its Android build creates the proof, and on iPhone it sends only the yes/no field until the iOS library exists (update, 19 October 2026).
 
 For a sense of scale, the first trial on a desktop machine measured 518 ms to produce a proof and 211 ms to verify it natively, with a proof of about 343 KB. Phone figures will be published after the device tests.
 
@@ -141,7 +142,7 @@ For a sense of scale, the first trial on a desktop machine measured 518 ms to pr
 
 - **Only equality.** The first and only predicate today is `age_over_18 = true`. Next in line are `age_over_21`, nationality, and enrolment or graduation in education credentials, all equality checks. Ranges ("born before") are not in Longfellow yet.
 - **The institution stays visible.** The verifier still learns which institution issued the credential. Proving "some accredited institution" without naming it is out of scope for now.
-- **No revocation check**, as explained above; short-lived copies of at most 24 hours are decided but not implemented yet, and a private revocation proof waits for the EU.
+- **No revocation check**, as explained above; short-lived copies of at most 24 hours stand in for it (implemented in October 2026), and a private revocation proof waits for the EU.
 - **Size.** About 350 KB per proof rules out QR codes.
 - **iOS** is not ready yet.
 

@@ -4,6 +4,7 @@ slug: status-list-privacy
 description: How Tamga Network's status lists let a verifier check revocation without telling the issuer where a credential was shown, and where that privacy ends.
 date: 2026-10-08
 lang: en
+updated: 2026-10-19
 category: privacy
 draft: false
 related: haip-and-token-status-list, how-trust-lists-work, zero-knowledge-in-tamga, what-the-network-never-sees
@@ -21,7 +22,7 @@ For a diploma, that means the university could see which employers each graduate
 
 ## How does a Token Status List work?
 
-The [IETF Token Status List](https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/) is a compressed array of small numbers, signed by the issuer. Tamga always uses two bits per entry, which gives four values: `0` valid, `1` revoked for good, `2` suspended (can be lifted), and `3` unused, which a verifier treats as revoked. Two bits rather than one exist so that a university can suspend a diploma during an investigation instead of revoking it outright.
+The [IETF Token Status List](https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/) is a compressed array of small numbers, signed by the issuer. Since October 2026 the number of bits depends on the credential type (ADR-0048, packages 0.6.0). The identity service's credentials cannot be suspended, and their lists use one bit: `0` valid, `1` revoked. Institutions' lists use two bits: `0` valid, `1` revoked for good, `2` suspended (can be lifted), and `3` unused, which a verifier treats as revoked. The value `2` is used only for types whose schema allows suspension, such as the diploma. Suspension exists so that a university can hold a diploma during an investigation instead of revoking it outright.
 
 Each credential carries a pointer into the list. The pointer is not selectively disclosable: it travels with every presentation, because the verifier needs it.
 
@@ -38,7 +39,7 @@ Each credential carries a pointer into the list. The pointer is not selectively 
 }
 ```
 
-The verifier fetches the token at `uri`, checks its signature against the institution's entry in the [signed trust list](/blog/how-trust-lists-work), compares its digest with the anchor log, decompresses it and reads the two bits at `idx`. The list itself is signed with a status key that is separate from the key that signs credentials, so a stolen status key can publish false statuses but cannot forge a diploma.
+The verifier fetches the token at `uri`, checks its signature against the institution's entry in the [signed trust list](/blog/how-trust-lists-work), compares its digest with the anchor log, decompresses it and reads the entry at `idx`. The list itself is signed with a status key that is separate from the key that signs credentials, so a stolen status key can publish false statuses but cannot forge a diploma.
 
 ## What is herd privacy, and how large is the herd?
 

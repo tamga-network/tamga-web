@@ -4,6 +4,7 @@ slug: sd-jwt-vc-deep-dive
 description: Bir SD-JWT VC bayt bayt nasıl kurulur ve denetlenir; tuzlu özetler, _sd, cnf, KB-JWT ve sd_hash, vct#integrity ve status, Tamga profiliyle.
 date: 2026-10-08
 lang: tr
+updated: 2026-10-19
 category: standards
 draft: false
 related: openid4vci-deep-dive, openid4vp-dcql-deep-dive, haip-and-token-status-list, iso-mdoc-deep-dive, learn:selective-disclosure
@@ -149,7 +150,7 @@ Bütünlük değeri W3C Subresource Integrity biçimindedir: `sha256-` ve ardın
 
 ## `status` alanı neyi gösterir?
 
-`status.status_list` bir sıra numarası (`idx`) ve bir Token Status List adresi taşır. Doğrulayıcı daha önce indirdiği imzalı, sıkıştırılmış listede o sıradaki iki biti okur: `0` geçerli, `1` iptal, `2` askıda; `3` kullanılmaz ve iptal sayılır. Tamga sıra numaralarını rastgele dağıtır, liste adreslerini anlamsız tutar ve doğrulayıcıların listeleri belli aralıklarla önceden indirmesini ister; böylece kurum belgenin ne zaman denetlendiğini öğrenemez. Taslak 19, gösterilen durum listesinin JWT biçiminde olmasını şart koşar. İşleyiş ve gizlilik kuralları: [HAIP ve Token Status List](/blog/haip-and-token-status-list).
+`status.status_list` bir sıra numarası (`idx`) ve bir Token Status List adresi taşır. Doğrulayıcı daha önce indirdiği imzalı, sıkıştırılmış listede o sıradaki girdiyi okur: `0` geçerli, `1` iptal ve yalnız şeması askıya izin veren türlerde `2` askıda; `3` kullanılmaz ve iptal sayılır. Tamga sıra numaralarını rastgele dağıtır, liste adreslerini anlamsız tutar ve doğrulayıcıların listeleri belli aralıklarla önceden indirmesini ister; böylece kurum belgenin ne zaman denetlendiğini öğrenemez. Taslak 19, gösterilen durum listesinin JWT biçiminde olmasını şart koşar. İşleyiş ve gizlilik kuralları: [HAIP ve Token Status List](/blog/haip-and-token-status-list).
 
 ## Doğrulayıcı bir SD-JWT VC'yi hangi sırayla denetlemeli?
 

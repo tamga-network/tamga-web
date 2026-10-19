@@ -4,6 +4,7 @@ slug: sd-jwt-vc-deep-dive
 description: How an SD-JWT VC is built and checked byte by byte - salted digests, _sd, cnf, the KB-JWT and sd_hash, vct#integrity and status - with Tamga's profile.
 date: 2026-10-08
 lang: en
+updated: 2026-10-19
 category: standards
 draft: false
 related: openid4vci-deep-dive, openid4vp-dcql-deep-dive, haip-and-token-status-list, iso-mdoc-deep-dive, learn:selective-disclosure
@@ -149,7 +150,7 @@ The integrity value uses the W3C Subresource Integrity format: `sha256-` followe
 
 ## What does the `status` claim point to?
 
-`status.status_list` holds an index (`idx`) and the URI of a Token Status List. The verifier reads two bits at that index from a signed, compressed list it fetched earlier: `0` valid, `1` revoked, `2` suspended; `3` is unused and treated as revoked. Tamga allocates indices at random, keeps list URIs opaque, and expects verifiers to prefetch lists on a schedule so that the issuer never learns when a credential is checked. Draft 19 requires the referenced status list to be in JWT form. The mechanics and the privacy rules are in [HAIP and Token Status List](/blog/haip-and-token-status-list).
+`status.status_list` holds an index (`idx`) and the URI of a Token Status List. The verifier reads the entry at that index from a signed, compressed list it fetched earlier: `0` valid, `1` revoked, and, only for types whose schema allows suspension, `2` suspended; `3` is unused and treated as revoked. Tamga allocates indices at random, keeps list URIs opaque, and expects verifiers to prefetch lists on a schedule so that the issuer never learns when a credential is checked. Draft 19 requires the referenced status list to be in JWT form. The mechanics and the privacy rules are in [HAIP and Token Status List](/blog/haip-and-token-status-list).
 
 ## In what order should a verifier check an SD-JWT VC?
 
