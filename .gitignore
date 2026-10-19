@@ -50,3 +50,12 @@ next-env.d.ts
 
 # Python önbelleği (whitepaper üreteci)
 __pycache__/
+
+# Güvenlik skill çıktıları (yerel çalışma dosyaları; depoya girmez)
+.solidity-auditor/
+.audit-*/
+spec-compliance/
+x-ray/
+.wycheproof/
+*-entry-points*.md
+DIFFERENTIAL_REVIEW*.md
