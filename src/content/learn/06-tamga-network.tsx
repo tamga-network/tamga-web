@@ -12,9 +12,9 @@ export const CHAPTER_6: LearnPage[] = [
     minutes: 5,
     title: { tr: "Tamga Network nedir?", en: "What is Tamga Network?", tk: "Tamga Network näme?" },
     summary: {
-      tr: "Türk dünyası için ortak, AB uyumlu bir güven ağı: ne yapar, ne yapmaz.",
-      en: "A shared, EU-compatible trust network for the Turkic world: what it does and what it doesn't.",
-      tk: "Türki dünýäsi üçin umumy, ÝB bilen laýyk ynam tory: näme edýär we näme etmeýär.",
+      tr: "Türk dünyası için dijital, AB uyumlu güven ağı: ne yapar, ne yapmaz.",
+      en: "The digital, EU-compatible trust network for the Turkic world: what it does and what it doesn't.",
+      tk: "Türki dünýäsi üçin sanly, ÝB bilen laýyk ynam tory: näme edýär we näme etmeýär.",
     },
     diagram: "flow",
     body: {
@@ -28,7 +28,7 @@ export const CHAPTER_6: LearnPage[] = [
           </p>
           <h2>Kısaca</h2>
           <p>
-            Tamga Network, Türk dünyası için kurulan ortak bir güven ağıdır. Ağ üç şey sağlar: herkesin aynı şekilde uyduğu
+            Tamga Network, Türk dünyası için dijital güven ağıdır. Ağ üç şey sağlar: herkesin aynı şekilde uyduğu
             açık kurallar, hangi kurumun güvenilir olduğunu söyleyen imzalı <Term tip="Bir ülkenin belge veren kurumlarını, doğrulayıcılarını ve cüzdan sağlayıcılarını sayan, imzalı ve sürümlü liste." en="trust list">güven listeleri</Term> ve
             bu kuralları uygulayan açık kaynak yazılım. Belgenin kendisi ağa yazılmaz; ağ yalnızca “kime güvenebilirsin”
             sorusunu cevaplar.
@@ -86,7 +86,7 @@ export const CHAPTER_6: LearnPage[] = [
           </p>
           <h2>In short</h2>
           <p>
-            Tamga Network is a shared trust network for the Turkic world. It provides three things: open rules that everyone
+            Tamga Network is the digital trust network for the Turkic world. It provides three things: open rules that everyone
             follows in the same way, signed <Term tip="A signed, versioned list of a country's issuers, verifiers and wallet providers." en="trust list">trust lists</Term> that
             say which institutions can be trusted, and open-source software that applies those rules. The credential itself is
             never written to the network; the network only answers the question “whom can you trust?”.
@@ -145,7 +145,7 @@ export const CHAPTER_6: LearnPage[] = [
           </p>
           <h2>Gysgaça</h2>
           <p>
-            Tamga Network türki dünýäsi üçin umumy ynam torudyr. Tor üç zady üpjün edýär: hemmeleriň birmeňzeş eýerýän açyk
+            Tamga Network türki dünýäsi üçin sanly ynam torudyr. Tor üç zady üpjün edýär: hemmeleriň birmeňzeş eýerýän açyk
             düzgünleri, haýsy guramanyň ynamlydygyny aýdýan gol çekilen <Term tip="Bir ýurduň resminama berijilerini, barlaýjylaryny we gapjyk üpjün edijilerini görkezýän gol çekilen sanaw." en="trust list">ynam sanawlary</Term> we
             bu düzgünleri ulanýan açyk çeşmeli programma. Resminamanyň özi tora ýazylmaýar; tor diňe “kime ynanyp bolar?”
             diýen soraga jogap berýär.
@@ -183,9 +183,9 @@ export const CHAPTER_6: LearnPage[] = [
     },
     keyPoints: [
       {
-        tr: "Tamga Network; açık kurallar, imzalı güven listeleri ve açık kaynak yazılımdan oluşan ortak bir güven ağıdır.",
-        en: "Tamga Network is a shared trust network made of open rules, signed trust lists and open-source software.",
-        tk: "Tamga Network açyk düzgünlerden, gol çekilen ynam sanawlaryndan we açyk çeşmeli programmadan ybarat umumy ynam torudyr.",
+        tr: "Tamga Network; açık kurallar, imzalı güven listeleri ve açık kaynak yazılımdan oluşan dijital bir güven ağıdır.",
+        en: "Tamga Network is a digital trust network made of open rules, signed trust lists and open-source software.",
+        tk: "Tamga Network açyk düzgünlerden, gol çekilen ynam sanawlaryndan we açyk çeşmeli programmadan ybarat sanly ynam torudyr.",
       },
       {
         tr: "Belgeler ve kişisel veri ağa yazılmaz; ağ yalnız “kime güvenebilirsin” sorusunu cevaplar.",

@@ -74,7 +74,7 @@ export type HomeContent = {
 const tr: HomeContent = {
   hero: {
     eyebrow: "Açık güven ağı · Tamga ARF 1.0",
-    title: "Türk dünyası için ortak güven ağı.",
+    title: "Türk dünyası için dijital güven ağı.",
     lead: "Bir belgenin gerçek olduğunu kanıtlamak için telefon, apostil ve haftalar gerekmesin. Tamga Network, kurumların verdiği dijital belgelerin sınır tanımadan, saniyeler içinde ve kişinin mahremiyetini koruyarak doğrulanmasını sağlayan ortak kurallar ve imzalı listelerdir.",
     primary: "Ağa katıl",
     secondary: "Kuralları oku",
@@ -349,7 +349,7 @@ const tr: HomeContent = {
 const en: HomeContent = {
   hero: {
     eyebrow: "Open trust network · Tamga ARF 1.0",
-    title: "A shared trust network for the Turkic world.",
+    title: "The digital trust network for the Turkic world.",
     lead: "Proving that a document is real shouldn't take phone calls, apostilles and weeks. Tamga Network is a set of shared rules and signed lists that lets digital credentials from any institution be verified across borders, in seconds, while protecting the person's privacy.",
     primary: "Join the network",
     secondary: "Read the rules",
@@ -624,7 +624,7 @@ const en: HomeContent = {
 const tk: HomeContent = {
   hero: {
     eyebrow: "Açyk ynam tory · Tamga ARF 1.0",
-    title: "Türki dünýäsi üçin umumy ynam tory.",
+    title: "Türki dünýäsi üçin sanly ynam tory.",
     lead: "Resminamanyň hakykydygyny subut etmek üçin jaňlar, apostil we hepdeler gerek bolmaly däl. Tamga Network guramalaryň berýän sanly resminamalaryny serhet tanaman, birnäçe sekuntda we adamyň şahsy durmuşyny goraýan görnüşde barlamaga mümkinçilik berýän umumy düzgünler we gol çekilen sanawlardyr.",
     primary: "Tora goşul",
     secondary: "Düzgünleri oka",

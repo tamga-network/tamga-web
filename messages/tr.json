@@ -1,9 +1,9 @@
 {
   "meta": {
-    "title": "Tamga Network — Türk dünyası için ortak güven ağı",
-    "description": "Tamga Network, Türk dünyası için ortak güven ağı: kurumların verdiği dijital belgeler sınır tanımadan, saniyeler içinde ve kişinin mahremiyeti korunarak doğrulanır. Açık kurallar, imzalı listeler, AB uyumlu.",
+    "title": "Tamga Network — Türk dünyası için dijital güven ağı",
+    "description": "Tamga Network, Türk dünyası için dijital güven ağı: kurumların verdiği belgeler sınır tanımadan, saniyeler içinde ve kişinin mahremiyeti korunarak doğrulanır. Açık kurallar, imzalı listeler, AB uyumlu.",
     "ogDescription": "Kadim mührün çağdaş karşılığı: Türk dünyası için açık, AB uyumlu bir güven ağı.",
-    "tagline": "ORTAK GÜVEN AĞI"
+    "tagline": "DİJİTAL GÜVEN AĞI"
   },
   "nav": {
     "menu": "Menüyü aç"
@@ -16,7 +16,7 @@
   },
   "footer": {
     "tagline": "Türk dünyası için açık, AB uyumlu güven ağı.",
-    "slogan": "Türk dünyası için ortak güven ağı.",
+    "slogan": "Türk dünyası için dijital güven ağı.",
     "contact": "İletişim",
     "rights": "Tüm hakları saklıdır.",
     "social": "Sosyal medya"

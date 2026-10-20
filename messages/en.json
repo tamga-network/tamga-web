@@ -1,9 +1,9 @@
 {
   "meta": {
-    "title": "Tamga Network — A shared trust network for the Turkic world",
-    "description": "Tamga Network is a shared trust network for the Turkic world: digital credentials issued by institutions are verified across borders in seconds, with the person's privacy protected. Open rules, signed lists, EU-compatible.",
+    "title": "Tamga Network — The digital trust network for the Turkic world",
+    "description": "Tamga Network is the digital trust network for the Turkic world: credentials issued by institutions are verified across borders in seconds, with the person's privacy protected. Open rules, signed lists, EU-compatible.",
     "ogDescription": "The modern counterpart of the ancient seal: an open, EU-compatible trust network for the Turkic world.",
-    "tagline": "SHARED TRUST NETWORK"
+    "tagline": "DIGITAL TRUST NETWORK"
   },
   "nav": {
     "menu": "Open menu"
@@ -16,7 +16,7 @@
   },
   "footer": {
     "tagline": "An open, EU-compatible trust network for the Turkic world.",
-    "slogan": "A shared trust network for the Turkic world.",
+    "slogan": "The digital trust network for the Turkic world.",
     "contact": "Contact",
     "rights": "All rights reserved.",
     "social": "Social media"
