@@ -1,6 +1,5 @@
-// Tamga Network — Manifesto (Azərbaycan dili) — TASLAK: sitede açık değil; ana dili Azerbaycanca olan biri okumadan
-// yayına girmez. tamga-manifesto-tr.typ'den çeviri (2026-10-20), terimler tools/claude-api/glossary/az.json.
-// Build:  powershell -File manifesto/build.ps1  (az → manifesto/draft/manifesto-az.pdf, public/'e yazılmaz)
+// Tamga Network — Manifesto (Azərbaycan dili) — tamga-manifesto-tr.typ'den çeviri (2026-10-20)
+// Build:  typst compile --root . tamga-manifesto-az.typ ../public/manifesto-az.pdf
 #import "template.typ": conf
 
 #conf(

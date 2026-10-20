@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Tamga whitepaper v1.0 (2026-10-03) — tek kaynak (üretici: generate.py) (en/tr/tk; az taslak, yalnız PDF). Satır içi: **kalın**, `kod`,
+"""Tamga whitepaper v1.0 (2026-10-03) — tek kaynak (üretici: generate.py) (en/tr/tk; az yalnız PDF — site dili açılınca whitepaper.tsx'e de girer). Satır içi: **kalın**, `kod`,
 [metin](/learn/yol) ya da [metin](https://…) (tam adres olduğu gibi kalır; dile göre docs/ARF adresi içerikte yazılır).
 Blok türleri: ("p", str) · ("ul", [str]) · ("code", etiket, KOD_ANAHTARI) · ("table", etiket, TABLO_ANAHTARI) · ("note", str)
 Kaynaklar: DECISIONS §0 (D-BC-6, D-GOV-5, D-SCHEMA-4, D-CRED-4, D-GTM-1), D-CRED-1, D-ID-1, ADR-0009…0014, ADR-0031 (site
@@ -523,8 +523,7 @@ TK = {
     },
 }
 
-# az (Azərbaycan dili): 2026-10-20 TR/EN'den çeviri, terimler tools/claude-api/glossary/az.json — TASLAK, sitede açık değil
-# (generate.py yalnız .typ üretir); ana dili Azerbaycanca olan biri okumadan yayına girmez.
+# az (Azərbaycan dili): 2026-10-20 TR/EN'den çeviri. Site dili açılana kadar generate.py yalnız .typ üretir (PDF, build.ps1).
 AZ = {
     "meta_title": "Whitepaper",
     "meta_desc": "Tamga Network Whitepaper v1.0 — EUDI profilləri əsasında Türkiyə və türk dünyası üçün Rəqəmsal Etibar İnfrastrukturu: imzalı etibar siyahıları, SD-JWT VC və ISO mdoc, OpenID4VCI/VP, beş səviyyəli yoxlama xətti, dizayndan gələn məxfilik, reyestrə gedən yol, vəziyyət və məhdudiyyətlər.",

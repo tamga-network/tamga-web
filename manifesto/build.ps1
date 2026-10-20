@@ -1,6 +1,5 @@
 # Build all manifesto PDFs into ../public/
 # Usage:  powershell -File manifesto/build.ps1 [-Lang az]
-#   Draft languages (not yet open on the site) go to manifesto/draft/ (gitignored), never to public/.
 param([string[]]$Lang)
 $ErrorActionPreference = 'Stop'
 $here = Split-Path -Parent $MyInvocation.MyCommand.Path
@@ -15,12 +14,11 @@ foreach ($f in @((Join-Path $web 'tools/fonts'), (Join-Path $web '../../marketin
   if (Test-Path $f) { $fontArgs += @('--font-path', (Resolve-Path $f).Path) }
 }
 
-$site  = @('en','tr','tk')
-$draft = @('az')
-if (-not $Lang) { $Lang = $site + $draft }
+$site  = @('en','tr','tk','az')
+if (-not $Lang) { $Lang = $site }
 foreach ($lang in $Lang) {
   $src = Join-Path $here "tamga-manifesto-$lang.typ"
-  $dir = if ($draft -contains $lang) { Join-Path $here 'draft' } else { $pub }
+  $dir = $pub
   if (-not (Test-Path $dir)) { New-Item -ItemType Directory -Path $dir | Out-Null }
   $out = Join-Path $dir "manifesto-$lang.pdf"
   & $typst compile --root $here @fontArgs $src $out
