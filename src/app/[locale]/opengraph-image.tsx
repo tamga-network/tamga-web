@@ -46,9 +46,9 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
         <div
           style={{
             display: "flex",
-            marginTop: 16,
-            fontSize: 30,
-            letterSpacing: 10,
+            marginTop: 20,
+            fontSize: 38,
+            letterSpacing: 0,
             color: "#6FB3D2",
           }}
         >
