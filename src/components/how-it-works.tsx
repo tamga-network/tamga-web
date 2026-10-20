@@ -39,7 +39,7 @@ type Labels = {
   steps: { title: string; body: string }[];
 };
 
-const L: Record<"tr" | "en" | "tk", Labels> = {
+const L: Record<"tr" | "en" | "tk" | "az", Labels> = {
   tr: {
     title: "Bir belgenin yolculuğu",
     issuer: "Belge veren kurum",
@@ -208,6 +208,63 @@ const L: Record<"tr" | "en" | "tk", Labels> = {
       {
         title: "Ynam sanawy barlanýar",
         body: "Barlaýjy guramanyň döwletiň gol çekilen sanawyndadygyny we resminamanyň ýatyrylmandygyny barlaýar. Gurama sorag berilmeýär, hiç zat ýazylmaýar.",
+      },
+    ],
+  },
+  az: {
+    title: "Rəqəmsal sənədin yolu",
+    issuer: "Sənədi verən qurum",
+    issuerSub: "universitet · xəstəxana · dövlət qurumu",
+    wallet: "Şəxsin rəqəmsal cüzdanı",
+    walletSub: "rəqəmsal sənədlər telefonda",
+    verifier: "Yoxlayan tərəf",
+    verifierSub: "işəgötürən · sayt · giriş qapısı",
+    trust: "Etibar siyahısı",
+    trustSub: "imzalı · dövlət tərəfindən",
+    rows: [
+      ["TR", "Nümunə Qurum"],
+      ["TR", "Nümunə Universitet"],
+    ],
+    cardTitle: "Şəxsiyyət sənədi",
+    cardIssuer: "Nümunə Qurum",
+    fields: [
+      ["Ad", "Ayşe Yılmaz"],
+      ["Doğum tarixi", "14.03.2001"],
+      ["Növ", "Şəxsiyyət"],
+      ["Etibarlılıq müddəti", "2031"],
+      ["18 yaşdan yuxarı", "Bəli"],
+    ],
+    sealed: "imzalı",
+    hidden: "gizli",
+    request: "Bu şəxs 18 yaşdan yuxarıdırmı?",
+    query: "Bu qurum siyahıdadırmı?",
+    response: "Siyahıdadır · imza etibarlıdır · ləğv edilməyib",
+    verified: "Təsdiqləndi",
+    play: "Oynat",
+    pause: "Dayandır",
+    prev: "Əvvəlki addım",
+    next: "Növbəti addım",
+    step: "Addım",
+    steps: [
+      {
+        title: "Qurum rəqəmsal sənədi hazırlayır",
+        body: "Hər sahə ayrıca möhürlənir (salted hash); sonra qurum bütün sənədi öz açarı ilə imzalayır.",
+      },
+      {
+        title: "Rəqəmsal sənəd cüzdana göndərilir",
+        body: "İmzalı sənəd şəxsin telefonundakı rəqəmsal cüzdana yerləşir. Heç bir server onun surətini saxlamır.",
+      },
+      {
+        title: "Yoxlayan tərəf soruşur",
+        body: "Sayt, işəgötürən və ya giriş qapısı yalnız ehtiyac duyduğu məlumatı istəyir: \"Bu şəxs 18 yaşdan yuxarıdırmı?\"",
+      },
+      {
+        title: "Yalnız lazım olan paylaşılır",
+        body: "Şəxs razılıq verir; ad və doğum tarixi cüzdanda qalır. Yalnız \"18 yaşdan yuxarı: Bəli\" və qurumun imzası göndərilir.",
+      },
+      {
+        title: "Etibar siyahısı yoxlanılır",
+        body: "Yoxlayan tərəf qurumun dövlətin imzalı siyahısında olduğunu və sənədin ləğv edilmədiyini yoxlayır. Quruma müraciət edilmir və heç nə qeydə alınmır.",
       },
     ],
   },

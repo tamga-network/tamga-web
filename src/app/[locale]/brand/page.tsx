@@ -18,7 +18,7 @@ import {
   type Swatch,
 } from "@/content/brand";
 
-const loc = (l: string): Locale => (l === "tr" || l === "tk" ? l : "en");
+const loc = (l: string): Locale => (l === "tr" || l === "tk" || l === "az" ? l : "en");
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;

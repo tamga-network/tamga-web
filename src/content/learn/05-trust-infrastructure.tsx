@@ -93,11 +93,12 @@ export const CHAPTER_5: LearnPage[] = [
     chapter: 5,
     order: 1,
     minutes: 6,
-    title: { tr: "Güven listeleri", en: "Trust lists", tk: "Ynam sanawlary" },
+    title: { tr: "Güven listeleri", en: "Trust lists", tk: "Ynam sanawlary", az: "Etibar siyahıları" },
     summary: {
       tr: "Kime güvenileceğini kim söyler? Listelerin listesi, ülke listesi, imza, sürüm ve tazelik.",
       en: "Who says whom to trust? The list of lists, national lists, signatures, versions and freshness.",
       tk: "Kime ynanmalydygyny kim aýdýar? Sanawlaryň sanawy, ýurt sanawy, gol, wersiýa we täzelik.",
+      az: "Kimə etibar edilməli olduğunu kim deyir? Siyahıların siyahısı, milli siyahılar, imzalar, versiyalar və aktuallıq.",
     },
     diagram: "trust-chain",
     keyPoints: [
@@ -105,23 +106,26 @@ export const CHAPTER_5: LearnPage[] = [
         tr: "Bir imza tek başına yetmez; imzayı atan kurumun gerçekten yetkili olduğunu söyleyen imzalı bir liste gerekir.",
         en: "A signature alone is not enough; you also need a signed list saying the signer really is an authorised institution.",
         tk: "Diňe gol ýeterlik däl; gol çeken guramanyň hakykatdanam ygtyýarlydygyny aýdýan gollanan sanaw gerek.",
+        az: "Təkcə imza kifayət deyil; imzalayanın həqiqətən səlahiyyətli qurum olduğunu bildirən imzalı siyahı da lazımdır.",
       },
       {
         tr: "Listelerin listesi ülke listelerini gösterir; her ülke listesi o ülkenin kurumlarını, doğrulayıcılarını ve cüzdan sağlayıcılarını sayar.",
         en: "The list of lists points to national lists; each national list names that country's institutions, verifiers and wallet providers.",
         tk: "Sanawlaryň sanawy ýurt sanawlaryny görkezýär; her ýurt sanawy şol ýurduň guramalaryny, barlaýjylaryny we gapjyk üpjün edijilerini sanaýar.",
+        az: "Siyahıların siyahısı milli siyahılara istinad edir; hər milli siyahı həmin ölkənin qurumlarını, yoxlayan tərəflərini və cüzdan provayderlərini sadalayır.",
       },
       {
         tr: "Listeler sürümlüdür ve bir öncekine bağlıdır; bayat ya da değiştirilmiş bir liste fark edilir ve doğrulama \"şu an karar verilemedi\" der.",
         en: "Lists are versioned and chained to the previous one; a stale or altered list is noticed, and verification answers \"cannot decide right now\".",
         tk: "Sanawlar wersiýaly we öňküsine baglanyşykly; köne ýa-da üýtgedilen sanaw duýulýar we barlag \"häzir karar berip bolmaýar\" diýýär.",
+        az: "Siyahılar versiyalanır və əvvəlkinə zəncirlə bağlanır; köhnəlmiş və ya dəyişdirilmiş siyahı aşkar edilir və yoxlama \"hazırda qərar vermək mümkün deyil\" cavabını verir.",
       },
     ],
     deeper: [
-      { label: { tr: "Kavram: güven listeleri", en: "Concept: trust lists", tk: "Düşünje: ynam sanawlary" }, href: "/concepts/trust-lists", kind: "docs" },
-      { label: { tr: "Güven listelerini okumak", en: "Reading trust lists", tk: "Ynam sanawlaryny okamak" }, href: "/guides/read-trust-lists", kind: "docs" },
-      { label: { tr: "Şartname: güven listeleri", en: "Specification: trust lists", tk: "Spesifikasiýa: ynam sanawlary" }, href: "/specifications/trust-lists", kind: "docs" },
-      { label: { tr: "Trust Framework", en: "Trust Framework", tk: "Trust Framework" }, href: "trust-framework", kind: "arf" },
+      { label: { tr: "Kavram: güven listeleri", en: "Concept: trust lists", tk: "Düşünje: ynam sanawlary", az: "Anlayış: etibar siyahıları" }, href: "/concepts/trust-lists", kind: "docs" },
+      { label: { tr: "Güven listelerini okumak", en: "Reading trust lists", tk: "Ynam sanawlaryny okamak", az: "Etibar siyahılarının oxunması" }, href: "/guides/read-trust-lists", kind: "docs" },
+      { label: { tr: "Şartname: güven listeleri", en: "Specification: trust lists", tk: "Spesifikasiýa: ynam sanawlary", az: "Spesifikasiya: etibar siyahıları" }, href: "/specifications/trust-lists", kind: "docs" },
+      { label: { tr: "Trust Framework", en: "Trust Framework", tk: "Trust Framework", az: "Trust Framework" }, href: "trust-framework", kind: "arf" },
     ],
     body: {
       tr: (
@@ -315,6 +319,81 @@ export const CHAPTER_5: LearnPage[] = [
           </p>
         </>
       ),
+      az: (
+        <>
+          <p>
+            Əvvəlki fəsildə rəqəmsal sənədin{" "}
+            <Term tip="Sənədi verən qurumun şəxsi açarı ilə qoyulan, sonradan dəyişdirilə bilməyən işarə.">rəqəmsal imza</Term> ilə qorunduğunu
+            gördük. İmza bizə iki şey deyir: sənəd dəyişməyib və onu hansısa açar imzalayıb. Əsas sual isə açıq qalır:{" "}
+            <strong>bu açar kimə məxsusdur və həmin qurum bu sənədi verməyə səlahiyyətlidirmi?</strong>
+          </p>
+          <p>
+            Almatıdakı bir işəgötürən Daşkənddəki universitetin imzaladığı rəqəmsal sənədə baxır. O, universitetin adını bilir, lakin
+            açarını tanımır. Hər kəs açar yaradıb altına "Nümunə Universiteti" yaza bilər. Etibar siyahıları məhz bu boşluğu doldurur.
+          </p>
+
+          <h2>Etibar siyahısı nədir?</h2>
+          <p>
+            <Term tip="Etibar edilə bilən qurumları, yoxlayan tərəfləri və cüzdan provayderlərini sadalayan imzalı, açıq siyahı.">Etibar siyahısı</Term>{" "}
+            bir ölkədə kimin rəqəmsal sənəd verə, onları tələb edə və rəqəmsal cüzdan təqdim edə biləcəyini göstərən imzalı reyestrdir.
+            Hər qeyddə qurumun adı, rəsmi qeydiyyat nömrəsi, sertifikatı və verə biləcəyi sənəd növləri yer alır. Siyahı açıqdır;
+            gizli verilənlər bazası deyil.
+          </p>
+          <p>
+            Yoxlayan tərəf rəqəmsal sənədi aldıqda siyahını yoxlayır: "Bu imzanın arxasındakı açar bu növ sənədi verməyə səlahiyyətli
+            kimi siyahıda göstərilən quruma məxsusdurmu?" Cavab bəli olarsa, sənədə etibar etmək olar. Nə zəng, nə e-poçt, nə də
+            həftələrlə gözləmə lazımdır.
+          </p>
+
+          <h2>Siyahıların siyahısı</h2>
+          <p>
+            Hər ölkənin öz siyahısı var, çünki hansı qurumlarının etibarlı olduğuna hər ölkə özü qərar verir. Lakin yoxlayan tərəf
+            onlarla milli siyahını bir-bir tanıya bilməz. Buna görə onların üzərində bir qat var:{" "}
+            <Term tip="Hər milli siyahının harada yerləşdiyini və hansı açarla imzalandığını göstərən ən üst səviyyəli siyahı.">Etibarlı Siyahıların Siyahısı (LOTL)</Term>.
+            O, hər milli siyahının ünvanını və imzalayanını göstərir. Yoxlayan tərəf yalnız bir kök açarı sabitləyir; qalan hər şey
+            zəncirdən irəli gəlir: siyahıların siyahısı → milli siyahı → qurum sertifikatı → rəqəmsal sənəd.
+          </p>
+          <p>
+            Avropa İttifaqı (Aİ) bu modeldən illərdir istifadə edir: Aİ-nin siyahıların siyahısı üzv dövlətlərin siyahılarına istinad
+            edir. Tamga Network da eyni formatdan istifadə edir, beləliklə, iki dünya eyni dildə danışır.
+          </p>
+
+          <Callout kind="turkic" locale="az">
+            <p>
+              Bu gün Türkiyə siyahısını Tamga dövlət adından müvəqqəti operator kimi dərc edir. Azərbaycan, Qazaxıstan, Qırğızıstan,
+              Özbəkistan və Türkmənistan üçün yerlər ayrılıb. Dövlət öz siyahısını dərc etdikdə siyahıların siyahısı ona istinad edir;
+              rəqəmsal cüzdanlar və yoxlayan tərəflər üçün yalnız ünvan dəyişir.
+            </p>
+          </Callout>
+
+          <h2>Versiyalar, zəncir və aktuallıq</h2>
+          <p>
+            Siyahı dəyişdikdə (qurum qoşulduqda və ya səlahiyyətini itirdikdə) yeni versiya dərc edilir. Hər versiya əvvəlkinin{" "}
+            <Term tip="Verilənlərin barmaq izi: bir hərfi dəyişsəniz, həş tamamilə dəyişir.">həş</Term> dəyərini daşıyır, beləliklə,
+            versiyalar zəncir əmələ gətirir. Tarixçə heç vaxt silinmir. Kimsə köhnə siyahını bərpa etməyə və ya bir sətri gizlicə
+            dəyişməyə cəhd etsə, zəncir qırılar və bunu hamı görər.
+          </p>
+          <p>
+            Siyahıların həmçinin etibarlılıq müddəti var. Heç nə dəyişməsə belə, onlar ən azı 90 gündə bir yenidən imzalanır,
+            dəyişikliklər isə 24 saat ərzində dərc edilir. Açıq{" "}
+            <Term tip="Siyahı və status siyahısı dərclərinin həşlərinin hər saat əlavə edildiyi, yalnız əlavə etməyə imkan verən açıq jurnal.">lövbər jurnalı</Term>{" "}
+            da hər saat yenilənir. Yoxlayan tərəfin əlindəki siyahı köhnəlibsə və ya ona çatmaq mümkün deyilsə, yoxlayan tərəf
+            "etibarlıdır" demir; "hazırda qərar vermək mümkün deyil" deyir. Təhlükəsiz tərəf budur: yoxlanıla bilməyən rəqəmsal sənəd
+            nə qəbul edilir, nə də rədd edilmiş sayılır.
+          </p>
+
+          <h2>Siyahıda fərdi məlumatlar yoxdur</h2>
+          <p>
+            Etibar siyahılarında insanlar deyil, qurumlar var. Hansı tələbənin hansı rəqəmsal sənədi aldığı və ya kimin harada sənəd
+            təqdim etdiyi siyahıya və ya lövbər jurnalına heç vaxt yazılmır, hətta həş şəklində belə. Siyahı yalnız bir suala cavab
+            verir: kim səlahiyyətlidir.
+          </p>
+          <p>
+            Növbəti səhifədə müxtəlif ölkələrin siyahılarının bir-birini necə tanıdığına baxacağıq. Canlı siyahını indi görmək üçün:{" "}
+            <a href="https://trust.tamga.network/">trust.tamga.network</a>.
+          </p>
+        </>
+      ),
     },
   },
 
@@ -324,34 +403,38 @@ export const CHAPTER_5: LearnPage[] = [
     chapter: 5,
     order: 2,
     minutes: 5,
-    title: { tr: "Federasyon", en: "Federation", tk: "Federasiýa" },
+    title: { tr: "Federasyon", en: "Federation", tk: "Federasiýa", az: "Federasiya" },
     summary: {
       tr: "Ülkeler birbirinin belgelerini nasıl tanır ve Avrupa'nın listeleriyle köprü nasıl kurulur.",
       en: "How countries recognise each other's credentials, and how the bridge to Europe's lists works.",
       tk: "Ýurtlar biri-biriniň resminamalaryny nädip ykrar edýär we Ýewropanyň sanawlary bilen köpri nädip gurulýar.",
+      az: "Ölkələr bir-birinin rəqəmsal sənədlərini necə tanıyır və Avropanın siyahıları ilə körpü necə işləyir.",
     },
     keyPoints: [
       {
         tr: "Federasyon, her ülkenin kendi listesinin sahibi olarak kalıp diğer listeleri tanıyabilmesidir; merkezi bir kayıt yoktur.",
         en: "Federation means each country stays the owner of its own list while being able to recognise the others; there is no central register.",
         tk: "Federasiýa her ýurduň öz sanawynyň eýesi bolup galyp, beýlekileri ykrar edip bilmegidir; merkezi ýazgy ýok.",
+        az: "Federasiya o deməkdir ki, hər ölkə öz siyahısının sahibi olaraq qalır və eyni zamanda digərlərini tanıya bilir; mərkəzi reyestr yoxdur.",
       },
       {
         tr: "Dış bir liste, listelerin listesinde adresi, sabitlenmiş imzacısı ve kapsamı (hangi roller, hangi belge türleri) ile gösterilir.",
         en: "An external list appears in the list of lists with its address, a pinned signer and a scope (which roles, which credential types).",
         tk: "Daşarky sanaw sanawlaryň sanawynda salgysy, berkidilen gol çekijisi we gerimi bilen görkezilýär.",
+        az: "Xarici siyahı siyahıların siyahısında ünvanı, sabitlənmiş imzalayanı və əhatə dairəsi (hansı rollar, hansı sənəd növləri) ilə göstərilir.",
       },
       {
         tr: "Bir dış liste bayatlarsa yalnız ona bağlı sorular \"karar verilemedi\" olur; Tamga'nın kendi listeleri etkilenmez.",
         en: "If an external list goes stale, only the questions that depend on it become \"cannot decide\"; Tamga's own lists are not affected.",
         tk: "Daşarky sanaw köne bolsa diňe oňa bagly soraglar \"karar berip bolmaýar\" bolýar; Tamganyň öz sanawlaryna täsir etmeýär.",
+        az: "Xarici siyahı köhnələrsə, yalnız ondan asılı olan suallar \"qərar vermək mümkün deyil\" vəziyyətinə düşür; Tamga-nın öz siyahılarına təsir etmir.",
       },
     ],
     deeper: [
-      { label: { tr: "Kavram: federasyon", en: "Concept: federation", tk: "Düşünje: federasiýa" }, href: "/concepts/federation", kind: "docs" },
-      { label: { tr: "Devletler: liste yayınlamak", en: "States: publishing a list", tk: "Döwletler: sanaw çap etmek" }, href: "/guides/publish-national-list", kind: "docs" },
-      { label: { tr: "Karar: güven federasyonu (ADR-0036)", en: "Decision: trust federation (ADR-0036)", tk: "Karar: ynam federasiýasy (ADR-0036)" }, href: "/adr/0036-trust-federation-external-lists", kind: "docs" },
-      { label: { tr: "Trust Framework", en: "Trust Framework", tk: "Trust Framework" }, href: "trust-framework", kind: "arf" },
+      { label: { tr: "Kavram: federasyon", en: "Concept: federation", tk: "Düşünje: federasiýa", az: "Anlayış: federasiya" }, href: "/concepts/federation", kind: "docs" },
+      { label: { tr: "Devletler: liste yayınlamak", en: "States: publishing a list", tk: "Döwletler: sanaw çap etmek", az: "Dövlətlər: siyahının dərc edilməsi" }, href: "/guides/publish-national-list", kind: "docs" },
+      { label: { tr: "Karar: güven federasyonu (ADR-0036)", en: "Decision: trust federation (ADR-0036)", tk: "Karar: ynam federasiýasy (ADR-0036)", az: "Qərar: etibar federasiyası (ADR-0036)" }, href: "/adr/0036-trust-federation-external-lists", kind: "docs" },
+      { label: { tr: "Trust Framework", en: "Trust Framework", tk: "Trust Framework", az: "Trust Framework" }, href: "trust-framework", kind: "arf" },
     ],
     body: {
       tr: (
@@ -548,6 +631,81 @@ export const CHAPTER_5: LearnPage[] = [
           </p>
         </>
       ),
+      az: (
+        <>
+          <p>
+            Etibar siyahıları bir ölkə daxilində kimə etibar ediləcəyini göstərir. Bəs Bişkekdə verilmiş peşə lisenziyası İstanbuldakı
+            xəstəxanada necə tanınır? Və ya Avropada verilmiş şəxsiyyət sənədi Bakıdakı oteldə necə yoxlanılır? Cavab{" "}
+            <Term tip="Hər ölkənin öz siyahısının sahibi qaldığı, lakin siyahıların bir-birini tanıya bildiyi düzən.">federasiya</Term>dır.
+          </p>
+
+          <h2>Tək mərkəz deyil, bir-birini tanıyan siyahılar</h2>
+          <p>
+            İki mümkün yanaşma var. Birincisi bütün qurumları vahid mərkəzi reyestrdə toplamaqdır. Bu asan görünür, lakin heç bir
+            dövlət öz qurumlarının reyestrini başqasına həvalə etmək istəmir. İkincisi federasiyadır: hər ölkə öz siyahısını dərc edir
+            və idarə edir, siyahılar isə bir-birinə istinad etməklə tanınır. Tamga Network ikinci yolu seçib.
+          </p>
+          <p>
+            Praktikada bu belədir: Qazaxıstanın siyahısına kimin daxil ediləcəyinə yalnız Qazaxıstan qərar verir. Şəbəkənin vəzifəsi
+            həmin siyahını tapmaq, göstərmək və onu imzalayan açarın həqiqətən Qazaxıstana məxsus olduğuna əmin olmaqdır.
+          </p>
+
+          <Figure caption="Siyahıların siyahısı milli siyahılara və xarici siyahılara istinad edir; hər siyahı sahibinin açarı ilə imzalanır.">
+            <FederationDiagram
+              l={{
+                lotl: "Siyahıların siyahısı",
+                tr: "Türkiyə siyahısı",
+                az: "Milli siyahı",
+                eu: "Aİ siyahıları",
+                own: "öz imzalayanı",
+                ext: "xarici · əhatəli",
+                pin: "Hər imzalayan siyahıların siyahısında sabitlənir",
+              }}
+            />
+          </Figure>
+
+          <h2>Xarici siyahı necə tanınır?</h2>
+          <p>Başqa operatorun siyahısı siyahıların siyahısında üç məlumatla göstərilir:</p>
+          <ul>
+            <li>
+              <strong>Ünvan:</strong> siyahının harada dərc edildiyi.
+            </li>
+            <li>
+              <strong>Sabitlənmiş imzalayan:</strong> onu imzalayan açarın barmaq izi. Başqa açarla imzalanmış siyahı rədd
+              edilir.
+            </li>
+            <li>
+              <strong>Əhatə dairəsi:</strong> həmin siyahının nəyi bildirə biləcəyi, məsələn, "yalnız şəxsiyyət sənədləri verən
+              qurumlar" və ya "yalnız cüzdan provayderləri". Əhatə dairəsindən kənar qeydlər nəzərə alınmır.
+            </li>
+          </ul>
+          <p>
+            Hər qeyd təsdiqə əsaslanır: siyahının tanınması yazılı qərardır. Xarici siyahı öz aktuallığını saxlayır; köhnələrsə, yalnız
+            ondan asılı olan suallar "hazırda qərar vermək mümkün deyil" vəziyyətinə düşür. Türkiyə siyahısı və digər siyahılar bundan
+            təsirlənmir.
+          </p>
+          <p>
+            Avropanın siyahıları ETSI tərəfindən müəyyən edilmiş ümumi formatda dərc edilir. Tamga bu formatı oxuya bildiyi üçün
+            şəxsiyyət sənədi və sürücülük vəsiqəsi kimi Aİ sənəd növləri də əhatə dairəsi müəyyən edildikdən sonra yoxlanıla bilər.
+          </p>
+
+          <Callout kind="turkic" locale="az">
+            <p>
+              Türk dünyası üçün federasiya bir körpüdür. Hər dövlət öz suverenliyini qoruyur, lakin vətəndaşlarının rəqəmsal sənədləri
+              qonşu ölkələrdə və Avropada da başa düşülür. Tələbə Daşkənddən Ankaraya, mühəndis isə Aşqabaddan Bakıya köçdükdə onların
+              sənədləri sərhəddə ilişib qalmır.
+            </p>
+          </Callout>
+
+          <h2>Təhvil necə həyata keçirilir?</h2>
+          <p>
+            Bu gün Türkiyə siyahısını Tamga dövlət adından müvəqqəti olaraq idarə edir. Dövlət və ya onun səlahiyyət verdiyi qurum öz
+            siyahısını dərc etməyə hazır olduqda siyahıların siyahısı yeni ünvana və yeni imzalayana istinad edir. Qurum sertifikatları,
+            sənəd növləri və artıq verilmiş rəqəmsal sənədlər eyni qalır; rəqəmsal cüzdanlar və yoxlayan tərəflər üçün yalnız ünvan
+            dəyişir. Şəbəkə əvvəldən bu təhvil nəzərə alınaraq layihələndirilib.
+          </p>
+        </>
+      ),
     },
   },
 
@@ -557,33 +715,37 @@ export const CHAPTER_5: LearnPage[] = [
     chapter: 5,
     order: 3,
     minutes: 5,
-    title: { tr: "Blockchain nedir?", en: "What is blockchain?", tk: "Blokçeýn näme?" },
+    title: { tr: "Blockchain nedir?", en: "What is blockchain?", tk: "Blokçeýn näme?", az: "Blokçeyn nədir?" },
     summary: {
       tr: "Ortak bir defter, uzlaşı ve izinli ya da herkese açık zincirler: abartısız, sade bir anlatım.",
       en: "A shared ledger, consensus, and permissioned or public chains: a plain explanation without the hype.",
       tk: "Umumy kitap, ylalaşyk we rugsatly ýa-da açyk zynjyrlar: artykmaç sözsüz, ýönekeý düşündiriş.",
+      az: "Ortaq reyestr, konsensus, icazəli və ya açıq zəncirlər: şişirtmədən sadə izah.",
     },
     keyPoints: [
       {
         tr: "Blockchain, birbirinden bağımsız birkaç tarafın aynı kaydı birlikte tuttuğu ve hiçbirinin tek başına değiştiremediği bir defterdir.",
         en: "A blockchain is a ledger that several independent parties keep together, so that none of them can change it alone.",
         tk: "Blokçeýn birnäçe garaşsyz tarapyň bilelikde saklaýan we hiç biriniň ýeke özi üýtgedip bilmeýän kitabydyr.",
+        az: "Blokçeyn bir neçə müstəqil tərəfin birlikdə saxladığı reyestrdir; belə ki, onlardan heç biri onu təkbaşına dəyişə bilməz.",
       },
       {
         tr: "Herkese açık zincirlere herkes katılabilir; izinli zincirlerde yalnız tanınan işletmeciler blok üretir.",
         en: "Anyone can join a public chain; on a permissioned chain only known operators produce blocks.",
         tk: "Açyk zynjyra her kim goşulyp biler; rugsatly zynjyrda diňe tanalýan operatorlar blok döredýär.",
+        az: "Açıq zəncirə hər kəs qoşula bilər; icazəli zəncirdə isə blokları yalnız tanınmış operatorlar yaradır.",
       },
       {
         tr: "Blockchain kişisel veri saklamak için uygun değildir; Tamga'da zincire yalnız kişisel olmayan güven kayıtları yazılır.",
         en: "A blockchain is not a place for personal data; in Tamga only non-personal trust records ever go on a chain.",
         tk: "Blokçeýn şahsy maglumat üçin däl; Tamgada zynjyra diňe şahsy däl ynam ýazgylary ýazylýar.",
+        az: "Blokçeyn fərdi məlumatlar üçün yer deyil; Tamga-da zəncirə yalnız fərdi xarakter daşımayan etibar qeydləri yazılır.",
       },
     ],
     deeper: [
-      { label: { tr: "Neden henüz blockchain yok", en: "Why no blockchain yet", tk: "Näme üçin entek blokçeýn ýok" }, href: "/learn/why-not-blockchain-yet", kind: "site" },
-      { label: { tr: "Karar: zincirsiz başlangıç (ADR-0009)", en: "Decision: starting without a chain (ADR-0009)", tk: "Karar: zynjyrsyz başlangyç (ADR-0009)" }, href: "/adr/0009-phase-b-chainless-beta-and-chain-threshold", kind: "docs" },
-      { label: { tr: "Mimari", en: "Architecture", tk: "Arhitektura" }, href: "architecture", kind: "arf" },
+      { label: { tr: "Neden henüz blockchain yok", en: "Why no blockchain yet", tk: "Näme üçin entek blokçeýn ýok", az: "Niyə hələ blokçeyn yoxdur" }, href: "/learn/why-not-blockchain-yet", kind: "site" },
+      { label: { tr: "Karar: zincirsiz başlangıç (ADR-0009)", en: "Decision: starting without a chain (ADR-0009)", tk: "Karar: zynjyrsyz başlangyç (ADR-0009)", az: "Qərar: zəncirsiz başlanğıc (ADR-0009)" }, href: "/adr/0009-phase-b-chainless-beta-and-chain-threshold", kind: "docs" },
+      { label: { tr: "Mimari", en: "Architecture", tk: "Arhitektura", az: "Arxitektura" }, href: "architecture", kind: "arf" },
     ],
     body: {
       tr: (
@@ -752,6 +914,71 @@ export const CHAPTER_5: LearnPage[] = [
           </p>
         </>
       ),
+      az: (
+        <>
+          <p>
+            Əksər insanlar üçün "blokçeyn" kriptovalyutalar deməkdir. Əsas ideya isə daha sadədir və pulla heç bir əlaqəsi yoxdur:
+            bir-birinə tam etibar etməyən bir neçə tərəf eyni qeydi birlikdə saxlayır.
+          </p>
+
+          <h2>Bir reyestr, çoxlu əl</h2>
+          <p>
+            Məhəllədə ortaq bir fond təsəvvür edin. Hesab dəftərini bir nəfər aparırsa, hamı ona etibar etməlidir; o, bir sətri silsə,
+            heç kim fərqinə varmaya bilər. İndi isə beş qonşunun hər biri eyni nüsxəni saxlasın. Hər yeni qeyd eyni anda beşinə də
+            yazılır və qeyd yalnız əksəriyyət "bəli, doğrudur" dedikdə qüvvədə olur. Artıq heç kim təkbaşına nəyisə gizlicə dəyişə bilməz.
+          </p>
+          <p>
+            <Term tip="Bir neçə müstəqil tərəfin birlikdə saxladığı, tarixçəsi dəyişdirilə bilməyən reyestr.">Blokçeyn</Term> bunun
+            rəqəmsal versiyasıdır. Qeydlər{" "}
+            <Term tip="Müəyyən müddət ərzində toplanan qeydlər paketi; əvvəlki blokun həşini daşıyır.">bloklarda</Term> toplanır, hər
+            blok özündən əvvəlkinin həşini daşıyır və beləliklə, zəncir yaranır. Köhnə bloku dəyişmək ondan sonrakı bütün blokları,
+            həmçinin digər tərəflərin nüsxələrini də dəyişməyi tələb edərdi.
+          </p>
+
+          <Figure caption="Müstəqil tərəflərin hər biri eyni bloklar zəncirinin nüsxəsini saxlayır; qeyd yalnız konsensusla əlavə edilir.">
+            <LedgerDiagram l={{ a: "Operator A", b: "Operator B", c: "Operator C", same: "Hər yerdə eyni reyestr", block: "Blok" }} />
+          </Figure>
+
+          <h2>Konsensus: kim qərar verir?</h2>
+          <p>
+            Yeni qeydin əlavə edilməsi üçün tərəflər razılığa gəlməlidir. Buna{" "}
+            <Term tip="Müstəqil tərəflərin növbəti qeyd barədə razılığa gəlmə üsulu.">konsensus</Term> deyilir. Bitcoin kimi açıq
+            zəncirlər bunu çox enerji tələb edən yarışla edir. İnstitusional mühitdə daha sakit üsullardan istifadə olunur: tanınmış
+            operatorlar növbə ilə blok təklif edir və əksəriyyət onu təsdiqləyir.
+          </p>
+
+          <h2>Açıq və icazəli zəncirlər</h2>
+          <p>
+            <strong>Açıq zəncirlər</strong> hər kəs üçün açıqdır; qeydləri kimin yazdığı bilinmir və etibar riyaziyyata və iqtisadi
+            stimullara əsaslanır. <strong>İcazəli zəncirlərdə</strong> isə blok yaradanlar məlumdur: nazirliklər, tənzimləyicilər,
+            tanınmış qurumlar. Onların kim olduğunu hamı bilir və onlar hesabatlıdırlar. Ortaq etibar qeydi aparan dövlətlər üçün
+            ikincisi uyğundur. Tamga-nın gələcəkdə istifadə etməyi planlaşdırdığı reyestr də icazəlidir.
+          </p>
+
+          <Callout kind="caution" locale="az">
+            <p>
+              Blokçeyn fərdi məlumatlar üçün yanlış yerdir: yazılan silinə bilməz, halbuki insanların öz məlumatlarının silinməsini
+              tələb etmək hüququ var (GDPR, KVKK). Məhz buna görə Tamga-da heç bir fərdi məlumat, rəqəmsal sənəd və ya sənədin həşi heç
+              vaxt zəncirə yazılmır. Ora yalnız fərdi xarakter daşımayan etibar məlumatları yazılır: qurum qeydləri, sənəd növləri və
+              status siyahılarının ünvanları.
+            </p>
+          </Callout>
+
+          <Callout kind="turkic" locale="az">
+            <p>
+              Ortaq reyestr bir neçə türk dövlətinin eyni etibar qeydini birlikdə saxlaması deməkdir. Onlardan heç biri siyahını
+              təkbaşına dəyişə bilməz, lakin hər biri öz qurumlarının qeydi üzərində söz sahibi olaraq qalır.
+            </p>
+          </Callout>
+
+          <h2>Nə vaxt dəyərlidir?</h2>
+          <p>
+            Blokçeyn qeydi bir neçə <strong>müstəqil</strong> tərəf birlikdə saxladıqda dəyər qazanır. Əgər onu yalnız bir tərəf
+            saxlayırsa, zəncir sadəcə daha yavaş və daha bahalı verilənlər bazasıdır. Növbəti səhifədə Tamga-nın məhz bu səbəbdən hələ
+            zəncirdən niyə istifadə etmədiyini və nə vaxt edəcəyini izah edirik.
+          </p>
+        </>
+      ),
     },
   },
 
@@ -765,34 +992,39 @@ export const CHAPTER_5: LearnPage[] = [
       tr: "Neden henüz blockchain yok?",
       en: "Why no blockchain yet?",
       tk: "Näme üçin entek blokçeýn ýok?",
+      az: "Niyə hələ blokçeyn yoxdur?",
     },
     summary: {
       tr: "Bugün imzalı listeler yeter; ortak defter en az iki bağımsız işletmeci katıldığında gelir.",
       en: "Signed lists are enough today; a shared ledger comes once at least two independent operators take part.",
       tk: "Häzir gollanan sanawlar ýeterlik; umumy kitap azyndan iki garaşsyz operator goşulanda gelýär.",
+      az: "Bu gün imzalı siyahılar kifayətdir; ortaq reyestr ən azı iki müstəqil operator iştirak etdikdə gələcək.",
     },
     keyPoints: [
       {
         tr: "Tek işletmecili bir zincir güven eklemez; bugün Tamga tek işletmeci olduğu için imzalı, zincirli listelerle başlıyor.",
         en: "A chain with a single operator adds no trust; since Tamga is the only operator today, it starts with signed, chained lists.",
         tk: "Ýeke operatorly zynjyr ynam goşmaýar; Tamga häzir ýeke operator bolany üçin gollanan sanawlar bilen başlaýar.",
+        az: "Tək operatorlu zəncir etibarı artırmır; bu gün yeganə operator Tamga olduğu üçün o, imzalı, zəncirlə bağlanmış siyahılarla başlayır.",
       },
       {
         tr: "Ortak defter, en az iki bağımsız işletmeci yazılı olarak katıldığında başlar.",
         en: "The shared ledger starts once at least two independent operators join in writing.",
         tk: "Umumy kitap azyndan iki garaşsyz operator ýazmaça goşulanda başlaýar.",
+        az: "Ortaq reyestr ən azı iki müstəqil operator yazılı şəkildə qoşulduqdan sonra başlayır.",
       },
       {
         tr: "Geçiş kimseyi etkilemez: kimlikler zincirdeki gibi hesaplanır, cüzdan ve doğrulayıcı aynı arayüzle okumaya devam eder.",
         en: "The switch affects no one: identifiers are computed as on the chain, and wallets and verifiers keep reading through the same interface.",
         tk: "Geçiş hiç kime täsir etmeýär: belgiler zynjyrdaky ýaly hasaplanýar, gapjyk we barlaýjy şol bir interfeýs bilen okaýar.",
+        az: "Keçid heç kimə təsir etmir: identifikatorlar zəncirdəki kimi hesablanır, rəqəmsal cüzdanlar və yoxlayan tərəflər eyni interfeys vasitəsilə oxumağa davam edir.",
       },
     ],
     deeper: [
-      { label: { tr: "Blog: neden zincirsiz başlıyoruz", en: "Blog: why we start without a blockchain", tk: "Blog: näme üçin zynjyrsyz başlaýarys" }, href: "/blog/why-no-blockchain-yet", kind: "site" },
-      { label: { tr: "Karar: zincirsiz başlangıç ve zincir eşiği (ADR-0009)", en: "Decision: chainless start and ledger threshold (ADR-0009)", tk: "Karar: zynjyrsyz başlangyç (ADR-0009)" }, href: "/adr/0009-phase-b-chainless-beta-and-chain-threshold", kind: "docs" },
-      { label: { tr: "Yönetişim", en: "Governance", tk: "Dolandyryş" }, href: "/learn/governance", kind: "site" },
-      { label: { tr: "Trust Framework", en: "Trust Framework", tk: "Trust Framework" }, href: "trust-framework", kind: "arf" },
+      { label: { tr: "Blog: neden zincirsiz başlıyoruz", en: "Blog: why we start without a blockchain", tk: "Blog: näme üçin zynjyrsyz başlaýarys", az: "Bloq: niyə blokçeynsiz başlayırıq" }, href: "/blog/why-no-blockchain-yet", kind: "site" },
+      { label: { tr: "Karar: zincirsiz başlangıç ve zincir eşiği (ADR-0009)", en: "Decision: chainless start and ledger threshold (ADR-0009)", tk: "Karar: zynjyrsyz başlangyç (ADR-0009)", az: "Qərar: zəncirsiz başlanğıc və reyestr həddi (ADR-0009)" }, href: "/adr/0009-phase-b-chainless-beta-and-chain-threshold", kind: "docs" },
+      { label: { tr: "Yönetişim", en: "Governance", tk: "Dolandyryş", az: "İdarəetmə" }, href: "/learn/governance", kind: "site" },
+      { label: { tr: "Trust Framework", en: "Trust Framework", tk: "Trust Framework", az: "Trust Framework" }, href: "trust-framework", kind: "arf" },
     ],
     body: {
       tr: (
@@ -929,6 +1161,60 @@ export const CHAPTER_5: LearnPage[] = [
           <p>
             Belgiler eýýäm zynjyrdaky ýaly hasaplanýar; gapjyklar we barlaýjylar şol bir interfeýs bilen okaýar. Kitaba şahsy
             maglumat hiç haçan ýazylmaýar.
+          </p>
+        </>
+      ),
+      az: (
+        <>
+          <p>
+            Ortaq reyestr Tamga Network-un məqsədinin bir hissəsidir. Lakin bu gün şəbəkə blokçeyn üzərində işləmir. Bu çatışmazlıq
+            deyil; addımların şüurlu ardıcıllığıdır. Səbəb əvvəlki səhifənin son cümləsindədir: zəncirin dəyəri bir neçə müstəqil
+            tərəfdən gəlir.
+          </p>
+
+          <h2>Reyestr üçün bir əl kifayət deyil</h2>
+          <p>
+            Bu gün şəbəkənin bir operatoru var: dövlətlər adından müvəqqəti fəaliyyət göstərən Tamga. Tək operatorun idarə etdiyi
+            zəncirdə blokları eyni tərəf həm yaradır, həm də təsdiqləyir. Belə zəncir xərci və mürəkkəbliyi artırır, lakin etibarı
+            artırmır. Açığını desək, bu vəziyyətdə zəncir sadəcə daha yavaş verilənlər bazasıdır.
+          </p>
+
+          <h2>Bu gün nədən istifadə edirik</h2>
+          <p>
+            Bunun əvəzinə Avropanın öz etibar siyahıları üçün istifadə etdiyi modeldən istifadə edirik: imzalı, versiyalanan və bir-birinə
+            zəncirlə bağlanan siyahılar. Əvvəlki səhifələrdə gördüyümüz kimi, hər versiya əvvəlkinin həşini daşıyır, tarixçə heç vaxt
+            silinmir və açıq lövbər jurnalı hər saat yenilənir. Geri qaytarılmış və ya gizlicə dəyişdirilmiş siyahını hər kəs aşkar edə bilər.
+          </p>
+          <p>
+            Bir məhdudiyyət də var və biz bunu açıq deyirik: bu gün etibarın son halqası bir operatorun imzasıdır. Açıq jurnal,
+            şəffaflıq və auditlər sui-istifadənin qarşısını alır, lakin onu qeyri-mümkün etmir. Zəncir bu son halqanı bir neçə əl
+            arasında bölüşdürmək üçün gələcək.
+          </p>
+
+          <h2>Zəncir nə vaxt gələcək?</h2>
+          <p>
+            Qayda sadədir: icazəli ortaq reyestr <strong>ən azı iki müstəqil operator</strong>, yəni Tamga-dan hüquqi və əməliyyat
+            baxımından ayrı olan ən azı bir tərəf yazılı şəkildə qoşulduqdan sonra başlayır. Bu tərəf dövlət orqanı və ya dövlətin
+            səlahiyyət verdiyi qurum ola bilər. Daha çox dövlət qoşulduqca operatorların sayı artır, onunla birlikdə reyestrin təminatı da güclənir.
+          </p>
+
+          <Callout kind="turkic" locale="az">
+            <p>
+              Məqsəd hər türk dövlətinin ortaq reyestrdə bir düyün idarə etməsidir. Onda heç bir dövlət, o cümlədən Tamga, qeydi
+              təkbaşına dəyişə bilməz. Bu, şəbəkənin fonda çevrilmə yolu ilə eyni istiqamətdə irəliləyir.
+            </p>
+          </Callout>
+
+          <h2>Keçid heç kimə təsir etməyəcək</h2>
+          <p>
+            Şəbəkə əvvəldən bu keçid nəzərə alınaraq layihələndirilib. Qurum və sənəd növü identifikatorları artıq zəncirdəki kimi
+            hesablanır. Siyahı tarixçəsi reyestrə təkrar ötürülə bilər və testlər hər ikisinin eyni cavabları verdiyini yoxlayır.
+            Rəqəmsal cüzdanlar, yoxlayan tərəflər və rəqəmsal sənədlər etibara vahid interfeys vasitəsilə baxır; reyestr siyahıları
+            əvəz etdikdə onlar üçün heç nə dəyişmir.
+          </p>
+          <p>
+            Dəyişməyən daha bir qayda var: reyestrə heç bir fərdi məlumat, rəqəmsal sənəd və ya sənədin həşi yazılmır. Zəncir nə qədər
+            güclü olsa da, insanların məlumatları orada saxlanılmır.
           </p>
         </>
       ),

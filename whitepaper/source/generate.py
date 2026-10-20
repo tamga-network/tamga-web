@@ -7,9 +7,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from content import CODE, IDS, LANGS, TABLES, TABLE_MONO
 
-# Sitede açık diller: yalnız bunlar src/content/whitepaper.tsx'e girer. Diğerleri (az) yalnız .typ üretilir ve PDF'teki
+# Sitede açık diller: yalnız bunlar src/content/whitepaper.tsx'e girer. Diğerleri yalnız .typ üretilir ve PDF'teki
 # site bağlantıları İngilizce sayfalara gider; dil açılınca buraya eklenir (routing ile birlikte).
-SITE_LANGS = ("en", "tr", "tk")
+SITE_LANGS = ("en", "tr", "tk", "az")
 
 # PDF: bu bölümler yeni sayfada başlar (bölüm geçişleri; web sayfasını etkilemez)
 CHAPTER_BREAKS = {"trust", "privacy", "ledger", "status"}
@@ -75,7 +75,7 @@ import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 
 /*
- * Whitepaper v1.0 (2026-10-03). Aynı içerik whitepaper/tamga-whitepaper-{en,tr,tk}.typ (PDF) ile birebir;
+ * Whitepaper v1.0 (2026-10-03). Aynı içerik whitepaper/tamga-whitepaper-<dil>.typ (PDF) ile birebir;
  * ikisi de whitepaper/source/content.py dosyasından üretilir (generate.py) — elle düzenleme. Kaynaklar: tamga-network DECISIONS §0,
  * ADR-0009…0014, ADR-0031, ADR-0032, ADR-0035…0038, Tamga ARF 1.0 (FW-ARF-0001…0006), SPEC-TRUST-0001, SPEC-API-0001, SPEC-PROTO-0002.
  */
@@ -157,7 +157,7 @@ function KV({ label, rows, mono }: { label: string; rows: string[][]; mono?: boo
         L.append('  slogan: "Building Trust Infrastructure for the Digital World.",')
         L.append("};")
     L.append('''
-const content: Record<Locale, WhitepaperContent> = { en, tr, tk };
+const content: Record<Locale, WhitepaperContent> = { ''' + ", ".join(SITE_LANGS) + ''' };
 
 export function getWhitepaperContent(locale: string): WhitepaperContent {
   return content[locale as Locale] ?? content.en;

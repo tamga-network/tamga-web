@@ -1230,7 +1230,405 @@ const tk: ScenariosContent = {
   ],
 };
 
-const content: Record<Locale, ScenariosContent> = { en, tr, tk };
+/* -------------------------------------------------------------------------- */
+/*  Azərbaycanca                                                              */
+/* -------------------------------------------------------------------------- */
+
+const az: ScenariosContent = {
+  meta: {
+    title: "Ssenarilər və istifadə sahələri",
+    description:
+      "Tamga Network praktikada necə işləyir: əvvəlcə təhsil, qeydiyyatdan ilk işə qədər; bu gün biletlər, saytlara giriş və yaş yoxlaması; eyni etibar qatının bundan sonra hara qədər genişlənə biləcəyi.",
+  },
+  eyebrow: "İstifadə sahələri",
+  title: "Ssenarilər: əvvəlcə təhsil, vahid etibar qatı",
+  intro:
+    "Təhsil şəbəkənin ilk və əsas ssenarisidir: tələbənin qeydiyyatdan ilk iş müraciətinə qədər sənədləri. Biletlər, saytlara giriş və yaş yoxlaması bu gün eyni qat üzərində işləyir. Səhiyyə qərar mərhələsindədir; iş, dövlət xidmətləri, logistika və ödənişlər qatın hara qədər genişlənə biləcəyini göstərir. Hər ssenarinin yanında onun statusu qeyd olunur.",
+  note: "Ekranlar şəbəkədəki bir rəqəmsal cüzdanın təsviri maketləridir; dəyərlər yalnız nümunədir. “Bu gün işləyir” o deməkdir ki, ssenari sandbox-da, şəbəkənin canlı proqram təminatı ilə əvvəldən sona qədər işləyir; real şəbəkəyə ilk qurum pilotla qoşulur.",
+  statusLabels: { today: "Bu gün işləyir", pilot: "Pilotla", later: "Sonra" },
+  verticals: [
+    {
+      id: "education",
+      icon: "education",
+      eyebrow: "Təhsil",
+      name: "Təhsil",
+      badge: "Əsas ssenari",
+      tone: "main",
+      intro:
+        "Tələbənin sənədləri ilk gündən ilk işə qədər onunla birlikdə gedir: universitet verir, tələbənin öz rəqəmsal cüzdanında saxlanılır və istənilən şəxs qeydiyyat şöbəsinə zəng etmədən onları saniyələr ərzində yoxlaya bilir.",
+      scenarios: [
+        {
+          status: "today",
+          title: "Qeydiyyat: rəqəmsal cüzdanda tələbə sənədi",
+          body: "Qeydiyyatdan sonra universitet tələbənin rəqəmsal cüzdanına tələbə rəqəmsal sənədi verir. Sənəd qısamüddətlidir (ən çox 90 gün) və tələbə təhsilini davam etdirdikcə yenilənir. Universitetin açarı imzalanmış Türkiyə etibar siyahısındadır, buna görə istənilən şəxs sənədin haradan gəldiyini yoxlaya bilər.",
+        },
+        {
+          status: "today",
+          title: "Kampusa giriş bir saniyədə",
+          body: "Turniketdə tələbə 60 saniyəlik imzalı QR keçidini göstərir. Keçiddə heç bir fərdi məlumat yoxdur; kopyalanmış və ya təkrar istifadə olunan kod rədd edilir.",
+        },
+        {
+          status: "today",
+          title: "Endirimlər və kitabxana: yalnız “mən burada tələbəyəm”",
+          body: "Muzey, nəqliyyat operatoru və ya kitabxana bir sual verir: bu şəxs burada tələbədirmi? Rəqəmsal cüzdan yalnız buna cavab verir; ad, tələbə nömrəsi və doğum tarixi gizli qalır.",
+        },
+        {
+          status: "today",
+          title: "Məzun olma: saxtalaşdırıla bilməyən diplom",
+          body: "Məzun olarkən universitet diplomu imzalı rəqəmsal sənəd kimi verir. Bir hərf dəyişdirilsə, imza pozulur; etibar siyahısında olmayan qurumun diplomu təsdiqlənmir.",
+        },
+        {
+          status: "today",
+          title: "İş müraciəti: dərəcəni göstərin, qiymətləri gizlədin",
+          body: "Məzun yalnız dərəcəsini və məzun olduğu ili paylaşır; orta bal gizli qalır. İşəgötürən universitetlə əlaqə saxlamadan, öz serverində və ya Tamga Verify vasitəsilə saniyələr ərzində yoxlayır.",
+        },
+        {
+          status: "today",
+          title: "Diplom geri götürüldükdə və universitet bağlandıqda",
+          body: "Universitet diplomu ləğv edərsə, hər yoxlayan tərəf bunu dərc olunmuş status siyahısından bir neçə dəqiqə ərzində öyrənir, universitet isə kimin yoxladığını heç vaxt bilmir. Universitetin fəaliyyəti sonradan dayandırılarsa, onun həmin tarixdən əvvəl verdiyi diplomlar etibarlı qalır: səlahiyyət sənədin verilmə tarixinə görə qiymətləndirilir.",
+        },
+        {
+          status: "later",
+          title: "Xaricdə magistratura",
+          body: "Diplom Aİ-nin (Avropa İttifaqı) təlim standartlarına (ELM) uyğundur. Europass ilə uyğunlaşma və digər türk dövlətlərinin öz siyahıları vasitəsilə tanınma pilotdan sonra planlaşdırılan addımlardır.",
+        },
+      ],
+      callout: {
+        title: "Pilot tərəfdaş: İstanbul Bilgi Üniversitesi",
+        body: "Təhsil pilotunu İstanbul Bilgi Üniversitesi ilə həyata keçirəcəyik. Pilot başlayana qədər yuxarıdakı hər addımı universitetin test qurumu kimi göründüyü sandbox-da sınaqdan keçirmək olar.",
+      },
+      wallet: {
+        app: "Cüzdan",
+        cardLabel: "SƏNƏD",
+        badge: "YOXLANILDI",
+        title: "Universitet diplomu",
+        subtitle: "Nümunə Universitet · X.509 (TR)",
+        rows: [
+          { k: "dərəcə", v: "Kompüter müh.", tone: "disclosed" },
+          { k: "məzun olma", v: "2026", tone: "disclosed" },
+          { k: "orta bal", v: "gizli", tone: "hidden" },
+          { k: "sahib", v: "p:8f2…c19", tone: "accent" },
+        ],
+        action: "İşəgötürənə təqdim et",
+        status: "SD-JWT · seçici paylaşım",
+      },
+      flow: [
+        { icon: "education", label: "Universitet", sub: "Sənədi verən qurum (X.509)" },
+        { icon: "wallet", label: "Tələbə / məzun", sub: "Sənəd sahibi (öz cüzdanı)" },
+        { icon: "verifier", label: "İşəgötürən, turniket, kitabxana", sub: "Yoxlayan tərəf" },
+      ],
+    },
+    {
+      id: "events",
+      icon: "ticket",
+      eyebrow: "Tədbirlər",
+      name: "Biletlər və tədbirlər",
+      badge: "Bu gün işləyir",
+      tone: "today",
+      intro:
+        "Bilet yalnız bir şeyi sübut etməlidir: bu tədbir üçün etibarlı olduğunu, onu daşıyan şəxs haqqında isə heç nəyi.",
+      scenarios: [
+        {
+          title: "Fərdi məlumatsız bilet",
+          body: "Satıcı bileti tədbir, oturacaq və etibarlılıq müddəti ilə rəqəmsal cüzdana verir. Ad yoxdur, şəxsiyyət nömrəsi yoxdur.",
+        },
+        {
+          title: "Girişdə birdəfəlik istifadə",
+          body: "Girişdə bilet yoxlanılır və istifadə olunmuş kimi qeyd edilir. Ekran görüntüsü və ya eyni biletin ikinci nüsxəsi rədd edilir.",
+        },
+        {
+          title: "Konsertlər, kinoteatrlar, konfranslar",
+          body: "Hamısı üçün bir bilet növü kifayətdir: tədbir və məkan yeni format deyil, sahələrdir, buna görə yeni təşkilatçı yeni proqram təminatı olmadan qoşulur.",
+        },
+      ],
+      wallet: {
+        app: "Cüzdan",
+        cardLabel: "BİLET",
+        badge: "ETİBARLI",
+        title: "Konsert bileti",
+        subtitle: "Nümunə bilet satıcısı · X.509 (TR)",
+        rows: [
+          { k: "tədbir", v: "Nümunə Konsert", tone: "disclosed" },
+          { k: "oturacaq", v: "B-14", tone: "disclosed" },
+          { k: "ad", v: "biletdə yoxdur", tone: "hidden" },
+          { k: "istifadə", v: "birdəfəlik", tone: "accent" },
+        ],
+        action: "Girişdə göstər",
+        status: "birdəfəlik istifadə · fərdi məlumat yoxdur",
+      },
+      flow: [
+        { icon: "building", label: "Bilet satıcısı", sub: "Sənədi verən qurum (X.509)" },
+        { icon: "wallet", label: "Ziyarətçi", sub: "Sənəd sahibi" },
+        { icon: "verifier", label: "Giriş", sub: "Yoxlayan tərəf" },
+      ],
+    },
+    {
+      id: "online",
+      icon: "online",
+      eyebrow: "Onlayn",
+      name: "Saytlar: giriş və yaş yoxlaması",
+      badge: "Bu gün işləyir",
+      tone: "today",
+      intro:
+        "Sayt ehtiyac duyduğundan artıq məlumat toplamadan istifadəçini qeydiyyatdan keçirə, yenidən daxil olmasına imkan verə və yaşını yoxlaya bilər.",
+      scenarios: [
+        {
+          title: "Tamga ilə qeydiyyatdan keçin",
+          body: "Sayt yalnız qeydiyyatda göstərdiyi sahələri istəyir. Razılıq ekranında şəxs kimin, nəyi və nə üçün istədiyini görür və hər sahəni ayrıca təsdiqləyir.",
+        },
+        {
+          title: "Hər saytda fərqli təxəllüs",
+          body: "Hər sayt şəxsi öz təxəllüsü ilə görür, buna görə iki sayt istifadəçilərini bir-biri ilə uyğunlaşdıra bilmir. Telefon dəyişdirildikdən sonra eyni təxəllüslər geri qayıdır.",
+        },
+        {
+          title: "Passkey ilə yenidən giriş",
+          body: "Sonrakı girişlərdə telefondakı passkey istifadə olunur. Unudula və ya sızdırıla biləcək parol yoxdur.",
+        },
+        {
+          title: "18 yaşdan yuxarı? Yalnız “bəli”",
+          body: "Yaş yoxlaması tək sual verir və doğum tarixi paylaşılmır. Eyni sübutun sıfır bilikli (zero-knowledge) versiyası yoxlayan tərəfdə hazırdır və mağaza buraxılışı ilə telefona gəlir.",
+        },
+        {
+          title: "Öz server kodunuz olmadan yoxlayın",
+          body: "Tamga Verify ilə sayt yoxlama kodunu özü işlətmədən rəqəmsal sənədi yoxlayır; dəyərlər yalnız sayta, bir dəfə və beş dəqiqə ərzində ötürülür.",
+        },
+      ],
+      wallet: {
+        app: "Cüzdan",
+        cardLabel: "SORĞU",
+        badge: "RAZILIQ",
+        title: "Qeydiyyat · Nümunə Mağaza",
+        subtitle: "Qeydiyyatlı yoxlayan tərəf · X.509 (TR)",
+        rows: [
+          { k: "təxəllüs", v: "p:3a9…e41", tone: "accent" },
+          { k: "18+", v: "bəli", tone: "disclosed" },
+          { k: "doğum tarixi", v: "paylaşılmır", tone: "hidden" },
+          { k: "tam şəxsiyyət", v: "istənilmir", tone: "hidden" },
+        ],
+        action: "Təsdiqlə",
+        status: "hər sayta ayrı təxəllüs · passkey",
+      },
+      flow: [
+        { icon: "building", label: "Şəxsiyyət sənədini verən", sub: "Sənədi verən qurum" },
+        { icon: "wallet", label: "Şəxs", sub: "Sənəd sahibi (öz cüzdanı)" },
+        { icon: "verifier", label: "Sayt", sub: "Yoxlayan tərəf" },
+      ],
+    },
+    {
+      id: "health",
+      icon: "health",
+      eyebrow: "Səhiyyə",
+      name: "Səhiyyə",
+      badge: "Qərar mərhələsində",
+      tone: "proposed",
+      intro:
+        "Səhiyyə xidmət göstərənlərdən başlayır: peşə fəaliyyəti hüququ, palata üzvlüyü və xəstəxanadakı vəzifə — bir-birini tamamlayan üç rəqəmsal sənəd kimi. Dizayn hazırlanıb; qərar və sənədi verən qurumlar hələ müəyyənləşməyib.",
+      scenarios: [
+        {
+          title: "Həkimin peşə fəaliyyəti hüququ",
+          body: "Səhiyyə işçilərinə lisenziya verən orqan peşə fəaliyyəti sənədi verir. Aptek və ya başqa xəstəxana zəng etmək əvəzinə onu saniyələr ərzində yoxlayır.",
+        },
+        {
+          title: "Palata üzvlüyü",
+          body: "Tibb palatası yalnız peşənin göstərməli olduğunu əks etdirən üzvlük sənədi verir.",
+        },
+        {
+          title: "Xəstəxanada vəzifə",
+          body: "Xəstəxana öz əməkdaşlarına şöbə, vəzifə adı və işə başlama tarixi olan vəzifə sənədi verir; onun sistemlərinə giriş bu sənədə əsaslana bilər.",
+        },
+      ],
+      wallet: {
+        app: "Cüzdan",
+        cardLabel: "SƏNƏD",
+        badge: "NÜMUNƏ",
+        title: "Peşə fəaliyyəti hüququ",
+        subtitle: "Nümunə səhiyyə orqanı · X.509 (TR)",
+        rows: [
+          { k: "peşə", v: "Həkim", tone: "disclosed" },
+          { k: "ixtisas", v: "Kardiologiya", tone: "disclosed" },
+          { k: "lisenziya №", v: "gizli", tone: "hidden" },
+          { k: "sahib", v: "p:5c1…09b", tone: "accent" },
+        ],
+        action: "Aptekdə göstər",
+        status: "qərar mərhələsi · nümunə",
+      },
+      flow: [
+        { icon: "building", label: "Səhiyyə orqanı", sub: "Sənədi verən qurum" },
+        { icon: "wallet", label: "Həkim", sub: "Sənəd sahibi" },
+        { icon: "verifier", label: "Aptek / xəstəxana", sub: "Yoxlayan tərəf" },
+      ],
+    },
+    {
+      id: "work",
+      icon: "work",
+      eyebrow: "İş",
+      name: "İş və peşələr",
+      badge: "Vizyon — hələ qurulmayıb",
+      tone: "vision",
+      intro:
+        "İşə qəbul və peşə həyatı eyni yoxlamaları dəfələrlə təkrarlayır. Eyni rəqəmsal sənədlər buna son qoya bilər.",
+      scenarios: [
+        {
+          title: "Özünü yoxlayan CV",
+          body: "Namizəd diplom və digər rəqəmsal sənədlərlə müraciət edir; işəgötürən surətlər toplamaq əvəzinə hər sətri saniyələr ərzində yoxlayır.",
+        },
+        {
+          title: "Palatalar və peşə birlikləri",
+          body: "Palata və ya birlik üzvlük sənədləri verir, beləliklə müştəri mütəxəssisin üzvlüyünün qüvvədə olduğunu görə bilir.",
+        },
+        {
+          title: "Kağızsız iş yeri arayışı",
+          body: "İşəgötürən bankın və ya ev sahibinin yoxlaya biləcəyi “hazırda işləyir” sənədi verir; yalnız soruşulan məlumat göstərilir.",
+        },
+      ],
+      wallet: {
+        app: "Cüzdan",
+        cardLabel: "SƏNƏD",
+        badge: "NÜMUNƏ",
+        title: "Palata üzvlüyü",
+        subtitle: "Nümunə palata · X.509 (TR)",
+        rows: [
+          { k: "üzv", v: "bəli", tone: "disclosed" },
+          { k: "status", v: "aktiv", tone: "disclosed" },
+          { k: "reyestr №", v: "gizli", tone: "hidden" },
+          { k: "sahib", v: "p:a07…4d2", tone: "accent" },
+        ],
+        action: "Müştəriyə təqdim et",
+        status: "vizyon · nümunə",
+      },
+      flow: [
+        { icon: "building", label: "Palata / işəgötürən", sub: "Sənədi verən qurum" },
+        { icon: "wallet", label: "Mütəxəssis", sub: "Sənəd sahibi" },
+        { icon: "verifier", label: "Müştəri / bank", sub: "Yoxlayan tərəf" },
+      ],
+    },
+    {
+      id: "public",
+      icon: "public",
+      eyebrow: "Dövlət",
+      name: "Dövlət xidmətləri və səyahət",
+      badge: "Vizyon — hələ qurulmayıb",
+      tone: "vision",
+      intro:
+        "Dövlət xidmətləri və səyahət insanların ən çox sənəd göstərdiyi və ən az məlumat paylaşılmalı olan sahələrdir.",
+      scenarios: [
+        {
+          title: "Oteldə yalnız tələb olunanla qeydiyyat",
+          body: "Otel qeydə almalı olduğu sahələri, artıq heç nəyi deyil, şəxsiyyət vəsiqəsinin surətini çıxarmaq əvəzinə birbaşa rəqəmsal cüzdandan alır.",
+        },
+        {
+          title: "Bələdiyyə və sakinlərə xidmətlər",
+          body: "Bələdiyyə bir yığın sənəd istəmədən şəxsin xidmətdən yararlanmaq hüququ olduğunu yoxlayır.",
+        },
+        {
+          title: "Türk dünyasında tanınma",
+          body: "Digər dövlətlər şəbəkədə öz siyahılarını idarə etdikdə Türkiyədə verilmiş rəqəmsal sənəd yeni bürokratiya olmadan Bakıda və ya Almatıda yoxlana bilər, əksinə də.",
+        },
+      ],
+      wallet: {
+        app: "Cüzdan",
+        cardLabel: "SORĞU",
+        badge: "RAZILIQ",
+        title: "Qeydiyyat · Nümunə Otel",
+        subtitle: "Qeydiyyatlı yoxlayan tərəf · X.509",
+        rows: [
+          { k: "ad", v: "paylaşılır", tone: "disclosed" },
+          { k: "sənəd", v: "etibarlı", tone: "disclosed" },
+          { k: "digər sahələr", v: "istənilmir", tone: "hidden" },
+          { k: "saxlanılan surət", v: "yoxdur", tone: "accent" },
+        ],
+        action: "Təsdiqlə",
+        status: "vizyon · nümunə",
+      },
+      flow: [
+        { icon: "building", label: "Dövlət orqanı", sub: "Sənədi verən qurum" },
+        { icon: "wallet", label: "Sakin / səyyah", sub: "Sənəd sahibi" },
+        { icon: "verifier", label: "Otel / bələdiyyə", sub: "Yoxlayan tərəf" },
+      ],
+    },
+    {
+      id: "logistics",
+      icon: "logistics",
+      eyebrow: "Logistika",
+      name: "Logistika",
+      badge: "Tədqiqat — hələ qurulmayıb",
+      tone: "research",
+      intro:
+        "Çatdırılma və yükdaşıma kimin nəyi daşıya biləcəyindən və yükün çatdığının sübutundan asılıdır. Rəqəmsal sənədlər hər ikisini daşıya bilər; bu, tədqiqat istiqamətidir, bu gün şəbəkənin hissəsi deyil.",
+      scenarios: [
+        {
+          title: "Son mərhələ: müştəri qəbulu təsdiqləyir",
+          body: "Müştəri çatdırılmanı öz rəqəmsal cüzdanından təsdiqləyir: ekranda imza əvəzinə imzalanmış qəbul sübutu.",
+        },
+        {
+          title: "Beynəlxalq yükdaşıma (TIR)",
+          body: "Sürücü şirkətin etibarnaməsini və yük sənədlərini rəqəmsal sənəd kimi daşıyır; hər gömrük məntəqəsində onlar saatlar əvəzinə saniyələr ərzində yoxlanılır.",
+        },
+      ],
+      wallet: {
+        app: "Cüzdan",
+        cardLabel: "ÇATDIRILMA",
+        badge: "NÜMUNƏ",
+        title: "Göndəriş 5521",
+        subtitle: "Nümunə Logistika · X.509 (TR)",
+        rows: [
+          { k: "yük", v: "sənədlər", tone: "disclosed" },
+          { k: "sürücü", v: "səlahiyyətli", tone: "disclosed" },
+          { k: "alıcı", v: "p:3d4…a71", tone: "accent" },
+        ],
+        action: "Qəbulu təsdiqlə",
+        status: "tədqiqat · nümunə",
+      },
+      flow: [
+        { icon: "building", label: "Daşıyıcı", sub: "Sənədi verən qurum (X.509)" },
+        { icon: "truck", label: "Sürücü", sub: "Sənəd sahibi" },
+        { icon: "delivered", label: "Alıcı / gömrük", sub: "Yoxlayan tərəf" },
+      ],
+    },
+    {
+      id: "payments",
+      icon: "payments",
+      eyebrow: "Ödənişlər",
+      name: "Ödənişlər",
+      badge: "Tədqiqat — hələ qurulmayıb",
+      tone: "research",
+      intro:
+        "Tamga kimin hansı səlahiyyətlə ödəniş edə biləcəyini sübut edərdi; pulun özü tənzimlənən bank sistemlərində qalır. Bu, tədqiqat istiqamətidir: valyuta deyil və bu gün şəbəkənin hissəsi deyil.",
+      scenarios: [
+        {
+          title: "Yoxlanılmış tərəflər arasında ödəniş",
+          body: "Ödəyici bankın tələb etdiyi yoxlamaları rəqəmsal sənədlə sübut edir, gündəlik istifadədə isə təxəllüslə qalır; köçürmə bankda həyata keçirilir.",
+        },
+        {
+          title: "Limitli və dayandırıla bilən süni intellekt agentləri",
+          body: "Şirkətin proqram agenti hər ödəniş üzrə limitlər, təsdiqlənmiş satıcılar siyahısı və bitmə tarixi çərçivəsində ödəniş edir; məsul şəxs məlumdur və agenti dərhal dayandırmaq mümkündür.",
+        },
+      ],
+      wallet: {
+        app: "Cüzdan",
+        cardLabel: "ÖDƏNİŞ",
+        badge: "NÜMUNƏ",
+        title: "Ödənişi təsdiqlə",
+        subtitle: "alıcı: Nümunə Logistika · X.509",
+        rows: [
+          { k: "məbləğ", v: "limit daxilində", tone: "disclosed" },
+          { k: "ödəyici yoxlamaları", v: "keçdi", tone: "disclosed" },
+          { k: "şəxsiyyət", v: "təxəllüslə", tone: "hidden" },
+          { k: "hesablaşma", v: "bankda", tone: "accent" },
+        ],
+        action: "Təsdiqlə",
+        status: "tədqiqat · nümunə",
+      },
+      flow: [
+        { icon: "wallet", label: "Ödəyici", sub: "Sənəd sahibi" },
+        { icon: "verifier", label: "Tamga", sub: "Səlahiyyəti sübut edir" },
+        { icon: "bank", label: "Bank", sub: "Hesablaşmanı aparır" },
+      ],
+    },
+  ],
+};
+
+const content: Record<Locale, ScenariosContent> = { en, tr, tk, az };
 
 export function getScenariosContent(locale: string): ScenariosContent {
   return content[locale as Locale] ?? en;

@@ -615,7 +615,196 @@ const tk: RoadmapContent = {
   note: "Jikme-jiklik: whitepaper-iň “Ýagdaý we ýol kartasy” we “Belli çäkler” bölümleri.",
 };
 
-const content: Record<Locale, RoadmapContent> = { en, tr, tk };
+const az: RoadmapContent = {
+  meta: {
+    title: "Yol xəritəsi",
+    description:
+      "Tamga Network-un yol xəritəsi: bu gün işlək olanlar, pilotdan əvvəl görüləcəklər, pilot və siyahılardan ortaq reyestrə keçid.",
+  },
+  eyebrow: "Yol xəritəsi",
+  title: "İmzalı siyahılardan ortaq reyestrə",
+  lead: "Tarixlər deyil, mərhələlər. Hər mərhələ əvvəlkini tamamlayır və gücləndirir.",
+  phaseLabel: "Mərhələ",
+  labels: {
+    done: "İşləkdir",
+    progress: "Davam edir",
+    planned: "Planlaşdırılır",
+    research: "Tədqiqat",
+  },
+  phases: [
+    {
+      n: "1",
+      state: "done",
+      title: "Bu gün işlək olanlar",
+      summary:
+        "Bütün axın real kriptoqrafiya ilə, sandbox-da, şəbəkənin işlək proqram təminatı üzərində əvvəldən sona qədər işləyir; ilk real qurum pilotla qoşulur.",
+      cards: [
+        {
+          icon: "shield",
+          title: "Sənəd vermə və yoxlama",
+          desc: "tələbə rəqəmsal sənədləri və diplomlar, ləğv və dayandırma",
+        },
+        {
+          icon: "id",
+          title: "Şəxsiyyət sənədi",
+          desc: "məsafədən şəxsiyyət yoxlaması; ISO mdoc formatında da",
+        },
+        {
+          icon: "list",
+          title: "İmzalı etibar siyahıları",
+          desc: "qurumlar, yoxlayan tərəflər və açıq lövbər jurnalı",
+        },
+        {
+          icon: "ticket",
+          title: "Keçid kartları və biletlər",
+          desc: "kampus və tədbir girişləri, birdəfəlik biletlər",
+        },
+        {
+          icon: "building",
+          title: "Qurum Konsolu",
+          desc: "sənəd vermə, ləğv və statistika",
+        },
+        {
+          icon: "list",
+          title: "Qaydalar 1.0",
+          desc: "Tamga ARF 1.0, Tamga Rulebook və rəqəmsal sənəd növlərinin rulebook-ları; sənədləşmə iki dildə",
+        },
+        {
+          icon: "globe",
+          title: "Federasiya",
+          desc: "xarici etibar siyahılarının oxunması (ETSI TS 119 602 və Avropa İttifaqının (Aİ) TS 119 612 XML siyahıları)",
+        },
+        {
+          icon: "package",
+          title: "Açıq mənbəli paketlər",
+          desc: "@tamga-network: npm-də 0.7.0 test buraxılışı; sabit 1.0.0 hər şey hazır olduqda",
+        },
+        {
+          icon: "user",
+          title: "Sayta görə təxəllüslər",
+          desc: "hər veb-sayt fərqli, sabit təxəllüs görür",
+        },
+        {
+          icon: "test",
+          title: "Sandbox",
+          desc: "rəqəmsal cüzdan, qurum və yoxlayan tərəf tərtibatçıları üçün vahid test şəbəkəsi",
+        },
+        {
+          icon: "wallet",
+          title: "Siyahıdakı cüzdanlar",
+          desc: "şəbəkə cüzdan provayderlərini siyahıya alır; birincisi, Tamga Wallet-ın provayderi, etibar siyahısında aktivdir",
+        },
+      ],
+    },
+    {
+      n: "2",
+      state: "progress",
+      title: "Pilotdan əvvəl",
+      summary: "Real insanlar istifadə etməzdən əvvəl qurumun ehtiyac duyduqları.",
+      cards: [
+        {
+          icon: "smartphone",
+          title: "Mağazalarda cüzdanlar",
+          desc: "şəbəkədəki rəqəmsal cüzdanlar tətbiq mağazalarında (birincisi: Tamga Wallet)",
+        },
+        {
+          icon: "cpu",
+          title: "Təhlükəsiz avadanlıq",
+          desc: "açarlar telefonun təhlükəsiz çipində; cihaz attestasiyası tələb olunur",
+        },
+        {
+          icon: "key",
+          title: "Qurumun açarı",
+          desc: "imza açarı qurumun öz açar anbarında",
+        },
+        {
+          icon: "plug",
+          title: "Mötəbər mənbə",
+          desc: "qurumun öz sorğu nöqtəsi ilə ilk əlaqə",
+        },
+        {
+          icon: "bluetooth",
+          title: "Üz-üzə və brauzerdə",
+          desc: "Bluetooth və Digital Credentials API, real telefonlarda",
+        },
+        {
+          icon: "eye",
+          title: "Sıfır bilikli sübutlar",
+          desc: "doğum tarixi olmadan yaş sübutu; yoxlayan tərəf hazırdır, telefon mağaza buraxılışından sonra",
+        },
+      ],
+    },
+    {
+      n: "3",
+      state: "planned",
+      title: "Pilot",
+      summary:
+        "Bir universitet, məhdud qrup, uğur və dayandırma meyarları əvvəlcədən müəyyən edilir.",
+      cards: [
+        {
+          icon: "graduation",
+          title: "Universitet pilotu",
+          desc: "tələbə rəqəmsal sənədi, diplom və kampusa giriş",
+        },
+        {
+          icon: "test",
+          title: "Aİ ilə qarşılıqlı test",
+          desc: "Aİ istinad cüzdanları və yoxlayan tərəfləri ilə",
+        },
+        {
+          icon: "globe",
+          title: "Europass",
+          desc: "təhsil sənədlərinin Europass ilə uyğun forması (qiymətləndirilir)",
+        },
+      ],
+    },
+    {
+      n: "4",
+      state: "planned",
+      title: "Şəbəkənin genişlənməsi",
+      summary: "Daha çox operator, daha çox dövlət.",
+      cards: [
+        {
+          icon: "network",
+          title: "Ortaq reyestr",
+          desc: "ən azı iki müstəqil operator qoşulduqdan sonra icazəli Besu / QBFT",
+        },
+        {
+          icon: "flag",
+          title: "Üzv dövlət siyahıları",
+          desc: "hər dövlət öz etibar siyahısını dərc edir; Tamga-nın siyahılar siyahısı ona istinad edir",
+        },
+        {
+          icon: "bluetooth",
+          title: "NFC ilə yaxın məsafə",
+          desc: "oxuyucunun autentifikasiyası ilə",
+        },
+      ],
+    },
+    {
+      n: "5",
+      state: "research",
+      title: "Tədqiqat",
+      summary:
+        "Öyrənilir, hələ planlaşdırılmayıb; istənilən istifadədən əvvəl müstəqil təhlükəsizlik yoxlaması.",
+      cards: [
+        {
+          icon: "key",
+          title: "Kvalifikasiyalı elektron imza",
+          desc: "lisenziyalı provayderlə rəqəmsal cüzdandan imzalama",
+        },
+        {
+          icon: "briefcase",
+          title: "Qurum cüzdanları",
+          desc: "rəqəmsal sənəd sahibi kimi təşkilatlar",
+        },
+      ],
+    },
+  ],
+  note: "Ətraflı: whitepaper-in “Vəziyyət və yol xəritəsi” və “Məlum məhdudiyyətlər” bölmələri.",
+};
+
+const content: Record<Locale, RoadmapContent> = { en, tr, tk, az };
 
 export function getRoadmapContent(locale: string): RoadmapContent {
   return content[locale as Locale] ?? content.en;

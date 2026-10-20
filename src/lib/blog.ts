@@ -1,6 +1,6 @@
 /**
- * Blog — içerik TEK YERDE: `src/content/blog/<slug>/article.{en,tr,tk}.md` (yazar kılavuzu: `src/content/blog/README.md`).
- * `en` ve `tr` zorunlu; `tk` isteğe bağlı — yoksa /tk sayfası İngilizce metni bir notla gösterir (hreflang ve site haritası
+ * Blog — içerik TEK YERDE: `src/content/blog/<slug>/article.{en,tr,tk,az}.md` (yazar kılavuzu: `src/content/blog/README.md`).
+ * `en` ve `tr` zorunlu; `tk` ve `az` isteğe bağlı — yoksa /tk, /az sayfası İngilizce metni bir notla gösterir (hreflang ve site haritası
  * yalnız gerçek dilleri listeler). Görseller `public/blog/<slug>/<dil>/fig-<ad>.png`.
  *
  * Derlemede okunur (sunucu tarafı) ve denetlenir: diller var mı, ortak alanlar aynı mı, kategori geçerli mi, ilgili bağlantılar
@@ -24,7 +24,8 @@ import { formatDate } from "./blog-format";
 export { BLOG_CATEGORIES, type BlogCategory } from "./blog-ui";
 export { formatDate } from "./blog-format";
 
-export type BlogLocale = "en" | "tr" | "tk";
+export type BlogLocale = "en" | "tr" | "tk" | "az";
+const BLOG_LOCALES: BlogLocale[] = ["en", "tr", "tk", "az"];
 const REQUIRED: BlogLocale[] = ["en", "tr"];
 
 /* ---------- bloklar ---------- */
@@ -100,11 +101,12 @@ export type BlogPost = {
   /** `public/` altındaki kapak görseli (ör. /blog/<slug>/cover.webp); yoksa paylaşım görseli üretilir. */
   cover: string | null;
   related: BlogRelated[];
-  /** Yazının gerçekten yazıldığı diller (en, tr her zaman; tk varsa). */
+  /** Yazının gerçekten yazıldığı diller (en, tr her zaman; tk, az varsa). */
   locales: BlogLocale[];
   en: BlogText;
   tr: BlogText;
   tk?: BlogText;
+  az?: BlogText;
 };
 
 export const SHOW_DRAFTS = process.env.NODE_ENV === "development" || process.env.BLOG_DRAFTS === "1";
@@ -128,15 +130,15 @@ function frontmatter(src: string): { meta: Record<string, string>; body: string 
   return { meta, body: src.slice(m[0].length) };
 }
 
-/** Başlıktan bağlantı kimliği (Türkçe ve Türkmence harfler sadeleşir). */
+/** Başlıktan bağlantı kimliği (Türkçe, Türkmence ve Azerbaycanca harfler sadeleşir). */
 export function slugify(s: string) {
   const map: Record<string, string> = {
     ç: "c", ğ: "g", ı: "i", ö: "o", ş: "s", ü: "u", â: "a", î: "i", û: "u",
-    ä: "a", ň: "n", ý: "y", ž: "z",
+    ä: "a", ň: "n", ý: "y", ž: "z", ə: "e",
   };
   return s
     .toLocaleLowerCase("tr")
-    .replace(/[çğıöşüâîûäňýž]/g, (c) => map[c] ?? c)
+    .replace(/[çğıöşüâîûäňýžə]/g, (c) => map[c] ?? c)
     .replace(/[`*_[\]()]/g, "")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
@@ -144,9 +146,9 @@ export function slugify(s: string) {
 
 const FENCE_OPEN = /^\s*```\s*([\w+-]*)\s*(.*)$/;
 const FENCE_CLOSE = /^\s*```\s*$/;
-const CALLOUT = /^\*\*(Not|Note|Önemli|Important|Uyarı|Warning|Bellik|Möhüm):?\*\*:?\s*/i;
-const NOTE_LABEL = /^(not|note|bellik)$/i;
-const SOURCES = /^(kaynaklar|kaynakça|sources|references|çeşmeler)$/i;
+const CALLOUT = /^\*\*(Not|Note|Önemli|Important|Uyarı|Warning|Bellik|Möhüm|Qeyd|Vacib):?\*\*:?\s*/i;
+const NOTE_LABEL = /^(not|note|bellik|qeyd)$/i;
+const SOURCES = /^(kaynaklar|kaynakça|sources|references|çeşmeler|mənbələr)$/i;
 
 function codeBlock(info: string, rawLines: string[]): CodeBlock {
   const m = FENCE_OPEN.exec(info)!;
@@ -387,14 +389,14 @@ function load(): BlogPost[] {
     .filter((d) => d.isDirectory() && !d.name.startsWith("_"))
     .map((d) => d.name)) {
     const files: Partial<Record<BlogLocale, ReturnType<typeof frontmatter>>> = {};
-    for (const lang of ["en", "tr", "tk"] as BlogLocale[]) {
+    for (const lang of BLOG_LOCALES) {
       const file = path.join(DIR, slug, `article.${lang}.md`);
       if (existsSync(file)) files[lang] = frontmatter(readFileSync(file, "utf8"));
       else if (REQUIRED.includes(lang)) errors.push(`${slug}: article.${lang}.md yok (en ve tr zorunlu)`);
     }
     if (!files.en || !files.tr) continue;
     if (!/^[a-z0-9-]+$/.test(slug)) errors.push(`${slug}: klasör adı yalnız küçük harf, rakam ve tire`);
-    const locales = (["en", "tr", "tk"] as BlogLocale[]).filter((l) => files[l]);
+    const locales = BLOG_LOCALES.filter((l) => files[l]);
     const m = files.en.meta;
     for (const k of SHARED)
       for (const l of locales)
@@ -465,6 +467,7 @@ function load(): BlogPost[] {
       en: text("en"),
       tr: text("tr"),
       ...(files.tk ? { tk: text("tk") } : {}),
+      ...(files.az ? { az: text("az") } : {}),
     });
   }
 
@@ -491,7 +494,7 @@ function load(): BlogPost[] {
       // Metin içi site bağlantıları: /blog/<slug>, /learn/<slug> ve sabit sayfalar var olmalı (dil öneki yazılmaz).
       for (const x of json.matchAll(/\]\((\/[^)\s"]*)\)/g)) {
         const href = x[1].split(/[?#]/)[0].replace(/\/$/, "") || "/";
-        if (/^\/(en|tr|tk)(\/|$)/.test(href)) {
+        if (/^\/(en|tr|tk|az)(\/|$)/.test(href)) {
           errors.push(`${p.slug}: ${lang} site içi bağlantıda dil öneki yazılmaz: ${x[1]}`);
           continue;
         }
@@ -528,9 +531,9 @@ export const PUBLISHED = ALL.filter((p) => !p.draft);
 
 export const blogPath = (slug?: string) => (slug ? `/blog/${slug}` : "/blog");
 export const postBySlug = (slug: string) => POSTS.find((p) => p.slug === slug);
-/** Dile göre metin; tk yoksa İngilizce (sayfa bunu `isFallback` ile bildirir). */
+/** Dile göre metin; tk/az yoksa İngilizce (sayfa bunu `isFallback` ile bildirir). */
 export const postText = (p: BlogPost, locale: string): BlogText =>
-  (locale === "tr" ? p.tr : locale === "tk" ? p.tk : undefined) ?? p.en;
+  (locale === "tr" ? p.tr : locale === "tk" ? p.tk : locale === "az" ? p.az : undefined) ?? p.en;
 export const isFallback = (p: BlogPost, locale: string) => !p.locales.includes(locale as BlogLocale);
 /** Sayfada gösterilecek ilgili bağlantılar: yayında görünmeyen (taslak) yazılar düşer. */
 export const visibleRelated = (p: BlogPost) => p.related.filter((r) => r.kind !== "post" || !!postBySlug(r.slug));

@@ -15,11 +15,13 @@ export const CHAPTER_7: LearnPage[] = [
       tr: "Kurum olarak belge vermek",
       en: "Issuing as an institution",
       tk: "Gurama hökmünde resminama bermek",
+      az: "Qurum olaraq rəqəmsal sənəd vermək",
     },
     summary: {
       tr: "Bir kurum ağda belge vermek için hangi adımlardan geçer, neye ihtiyaç duyar.",
       en: "The steps an institution takes to issue credentials on the network, and what it needs.",
       tk: "Gurama torda resminama bermek üçin haýsy ädimlerden geçýär we oňa näme gerek.",
+      az: "Qurumun şəbəkədə rəqəmsal sənəd vermək üçün keçdiyi addımlar və ona nələrin lazım olduğu.",
     },
     diagram: "trust-chain",
     body: {
@@ -436,22 +438,187 @@ export const CHAPTER_7: LearnPage[] = [
           </p>
         </>
       ),
+      az: (
+        <>
+          <p>
+            Universitet məzuniyyət sənədini, peşə palatası üzvlük vəsiqəsini,
+            konsert təşkilatçısı biletlərini rəqəmsal formada vermək istəyir.
+            Bunu Tamga Network-da etmək üçün qurum əvvəlcə şəbəkədə
+            qeydiyyatdan keçir. Qeydiyyat şəbəkədəki hər bir yoxlayan tərəfə
+            bunu bildirir: &quot;Bu qurum realdır, bu açar ona məxsusdur və o,
+            bu növ rəqəmsal sənədi verə bilər.&quot;
+          </p>
+          <p>
+            Bu səhifə yolu sadə dillə izah edir. Formalar və texniki addımlar
+            tərtibatçı sənədlərində və Tamga ARF-də verilib.
+          </p>
+
+          <h2>Başlamazdan əvvəl Sizə nə lazımdır</h2>
+          <ul>
+            <li>
+              <strong>Hüquqi şəxs və səlahiyyətli şəxs.</strong> Qurumun rəsmi
+              qeydiyyatı və onun adından imza ata bilən şəxsin təsdiqi.
+            </li>
+            <li>
+              <strong>Domen adı.</strong> Qurumun öz veb ünvanı. Şəbəkə onun
+              həqiqətən quruma məxsus olduğunu yoxlayır.
+            </li>
+            <li>
+              <strong>Məlumatların mənbəyi.</strong> Diplom üçün tələbə
+              informasiya sistemi, üzvlük üçün palatanın reyestri. Şəbəkə bunu{" "}
+              <Term
+                tip="Rəqəmsal sənədin əsasındakı ilkin qeydin saxlandığı yer; sənəd verilərkən məlumat oradan oxunur."
+                en="authentic source"
+              >
+                orijinal mənbə
+              </Term>{" "}
+              adlandırır. Məlumat şəbəkəyə köçürülmür; sənəd verildiyi anda
+              mənbədən oxunur.
+            </li>
+            <li>
+              <strong>Rəqəmsal sənəd növü.</strong> Verdiyiniz sənəd əvvəlcədən
+              müəyyən edilməlidir: Education Rulebook tələbə arayışını və
+              diplomu, Event Ticket Rulebook isə tədbir biletini təsvir edir.
+              Yeni növ üçün əvvəlcə onun öz qaydaları yazılır.
+            </li>
+            <li>
+              <strong>Məlumatların qorunması üzrə təşkilat.</strong> Sənədi kimə
+              və necə verdiyiniz məlumatların qorunması haqqında qanunvericiliyə
+              uyğun olmalıdır.
+            </li>
+          </ul>
+
+          <h2>Addım-addım</h2>
+          <ol>
+            <li>
+              <strong>Müraciət.</strong> Qurum Avropa İttifaqının (Aİ) ümumi
+              qeydiyyat məlumat dəstinin tələb etdiyi məlumatları təqdim edir:
+              rəsmi ad, qeydiyyat nömrəsi, ünvan, əlaqə məlumatları və nə ilə
+              məşğul olacağı.
+            </li>
+            <li>
+              <strong>Giriş yoxlamaları.</strong> Domen sahibliyi, əlaqə
+              məlumatları və hüquqi status yoxlanılır. Bu mərhələ keçilmədən
+              qeydiyyat aparılmır.
+            </li>
+            <li>
+              <strong>Sertifikat.</strong> Qurum açar cütü yaradır. Gizli açar
+              qurumda qalır; açıq açar üçün{" "}
+              <Term
+                tip="Açıq açarın kimə məxsus olduğunu sübut edən imzalı rəqəmsal şəxsiyyət vəsiqəsi."
+                en="certificate"
+              >
+                sertifikat
+              </Term>{" "}
+              verilir. Yoxlayan tərəflər rəqəmsal sənəddəki imzanı onunla
+              yoxlayır.
+            </li>
+            <li>
+              <strong>Rəqəmsal sənəd növü üzrə icazə.</strong> Hər növ üçün icazə
+              ayrıca verilir; standart olaraq heç bir növ açıq deyil.
+              Universitet diplom verə bilər, amma bilet verə bilməz.
+            </li>
+            <li>
+              <strong>Sınaq və uyğunluq testləri.</strong> Qurum şəbəkənin açıq
+              test vektorları əsasında sınaq rəqəmsal sənədləri hazırlayır;
+              hesabat müraciətə əlavə olunur.
+            </li>
+            <li>
+              <strong>Siyahıya daxil olma.</strong> Qurum öz ölkəsinin{" "}
+              <Term
+                tip="Hansı qurumların hansı rəqəmsal sənədləri verə biləcəyini göstərən imzalı, açıq siyahı."
+                en="trust list"
+              >
+                etibar siyahısına
+              </Term>{" "}
+              əlavə olunur. Bundan sonra hər yoxlayan tərəf onu tanıyır.
+            </li>
+            <li>
+              <strong>İlk rəqəmsal sənəd.</strong> Qurum ya şəbəkənin təqdim
+              etdiyi (hosted) sənəd vermə xidmətini öz sisteminə qoşur, ya da
+              açıq mənbəli paketlərlə öz proqram təminatını işlədir. Hər iki
+              halda rəqəmsal sənəd şəxsin seçdiyi uyğun rəqəmsal cüzdana
+              göndərilir.
+            </li>
+          </ol>
+          <p>
+            Bu nə qədər vaxt aparır? Bu, qurumdan asılıdır: hazır məlumat
+            mənbəyi, müqavilə və testlər.
+          </p>
+
+          <h2>Təminat səviyyələri</h2>
+          <p>
+            Hər qurum eyni dərinlikdə yoxlanılmır. Yoxlayan tərəf rəqəmsal
+            sənədin hansı səviyyədən gəldiyini görür və buna uyğun qərar verir.
+          </p>
+          <ul>
+            <li>
+              <strong>Qeydiyyatlı:</strong> domen və əlaqə məlumatları
+              təsdiqlənib, sınaq rəqəmsal sənədləri testlərdən keçib. Yoxlayan
+              tərəflərə &quot;akkreditə olunmayıb&quot; kimi göstərilir.
+            </li>
+            <li>
+              <strong>Müqaviləli:</strong> hüquqi şəxs, səlahiyyətli imzaçı,
+              iştirak müqaviləsi və qurum sertifikatı mövcuddur.
+            </li>
+            <li>
+              <strong>Akkreditə olunmuş:</strong> açarlar təhlükəsiz
+              avadanlıqdadır; audit və qeydlərin aparılması öhdəlikləri,
+              insidentlər barədə məlumat vermə və illik yoxlama.
+            </li>
+            <li>
+              <strong>Dövlət:</strong> dövlət orqanı və ya orijinal mənbə;
+              həmin dövlətin qeydiyyat orqanı tərəfindən qeydiyyata alınır.
+            </li>
+          </ul>
+
+          <Callout kind="turkic" locale="az">
+            <p>
+              Qurumlar öz ölkələrinin siyahısına qoşulur. Hazırda fəaliyyətdə
+              olan siyahı Türkiyənin siyahısıdır; digər türk dövlətləri üçün
+              yerlər ayrılıb. Ölkə öz siyahısını dərc etdikdə onun qurumları
+              orada qeydiyyatdan keçir və onların rəqəmsal sənədləri yenə də
+              bütün şəbəkədə yoxlanılır.
+            </p>
+          </Callout>
+
+          <h2>Qoşulduqdan sonra</h2>
+          <p>
+            Qurum həmişə şəbəkənin qaydalarına tabe olaraq qalır. Problem
+            yaranarsa, onun fəaliyyəti dayandırıla bilər: o, artıq sənəd verə
+            bilmir, lakin əvvəl verdiyi rəqəmsal sənədlər verildikləri tarixə
+            görə etibarlı qalır. Qurum bildiriş verməklə şəbəkədən çıxa da
+            bilər; keçmiş qeydlər silinmir və köhnə rəqəmsal sənədlər
+            yoxlanılmağa davam edir.
+          </p>
+          <Callout kind="info" locale="az">
+            <p>
+              Şəbəkə heç bir xidmət satmır. İnteqrasiya və ya dəstək istəyən
+              qurumlar bunu şəbəkədən kənar şirkətlərdən ala bilər; qeydiyyat
+              prosesi hamı üçün eynidir.
+            </p>
+          </Callout>
+        </>
+      ),
     },
     keyPoints: [
       {
         tr: "Kurum ağa kaydolur; alan adı, tüzel kişilik ve anahtarı denetlenir, gizli anahtar kurumda kalır.",
         en: "The institution registers; its domain, legal identity and key are checked, and the private key stays with it.",
         tk: "Gurama hasaba alynýar; domeni, ýuridik şahsy we açary barlanýar, gizlin açar guramada galýar.",
+        az: "Qurum qeydiyyatdan keçir; onun domeni, hüquqi statusu və açarı yoxlanılır, gizli açar isə qurumda qalır.",
       },
       {
         tr: "Her belge türü ayrı izinle açılır; testleri geçen kurum ülkesinin güven listesine girer.",
         en: "Each credential type is granted separately; an institution that passes the tests enters its country's trust list.",
         tk: "Her resminama görnüşi aýratyn rugsat bilen açylýar; synaglardan geçen gurama ýurdunyň ynam sanawyna girýär.",
+        az: "Hər rəqəmsal sənəd növü üçün icazə ayrıca verilir; testlərdən keçən qurum öz ölkəsinin etibar siyahısına daxil olur.",
       },
       {
         tr: "Askıya alma ya da çıkış eski belgeleri geçersiz kılmaz; süreç herkes için aynıdır.",
         en: "Suspension or exit does not invalidate earlier credentials; the process is the same for everyone.",
         tk: "Togtatmak ýa-da çykmak öňki resminamalary güýjünden düşürmeýär; ýol hemmeler üçin birmeňzeş.",
+        az: "Fəaliyyətin dayandırılması və ya çıxış əvvəlki rəqəmsal sənədləri etibarsız etmir; proses hamı üçün eynidir.",
       },
     ],
     deeper: [
@@ -460,6 +627,7 @@ export const CHAPTER_7: LearnPage[] = [
           tr: "Kurum olarak ağa katılım (rehber)",
           en: "Joining as an institution (guide)",
           tk: "Gurama hökmünde goşulmak (gollanma)",
+          az: "Qurum olaraq qoşulmaq (bələdçi)",
         },
         href: "/guides/join-as-institution",
         kind: "docs",
@@ -469,6 +637,7 @@ export const CHAPTER_7: LearnPage[] = [
           tr: "Uyum testleri",
           en: "Conformance tests",
           tk: "Laýyklyk synaglary",
+          az: "Uyğunluq testləri",
         },
         href: "/guides/conformance",
         kind: "docs",
@@ -478,12 +647,13 @@ export const CHAPTER_7: LearnPage[] = [
           tr: "Katılım süreci",
           en: "Onboarding",
           tk: "Goşulyş tertibi",
+          az: "Qoşulma prosesi",
         },
         href: "onboarding",
         kind: "arf",
       },
       {
-        label: { tr: "Ağa katıl", en: "Join the network", tk: "Tora goşul" },
+        label: { tr: "Ağa katıl", en: "Join the network", tk: "Tora goşul", az: "Şəbəkəyə qoşulun" },
         href: "/join",
         kind: "site",
       },
@@ -500,11 +670,13 @@ export const CHAPTER_7: LearnPage[] = [
       tr: "Doğrulayıcı olmak",
       en: "Becoming a verifier",
       tk: "Barlaýjy bolmak",
+      az: "Yoxlayan tərəf olmaq",
     },
     summary: {
       tr: "Kayıt, erişim sertifikası ve kişiden neler istenebileceği: doğrulayıcının yolu.",
       en: "Registration, an access certificate and what may be asked of a person: the verifier's path.",
       tk: "Hasaba alyş, giriş sertifikaty we adamdan näme soralyp bilinjekdigi: barlaýjynyň ýoly.",
+      az: "Qeydiyyat, giriş sertifikatı və şəxsdən nələrin istənilə biləcəyi: yoxlayan tərəfin yolu.",
     },
     diagram: "disclosure",
     body: {
@@ -812,22 +984,151 @@ export const CHAPTER_7: LearnPage[] = [
           </Callout>
         </>
       ),
+      az: (
+        <>
+          <p>
+            İşəgötürən namizədin diplomunu, otel qonağın şəxsiyyətini, konsert
+            girişi bileti, veb sayt isə istifadəçinin 18 yaşdan yuxarı olduğunu
+            görmək istəyir. Bunları şəxsin rəqəmsal cüzdanından istəyən hər kəs
+            şəbəkədə{" "}
+            <Term
+              tip="Şəxsdən rəqəmsal sənəd istəyən və onu yoxlayan tərəf: işəgötürən, bank, otel, veb sayt."
+              en="verifier"
+            >
+              yoxlayan tərəfdir
+            </Term>
+            .
+          </p>
+          <p>
+            Etibar siyahıları açıqdır: rəqəmsal sənəddəki imzanı hər kəs
+            yoxlaya bilər. Lakin şəxsin rəqəmsal cüzdanından məlumat istəmək
+            üçün yoxlayan tərəf qeydiyyatdan keçməlidir. Səbəbi sadədir:
+            rəqəmsal cüzdan kimin istədiyini və nələri istəyə biləcəyini
+            bilməlidir.
+          </p>
+
+          <h2>İki yol</h2>
+          <ul>
+            <li>
+              <strong>Təqdim olunan (hosted) yoxlama xidməti.</strong> Siz
+              şəbəkənin istinad yoxlama xidməti olan Tamga Verify-dan istifadə
+              edirsiniz: saytınıza düymə əlavə edirsiniz, qalanını o edir.
+              Nəticələr və dəyərlər yalnız Sizə və yalnız bir dəfə verilir.
+            </li>
+            <li>
+              <strong>Öz proqram təminatınız.</strong> Açıq mənbəli paketlərlə
+              yoxlamanı öz serverinizdə aparırsınız.
+            </li>
+          </ul>
+          <p>Hər iki halda qeydiyyat eynidir.</p>
+
+          <h2>Addım-addım</h2>
+          <ol>
+            <li>
+              <strong>Müraciət.</strong> Yalnız hüquqi şəxslər qeydiyyatdan
+              keçir. Avropa İttifaqının (Aİ) ümumi qeydiyyat məlumat dəstindən
+              istifadə olunur: rəsmi ad, qeydiyyat nömrəsi, ünvan, əlaqə
+              məlumatları, xidmətin təsviri, dövlət orqanı olub-olmaması,
+              vasitəçidən istifadə edib-etməməsi və aid olduğu məlumatların
+              qorunması orqanı.
+            </li>
+            <li>
+              <strong>Hər istifadə üçün məqsəd.</strong> Nə üçün məlumat
+              istədiyinizi bildirir və məxfilik siyasətinizi təqdim edirsiniz:
+              &quot;konsert girişində bilet&quot;, &quot;iş müraciəti üçün
+              diplom&quot;.
+            </li>
+            <li>
+              <strong>Sahələrin nəzərdən keçirilməsi.</strong> İstədiyiniz
+              sahələr{" "}
+              <Term
+                tip="Əməliyyat üçün yalnız həqiqətən lazım olan məlumatları istəmək prinsipi."
+                en="data minimisation"
+              >
+                məlumatların minimallaşdırılması
+              </Term>{" "}
+              prinsipi əsasında nəzərdən keçirilir. Yaş yoxlaması üçün doğum
+              tarixi deyil, &quot;18 yaşdan yuxarı&quot; kifayətdir.
+            </li>
+            <li>
+              <strong>Giriş sertifikatı.</strong> Siz qurumunuzu və saytınızın
+              domen adını sübut edən{" "}
+              <Term
+                tip="Yoxlayan tərəfin kimliyini və domen adını sübut edən sertifikat; sorğuları imzalamaq üçün istifadə olunur."
+                en="access certificate"
+              >
+                giriş sertifikatı
+              </Term>{" "}
+              alırsınız. Rəqəmsal cüzdana göndərdiyiniz hər sorğu onunla
+              imzalanır.
+            </li>
+            <li>
+              <strong>Qeydiyyat sertifikatı.</strong> Hər istifadə üçün ən çoxu
+              12 ay etibarlı olan qeydiyyat sertifikatı hazırlanır. Rəqəmsal
+              cüzdan sorğunuzu onunla müqayisə edir.
+            </li>
+            <li>
+              <strong>Uyğunluq testləri.</strong> İmzalı sorğular, yoxlama
+              addımları, köhnəlmiş siyahıda &quot;hazırda yoxlamaq mümkün
+              deyil&quot; nəticəsi və icazə verilən çərçivədən artıq məlumat
+              istənilməməsi test edilir.
+            </li>
+            <li>
+              <strong>Siyahıya daxil olma.</strong> Qeydiyyatınız etibar
+              siyahısına əlavə olunur; rəqəmsal cüzdanlar Sizi tanıyır.
+            </li>
+          </ol>
+          <p>
+            Bu nə qədər vaxt aparır? Bu, qurumun hazırlığından asılıdır.
+          </p>
+
+          <Callout kind="caution" locale="az">
+            <p>
+              Yoxlayan tərəf qeydiyyatındakı sahələrdən kənar məlumat istəyə
+              bilməz. Rəqəmsal cüzdan sorğunu qeydiyyatla müqayisə edir və şəxsə
+              kimin, nəyi və nə üçün istədiyini göstərir. Artıq məlumat
+              istənildikdə şəxs bunu görür.
+            </p>
+          </Callout>
+
+          <h2>Şəxs nəyi görür</h2>
+          <p>
+            Razılıq ekranında yoxlayan tərəfin qeydiyyatdakı adı, məqsədi və
+            istənilən sahələr göstərilir. Təqdim olunan yoxlama xidmətindən
+            istifadə edilirsə, o, &quot;vasitəçi&quot; kimi göstərilir. Şəxs
+            təsdiqləyərsə, yalnız istənilən məlumatlar göndərilir;
+            təsdiqləməzsə, heç nə göndərilmir.
+          </p>
+
+          <Callout kind="turkic" locale="az">
+            <p>
+              Bişkekdəki şirkət İstanbulda verilmiş diplomu yoxlamaq üçün
+              universitetə zəng etmir. O, imzanı, universitetin Türkiyənin
+              etibar siyahısındakı qeydini və ləğv statusunu saniyələr ərzində
+              özü yoxlayır.
+            </p>
+          </Callout>
+        </>
+      ),
     },
     keyPoints: [
       {
         tr: "Kişinin cüzdanından bilgi isteyen her kurum kaydolur; yalnız tüzel kişiler kaydolabilir.",
         en: "Every institution that asks a wallet for data registers; only legal entities can.",
         tk: "Gapjykdan maglumat soraýan her gurama hasaba alynýar; diňe ýuridik şahslar.",
+        az: "Rəqəmsal cüzdandan məlumat istəyən hər qurum qeydiyyatdan keçir; bunu yalnız hüquqi şəxslər edə bilər.",
       },
       {
         tr: "İstenebilecek alanlar veri azaltma ilkesiyle belirlenir; istekler erişim sertifikasıyla imzalanır.",
         en: "Permitted fields follow data minimisation; requests are signed with an access certificate.",
         tk: "Soralyp bilinjek meýdanlar maglumaty azaltmak ýörelgesine görä kesgitlenýär; haýyşlar giriş sertifikaty bilen gol çekilýär.",
+        az: "İcazə verilən sahələr məlumatların minimallaşdırılması prinsipinə əsaslanır; sorğular giriş sertifikatı ilə imzalanır.",
       },
       {
         tr: "Kişi onay ekranında kimin, neyi, neden istediğini görür; yalnız onayladığı bilgi gider.",
         en: "The consent screen shows who asks, for what and why; only what the person approves is shared.",
         tk: "Adam kimiň, näme we näme üçin soraýandygyny görýär; diňe tassyklanan maglumat gidýär.",
+        az: "Razılıq ekranı kimin, nəyi və nə üçün istədiyini göstərir; yalnız şəxsin təsdiqlədiyi məlumatlar paylaşılır.",
       },
     ],
     deeper: [
@@ -836,6 +1137,7 @@ export const CHAPTER_7: LearnPage[] = [
           tr: "Doğrulayıcı kaydı (rehber)",
           en: "Verifier registration (guide)",
           tk: "Barlaýjy hasaba alyşy (gollanma)",
+          az: "Yoxlayan tərəfin qeydiyyatı (bələdçi)",
         },
         href: "/guides/register-verifier",
         kind: "docs",
@@ -845,6 +1147,7 @@ export const CHAPTER_7: LearnPage[] = [
           tr: "Uyum testleri",
           en: "Conformance tests",
           tk: "Laýyklyk synaglary",
+          az: "Uyğunluq testləri",
         },
         href: "/guides/conformance",
         kind: "docs",
@@ -854,6 +1157,7 @@ export const CHAPTER_7: LearnPage[] = [
           tr: "Roller ve yükümlülükler",
           en: "Roles and obligations",
           tk: "Rollar we borçlar",
+          az: "Rollar və öhdəliklər",
         },
         href: "roles",
         kind: "arf",
@@ -863,6 +1167,7 @@ export const CHAPTER_7: LearnPage[] = [
           tr: "Tamga Rulebook: doğrulayıcı kuralları",
           en: "Tamga Rulebook: verifier rules",
           tk: "Tamga Rulebook: barlaýjy düzgünleri",
+          az: "Tamga Rulebook: yoxlayan tərəf qaydaları",
         },
         href: "rulebook",
         kind: "arf",
@@ -880,11 +1185,13 @@ export const CHAPTER_7: LearnPage[] = [
       tr: "Cüzdan kurmak",
       en: "Building a wallet",
       tk: "Gapjyk gurmak",
+      az: "Rəqəmsal cüzdan yaratmaq",
     },
     summary: {
       tr: "Cüzdan sağlayıcısı olmak, uyum testlerini geçmek ve ağın listesine girmek.",
       en: "Becoming a wallet provider, passing the conformance tests and getting onto the network's list.",
       tk: "Gapjyk üpjün ediji bolmak, laýyklyk synaglaryndan geçmek we toruň sanawyna girmek.",
+      az: "Cüzdan provayderi olmaq, uyğunluq testlərindən keçmək və şəbəkənin siyahısına daxil olmaq.",
     },
     body: {
       tr: (
@@ -1193,27 +1500,154 @@ export const CHAPTER_7: LearnPage[] = [
           </Callout>
         </>
       ),
+      az: (
+        <>
+          <p>
+            Tamga Network rəqəmsal cüzdanları seçmir, onları tanıyır. Bank,
+            startap, dövlət orqanı və ya icma öz rəqəmsal cüzdanını yarada
+            bilər; şəbəkənin dərc olunmuş qaydalarına əməl edən və testlərdən
+            keçən istənilən rəqəmsal cüzdan şəbəkədə işləyir. Rəqəmsal cüzdanı
+            yaradan və idarə edən təşkilat{" "}
+            <Term
+              tip="Rəqəmsal cüzdan tətbiqini yaradan, idarə edən və onun cüzdanlarının həqiqi olduğuna zəmanət verən təşkilat."
+              en="wallet provider"
+            >
+              cüzdan provayderidir
+            </Term>
+            .
+          </p>
+
+          <h2>Rəqəmsal cüzdan nə etməlidir</h2>
+          <ul>
+            <li>
+              <strong>Açarları qorumaq.</strong> Şəxsin rəqəmsal sənədinə bağlı
+              açar heç vaxt telefondan çıxmır; o, təhlükəsiz avadanlıqda
+              saxlanılır və PIN və ya biometrik məlumatlarla açılır.
+            </li>
+            <li>
+              <strong>Şəxsdən soruşmaq.</strong> Razılıq olmadan heç nə
+              göndərilmir. Razılıq ekranı kimin, nəyi və nə üçün istədiyini
+              aydın göstərir.
+            </li>
+            <li>
+              <strong>Qeydləri şəxsdə saxlamaq.</strong> Kimə nəyin göstərildiyi
+              yalnız telefonda saxlanılır; şəxs onu şifrələnmiş şəkildə ixrac
+              edə və ya silə bilər.
+            </li>
+            <li>
+              <strong>Məxfiliyi qorumaq.</strong> Seçici paylaşım (selective
+              disclosure), hər yoxlayan tərəf üçün ayrıca nüsxə və hər sayt üçün
+              ayrıca təxəllüs dəstəklənir.
+            </li>
+            <li>
+              <strong>Özünü sübut etmək.</strong> Rəqəmsal sənəd qəbul edərkən
+              rəqəmsal cüzdan həqiqi və dəyişdirilməmiş cüzdan olduğunu iki
+              sübutla göstərir:{" "}
+              <Term
+                tip="Cüzdan provayderinin bu rəqəmsal cüzdanın onun həqiqi tətbiqi olduğuna dair imzalı bəyanatı."
+                en="Wallet Instance Attestation"
+              >
+                cüzdan nüsxəsinin attestasiyası
+              </Term>{" "}
+              və{" "}
+              <Term
+                tip="Rəqəmsal sənəd açarının təhlükəsiz avadanlıqda yaradıldığını və orada saxlandığını göstərən imzalı bəyanat."
+                en="key attestation"
+              >
+                açar attestasiyası
+              </Term>{" "}
+              (açarın təhlükəsiz avadanlıqda olduğunu təsdiqləyir).
+            </li>
+          </ul>
+
+          <h2>Addım-addım</h2>
+          <ol>
+            <li>
+              <strong>Qaydaları oxuyun.</strong> Tamga Rulebook-dakı rəqəmsal
+              cüzdan qaydaları və cüzdan spesifikasiyası rəqəmsal cüzdanın nə
+              etməli olduğunu nömrələnmiş bəndlərlə göstərir.
+            </li>
+            <li>
+              <strong>Hazırlayın.</strong> Açıq mənbəli cüzdan nüvəsindən
+              istifadə edə bilərsiniz; bu məcburi deyil. Spesifikasiyaya uyğun
+              istənilən proqram təminatı etibarlıdır. Cüzdan provayderinizi Siz
+              özünüz idarə edirsiniz; şəbəkə rəqəmsal cüzdan idarə etmir.
+            </li>
+            <li>
+              <strong>Sandbox-da sınaqdan keçirin.</strong> Cüzdan provayderiniz
+              sandbox siyahısında qeydiyyata alınır (hələlik müraciət əsasında)
+              və Siz rəqəmsal cüzdanınızı oradakı nümunə qurumlar, şəxsiyyət
+              xidməti və yoxlayan tərəflə başdan sona sınaqdan keçirirsiniz.
+              Özünüqeydiyyat və ünvanınızı təqdim etdiyiniz avtomatik uyğunluq
+              testi planlaşdırılır.
+            </li>
+            <li>
+              <strong>Cüzdan həllinizi bəyan edin.</strong> Hansı platformalar,
+              təhlükəsiz avadanlığın hansı səviyyəsi, hansı kilid açma üsulu və
+              hansı ehtiyat nüsxə modeli.
+            </li>
+            <li>
+              <strong>Uyğunluq testlərindən keçin.</strong> Açarların qorunması,
+              razılıq ekranı, tarixçə və silmə, hər iki sübut və təqdimat
+              protokolu; üstəlik real cihazda nümayiş.
+            </li>
+            <li>
+              <strong>Siyahıya daxil olun.</strong> Hər iki sübutu imzaladığınız
+              açar etibar siyahılarının siyahısına əlavə olunur. Bundan sonra
+              şəbəkədəki qurumlar rəqəmsal cüzdanınıza rəqəmsal sənəd verə
+              bilər.
+            </li>
+          </ol>
+          <p>
+            Bu nə qədər vaxt aparır? Bu, komandadan və test nəticələrindən
+            asılıdır.
+          </p>
+
+          <Callout kind="info" locale="az">
+            <p>
+              Şəbəkənin ilk rəqəmsal cüzdanı Tamga Wallet-dır. O, ayrıca
+              məhsuldur və digər rəqəmsal cüzdanlar kimi şəbəkənin qaydalarına
+              əməl edir; onun heç bir xüsusi imtiyazı yoxdur.
+            </p>
+          </Callout>
+
+          <Callout kind="turkic" locale="az">
+            <p>
+              Avropada da eyni qayda işləyir: Avropa İttifaqının (Aİ) hər bir
+              ölkəsi öz vətəndaşlarına rəqəmsal cüzdan təqdim edir, lakin bütün
+              cüzdanlar eyni standartlarla işləyir. Başqa etibar siyahısında
+              qeydiyyatda olan cüzdan provayderi, həmin siyahı federasiya yolu
+              ilə əlavə edilibsə və onun əhatə dairəsi buna imkan verirsə, Tamga
+              Network-da da tanına bilər.
+            </p>
+          </Callout>
+        </>
+      ),
     },
     keyPoints: [
       {
         tr: "Ağ cüzdan seçmez, tanır: kurallara uyan ve testleri geçen her cüzdan çalışır.",
         en: "The network recognises wallets rather than picking them: any wallet that follows the rules and passes the tests works.",
         tk: "Tor gapjyk saýlamaýar, ykrar edýär: düzgünlere eýerýän her gapjyk işleýär.",
+        az: "Şəbəkə rəqəmsal cüzdanları seçmir, tanıyır: qaydalara əməl edən və testlərdən keçən istənilən rəqəmsal cüzdan işləyir.",
       },
       {
         tr: "Cüzdan anahtarı güvenli donanımda tutar, onaysız bilgi göndermez ve kaydı kişide bırakır.",
         en: "A wallet keeps keys in secure hardware, sends nothing without consent and leaves the record with the person.",
         tk: "Gapjyk açary howpsuz enjamda saklaýar, razylyksyz hiç zat ibermeýär we ýazgyny adamda galdyrýar.",
+        az: "Rəqəmsal cüzdan açarları təhlükəsiz avadanlıqda saxlayır, razılıq olmadan heç nə göndərmir və qeydləri şəxsdə saxlayır.",
       },
       {
         tr: "Testleri geçen sağlayıcının imza anahtarı listelerin listesine eklenir; Tamga Wallet da aynı yoldan geçer.",
         en: "A provider that passes has its signing key added to the list of trusted lists; Tamga Wallet takes the same path.",
         tk: "Synagdan geçen üpjün edijiniň açary sanawlaryň sanawyna goşulýar; Tamga Wallet hem şol ýoldan geçýär.",
+        az: "Testlərdən keçən provayderin imza açarı etibar siyahılarının siyahısına əlavə olunur; Tamga Wallet da eyni yolu keçir.",
       },
       {
         tr: "Denemeler ayrı bir test ağında (sandbox) yapılır: uydurma kişiler, ayrı güven kökü ve gerçekçi olsun diye gerçek adlı örnek kurumlar (İstanbul Bilgi Üniversitesi, Bubilet, Paribu Cineverse; İstanbul Bilgi Üniversitesi pilot ortağımızdır, diğer ikisiyle bir ilişki ya da anlaşma yoktur); oradaki belge test anahtarıyla imzalıdır, hiçbir yerde geçmez.",
         en: "Testing happens on a separate test network (the sandbox): made-up people, its own trust root and, to keep it realistic, example institutions under real names (İstanbul Bilgi Üniversitesi, Bubilet, Paribu Cineverse; İstanbul Bilgi Üniversitesi is our pilot partner, and there is no relationship or agreement with the other two); a credential from there is signed with a test key and is not valid anywhere.",
         tk: "Synaglar aýry synag ulgamynda (sandbox) geçirilýär: oýlanyp tapylan adamlar, aýry ynam köki we hakyky bolar ýaly hakyky atly nusga guramalar (İstanbul Bilgi Üniversitesi, Bubilet, Paribu Cineverse; İstanbul Bilgi Üniversitesi biziň pilot hyzmatdaşymyz, beýleki ikisi bilen hiç hili gatnaşyk ýa-da ylalaşyk ýok); ondaky resminama synag açary bilen gol çekilen, hiç ýerde geçmeýär.",
+        az: "Sınaqlar ayrıca test şəbəkəsində (sandbox) aparılır: uydurma şəxslər, öz etibar kökü və real görünməsi üçün həqiqi adlarla nümunə qurumlar (İstanbul Bilgi Üniversitesi, Bubilet, Paribu Cineverse; İstanbul Bilgi Üniversitesi pilot tərəfdaşımızdır, digər ikisi ilə heç bir əlaqə və ya razılaşma yoxdur); oradan verilən rəqəmsal sənəd test açarı ilə imzalanır və heç bir yerdə etibarlı deyil.",
       },
     ],
     deeper: [
@@ -1222,6 +1656,7 @@ export const CHAPTER_7: LearnPage[] = [
           tr: "Cüzdan geliştirmek (rehber)",
           en: "Building a wallet (guide)",
           tk: "Gapjyk döretmek (gollanma)",
+          az: "Rəqəmsal cüzdan yaratmaq (bələdçi)",
         },
         href: "/guides/build-a-wallet",
         kind: "docs",
@@ -1231,6 +1666,7 @@ export const CHAPTER_7: LearnPage[] = [
           tr: "Cüzdan yayın öncesi kontrol listesi",
           en: "Wallet pre-release checklist",
           tk: "Gapjyk barlag sanawy",
+          az: "Rəqəmsal cüzdan üçün buraxılışdan əvvəl yoxlama siyahısı",
         },
         href: "/guides/wallet-checklist",
         kind: "docs",
@@ -1240,6 +1676,7 @@ export const CHAPTER_7: LearnPage[] = [
           tr: "Sandbox: test ağında uçtan uca deneme",
           en: "Sandbox: end-to-end testing on the test network",
           tk: "Sandbox: synag ulgamynda başdan-aýak synag",
+          az: "Sandbox: test şəbəkəsində başdan sona sınaq",
         },
         href: "/guides/sandbox",
         kind: "docs",
@@ -1249,6 +1686,7 @@ export const CHAPTER_7: LearnPage[] = [
           tr: "Uyum testleri",
           en: "Conformance tests",
           tk: "Laýyklyk synaglary",
+          az: "Uyğunluq testləri",
         },
         href: "/guides/conformance",
         kind: "docs",
@@ -1258,6 +1696,7 @@ export const CHAPTER_7: LearnPage[] = [
           tr: "Tamga Rulebook: cüzdan kuralları",
           en: "Tamga Rulebook: wallet rules",
           tk: "Tamga Rulebook: gapjyk düzgünleri",
+          az: "Tamga Rulebook: rəqəmsal cüzdan qaydaları",
         },
         href: "rulebook",
         kind: "arf",
@@ -1271,11 +1710,12 @@ export const CHAPTER_7: LearnPage[] = [
     chapter: 7,
     order: 4,
     minutes: 6,
-    title: { tr: "Devletler için", en: "For states", tk: "Döwletler üçin" },
+    title: { tr: "Devletler için", en: "For states", tk: "Döwletler üçin", az: "Dövlətlər üçün" },
     summary: {
       tr: "Bir devlet kendi güven listesini nasıl yayınlar ve geçici işletmeciden listeyi nasıl devralır.",
       en: "How a state publishes its own trust list and takes the list over from the provisional operator.",
       tk: "Döwlet öz ynam sanawyny nädip çap edýär we sanawy wagtlaýyn operatordan nädip kabul edýär.",
+      az: "Dövlət öz etibar siyahısını necə dərc edir və siyahını müvəqqəti operatordan necə təhvil alır.",
     },
     diagram: "roles",
     body: {
@@ -1563,22 +2003,140 @@ export const CHAPTER_7: LearnPage[] = [
           </Callout>
         </>
       ),
+      az: (
+        <>
+          <p>
+            Tamga Network-un əsas prinsipi: hər dövlət öz siyahısının
+            sahibidir. Ölkə öz qurumlarından hansının rəqəmsal sənəd verə
+            biləcəyinə özü qərar verir; başqa ölkənin siyahısına kimin daxil
+            olacağına isə qərar vermir.
+          </p>
+
+          <h2>Bu gün vəziyyət necədir</h2>
+          <p>
+            Hazırda Türkiyənin siyahısını Tamga müvəqqəti olaraq, dövlət adından
+            idarə edir; siyahıda bu açıq şəkildə qeyd olunur. Digər türk
+            dövlətləri üçün yerlər ayrılıb. Şəbəkə ilk gündən bir çox dövlət
+            üçün qurulub: dövlət qoşulduqda identifikatorlar, siyahının formatı
+            və qaydalar dəyişmir.
+          </p>
+
+          <h2>Dövlət üçün iki yol</h2>
+          <h3>1. Öz siyahısını dərc etmək</h3>
+          <p>
+            Dövlət və ya onun səlahiyyət verdiyi orqan öz etibar siyahısını
+            Avropanın istifadə etdiyi formatda (ETSI TS 119 602) dərc edir.
+            Bundan sonra Tamga-nın etibar siyahılarının siyahısı həmin siyahını
+            dörd məlumatla göstərir:
+          </p>
+          <ul>
+            <li>siyahının dərc ünvanı;</li>
+            <li>
+              siyahını imzalayan sertifikatın sabitlənmiş{" "}
+              <Term
+                tip="Sertifikatın qısa, unikal həzmi; istənilən dəyişiklik dərhal nəzərə çarpır."
+                en="fingerprint"
+              >
+                barmaq izi
+              </Term>
+              ;
+            </li>
+            <li>
+              siyahının hansı rollara və rəqəmsal sənəd növlərinə zəmanət verə
+              biləcəyi (əhatə dairəsi);
+            </li>
+            <li>hansı qərarla və nə vaxt əlavə edildiyi.</li>
+          </ul>
+          <p>
+            Siyahı sahibində qalır; Tamga yalnız ona istinad edir. İmzası uyğun
+            gəlməyən siyahı yüklənmir. Bir siyahı müvəqqəti əlçatmaz olarsa,
+            bu, digərlərinə təsir etmir. Buna{" "}
+            <Term
+              tip="Ayrı-ayrılıqda idarə olunan siyahıların, hər biri öz sahibində qalmaqla, bir-birini tanıması."
+              en="federation"
+            >
+              federasiya
+            </Term>{" "}
+            deyilir.
+          </p>
+          <h3>2. Müvəqqəti operatordan təhvil almaq</h3>
+          <p>
+            Təhvil mərhələlərlə həyata keçirilir və heç bir rəqəmsal sənədi,
+            qeydi və ya identifikatoru etibarsız etmir:
+          </p>
+          <ol>
+            <li>
+              Milli siyahının idarə edilməsi dövlətə keçir; dövlətin imza
+              sertifikatı əlavə olunur.
+            </li>
+            <li>
+              Qeydiyyat orqanı rolu dövlətə keçir; Tamga artıq həmin ölkədə heç
+              kimi qeydiyyata ala bilməz.
+            </li>
+            <li>
+              Milli kök sertifikatın operatoru dəyişir və ya dövlətin öz kökü
+              əlavə olunur.
+            </li>
+            <li>
+              Dövlətin şəxsiyyəti təsdiq edən rəqəmsal sənədi (
+              <Term
+                tip="Dövlətin verdiyi şəxsiyyət sənədi; Aİ-də Person Identification Data."
+                en="PID"
+              >
+                PID
+              </Term>
+              ) üçün ayrılmış yer dövlət tərəfindən doldurulur.
+            </li>
+            <li>
+              Ən azı iki müstəqil operator olduqda şəbəkə ortaq reyestr
+              mərhələsinə keçir.
+            </li>
+          </ol>
+          <p>
+            Rəqəmsal cüzdanlar və yoxlayan tərəflər üçün yalnız ünvan və
+            imzaçı dəyişir; şəxslərin heç nə etməsinə ehtiyac yoxdur.
+          </p>
+
+          <Callout kind="turkic" locale="az">
+            <p>
+              Bir və ya iki dövlət qoşulmağa hazır olduqda şəbəkəni idarə etmək
+              üçün şura və ya fond yaradılır. Üzvlük üçdə iki səslə həyata
+              keçirilir. Hər dövlət hansı ölkələrin rəqəmsal sənədlərini
+              tanıyacağına özü qərar verir; tanınmanın qarşılıqlı olması məcburi
+              deyil.
+            </p>
+          </Callout>
+
+          <h2>Avropa ilə əlaqə</h2>
+          <p>
+            Şəbəkə eyni federasiya üsulu ilə Avropa İttifaqının (Aİ)
+            siyahılarını da xarici siyahılar kimi oxuya bilər. Beləliklə, türk
+            dövlətinin qurumlarının rəqəmsal sənədləri ilə Aİ-nin rəqəmsal
+            sənədləri eyni standartlarla işləyir. Dövlətlərarası hüquqi tanınma
+            uzunmüddətli perspektivdə Aİ ilə ayrıca sazişlər vasitəsilə
+            qurulur.
+          </p>
+        </>
+      ),
     },
     keyPoints: [
       {
         tr: "Her devlet kendi listesinin sahibidir; bugün Türkiye listesini Tamga geçici olarak işletir.",
         en: "Each state owns its list; today Tamga operates Türkiye's list provisionally.",
         tk: "Her döwlet öz sanawynyň eýesi; häzir Türkiýäniň sanawyny Tamga wagtlaýyn işledýär.",
+        az: "Hər dövlət öz siyahısının sahibidir; hazırda Türkiyənin siyahısını Tamga müvəqqəti olaraq idarə edir.",
       },
       {
         tr: "Devlet kendi listesini yayınlarsa ağ onu federasyonla gösterir; liste sahibinde kalır.",
         en: "If a state publishes its own list, the network points to it through federation; the list stays with its owner.",
         tk: "Döwlet öz sanawyny çap etse, tor ony federasiýa arkaly görkezýär.",
+        az: "Dövlət öz siyahısını dərc edərsə, şəbəkə federasiya vasitəsilə ona istinad edir; siyahı sahibində qalır.",
       },
       {
         tr: "Devir adım adım yapılır ve hiçbir belgeyi geçersiz kılmaz; yalnız adres ve imzacı değişir.",
         en: "Hand-over happens step by step and invalidates no credential; only the address and signer change.",
         tk: "Tabşyryş ädimme-ädim bolýar we hiç bir resminamany güýjünden düşürmeýär.",
+        az: "Təhvil addım-addım həyata keçirilir və heç bir rəqəmsal sənədi etibarsız etmir; yalnız ünvan və imzaçı dəyişir.",
       },
     ],
     deeper: [
@@ -1587,12 +2145,13 @@ export const CHAPTER_7: LearnPage[] = [
           tr: "Devletler: liste yayınlama ve federasyon",
           en: "States: publishing a list and federation",
           tk: "Döwletler: sanaw çap etmek",
+          az: "Dövlətlər: siyahının dərci və federasiya",
         },
         href: "/guides/publish-national-list",
         kind: "docs",
       },
       {
-        label: { tr: "Federasyon", en: "Federation", tk: "Federasiýa" },
+        label: { tr: "Federasyon", en: "Federation", tk: "Federasiýa", az: "Federasiya" },
         href: "/concepts/federation",
         kind: "docs",
       },
@@ -1601,6 +2160,7 @@ export const CHAPTER_7: LearnPage[] = [
           tr: "Trust Framework: devir planı",
           en: "Trust Framework: hand-over plan",
           tk: "Trust Framework: tabşyryş meýilnamasy",
+          az: "Trust Framework: təhvil planı",
         },
         href: "trust-framework",
         kind: "arf",
@@ -1610,6 +2170,7 @@ export const CHAPTER_7: LearnPage[] = [
           tr: "Ağa katıl: devletler",
           en: "Join the network: states",
           tk: "Tora goşul: döwletler",
+          az: "Şəbəkəyə qoşulun: dövlətlər",
         },
         href: "/join",
         kind: "site",
@@ -1623,11 +2184,12 @@ export const CHAPTER_7: LearnPage[] = [
     chapter: 7,
     order: 5,
     minutes: 3,
-    title: { tr: "Sırada ne var?", en: "What next?", tk: "Indiki ädim näme?" },
+    title: { tr: "Sırada ne var?", en: "What next?", tk: "Indiki ädim näme?", az: "Növbəti addım nədir?" },
     summary: {
       tr: "Sözlük, geliştirici belgeleri, Tamga ARF ve iletişim: buradan sonra nereye gidilir.",
       en: "The glossary, the developer docs, Tamga ARF and contact: where to go from here.",
       tk: "Sözlük, işläp düzüjiler üçin resminamalar, Tamga ARF we habarlaşmak: şu ýerden soň nirä gitmeli.",
+      az: "Lüğət, tərtibatçı sənədləri, Tamga ARF və əlaqə: buradan sonra hara müraciət etmək olar.",
     },
     body: {
       tr: (
@@ -1747,42 +2309,93 @@ export const CHAPTER_7: LearnPage[] = [
           </p>
         </>
       ),
+      az: (
+        <>
+          <p>
+            Yolun sonuna çatdınız. Rəqəmsal şəxsiyyətdən başlayaraq imzalar,
+            yoxlanıla bilən rəqəmsal sənədlər, məxfilik, Avropanın modeli, etibar
+            siyahıları və Tamga Network ilə tanış oldunuz. Buradan sonra
+            yolunuz rolunuzdan asılıdır.
+          </p>
+
+          <h2>Qaydaları ətraflı oxumaq istəyirsinizsə</h2>
+          <p>
+            Tamga ARF şəbəkənin çərçivəsidir: rollar, etibar modeli, Trust
+            Framework, Tamga Rulebook və rəqəmsal sənəd növləri üzrə
+            rulebook-lar. Onun &quot;Oxu yolu&quot; səhifəsi rolunuza görə nəyi
+            oxumalı olduğunuzu göstərir.
+          </p>
+
+          <h2>Tətbiq etmək istəyirsinizsə</h2>
+          <p>
+            Tərtibatçı sənədləri addım-addım bələdçilər, kod nümunələri, açıq
+            mənbəli paketlər və spesifikasiyalar təqdim edir. &quot;Başlanğıc&quot;
+            səhifəsi Sizə uyğun yolu seçməyə kömək edir.
+          </p>
+
+          <h2>Hansısa termini unutmusunuzsa</h2>
+          <p>
+            Lüğət bu yolda istifadə olunan bütün terminləri qısa izahlarla bir
+            yerə toplayır.
+          </p>
+
+          <h2>Qoşulmaq və ya sual vermək istəyirsinizsə</h2>
+          <p>
+            &quot;Şəbəkəyə qoşulun&quot; səhifəsi qurumlar, cüzdan provayderləri
+            və dövlətlər üçün yolları təsvir edir. Suallarınızı{" "}
+            <strong>info@tamga.network</strong>{" "}
+            ünvanına göndərə bilərsiniz.
+          </p>
+
+          <Callout kind="turkic" locale="az">
+            <p>
+              Tamga Network türk dünyasının rəqəmsal sənədlərinin sərhədlər
+              arasında, şəxsin nəzarəti altında və Avropa ilə eyni dildə dolaşa
+              bilməsi üçün mövcuddur. Buraya qədər oxuyan hər kəs onun bir
+              hissəsi olmağı düşünə bilər.
+            </p>
+          </Callout>
+        </>
+      ),
     },
     keyPoints: [
       {
         tr: "Kuralların ayrıntısı Tamga ARF'de; okuma yolu rolünüze göre yol gösterir.",
         en: "The rules in detail are in Tamga ARF; the reading path guides you by role.",
         tk: "Düzgünleriň jikme-jikligi Tamga ARF-de.",
+        az: "Qaydaların təfərrüatı Tamga ARF-dədir; oxu yolu Sizə rolunuza görə istiqamət verir.",
       },
       {
         tr: "Uygulama için geliştirici belgeleri: rehberler, kod örnekleri, paketler ve şartnameler.",
         en: "For implementation: the developer docs with guides, examples, packages and specifications.",
         tk: "Işläp düzmek üçin: işläp düzüjiler üçin resminamalar.",
+        az: "Tətbiq üçün: bələdçilər, nümunələr, paketlər və spesifikasiyalar olan tərtibatçı sənədləri.",
       },
       {
         tr: 'Katılmak için "Ağa katıl" sayfası; sorular için info@tamga.network.',
         en: 'To join, the "Join the network" page; for questions, info@tamga.network.',
         tk: 'Goşulmak üçin "Tora goşul" sahypasy; soraglar üçin info@tamga.network.',
+        az: 'Qoşulmaq üçün "Şəbəkəyə qoşulun" səhifəsi; suallar üçün info@tamga.network.',
       },
     ],
     deeper: [
       {
-        label: { tr: "Okuma yolu", en: "Reading path", tk: "Okaýyş ýoly" },
+        label: { tr: "Okuma yolu", en: "Reading path", tk: "Okaýyş ýoly", az: "Oxu yolu" },
         href: "reading-path",
         kind: "arf",
       },
       {
-        label: { tr: "Başlarken", en: "Get started", tk: "Başlamak" },
+        label: { tr: "Başlarken", en: "Get started", tk: "Başlamak", az: "Başlanğıc" },
         href: "/guides/",
         kind: "docs",
       },
       {
-        label: { tr: "Sözlük", en: "Glossary", tk: "Sözlük" },
+        label: { tr: "Sözlük", en: "Glossary", tk: "Sözlük", az: "Lüğət" },
         href: "/glossary",
         kind: "docs",
       },
       {
-        label: { tr: "Ağa katıl", en: "Join the network", tk: "Tora goşul" },
+        label: { tr: "Ağa katıl", en: "Join the network", tk: "Tora goşul", az: "Şəbəkəyə qoşulun" },
         href: "/join",
         kind: "site",
       },

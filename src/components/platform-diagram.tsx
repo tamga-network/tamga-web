@@ -68,7 +68,22 @@ const tk: Content = {
   ],
 };
 
-const content: Record<Locale, Content> = { en, tr, tk };
+const az: Content = {
+  eyebrow: "Platforma",
+  title: "Bir rəqəmsal sənəd, hər yerdə yoxlanılır — inteqrasiya tələb olunmur",
+  description:
+    "Sənədi verən qurum rəqəmsal sənədi imzalayaraq sənəd sahibinin rəqəmsal cüzdanına verir; sənəd sahibi onu istənilən yoxlayan tərəfə təqdim edir, yoxlayan tərəf isə sənədi verən quruma heç vaxt müraciət etmədən onu imzalanmış etibar siyahıları əsasında yoxlayır. Fərdi məlumatlar heç vaxt siyahılara daxil edilmir.",
+  issuerSub: "Universitet · X.509",
+  holderSub: "Vətəndaş · öz cüzdanı",
+  verifierSub: "İşəgötürən · RP",
+  principles: [
+    "Fərdi məlumatlar siyahılarda və jurnallarda yoxdur",
+    "X.509 qurumlar · hər yoxlayan tərəf üçün ayrıca nüsxə",
+    "İnfrastruktur əlçatmaz olsa belə, heç vaxt yanlış “rədd” yoxdur",
+  ],
+};
+
+const content: Record<Locale, Content> = { en, tr, tk, az };
 
 function SvgNode({
   cx,

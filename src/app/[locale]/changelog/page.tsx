@@ -20,7 +20,7 @@ const KIND: Record<ReleaseKind, string> = {
 };
 const SECTION_ORDER: SectionKind[] = ["added", "changed", "fixed", "security"];
 
-const loc = (l: string): Locale => (l === "tr" || l === "tk" ? l : "en");
+const loc = (l: string): Locale => (l === "tr" || l === "tk" || l === "az" ? l : "en");
 
 export async function generateMetadata({
   params,

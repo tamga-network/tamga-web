@@ -10,6 +10,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { THEME_COOKIE, type Theme } from "@/lib/theme";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { TranslationNote } from "@/components/translation-note";
 import { JsonLd, siteGraph } from "@/components/json-ld";
 import { pageMeta } from "@/lib/seo";
 
@@ -118,6 +119,7 @@ export default async function LocaleLayout({
               {tc("skipToContent")}
             </a>
             <Header />
+            <TranslationNote locale={locale} />
             <main id="main" tabIndex={-1} className="flex-1 focus:outline-none">
               {children}
             </main>

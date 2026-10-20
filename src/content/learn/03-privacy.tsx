@@ -156,6 +156,15 @@ const ROWS = {
     { label: "Ene-atasynyň ady", shown: false },
     { label: "18 ýaşdan uly", shown: true },
   ],
+  az: [
+    { label: "Ad və soyad", shown: false },
+    { label: "Foto", shown: false },
+    { label: "Doğum tarixi", shown: false },
+    { label: "Doğum yeri", shown: false },
+    { label: "Sənədin nömrəsi", shown: false },
+    { label: "Valideynlərin adı", shown: false },
+    { label: "18 yaşdan yuxarı", shown: true },
+  ],
 };
 
 /* ------------------------------------------------------------------ sayfalar */
@@ -171,27 +180,32 @@ export const CHAPTER_3: LearnPage[] = [
       tr: "Veri azaltma",
       en: "Data minimisation",
       tk: "Maglumaty azaltmak",
+      az: "Məlumatların minimallaşdırılması",
     },
     summary: {
       tr: "Bir işlem için gereken bilgiden fazlasını vermemek neden önemli ve nasıl mümkün olur.",
       en: "Why it matters not to give more than a task needs, and how that becomes possible.",
       tk: "Bir iş üçin zerur maglumatdan artykmaç bermezlik näme üçin möhüm we nädip mümkin bolýar.",
+      az: "Bir işin tələb etdiyindən artıq məlumat verməmək nə üçün vacibdir və bu necə mümkün olur.",
     },
     keyPoints: [
       {
         tr: "Her işlemin bir sorusu vardır; cevap için gereken bilgi çoğu zaman tek bir alandır.",
         en: "Every transaction asks one question; answering it usually takes a single field.",
         tk: "Her işiň bir soragy bar; jogap üçin köplenç diňe bir meýdan gerek.",
+        az: "Hər əməliyyat bir sual verir; ona cavab vermək üçün adətən tək bir sahə kifayətdir.",
       },
       {
         tr: "Fazladan verilen her bilgi saklanır, sızabilir ve başka amaçla kullanılabilir.",
         en: "Every extra piece of data is stored, can leak and can be reused for other purposes.",
         tk: "Artykmaç berlen her maglumat saklanýar, syzyp biler we başga maksat üçin ulanylyp biler.",
+        az: "Verilən hər artıq məlumat saxlanılır, sızdırıla və başqa məqsədlər üçün istifadə oluna bilər.",
       },
       {
         tr: "Dijital belge, veri azaltmayı bir kural olmaktan çıkarıp teknik olarak kolay ve varsayılan yapar.",
         en: "Digital credentials turn data minimisation from a rule into the easy, default behaviour.",
         tk: "Sanly resminama maglumaty azaltmagy düzgün bolmakdan çykaryp, aňsat we adaty ýagdaýa öwürýär.",
+        az: "Rəqəmsal sənədlər məlumatların minimallaşdırılmasını sadəcə qaydadan asan və standart davranışa çevirir.",
       },
     ],
     deeper: [
@@ -200,6 +214,7 @@ export const CHAPTER_3: LearnPage[] = [
           tr: "Kavram: Gizlilik",
           en: "Concept: Privacy",
           tk: "Düşünje: Gizlinlik",
+          az: "Anlayış: Məxfilik",
         },
         href: "/concepts/privacy",
         kind: "docs",
@@ -209,6 +224,7 @@ export const CHAPTER_3: LearnPage[] = [
           tr: "Aşırı talep denetimi (OpenID4VP profili)",
           en: "Over-asking check (OpenID4VP profile)",
           tk: "Artykmaç talap barlagy (OpenID4VP)",
+          az: "Həddən artıq tələbin yoxlanması (OpenID4VP profili)",
         },
         href: "/specifications/openid4vp",
         kind: "docs",
@@ -218,6 +234,7 @@ export const CHAPTER_3: LearnPage[] = [
           tr: "Tamga Rulebook: doğrulayıcı kuralları",
           en: "Tamga Rulebook: verifier rules",
           tk: "Tamga Rulebook: barlaýjy düzgünleri",
+          az: "Tamga Rulebook: yoxlayan tərəf qaydaları",
         },
         href: "rulebook",
         kind: "arf",
@@ -531,6 +548,132 @@ export const CHAPTER_3: LearnPage[] = [
           </p>
         </>
       ),
+      az: (
+        <>
+          <p>
+            Konsertə daxil olursunuz. Qapıdakı işçinin yalnız bir sualı var:
+            "Bu şəxs 18 yaşdan yuxarıdırmı?" Lakin bu gün həmin suala cavab
+            vermək üçün şəxsiyyət vəsiqənizi təqdim edirsiniz. İşçi adınızı,
+            doğum tarixinizi, doğum yerinizi, sənədin nömrəsini, hətta
+            valideynlərinizin adını görür. Cavab tək bir "bəli" idi; siz isə
+            yeddi məlumat verdiniz.
+          </p>
+          <p>
+            Bu səhifə bunun nə üçün vacib olduğunu və rəqəmsal sənədlərin bu
+            balanssızlığı necə aradan qaldırdığını izah edir. Bu anlayış belə
+            adlanır:{" "}
+            <Term
+              tip="Bir iş üçün yalnız həqiqətən lazım olan fərdi məlumatların toplanması prinsipi."
+              en="data minimisation"
+            >
+              məlumatların minimallaşdırılması
+            </Term>
+            .
+          </p>
+
+          <h2>Hər əməliyyat bir sual verir</h2>
+          <p>
+            Şəxsiyyət vəsiqəsi göstərdiyimiz anların çoxunda əslində tək bir
+            cavab axtarılır. Otelin qəbul masası soruşur: "Rezervasiyanı edən
+            şəxs sizsinizmi?" Tələbə endirimi olan muzey soruşur: "Siz
+            tələbəsinizmi?" İşəgötürən soruşur: "Bu diplom həqiqidirmi və sizə
+            məxsusdurmu?" Sərhəd buraxılış məntəqəsi isə daha çox soruşur və
+            buna haqqı da var.
+          </p>
+          <p>
+            Məlumatların minimallaşdırılmasının mahiyyəti sadədir: sual nə qədər
+            kiçikdirsə, cavab da o qədər kiçik olmalıdır. Konsert qapısına doğum
+            tarixiniz lazım deyil; ona yalnız "18 yaşdan yuxarı" ifadəsinin
+            doğru olduğunu bilmək kifayətdir.
+          </p>
+          <Figure caption="Solda bu günkü vəziyyət: şəxsiyyət vəsiqəsinin bütün sahələri görünür. Sağda olmalı olan: yalnız sualın cavabı.">
+            <MinimisationCompare
+              left="Şəxsiyyət vəsiqəsi ilə"
+              right="Rəqəmsal sənəd ilə"
+              rows={ROWS.az}
+            />
+          </Figure>
+
+          <h2>Artıq məlumat nə üçün zərərlidir?</h2>
+          <p>
+            Təqdim etdiyiniz məlumat yox olmur. Onun surəti çıxarılır, qovluğa
+            qoyulur, kompüterə daxil edilir və ya reyestrə yazılır. Saxlanılan
+            hər məlumat üç risk daşıyır:
+          </p>
+          <ul>
+            <li>
+              <strong>Sızma:</strong> verilənlər bazaları hücuma məruz qalır.
+              Heç vaxt əlində saxlamadığı məlumatı heç kim sızdıra bilməz.
+            </li>
+            <li>
+              <strong>Başqa məqsədlə istifadə:</strong> bir məqsəd üçün
+              toplanmış məlumat zamanla marketinqdə, profilləşdirmədə və ya
+              başqaları ilə paylaşılmada istifadə olunur.
+            </li>
+            <li>
+              <strong>Şəxsiyyət oğurluğu:</strong> sənəd nömrəsi, doğum tarixi
+              və ananın adı birlikdə başqasının adından hərəkət etməyi
+              asanlaşdırır.
+            </li>
+          </ul>
+          <p>
+            Məhz buna görə Türkiyədəki{" "}
+            <Term
+              tip="Türkiyənin Fərdi məlumatların qorunması haqqında 6698 saylı Qanunu."
+              en="KVKK"
+            >
+              KVKK
+            </Term>{" "}
+            və Avropadakı{" "}
+            <Term
+              tip="Avropa İttifaqının (Aİ) Ümumi Məlumatların Mühafizəsi Reqlamenti, (Aİ) 2016/679."
+              en="GDPR"
+            >
+              GDPR
+            </Term>{" "}
+            kimi qanunlar fərdi məlumatların bəyan edilmiş məqsəd üçün və
+            mütənasib şəkildə emal edilməsini tələb edir. Lakin təkcə qanun
+            kifayət deyil: plastik şəxsiyyət vəsiqəsinin bir sahəsini "örtmək"
+            mümkün deyil. Qayda var, alət yoxdur.
+          </p>
+
+          <h2>Rəqəmsal sənədlər bunu necə asanlaşdırır</h2>
+          <p>
+            Rəqəmsal sənəddə hər məlumat ayrıca sahədir və sahələr bir-birindən
+            asılı olmadan göstərilə bilər. Yoxlayan tərəf sorğu göndərir: "Mənə
+            yalnız yaş məlumatını göstərin." Rəqəmsal cüzdan bu sorğunu şəxsə
+            göstərir; şəxs razılaşarsa, telefondan yalnız həmin sahə göndərilir.
+            Rəqəmsal sənəd yenə də sənədi verən qurumun imzasını daşıdığı üçün
+            yoxlayan tərəf aldığı tək sahənin həqiqi olduğunu bilir.
+          </p>
+          <p>
+            Tamga Network bu prinsipi öz qaydalarına da yazır. Şəbəkəyə qoşulan
+            hər yoxlayan tərəf qeydiyyatdan keçərkən hansı məlumatları və nə
+            üçün istəyəcəyini bəyan edir. Sorğu bu qeydiyyatın hüdudlarını
+            aşarsa, rəqəmsal cüzdan şəxsi xəbərdar edir: "Bu təşkilat
+            qeydiyyatdakı məqsədindən artıq məlumat istəyir." Qərar yenə də
+            şəxsə məxsusdur, lakin indi bu, məlumatlı qərardır.
+          </p>
+          <Callout kind="turkic" locale="az">
+            <p>
+              Daşkənddən olan bir mühəndisin Almatıdakı bir şirkətə işə
+              müraciət etdiyini təsəvvür edin. Bu gün o, diplomunun, şəxsiyyət
+              vəsiqəsinin, bəzən də pasportunun surətini göndərir və bu
+              surətlər illərlə şirkətin arxivində qalır. Rəqəmsal sənədlə yalnız
+              "məzun olub, ixtisas, dərəcə" məlumatı paylaşılır; şəxsiyyət
+              vəsiqəsinin nömrəsi heç yerə getmir.
+            </p>
+          </Callout>
+
+          <h2>Növbəti addım</h2>
+          <p>
+            "Yalnız bir sahəni göstərmək" sadə səslənir. Bəs imzalanmış sənədin
+            bir hissəsini necə gizlətmək və imzanı etibarlı saxlamaq olar?
+            Növbəti səhifə bu texnikanı izah edir: seçici paylaşım (selective
+            disclosure).
+          </p>
+        </>
+      ),
     },
   },
 
@@ -545,27 +688,32 @@ export const CHAPTER_3: LearnPage[] = [
       tr: "Seçici paylaşım",
       en: "Selective disclosure",
       tk: "Saýlap paýlaşmak",
+      az: "Seçici paylaşım",
     },
     summary: {
       tr: "Belgenin her alanı ayrı mühürlenir; kişi yalnız istenen alanı açar, gerisi kapalı kalır.",
       en: "Each field of a credential is sealed separately; the person opens only the field asked for, the rest stays closed.",
       tk: "Resminamanyň her meýdany aýratyn möhürlenýär; adam diňe soralan meýdany açýar, galany ýapyk galýar.",
+      az: "Rəqəmsal sənədin hər sahəsi ayrıca möhürlənir; şəxs yalnız istənilən sahəni açır, qalanları bağlı qalır.",
     },
     keyPoints: [
       {
         tr: "Kurum her alanı ayrı bir mühürle (salted hash) kapatır ve yalnız mühürlerin listesini imzalar.",
         en: "The issuer seals each field separately (a salted hash) and signs only the list of seals.",
         tk: "Edara her meýdany aýratyn möhür (salted hash) bilen ýapýar we diňe möhürleriň sanawyna gol çekýär.",
+        az: "Sənədi verən qurum hər sahəni ayrıca möhürləyir (salted hash) və yalnız möhürlərin siyahısını imzalayır.",
       },
       {
         tr: "Kişi yalnız istenen alanların anahtarını gönderir; doğrulayan onları imzalı mühürlerle karşılaştırır.",
         en: "The person sends only the requested fields; the verifier checks them against the signed seals.",
         tk: "Adam diňe soralan meýdanlary iberýär; barlaýjy olary gol çekilen möhürler bilen deňeşdirýär.",
+        az: "Şəxs yalnız istənilən sahələri göndərir; yoxlayan tərəf onları imzalanmış möhürlərlə tutuşdurur.",
       },
       {
         tr: "Gösterilmeyen alanlar tahmin edilemez; gösterim kişinin cihaz anahtarıyla imzalandığı için kopyalanamaz.",
         en: "Hidden fields cannot be guessed, and because each presentation is signed with the person's device key it cannot be replayed.",
         tk: "Görkezilmedik meýdanlar çaklanyp bilinmeýär; görkeziş adamyň enjam açary bilen gol çekilýänligi üçin gaýtalanyp bilinmeýär.",
+        az: "Gizli sahələri təxmin etmək mümkün deyil; hər təqdimat şəxsin cihaz açarı ilə imzalandığı üçün onu təkrar istifadə etmək olmur.",
       },
     ],
     deeper: [
@@ -574,6 +722,7 @@ export const CHAPTER_3: LearnPage[] = [
           tr: "SD-JWT VC profili",
           en: "SD-JWT VC profile",
           tk: "SD-JWT VC profili",
+          az: "SD-JWT VC profili",
         },
         href: "/specifications/sd-jwt-vc",
         kind: "docs",
@@ -583,6 +732,7 @@ export const CHAPTER_3: LearnPage[] = [
           tr: "Kavram: Belge biçimleri",
           en: "Concept: Credential formats",
           tk: "Düşünje: Resminama görnüşleri",
+          az: "Anlayış: Rəqəmsal sənəd formatları",
         },
         href: "/concepts/credential-formats",
         kind: "docs",
@@ -592,6 +742,7 @@ export const CHAPTER_3: LearnPage[] = [
           tr: "Karar: SD-JWT VC biçimi",
           en: "Decision: the SD-JWT VC format",
           tk: "Karar: SD-JWT VC",
+          az: "Qərar: SD-JWT VC formatı",
         },
         href: "/adr/0006-credential-format-sd-jwt-vc",
         kind: "docs",
@@ -601,6 +752,7 @@ export const CHAPTER_3: LearnPage[] = [
           tr: "Ek D: Tanımlar",
           en: "Annex D: Definitions",
           tk: "D goşundy: Kesgitlemeler",
+          az: "D əlavəsi: Təriflər",
         },
         href: "definitions",
         kind: "arf",
@@ -948,6 +1100,148 @@ export const CHAPTER_3: LearnPage[] = [
           </p>
         </>
       ),
+      az: (
+        <>
+          <p>
+            Əvvəlki səhifədə belə bir nəticəyə gəldik: şəxs yalnız lazım olanı
+            göstərməlidir. Bu, bir tapmaca yaradır. Rəqəmsal sənədin dəyəri
+            sənədi verən qurumun imzasından irəli gəlir, imza isə bütün sənədi
+            qoruyur; bir hərfi dəyişsəniz, imza pozulur. Bəs imzalanmış
+            rəqəmsal sənədin bir hissəsini necə gizlətmək və imzanı etibarlı
+            saxlamaq olar?
+          </p>
+          <p>
+            Cavab belə adlanır:{" "}
+            <Term
+              tip="Rəqəmsal sənədin yalnız istənilən sahələrini göstərmək, qalanlarını isə gizli saxlamaq."
+              en="selective disclosure"
+            >
+              seçici paylaşım (selective disclosure)
+            </Term>
+            . Bir bənzətmə ilə başlayaq, sonra bunun əslində necə işlədiyinə
+            baxaq.
+          </p>
+
+          <h2>Bənzətmə: zərflər və möhürlü siyahı</h2>
+          <p>
+            Təsəvvür edin ki, universitet sizə diplomu bir vərəq kağız kimi
+            deyil, bir neçə kiçik zərf şəklində verir. Hər zərfdə bir fakt var:
+            adınız, ixtisasınız, məzun olduğunuz il, orta qiymətiniz.
+            Universitet hər zərfin üzərinə yalnız ona məxsus möhür vurur,
+            möhürlərin siyahısını bir səhifəyə yazır və həmin səhifəni
+            imzalayır.
+          </p>
+          <p>
+            İşəgötürən yalnız ixtisasınızı və məzun olduğunuz ili soruşduqda ona
+            imzalanmış siyahını və yalnız həmin iki zərfi verirsiniz. İşəgötürən
+            onları açır, içindəkilərin möhürlərə uyğun gəldiyini yoxlayır və
+            siyahının universitet tərəfindən imzalandığını görür. Orta
+            qiymətinizin olduğu zərf sizdə qalır; işəgötürən siyahıda möhürü
+            görür, lakin içində nə olduğunu bilə bilmir.
+          </p>
+
+          <h2>Əslində necə işləyir</h2>
+          <p>
+            Zərflər kiçik məlumat paketləridir; möhürlər isə barmaq izləridir:
+          </p>
+          <ol>
+            <li>
+              Sənədi verən qurum hər sahə üçün təsadüfi dəyər yaradır, buna{" "}
+              <em>salt</em> deyilir. Sahə və onun salt dəyəri{" "}
+              <Term
+                tip="Məlumatın qısa barmaq izi: məlumat dəyişərsə, barmaq izi də dəyişir; ondan məlumatı geri bərpa etmək mümkün deyil."
+                en="hash"
+              >
+                hash
+              </Term>{" "}
+              dəyərinə çevrilir. Nəticə{" "}
+              <Term
+                tip="Təsadüfi dəyərlə qarışdırılmış hash; buna görə eyni məlumat hər dəfə fərqli hash verir."
+                en="salted hash"
+              >
+                salted hash
+              </Term>{" "}
+              adlanır.
+            </li>
+            <li>
+              Sənədi verən qurum rəqəmsal sənədə sahələrin özünü deyil, yalnız
+              bu hash dəyərlərini daxil edir və onların siyahısını imzalayır.
+            </li>
+            <li>
+              Sahələrin oxunaqlı variantları (salt, sahənin adı, dəyər) rəqəmsal
+              cüzdana ayrı-ayrı kiçik paketlər kimi gəlir.
+            </li>
+            <li>
+              Təqdimat zamanı rəqəmsal cüzdan yalnız istənilən paketləri
+              göndərir. Yoxlayan tərəf hər paketin hash dəyərini özü hesablayır
+              və onu imzalanmış siyahı ilə müqayisə edir.
+            </li>
+          </ol>
+          <p>
+            Salt nə üçün lazımdır? Doğum tarixi kimi sahələrin mümkün dəyərləri
+            məhduddur. Salt olmasaydı, kimsə bütün mümkün tarixlərin hash
+            dəyərini hesablayıb uyğun gələnini tapa bilərdi. Təsadüfi salt bunu
+            qeyri-mümkün edir: sahəni görməyən hər kəs üçün onun hash dəyəri
+            mənasız bir rəqəmdir.
+          </p>
+
+          <h2>Kimsə onu kopyalayıb istifadə edə bilərmi?</h2>
+          <p>
+            Xeyr. Rəqəmsal sənəd verilərkən şəxsin telefonundakı{" "}
+            <Term
+              tip="Telefonun daxilində yaradılan və heç vaxt oradan çıxmayan şəxsi açar; rəqəmsal sənədi həmin cihaza bağlayır."
+              en="device key"
+            >
+              cihaz açarına
+            </Term>{" "}
+            bağlanır. Hər təqdimatda rəqəmsal cüzdan həmin açarla yoxlayan
+            tərəfin göndərdiyi birdəfəlik rəqəmi (yəni{" "}
+            <Term
+              tip="Bir dəfə istifadə olunan təsadüfi rəqəm; köhnə cavabın təkrar istifadəsinin qarşısını alır."
+              en="nonce"
+            >
+              nonce
+            </Term>
+            ) imzalayır. Bundan sonra yoxlayan tərəf iki şeyə əmin olur:
+            rəqəmsal sənəd həqiqidir və onu təqdim edən şəxs onun sahibidir.
+            Ələ keçirilmiş köhnə təqdimat başqa heç yerdə işə yaramır.
+          </p>
+          <Callout kind="info" locale="az">
+            <p>
+              Tamga internet üçün{" "}
+              <Term
+                tip="Avropada istifadə olunan, seçici paylaşımı dəstəkləyən rəqəmsal sənəd formatı."
+                en="SD-JWT VC"
+              >
+                SD-JWT VC
+              </Term>{" "}
+              formatından, üzbəüz istifadə üçün isə ISO mdoc formatından
+              istifadə edir. Hər ikisində ideya eynidir: hər sahə üçün hash,
+              imzalanmış siyahı və yalnız istənilən sahələrin açılması.
+            </p>
+          </Callout>
+          <Callout kind="turkic" locale="az">
+            <p>
+              Bişkekdəki bir otelə yalnız rezervasiyadakı adın pasportdakı adla
+              üst-üstə düşdüyünü bilmək lazımdır. Seçici paylaşımla ad və soyad
+              paylaşılır; pasportun nömrəsi, doğum tarixi və vətəndaşlıq
+              telefonda qalır. Otel yenə də adın dövlət sənədindən gəldiyini
+              sübutla görür.
+            </p>
+          </Callout>
+
+          <h2>Hüdudu haradadır?</h2>
+          <p>
+            Seçici paylaşım gizli sahələrin məzmununu qoruyur. Lakin
+            göstərdiyiniz sahə yenə də bir dəyərdir: yoxlayan tərəf "18 yaşdan
+            yuxarı" əvəzinə doğum tarixini istəyə bilər. Bundan əlavə, rəqəmsal
+            sənədin eyni nüsxəsi iki yerdə göstərilərsə, hər iki təqdimat eyni
+            imzanı və eyni hash dəyərlərini daşıyır. Növbəti iki səhifə bu
+            məhdudiyyətlərdən bəhs edir: sıfır bilikli sübutlar və
+            əlaqələndirilməzlik.
+          </p>
+        </>
+      ),
     },
   },
 
@@ -962,27 +1256,32 @@ export const CHAPTER_3: LearnPage[] = [
       tr: "Sıfır bilgi ispatı",
       en: "Zero-knowledge proofs",
       tk: "Nol bilimli subutnama",
+      az: "Sıfır bilikli sübutlar",
     },
     summary: {
       tr: "Doğum tarihini göstermeden 18 yaşından büyük olduğunu kanıtlamak: matematik bunu nasıl yapar?",
       en: "Proving you are over 18 without showing your date of birth: how mathematics makes it possible.",
       tk: "Doglan senäňi görkezmän 18 ýaşdan uludygyňy subut etmek: matematika muny nädip edýär?",
+      az: "Doğum tarixinizi göstərmədən 18 yaşdan yuxarı olduğunuzu sübut etmək: riyaziyyat bunu necə mümkün edir.",
     },
     keyPoints: [
       {
         tr: "Sıfır bilgi ispatı, bir cümlenin doğru olduğunu, cümleyi doğru yapan bilgiyi göstermeden kanıtlar.",
         en: "A zero-knowledge proof shows a statement is true without revealing the data that makes it true.",
         tk: "Nol bilimli subutnama bir tassyklamanyň dogrudygyny, ony dogry edýän maglumaty görkezmän subut edýär.",
+        az: "Sıfır bilikli sübut bir müddəanın doğru olduğunu, onu doğru edən məlumatı açıqlamadan göstərir.",
       },
       {
         tr: "Tamga'da kurumlar hiçbir şey değiştirmez; ispatı cüzdan, kurumun bugünkü imzalı belgesinden üretir.",
         en: "In Tamga issuers change nothing; the wallet builds the proof from today's signed credential.",
         tk: "Tamga-da edaralar hiç zady üýtgetmeýär; subutnamany gapjyk häzirki gol çekilen resminamadan döredýär.",
+        az: "Tamga-da sənədi verən qurumlar heç nəyi dəyişmir; rəqəmsal cüzdan sübutu bugünkü imzalanmış rəqəmsal sənəddən qurur.",
       },
       {
         tr: "Doğrulayan yalnız sonucu ve belgeyi veren kurumu görür; iki gösterim birbirine bağlanamaz.",
         en: "The verifier sees only the result and the issuer; two presentations cannot be linked.",
         tk: "Barlaýjy diňe netijäni we resminamany beren edarany görýär; iki görkeziş birleşdirilip bilinmeýär.",
+        az: "Yoxlayan tərəf yalnız nəticəni və sənədi verən qurumu görür; iki təqdimatı bir-biri ilə əlaqələndirmək mümkün deyil.",
       },
     ],
     deeper: [
@@ -991,6 +1290,7 @@ export const CHAPTER_3: LearnPage[] = [
           tr: "Karar: Sıfır bilgi ispatı (ZK)",
           en: "Decision: Zero-knowledge proofs (ZK)",
           tk: "Karar: ZK",
+          az: "Qərar: Sıfır bilikli sübutlar (ZK)",
         },
         href: "/adr/0032-zk-mdoc-presentation",
         kind: "docs",
@@ -1000,6 +1300,7 @@ export const CHAPTER_3: LearnPage[] = [
           tr: "Kavram: Gizlilik",
           en: "Concept: Privacy",
           tk: "Düşünje: Gizlinlik",
+          az: "Anlayış: Məxfilik",
         },
         href: "/concepts/privacy",
         kind: "docs",
@@ -1009,6 +1310,7 @@ export const CHAPTER_3: LearnPage[] = [
           tr: "Identity Rulebook",
           en: "Identity Rulebook",
           tk: "Identity Rulebook",
+          az: "Identity Rulebook",
         },
         href: "rulebooks/identity",
         kind: "arf",
@@ -1294,6 +1596,119 @@ export const CHAPTER_3: LearnPage[] = [
           </Callout>
         </>
       ),
+      az: (
+        <>
+          <p>
+            Seçici paylaşımla doğum tarixinizi göstərib adınızı gizlədə
+            bilərsiniz. Bəs doğum tarixinizi də göstərmək istəmirsinizsə?
+            Konsert qapısının sualı heç vaxt "Doğum tarixiniz nədir?" olmayıb,
+            sual "18 yaşdan yuxarısınızmı?" idi. Bu səhifə məhz bunu necə sübut
+            etməyi izah edir.
+          </p>
+
+          <h2>Göstərmədən sübut etmək</h2>
+          <p>
+            Klassik nümunə: rəng korluğu olan dostunuza əlinizdəki iki topun
+            müxtəlif rəngdə olduğunu sübut etmək istəyirsiniz. O, topları
+            arxasında gizlədir, yerlərini dəyişir və ya dəyişmir, sonra sizə
+            göstərir. Siz hər dəfə yerlərin dəyişdirilib-dəyişdirilmədiyini
+            düzgün deyirsiniz. İyirmi raunddan sonra dostunuz topların fərqli
+            olduğuna əmin olur, lakin hansı topun hansı rəngdə olduğunu hələ də
+            bilmir.
+          </p>
+          <p>
+            Bu,{" "}
+            <Term
+              tip="Bir müddəanın doğru olduğunu, onu doğru edən məlumatı açıqlamadan sübut edən riyazi üsul."
+              en="zero-knowledge proof"
+            >
+              sıfır bilikli sübutun
+            </Term>{" "}
+            mahiyyətidir: qarşı tərəf müddəanın doğru olduğuna əmin olur, lakin
+            onun arxasındakı məlumat haqqında heç nə öyrənmir. Müasir sistemlər
+            bunu raundlarla deyil, bir dəfə hesablanan və bir dəfə yoxlanılan
+            tək bir riyazi sübutla edir.
+          </p>
+
+          <h2>Tamga-da yaş sübutu necə işləyir</h2>
+          <ol>
+            <li>
+              Sənədi verən qurum şəxsiyyət sənədini bu gün olduğu kimi verir və
+              imzalayır. Sənədi verən qurumun tərəfində heç nə dəyişmir və bu
+              vacibdir: şəbəkədəki qurumlara yeni heç nə qurmaq lazım gəlmir.
+            </li>
+            <li>
+              Sayt və ya giriş qapısı "18 yaşdan yuxarıdırmı?" deyə soruşduqda
+              rəqəmsal cüzdan sübut hazırlayır. Sübut deyir: "Məndə bu qurumun
+              imzaladığı rəqəmsal sənəd var və orada göstərilən doğum tarixi 18
+              ildən daha əvvəldir."
+            </li>
+            <li>
+              Yoxlayan tərəf sübutu yoxlayır. O, yalnız iki şeyi görür:
+              müddəanın doğru olduğunu və rəqəmsal sənədi hansı qurumun
+              verdiyini. Doğum tarixini, sənədin nömrəsini, hətta rəqəmsal
+              sənədin özünü belə görmür.
+            </li>
+          </ol>
+          <p>
+            Tamga{" "}
+            <Term
+              tip="mdoc rəqəmsal sənədləri üçün Google tərəfindən hazırlanmış və müstəqil təhlükəsizlik yoxlamasından keçmiş açıq mənbəli sıfır bilikli sübut sistemi."
+              en="Longfellow ZK"
+            >
+              Longfellow ZK
+            </Term>{" "}
+            adlı açıq mənbəli sistemdən istifadə edir; Avropanın yaş yoxlaması
+            üzrə işləri də bu sistem üzərində qurulub. Yalnız yoxlanılmış və
+            identifikatorları etibar siyahısında dərc olunmuş sübut sxemləri
+            qəbul edilir, buna görə heç kim yoxlayan tərəfi özü hazırladığı
+            "sübut" ilə aldada bilməz.
+          </p>
+          <Callout kind="info" locale="az">
+            <p>
+              Daha bir üstünlük var: eyni şəxs eyni sayta iki dəfə və ya iki
+              fərqli sayta sübut göstərdikdə sübutlar bir-birinə heç oxşamır.
+              Əvvəlki səhifədəki "eyni imza iki yerdə görünür" məhdudiyyəti
+              aradan qalxır.
+            </p>
+          </Callout>
+
+          <Callout kind="info" title="Vəziyyət" locale="az">
+            <p>
+              Yoxlayan tərəf hissəsi artıq istifadədədir; rəqəmsal cüzdan
+              hissəsi cüzdanların mağaza buraxılışı ilə gəlir.
+            </p>
+          </Callout>
+          <h2>Hər yerdə işləyirmi?</h2>
+          <p>
+            Sübut hazırlamaq telefondan müəyyən hesablama gücü tələb edir və
+            bəzi köhnə cihazlar və ya yoxlayan tərəflər hələ bunu dəstəkləməyə
+            bilər. Belə halda rəqəmsal cüzdan ehtiyat üsula keçir: doğum tarixi
+            əvəzinə rəqəmsal sənədin yalnız "18 yaşdan yuxarı: bəli" sahəsini
+            ehtiva edən bir neçə birdəfəlik nüsxəsindən birini göstərir.
+            Növbəti səhifə bu nüsxələri izah edir.
+          </p>
+          <Callout kind="turkic" locale="az">
+            <p>
+              Aşqabadda yaşayan bir tələbə İstanbulda yerləşən onlayn oyun
+              platformasına yaşını sübut etməlidir. Bu gün ondan şəxsiyyət
+              vəsiqəsinin fotosunu yükləmək tələb olunur və həmin foto başqa
+              ölkədəki serverdə qalır. Sıfır bilikli sübutla platforma yalnız
+              "18 yaşdan yuxarı" nəticəsini görür; tələbənin adı, doğum tarixi
+              və sənədi heç yerə getmir.
+            </p>
+          </Callout>
+
+          <h2>Nə üçün vacibdir</h2>
+          <p>
+            Onlayn mühitdə yaş yoxlaması getdikcə məcburi olur: alkoqol, qumar,
+            müəyyən məzmun, bəzi platformalar. Şəxsiyyət vəsiqəsinin fotosunu
+            yükləmək sızma riskləri yaradır və insanları izlənilən edir. Sıfır
+            bilikli sübutlar qaydanın şəxsi ifşa etmədən tətbiq oluna biləcəyini
+            göstərir.
+          </p>
+        </>
+      ),
     },
   },
 
@@ -1308,27 +1723,32 @@ export const CHAPTER_3: LearnPage[] = [
       tr: "İlişkilendirilemezlik",
       en: "Unlinkability",
       tk: "Baglanyşdyrylmazlyk",
+      az: "Əlaqələndirilməzlik",
     },
     summary: {
       tr: "Tek kullanımlık kopyalar ve site başına takma ad: farklı yerlerdeki izlerin birleştirilememesi.",
       en: "Single-use copies and a pseudonym per site: traces in different places cannot be joined up.",
       tk: "Bir gezeklik nusgalar we her saýt üçin lakam: dürli ýerlerdäki yzlar birleşdirilip bilinmeýär.",
+      az: "Birdəfəlik nüsxələr və hər sayt üçün təxəllüs: müxtəlif yerlərdəki izləri birləşdirmək mümkün deyil.",
     },
     keyPoints: [
       {
         tr: "Aynı belge kopyası iki yerde gösterilirse iki gösterim aynı imzayı taşır ve birbirine bağlanabilir.",
         en: "If the same copy is shown in two places, both carry the same signature and can be linked.",
         tk: "Şol bir nusga iki ýerde görkezilse, ikisi hem şol bir goly göterýär we birleşdirilip bilner.",
+        az: "Eyni nüsxə iki yerdə göstərilərsə, hər ikisi eyni imzanı daşıyır və onları əlaqələndirmək olar.",
       },
       {
         tr: "Cüzdan bir belgenin birkaç kopyasını taşır; her doğrulayıcıya hep aynı, başkalarına farklı kopya gider.",
         en: "The wallet holds several copies of a credential; each verifier always gets the same one, others get different ones.",
         tk: "Gapjyk resminamanyň birnäçe nusgasyny saklaýar; her barlaýja hemişe şol bir, beýlekilere başga nusga gidýär.",
+        az: "Rəqəmsal cüzdan rəqəmsal sənədin bir neçə nüsxəsini saxlayır; hər yoxlayan tərəf həmişə eyni nüsxəni, digərləri isə fərqli nüsxələr alır.",
       },
       {
         tr: "Tamga ile giriş yaparken her site kişiyi kendine özgü bir takma adla tanır; iki site kişiyi eşleştiremez.",
         en: "With Sign in with Tamga every site knows the person by its own pseudonym; two sites cannot match them.",
         tk: "Tamga bilen girişde her saýt adamy öz lakamy bilen tanaýar; iki saýt adamy deňeşdirip bilmeýär.",
+        az: "\"Tamga ilə daxil ol\" vasitəsilə hər sayt şəxsi öz təxəllüsü ilə tanıyır; iki sayt onu uyğunlaşdıra bilməz.",
       },
     ],
     deeper: [
@@ -1337,6 +1757,7 @@ export const CHAPTER_3: LearnPage[] = [
           tr: "Karar: Site başına takma ad",
           en: "Decision: Per-site pseudonyms",
           tk: "Karar: Her saýt üçin lakam",
+          az: "Qərar: Hər sayt üçün ayrıca təxəllüs",
         },
         href: "/adr/0031-per-site-pseudonyms",
         kind: "docs",
@@ -1346,6 +1767,7 @@ export const CHAPTER_3: LearnPage[] = [
           tr: "Cüzdan kuralları (yapışkan kopya)",
           en: "Wallet rules (sticky copy)",
           tk: "Gapjyk düzgünleri",
+          az: "Rəqəmsal cüzdan qaydaları (sabit nüsxə)",
         },
         href: "/specifications/wallet",
         kind: "docs",
@@ -1355,6 +1777,7 @@ export const CHAPTER_3: LearnPage[] = [
           tr: "Karar: Otomatik kopya yenileme",
           en: "Decision: Automatic copy refresh",
           tk: "Karar: Nusgalary awtomatik täzelemek",
+          az: "Qərar: Nüsxələrin avtomatik yenilənməsi",
         },
         href: "/adr/0023-automatic-copy-refresh",
         kind: "docs",
@@ -1364,6 +1787,7 @@ export const CHAPTER_3: LearnPage[] = [
           tr: "Rehber: Tamga ile giriş yap",
           en: "Guide: Sign in with Tamga",
           tk: "Gollanma: Tamga bilen giriş",
+          az: "Bələdçi: Tamga ilə daxil ol",
         },
         href: "/guides/sign-in-with-tamga",
         kind: "docs",
@@ -1622,6 +2046,112 @@ export const CHAPTER_3: LearnPage[] = [
           </p>
         </>
       ),
+      az: (
+        <>
+          <p>
+            Fərz edək ki, seçici paylaşım və sıfır bilikli sübutlar sayəsində
+            hər yerdə yalnız lazım olanı göstərirsiniz. Yenə də bir risk qalır:
+            müxtəlif yerlərdə qoyduğunuz izləri birləşdirmək olarmı? Veb-sayt,
+            otel və sağlamlıq tətbiqi qeydlərini müqayisə edib "bu üçü eyni
+            şəxsə aiddir" deyə bilərmi?
+          </p>
+          <p>
+            Bunun qarşısının alınması belə adlanır:{" "}
+            <Term
+              tip="Şəxsin müxtəlif yerlərdəki təqdimatlarının bir-biri ilə əlaqələndirilə bilməməsi xüsusiyyəti."
+              en="unlinkability"
+            >
+              əlaqələndirilməzlik
+            </Term>
+            . Tamga buna iki vasitə ilə nail olur: birdəfəlik rəqəmsal sənəd
+            nüsxələri və hər sayt üçün təxəllüs.
+          </p>
+
+          <h2>Problem: eyni imza, eyni iz</h2>
+          <p>
+            İmzalanmış rəqəmsal sənəd harada göstərilirsə göstərilsin, eyni
+            imzanı və hash dəyərlərini daşıyır. Bu imza barmaq izi kimi
+            davranır. Yalnız "18 yaşdan yuxarı" məlumatını göstərsəniz belə,
+            eyni imzanı görən iki yoxlayan tərəf eyni rəqəmsal sənədi, deməli,
+            eyni şəxsi gördüklərini anlaya bilər.
+          </p>
+
+          <h2>Həll 1: bir neçə nüsxə</h2>
+          <p>
+            Sənədi verən qurum eyni rəqəmsal sənədin bir neçə nüsxəsini verir;
+            hər biri fərqli hash dəyərləri ilə ayrıca imzalanır. Rəqəmsal cüzdan
+            onlardan ehtiyatla istifadə edir:
+          </p>
+          <ul>
+            <li>
+              Konkret yoxlayan tərəf <strong>həmişə eyni nüsxəni alır</strong>.
+              Əgər o sizi artıq tanıyırsa, yeni heç nə öyrənmir və nüsxələr boş
+              yerə sərf olunmur.
+            </li>
+            <li>
+              <strong>Fərqli yoxlayan tərəflər fərqli nüsxələr alır</strong>.
+              Onlardan ikisi imzaları müqayisə etsə belə, uyğunluq tapmır.
+            </li>
+            <li>
+              Nüsxələr azaldıqda rəqəmsal cüzdan sənədi verən qurumdan
+              yenilərini{" "}
+              <strong>avtomatik olaraq</strong>, təsadüfi gecikmə ilə istəyir ki,
+              sorğunu nüsxənin istifadə olunduğu anla əlaqələndirmək mümkün
+              olmasın.
+            </li>
+          </ul>
+
+          <h2>Həll 2: hər sayt üçün təxəllüs</h2>
+          <p>
+            "Tamga ilə daxil ol" vasitəsilə sayta qeydiyyatdan keçdikdə sayt
+            sizi hesab identifikatoru ilə tanıyır. Bu identifikator hər yerdə
+            eyni olsaydı, iki sayt sizi asanlıqla uyğunlaşdıra bilərdi. Bunun
+            əvəzinə rəqəmsal cüzdan hər sayt üçün ayrıca, lakin sabit{" "}
+            <Term
+              tip="Sizi yalnız bir saytın tanıdığı identifikator; onu digər saytlardakı identifikatorunuzla əlaqələndirmək mümkün deyil."
+              en="pseudonym"
+            >
+              təxəllüs
+            </Term>{" "}
+            yaradır:
+          </p>
+          <ul>
+            <li>
+              Hər dəfə eyni sayta qayıtdıqda eyni təxəllüs göndərilir; sayt sizi
+              tanıyır və hesabınız qorunur.
+            </li>
+            <li>
+              Başqa sayt tamamilə fərqli təxəllüs alır; iki sayt sizi
+              əlaqələndirə bilmir.
+            </li>
+            <li>
+              Təxəllüslər şəxsiyyətinizdən törədilir. Telefonunuzu dəyişib
+              şəxsiyyətinizi yenidən təsdiqlədikdə həmin təxəllüslər geri
+              qayıdır: hesablarınızı itirmirsiniz və bir saytda iki hesabınız
+              yarana bilməz.
+            </li>
+          </ul>
+          <Callout kind="turkic" locale="az">
+            <p>
+              Bakıda yaşayan bir şəxs eyni gündə alış-veriş saytına, kitabxana
+              sisteminə və həkim qəbuluna yazılma platformasına Tamga ilə daxil
+              olur. Üçünün hər biri onu öz təxəllüsü ilə tanıyır. Üç şirkət
+              məlumatlarını birləşdirmək istəsə belə, onların eyni şəxsə işarə
+              edən ortaq açarı yoxdur.
+            </p>
+          </Callout>
+
+          <h2>Nə qorunur, nə qorunmur</h2>
+          <p>
+            Əlaqələndirilməzlik rəqəmsal sənədin özünün iz qoymasının qarşısını
+            alır. Lakin adınızı sayta özünüz yazsanız, sayt adınızı bilir; heç
+            bir texniki vasitə bunun qarşısını ala bilməz. Buna görə də
+            məxfiliyin son halqası şəxsin özüdür: nəyi paylaşdığını görmək,
+            razılıq vermək və ya imtina etmək. Bu fəslin son səhifəsi bundan
+            bəhs edir.
+          </p>
+        </>
+      ),
     },
   },
 
@@ -1635,27 +2165,32 @@ export const CHAPTER_3: LearnPage[] = [
       tr: "Onay ve kontrol",
       en: "Consent and control",
       tk: "Razylyk we gözegçilik",
+      az: "Razılıq və nəzarət",
     },
     summary: {
       tr: "Kim ne istedi, ne paylaşıldı: onay ekranı, işlem günlüğü ve silme hakkı (KVKK, GDPR).",
       en: "Who asked for what and what was shared: the consent screen, the transaction log and the right to erasure (GDPR).",
       tk: "Kim näme sorady, näme paýlaşyldy: razylyk ekrany, amallar žurnaly we pozmak hukugy.",
+      az: "Kim nə istədi və nə paylaşıldı: razılıq ekranı, əməliyyat jurnalı və silinmə hüququ (GDPR).",
     },
     keyPoints: [
       {
         tr: "Onay ekranı kimin istediğini, neyi istediğini ve neden istediğini gösterir; kayıtlı amacın dışındaki istekler işaretlenir.",
         en: "The consent screen shows who is asking, for what and why; requests beyond the registered purpose are flagged.",
         tk: "Razylyk ekrany kimiň, näme we näme üçin soraýandygyny görkezýär; hasaba alnan maksatdan artyk talaplar bellenýär.",
+        az: "Razılıq ekranı kimin, nəyi və nə üçün istədiyini göstərir; qeydiyyatdakı məqsəddən kənar sorğular işarələnir.",
       },
       {
         tr: "İşlem günlüğü yalnız cüzdanda tutulur; dışarı yalnız kişinin başlattığı, kendi parolasıyla şifreli dosyayla çıkar.",
         en: "The transaction log lives only in the wallet; it leaves only in an encrypted file the person creates with their own password.",
         tk: "Amallar žurnaly diňe gapjykda saklanýar; daşaryk diňe adamyň öz paroly bilen şifrlenen faýl görnüşinde çykýar.",
+        az: "Əməliyyat jurnalı yalnız rəqəmsal cüzdanda saxlanılır; o, yalnız şəxsin öz parolu ilə yaratdığı şifrələnmiş fayl şəklində kənara çıxa bilər.",
       },
       {
         tr: "Kişi cüzdanı sıfırlayarak Tamga'daki kaydını siler, kurumlardan silme talebini cüzdandan gönderebilir.",
         en: "The person deletes their records at Tamga by resetting the wallet and can send deletion requests to institutions from it.",
         tk: "Adam gapjygy täzeden düzüp, Tamga-daky ýazgysyny pozýar we edaralara pozmak haýyşyny gapjykdan iberip bilýär.",
+        az: "Şəxs rəqəmsal cüzdanı sıfırlamaqla Tamga-dakı qeydlərini silir və cüzdandan qurumlara silinmə sorğuları göndərə bilər.",
       },
     ],
     deeper: [
@@ -1664,6 +2199,7 @@ export const CHAPTER_3: LearnPage[] = [
           tr: "Mimari: Kişinin denetimi (§2.7)",
           en: "Architecture: the person's control (§2.7)",
           tk: "Arhitektura: adamyň gözegçiligi",
+          az: "Arxitektura: şəxsin nəzarəti (§2.7)",
         },
         href: "architecture",
         kind: "arf",
@@ -1673,6 +2209,7 @@ export const CHAPTER_3: LearnPage[] = [
           tr: "Karar: İşlem günlüğünü dışa aktarma",
           en: "Decision: Exporting the transaction log",
           tk: "Karar: Žurnaly eksport etmek",
+          az: "Qərar: Əməliyyat jurnalının ixracı",
         },
         href: "/adr/0027-user-initiated-log-export",
         kind: "docs",
@@ -1682,6 +2219,7 @@ export const CHAPTER_3: LearnPage[] = [
           tr: "Cüzdan kuralları",
           en: "Wallet rules",
           tk: "Gapjyk düzgünleri",
+          az: "Rəqəmsal cüzdan qaydaları",
         },
         href: "/specifications/wallet",
         kind: "docs",
@@ -1691,6 +2229,7 @@ export const CHAPTER_3: LearnPage[] = [
           tr: "Rehber: Cüzdan kontrol listesi",
           en: "Guide: Wallet checklist",
           tk: "Gollanma: Gapjyk sanawy",
+          az: "Bələdçi: Rəqəmsal cüzdan üçün yoxlama siyahısı",
         },
         href: "/guides/wallet-checklist",
         kind: "docs",
@@ -1989,6 +2528,122 @@ export const CHAPTER_3: LearnPage[] = [
             subut etmek, yzlary birleşdirmezlik we kararyny adama goýmak. Indiki
             bölümde bu pikirleriň Ýewropada nähili çarçuwa öwrülendigini
             göreris.
+          </p>
+        </>
+      ),
+      az: (
+        <>
+          <p>
+            Bu fəsildəki hər texnika bir məqsədə xidmət edir: məlumat şəxsin
+            xəbəri və istəyi olmadan heç yerə getməməlidir. Texnologiya nə qədər
+            yaxşı olsa da, son qərar şəxsə məxsusdur. Bu səhifə həmin qərarın
+            harada verildiyini izah edir: razılıq ekranı, əməliyyat jurnalı və
+            silinmə hüququ.
+          </p>
+
+          <h2>Razılıq ekranı: üç sual</h2>
+          <p>
+            Yoxlayan tərəf məlumat istədikdə rəqəmsal cüzdan heç nə
+            göndərməzdən əvvəl ekran göstərir. Bu ekran üç suala cavab verir:
+          </p>
+          <ul>
+            <li>
+              <strong>Kim istəyir?</strong> Yoxlayan tərəfin adı şəbəkənin
+              etibar siyahısındakı qeydindən oxunur; sayt özü üçün ad seçə
+              bilməz. Yoxlayan tərəf başqası adından vasitəçi kimi fəaliyyət
+              göstərirsə, hər iki ad göstərilir.
+            </li>
+            <li>
+              <strong>Nə istəyir?</strong> Rəqəmsal sənəd və onun sahələri bir-bir
+              sadalanır. Şəxs bəzi sahələri söndürə və ya tamamilə imtina edə
+              bilər.
+            </li>
+            <li>
+              <strong>Nə üçün?</strong> Yoxlayan tərəfin şəbəkədə qeydiyyatdan
+              keçərkən bəyan etdiyi məqsəd göstərilir. Bu məqsəddən kənar sahə
+              ayrıca işarələnir.
+            </li>
+          </ul>
+          <Figure caption="Razılıq ekranı nümunəsi: doğum tarixi qeydiyyatdakı məqsəddən kənar olduğu üçün işarələnib.">
+            <ConsentMock
+              who="Sorğu göndərən"
+              whoNote="Nümunə Konsert Zalı · etibar siyahısında qeydiyyatdadır"
+              what="İstənilən məlumatlar"
+              fields={[
+                { label: "18 yaşdan yuxarı" },
+                { label: "Doğum tarixi", flagged: true },
+              ]}
+              why="Qeydiyyatdakı məqsəd"
+              purpose="Tədbirə giriş üçün yaş yoxlaması"
+              extra="Məqsəddən kənar"
+              share="Paylaş"
+              decline="İmtina et"
+            />
+          </Figure>
+          <p>
+            Rəqəmsal cüzdan şəxsin alətidir, onun gözətçisi deyil. Qeydiyyatsız
+            yoxlayan tərəflə və ya məqsəddən kənar paylaşım yenə də mümkündür,
+            lakin yalnız aydın xəbərdarlıqdan sonra, bilərəkdən.
+          </p>
+
+          <h2>Əməliyyat jurnalı: kimə nə göstərmişəm?</h2>
+          <p>
+            Rəqəmsal cüzdan hansı rəqəmsal sənədin hansı sahələrinin nə vaxt və
+            kimə göstərildiyini qeyd edir. Bu{" "}
+            <Term
+              tip="Rəqəmsal cüzdanın hansı məlumatın kimə və nə vaxt göstərildiyinə dair qeydi."
+              en="transaction log"
+            >
+              əməliyyat jurnalı
+            </Term>{" "}
+            telefonda qalır; heç vaxt Tamga-ya və ya başqa serverə getmir. Şəxs
+            istəsə, onu öz seçdiyi parolla şifrələnmiş fayl kimi ixrac edə
+            bilər, məsələn, şikayət üçün sübut kimi. İxrac heç vaxt öz-özünə baş
+            vermir.
+          </p>
+
+          <h2>Silinmə hüququ</h2>
+          <p>
+            KVKK və GDPR insanlara məlumatlarının silinməsini tələb etmək
+            hüququ verir. Tamga-da bu hüquq üç yerdə özünü göstərir:
+          </p>
+          <ul>
+            <li>
+              <strong>Rəqəmsal cüzdanı sıfırlamaq:</strong> cihazdakı bütün
+              məlumatlar və şəxsin qeydləri (şəbəkənin identifikasiya
+              xidmətində və rəqəmsal cüzdanın öz cüzdan provayderində) silinir.
+            </li>
+            <li>
+              <strong>Silinmə sorğuları:</strong> şəxs rəqəmsal cüzdandan
+              məlumat paylaşdığı quruma onun məlumatlarını silməsi üçün
+              müraciət edə bilər.
+            </li>
+            <li>
+              <strong>Şikayətlər:</strong> rəqəmsal cüzdan yoxlayan tərəfin tabe
+              olduğu məlumatların mühafizəsi orqanına necə şikayət etməyi də
+              göstərir.
+            </li>
+          </ul>
+          <Callout kind="turkic" locale="az">
+            <p>
+              Ankarada yaşayan bir tələbə illər əvvəl Bişkekdəki yay məktəbinə
+              rəqəmsal sənəd göstərmiş ola bilər. Əməliyyat jurnalı ona nəyi və
+              kiminlə paylaşdığını xatırladır; istəsə, rəqəmsal cüzdandan
+              məktəbə müraciət edərək məlumatlarının silinməsini xahiş edir. O,
+              hər ölkənin məlumatların mühafizəsi qaydalarını bilmək
+              məcburiyyətində qalmadan öz hüquqlarından istifadə edə bilər.
+            </p>
+          </Callout>
+
+          <h2>Fəslin xülasəsi</h2>
+          <p>
+            Məxfilik tək bir funksiya deyil, çoxqatlı dizayndır: əvvəlcə lazım
+            olanı kiçiltmək (məlumatların minimallaşdırılması), sonra yalnız onu
+            açmaq (seçici paylaşım), mümkün olduqda heç nə açmadan sübut etmək
+            (sıfır bilikli sübutlar), izlərin birləşməsinin qarşısını almaq
+            (əlaqələndirilməzlik) və nəhayət qərarı şəxsə buraxmaq. Növbəti
+            fəsil bu ideyaların Avropada necə hüquqi və texniki çərçivəyə
+            çevrildiyini göstərir.
           </p>
         </>
       ),

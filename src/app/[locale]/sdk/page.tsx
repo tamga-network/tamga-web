@@ -86,9 +86,28 @@ const UI: Record<
     npmOrg: "npm-däki ähli paketler",
     github: "GitHub-da çeşme kody",
   },
+  az: {
+    title: "SDK",
+    description:
+      "Veb-saytlar, yoxlayan tərəflər, qurumlar və rəqəmsal cüzdanlar üçün açıq mənbəli @tamga-network paketləri: quraşdırma, paketlər və işlək nümunələr.",
+    eyebrow: "SDK",
+    lead: "Şəbəkədəki hər iş üçün açıq mənbəli TypeScript paketləri: yoxlama, rəqəmsal sənəd vermə, etibar siyahıları və rəqəmsal cüzdanın nüvəsi. Apache-2.0, EUDI profillərinə uyğun.",
+    hInstall: "Quraşdırma",
+    pInstall:
+      "Paketlər npm-də 0.7.0 sınaq versiyası kimi dərc olunur; sabit 1.0.0 versiyası hər şey hazır olduqda çıxacaq. Sınaq versiyalarında API dəyişə bilər.",
+    hPkgs: "Paketlər",
+    pPkgs:
+      "Hər paketin adı onun npm səhifəsini açır; “Sənədlər” isə tərtibatçı sənədlərindəki arayışını açır. Göstərilən versiya (0.7.0) cari sınaq versiyasıdır.",
+    docs: "Sənədlər",
+    hCode: "İşlək nümunələr",
+    pCode:
+      "Repozitoriyanın examples qovluğundakı real kod: hər test işə salınanda paketlərlə birlikdə icra olunur, buna görə də onlardan ayrı düşə bilməz.",
+    npmOrg: "npm-dəki bütün paketlər",
+    github: "GitHub-da mənbə kodu",
+  },
 };
 
-const loc = (l: string): Locale => (l === "tr" || l === "tk" ? l : "en");
+const loc = (l: string): Locale => (l === "tr" || l === "tk" || l === "az" ? l : "en");
 
 export async function generateMetadata({
   params,

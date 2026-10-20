@@ -23,11 +23,13 @@ export const CHAPTERS: LearnChapter[] = [
       tr: "Kimlik ve güven",
       en: "Identity and trust",
       tk: "Şahsyýet we ynam",
+      az: "Şəxsiyyət və etibar",
     },
     intro: {
       tr: "Kimlik nedir, bugün neden zor, dijital dünyada güven nasıl kurulur.",
       en: "What identity is, why it is hard today and how trust is built in the digital world.",
       tk: "Şahsyýet näme, häzir näme üçin kyn we sanly dünýäde ynam nädip gurulýar.",
+      az: "Şəxsiyyət nədir, bu gün niyə çətindir və rəqəmsal dünyada etibar necə qurulur.",
     },
   },
   {
@@ -37,11 +39,13 @@ export const CHAPTERS: LearnChapter[] = [
       tr: "Dijital belgenin yapı taşları",
       en: "Building blocks",
       tk: "Sanly resminamanyň esaslary",
+      az: "Təməl elementlər",
     },
     intro: {
       tr: "İmza, sertifika, doğrulanabilir belge ve cüzdan: teknik ayrıntıya boğulmadan.",
       en: "Signatures, certificates, verifiable credentials and wallets, without drowning in detail.",
       tk: "Gol, sertifikat, barlanyp bilinýän resminama we gapjyk: jikme-jikliklere batman.",
+      az: "İmzalar, sertifikatlar, yoxlanıla bilən rəqəmsal sənədlər və rəqəmsal cüzdanlar — təfərrüatlarda boğulmadan.",
     },
   },
   {
@@ -51,11 +55,13 @@ export const CHAPTERS: LearnChapter[] = [
       tr: "Gizlilik tasarımın içinde",
       en: "Privacy by design",
       tk: "Gizlinlik dizaýnyň içinde",
+      az: "Dizayndan gələn məxfilik",
     },
     intro: {
       tr: "Yalnız gerekeni göstermek, iz bırakmamak ve kontrolün kişide kalması.",
       en: "Showing only what is needed, leaving no trail and keeping the person in control.",
       tk: "Diňe zerur zady görkezmek, yz galdyrmazlyk we gözegçiligiň adamda galmagy.",
+      az: "Yalnız lazım olanı göstərmək, iz buraxmamaq və nəzarətin şəxsin özündə qalması.",
     },
   },
   {
@@ -65,11 +71,13 @@ export const CHAPTERS: LearnChapter[] = [
       tr: "Avrupa'nın modeli",
       en: "Europe's model",
       tk: "Ýewropanyň modeli",
+      az: "Avropanın modeli",
     },
     intro: {
       tr: "eIDAS 2.0, EUDI Wallet ve güven hizmetleri: ağımızın konuştuğu ortak dil.",
       en: "eIDAS 2.0, the EUDI Wallet and trust services: the common language our network speaks.",
       tk: "eIDAS 2.0, EUDI Wallet we ynam hyzmatlary: torumyzyň gürleýän umumy dili.",
+      az: "eIDAS 2.0, EUDI Wallet və etibar xidmətləri: şəbəkəmizin danışdığı ortaq dil.",
     },
   },
   {
@@ -79,31 +87,35 @@ export const CHAPTERS: LearnChapter[] = [
       tr: "Güven altyapısı",
       en: "Trust infrastructure",
       tk: "Ynam infrastrukturasy",
+      az: "Etibar infrastrukturu",
     },
     intro: {
       tr: "Güven listeleri, federasyon ve blockchain'in bu resimdeki gerçek yeri.",
       en: "Trust lists, federation and where blockchain really fits in this picture.",
       tk: "Ynam sanawlary, federasiýa we blokçeýniň bu suratdaky hakyky ýeri.",
+      az: "Etibar siyahıları, federasiya və blokçeynin bu mənzərədəki real yeri.",
     },
   },
   {
     n: 6,
     key: "tamga-network",
-    title: { tr: "Tamga Network", en: "Tamga Network", tk: "Tamga Network" },
+    title: { tr: "Tamga Network", en: "Tamga Network", tk: "Tamga Network", az: "Tamga Network" },
     intro: {
       tr: "Ağın ne olduğu, kimin ne yaptığı, kuralları ve yönetişimi.",
       en: "What the network is, who does what, its rules and its governance.",
       tk: "Toruň näme bolýandygy, kimiň näme edýändigi, düzgünleri we dolandyryşy.",
+      az: "Şəbəkənin nə olduğu, kimin nə etdiyi, onun qaydaları və idarəetməsi.",
     },
   },
   {
     n: 7,
     key: "joining",
-    title: { tr: "Katılım", en: "Joining the network", tk: "Tora goşulmak" },
+    title: { tr: "Katılım", en: "Joining the network", tk: "Tora goşulmak", az: "Şəbəkəyə qoşulmaq" },
     intro: {
       tr: "Kurum, doğrulayıcı, cüzdan sağlayıcısı ya da devlet olarak ağa katılmak.",
       en: "Joining as an institution, a verifier, a wallet provider or a state.",
       tk: "Gurama, barlaýjy, gapjyk üpjün ediji ýa-da döwlet hökmünde tora goşulmak.",
+      az: "Qurum, yoxlayan tərəf, cüzdan provayderi və ya dövlət kimi qoşulmaq.",
     },
   },
 ];
@@ -141,7 +153,7 @@ export const totalMinutes = (): number =>
   LEARN_PAGES.reduce((s, p) => s + p.minutes, 0);
 
 export const pickLocale = (raw: string): Locale =>
-  ["en", "tr", "tk"].includes(raw) ? (raw as Locale) : "en";
+  ["en", "tr", "tk", "az"].includes(raw) ? (raw as Locale) : "en";
 export const t = (l: L, locale: Locale): string => l[locale] ?? l.en;
 
 /* -------------------------------------------------------------------------- arayüz metinleri */
@@ -389,6 +401,77 @@ export const LEARN_UI: Record<Locale, LearnUi> = {
     },
     backToPath: "Öwreniş ýoluna dolan",
     abridged: "Gysga wersiýa; doly tekst iňlis dilinde.",
+  },
+  az: {
+    name: "Öyrən",
+    title: "Öyrən: rəqəmsal şəxsiyyətdən Tamga Network-a qədər",
+    description:
+      "Sıfırdan başlayan öyrənmə yolu: rəqəmsal şəxsiyyət, imzalar, yoxlanıla bilən rəqəmsal sənədlər, məxfilik, Avropanın modeli, etibar siyahıları və Tamga Network-a qoşulma.",
+    eyebrow: "Öyrənmə yolu",
+    heroTitle: "Rəqəmsal şəxsiyyətdən Tamga Network-a qədər",
+    heroLead:
+      'Heç nə bilmədən başlayın. "Şəxsiyyət nədir?" sualından şəbəkəyə qoşulmağa qədər yeddi fəsildə qısa səhifələr və sxemlərlə irəliləyin. Hər səhifə bir ideyanı izah edir; texniki təfərrüatlarla maraqlandığınız yerdə tərtibatçı sənədlərinə və Tamga ARF-ə keçin.',
+    start: "Əvvəldən başlayın",
+    continueReading: "Qaldığınız yerdən davam edin",
+    chapter: "Fəsil",
+    chapters: "Fəsillər",
+    pages: (n) => `${n} səhifə`,
+    minutes: (n) => `${n} dəq`,
+    totalTime: (p, m) =>
+      `${p} səhifə · təxminən ${m >= 60 ? `${Math.floor(m / 60)} saat ${m % 60} dəq` : `${m} dəq`}`,
+    whereTitle: "Haradan başlamalıyam?",
+    whereLead:
+      "Hər kəs əvvəldən başlaya bilər. Tələsənlər üçün rola görə qısa yollar:",
+    roles: [
+      {
+        key: "manager",
+        title: "Qurum rəhbəri",
+        text: "Problem, şəbəkə və necə qoşulmaq.",
+        target: [1, 6, 7],
+      },
+      {
+        key: "developer",
+        title: "Tərtibatçı",
+        text: "Təməl elementlər, sonra tərtibatçı sənədləri.",
+        target: [2],
+      },
+      {
+        key: "state",
+        title: "Dövlət nümayəndəsi",
+        text: "Avropanın modeli, etibar infrastrukturu və idarəetmə.",
+        target: [4, 5, 6],
+      },
+      {
+        key: "curious",
+        title: "Maraqlanan",
+        text: "Əvvəldən, ardıcıllıqla.",
+        target: [1],
+      },
+    ],
+    pathTitle: "Yeddi fəsil",
+    summary: "Xülasə",
+    deeper: "Daha dərinə",
+    deeperLead: "Texniki təfərrüatlar və məcburi qaydalar:",
+    kinds: {
+      docs: "Tərtibatçı sənədləri",
+      arf: "Tamga ARF",
+      site: "Tamga Network",
+    },
+    prev: "Əvvəlki",
+    next: "Növbəti",
+    writing: "Bu səhifə hazırlanır.",
+    writingNote:
+      "Tezliklə burada olacaq. Hələlik xülasə və keçidlər aşağıdadır.",
+    read: "oxunub",
+    progress: "{total} səhifədən {read} oxunub",
+    contents: "Fəsillər",
+    home: "Öyrən",
+    callout: {
+      info: "Qeyd",
+      turkic: "Türk dünyasında",
+      caution: "Diqqət",
+    },
+    backToPath: "Öyrənmə yoluna qayıdın",
   },
 };
 

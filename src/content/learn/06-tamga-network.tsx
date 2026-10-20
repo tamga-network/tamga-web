@@ -10,11 +10,12 @@ export const CHAPTER_6: LearnPage[] = [
     chapter: 6,
     order: 1,
     minutes: 5,
-    title: { tr: "Tamga Network nedir?", en: "What is Tamga Network?", tk: "Tamga Network näme?" },
+    title: { tr: "Tamga Network nedir?", en: "What is Tamga Network?", tk: "Tamga Network näme?", az: "Tamga Network nədir?" },
     summary: {
       tr: "Türk dünyası için dijital, AB uyumlu güven ağı: ne yapar, ne yapmaz.",
       en: "The digital, EU-compatible trust network for the Turkic world: what it does and what it doesn't.",
       tk: "Türki dünýäsi üçin sanly, ÝB bilen laýyk ynam tory: näme edýär we näme etmeýär.",
+      az: "Türk dünyası üçün rəqəmsal, Aİ ilə uyğun etibar şəbəkəsi: nə edir və nə etmir.",
     },
     diagram: "flow",
     body: {
@@ -180,28 +181,90 @@ export const CHAPTER_6: LearnPage[] = [
           </p>
         </>
       ),
+      az: (
+        <>
+          <p>
+            Əvvəlki fəsillərdə rəqəmsal sənədin necə imzalandığını, rəqəmsal cüzdanda necə saxlandığını və yalnız lazım olan
+            məlumatın necə göstərildiyini gördük. Bir sual qalır: Daşkənddəki işəgötürən Bakıda verilmiş rəqəmsal sənədi görəndə
+            onun arxasında duran qurumun həqiqətən mövcud olduğunu və sənəd verməyə səlahiyyətli olduğunu haradan bilsin? Tamga
+            Network bu suala ortaq cavabdır.
+          </p>
+          <h2>Qısaca</h2>
+          <p>
+            Tamga Network Türk dünyası üçün rəqəmsal etibar şəbəkəsidir. O, üç şey təmin edir: hamının eyni şəkildə əməl etdiyi
+            açıq qaydalar, hansı qurumlara etibar etmək olduğunu bildirən imzalı <Term tip="Bir ölkənin sənədi verən qurumlarını, yoxlayan tərəflərini və cüzdan provayderlərini sadalayan imzalı, versiyalı siyahı." en="trust list">etibar siyahıları</Term> və
+            bu qaydaları tətbiq edən açıq mənbəli proqram təminatı. Rəqəmsal sənədin özü heç vaxt şəbəkəyə yazılmır; şəbəkə
+            yalnız “kimə etibar edə bilərsiniz?” sualına cavab verir.
+          </p>
+          <p>
+            Formatlar və protokollar Avropa İttifaqının (Aİ) rəqəmsal şəxsiyyət standartları ilə eynidir. Buna görə Tamga-da
+            verilmiş rəqəmsal sənəd Aİ-nin dilində danışan rəqəmsal cüzdanlar və yoxlayan tərəflərlə də işləyə bilər.
+          </p>
+          <h2>Nə edir?</h2>
+          <ul>
+            <li>
+              <strong>Qaydaları yazır və dərc edir:</strong> kim qoşula bilər, hər rol nəyə əməl etməlidir, rəqəmsal sənəd növü
+              necə müəyyən edilir. Bu qaydalar Tamga ARF-də toplanır.
+            </li>
+            <li>
+              <strong>Etibar siyahılarını idarə edir:</strong> hər ölkənin siyahısını və hamısına istinad edən siyahılar
+              siyahısını imzalı, versiyalı və hamı üçün açıq şəkildə dərc edir.
+            </li>
+            <li>
+              <strong>Ortaq məlumatları saxlayır:</strong> rəqəmsal sənəd növlərinin kataloqu, sahə adları və sxemlər.
+            </li>
+            <li>
+              <strong>Açıq kod təqdim edir:</strong> yoxlama, sənəd vermə və cüzdan nüvəsi üçün paketlər, həmçinin uyğunluq testləri.
+            </li>
+          </ul>
+          <h2>Nə etmir?</h2>
+          <p>
+            Şəbəkə fərdi məlumat toplamır: rəqəmsal sənədlər şəxsin telefonunda qalır, siyahılara və jurnallara fərdi
+            məlumatlar yazılmır. Şəbəkə heç kimin rəqəmsal sənədini onun əvəzinə imzalamır; imza həmişə sənədi verən quruma
+            məxsusdur. Şəbəkə heç nə satmır: Tamga Network şirkət deyil, şəbəkədir. İnteqrasiya və ya dəstək kimi kommersiya
+            xidmətləri təklif etmək istəyən şirkətlər bunu şəbəkədən kənarda, öz adları ilə edirlər; şəbəkənin qaydaları hamı
+            üçün eynidir.
+          </p>
+          <Callout kind="turkic" locale="az">
+            <p>
+              Şəbəkənin əsas işi ölkələrin siyahılarını bir araya gətirməkdir. Hazırda Türkiyənin siyahısını dövlət adından
+              müvəqqəti olaraq Tamga dərc edir. Türk dövlətlərindən biri öz siyahısını dərc etdikdə şəbəkə ona istinad edir;
+              rəqəmsal cüzdanlar və yoxlayan tərəflər üçün yalnız siyahının ünvanı dəyişir.
+            </p>
+          </Callout>
+          <h2>Niyə “şəbəkə”?</h2>
+          <p>
+            Çünki etibar tək bir mərkəzdən gəlmir. Rəqəmsal sənədi qurum imzalayır, qurumu öz siyahısında dövlət və ya onun
+            səlahiyyət verdiyi orqan tanıyır, siyahını isə hər kəs yoxlaya bilər. Şəbəkə bu hissələri bir-birinə bağlayan ortaq
+            qaydalar və ortaq dildir. Növbəti səhifələrdə onlara bir-bir baxacağıq.
+          </p>
+        </>
+      ),
     },
     keyPoints: [
       {
         tr: "Tamga Network; açık kurallar, imzalı güven listeleri ve açık kaynak yazılımdan oluşan dijital bir güven ağıdır.",
         en: "Tamga Network is a digital trust network made of open rules, signed trust lists and open-source software.",
         tk: "Tamga Network açyk düzgünlerden, gol çekilen ynam sanawlaryndan we açyk çeşmeli programmadan ybarat sanly ynam torudyr.",
+        az: "Tamga Network açıq qaydalardan, imzalı etibar siyahılarından və açıq mənbəli proqram təminatından ibarət rəqəmsal etibar şəbəkəsidir.",
       },
       {
         tr: "Belgeler ve kişisel veri ağa yazılmaz; ağ yalnız “kime güvenebilirsin” sorusunu cevaplar.",
         en: "Credentials and personal data are never written to the network; it only answers “whom can you trust?”.",
         tk: "Resminamalar we şahsy maglumat tora ýazylmaýar; tor diňe “kime ynanyp bolar?” diýen soraga jogap berýär.",
+        az: "Rəqəmsal sənədlər və fərdi məlumatlar heç vaxt şəbəkəyə yazılmır; şəbəkə yalnız “kimə etibar edə bilərsiniz?” sualına cavab verir.",
       },
       {
         tr: "Ağ hizmet satmaz ve AB standartlarını kullanır; her Türk devleti kendi listesinin sahibi olabilir.",
         en: "The network sells nothing and uses EU standards; each Turkic state can own its own list.",
         tk: "Tor hiç zat satmaýar we ÝB standartlaryny ulanýar; her türki döwlet öz sanawynyň eýesi bolup biler.",
+        az: "Şəbəkə heç nə satmır və Aİ standartlarından istifadə edir; hər Türk dövləti öz siyahısının sahibi ola bilər.",
       },
     ],
     deeper: [
-      { label: { tr: "Tamga ARF: mimari", en: "Tamga ARF: architecture", tk: "Tamga ARF: arhitektura" }, href: "architecture", kind: "arf" },
-      { label: { tr: "ADR-0037: Tamga Network yalnızca bir ağdır", en: "ADR-0037: Tamga Network is only a network", tk: "ADR-0037: Tamga Network diňe tor" }, href: "/adr/0037-network-only", kind: "docs" },
-      { label: { tr: "Kavramlar: güven listeleri", en: "Concepts: trust lists", tk: "Düşünjeler: ynam sanawlary" }, href: "/concepts/trust-lists", kind: "docs" },
+      { label: { tr: "Tamga ARF: mimari", en: "Tamga ARF: architecture", tk: "Tamga ARF: arhitektura", az: "Tamga ARF: memarlıq" }, href: "architecture", kind: "arf" },
+      { label: { tr: "ADR-0037: Tamga Network yalnızca bir ağdır", en: "ADR-0037: Tamga Network is only a network", tk: "ADR-0037: Tamga Network diňe tor", az: "ADR-0037: Tamga Network yalnız şəbəkədir" }, href: "/adr/0037-network-only", kind: "docs" },
+      { label: { tr: "Kavramlar: güven listeleri", en: "Concepts: trust lists", tk: "Düşünjeler: ynam sanawlary", az: "Anlayışlar: etibar siyahıları" }, href: "/concepts/trust-lists", kind: "docs" },
     ],
   },
 
@@ -211,11 +274,12 @@ export const CHAPTER_6: LearnPage[] = [
     chapter: 6,
     order: 2,
     minutes: 4,
-    title: { tr: "Neden Türk dünyası?", en: "Why the Turkic world?", tk: "Näme üçin türki dünýäsi?" },
+    title: { tr: "Neden Türk dünyası?", en: "Why the Turkic world?", tk: "Näme üçin türki dünýäsi?", az: "Niyə Türk dünyası?" },
     summary: {
       tr: "Diller, sınırlar, ortak tarih ve Avrupa ile köprü: bu ağın Türk dünyasında neden anlamlı olduğu.",
       en: "Languages, borders, a shared history and a bridge to Europe: why this network makes sense for the Turkic world.",
       tk: "Diller, serhetler, umumy taryh we Ýewropa bilen köpri: bu toruň türki dünýäsinde näme üçin manyly bolýandygy.",
+      az: "Dillər, sərhədlər, ortaq tarix və Avropa ilə körpü: bu şəbəkənin Türk dünyası üçün niyə məna kəsb etdiyi.",
     },
     body: {
       tr: (
@@ -341,28 +405,72 @@ export const CHAPTER_6: LearnPage[] = [
           </ul>
         </>
       ),
+      az: (
+        <>
+          <p>
+            Türk dünyasında insanlar sərhədləri tez-tez keçir. Almatıda oxuyan tələbə təcrübə keçmək üçün İstanbula gəlir,
+            Bişkekdən olan mühəndis Bakıda iş tapır, Aşqabaddan olan həkim Ankarada ixtisaslaşmaq istəyir. Hər dəfə eyni sual
+            yaranır: bu sənədi kim və necə yoxlayacaq?
+          </p>
+          <h2>Bugünkü vəziyyət</h2>
+          <p>
+            Hər ölkənin öz qurumları, öz sistemləri və öz kağızları var. Sənəd sərhədi keçəndə çox vaxt onu yenidən təsdiqlətmək,
+            tərcümə etdirmək və şəxsən təhvil vermək lazım gəlir. Yoxlayan qurum sənədi verən quruma zəng edir və ya e-poçt yazır;
+            cavab günlərlə, bəzən həftələrlə çəkir. Bu arada saxta sənədlər də eyni kağızla dolaşır.
+          </p>
+          <h2>Bizi artıq birləşdirənlər</h2>
+          <p>
+            Türk dövlətləri arasında artıq güclü bağlar var: qohum dillər, ortaq tarix, iqtisadi və mədəni əməkdaşlıq, həmçinin
+            Türk Dövlətləri Təşkilatı kimi ortaq qurumlar. Etibar şəbəkəsi bu bağlara texniki zəmin əlavə edir: ölkələr bir-birinin
+            qurumlarını tanımaq istədikdə hər dəfə yeni saziş yazmaq əvəzinə eyni qaydalardan və eyni siyahılardan istifadə edirlər.
+          </p>
+          <Callout kind="turkic" locale="az">
+            <p>
+              Şəbəkə heç bir ölkənin qaydalarını digərinə məcbur etmir. Hər dövlət öz siyahısını özü idarə edir və hansı ölkələrin
+              qurumlarını tanıyacağına özü qərar verir. Ortaq olan yalnız dil və qaydalardır.
+            </p>
+          </Callout>
+          <h2>Avropa ilə körpü</h2>
+          <p>
+            Avropa İttifaqı öz rəqəmsal şəxsiyyət cüzdanlarını qurur və tezliklə bir çox xidmət onlarla işləyəcək. Türk dünyası öz
+            sistemini bu standartlardan ayrı qursa, Türk dünyasından gələn sənədlər Avropada yenidən kağıza qayıtmalı olacaq. Məhz
+            buna görə Tamga Network Avropanın formatlarından və protokollarından olduğu kimi istifadə edir: eyni dildə danışan
+            sistemlər bir-birini daha asan tanıyır.
+          </p>
+          <h2>Kimə fayda verir?</h2>
+          <ul>
+            <li>İnsanlar: rəqəmsal sənədlərini özləri ilə gəzdirir, yalnız lazım olanı göstərir və sərhəddə gözləmirlər.</li>
+            <li>Qurumlar: hər sorğuya ayrıca cavab vermək əvəzinə rəqəmsal sənədi bir dəfə verirlər.</li>
+            <li>Yoxlayan tərəflər: mənbəyə müraciət etmədən, saniyələr ərzində rəqəmsal sənədin həqiqi olduğunu görürlər.</li>
+            <li>Dövlətlər: öz siyahılarının sahibi olur və qonşuları ilə eyni dildə danışırlar.</li>
+          </ul>
+        </>
+      ),
     },
     keyPoints: [
       {
         tr: "Türk dünyasında belgeler sınırı sık geçer; bugün doğrulama yavaş, kâğıda bağlı ve sahteciliğe açık.",
         en: "Documents cross borders often in the Turkic world; verification today is slow, paper-bound and open to forgery.",
         tk: "Türki dünýäsinde resminamalar serhedi ýygy geçýär; häzir barlamak haýal we kagyza bagly.",
+        az: "Türk dünyasında sənədlər sərhədləri tez-tez keçir; bu gün yoxlama yavaş, kağızdan asılı və saxtakarlığa açıqdır.",
       },
       {
         tr: "Ağ ülkelere ortak bir dil ve ortak kurallar verir; her devlet kendi listesinin ve kararlarının sahibidir.",
         en: "The network gives countries a shared language and rules; each state owns its list and its decisions.",
         tk: "Tor ýurtlara umumy dil we düzgünler berýär; her döwlet öz sanawynyň eýesidir.",
+        az: "Şəbəkə ölkələrə ortaq dil və qaydalar verir; hər dövlət öz siyahısının və qərarlarının sahibidir.",
       },
       {
         tr: "AB standartlarını kullanmak, Türk dünyasının belgelerinin Avrupa yazılımıyla teknik olarak okunmasını sağlar; AB’de hukuki tanınma ise devletler arası anlaşma ister (eIDAS Madde 14).",
         en: "Using EU standards lets European software read Turkic-world credentials; legal recognition in the EU needs an agreement between states (eIDAS Article 14).",
         tk: "ÝB standartlaryny ulanmak resminamalaryň Ýewropa programmalary bilen tehniki taýdan okalmagyny üpjün edýär; ÝB-de hukuky ykrar edilmek üçin döwletleriň arasynda şertnama gerek (eIDAS 14-nji madda).",
+        az: "Aİ standartlarından istifadə Avropa proqram təminatına Türk dünyasının rəqəmsal sənədlərini oxumağa imkan verir; Aİ-də hüquqi tanınma isə dövlətlərarası saziş tələb edir (eIDAS 14-cü maddə).",
       },
     ],
     deeper: [
-      { label: { tr: "Tamga ARF: konumlanma", en: "Tamga ARF: positioning", tk: "Tamga ARF: ýerleşiş" }, href: "architecture", kind: "arf" },
-      { label: { tr: "ADR-0036: güven federasyonu", en: "ADR-0036: trust federation", tk: "ADR-0036: ynam federasiýasy" }, href: "/adr/0036-trust-federation-external-lists", kind: "docs" },
-      { label: { tr: "Senaryolar", en: "Scenarios", tk: "Ssenariler" }, href: "/scenarios", kind: "site" },
+      { label: { tr: "Tamga ARF: konumlanma", en: "Tamga ARF: positioning", tk: "Tamga ARF: ýerleşiş", az: "Tamga ARF: mövqeləndirmə" }, href: "architecture", kind: "arf" },
+      { label: { tr: "ADR-0036: güven federasyonu", en: "ADR-0036: trust federation", tk: "ADR-0036: ynam federasiýasy", az: "ADR-0036: etibar federasiyası" }, href: "/adr/0036-trust-federation-external-lists", kind: "docs" },
+      { label: { tr: "Senaryolar", en: "Scenarios", tk: "Ssenariler", az: "Ssenarilər" }, href: "/scenarios", kind: "site" },
     ],
   },
 
@@ -372,11 +480,12 @@ export const CHAPTER_6: LearnPage[] = [
     chapter: 6,
     order: 3,
     minutes: 6,
-    title: { tr: "Ağda kim ne yapar?", en: "Who does what", tk: "Torda kim näme edýär?" },
+    title: { tr: "Ağda kim ne yapar?", en: "Who does what", tk: "Torda kim näme edýär?", az: "Kim nə edir" },
     summary: {
       tr: "İşletmeci, kayıt kurumu, belge veren, yetkili kaynak, doğrulayan, cüzdan sağlayıcısı, kişi ve devlet: her rol sade dille.",
       en: "Operator, registrar, issuer, authentic source, verifier, wallet provider, person and state: each role in plain words.",
       tk: "Operator, hasaba alyş edarasy, resminama beriji, ygtyýarly çeşme, barlaýjy, gapjyk üpjün ediji, adam we döwlet: her rol ýönekeý dilde.",
+      az: "Operator, qeydiyyat orqanı, sənədi verən qurum, mötəbər mənbə, yoxlayan tərəf, cüzdan provayderi, şəxs və dövlət: hər rol sadə dillə.",
     },
     diagram: "roles",
     body: {
@@ -547,28 +656,97 @@ export const CHAPTER_6: LearnPage[] = [
           </Callout>
         </>
       ),
+      az: (
+        <>
+          <p>
+            Şəbəkə onun içindəki hər kəsin nə etdiyi aydın olanda işləyir. Tamga Network-da səkkiz rol var. Bir qurum birdən çox
+            rolu öz üzərinə götürə bilər; məsələn, universitet həm rəqəmsal sənəd verir, həm də yoxlayır. Hər rolun dəqiq
+            qaydaları Tamga ARF-dədir; burada hər birini sadə dillə izah edirik.
+          </p>
+          <h2>Şəbəkəni idarə edənlər</h2>
+          <h3>Operator</h3>
+          <p>
+            Etibar siyahılarını dərc edir, kök açarlarını qoruyur, siyahıların hər versiyasını imzalayır və açıq jurnal aparır.
+            Hazırda bu rolu müvəqqəti olaraq Tamga öz üzərinə götürür. Dövlət öz siyahısını idarə etməyə başladıqda həmin siyahı
+            onun operatoruna təhvil verilir.
+          </p>
+          <h3>Qeydiyyat orqanı</h3>
+          <p>
+            Qoşulmaq istəyənlərin müraciətlərini qəbul edir: qurumun həqiqətən mövcud olduğunu, rəsmi qeydiyyat nömrəsini, əlaqə
+            məlumatlarını və hansı rəqəmsal sənədləri vermək və ya tələb etmək istədiyini yoxlayır. Hər şey qaydasındadırsa,
+            qeydi siyahıya daxil edir.
+          </p>
+          <h2>Rəqəmsal sənəd yaradanlar</h2>
+          <h3>Sənədi verən qurum</h3>
+          <p>
+            Rəqəmsal sənədi verən qurum: universitet, xəstəxana, peşə palatası, bilet satıcısı. Rəqəmsal sənədi öz açarı ilə
+            imzalayır və lazım olduqda ləğv edir. Açar qurumun özündə qalır; şəbəkə onu saxlamır.
+          </p>
+          <h3>Mötəbər mənbə</h3>
+          <p>
+            Rəqəmsal sənəddəki məlumatın əsl qeydini saxlayan sistem: universitetin tələbə informasiya sistemi, palatanın üzv
+            reyestri. Sənədi verən qurum sənədi verərkən məlumatı buradan oxuyur. Çox vaxt sənədi verən qurum və mötəbər mənbə
+            eyni qurumdur.
+          </p>
+          <h2>Rəqəmsal sənəddən istifadə edənlər</h2>
+          <h3>Şəxs</h3>
+          <p>
+            Rəqəmsal sənədin sahibi. Onu öz rəqəmsal cüzdanında gəzdirir, kimə nə göstərəcəyinə özü qərar verir və hər paylaşımı
+            təsdiqləyir.
+          </p>
+          <h3>Yoxlayan tərəf</h3>
+          <p>
+            Rəqəmsal sənəd tələb edən tərəf: işəgötürən, veb-sayt, tədbirin giriş qapısı. Avropada ona{" "}
+            <Term tip="Rəqəmsal sənəd tələb edən və xidmət göstərmək üçün ona əsaslanan tərəf." en="relying party">relying party</Term> deyilir.
+            Şəbəkədə qeydiyyatdadır və yalnız qeydiyyatında göstərilən məlumatları tələb edə bilər; daha çoxunu istəsə, cüzdan
+            bunu şəxsə göstərir.
+          </p>
+          <h3>Cüzdan provayderi</h3>
+          <p>
+            Cüzdan tətbiqini hazırlayan və idarə edən təşkilat. Şəbəkənin cüzdan qaydalarına əməl etdiyini uyğunluq testləri ilə
+            göstərir və bundan sonra siyahıya daxil edilir. Hər cüzdan öz cüzdan provayderini özü idarə edir; şəbəkə heç birini
+            idarə etmir (şəbəkənin ilk cüzdanı olan Tamga Wallet da öz provayderini özü idarə edir). Şəbəkə cüzdan seçmir;
+            qaydalara əməl edən hər cüzdan provayderini tanıyır.
+          </p>
+          <h2>Dövlət</h2>
+          <p>
+            Ölkənin etibar siyahısının sahibi. Siyahıda hansı qurumların olacağına və hansı ölkələrin siyahılarını tanıyacağına
+            qərar verir. Dövlət qoşulana qədər bu rolu onun adından müvəqqəti operator yerinə yetirir; dövlət qoşulduqda rol ona
+            keçir.
+          </p>
+          <Callout kind="turkic" locale="az">
+            <p>
+              Eyni qurum müxtəlif ölkələrdə müxtəlif rollarda çıxış edə bilər: Bişkekdəki universitet öz diplomlarını verir,
+              Almatıdakı şirkət isə yoxlayan tərəf kimi həmin diplomu tələb edir. Qaydalar hər iki ölkədə eynidir.
+            </p>
+          </Callout>
+        </>
+      ),
     },
     keyPoints: [
       {
         tr: "Ağı işletmeci ve kayıt kurumu yürütür; belgeyi belge veren üretir, bilgi yetkili kaynaktan gelir.",
         en: "The operator and the registrar run the network; the issuer produces the credential, the data comes from the authentic source.",
         tk: "Tory operator we hasaba alyş edarasy alyp barýar; resminamany beriji öndürýär, maglumat ygtyýarly çeşmeden gelýär.",
+        az: "Şəbəkəni operator və qeydiyyat orqanı idarə edir; rəqəmsal sənədi sənədi verən qurum yaradır, məlumat mötəbər mənbədən gəlir.",
       },
       {
         tr: "Kişi belgesinin sahibidir; doğrulayıcı yalnız kaydında yazanı isteyebilir; cüzdan sağlayıcısı uyum testleriyle listeye girer.",
         en: "The person owns the credential; a verifier may ask only for what its registration allows; wallet providers are listed after conformance tests.",
         tk: "Adam resminamanyň eýesi; barlaýjy diňe hasabyndaky zady sorap bilýär; gapjyk üpjün edijiler laýyklyk synaglaryndan soň sanawa girýär.",
+        az: "Rəqəmsal sənədin sahibi şəxsdir; yoxlayan tərəf yalnız qeydiyyatının icazə verdiyini tələb edə bilər; cüzdan provayderləri uyğunluq testlərindən sonra siyahıya daxil edilir.",
       },
       {
         tr: "Her devlet kendi listesinin sahibidir; katılana kadar geçici işletmeci onun adına çalışır.",
         en: "Each state owns its list; until it joins, the provisional operator acts on its behalf.",
         tk: "Her döwlet öz sanawynyň eýesi; goşulýança wagtlaýyn operator onuň adyndan işleýär.",
+        az: "Hər dövlət öz siyahısının sahibidir; qoşulana qədər onun adından müvəqqəti operator çıxış edir.",
       },
     ],
     deeper: [
-      { label: { tr: "Tamga ARF: roller", en: "Tamga ARF: roles", tk: "Tamga ARF: rollar" }, href: "roles", kind: "arf" },
-      { label: { tr: "Tamga Rulebook: her rolün kuralları", en: "Tamga Rulebook: the rules for each role", tk: "Tamga Rulebook: rollaryň düzgünleri" }, href: "rulebook", kind: "arf" },
-      { label: { tr: "Katılım süreci", en: "Onboarding", tk: "Goşulyş tertibi" }, href: "onboarding", kind: "arf" },
+      { label: { tr: "Tamga ARF: roller", en: "Tamga ARF: roles", tk: "Tamga ARF: rollar", az: "Tamga ARF: rollar" }, href: "roles", kind: "arf" },
+      { label: { tr: "Tamga Rulebook: her rolün kuralları", en: "Tamga Rulebook: the rules for each role", tk: "Tamga Rulebook: rollaryň düzgünleri", az: "Tamga Rulebook: hər rolun qaydaları" }, href: "rulebook", kind: "arf" },
+      { label: { tr: "Katılım süreci", en: "Onboarding", tk: "Goşulyş tertibi", az: "Qoşulma prosesi" }, href: "onboarding", kind: "arf" },
     ],
   },
 
@@ -578,11 +756,12 @@ export const CHAPTER_6: LearnPage[] = [
     chapter: 6,
     order: 4,
     minutes: 5,
-    title: { tr: "Ağın katmanları", en: "The layers of the network", tk: "Toruň gatlaklary" },
+    title: { tr: "Ağın katmanları", en: "The layers of the network", tk: "Toruň gatlaklary", az: "Şəbəkənin qatları" },
     summary: {
       tr: "Kurallar, listeler, belge biçimleri, açık paketler, cüzdanlar ve ileride ortak defter.",
       en: "Rules, lists, credential formats, open packages, wallets and, later, a shared ledger.",
       tk: "Düzgünler, sanawlar, resminama görnüşleri, açyk paketler, gapjyklar we soňra umumy kitap.",
+      az: "Qaydalar, siyahılar, rəqəmsal sənəd formatları, açıq paketlər, rəqəmsal cüzdanlar və gələcəkdə ortaq reyestr.",
     },
     diagram: "trust-chain",
     body: {
@@ -702,28 +881,78 @@ export const CHAPTER_6: LearnPage[] = [
           </Callout>
         </>
       ),
+      az: (
+        <>
+          <p>
+            Tamga Network-u üst-üstə qoyulmuş qatlar kimi təsəvvür etmək işi asanlaşdırır. Hər qat altındakına söykənir və hər
+            birinin aydın vəzifəsi var. Altı qat mövcuddur; altıncısı bu gün yox, gələcəkdə gələcək.
+          </p>
+          <h2>1. Qaydalar</h2>
+          <p>
+            Ən altda yazılı qaydalar durur: Tamga ARF, Trust Framework, Tamga Rulebook və hər rəqəmsal sənəd növü üçün ayrıca
+            rulebook. Bütün digər qatlar bu qaydalara əsasən işləyir.
+          </p>
+          <h2>2. Etibar siyahıları</h2>
+          <p>
+            Qaydaların “kimə etibar etmək olar” sualına cavabı. Hər ölkənin siyahısı onun qurumlarını, yoxlayan tərəflərini və
+            cüzdan provayderlərini sadalayır; <Term tip="Bütün ölkə siyahılarına istinad edən ən yuxarıdakı imzalı siyahı." en="List of Trusted Lists (LOTL)">siyahılar siyahısı</Term> onları
+            bir araya gətirir. Siyahılar imzalıdır, hər versiya əvvəlkinə bağlıdır və hər kəs onları yoxlaya bilər.
+          </p>
+          <h2>3. Rəqəmsal sənəd formatları və protokollar</h2>
+          <p>
+            Rəqəmsal sənədin necə yazıldığı və necə ötürüldüyü: internet üçün SD-JWT VC, üzbəüz istifadə üçün mdoc; rəqəmsal
+            sənədi almaq üçün OpenID4VCI, təqdim etmək üçün OpenID4VP. Bunlar Aİ-nin istifadə etdiyi standartlardır.
+          </p>
+          <h2>4. Açıq paketlər</h2>
+          <p>
+            Qaydaları və formatları tətbiq edən hazır proqram təminatı: yoxlama xətti, sənəd vermə, cüzdan nüvəsi. Hər kəs onları
+            öz serverində işlədə bilər; eyni koddan istifadə edən hər kəs eyni nəticəyə gəlir.
+          </p>
+          <h2>5. Rəqəmsal cüzdanlar və xidmətlər</h2>
+          <p>
+            Şəbəkənin üzərində işləyənlər: insanların istifadə etdiyi rəqəmsal cüzdanlar və qurumlara xidmət göstərən
+            provayderlər. Onlar şəbəkənin hissəsi deyil, iştirakçılarıdır. İlk cüzdan Tamga Wallet-dır; qaydalara əməl edən hər
+            cüzdan eyni yerdə dayanır.
+          </p>
+          <h2>6. Ortaq reyestr (gələcəkdə)</h2>
+          <p>
+            Ən azı iki müstəqil operator qoşulduqdan sonra siyahılardakı qeydlər icazəli ortaq reyestrə də yazılacaq. Reyestr yeni
+            etibar mənbəyi əlavə etmir; o, bir neçə operatora eyni qeydləri birlikdə saxlamağa imkan verir. Fərdi məlumatlar
+            reyestrə də yazılmır.
+          </p>
+          <Callout kind="info" locale="az">
+            <p>
+              Qatlar bir-birindən asılı olmadan dəyişə bilər. Məsələn, yeni rəqəmsal sənəd növünün əlavə edilməsi yalnız
+              qaydalara və kataloqa toxunur; rəqəmsal cüzdanları yenidən yazmağa ehtiyac yoxdur.
+            </p>
+          </Callout>
+        </>
+      ),
     },
     keyPoints: [
       {
         tr: "Ağın altı katmanı var: kurallar, güven listeleri, biçimler ve protokoller, açık paketler, cüzdanlar ve ileride ortak defter.",
         en: "The network has six layers: rules, trust lists, formats and protocols, open packages, wallets and, later, a shared ledger.",
         tk: "Toruň alty gatlagy bar: düzgünler, sanawlar, görnüşler, paketler, gapjyklar we soňra umumy kitap.",
+        az: "Şəbəkənin altı qatı var: qaydalar, etibar siyahıları, formatlar və protokollar, açıq paketlər, rəqəmsal cüzdanlar və gələcəkdə ortaq reyestr.",
       },
       {
         tr: "Cüzdanlar ve hizmet sağlayıcılar ağın parçası değil, ağın katılımcılarıdır.",
         en: "Wallets and service providers are not part of the network; they are its participants.",
         tk: "Gapjyklar we hyzmat üpjün edijiler toruň bölegi däl, gatnaşyjylarydyr.",
+        az: "Rəqəmsal cüzdanlar və xidmət provayderləri şəbəkənin hissəsi deyil, onun iştirakçılarıdır.",
       },
       {
         tr: "Ortak defter en az iki bağımsız işletmeciyle gelir ve yeni bir güven kaynağı eklemez.",
         en: "The shared ledger comes with at least two independent operators and adds no new source of trust.",
         tk: "Umumy kitap azyndan iki garaşsyz operator bilen gelýär.",
+        az: "Ortaq reyestr ən azı iki müstəqil operatorla gəlir və yeni etibar mənbəyi əlavə etmir.",
       },
     ],
     deeper: [
-      { label: { tr: "Bileşen mimarisi", en: "Component architecture", tk: "Komponent arhitekturasy" }, href: "/architecture/components", kind: "docs" },
-      { label: { tr: "Tamga ARF: mimari", en: "Tamga ARF: architecture", tk: "Tamga ARF: arhitektura" }, href: "architecture", kind: "arf" },
-      { label: { tr: "Neden henüz blockchain yok?", en: "Why no blockchain yet?", tk: "Näme üçin entek blokçeýn ýok?" }, href: "/learn/why-not-blockchain-yet", kind: "site" },
+      { label: { tr: "Bileşen mimarisi", en: "Component architecture", tk: "Komponent arhitekturasy", az: "Komponent memarlığı" }, href: "/architecture/components", kind: "docs" },
+      { label: { tr: "Tamga ARF: mimari", en: "Tamga ARF: architecture", tk: "Tamga ARF: arhitektura", az: "Tamga ARF: memarlıq" }, href: "architecture", kind: "arf" },
+      { label: { tr: "Neden henüz blockchain yok?", en: "Why no blockchain yet?", tk: "Näme üçin entek blokçeýn ýok?", az: "Niyə hələ blockchain yoxdur?" }, href: "/learn/why-not-blockchain-yet", kind: "site" },
     ],
   },
 
@@ -733,11 +962,12 @@ export const CHAPTER_6: LearnPage[] = [
     chapter: 6,
     order: 5,
     minutes: 5,
-    title: { tr: "Kurallar ve rulebook'lar", en: "Rules and rulebooks", tk: "Düzgünler we rulebook-lar" },
+    title: { tr: "Kurallar ve rulebook'lar", en: "Rules and rulebooks", tk: "Düzgünler we rulebook-lar", az: "Qaydalar və rulebook-lar" },
     summary: {
       tr: "Tamga ARF, Trust Framework, Tamga Rulebook ve belge türü rulebook'ları: hangisi neyi düzenler.",
       en: "Tamga ARF, the Trust Framework, the Tamga Rulebook and the credential-type rulebooks: what each one governs.",
       tk: "Tamga ARF, Trust Framework, Tamga Rulebook we resminama görnüşi rulebook-lary: haýsysy nämäni düzgünleşdirýär.",
+      az: "Tamga ARF, Trust Framework, Tamga Rulebook və rəqəmsal sənəd növlərinin rulebook-ları: hər biri nəyi tənzimləyir.",
     },
     body: {
       tr: (
@@ -863,29 +1093,81 @@ export const CHAPTER_6: LearnPage[] = [
           <p>Gurama tora goşulanda gatnaşyk şertnamasy bilen bu düzgünleri kabul edýär. Tehniki jikme-jiklikler işläp düzüjiler üçin resminamalarda.</p>
         </>
       ),
+      az: (
+        <>
+          <p>
+            Şəbəkənin etibarlı olması üçün hamı eyni qaydalara əməl etməli və bu qaydalar açıq şəkildə yazılmalıdır. Tamga-nın
+            qaydaları bir yerdə toplanır: Tamga ARF. O, Avropa İttifaqının öz cüzdanları üçün yazdığı çərçivə ilə eyni
+            ardıcıllıqla qurulub.
+          </p>
+          <h2>Tamga ARF: əsas sənəd</h2>
+          <p>
+            ARF “memarlıq və istinad çərçivəsi” deməkdir. O, şəbəkənin kimlərdən ibarət olduğunu, necə işlədiyini, etibarın
+            haradan gəldiyini, təhlükəsizlik və idarəetmənin necə təşkil olunduğunu təsvir edir. Qurum rəhbəri və ya dövlət
+            nümayəndəsi üçün başlanğıc nöqtəsi budur.
+          </p>
+          <h2>Trust Framework</h2>
+          <p>
+            Şəbəkənin hüquqi və idarəetmə tərəfi: kim qoşula bilər, necə müraciət edilir, qaydaları pozanlarla nə baş verir, rol
+            necə təhvil verilir. Bu, Avropanın eIDAS reqlamentinin və onun icra aktlarının şəbəkədəki qarşılığıdır.
+          </p>
+          <h2>Tamga Rulebook</h2>
+          <p>
+            Hər rol üçün nömrələnmiş, məcburi qaydalar. Yoxlayan tərəfin yalnız qeydiyyatında göstərilən məlumatları tələb edə
+            bilməsi və ya sənədi verən qurumun öz açarını özündə saxlamalı olması burada yazılıb. Hər qaydanın kodu var, buna görə
+            yoxlama zamanı “hansı qayda pozulub?” sualına bir sətirlə cavab verilir.
+          </p>
+          <h2>Rəqəmsal sənəd növlərinin rulebook-ları</h2>
+          <p>
+            Hər rəqəmsal sənəd növünün Tamga Rulebook-dan şaxələnən öz rulebook-u var: o, ümumi qaydaları miras alır və yalnız
+            həmin növə xas qaydaları əlavə edir. Hazırda üç rulebook var:
+          </p>
+          <ul>
+            <li><strong>Education Rulebook:</strong> tələbə arayışı və diplom.</li>
+            <li><strong>Identity Rulebook:</strong> müvəqqəti şəxsiyyət sənədi.</li>
+            <li><strong>Event Ticket Rulebook:</strong> tədbir biletləri.</li>
+          </ul>
+          <p>Yeni növ, məsələn peşə lisenziyası, yalnız yoxlama siyahısı tamamlandıqdan sonra öz rulebook-u ilə gəlir.</p>
+          <Callout kind="turkic" locale="az">
+            <p>
+              Qaydalar türk dilində yazılır və ingilis dilinə rəsmi şəkildə tərcümə olunur; hər ikisi həmişə eyni versiyadadır.
+              Dövlət qoşulduqda bu sənədlər şuraya keçir və qaydalar ortaq qərarla dəyişir.
+            </p>
+          </Callout>
+          <h2>Qaydalar necə məcburi olur?</h2>
+          <p>
+            Qurum şəbəkəyə qoşularkən iştirak sazişi vasitəsilə bu qaydaları qəbul edir. Yəni onları məcburi edən qoşulmanın
+            özüdür. Texniki təfərrüatlar tərtibatçı sənədlərindəki spesifikasiyalarda yazılıb: qaydalar nəyin edilməli olduğunu,
+            spesifikasiyalar isə necə edilməli olduğunu deyir.
+          </p>
+        </>
+      ),
     },
     keyPoints: [
       {
         tr: "Tamga ARF ağın ana belgesidir; Trust Framework hukuk ve yönetişimi, Tamga Rulebook her rolün kurallarını anlatır.",
         en: "The Tamga ARF is the main document; the Trust Framework covers law and governance, the Tamga Rulebook each role’s rules.",
         tk: "Tamga ARF esasy resminama; Trust Framework hukuk we dolandyryşy, Tamga Rulebook rollaryň düzgünlerini düşündirýär.",
+        az: "Tamga ARF əsas sənəddir; Trust Framework hüquq və idarəetməni, Tamga Rulebook isə hər rolun qaydalarını əhatə edir.",
       },
       {
         tr: "Belge türü rulebook’ları (Education, Identity, Event Ticket) Tamga Rulebook’tan dallanır.",
         en: "The credential-type rulebooks (Education, Identity, Event Ticket) branch off the Tamga Rulebook.",
         tk: "Görnüş rulebook-lary (Education, Identity, Event Ticket) Tamga Rulebook-dan şahalanýar.",
+        az: "Rəqəmsal sənəd növlərinin rulebook-ları (Education, Identity, Event Ticket) Tamga Rulebook-dan şaxələnir.",
       },
       {
         tr: "Kurallar katılım sözleşmesiyle bağlayıcı olur; teknik ayrıntı şartnamelerdedir.",
         en: "The rules become binding through the participation agreement; the technical detail is in the specifications.",
         tk: "Düzgünler gatnaşyk şertnamasy bilen hökmany bolýar.",
+        az: "Qaydalar iştirak sazişi vasitəsilə məcburi olur; texniki təfərrüatlar spesifikasiyalardadır.",
       },
     ],
     deeper: [
-      { label: { tr: "Okuma yolu: kim neyi okumalı", en: "Reading path: who reads what", tk: "Okaýyş ýoly" }, href: "reading-path", kind: "arf" },
-      { label: { tr: "Trust Framework", en: "Trust Framework", tk: "Trust Framework" }, href: "trust-framework", kind: "arf" },
-      { label: { tr: "Tamga Rulebook", en: "Tamga Rulebook", tk: "Tamga Rulebook" }, href: "rulebook", kind: "arf" },
-      { label: { tr: "Education Rulebook", en: "Education Rulebook", tk: "Education Rulebook" }, href: "rulebooks/education", kind: "arf" },
+      { label: { tr: "Okuma yolu: kim neyi okumalı", en: "Reading path: who reads what", tk: "Okaýyş ýoly", az: "Oxu yolu: kim nəyi oxuyur" }, href: "reading-path", kind: "arf" },
+      { label: { tr: "Trust Framework", en: "Trust Framework", tk: "Trust Framework", az: "Trust Framework" }, href: "trust-framework", kind: "arf" },
+      { label: { tr: "Tamga Rulebook", en: "Tamga Rulebook", tk: "Tamga Rulebook", az: "Tamga Rulebook" }, href: "rulebook", kind: "arf" },
+      { label: { tr: "Education Rulebook", en: "Education Rulebook", tk: "Education Rulebook", az: "Education Rulebook" }, href: "rulebooks/education", kind: "arf" },
     ],
   },
 
@@ -895,11 +1177,12 @@ export const CHAPTER_6: LearnPage[] = [
     chapter: 6,
     order: 6,
     minutes: 5,
-    title: { tr: "Yönetişim", en: "Governance", tk: "Dolandyryş" },
+    title: { tr: "Yönetişim", en: "Governance", tk: "Dolandyryş", az: "İdarəetmə" },
     summary: {
       tr: "Bugün geçici işletmeci, devletler katılınca konsey ya da vakıf, sonra ortak defter.",
       en: "A provisional operator today, a council or foundation once states join, then a shared ledger.",
       tk: "Häzir wagtlaýyn operator, döwletler goşulanda geňeş ýa-da gaznaçylyk, soňra umumy kitap.",
+      az: "Bu gün müvəqqəti operator, dövlətlər qoşulduqda şura və ya fond, sonra ortaq reyestr.",
     },
     body: {
       tr: (
@@ -995,28 +1278,70 @@ export const CHAPTER_6: LearnPage[] = [
           <p>Domen ady, kök sertifikatlar we açarlar ýazmaça şertnama bilen geçirilýär; adamlaryň resminamalary hereketde galýar.</p>
         </>
       ),
+      az: (
+        <>
+          <p>
+            Şəbəkəyə etibar onu kimin idarə etdiyini bilməkdən başlayır. Tamga Network-un idarəetməsi addım-addım qurulur: ilk
+            gündən ağır bir qurum yaradılmır, lakin hər mərhələni kimin və hansı şərtlərlə öz üzərinə götürəcəyi əvvəlcədən
+            yazılıb.
+          </p>
+          <h2>Bu gün: müvəqqəti operator</h2>
+          <p>
+            Hazırda şəbəkəni Tamga müvəqqəti operator kimi idarə edir. O, Türkiyənin siyahısını dövlət adından dərc edir və bunu
+            açıq şəkildə bildirir: siyahılarda operatorun “müvəqqəti” olduğu və kimin adından çıxış etdiyi yazılır. Siyahının hər
+            versiyası imzalanır və açıq jurnala qeyd olunur, beləliklə hər kəs siyahının xəbərsiz dəyişdirilmədiyini yoxlaya bilər.
+          </p>
+          <h2>Dövlətlər qoşulduqda: şura və ya fond</h2>
+          <p>
+            Bir və ya iki dövlət qoşulmağa hazır olduqda idarəetmə orqanı yaradılır: üzv dövlətlərdən ibarət şura və əməliyyatları
+            öz üzərinə götürəcək fond və ya katiblik. Siyahılar sahiblərinə təhvil verilir; şəbəkə səviyyəsində qərarlar, məsələn
+            yeni üzvün qəbulu və ya ortaq rəqəmsal sənəd növü, üzv dövlətlər tərəfindən birgə qəbul edilir.
+          </p>
+          <Callout kind="turkic" locale="az">
+            <p>
+              Şura yaradıldıqdan sonra da hər dövlət öz siyahısı üzərində yeganə söz sahibidir. Şura yalnız şəbəkənin ortaq
+              qaydalarını idarə edir; dövlətin öz qurumları barədə qərar verə bilməz.
+            </p>
+          </Callout>
+          <h2>İki müstəqil operatordan sonra: ortaq reyestr</h2>
+          <p>
+            Ən azı iki müstəqil operator olduqda qeydlər icazəli ortaq reyestrə də yazılır. Bu, tək bir operatorun siyahını
+            dəyişməsini texniki baxımdan çətinləşdirir. Reyestr bu mərhələyə qədər qəsdən təxirə salınır: tək operatorun apardığı
+            reyestr heç bir əlavə etibar yaratmır.
+          </p>
+          <h2>Təhvil necə həyata keçirilir?</h2>
+          <p>
+            Hər müvəqqəti rolun təhvili əvvəlcədən planlaşdırılıb: domen adı, kök sertifikatlar, siyahı arxivi və açarlar yazılı
+            varislik sazişi əsasında təhvil verilir. Rəqəmsal cüzdanlar və yoxlayan tərəflər üçün yalnız ünvan və imzalayan
+            dəyişir; insanların cüzdanlarındakı rəqəmsal sənədlər etibarlı qalır.
+          </p>
+        </>
+      ),
     },
     keyPoints: [
       {
         tr: "Bugün Tamga geçici işletmecidir ve bunu listelerde açıkça yazar; her liste sürümü herkese açık bir günlüğe işlenir.",
         en: "Today Tamga is the provisional operator and says so in the lists; every list version is recorded in a public log.",
         tk: "Häzir Tamga wagtlaýyn operator we muny sanawlarda açyk ýazýar.",
+        az: "Hazırda Tamga müvəqqəti operatordur və bunu siyahılarda bildirir; siyahının hər versiyası açıq jurnala qeyd olunur.",
       },
       {
         tr: "Devletler katılınca konsey ve vakıf kurulur; her devlet yine kendi listesinin tek sahibidir.",
         en: "Once states join, a council and a foundation are set up; each state still solely owns its list.",
         tk: "Döwletler goşulanda geňeş we gaznaçylyk döredilýär; her döwlet öz sanawynyň eýesi bolup galýar.",
+        az: "Dövlətlər qoşulduqda şura və fond yaradılır; hər dövlət yenə də öz siyahısının yeganə sahibidir.",
       },
       {
         tr: "Ortak defter en az iki bağımsız işletmeciyle gelir; devirler yazılı sözleşmeyle baştan tasarlanmıştır.",
         en: "The shared ledger arrives with at least two independent operators; hand-overs are designed up front in writing.",
         tk: "Umumy kitap azyndan iki garaşsyz operator bilen gelýär.",
+        az: "Ortaq reyestr ən azı iki müstəqil operatorla gəlir; təhvillər əvvəlcədən yazılı şəkildə planlaşdırılıb.",
       },
     ],
     deeper: [
-      { label: { tr: "Trust Framework: yönetişim", en: "Trust Framework: governance", tk: "Trust Framework: dolandyryş" }, href: "trust-framework", kind: "arf" },
-      { label: { tr: "ADR-0009: zincirsiz beta ve zincir eşiği", en: "ADR-0009: chainless beta and chain threshold", tk: "ADR-0009" }, href: "/adr/0009-phase-b-chainless-beta-and-chain-threshold", kind: "docs" },
-      { label: { tr: "Bizde neden henüz blockchain yok?", en: "Why no blockchain yet?", tk: "Näme üçin entek blokçeýn ýok?" }, href: "/learn/why-not-blockchain-yet", kind: "site" },
+      { label: { tr: "Trust Framework: yönetişim", en: "Trust Framework: governance", tk: "Trust Framework: dolandyryş", az: "Trust Framework: idarəetmə" }, href: "trust-framework", kind: "arf" },
+      { label: { tr: "ADR-0009: zincirsiz beta ve zincir eşiği", en: "ADR-0009: chainless beta and chain threshold", tk: "ADR-0009", az: "ADR-0009: zəncirsiz beta və zəncir həddi" }, href: "/adr/0009-phase-b-chainless-beta-and-chain-threshold", kind: "docs" },
+      { label: { tr: "Bizde neden henüz blockchain yok?", en: "Why no blockchain yet?", tk: "Näme üçin entek blokçeýn ýok?", az: "Niyə hələ blockchain yoxdur?" }, href: "/learn/why-not-blockchain-yet", kind: "site" },
     ],
   },
 
@@ -1026,11 +1351,12 @@ export const CHAPTER_6: LearnPage[] = [
     chapter: 6,
     order: 7,
     minutes: 4,
-    title: { tr: "Açık kod", en: "Open source", tk: "Açyk kod" },
+    title: { tr: "Açık kod", en: "Open source", tk: "Açyk kod", az: "Açıq kod" },
     summary: {
       tr: "Paketler, lisanslar ve uyum testleri: herkesin aynı kodu kullanıp aynı sonucu alması.",
       en: "Packages, licences and conformance tests: everyone can use the same code and get the same result.",
       tk: "Paketler, ygtyýarnamalar we laýyklyk synaglary: hemmeler şol bir kody ulanyp şol bir netijäni alýar.",
+      az: "Paketlər, lisenziyalar və uyğunluq testləri: hər kəs eyni koddan istifadə edib eyni nəticəni əldə edə bilər.",
     },
     body: {
       tr: (
@@ -1134,28 +1460,70 @@ export const CHAPTER_6: LearnPage[] = [
           </Callout>
         </>
       ),
+      az: (
+        <>
+          <p>
+            Etibar şəbəkəsinin qaydaları nə qədər açıq olsa da, onları tətbiq edən proqram təminatı qapalıdırsa, heç kim nəticəyə
+            əmin ola bilməz. Buna görə Tamga Network kodunu açıq saxlayır: hər kəs onu oxuya, işlədə və yoxlaya bilər.
+          </p>
+          <h2>Paketlər</h2>
+          <p>
+            Şəbəkənin proqram təminatı kiçik, ayrı-ayrı paketlərə bölünüb. Yoxlayan tərəf yalnız yoxlama paketindən, cüzdan
+            tərtibatçısı isə yalnız cüzdan nüvəsindən istifadə edə bilər:
+          </p>
+          <ul>
+            <li><strong>trust:</strong> imzalı etibar siyahılarını oxuyur və yoxlayır.</li>
+            <li><strong>verifier:</strong> rəqəmsal sənədin başdan-sona yoxlanması; sorğuların qurulması.</li>
+            <li><strong>issuer:</strong> sənəd vermə və status siyahısının dərci.</li>
+            <li><strong>wallet-core:</strong> cüzdanın nüvəsi: açarlar, rəqəmsal sənədlərin alınması və təqdim edilməsi.</li>
+            <li><strong>sd-jwt, mdoc, schemas, core:</strong> rəqəmsal sənəd formatları, sənəd növləri kataloqu və ortaq tikinti blokları.</li>
+          </ul>
+          <h2>Lisenziyalar</h2>
+          <p>
+            Kod Apache-2.0, sənədlər isə CC BY 4.0 lisenziyası ilə yayımlanır. Qurumlar və şirkətlər kodu öz məhsullarında sərbəst
+            istifadə edə və dəyişdirə, sənədləri isə mənbəni göstərməklə paylaşa bilərlər.
+          </p>
+          <h2>Uyğunluq testləri</h2>
+          <p>
+            Eyni qaydaları tətbiq edən iki fərqli proqram eyni nəticəyə gəlməlidir. Bunun üçün şəbəkənin{" "}
+            <Term tip="Proqram təminatının şəbəkə qaydalarına əməl edib-etmədiyini yoxlamaq üçün hər kəsin işlədə biləcəyi hazır test toplusu." en="conformance tests">uyğunluq testləri</Term> var:
+            nümunə rəqəmsal sənədlər və onların gözlənilən nəticələri. Rəqəmsal cüzdan, yoxlayan tərəf və ya sənədi verən qurum bu
+            testlərdən keçməklə şəbəkənin qaydalarına əməl etdiyini göstərir. Testlərdən keçmək üçün Tamga-nın paketlərindən
+            istifadə etmək məcburi deyil; spesifikasiyaya əməl edən istənilən tətbiq keçə bilər.
+          </p>
+          <Callout kind="turkic" locale="az">
+            <p>
+              Açıq kod o deməkdir ki, dövlət bu infrastrukturu öz serverlərində, öz nəzarəti altında işlədə bilər. Şəbəkəyə etibar
+              etmək üçün kiminsə sözünə inanmaq lazım deyil; kod hamının gözü önündədir.
+            </p>
+          </Callout>
+        </>
+      ),
     },
     keyPoints: [
       {
         tr: "Ağın yazılımı açık kaynaklı, küçük paketlerdir; herkes okuyabilir, çalıştırabilir, denetleyebilir.",
         en: "The network’s software is open-source, in small packages; anyone can read, run and audit it.",
         tk: "Toruň programmasy açyk çeşmeli kiçi paketlerdir.",
+        az: "Şəbəkənin proqram təminatı açıq mənbəlidir və kiçik paketlərdən ibarətdir; hər kəs onu oxuya, işlədə və yoxlaya bilər.",
       },
       {
         tr: "Kod Apache-2.0, belgeler CC BY 4.0 lisanslıdır.",
         en: "Code is Apache-2.0, documents are CC BY 4.0.",
         tk: "Kod Apache-2.0, resminamalar CC BY 4.0.",
+        az: "Kod Apache-2.0, sənədlər CC BY 4.0 lisenziyalıdır.",
       },
       {
         tr: "Uyum testleri, şartnameye uyan her yazılımın aynı sonuca vardığını gösterir.",
         en: "Conformance tests show that any software following the specification reaches the same result.",
         tk: "Laýyklyk synaglary şol bir netijä ýetilýändigini görkezýär.",
+        az: "Uyğunluq testləri spesifikasiyaya əməl edən istənilən proqram təminatının eyni nəticəyə gəldiyini göstərir.",
       },
     ],
     deeper: [
-      { label: { tr: "Paketler", en: "Packages", tk: "Paketler" }, href: "/packages/", kind: "docs" },
-      { label: { tr: "Uyum testleri", en: "Conformance tests", tk: "Laýyklyk synaglary" }, href: "/guides/conformance", kind: "docs" },
-      { label: { tr: "SDK sayfası", en: "SDK page", tk: "SDK sahypasy" }, href: "/sdk", kind: "site" },
+      { label: { tr: "Paketler", en: "Packages", tk: "Paketler", az: "Paketlər" }, href: "/packages/", kind: "docs" },
+      { label: { tr: "Uyum testleri", en: "Conformance tests", tk: "Laýyklyk synaglary", az: "Uyğunluq testləri" }, href: "/guides/conformance", kind: "docs" },
+      { label: { tr: "SDK sayfası", en: "SDK page", tk: "SDK sahypasy", az: "SDK səhifəsi" }, href: "/sdk", kind: "site" },
     ],
   },
 
@@ -1165,11 +1533,12 @@ export const CHAPTER_6: LearnPage[] = [
     chapter: 6,
     order: 8,
     minutes: 4,
-    title: { tr: "İlk cüzdan: Tamga Wallet", en: "The first wallet: Tamga Wallet", tk: "Ilkinji gapjyk: Tamga Wallet" },
+    title: { tr: "İlk cüzdan: Tamga Wallet", en: "The first wallet: Tamga Wallet", tk: "Ilkinji gapjyk: Tamga Wallet", az: "İlk rəqəmsal cüzdan: Tamga Wallet" },
     summary: {
       tr: "Ağın ilk cüzdanı; ağ onu işletmez, ağın kurallarına her cüzdan gibi uyar, tek cüzdan değildir.",
       en: "The network's first wallet; the network doesn't run it, it follows the network's rules like any other wallet and is not the only one.",
       tk: "Toruň ilkinji gapjygy; tor ony işletmeýär, toruň düzgünlerine beýleki gapjyklar ýaly eýerýär, ýeke-täk gapjyk däl.",
+      az: "Şəbəkənin ilk rəqəmsal cüzdanı; şəbəkə onu idarə etmir, o, şəbəkənin qaydalarına digər cüzdanlar kimi əməl edir və yeganə cüzdan deyil.",
     },
     diagram: "disclosure",
     body: {
@@ -1279,29 +1648,74 @@ export const CHAPTER_6: LearnPage[] = [
           </Callout>
         </>
       ),
+      az: (
+        <>
+          <p>
+            Şəbəkənin işlədiyini göstərməyin ən yaxşı yolu ondan real istifadə edən rəqəmsal cüzdandır. Tamga Wallet bu şəbəkənin
+            ilk cüzdanıdır: insanların rəqəmsal sənədlərini telefonlarında gəzdirməsi və yalnız lazım olan məlumatı göstərməsi
+            üçün hazırlanmış, Aİ ilə uyğun tətbiq.
+          </p>
+          <h2>Şəbəkənin hissəsi deyil, iştirakçısı</h2>
+          <p>
+            Tamga Wallet öz komandası, öz qərarları və öz saytı olan ayrıca məhsuldur. Şəbəkəyə digər cüzdanlar kimi qoşulur:
+            cüzdan qaydalarına əməl etdiyini göstərir və cüzdan provayderi kimi siyahıya daxil edilir. Şəbəkə ona heç bir imtiyaz
+            vermir; qaydalara əməl edən hər cüzdan şəbəkədə eyni hüquqlara malikdir. Şəbəkə cüzdan idarə etmir: tətbiqi, cüzdan
+            provayderini və saytı Tamga Wallet özü idarə edir, cüzdan isə öz saytında təqdim olunur.
+          </p>
+          <h2>Nə edir?</h2>
+          <ul>
+            <li>Qurumlardan rəqəmsal sənəd almaq: QR kodu skan etməklə və ya qurumu tətbiqdə tapmaqla.</li>
+            <li>Rəqəmsal sənədləri telefonda saxlamaq: onlar serverdə deyil, cihazda qalır.</li>
+            <li>Yalnız lazım olanı göstərmək: hansı məlumatın paylaşılacağını görmək və təsdiqləmək.</li>
+            <li>Veb-saytlara “Tamga ilə daxil olun” vasitəsilə, hər sayt üçün ayrı təxəllüslə daxil olmaq.</li>
+            <li>Kimə nə göstərildiyini görmək: qeyd yalnız şəxsin telefonunda saxlanılır.</li>
+          </ul>
+          <Callout kind="info" locale="az">
+            <p>
+              Tamga Wallet “Aİ ilə uyğun” rəqəmsal cüzdandır. “EUDI Wallet” adı Aİ üzv dövlətinin təqdim etdiyi və ya tanıdığı
+              cüzdanlar üçün nəzərdə tutulub; Tamga Wallet bu addan istifadə etmir və milli şəxsiyyət cüzdanı deyil.
+            </p>
+          </Callout>
+          <h2>İlk cüzdan niyə vacibdir?</h2>
+          <p>
+            Qaydalar kağız üzərində düzgün ola bilər, lakin onlar real telefonda, real istifadəçi ilə işləməlidir. Tamga Wallet bu
+            qaydaların tətbiq edilə bildiyini göstərir və cüzdan hazırlamaq istəyən başqaları üçün nümunə rolunu oynayır. Cüzdan
+            provayderi olmaq istəyən istənilən komanda eyni açıq paketlərdən və eyni uyğunluq testlərindən istifadə edə bilər.
+          </p>
+          <Callout kind="turkic" locale="az">
+            <p>
+              Şəbəkənin məqsədi tək bir cüzdan deyil, Türk dünyasının müxtəlif ölkələrindən çoxlu uyğun cüzdanlardır. Şəxs hansı
+              cüzdanı seçməsindən asılı olmayaraq, onun rəqəmsal sənədi şəbəkənin hər yerində eyni qaydada yoxlanılır.
+            </p>
+          </Callout>
+        </>
+      ),
     },
     keyPoints: [
       {
         tr: "Tamga Wallet ağın ilk cüzdanıdır; ayrı bir üründür, ağ onu işletmez ve ağa diğer cüzdanlar gibi katılır.",
         en: "Tamga Wallet is the network’s first wallet; it is a separate product, the network doesn’t run it, and it joins like any other wallet.",
         tk: "Tamga Wallet toruň ilkinji gapjygy; aýry önüm, tor ony işletmeýär.",
+        az: "Tamga Wallet şəbəkənin ilk rəqəmsal cüzdanıdır; o, ayrıca məhsuldur, şəbəkə onu idarə etmir və o, şəbəkəyə digər cüzdanlar kimi qoşulur.",
       },
       {
         tr: "Belgeler telefonda durur; kişi yalnız gerekeni gösterir ve her siteye ayrı takma adla girer.",
         en: "Credentials stay on the phone; the person shows only what is needed and uses a separate pseudonym for each site.",
         tk: "Resminamalar telefonda durýar; adam diňe gerek zady görkezýär.",
+        az: "Rəqəmsal sənədlər telefonda qalır; şəxs yalnız lazım olanı göstərir və hər sayt üçün ayrı təxəllüsdən istifadə edir.",
       },
       {
         tr: "Tamga Wallet “AB uyumlu” bir cüzdandır; EUDI Wallet ya da ulusal kimlik cüzdanı değildir.",
         en: "Tamga Wallet is an “EU-compatible” wallet; it is not an EUDI Wallet or a national identity wallet.",
         tk: "Tamga Wallet “ÝB bilen laýyk” gapjyk; EUDI Wallet däl.",
+        az: "Tamga Wallet “Aİ ilə uyğun” rəqəmsal cüzdandır; EUDI Wallet və ya milli şəxsiyyət cüzdanı deyil.",
       },
     ],
     deeper: [
-      { label: { tr: "Cüzdan kuralları", en: "Wallet rules", tk: "Gapjyk düzgünleri" }, href: "/specifications/wallet", kind: "docs" },
-      { label: { tr: "Cüzdan geliştirmek", en: "Building a wallet", tk: "Gapjyk düzmek" }, href: "/guides/build-a-wallet", kind: "docs" },
-      { label: { tr: "ADR-0030: ürün adları", en: "ADR-0030: product names", tk: "ADR-0030: önüm atlary" }, href: "/adr/0030-product-names", kind: "docs" },
-      { label: { tr: "ADR-0042: ağ ve cüzdanlar", en: "ADR-0042: network and wallets", tk: "ADR-0042: tor we gapjyklar" }, href: "/adr/0042-network-and-wallets", kind: "docs" },
+      { label: { tr: "Cüzdan kuralları", en: "Wallet rules", tk: "Gapjyk düzgünleri", az: "Cüzdan qaydaları" }, href: "/specifications/wallet", kind: "docs" },
+      { label: { tr: "Cüzdan geliştirmek", en: "Building a wallet", tk: "Gapjyk düzmek", az: "Cüzdan hazırlamaq" }, href: "/guides/build-a-wallet", kind: "docs" },
+      { label: { tr: "ADR-0030: ürün adları", en: "ADR-0030: product names", tk: "ADR-0030: önüm atlary", az: "ADR-0030: məhsul adları" }, href: "/adr/0030-product-names", kind: "docs" },
+      { label: { tr: "ADR-0042: ağ ve cüzdanlar", en: "ADR-0042: network and wallets", tk: "ADR-0042: tor we gapjyklar", az: "ADR-0042: şəbəkə və cüzdanlar" }, href: "/adr/0042-network-and-wallets", kind: "docs" },
     ],
   },
 ];

@@ -149,10 +149,48 @@ const C: Record<
       "Guramalar, gapjyk üpjün edijiler we döwletler şol bir açyk tertip bilen goşulýar.",
     cta: "Tora goşul",
   },
+  az: {
+    title: "Tərəfdaşlar",
+    description: "Tamga Network-a qoşulan qurumlar və təşkilatlar.",
+    eyebrow: "Şəbəkə",
+    lead: "Şəbəkəyə qoşulan qurumlar və təşkilatlar. Hər biri şəbəkəyə qoşulduqdan və siyahıya daxil edilməyə razılıq verdikdən sonra burada göstərilir.",
+    soon: "Tezliklə",
+    soonNote: "İlk tərəfdaşlar burada göstəriləcək.",
+    groups: [
+      {
+        key: "institutions",
+        icon: Building2,
+        title: "Qurumlar",
+        desc: "Şəbəkədə rəqəmsal sənədlər verən və ya yoxlayan, yaxud buna hazırlaşan (pilot tərəfdaşlar) universitetlər, dövlət qurumları və şirkətlər.",
+      },
+      {
+        key: "wallets",
+        icon: Wallet,
+        title: "Cüzdan provayderləri",
+        desc: "Şəbəkənin qaydalarına əməl edən və uyğunluq testlərindən keçən rəqəmsal cüzdanlar.",
+      },
+      {
+        key: "technology",
+        icon: Code,
+        title: "Texnologiya və tətbiq tərəfdaşları",
+        desc: "Açıq paketlər əsasında həllər hazırlayan və qurumların qoşulmasına kömək edən təşkilatlar.",
+      },
+      {
+        key: "ecosystem",
+        icon: Sprout,
+        title: "Ekosistem",
+        desc: "Şəbəkəni dəstəkləyən texnologiya mərkəzləri, assosiasiyalar və icmalar.",
+      },
+    ],
+    ctaTitle: "Siz də qoşulmaq istəyirsiniz?",
+    ctaText:
+      "Qurumlar, cüzdan provayderləri və dövlətlər eyni açıq proses vasitəsilə qoşulur.",
+    cta: "Şəbəkəyə qoşulun",
+  },
 };
 
 const pick = (raw: string): Locale =>
-  ["en", "tr", "tk"].includes(raw) ? (raw as Locale) : "en";
+  ["en", "tr", "tk", "az"].includes(raw) ? (raw as Locale) : "en";
 
 export async function generateMetadata({
   params,

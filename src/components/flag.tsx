@@ -1,6 +1,6 @@
 /**
  * Dil seçicideki bayraklar: satır içi SVG (Windows emoji bayrağı göstermez). Sade ama tanınır çizimler, 3:2 oranı.
- * tr → Türkiye, en → Birleşik Krallık, tk → Türkmenistan.
+ * tr → Türkiye, en → Birleşik Krallık, tk → Türkmenistan, az → Azerbaycan.
  */
 
 /** Beş köşeli yıldızın köşe noktaları. */
@@ -59,7 +59,31 @@ function Turkmenistan() {
   );
 }
 
-const FLAGS: Record<string, () => React.JSX.Element> = { tr: Turkey, en: UnitedKingdom, tk: Turkmenistan };
+/** Sekiz köşeli yıldız (Azerbaycan bayrağı). */
+function star8(cx: number, cy: number, r: number): string {
+  const pts: string[] = [];
+  for (let i = 0; i < 16; i++) {
+    const rad = ((-90 + i * 22.5) * Math.PI) / 180;
+    const rr = i % 2 === 0 ? r : r * 0.6;
+    pts.push(`${(cx + rr * Math.cos(rad)).toFixed(2)},${(cy + rr * Math.sin(rad)).toFixed(2)}`);
+  }
+  return pts.join(" ");
+}
+
+function Azerbaijan() {
+  return (
+    <svg viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice">
+      <rect width="30" height="20" fill="#509E2F" />
+      <rect width="30" height="13.33" fill="#EF3340" />
+      <rect width="30" height="6.67" fill="#00B5E2" />
+      <circle cx="14" cy="10" r="2.5" fill="#FFFFFF" />
+      <circle cx="14.6" cy="10" r="2" fill="#EF3340" />
+      <polygon points={star8(17.1, 10, 1.1)} fill="#FFFFFF" />
+    </svg>
+  );
+}
+
+const FLAGS: Record<string, () => React.JSX.Element> = { tr: Turkey, en: UnitedKingdom, tk: Turkmenistan, az: Azerbaijan };
 
 /** Bayrak; yalnız görsel (adı, düğmenin aria-label/title'ında). */
 export function Flag({ locale, size = "md" }: { locale: string; size?: "md" | "lg" }) {

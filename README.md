@@ -7,7 +7,7 @@ identity (eIDAS 2.0 / EUDI) profiles. Three languages: English (default), Turkis
 
 - **Next.js 16** (App Router, Turbopack) · **React 19** · **TypeScript**
 - **Tailwind CSS v4**; brand tokens in `src/app/globals.css` (light and dark theme)
-- **next-intl** — every route carries a language prefix: `/en` · `/tr` · `/tk`
+- **next-intl** — every route carries a language prefix: `/en` · `/tr` · `/tk` · `/az` (az is a machine translation, marked on every page until a native speaker has reviewed it)
 - **Radix UI** (shadcn/ui patterns) for the navigation menus; **framer-motion** and **ogl** (WebGL) for motion; **lucide-react** icons
 - **Typst** for the whitepaper and manifesto PDFs
 
@@ -17,7 +17,7 @@ identity (eIDAS 2.0 / EUDI) profiles. Three languages: English (default), Turkis
 npm run dev             # http://localhost:3000
 npm run build           # production build
 npm run start           # serve the build
-npm run check           # typecheck + three-language key parity + code examples up to date
+npm run check           # typecheck + key parity across languages + code examples up to date
 npm run examples:sync   # copy the tested code examples from the tamga-network repository
 ```
 
@@ -29,7 +29,7 @@ npm run examples:sync   # copy the tested code examples from the tamga-network r
 | `/learn`, `/learn/*` | Learn: a step-by-step path from digital identity to Tamga Network (7 chapters) |
 | `/sdk` | The open-source `@tamga-network/*` packages, installation and working examples |
 | `/join` | Join the network: institutions (issuers, verifiers), wallet providers, states (`/issuers` redirects here) |
-| `/whitepaper`, `/manifesto` | Online and as PDF in three languages |
+| `/whitepaper`, `/manifesto` | Online and as PDF in every site language |
 | `/roadmap`, `/changelog` | Stages of the network; every release |
 | `/scenarios`, `/about`, `/blog` | Everyday scenarios, the name and mission, articles |
 
@@ -38,7 +38,7 @@ and reference framework at [arf.tamga.network](https://arf.tamga.network).
 
 ## Content
 
-- Page texts: `src/content/*` (one object per language) and `messages/{en,tr,tk}.json` (interface strings). All three
+- Page texts: `src/content/*` (one object per language) and `messages/{en,tr,tk,az}.json` (interface strings). All
   languages are updated together; `npm run check` fails on a missing key.
 - Public addresses of the network: `src/lib/ecosystem.ts` (used by the menu, the home page table and the footer).
 - Whitepaper: single source `whitepaper/source/content.py` → site page and PDFs:

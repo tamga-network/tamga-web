@@ -5,37 +5,37 @@
 export const BLOG_CATEGORIES = ["announcements", "network", "standards", "privacy", "europe"] as const;
 export type BlogCategory = (typeof BLOG_CATEGORIES)[number];
 
-type UiLocale = "en" | "tr" | "tk";
-const pick = (locale: string): UiLocale => (locale === "tr" || locale === "tk" ? locale : "en");
+type UiLocale = "en" | "tr" | "tk" | "az";
+const pick = (locale: string): UiLocale => (locale === "tr" || locale === "tk" || locale === "az" ? locale : "en");
 
 // TODO(tk): Türkmence kategori adları ana dili Türkmence olan biri tarafından gözden geçirilmeli.
 const CATEGORY_LABELS: Record<BlogCategory, Record<UiLocale, string>> = {
-  announcements: { en: "Announcements", tr: "Duyurular", tk: "Habarlar" },
-  network: { en: "Network", tr: "Ağ", tk: "Tor" },
-  standards: { en: "Standards", tr: "Standartlar", tk: "Standartlar" },
-  privacy: { en: "Privacy", tr: "Gizlilik", tk: "Gizlinlik" },
-  europe: { en: "Europe", tr: "Avrupa", tk: "Ýewropa" },
+  announcements: { en: "Announcements", tr: "Duyurular", tk: "Habarlar", az: "Elanlar" },
+  network: { en: "Network", tr: "Ağ", tk: "Tor", az: "Şəbəkə" },
+  standards: { en: "Standards", tr: "Standartlar", tk: "Standartlar", az: "Standartlar" },
+  privacy: { en: "Privacy", tr: "Gizlilik", tk: "Gizlinlik", az: "Məxfilik" },
+  europe: { en: "Europe", tr: "Avrupa", tk: "Ýewropa", az: "Avropa" },
 };
 
 export const categoryLabel = (c: BlogCategory, locale: string) => CATEGORY_LABELS[c]?.[pick(locale)] ?? c;
 
 /** "İlgili" kartlarında site sayfalarının adı (routing.ts'teki sabit yollar; adı olmayan yol olduğu gibi yazılır). */
 const PAGE_LABELS: Record<string, Record<UiLocale, string>> = {
-  "/": { en: "Tamga Network", tr: "Tamga Network", tk: "Tamga Network" },
-  "/about": { en: "About", tr: "Hakkında", tk: "Biz barada" },
-  "/manifesto": { en: "Manifesto", tr: "Manifesto", tk: "Manifest" },
-  "/scenarios": { en: "Scenarios", tr: "Senaryolar", tk: "Ssenariýalar" },
-  "/whitepaper": { en: "Whitepaper", tr: "Whitepaper", tk: "Whitepaper" },
-  "/blog": { en: "Blog", tr: "Blog", tk: "Blog" },
-  "/join": { en: "Join the network", tr: "Ağa katıl", tk: "Tora goşul" },
-  "/network": { en: "The network", tr: "Ağ", tk: "Tor" },
-  "/partners": { en: "Partners", tr: "Ortaklar", tk: "Hyzmatdaşlar" },
-  "/events": { en: "Events", tr: "Etkinlikler", tk: "Çäreler" },
-  "/roadmap": { en: "Roadmap", tr: "Yol haritası", tk: "Ýol kartasy" },
-  "/changelog": { en: "Changelog", tr: "Değişiklikler", tk: "Üýtgeşmeler" },
-  "/sdk": { en: "SDK", tr: "SDK", tk: "SDK" },
-  "/brand": { en: "Brand", tr: "Marka", tk: "Marka" },
-  "/learn": { en: "Learn", tr: "Öğren", tk: "Öwren" },
+  "/": { en: "Tamga Network", tr: "Tamga Network", tk: "Tamga Network", az: "Tamga Network" },
+  "/about": { en: "About", tr: "Hakkında", tk: "Biz barada", az: "Haqqımızda" },
+  "/manifesto": { en: "Manifesto", tr: "Manifesto", tk: "Manifest", az: "Manifest" },
+  "/scenarios": { en: "Scenarios", tr: "Senaryolar", tk: "Ssenariýalar", az: "Ssenarilər" },
+  "/whitepaper": { en: "Whitepaper", tr: "Whitepaper", tk: "Whitepaper", az: "Whitepaper" },
+  "/blog": { en: "Blog", tr: "Blog", tk: "Blog", az: "Bloq" },
+  "/join": { en: "Join the network", tr: "Ağa katıl", tk: "Tora goşul", az: "Şəbəkəyə qoşulun" },
+  "/network": { en: "The network", tr: "Ağ", tk: "Tor", az: "Şəbəkə" },
+  "/partners": { en: "Partners", tr: "Ortaklar", tk: "Hyzmatdaşlar", az: "Tərəfdaşlar" },
+  "/events": { en: "Events", tr: "Etkinlikler", tk: "Çäreler", az: "Tədbirlər" },
+  "/roadmap": { en: "Roadmap", tr: "Yol haritası", tk: "Ýol kartasy", az: "Yol xəritəsi" },
+  "/changelog": { en: "Changelog", tr: "Değişiklikler", tk: "Üýtgeşmeler", az: "Dəyişikliklər" },
+  "/sdk": { en: "SDK", tr: "SDK", tk: "SDK", az: "SDK" },
+  "/brand": { en: "Brand", tr: "Marka", tk: "Marka", az: "Brend" },
+  "/learn": { en: "Learn", tr: "Öğren", tk: "Öwren", az: "Öyrən" },
 };
 export const pageLabel = (p: string, locale: string) => PAGE_LABELS[p]?.[pick(locale)] ?? p;
 
@@ -179,6 +179,41 @@ const UI: Record<UiLocale, BlogUi> = {
     ctaLearn: "Başdan öwren",
     ctaJoin: "Tora goşul",
     fallback: "Bu ýazgy heniz türkmen diline terjime edilmedi; iňlis dilindäki asyl nusgasy görkezilýär.",
+  },
+  az: {
+    eyebrow: "Bloq",
+    title: "Yazılar",
+    description:
+      "Tamga Network-un arxasında duran qərarlar, standartlar və irəliləyiş — türk dünyasında qurumlar, tərtibatçılar və dövlətlər üçün rəqəmsal etibar.",
+    rss: "RSS lenti",
+    count: (n) => `${n} yazı`,
+    filter: "Kateqoriyaya görə süzün",
+    all: "Hamısı",
+    latest: "Ən yeni",
+    draft: "Qaralama",
+    draftNote: "Bu yazı qaralamadır və dərc olunmayıb.",
+    emptyFilter: "Bu kateqoriyada hələ yazı yoxdur.",
+    empty: "Hələ yazı yoxdur.",
+    readMore: "Oxumağa davam edin",
+    minRead: (n) => `${n} dəq oxuma`,
+    noDate: "Tarixsiz",
+    updated: "Yenilənib",
+    toc: "Bu səhifədə",
+    related: "Əlaqəli",
+    relatedPost: "Yazı",
+    relatedLearn: "Öyrənin",
+    relatedPage: "Tamga Network",
+    copy: "Kopyala",
+    copied: "Kopyalandı",
+    code: "Kod",
+    author: "Tamga Network",
+    allPosts: "Bütün yazılar",
+    back: "Bütün yazılara qayıdın",
+    ctaTitle: "Şəbəkə üzərində qurun",
+    ctaText: "Anlayışları sıfırdan öyrənin və ya qurumun, yoxlayan tərəfin, rəqəmsal cüzdanın və ya dövlətin şəbəkəyə necə qoşulduğuna baxın.",
+    ctaLearn: "Sıfırdan öyrənin",
+    ctaJoin: "Şəbəkəyə qoşulun",
+    fallback: "Bu yazı hələ Azərbaycan dilinə tərcümə olunmayıb; ingilis dilindəki əsli göstərilir.",
   },
 };
 

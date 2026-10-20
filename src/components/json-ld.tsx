@@ -45,7 +45,7 @@ export function siteGraph(description: string) {
         name: SITE_NAME,
         alternateName: ["Tamga", "tamga.network"],
         url: SITE_URL,
-        inLanguage: ["en", "tr", "tk"],
+        inLanguage: ["en", "tr", "tk", "az"],
         publisher: { "@id": `${SITE_URL}/#organization` },
       },
     ],

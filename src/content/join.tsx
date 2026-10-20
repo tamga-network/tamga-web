@@ -496,7 +496,162 @@ const tk: JoinContent = {
   },
 };
 
-const content: Record<Locale, JoinContent> = { en, tr, tk };
+const az: JoinContent = {
+  meta: {
+    title: "Şəbəkəyə qoşulun",
+    description:
+      "Tamga Network-a necə qoşulmaq olar: rəqəmsal sənəd verən və ya yoxlayan qurumlar, cüzdan provayderləri və öz etibar siyahısı olan dövlətlər. Qeydiyyat məlumatları, hüquqi və texniki tələblər, addımlar.",
+  },
+  eyebrow: "Qoşulma",
+  title: "Tamga Network-a qoşulun",
+  lead: "Tamga Network etibar şəbəkəsidir: qurumlar rəqəmsal sənəd verir, yoxlayan tərəflər onları yoxlayır, rəqəmsal cüzdanlar onları saxlayır, imzalanmış etibar siyahıları isə kimin kim olduğunu göstərir. Şəbəkəyə qoşulmağın üç yolu var.",
+  principle: {
+    title: "Məlumatlar qurumda qalır",
+    body: "Şəbəkə qurumun verilənlər bazasına daxil olmur və şəxslərin məlumatlarını saxlamır. Sənəd verilərkən məlumatlar qurumun idarə etdiyi bir nöqtədən (endpoint) oxunur, qurumun öz açarı ilə imzalanır və şəxsin telefonuna göndərilir.",
+  },
+  doorsTitle: "Qoşulmağın üç yolu",
+  doors: [
+    {
+      title: "Qurumlar",
+      who: "sənədi verən qurumlar və yoxlayan tərəflər",
+      body: "Universitetlər, xəstəxanalar, peşə palataları, dövlət qurumları, şirkətlər və tədbir təşkilatçıları rəqəmsal sənəd verir; işəgötürənlər, veb-saytlar və giriş nöqtələri onları yoxlayır.",
+      items: [
+        "əvvəlcə sınayın: sandbox-da test qurumu yaradın (sandbox.tamga.network)",
+        "qeydiyyat məlumatları və X.509 sertifikatı",
+        "imzalanmış etibar siyahısında qeyd",
+        "yerləşdirilmiş (hosted) sənəd vermə xidməti və ya öz serveriniz (açıq mənbəli paketlər)",
+      ],
+    },
+    {
+      title: "Cüzdan provayderləri",
+      who: "Avropa İttifaqı (Aİ) ilə uyğun rəqəmsal cüzdanlar",
+      body: "Şəbəkənin rəqəmsal cüzdan qaydalarına əməl edən istənilən cüzdan Tamga rəqəmsal sənədlərini saxlaya bilər. Tamga Wallet şəbəkənin ilk rəqəmsal cüzdanıdır, yeganəsi deyil.",
+      items: [
+        "öz cüzdan provayderiniz: əvvəlcə sandbox siyahısında qeydiyyatdan keçir və orada başdan-sona sınaqdan keçirilir",
+        "etibar siyahısında cüzdan provayderi kimi qeydiyyat",
+        "cüzdan nüsxəsi və açar attestasiyaları",
+        "istinad yoxlayan tərəfə qarşı uyğunluq testləri",
+      ],
+    },
+    {
+      title: "Dövlətlər və milli siyahılar",
+      who: "federasiya",
+      body: "Dövlət və ya etibar siyahısının operatoru öz siyahısını özü aparır. Şəbəkə bu siyahını sabitlənmiş imzalayan və razılaşdırılmış əhatə ilə oxuyur; onu köçürmür və onun üzərində söz sahibi olmur.",
+      items: [
+        "ETSI formatında xarici siyahı (TS 119 602)",
+        "sabitlənmiş imza sertifikatı və müəyyən edilmiş əhatə",
+        "şəbəkənin idarəetmə orqanları vasitəsilə təsdiq",
+      ],
+    },
+  ],
+  whoTitle: "Hansı qurumlar",
+  who: [
+    { k: "Təhsil", v: "tələbə sənədi, diplom, sertifikatlar" },
+    {
+      k: "Səhiyyə",
+      v: "peşə fəaliyyəti üçün lisenziya, palata üzvlüyü, iş yeri sənədi (hazırlanır)",
+    },
+    {
+      k: "Dövlət qurumları",
+      v: "səlahiyyətli mənbədən, dövlət adından verilən rəqəmsal sənədlər",
+    },
+    {
+      k: "Şirkətlər",
+      v: "əməkdaş və səlahiyyət sənədləri, binaya giriş",
+    },
+    { k: "Tədbirlər", v: "şəxsə bağlı, girişdə birdəfəlik istifadə olunan biletlər" },
+  ],
+  getTitle: "Qoşulma nəyi dəyişir",
+  get: [
+    {
+      k: "Təsdiq sorğularına ehtiyac qalmır",
+      v: "yoxlayan tərəflər rəqəmsal sənədi özləri yoxlayır; heç kimin quruma zəng etməsinə və ya yazmasına ehtiyac qalmır.",
+    },
+    {
+      k: "Saxtakarlığa yer qalmır",
+      v: "qurumun imzası və imzalanmış etibar siyahısında qeydi olmadan etibarlı rəqəmsal sənəd mövcud ola bilməz.",
+    },
+    {
+      k: "Nəzarət",
+      v: "dərhal ləğv etmək və ya dayandırmaq mümkündür; Qurum Konsolunda sənəd vermə statistikası göstərilir, fərdi məlumatlar isə heç vaxt.",
+    },
+    {
+      k: "Məlumatların minimuma endirilməsi",
+      v: "şəxslər yalnız tələb olunanı paylaşır; qurum rəqəmsal sənədin kimə təqdim edildiyini heç vaxt bilmir.",
+    },
+    {
+      k: "Avropa standartları",
+      v: "SD-JWT VC, OpenID4VCI / OpenID4VP, X.509 və imzalanmış etibar siyahıları — Aİ rəqəmsal cüzdanının əsas komponentləri.",
+    },
+    {
+      k: "Açıq mənbə",
+      v: "şəbəkənin paketləri Apache-2.0 lisenziyalıdır; sənəd vermə qurumun öz serverlərində də işləyə bilər.",
+    },
+  ],
+  needTitle: "Quruma nə lazımdır",
+  need: [
+    {
+      title: "Qeydiyyat məlumatları",
+      items: [
+        "rəsmi ad və göstərilən ad",
+        "rəsmi identifikator (VÖEN, kommersiya reyestri nömrəsi)",
+        "poçt ünvanı, veb-sayt, qurumun əlaqə məlumatları",
+        "məlumatların qorunması üzrə səlahiyyətli orqan; dövlət qurumu olub-olmaması",
+        "məxfilik siyasətinin linki (rəqəmsal cüzdanda göstərilir)",
+      ],
+    },
+    {
+      title: "Hüquqi",
+      items: [
+        "iştirak müqaviləsi",
+        "yerləşdirilmiş xidmətdən istifadə edildikdə məlumatların emalı müqaviləsi: məlumatlara nəzarət edən qurumdur",
+        "sənəd verdiyi şəxslər üçün yenilənmiş məxfilik bildirişi",
+        "bu rəqəmsal sənədi verməyə səlahiyyətli olduğunu təsdiq edən əsas",
+      ],
+    },
+    {
+      title: "Texniki",
+      items: [
+        "qurumun öz açar anbarında (KMS / HSM) yaradılmış imza açarı; yalnız sertifikat sorğusu (CSR) göndərilir",
+        "qeydlərin önündə OpenAPI müqaviləsinə uyğun sorğu nöqtəsi və/və ya API çağırışları",
+        "ləğv prosesi (API və ya Qurum Konsolu)",
+        "texniki, məlumatların qorunması və təhlükəsizlik üzrə əlaqə şəxsləri",
+      ],
+    },
+  ],
+  stepsTitle: "Qoşulma necə həyata keçirilir",
+  steps: [
+    { k: "1 · Əhatə", v: "hansı rəqəmsal sənədlər, hansı pilot qrup" },
+    {
+      k: "2 · Rəqəmsal sənəd növü",
+      v: "açıq katalogdan seçim və ya birlikdə yeni növün hazırlanması",
+    },
+    { k: "3 · Hüquqi məsələlər", v: "müqavilələr və məxfilik bildirişi" },
+    {
+      k: "4 · Qeydiyyat",
+      v: "qeydiyyat məlumatları, sertifikat, etibar siyahısında qeyd",
+    },
+    {
+      k: "5 · İnteqrasiya",
+      v: "sorğu nöqtəsi və/və ya API, sandbox-da başdan-sona sınaqdan keçirilir",
+    },
+    { k: "6 · Pilot, sonra canlı istifadə", v: "əvvəlcə kiçik qrup, sonra hamı" },
+  ],
+  verifierTitle: "Sənəd vermək deyil, yoxlamaq istəyirsiniz?",
+  verifierBody:
+    "İşəgötürənlər, veb-saytlar və giriş nöqtələri qeydiyyatlı yoxlayan tərəf kimi qoşulur: hər istifadə halı üçün hansı rəqəmsal sənədi və sahələri tələb etdiklərini, məqsədi və məxfilik siyasətini qeydiyyatdan keçirirlər. Yoxlayan tərəf qeydiyyatdan keçirdiyindən artıq məlumat tələb etdikdə rəqəmsal cüzdan şəxsi xəbərdar edir.",
+  apply: {
+    title: "Müraciət",
+    body: "Təşkilatınızın adını və necə qoşulmaq istədiyinizi — sənəd vermək, yoxlamaq, cüzdan provayderi kimi və ya milli siyahı ilə — yazaraq bizimlə əlaqə saxlayın. Sizə tələblər üzrə tam bələdçi ilə cavab veririk.",
+    mail: "partners@tamga.network",
+    subject: "Tamga Network-a qoşulma",
+    docs: "https://docs.tamga.network",
+    docsLabel: "Tərtibatçı sənədləri və API arayışları",
+    guide: "Addım-addım bələdçi: Qurum kimi qoşulma (tərtibatçı sənədləri)",
+  },
+};
+
+const content: Record<Locale, JoinContent> = { en, tr, tk, az };
 
 export function getJoinContent(locale: string): JoinContent {
   return content[locale as Locale] ?? content.en;

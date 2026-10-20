@@ -1,12 +1,12 @@
 import { defineRouting } from "next-intl/routing";
 
 export const routing = defineRouting({
-  locales: ["en", "tr", "tk"],
+  locales: ["en", "tr", "tk", "az"],
   defaultLocale: "en",
-  // Show a prefix for every locale, e.g. /en, /tr, /tk
+  // Show a prefix for every locale, e.g. /en, /tr, /tk, /az
   localePrefix: "always",
   // Pathnames are identical across every locale — the only thing that varies is
-  // the `/en`, `/tr`, `/tk` prefix. (We used to localize `/about` and
+  // the `/en`, `/tr`, `/tk`, `/az` prefix. (We used to localize `/about` and
   // `/scenarios`, but that required a proxy rewrite that broke behind the
   // production reverse proxy, so all paths are now kept language-agnostic.)
   pathnames: {

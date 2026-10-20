@@ -53,9 +53,19 @@ const C: Record<
     live: "Işleýär",
     soon: "Ýakynda",
   },
+  az: {
+    title: "Şəbəkə ünvanları",
+    description: "Tamga Network-un bütün açıq ünvanları: sənədlər, qaydalar, etibar siyahıları, sxemlər və istinad xidmətləri.",
+    eyebrow: "Şəbəkə",
+    lead: "Şəbəkənin bütün açıq ünvanları bir səhifədə. Siyahılar və sxemlər imzalanıb və hər kəs onları oxuya bilər.",
+    serves: "Kimin üçün",
+    std: "Standart",
+    live: "Aktiv",
+    soon: "Tezliklə",
+  },
 };
 
-const pick = (raw: string): Locale => (["en", "tr", "tk"].includes(raw) ? (raw as Locale) : "en");
+const pick = (raw: string): Locale => (["en", "tr", "tk", "az"].includes(raw) ? (raw as Locale) : "en");
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;

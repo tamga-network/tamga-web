@@ -60,7 +60,7 @@ const linkCls =
 export async function Footer() {
   const t = await getTranslations("footer");
   const locale = await getLocale();
-  const loc = (["en", "tr", "tk"].includes(locale) ? locale : "en") as Locale;
+  const loc = (["en", "tr", "tk", "az"].includes(locale) ? locale : "en") as Locale;
   const columns = footerColumns();
 
   return (

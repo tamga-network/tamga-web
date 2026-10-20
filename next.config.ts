@@ -82,11 +82,11 @@ const nextConfig: NextConfig = {
     ];
     return [
       ...moved.map(([from, to]) => ({
-        source: `/:locale(en|tr|tk)${from}`,
+        source: `/:locale(en|tr|tk|az)${from}`,
         destination: `/:locale${to}`,
         permanent: true,
       })),
-      { source: "/:locale(en|tr|tk)/docs/:path*", destination: "/:locale/learn", permanent: true },
+      { source: "/:locale(en|tr|tk|az)/docs/:path*", destination: "/:locale/learn", permanent: true },
     ];
   },
 };

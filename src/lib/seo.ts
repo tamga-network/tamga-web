@@ -11,7 +11,7 @@ export const SITE_URL = "https://tamga.network";
 export const SITE_NAME = "Tamga Network";
 
 /** Open Graph dil kodları (dil_ÜLKE). */
-export const OG_LOCALE: Record<string, string> = { en: "en_US", tr: "tr_TR", tk: "tk_TM" };
+export const OG_LOCALE: Record<string, string> = { en: "en_US", tr: "tr_TR", tk: "tk_TM", az: "az_AZ" };
 
 const url = (locale: string, path: string) => `${SITE_URL}/${locale}${path === "/" ? "" : path}`;
 const IMAGE_TYPES: Record<string, string> = {

@@ -896,10 +896,285 @@ const tk: HomeContent = {
   },
 };
 
-const ALL: Record<Locale, HomeContent> = { en, tr, tk };
+const az: HomeContent = {
+  hero: {
+    eyebrow: "Açıq etibar şəbəkəsi · Tamga ARF 1.0",
+    title: "Türk dünyası üçün rəqəmsal etibar şəbəkəsi.",
+    lead: "Sənədin həqiqi olduğunu sübut etmək üçün telefon zəngləri, apostil və həftələr tələb olunmamalıdır. Tamga Network istənilən qurumun verdiyi rəqəmsal sənədlərin sərhədlərdən asılı olmayaraq, saniyələr ərzində və şəxsin məxfiliyini qorumaqla yoxlanılmasına imkan verən ortaq qaydalar və imzalanmış siyahılar toplusudur.",
+    primary: "Şəbəkəyə qoşulun",
+    secondary: "Qaydaları oxuyun",
+    listTitle: "Siyahılar siyahısı · LOTL",
+    listHost: "trust.tamga.network",
+    rows: [
+      { code: "TR", name: "Türkiyə siyahısı", status: "Yayımdadır · müvəqqəti operator", live: true },
+      { code: "AZ", name: "Azərbaycan siyahısı", status: "Yer ayrılıb" },
+      { code: "KZ", name: "Qazaxıstan siyahısı", status: "Yer ayrılıb" },
+      { code: "KG", name: "Qırğızıstan siyahısı", status: "Yer ayrılıb" },
+      { code: "UZ", name: "Özbəkistan siyahısı", status: "Yer ayrılıb" },
+      { code: "TM", name: "Türkmənistan siyahısı", status: "Yer ayrılıb" },
+      { code: "EU", name: "Aİ siyahıları (federasiya)", status: "Xarici siyahı kimi oxunur" },
+    ],
+    listNote: "Hər dövlət öz siyahısını özü dərc edir. Hazırda Türkiyə siyahısını dövlət adından müvəqqəti olaraq Tamga idarə edir.",
+  },
+  partners: {
+    eyebrow: "Tərəfdaşlar",
+    title: "Birgə işlədiyimiz qurumlar",
+    empty: "İlk tərəfdaşlarımızı tezliklə elan edəcəyik.",
+    join: "Şəbəkəyə qoşulun",
+    all: "Tərəfdaşlar",
+  },
+  standards: {
+    eyebrow: "Açıq standartlar",
+    title: "Əsaslandığımız standartlar",
+  },
+  why: {
+    eyebrow: "Nə üçün Tamga Network?",
+    title: "Sənədlər rəqəmsaldır, etibar isə hələ də kağız üzərindədir.",
+    lead: "Məktəblər, xəstəxanalar, palatalar və şirkətlər hər gün sənəd verir. Lakin sənədin həqiqi olduğunu başqa ölkədə, hətta başqa qurumda sübut etmək hələ də çətindir.",
+    problems: [
+      { title: "Sənədlər sərhəddə ilişib qalır", body: "Almatıdakı qurum Bakıda verilmiş sənədi yoxlamaq istədikdə telefon zəngləri, e-poçtlar, apostil və həftələr tələb olunur." },
+      { title: "Saxtakarlıq asandır", body: "Skan edilmiş PDF və ya surəti asanlıqla dəyişdirmək olar; həqiqisini saxtasından ayırmaq ekspertiza tələb edir." },
+      { title: "İnsanlar həddindən artıq məlumat paylaşır", body: "Yaşınızı sübut etmək üçün bütün şəxsiyyət vəsiqənizi, məzun olduğunuzu sübut etmək üçün bütün qiymət cədvəlinizi göstərirsiniz." },
+      { title: "Hər ölkənin öz sistemi var", body: "Hər ölkə öz rəqəmsal sistemini qurur; bu sistemlər bir-birini tanımır və eyni dildə danışmır." },
+      { title: "Avropa irəliləyir; Türk dünyası kənarda qala bilər", body: "Avropa İttifaqı (Aİ) hər üzv dövlətdən 2026-cı ilin sonunadək vətəndaşlarına rəqəmsal şəxsiyyət cüzdanı təqdim etməyi tələb edir. Ortaq etibar strukturu olmadan Türk dünyasının rəqəmsal sənədləri bu nizamdan kənarda qalır." },
+    ],
+    purposeTitle: "Məqsədimiz",
+    purpose: "Türk dünyasında istənilən qurumun verdiyi rəqəmsal sənədin başqa ölkədə də eyni etimadla qəbul edilməsi. Bunu heç bir şirkətin və ya dövlətin tək başına sahib olmadığı, açıq qaydalarla işləyən ortaq şəbəkə vasitəsilə həyata keçiririk. Rəqəmsal sənədlər şəxsin telefonunda saxlanılır; şəxs yalnız lazım olanı göstərir; yoxlayan tərəf mənbəyə müraciət etmədən saniyələr ərzində əmin olur.",
+  },
+  philosophy: {
+    eyebrow: "Fəlsəfəmiz",
+    title: "Beş prinsip.",
+    items: [
+      { title: "Şəxs mərkəzdədir", body: "Rəqəmsal sənəd şəxsin rəqəmsal cüzdanında saxlanılır. Nəyin göstəriləcəyinə şəxs özü qərar verir." },
+      { title: "Heç kimin mülkiyyəti deyil", body: "Şəbəkə xidmət satmır və heç kimə imtiyaz vermir. Məqsəd: müstəqil fond." },
+      { title: "Siyahı dövlətə məxsusdur", body: "Hər dövlət öz etibar siyahısının sahibidir və kimi tanıyacağına özü qərar verir." },
+      { title: "Şəbəkədə fərdi məlumat yoxdur", body: "Siyahılarda, qeydlərdə və jurnallarda fərdi məlumatlar yoxdur; hətta onların hash-i belə." },
+      { title: "Açıq qaydalar, açıq kod", body: "Hər qayda nömrələnib və hamıya açıqdır; hər paket açıq mənbəlidir." },
+    ],
+  },
+  how: {
+    eyebrow: "Necə işləyir",
+    title: "Üç tərəf, bir etibar siyahısı.",
+    lead: "Sənədi verən qurum, onu daşıyan şəxs və onu yoxlayan tərəf. Üçü də eyni imzalanmış siyahıya baxır; heç kim heç kimə zəng etməli deyil.",
+    flow: {
+      title: "Tamga Network axını",
+      desc: "Sənədi verən qurum imzalanmış rəqəmsal sənədi şəxsin rəqəmsal cüzdanına verir; şəxs yoxlayan tərəfə yalnız tələb olunan sahələri göstərir; üç tərəfin hamısı dövlətin imzaladığı etibar siyahısına müraciət edir.",
+      issuer: "Sənədi verən qurum",
+      issuerSub: "universitet · xəstəxana · palata",
+      wallet: "Şəxsin rəqəmsal cüzdanı",
+      walletSub: "rəqəmsal sənədlər telefonda",
+      verifier: "Yoxlayan tərəf",
+      verifierSub: "işəgötürən · sayt · giriş qapısı",
+      signed: "imzalanmış rəqəmsal sənəd",
+      only: "yalnız lazım olanlar",
+      trust: "Etibar siyahısı",
+      trustSub: "imzalı · dövlət tərəfindən",
+      checks: "hər tərəf qurumun həqiqi olduğunu burada yoxlayır",
+    },
+    steps: [
+      { title: "Qurum imzalayır", body: "Qurum rəqəmsal sənədi öz açarı ilə imzalayır və şəxsin rəqəmsal cüzdanına göndərir. Qurumun açarı dövlətin siyahısında qeydiyyatdadır." },
+      { title: "Şəxs onu daşıyır", body: "Rəqəmsal sənəd telefonda saxlanılır. Kimsə tələb etdikdə şəxs nəyin istənildiyini görür və yalnız təsdiqlədiyi məlumatları göstərir." },
+      { title: "Yoxlayan tərəf saniyələr ərzində əmin olur", body: "İmzanı və qurumun siyahıdakı qeydini yoxlayır. Mənbəyə müraciət yoxdur, gözləmə yoxdur: rəqəmsal sənəd ya etibarlıdır, ya da yox." },
+    ],
+  },
+  tech: {
+    eyebrow: "Texnologiya, sadə dillə",
+    title: "Arxasında duran beş ideya.",
+    lead: "Tamga Network yeni ixtira deyil; Avropanın rəqəmsal şəxsiyyət çərçivəsində sınaqdan keçmiş üsulları Türk dünyası üçün bir araya gətirir.",
+    labels: { what: "Nədir", why: "Türk dünyasına nə üçün lazımdır", solves: "Həll etdiyi problem" },
+    topics: [
+      {
+        id: "credential",
+        title: "Yoxlanıla bilən rəqəmsal sənəd",
+        what: "Qurumun rəqəmsal imza ilə imzaladığı sənəd (credential). Tək bir hərfi dəyişsəniz, imza pozulur.",
+        why: "Müxtəlif dillərdə və sistemlərdə verilmiş sənədlər eyni formatda oxunur və eyni üsulla yoxlanılır.",
+        solves: "Saxtakarlıq və həftələrlə davam edən yazışmalar.",
+        d: {
+          title: "Yoxlanıla bilən rəqəmsal sənəd",
+          desc: "Qurumun imzası və möhürü olan rəqəmsal sənəd kartı.",
+          issuer: "NÜMUNƏ UNİVERSİTETİ",
+          type: "Məzun olma sənədi",
+          fields: [
+            ["ad soyad", "Ayşe Yılmaz"],
+            ["ixtisas", "Kompüter müh."],
+            ["il", "2026"],
+          ],
+          seal: "qurumun imzası",
+          sig: "imza: ES256 · qurumun sertifikatı",
+        },
+      },
+      {
+        id: "disclosure",
+        title: "Seçici paylaşım",
+        what: "Rəqəmsal sənədin hər sahəsi ayrıca kilidlənir (selective disclosure). Şəxs yalnız tələb olunan sahəni açır; qalanları qapalı qalır.",
+        why: "İmtahan mərkəzi, bank və konsert girişi eyni rəqəmsal sənəddən müxtəlif məlumatlar tələb edir; onların heç birinə hər şey lazım deyil.",
+        solves: "Lazım olduğundan artıq fərdi məlumat paylaşmaq.",
+        d: {
+          title: "Seçici paylaşım",
+          desc: "Rəqəmsal sənədin dörd sahəsi, hər biri öz xülasəsi (digest) ilə; yalnız 18 yaşdan yuxarı olma faktı açılır, doğum tarixi gizli qalır.",
+          card: "rəqəmsal sənəddəki sahələr",
+          shared: "yoxlayan tərəfin gördüyü",
+          hidden: "gizli",
+          fields: [
+            { k: "18 yaşdan yuxarı", v: "18+: bəli", show: true },
+            { k: "doğum tarixi", v: "", show: false },
+            { k: "ad soyad", v: "", show: false },
+            { k: "sənəd nömrəsi", v: "", show: false },
+          ],
+        },
+      },
+      {
+        id: "zk",
+        title: "Sıfır bilik sübutu",
+        what: "Bir şeyin doğru olduğunu həmin şeyin özünü göstərmədən sübut etmək. Məsələn, doğum tarixinizi göstərmədən 18 yaşdan yuxarı olduğunuzu.",
+        why: "Yaş, üzvlük və ya səlahiyyət barədə suallara şəxsin bütün məlumatlarını açmadan cavab vermək olar.",
+        solves: "Bəli-xeyr sualı üçün bütün şəxsiyyət vəsiqəsini göstərmək.",
+        d: {
+          title: "Sıfır bilik sübutu",
+          desc: "Doğum tarixi sübuta daxil olur; yeganə nəticə 18 yaşdan yuxarı olmaqdır; doğum tarixi heç vaxt yoxlayan tərəfə çatmır.",
+          input: "telefonda",
+          inputSub: "Doğum tarixi",
+          proof: "sübut",
+          output: "18 yaşdan|yuxarı",
+          never: "doğum tarixi heç vaxt yoxlayan tərəfə çatmır",
+        },
+      },
+      {
+        id: "pseudonym",
+        title: "Hər sayt üçün təxəllüs",
+        what: "\"Tamga ilə daxil olun\" hər sayta Sizin üçün fərqli identifikator verir (pseudonym). Sayt Sizi tanıyır, lakin Sizi digər saytlarla uyğunlaşdıra bilmir.",
+        why: "Şəxsin hansı saytlardan istifadə etdiyini, saytlar məlumat paylaşsa belə, əlaqələndirmək mümkün deyil.",
+        solves: "Saytlararası izləmə və profil yaradılması.",
+        d: {
+          title: "Hər sayt üçün təxəllüs",
+          desc: "Bir şəxs, üç sayt, üç fərqli identifikator; saytlar onları əlaqələndirə bilmir.",
+          person: "Siz",
+          sites: [
+            ["bilet saytı", "k7f2…9a"],
+            ["kitabxana", "p91a…3c"],
+            ["imtahan portalı", "z3c8…e1"],
+          ],
+          cant: "saytlar bir-birini uyğunlaşdıra bilmir",
+        },
+      },
+      {
+        id: "chain",
+        title: "Etibar zənciri",
+        what: "Qurumun həqiqətən həmin qurum olduğu dövlətin imzaladığı siyahıdan oxunur. Siyahılar da öz növbəsində siyahılar siyahısına bağlıdır.",
+        why: "Hər dövlət öz siyahısının sahibi olaraq qalır; siyahılar eyni formatda olduğu üçün bir-birini tanıyır.",
+        solves: "\"Bu qurum həqiqətən mövcuddurmu?\" sualına hər ölkədə ayrıca cavab vermək.",
+        d: {
+          title: "Etibar zənciri",
+          desc: "Siyahılar siyahısı ölkə siyahısını, ölkə siyahısı qurumun sertifikatını, qurum isə rəqəmsal sənədi imzalayır.",
+          steps: [
+            ["Siyahılar siyahısı", "LOTL · trust.tamga.network"],
+            ["Türkiyə siyahısı", "dövlət tərəfindən imzalanıb"],
+            ["Qurumun sertifikatı", "X.509 · qeydiyyatlı qurum"],
+            ["Rəqəmsal sənəd", "qurum tərəfindən imzalanıb"],
+          ],
+          signs: "imzalayır",
+        },
+      },
+    ],
+  },
+  verify: {
+    eyebrow: "Özünüz sınayın",
+    title: "Etibar — imza qədər açıq.",
+    lead: "Siyahı hər dəyişiklikdə yenidən imzalanır və hash vasitəsilə əvvəlki versiyaya bağlanır; ictimai lövbər jurnalına ən azı saatda bir yeni sətir əlavə olunur. Heç kim onu xəbərsiz dəyişə bilməz; hər kəs yoxlaya bilər.",
+    button: "İmzanı yoxlayın",
+    how: "Necə işləyir",
+    sample: "lotl.jws · nümunə",
+    ok: "İmza etibarlıdır · kök barmaq izi uyğundur",
+    pending: "Yoxlanılmayıb",
+    fields: [
+      ["scheme", "Tamga LOTL"],
+      ["version", "[versiya]"],
+      ["issued_at", "[dərc vaxtı]"],
+      ["next_update", "[90 gün ərzində]"],
+      ["operator", "Tamga · provisional, on_behalf_of: TR"],
+      ["previous_hash", "sha256:[əvvəlki versiyanın xülasəsi]"],
+      ["alg · x5c", "ES256 · kök sertifikat zənciri"],
+    ],
+  },
+  stack: {
+    eyebrow: "Şəbəkənin qatları",
+    title: "Qaydalardan rəqəmsal cüzdanlara, altı qat.",
+    cta: "Tamga ARF-ni açın",
+    layers: [
+      { title: "Qaydalar", body: "Tamga ARF, Trust Framework, Tamga Rulebook və rəqəmsal sənəd növlərinin rulebook-ları.", status: "Qüvvədədir" },
+      { title: "Etibar siyahıları", body: "İmzalanmış, versiyalı ölkə siyahıları və onlara istinad edən siyahılar siyahısı.", status: "Qüvvədədir" },
+      { title: "Rəqəmsal sənəd formatları", body: "SD-JWT VC və ISO mdoc; OpenID4VCI ilə vermə, OpenID4VP ilə təqdimetmə.", status: "Qüvvədədir" },
+      { title: "Açıq paketlər", body: "Yoxlama, sənəd vermə və rəqəmsal cüzdan nüvəsi; hər kəs onları öz serverində işlədə bilər.", status: "İlkin versiya" },
+      { title: "Şəbəkənin üzərində", body: "Şəbəkənin qaydalarına əməl edən rəqəmsal cüzdanlar və xidmət provayderləri. İlk rəqəmsal cüzdan Tamga Wallet-dır.", status: "Şəbəkə üzərində" },
+      { title: "Ortaq reyestr", body: "Ən azı iki müstəqil operator qoşulduqda eyni qeydlər icazəli reyestrə köçürülür.", status: "Gələcəkdə", future: true },
+    ],
+  },
+  doors: {
+    eyebrow: "Qoşulma",
+    title: "Şəbəkəyə üç qapıdan daxil olunur.",
+    items: [
+      { kicker: "Qurumlar", title: "Rəqəmsal sənəd verin və yoxlayın.", body: "Qeydiyyatdan keçin, açarınızı siyahıya əlavə etdirin, ilk rəqəmsal sənədinizi verin.", cta: "Qurum kimi qoşulun", href: "/join" },
+      { kicker: "Cüzdan provayderləri", title: "Rəqəmsal cüzdanınızı tanıdın.", body: "Şəbəkə rəqəmsal cüzdan seçmir, onları tanıyır. Qaydalara əməl edən və uyğunluq testlərindən keçən hər rəqəmsal cüzdan siyahıya daxil edilir. Rəqəmsal cüzdanınızı əvvəlcə sandbox-da sınayın.", cta: "Uyğunluq testlərinə başlayın", href: "/join" },
+      { kicker: "Dövlətlər", title: "Öz siyahınızı dərc edin.", body: "Öz etibar siyahınızı dərc etdiyiniz zaman şəbəkə ona istinad edir; rəqəmsal cüzdanlar üçün yalnız ünvan dəyişir.", cta: "Federasiya ilə tanış olun", href: "/learn/trust-lists" },
+    ],
+  },
+  news: {
+    eyebrow: "Xəbərlər və tədbirlər",
+    title: "Şəbəkədən son yeniliklər.",
+    allPosts: "Bütün yazılar",
+    allEvents: "Tədbirlər",
+    upcoming: "Qarşıdakı tədbir",
+    latest: "Son yazı",
+    read: "Oxuyun",
+  },
+  gov: {
+    eyebrow: "İdarəetmə",
+    title: "Bu gün müvəqqəti operator. Sabah fond.",
+    lead: "Bu gün şəbəkəni Tamga idarə edir, lakin şəbəkə Tamga-ya məxsus deyil. Yol əvvəldən yazılıb: dövlətlər qoşulduqca idarəetmə ortaq olur; iki müstəqil operator olduqda qeydlər ortaq reyestrə köçürülür.",
+    steps: [
+      { when: "Bu gün", title: "Müvəqqəti operator", body: "Tamga Türkiyə siyahısını dövlət adından açıq qaydalar və ictimai lövbər jurnalı ilə dərc edir." },
+      { when: "Dövlətlər qoşulduqda", title: "Şura və ya fond", body: "Siyahılar sahiblərinə təhvil verilir; şəbəkənin qaydaları birgə qərarla dəyişir." },
+      { when: "İki müstəqil operator", title: "Ortaq reyestr", body: "Qeydlər icazəli reyestrə köçürülür; heç bir tərəf onları təkbaşına dəyişə bilməz." },
+    ],
+    roles: {
+      title: "İdarəetmə rolları",
+      desc: "Şəbəkənin qaydaları mərkəzdədir; operator, qeydiyyat orqanı və dövlət siyahıları bu qaydalara əsasən işləyir.",
+      operator: "Operator",
+      registrar: "Qeydiyyat orqanı",
+      states: "Dövlət siyahıları",
+      network: "Şəbəkənin qaydaları|Tamga ARF",
+    },
+    arf: "Trust Framework-u oxuyun",
+    blog: "Niyə hələ blokçeyn yoxdur?",
+  },
+  dev: {
+    eyebrow: "Tərtibatçılar",
+    title: "İki paket, beş dəqiqə.",
+    lead: "Rəqəmsal sənədi öz serverinizdə yoxlayın. Host edilən yoxlama xidmətindən istifadə etsəniz, server koduna belə ehtiyac yoxdur.",
+    npmNote: "Paketlər npm-də 0.7.0 test buraxılışı kimi dərc olunur; sabit 1.0.0 versiyası hər şey hazır olduqda çıxacaq. Test buraxılışlarında API dəyişə bilər.",
+    docs: "Dokumentasiyaya keçin",
+    github: "GitHub",
+    copy: "Kopyalayın",
+    copied: "Kopyalandı",
+  },
+  eu: {
+    eyebrow: "Aİ ilə uyğunluq",
+    title: "Aİ-nin qurduğu sistemin Türk dünyasındakı qarşılığı.",
+    head: ["Avropa İttifaqı", "Tamga Network", "Mənası"],
+    rows: [
+      { eu: "eIDAS 2.0 və icra aktları", tamga: "Trust Framework", what: "Kim qoşulur, kim nəzarət edir, necə təhvil verilir." },
+      { eu: "EU ARF", tamga: "Tamga ARF 1.0", what: "Rollar, arxitektura, etibar modeli." },
+      { eu: "Yüksək səviyyəli tələblər", tamga: "Tamga Rulebook", what: "Hər rol üçün nömrələnmiş, məcburi qaydalar." },
+      { eu: "Attestation rulebook-ları", tamga: "Education · Identity · Event Ticket", what: "Hər rəqəmsal sənəd növünün öz qaydaları." },
+      { eu: "Etibarlı siyahılar (LOTL)", tamga: "Tamga LOTL və ölkə siyahıları", what: "Eyni format; Aİ siyahıları xarici siyahı kimi oxunur." },
+    ],
+  },
+};
+
+const ALL: Record<Locale, HomeContent> = { en, tr, tk, az };
 
 export function getHomeContent(locale: string): HomeContent {
-  return ALL[(["en", "tr", "tk"].includes(locale) ? locale : "en") as Locale];
+  return ALL[(["en", "tr", "tk", "az"].includes(locale) ? locale : "en") as Locale];
 }
 
 /** Kod örneği (docs.tamga.network ana sayfasındaki ile aynı; yorumlar dile göre). */
@@ -909,6 +1184,8 @@ export function devCode(locale: string): string {
       ? ["// 1. Güven listelerini yükle (kök parmak izi: tamga.network/trust-anchor)", "// 2. İmzalı istek oluştur, QR olarak göster"]
       : locale === "tk"
         ? ["// 1. Ynam sanawlaryny ýükle (kök barmak yzy: tamga.network/trust-anchor)", "// 2. Gol çekilen haýyş döret, QR hökmünde görkez"]
+        : locale === "az"
+          ? ["// 1. Etibar siyahılarını yükləyin (kök barmaq izi: tamga.network/trust-anchor)", "// 2. İmzalı sorğu yaradın, QR kod kimi göstərin"]
         : ["// 1. Load the trust lists (root fingerprint: tamga.network/trust-anchor)", "// 2. Create a signed request, show it as a QR code"];
   return `import { fetchListTrustSource, verifyJws } from "@tamga-network/trust";
 import { createPresentationRequest, dcqlFromPolicy } from "@tamga-network/verifier";

@@ -99,10 +99,34 @@ const C: Record<
     contact:
       "Çäräňizde bizi görmek isleýärsiňizmi? info@tamga.network salgysyna ýazyň.",
   },
+  az: {
+    title: "Tədbirlər",
+    description:
+      "Tamga-nın təşkil etdiyi və iştirak etdiyi çıxışlar, seminarlar və görüşlər.",
+    eyebrow: "Haqqımızda",
+    lead: "Tamga-nın təşkil etdiyi və iştirak etdiyi çıxışlar, seminarlar və görüşlər.",
+    groups: [
+      {
+        key: "upcoming",
+        icon: CalendarClock,
+        title: "Qarşıdakı",
+        empty:
+          "Hələlik qarşıdakı tədbir yoxdur. Yeni tarixlər ilk olaraq burada elan olunur.",
+      },
+      {
+        key: "past",
+        icon: History,
+        title: "Keçmiş",
+        empty: "Keçmiş tədbirlər təqdimatları və qeydləri ilə birlikdə burada saxlanılacaq.",
+      },
+    ],
+    contact:
+      "Tədbirinizdə bizi görmək istərdinizmi? info@tamga.network ünvanına yazın.",
+  },
 };
 
 const pick = (raw: string): Locale =>
-  ["en", "tr", "tk"].includes(raw) ? (raw as Locale) : "en";
+  ["en", "tr", "tk", "az"].includes(raw) ? (raw as Locale) : "en";
 
 export async function generateMetadata({
   params,

@@ -1,0 +1,39 @@
+{
+  "meta": {
+    "title": "Tamga Network — Türk dünyası üçün rəqəmsal etibar şəbəkəsi",
+    "description": "Tamga Network Türk dünyası üçün rəqəmsal etibar şəbəkəsidir: qurumlar tərəfindən verilən rəqəmsal sənədlər sərhədlər arasında saniyələr ərzində yoxlanılır, şəxsin məxfiliyi qorunur. Açıq qaydalar, imzalanmış siyahılar, Aİ ilə uyğun.",
+    "ogDescription": "Tamga Network Türk dünyası üçün rəqəmsal etibar şəbəkəsidir: açıq qaydalar, imzalanmış etibar siyahıları, Aİ ilə uyğun.",
+    "tagline": "Türk dünyası üçün rəqəmsal etibar şəbəkəsi"
+  },
+  "nav": {
+    "menu": "Menyunu aç"
+  },
+  "common": {
+    "toDark": "Qaranlıq mövzuya keç",
+    "toLight": "Açıq mövzuya keç",
+    "downloadPdf": "PDF olaraq yüklə",
+    "skipToContent": "Məzmuna keç"
+  },
+  "footer": {
+    "tagline": "Türk dünyası üçün açıq, Aİ ilə uyğun etibar şəbəkəsi.",
+    "slogan": "Türk dünyası üçün rəqəmsal etibar şəbəkəsi.",
+    "contact": "Əlaqə",
+    "rights": "Bütün hüquqlar qorunur.",
+    "social": "Sosial media"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Bu möhür heç yerə aparmır",
+    "body": "Axtardığınız səhifə tapılmadı. Ana səhifəyə qayıda və ya Öyrən bölməsindən başlaya bilərsiniz.",
+    "home": "Ana səhifə",
+    "docs": "Öyrən"
+  },
+  "langSwitcher": {
+    "label": "Dil",
+    "tr": "Türkçe",
+    "en": "English",
+    "tk": "Türkmençe",
+    "az": "Azərbaycan",
+    "menuLabel": "Dil seçin"
+  }
+}

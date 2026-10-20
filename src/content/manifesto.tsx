@@ -394,7 +394,137 @@ const tk: ManifestoContent = {
   linkDocs: "Düşünjeleri başdan öwren →",
 };
 
-const content: Record<Locale, ManifestoContent> = { en, tr, tk };
+const az: ManifestoContent = {
+  meta: {
+    title: "Manifest",
+    description:
+      "Tamga Network Manifesti — qədim möhürün müasir qarşılığı. Rəqəmsal etibarı ortaq, suveren və qarşılıqlı işləyə bilən infrastruktura çevirməyə çağırış.",
+  },
+  mastheadSub: "Manifest · v1.0 · 2026-10-03",
+  eyebrow: "Manifest",
+  title: "Biz qədim möhürün müasir qarşılığını qururuq",
+  lead: (
+    <>
+      Dünya etibarı qurmaq üsulunu dəyişir. Avropa bunu tənzimləmə ilə məcburi
+      etdi; standart formalaşır. Sual artıq “bu transformasiya baş verəcəkmi”
+      deyil —{" "}
+      <span className="text-primary">“bu transformasiyada kim istehsalçı olacaq.”</span>
+    </>
+  ),
+  theses: [
+    {
+      n: "01",
+      title: "Etibar məhsul deyil, infrastrukturdur",
+      body: (
+        <>
+          Hər tətbiq şəxsiyyəti, səlahiyyəti və sənədləri yenidən yoxlamağa
+          məcbur olmamalıdır. Elektrik və internet ortaq infrastruktur olduğu
+          kimi, rəqəmsal etibar da ortaq infrastruktur olmalıdır. Biz bu
+          infrastrukturu qururuq.
+        </>
+      ),
+    },
+    {
+      n: "02",
+      title: "Məlumat sahibinin əlində qalır",
+      body: (
+        <>
+          Şəxsiyyətinizi sübut etmək üçin sənədinizin surətini təhvil verməyə
+          məcbur olmamalısınız. Məlumat istifadəçinin nəzarətində qalır; yalnız
+          zəruri sübut paylaşılır. Doğum tarixinizi vermədən “18 yaşdan yuxarı”
+          olduğunuzu sübut edə bilməlisiniz. Bu dəbdəbə deyil, <strong>hüquq</strong>dur.
+        </>
+      ),
+    },
+    {
+      n: "03",
+      title: "Yoxlama mənbəyə müraciət etmədən aparılmalıdır",
+      body: (
+        <>
+          Sənədin həqiqiliyi surətin nə qədər inandırıcı göründüyünə deyil,
+          riyaziyyatın dəqiqliyinə əsaslanmalıdır. Kriptoqrafik imza sənədin
+          kimdən gəldiyini və dəyişdirilmədiyini mənbədən heç nə soruşmadan
+          sübut edir.
+        </>
+      ),
+    },
+    {
+      n: "04",
+      title: "Blockchain məqsəd deyil, vasitədir",
+      body: (
+        <>
+          Biz yeni blockchain şəbəkəsi qurmuruq. Bu gün etibar imzalanmış, açıq
+          etibar siyahılarına əsaslanır; ortaq reyestr yalnız müstəqil tərəflər onu
+          birlikdə idarə etdikdə əlavə olunur.{" "}
+          <strong>Fərdi məlumatlar heç birinə yazılmır.</strong> İstifadəçi bunların
+          heç birini görmür; yalnız öz şəxsiyyətindən istifadə edir.
+        </>
+      ),
+    },
+    {
+      n: "05",
+      title: "Açıq standartlar, istehsalçıdan asılı olmamaq",
+      body: (
+        <>
+          SD-JWT VC, ISO mdoc, OpenID4VC, X.509 və seçici paylaşım (selective disclosure) — EUDI profilləri. Biz
+          konkret bir şirkətin məhsuluna deyil, dünyanın razılaşdığı açıq
+          standartlara sadiqik. Asılılıq yoxdur; qarşılıqlı işləmə əsasdır.
+        </>
+      ),
+    },
+    {
+      n: "06",
+      title: "Suverenlik və uyğunluq eyni anda mümkündür",
+      body: (
+        <>
+          Dünya daşına bilən sübut modelinə keçərkən qarşımızda iki yol var: bu
+          transformasiyanı xaricdən idxal etmək və ya öz suveren, açıq
+          standartlarla uyğun infrastrukturumuzu qurmaq. Biz ikincisini seçirik —{" "}
+          <strong>uyğun, lakin müstəqil.</strong> Eyni standartlar, öz
+          şəbəkəmiz.
+        </>
+      ),
+    },
+    {
+      n: "07",
+      title: "Tamga ortaq möhür ənənəsidir",
+      body: (
+        <>
+          <em>Tamga</em> türk tayfalarının qədim möhürü idi — mülkiyyəti, mənsubiyyəti
+          və səlahiyyəti sübut edən nişan. Yoxlanıla bilən rəqəmsal
+          sənəd onun müasir qarşılığıdır. Ortaq dil, mədəniyyət və tarixi
+          paylaşan{" "}
+          <strong>türk dünyasının xalqları</strong> ortaq rəqəmsal etibar
+          təməli üçün təbii zəmindir.
+        </>
+      ),
+    },
+    {
+      n: "08",
+      title: "Mərkəz deyil, şəbəkə toxuması",
+      body: (
+        <>
+          Tək bir hakimiyyət deyil, qarşılıqlı işləyə bilən, müstəqil
+          şəbəkələrdən ibarət toxuma — <strong>Trust Mesh</strong>. Hər ölkə öz
+          etibar şəbəkəsini, qurumlarını və idarəetməsini qoruyaraq ortaq
+          standartlar vasitəsilə digərləri ilə əlaqə qurur.
+        </>
+      ),
+    },
+  ],
+  closing: (
+    <>
+      Məqsədimiz rəqəmsal etibarı hər tətbiqin yenidən həll etdiyi problemdən
+      çıxarıb Türkiyə və türk dünyası üçün ortaq, suveren və qarşılıqlı işləyə
+      bilən infrastruktur xidmətinə çevirməkdir.
+    </>
+  ),
+  slogan: "Building Trust Infrastructure for the Digital World.",
+  linkWhitepaper: "Whitepaper-i oxuyun →",
+  linkDocs: "Anlayışları sıfırdan öyrənin →",
+};
+
+const content: Record<Locale, ManifestoContent> = { en, tr, tk, az };
 
 export function getManifestoContent(locale: string): ManifestoContent {
   return content[locale as Locale] ?? en;

@@ -12,86 +12,95 @@ type Milestone = { when: L; what: L; ref?: string; future?: boolean };
 
 const MILESTONES: Milestone[] = [
   {
-    when: { tr: "11 Nisan 2024", en: "11 April 2024", tk: "11 aprel 2024" },
+    when: { tr: "11 Nisan 2024", en: "11 April 2024", tk: "11 aprel 2024", az: "11 aprel 2024" },
     what: {
       tr: "eIDAS 2.0 kabul edildi: Tüzük (AB) 2024/1183.",
       en: "eIDAS 2.0 adopted: Regulation (EU) 2024/1183.",
       tk: "eIDAS 2.0 kabul edildi: (ÝB) 2024/1183 düzgünnamasy.",
+      az: "eIDAS 2.0 qəbul edildi: (Aİ) 2024/1183 saylı Reqlament.",
     },
     ref: "2024/1183",
   },
   {
-    when: { tr: "20 Mayıs 2024", en: "20 May 2024", tk: "20 maý 2024" },
+    when: { tr: "20 Mayıs 2024", en: "20 May 2024", tk: "20 maý 2024", az: "20 may 2024" },
     what: {
       tr: "Tüzük yürürlüğe girdi. Bütün süreler bu tarihten sayılır.",
       en: "The regulation enters into force. Every deadline counts from this date.",
       tk: "Düzgünnama güýje girdi. Ähli möhletler şu seneden hasaplanýar.",
+      az: "Reqlament qüvvəyə minir. Bütün müddətlər bu tarixdən hesablanır.",
     },
   },
   {
-    when: { tr: "Kasım 2024", en: "November 2024", tk: "Noýabr 2024" },
+    when: { tr: "Kasım 2024", en: "November 2024", tk: "Noýabr 2024", az: "Noyabr 2024" },
     what: {
       tr: "İlk uygulama tüzükleri: kişi kimlik verisi ve belgeler, cüzdanın çekirdek işlevleri, bildirim, sertifikasyon, protokoller.",
       en: "First implementing acts: person identification data and attestations, the wallet's core functions, notification, certification, protocols.",
       tk: "Ilkinji ýerine ýetiriş düzgünnamalary: şahsyýet maglumaty we resminamalar, gapjygyň esasy işleri, habar bermek, sertifikasiýa, protokollar.",
+      az: "İlk icra aktları: şəxsi identifikasiya məlumatları və attestasiyalar, rəqəmsal cüzdanın əsas funksiyaları, bildiriş, sertifikatlaşdırma, protokollar.",
     },
   },
   {
-    when: { tr: "2025", en: "2025", tk: "2025" },
+    when: { tr: "2025", en: "2025", tk: "2025", az: "2025" },
     what: {
       tr: "Doğrulayıcıların kaydı, sertifikalı cüzdanların listesi, nitelikli belgeler (QEAA) ve kamu belgeleri için yeni tüzükler.",
       en: "New acts on registering relying parties, the list of certified wallets, qualified attestations (QEAA) and public-sector attestations.",
       tk: "Barlaýjylary hasaba almak, sertifikatly gapjyklaryň sanawy, kwalifisirlenen resminamalar (QEAA) we döwlet resminamalary üçin täze düzgünnamalar.",
+      az: "Etibar edən tərəflərin qeydiyyatı, sertifikatlaşdırılmış rəqəmsal cüzdanların siyahısı, kvalifikasiyalı attestasiyalar (QEAA) və dövlət sektoru attestasiyaları haqqında yeni aktlar.",
     },
   },
   {
-    when: { tr: "11 Ağustos 2026", en: "11 August 2026", tk: "11 awgust 2026" },
+    when: { tr: "11 Ağustos 2026", en: "11 August 2026", tk: "11 awgust 2026", az: "11 avqust 2026" },
     what: {
       tr: "Güncelleme paketi yürürlükte: cüzdan kanıtları (WIA ve anahtar kanıtı), AB güven işareti, sunum için HAIP ve ISO profilleri.",
       en: "Update package in force: wallet attestations (WIA and key attestation), the EU trust mark, HAIP and ISO profiles for presentation.",
       tk: "Täzeleme toplumy güýje girdi: gapjyk subutnamalary (WIA we açar subutnamasy), ÝB ynam belgisi, görkezmek üçin HAIP we ISO profilleri.",
+      az: "Yenilənmə paketi qüvvədədir: rəqəmsal cüzdan attestasiyaları (WIA və açar attestasiyası), Aİ etibar nişanı, təqdimat üçün HAIP və ISO profilləri.",
     },
   },
   {
-    when: { tr: "2026 sonu", en: "End of 2026", tk: "2026-njy ýylyň ahyry" },
+    when: { tr: "2026 sonu", en: "End of 2026", tk: "2026-njy ýylyň ahyry", az: "2026-cı ilin sonu" },
     what: {
       tr: "Her üye devlet vatandaşlarına en az bir sertifikalı EUDI Wallet sunmuş olmalı.",
       en: "Every member state must offer its citizens at least one certified EUDI Wallet.",
       tk: "Her agza döwlet raýatlaryna iň bolmanda bir sertifikatly EUDI Wallet hödürlän bolmaly.",
+      az: "Hər üzv dövlət öz vətəndaşlarına ən azı bir sertifikatlaşdırılmış EUDI Wallet təqdim etməlidir.",
     },
     future: true,
   },
   {
-    when: { tr: "2027 sonu", en: "End of 2027", tk: "2027-nji ýylyň ahyry" },
+    when: { tr: "2027 sonu", en: "End of 2027", tk: "2027-nji ýylyň ahyry", az: "2027-ci ilin sonu" },
     what: {
       tr: "Düzenlenmiş sektörler (ör. bankalar) ve çok büyük çevrim içi platformlar cüzdanı kabul etmek zorunda.",
       en: "Regulated sectors (such as banks) and very large online platforms must accept the wallet.",
       tk: "Düzgünleşdirilen pudaklar (meselem, banklar) we örän uly onlaýn platformalar gapjygy kabul etmeli.",
+      az: "Tənzimlənən sektorlar (məsələn, banklar) və çox böyük onlayn platformalar rəqəmsal cüzdanı qəbul etməlidir.",
     },
     future: true,
   },
   {
-    when: { tr: "11 Ağustos 2028", en: "11 August 2028", tk: "11 awgust 2028" },
+    when: { tr: "11 Ağustos 2028", en: "11 August 2028", tk: "11 awgust 2028", az: "11 avqust 2028" },
     what: {
       tr: "Cüzdanlar doğrulayıcının kayıt sertifikasını denetlemek zorunda; portre, kişi kimlik verisinin zorunlu alanı olur.",
       en: "Wallets must check the relying party's registration certificate; the portrait becomes a mandatory field of the person identification data.",
       tk: "Gapjyklar barlaýjynyň hasaba alyş sertifikatyny barlamaly; surat şahsyýet maglumatynyň hökmany meýdany bolýar.",
+      az: "Rəqəmsal cüzdanlar etibar edən tərəfin qeydiyyat sertifikatını yoxlamalıdır; portret şəxsi identifikasiya məlumatlarının məcburi sahəsinə çevrilir.",
     },
     future: true,
   },
   {
-    when: { tr: "2030", en: "2030", tk: "2030" },
+    when: { tr: "2030", en: "2030", tk: "2030", az: "2030" },
     what: {
       tr: "AB'nin dijital on yıl hedefi: vatandaşların %80'i dijital kimlik kullanıyor.",
       en: "The EU's Digital Decade target: 80 % of citizens use a digital identity.",
       tk: "ÝB-niň sanly onýyllyk maksady: raýatlaryň 80 %-i sanly şahsyýet ulanýar.",
+      az: "Aİ-nin Rəqəmsal Onillik hədəfi: vətəndaşların 80 %-i rəqəmsal şəxsiyyətdən istifadə edir.",
     },
     future: true,
   },
 ];
 
-function EuTimeline({ locale }: { locale: "tr" | "en" | "tk" }) {
-  const label = { tr: "Gelecek tarih", en: "Upcoming", tk: "Geljekki sene" }[locale];
+function EuTimeline({ locale }: { locale: "tr" | "en" | "tk" | "az" }) {
+  const label = { tr: "Gelecek tarih", en: "Upcoming", tk: "Geljekki sene", az: "Gələcək tarix" }[locale];
   return (
     <ol className="relative m-0 list-none space-y-0 p-0">
       {MILESTONES.map((m, i) => (
@@ -123,13 +132,14 @@ function EuTimeline({ locale }: { locale: "tr" | "en" | "tk" }) {
 
 /* ------------------------------------------------------------------ EUDI Wallet ile AB uyumlu cüzdan tablosu */
 
-function WalletCompare({ locale }: { locale: "tr" | "en" | "tk" }) {
+function WalletCompare({ locale }: { locale: "tr" | "en" | "tk" | "az" }) {
   const head = {
     tr: ["", "EUDI Wallet", "AB uyumlu cüzdan"],
     en: ["", "EUDI Wallet", "EU-compatible wallet"],
     tk: ["", "EUDI Wallet", "ÝB bilen laýyk gapjyk"],
+    az: ["", "EUDI Wallet", "Aİ ilə uyğun rəqəmsal cüzdan"],
   }[locale];
-  const rows: Record<"tr" | "en" | "tk", string[][]> = {
+  const rows: Record<"tr" | "en" | "tk" | "az", string[][]> = {
     tr: [
       ["Kim sunar", "Bir AB üye devleti ya da onun tanıdığı sağlayıcı", "Herhangi bir kuruluş"],
       ["Sertifika", "AB kurallarına göre sertifikalı, AB'nin listesinde", "AB unvanını taşımaz"],
@@ -150,6 +160,13 @@ function WalletCompare({ locale }: { locale: "tr" | "en" | "tk" }) {
       ["Formatlar we protokollar", "ÝB standartlary", "Şol bir standartlar"],
       ["ÝB ynam belgisi", "Ulanyp bilýär", "Ulanyp bilmeýär"],
       ["Laýyklyk nähili görkezilýär", "Sertifikasiýa bilen", "Bilelikde işleýiş synaglary bilen"],
+    ],
+    az: [
+      ["Kim təqdim edir", "Aİ üzv dövləti və ya onun tanıdığı provayder", "İstənilən təşkilat"],
+      ["Sertifikatlaşdırma", "Aİ qaydalarına əsasən sertifikatlaşdırılıb, Aİ-nin siyahısındadır", "Aİ statusunu daşımır"],
+      ["Formatlar və protokollar", "Aİ standartları", "Eyni standartlar"],
+      ["Aİ etibar nişanı", "İstifadə edə bilər", "İstifadə edə bilməz"],
+      ["Uyğunluq necə göstərilir", "Sertifikatlaşdırma yolu ilə", "Qarşılıqlı işləmə testləri ilə"],
     ],
   };
   return (
@@ -186,13 +203,14 @@ function WalletCompare({ locale }: { locale: "tr" | "en" | "tk" }) {
 
 /* ------------------------------------------------------------------ Belge türleri tablosu */
 
-function AttestationTypes({ locale }: { locale: "tr" | "en" | "tk" }) {
+function AttestationTypes({ locale }: { locale: "tr" | "en" | "tk" | "az" }) {
   const head = {
     tr: ["Tür", "Kim verir", "Örnek"],
     en: ["Type", "Who issues it", "Example"],
     tk: ["Görnüş", "Kim berýär", "Mysal"],
+    az: ["Növ", "Kim verir", "Nümunə"],
   }[locale];
-  const rows: Record<"tr" | "en" | "tk", string[][]> = {
+  const rows: Record<"tr" | "en" | "tk" | "az", string[][]> = {
     tr: [
       ["PID", "Devlet ya da devlet adına yetkili kurum", "Ad, soyad, doğum tarihi: kimliğin temeli"],
       ["EAA", "Herhangi bir kurum", "Öğrenci belgesi, etkinlik bileti, üyelik"],
@@ -210,6 +228,12 @@ function AttestationTypes({ locale }: { locale: "tr" | "en" | "tk" }) {
       ["EAA", "Islendik gurama", "Talyp şahadatnamasy, çäre bileti, agzalyk"],
       ["QEAA", "Kwalifisirlenen ynam hyzmaty üpjün edijisi (QTSP)", "Hukuk taýdan agramly häsiýet resminamasy"],
       ["PuB-EAA", "Ygtyýarly çeşmä jogapkär ýa-da ygtyýarlandyrylan döwlet edarasy", "Döwletiň öz sanawyndan berýän resminamasy"],
+    ],
+    az: [
+      ["PID", "Dövlət və ya onun adından səlahiyyətli qurum", "Ad, soyad, doğum tarixi: şəxsiyyətin əsası"],
+      ["EAA", "İstənilən təşkilat", "Tələbə bileti, tədbir bileti, üzvlük"],
+      ["QEAA", "Kvalifikasiyalı etibar xidməti provayderi (QTSP)", "Güclü hüquqi qüvvəyə malik atribut attestasiyası"],
+      ["PuB-EAA", "Mötəbər mənbəyə cavabdeh olan və ya onun təyin etdiyi dövlət qurumu", "Dövlət sektorunun öz reyestrindən verdiyi attestasiya"],
     ],
   };
   return (
@@ -253,11 +277,12 @@ export const CHAPTER_4: LearnPage[] = [
     chapter: 4,
     order: 1,
     minutes: 5,
-    title: { tr: "eIDAS 2.0 nedir?", en: "What is eIDAS 2.0?", tk: "eIDAS 2.0 näme?" },
+    title: { tr: "eIDAS 2.0 nedir?", en: "What is eIDAS 2.0?", tk: "eIDAS 2.0 näme?", az: "eIDAS 2.0 nədir?" },
     summary: {
       tr: "Avrupa Birliği'nin dijital kimlik ve güven hizmetleri tüzüğü ve neden bizi de ilgilendirdiği.",
       en: "The European Union's regulation on digital identity and trust services, and why it matters to us too.",
       tk: "Ýewropa Bileleşiginiň sanly şahsyýet we ynam hyzmatlary baradaky düzgünnamasy we onuň bize hem näme üçin degişlidigi.",
+      az: "Avropa İttifaqının rəqəmsal şəxsiyyət və etibar xidmətləri haqqında reqlamenti və onun bizim üçün də niyə əhəmiyyətli olduğu.",
     },
     body: {
       tr: (
@@ -468,42 +493,117 @@ export const CHAPTER_4: LearnPage[] = [
           </p>
         </>
       ),
+      az: (
+        <>
+          <p>
+            Avropa İttifaqında (Aİ) bir tələbə Lissabondan Varşavaya köçəndə diplomunu, tibbi sığortasını və ya bank hesabını yeni
+            ölkədə necə sübut edəcək? İllərlə cavab kağız, təsdiqlənmiş surətlər və gözləmə olub. eIDAS Aİ-nin bu suala verdiyi hüquqi cavabdır.
+          </p>
+          <h2>Bir reqlament, iki nəsil</h2>
+          <p>
+            eIDAS ingiliscə <em>electronic IDentification, Authentication and trust Services</em> ifadəsinin qısaltmasıdır: elektron
+            identifikasiya, autentifikasiya və <Term tip="Elektron imza, möhür və vaxt damğası kimi onlayn mühitdə etibar yaradan xidmətlər. Bu fəslin 3-cü səhifəsində izah olunur.">etibar xidmətləri</Term>.
+            İlk nəsil üzv dövlətlərin elektron identifikasiya sxemlərinin bir-birini tanımasını təmin etdi və elektron imzalara
+            hüquqi qüvvə verdi. Vətəndaşlara isə ölkədən ölkəyə apara biləcəkləri vahid alət vermədi.
+          </p>
+          <p>
+            İkinci nəsil, yəni eIDAS 2.0, <strong>(Aİ) 2024/1183 saylı Reqlament</strong> kimi 11 aprel 2024-cü ildə qəbul edildi və
+            20 may 2024-cü ildə qüvvəyə mindi. Onun ən böyük yeniliyi hər Aİ vətəndaşı üçün rəqəmsal şəxsiyyət cüzdanıdır: EUDI Wallet.
+            Aİ reqlamenti olduğu üçün o, milli qanunlarla köçürülməsinə ehtiyac olmadan hər üzv dövlətdə birbaşa tətbiq olunur.
+          </p>
+          <h2>eIDAS 2.0 nələri əlavə edir</h2>
+          <ul>
+            <li>
+              <strong>Rəqəmsal cüzdan.</strong> İnsanın öz şəxsiyyətini və rəqəmsal sənədlərini saxladığı və kimin nəyi görəcəyinə özünün qərar verdiyi tətbiq.
+            </li>
+            <li>
+              <strong>Elektron attestasiyalar.</strong> Diplomlar, sürücülük vəsiqələri, peşə ixtisasları və ya üzvlüklər üçün hər kəsin
+              oxuya biləcəyi ortaq rəqəmsal format. Aİ bunları atributların attestasiyası adlandırır.
+            </li>
+            <li>
+              <strong>Yeni etibar xidmətləri.</strong> Məsələn, kvalifikasiyalı elektron reyestr: qeydlərinin ardıcıllığı və bütövlüyü
+              hüquqi cəhətdən təmin olunan reyestr.
+            </li>
+          </ul>
+          <h2>Qaydalar qat-qat necə yazılır</h2>
+          <p>
+            Reqlament prinsipləri və hüquqları müəyyən edir; texniki təfərrüatları isə Avropa Komissiyasının{" "}
+            <Term tip="Əsas reqlamentin məcburi texniki təfərrüatlarını müəyyən edən Komissiya reqlamentləri.">icra aktları</Term> müəyyənləşdirir. İlk paket
+            2024-cü ilin noyabrında qəbul edildi: şəxsi identifikasiya məlumatları və attestasiyalar, rəqəmsal cüzdanın əsas funksiyaları,
+            bildiriş, sertifikatlaşdırma və protokollar. 2025 və 2026-cı illərdə yeni aktlar və yenilənmələr gəldi.
+          </p>
+          <p>
+            Arxitekturanın özü isə{" "}
+            <Term tip="Architecture and Reference Framework: EUDI Wallet-ın rollarını, axınlarını və tələblərini təsvir edən istinad sənədi.">ARF</Term>{" "}
+            adlı istinad sənədində təsvir olunur (son versiya 3.0.0, iyul 2026). ARF özlüyündə məcburi deyil; məcburi olan reqlament və
+            onun icra aktlarıdır. ARF bunların bir-birinə necə uyğunlaşdığını göstərən ortaq xəritədir; Tamga-nın öz çərçivəsinin
+            "Tamga ARF" adlanmasının səbəbi də budur.
+          </p>
+          <Callout kind="turkic" locale="az">
+            <p>
+              Almatıda oxuyan tələbə Berlində magistratura proqramına müraciət edir; Bakıdakı şirkət Varşavadakı tərəfdaşı ilə müqavilə
+              imzalayır. Avropadakı universitetlər, banklar və qurumlar tezliklə rəqəmsal sənədləri birbaşa rəqəmsal cüzdanlardan oxuyacaq.
+              Türk dünyasından gələn rəqəmsal sənədlər eyni dildə danışmasa, kağız və gözləmə içində qalacaq.
+            </p>
+          </Callout>
+          <h2>Tamga Network ilə əlaqəsi</h2>
+          <p>
+            Tamga Network Aİ qurumu deyil və eIDAS-ın əhatə dairəsinə daxil deyil. Lakin o, eyni arxitekturadan şüurlu şəkildə istifadə
+            edir: rəqəmsal sənəd formatları, rəqəmsal sənədlərin verilməsi və təqdim edilməsi protokolları və etibar siyahıları Aİ
+            standartlarına əsaslanır. Buna görə Türk dünyasında verilmiş rəqəmsal sənəd Avropa proqram təminatı ilə işləməyə yararlıdır və
+            bu uyğunluq qarşılıqlı işləmə testləri ilə göstərilir. Şəbəkənin mövqeyi bir qərarla müəyyən edilib: əvvəlcə Aİ ilə uyğunluq,
+            onun üzərində isə Türk dünyası üçün yüngül etibar şəbəkəsi.
+          </p>
+          <p>
+            Birgə işləmək hüquqi tanınma ilə eyni deyil. eIDAS-ın 5f maddəsi Aİ daxilindəki qurumların Aİ rəqəmsal cüzdanlarını necə qəbul
+            etdiyini tənzimləyir; bu, Aİ-dən kənardakı rəqəmsal cüzdanı və ya etibar siyahısını tanımaq yolu deyil. Aİ-dən kənar ölkələr
+            üçün yeganə açıq əsas 14-cü maddədir: o, yalnız etibar xidmətlərini (məsələn, kvalifikasiyalı elektron imzaları) əhatə edir və
+            İttifaqla həmin ölkə arasında saziş tələb edir; sazişin tərəfləri dövlətlərdir. Tamga Network bu sazişin tərəfi ola bilməz.
+            Şəbəkənin işi texniki hazırlıqdır: ETSI formatlarında siyahılar, ETSI profilli sertifikatlar və dövlətlərə təhvil verilə bilən
+            rollar. Bu gün Aİ-dəki etibar edən tərəf Tamga rəqəmsal sənədlərini yalnız öz təşəbbüsü ilə, etibar siyahımızı öz etibar
+            mənbəyinə əlavə etməklə qəbul edə bilər.
+          </p>
+        </>
+      ),
     },
     keyPoints: [
       {
         tr: "eIDAS 2.0, Tüzük (AB) 2024/1183'tür; 20 Mayıs 2024'ten beri yürürlükte ve her AB vatandaşına bir dijital kimlik cüzdanı getirir.",
         en: "eIDAS 2.0 is Regulation (EU) 2024/1183; in force since 20 May 2024, it brings a digital identity wallet to every EU citizen.",
         tk: "eIDAS 2.0 — (ÝB) 2024/1183 düzgünnamasy; 2024-nji ýylyň 20-nji maýyndan bäri güýje girdi we her ÝB raýatyna sanly şahsyýet gapjygyny getirýär.",
+        az: "eIDAS 2.0 (Aİ) 2024/1183 saylı Reqlamentdir; 20 may 2024-cü ildən qüvvədədir və hər Aİ vətəndaşına rəqəmsal şəxsiyyət cüzdanı gətirir.",
       },
       {
         tr: "Tüzük ilkeleri koyar; teknik ayrıntı uygulama tüzüklerinde, mimari haritası ARF'dedir.",
         en: "The regulation sets the principles; the technical detail sits in the implementing acts, the architectural map in the ARF.",
         tk: "Düzgünnama ýörelgeleri kesgitleýär; tehniki jikme-jiklik ýerine ýetiriş düzgünnamalarynda, arhitektura kartasy ARF-de.",
+        az: "Reqlament prinsipləri müəyyən edir; texniki təfərrüatlar icra aktlarında, arxitektura xəritəsi isə ARF-dədir.",
       },
       {
         tr: "Tamga Network AB'nin biçimlerini ve protokollerini kullanır; böylece Türk dünyasının belgeleri Avrupa'da da okunabilir olur.",
         en: "Tamga Network uses the EU's formats and protocols, so credentials from the Turkic world can be read in Europe too.",
         tk: "Tamga Network ÝB-niň formatlaryny we protokollaryny ulanýar; şeýlelik bilen türki dünýäniň resminamalary Ýewropada hem okalýar.",
+        az: "Tamga Network Aİ-nin formatlarından və protokollarından istifadə edir, buna görə Türk dünyasından olan rəqəmsal sənədlər Avropada da oxuna bilər.",
       },
     ],
     deeper: [
       {
-        label: { tr: "Konumlanma kararı (AB uyumu taban)", en: "The positioning decision (EU compatibility as the base)", tk: "Ýerleşiş karary" },
+        label: { tr: "Konumlanma kararı (AB uyumu taban)", en: "The positioning decision (EU compatibility as the base)", tk: "Ýerleşiş karary", az: "Mövqeləndirmə qərarı (əsas kimi Aİ ilə uyğunluq)" },
         href: "/adr/0035-positioning-three-layers",
         kind: "docs",
       },
       {
-        label: { tr: "Tamga ARF: mimari ve başvuru çerçevesi", en: "Tamga ARF: architecture and reference framework", tk: "Tamga ARF: arhitektura" },
+        label: { tr: "Tamga ARF: mimari ve başvuru çerçevesi", en: "Tamga ARF: architecture and reference framework", tk: "Tamga ARF: arhitektura", az: "Tamga ARF: arxitektura və istinad çərçivəsi" },
         href: "architecture",
         kind: "arf",
       },
       {
-        label: { tr: "Kaynaklar: AB tüzükleri ve standartlar", en: "References: EU acts and standards", tk: "Çeşmeler: ÝB düzgünnamalary" },
+        label: { tr: "Kaynaklar: AB tüzükleri ve standartlar", en: "References: EU acts and standards", tk: "Çeşmeler: ÝB düzgünnamalary", az: "İstinadlar: Aİ aktları və standartlar" },
         href: "references",
         kind: "arf",
       },
       {
-        label: { tr: "Sonraki: EUDI Wallet nedir?", en: "Next: what is the EUDI Wallet?", tk: "Indiki: EUDI Wallet näme?" },
+        label: { tr: "Sonraki: EUDI Wallet nedir?", en: "Next: what is the EUDI Wallet?", tk: "Indiki: EUDI Wallet näme?", az: "Növbəti: EUDI Wallet nədir?" },
         href: "/learn/eudi-wallet",
         kind: "site",
       },
@@ -516,11 +616,12 @@ export const CHAPTER_4: LearnPage[] = [
     chapter: 4,
     order: 2,
     minutes: 5,
-    title: { tr: "EUDI Wallet nedir?", en: "What is the EUDI Wallet?", tk: "EUDI Wallet näme?" },
+    title: { tr: "EUDI Wallet nedir?", en: "What is the EUDI Wallet?", tk: "EUDI Wallet näme?", az: "EUDI Wallet nədir?" },
     summary: {
       tr: "Avrupa dijital kimlik cüzdanı nedir, ne değildir; \"AB uyumlu cüzdan\" ile farkı.",
       en: "What the European Digital Identity Wallet is and is not, and how it differs from an \"EU-compatible wallet\".",
       tk: "Ýewropa sanly şahsyýet gapjygy näme we näme däl; \"ÝB bilen laýyk gapjyk\" bilen tapawudy.",
+      az: "Avropa Rəqəmsal Şəxsiyyət Cüzdanı nədir və nə deyil, \"Aİ ilə uyğun rəqəmsal cüzdan\"dan nə ilə fərqlənir.",
     },
     body: {
       tr: (
@@ -696,42 +797,106 @@ export const CHAPTER_4: LearnPage[] = [
           </p>
         </>
       ),
+      az: (
+        <>
+          <p>
+            EUDI Wallet European Digital Identity Wallet, yəni Avropa rəqəmsal şəxsiyyət cüzdanıdır. Bu, telefonda işləyən və insanın
+            şəxsiyyətini və rəqəmsal sənədlərini saxlayan tətbiqdir. İnsan vebsayta daxil olarkən, bankda hesab açarkən və ya keçid
+            məntəqəsindən keçərkən yalnız tələb olunanı, öz razılığı ilə göstərir.
+          </p>
+          <h2>Rəqəmsal cüzdanda nələr saxlanılır</h2>
+          <ul>
+            <li>
+              <strong>Şəxsiyyət.</strong> Dövlətin verdiyi{" "}
+              <Term tip="Person Identification Data: dövlətin verdiyi əsas şəxsiyyət məlumatları (ad, soyad, doğum tarixi və s.). Növbəti səhifədə izah olunur.">PID</Term>{" "}
+              məlumatları.
+            </li>
+            <li>
+              <strong>Rəqəmsal sənədlər.</strong> Qurumların verdiyi sürücülük vəsiqəsi, diplom, peşə ixtisası, üzvlük.
+            </li>
+            <li>
+              <strong>İmza.</strong> Rəqəmsal cüzdan həm də insana kvalifikasiyalı elektron imza yaratmağa imkan verir; bu imza əl ilə
+              atılmış imza ilə eyni hüquqi qüvvəyə malikdir.
+            </li>
+          </ul>
+          <h2>Tək bir tətbiq deyil, hüquqi status</h2>
+          <p>
+            "EUDI Wallet" hər hansı şirkətin məhsul adı deyil, hüquqi statusdur. Aİ üzv dövlətinin təqdim etdiyi və ya tanıdığı və Aİ
+            qaydalarına əsasən sertifikatlaşdırılmış rəqəmsal cüzdanlar bu statusu daşıyır. Hər ölkə öz rəqəmsal cüzdanını buraxır; Aİ
+            sertifikatlaşdırılmış rəqəmsal cüzdanların siyahısını dərc edir və bu cüzdanlar Aİ etibar nişanından istifadə edə bilər.
+          </p>
+          <p>
+            Rəqəmsal cüzdan özünü də sübut edir. Rəqəmsal sənəd verməzdən əvvəl qurum qarşısındakı tətbiqin həqiqətən sertifikatlaşdırılmış
+            rəqəmsal cüzdan olduğunu və açarlarının təhlükəsiz saxlandığını görmək istəyir. Bunun üçün rəqəmsal cüzdan iki sübut daşıyır:{" "}
+            <Term tip="Wallet Instance Attestation: cüzdan provayderinin imzaladığı, rəqəmsal cüzdanın bu nüsxəsinin həqiqi və aktual olduğunu göstərən qısamüddətli sübut.">WIA</Term>{" "}
+            və <Term tip="Rəqəmsal sənədin bağlanacağı açarın hansı təhlükəsiz aparatda yaradıldığını göstərən sübut.">açar attestasiyası</Term>. Aİ
+            2026-cı il yenilənməsində hər ikisini məcburi etdi.
+          </p>
+          <h2>"Aİ ilə uyğun rəqəmsal cüzdan" nə deməkdir</h2>
+          <p>
+            Aİ-dən kənar təşkilatın rəqəmsal cüzdanı EUDI Wallet statusunu ala bilməz. Lakin o, eyni standartlarla işləyə, eyni rəqəmsal
+            sənədləri qəbul edə və təqdim edə bilər. Buna Aİ ilə uyğun rəqəmsal cüzdan deyilir; uyğunluq sertifikatlaşdırma ilə deyil,
+            qarşılıqlı işləmə testləri ilə göstərilir.
+          </p>
+          <WalletCompare locale="az" />
+          <p>
+            Tamga Network-un ilk rəqəmsal cüzdanı olan Tamga Wallet ikinci qrupa aiddir: Aİ ilə uyğun rəqəmsal cüzdandır və heç vaxt
+            "EUDI Wallet" və ya "milli cüzdan" kimi təqdim edilmir. Şəbəkənin qərarlarında bu qayda açıq şəkildə yazılıb.
+          </p>
+          <Callout kind="turkic" locale="az">
+            <p>
+              Türk dünyasındakı dövlətlər öz rəqəmsal cüzdanlarını buraxa bilər. Tamga Network rəqəmsal cüzdan
+              seçmir, onları tanıyır: qaydalara əməl edən və uyğunluq testlərindən keçən istənilən rəqəmsal cüzdan şəbəkədə işləyir.
+              Daşkənddəki dövlət cüzdanı da, Ankaradakı Tamga Wallet da eyni rəqəmsal sənədi qəbul edib təqdim edə bilər.
+            </p>
+          </Callout>
+          <h2>Hazırkı vəziyyət</h2>
+          <p>
+            Aİ təqviminə əsasən, hər üzv dövlət 2026-cı ilin sonunadək vətəndaşlarına ən azı bir sertifikatlaşdırılmış EUDI Wallet təqdim
+            etməlidir. Bu səhifə sonuncu dəfə yenilənəndə (oktyabr 2026) hələ heç bir sertifikatlaşdırılmış rəqəmsal cüzdan dərc
+            edilməmişdi; ölkələr sınaq və sertifikatlaşdırma mərhələsində idi. Təqvimin tam təsviri bu fəslin son səhifəsindədir.
+          </p>
+        </>
+      ),
     },
     keyPoints: [
       {
         tr: "EUDI Wallet bir uygulama adı değil, hukuki bir unvandır: AB üye devletinin sunduğu ya da tanıdığı, sertifikalı cüzdan.",
         en: "The EUDI Wallet is not an app name but a legal title: a certified wallet that an EU member state offers or recognises.",
         tk: "EUDI Wallet programma ady däl, hukuk adydyr: ÝB agza döwletiniň hödürleýän ýa-da ykrar edýän sertifikatly gapjygy.",
+        az: "EUDI Wallet tətbiq adı deyil, hüquqi statusdur: Aİ üzv dövlətinin təqdim etdiyi və ya tanıdığı sertifikatlaşdırılmış rəqəmsal cüzdan.",
       },
       {
         tr: "AB dışındaki cüzdanlar \"AB uyumlu\" olabilir: aynı standartlar, uyum testlerle gösterilir.",
         en: "Wallets outside the EU can be \"EU-compatible\": the same standards, with compatibility shown through tests.",
         tk: "ÝB-den daşardaky gapjyklar \"ÝB bilen laýyk\" bolup biler: şol bir standartlar, laýyklyk synaglar bilen görkezilýär.",
+        az: "Aİ-dən kənar rəqəmsal cüzdanlar \"Aİ ilə uyğun\" ola bilər: eyni standartlar, uyğunluq isə testlərlə göstərilir.",
       },
       {
         tr: "Tamga Wallet ağın ilk cüzdanıdır ve AB uyumludur; Tamga Network kurallara uyan her cüzdanı tanır.",
         en: "Tamga Wallet is the network's first wallet and is EU-compatible; Tamga Network recognises every wallet that follows its rules.",
         tk: "Tamga Wallet toruň ilkinji gapjygy we ÝB bilen laýyk; Tamga Network düzgünlere eýerýän her gapjygy ykrar edýär.",
+        az: "Tamga Wallet şəbəkənin ilk rəqəmsal cüzdanıdır və Aİ ilə uyğundur; Tamga Network öz qaydalarına əməl edən hər rəqəmsal cüzdanı tanıyır.",
       },
     ],
     deeper: [
       {
-        label: { tr: "Cüzdan sağlayıcılarının kuralları (Tamga Rulebook)", en: "Rules for wallet providers (Tamga Rulebook)", tk: "Gapjyk üpjün edijileriň düzgünleri" },
+        label: { tr: "Cüzdan sağlayıcılarının kuralları (Tamga Rulebook)", en: "Rules for wallet providers (Tamga Rulebook)", tk: "Gapjyk üpjün edijileriň düzgünleri", az: "Cüzdan provayderləri üçün qaydalar (Tamga Rulebook)" },
         href: "rulebook",
         kind: "arf",
       },
       {
-        label: { tr: "Cüzdan ve anahtar kanıtı kararı", en: "The wallet and key attestation decision", tk: "Gapjyk we açar subutnamasy karary" },
+        label: { tr: "Cüzdan ve anahtar kanıtı kararı", en: "The wallet and key attestation decision", tk: "Gapjyk we açar subutnamasy karary", az: "Rəqəmsal cüzdan və açar attestasiyası qərarı" },
         href: "/adr/0025-wallet-instance-and-key-attestations",
         kind: "docs",
       },
       {
-        label: { tr: "Rehber: uyumlu cüzdan geliştirmek", en: "Guide: building a compatible wallet", tk: "Gollanma: laýyk gapjyk döretmek" },
+        label: { tr: "Rehber: uyumlu cüzdan geliştirmek", en: "Guide: building a compatible wallet", tk: "Gollanma: laýyk gapjyk döretmek", az: "Bələdçi: uyğun rəqəmsal cüzdan hazırlamaq" },
         href: "/guides/build-a-wallet",
         kind: "docs",
       },
       {
-        label: { tr: "İlk cüzdan: Tamga Wallet", en: "The first wallet: Tamga Wallet", tk: "Ilkinji gapjyk: Tamga Wallet" },
+        label: { tr: "İlk cüzdan: Tamga Wallet", en: "The first wallet: Tamga Wallet", tk: "Ilkinji gapjyk: Tamga Wallet", az: "İlk rəqəmsal cüzdan: Tamga Wallet" },
         href: "/learn/first-wallet",
         kind: "site",
       },
@@ -744,11 +909,12 @@ export const CHAPTER_4: LearnPage[] = [
     chapter: 4,
     order: 3,
     minutes: 6,
-    title: { tr: "Güven hizmetleri", en: "Trust services", tk: "Ynam hyzmatlary" },
+    title: { tr: "Güven hizmetleri", en: "Trust services", tk: "Ynam hyzmatlary", az: "Etibar xidmətləri" },
     summary: {
       tr: "QTSP, nitelikli elektronik imza (QES), nitelikli belgeler ve Avrupa'nın güven listeleri.",
       en: "QTSPs, qualified electronic signatures (QES), qualified attestations and Europe's trusted lists.",
       tk: "QTSP, kwalifisirlenen elektron gol (QES), kwalifisirlenen resminamalar we Ýewropanyň ynam sanawlary.",
+      az: "QTSP-lər, kvalifikasiyalı elektron imzalar (QES), kvalifikasiyalı attestasiyalar və Avropanın etibar siyahıları.",
     },
     diagram: "trust-chain",
     body: {
@@ -909,42 +1075,99 @@ export const CHAPTER_4: LearnPage[] = [
           </Callout>
         </>
       ),
+      az: (
+        <>
+          <p>
+            Kağız dünyasında etibarı notariuslar, əl imzaları, möhürlər və sifarişli məktublar təmin edir. Onlayn mühitdə bu iş
+            <Term tip="Onlayn mühitdə etibar yaradan xidmətlər: elektron imzalar, elektron möhürlər, vaxt damğaları, qeydiyyatlı çatdırılma, vebsayt autentifikasiyası və s.">etibar xidmətlərinin</Term> üzərinə düşür:
+            sənədi kimin imzaladığını, nə vaxt mövcud olduğunu və yolda dəyişib-dəyişmədiyini göstərən xidmətlər.
+          </p>
+          <h2>İmzanın üç səviyyəsi</h2>
+          <p>
+            eIDAS elektron imzaları üç səviyyədə tanıyır. <strong>Sadə</strong> elektron imza e-poçtun sonundakı ad da ola bilər.
+            <strong>Təkmil</strong> imza imzalayana bağlı olan və istənilən dəyişikliyi üzə çıxaran kriptoqrafik imzadır.
+            <strong>Kvalifikasiyalı</strong> elektron imza, yəni{" "}
+            <Term tip="Qualified Electronic Signature: kvalifikasiyalı sertifikata əsaslanan və təhlükəsiz imza vasitəsində yaradılan imza; hüquqi cəhətdən əl imzasına bərabərdir.">QES</Term>,
+            ən yüksək səviyyədir və əl imzası ilə eyni hüquqi qüvvəyə malikdir. Onun açarı surəti çıxarıla bilməyən təhlükəsiz aparatda
+            saxlanılır.
+          </p>
+          <h2>Kvalifikasiyalı və qeyri-kvalifikasiyalı</h2>
+          <p>
+            Etibar xidmətləri göstərən hər provayder "kvalifikasiyalı" deyil. Bu statusu almaq üçün təşkilat müstəqil uyğunluq
+            qiymətləndirməsindən keçir, milli orqanın nəzarəti altına düşür və mütəmadi olaraq yenidən qiymətləndirilir. Belə təşkilatlar{" "}
+            <Term tip="Qualified Trust Service Provider: müstəqil qiymətləndirmədən keçmiş və milli orqanın nəzarəti altında olan etibar xidməti provayderi.">QTSP</Term> adlanır.
+            Kvalifikasiyalı xidmətin verdiyi sübut məhkəmələrdə və qurumlarda daha böyük hüquqi çəkiyə malikdir.
+          </p>
+          <h2>Kim kvalifikasiyalıdır: etibar siyahıları</h2>
+          <p>
+            Yoxlayan tərəf imzanın həqiqətən kvalifikasiyalı provayderdən gəldiyini haradan bilir? Hər Aİ üzv dövləti öz kvalifikasiyalı
+            provayderlərini ETSI TS 119 612 formatında imzalanmış{" "}
+            <Term tip="Hansı təşkilatlara etibar edildiyini onların açarları ilə birlikdə göstərən, imzalanmış və versiyalaşdırılmış siyahı.">etibar siyahısında</Term> dərc edir.
+            Avropa Komissiyası bu milli siyahıların siyahısını,{" "}
+            <Term tip="List of Trusted Lists: hər bir milli siyahıya ünvanı və imzalayanı ilə istinad edən yuxarı səviyyəli siyahı.">LOTL</Term>-u dərc edir. Yuxarıdakı diaqram
+            eyni zənciri Tamga-da istifadə olunduğu şəkildə göstərir: siyahıların siyahısı, milli siyahı, qurum, rəqəmsal sənəd.
+          </p>
+          <h2>eIDAS 2.0 nələri əlavə edir</h2>
+          <ul>
+            <li>
+              <strong>Kvalifikasiyalı attestasiyalar.</strong> QTSP-lər indi insanın peşəsi və ya səlahiyyəti kimi atributunu{" "}
+              <Term tip="Qualified Electronic Attestation of Attributes: QTSP-nin verdiyi, güclü hüquqi qüvvəyə malik atribut attestasiyası.">QEAA</Term> adlanan
+              kvalifikasiyalı rəqəmsal sənədlə təsdiq edə bilər. Növbəti səhifə onu digər növlərlə müqayisə edir.
+            </li>
+            <li>
+              <strong>Kvalifikasiyalı elektron reyestrlər.</strong> Qeydlərin ardıcıllığını və bütövlüyünü hüquqi cəhətdən təmin edən reyestr
+              xidməti. Ortaq reyestrlərə həsr olunmuş fəsil Tamga-nın bu sahədəki yolunu izah edir.
+            </li>
+          </ul>
+          <Callout kind="turkic" locale="az">
+            <p>
+              Tamga Network Türk dünyası üçün eyni modeli qurur: bu gün Türkiyə üçün siyahı, sonra hər türk dövlətinin öz siyahısı və
+              onların hamısını göstərən siyahıların siyahısı. Şəbəkə Aİ-nin mövcud siyahı formatını (ETSI TS 119 602) da oxuyur, buna görə
+              Aİ siyahıları şəbəkədə "xarici siyahılar" kimi göstərilə bilər. Tamga-nın öz şəxsiyyət xidməti bu gün kvalifikasiyalı deyil:
+              müstəqil qiymətləndirmədən keçməyib, buna görə etibar siyahısında qeyri-kvalifikasiyalı sənədi verən qurum kimi qeydiyyatdadır.
+            </p>
+          </Callout>
+        </>
+      ),
     },
     keyPoints: [
       {
         tr: "Güven hizmetleri dijital dünyanın noteri ve kaşesidir; nitelikli elektronik imza (QES) hukuken ıslak imzaya eşdeğerdir.",
         en: "Trust services are the online world's notary and stamp; a qualified electronic signature (QES) has the legal effect of a handwritten one.",
         tk: "Ynam hyzmatlary sanly dünýäniň notariusy we möhrüdir; kwalifisirlenen elektron gol (QES) el golunyň deňidir.",
+        az: "Etibar xidmətləri onlayn dünyanın notariusu və möhürüdür; kvalifikasiyalı elektron imza (QES) əl imzası ilə eyni hüquqi qüvvəyə malikdir.",
       },
       {
         tr: "Nitelikli sağlayıcılar (QTSP) bağımsız değerlendirmeden geçer ve ülkelerin imzalı güven listelerinde yayınlanır.",
         en: "Qualified providers (QTSPs) pass independent assessment and are published in the member states' signed trusted lists.",
         tk: "Kwalifisirlenen üpjün edijiler (QTSP) garaşsyz bahalandyrmadan geçýär we gol çekilen ynam sanawlarynda çap edilýär.",
+        az: "Kvalifikasiyalı provayderlər (QTSP) müstəqil qiymətləndirmədən keçir və üzv dövlətlərin imzalanmış etibar siyahılarında dərc olunur.",
       },
       {
         tr: "Tamga Network aynı zinciri kurar: listelerin listesi, ülke listeleri, kurumlar; AB listeleri dış liste olarak okunabilir.",
         en: "Tamga Network builds the same chain: a list of lists, national lists, institutions; EU lists can be read as external lists.",
         tk: "Tamga Network şol bir zynjyry gurýar: sanawlaryň sanawy, milli sanawlar, guramalar; ÝB sanawlary daşky sanaw hökmünde okalýar.",
+        az: "Tamga Network eyni zənciri qurur: siyahıların siyahısı, milli siyahılar, qurumlar; Aİ siyahıları xarici siyahılar kimi oxuna bilər.",
       },
     ],
     deeper: [
       {
-        label: { tr: "Kavram: güven listeleri ve federasyon", en: "Concept: trust lists and federation", tk: "Düşünje: ynam sanawlary" },
+        label: { tr: "Kavram: güven listeleri ve federasyon", en: "Concept: trust lists and federation", tk: "Düşünje: ynam sanawlary", az: "Anlayış: etibar siyahıları və federasiya" },
         href: "/concepts/trust-lists",
         kind: "docs",
       },
       {
-        label: { tr: "Şartname: güven listeleri", en: "Specification: trust lists", tk: "Şertnama: ynam sanawlary" },
+        label: { tr: "Şartname: güven listeleri", en: "Specification: trust lists", tk: "Şertnama: ynam sanawlary", az: "Spesifikasiya: etibar siyahıları" },
         href: "/specifications/trust-lists",
         kind: "docs",
       },
       {
-        label: { tr: "Trust Framework: kim katılır, kim denetler", en: "Trust Framework: who joins, who supervises", tk: "Trust Framework" },
+        label: { tr: "Trust Framework: kim katılır, kim denetler", en: "Trust Framework: who joins, who supervises", tk: "Trust Framework", az: "Trust Framework: kim qoşulur, kim nəzarət edir" },
         href: "trust-framework",
         kind: "arf",
       },
       {
-        label: { tr: "Kimlik servisinin sınıfı kararı", en: "The identity service's class decision", tk: "Şahsyýet hyzmatynyň synpy" },
+        label: { tr: "Kimlik servisinin sınıfı kararı", en: "The identity service's class decision", tk: "Şahsyýet hyzmatynyň synpy", az: "Şəxsiyyət xidmətinin sinfi haqqında qərar" },
         href: "/adr/0022-identity-service-non-qualified",
         kind: "docs",
       },
@@ -957,11 +1180,12 @@ export const CHAPTER_4: LearnPage[] = [
     chapter: 4,
     order: 4,
     minutes: 5,
-    title: { tr: "PID, EAA, QEAA", en: "PID, EAA, QEAA", tk: "PID, EAA, QEAA" },
+    title: { tr: "PID, EAA, QEAA", en: "PID, EAA, QEAA", tk: "PID, EAA, QEAA", az: "PID, EAA, QEAA" },
     summary: {
       tr: "Kişi kimlik verisi (PID) ve öbür belge türleri (EAA, QEAA, PuB-EAA) arasındaki fark.",
       en: "The difference between person identification data (PID) and the other kinds of attestation (EAA, QEAA, PuB-EAA).",
       tk: "Adamyň şahsyýet maglumaty (PID) bilen beýleki resminama görnüşleriniň (EAA, QEAA, PuB-EAA) arasyndaky tapawut.",
+      az: "Şəxsi identifikasiya məlumatları (PID) ilə digər attestasiya növləri (EAA, QEAA, PuB-EAA) arasındakı fərq.",
     },
     diagram: "credential",
     body: {
@@ -1129,42 +1353,105 @@ export const CHAPTER_4: LearnPage[] = [
           </p>
         </>
       ),
+      az: (
+        <>
+          <p>
+            Rəqəmsal cüzdandakı hər rəqəmsal sənəd eyni çəkiyə malik deyil. Konsert bileti də, şəxsiyyət vəsiqəsi də rəqəmsal cüzdanda
+            saxlanılır, lakin biri girişdən keçməyə imkan verir, digəri isə bank hesabı açmağa. Aİ bu fərqi dörd attestasiya növü ilə
+            adlandırır.
+          </p>
+          <h2>Dörd növ</h2>
+          <AttestationTypes locale="az" />
+          <ul>
+            <li>
+              <strong>
+                <Term tip="Person Identification Data: dövlətin və ya onun adından səlahiyyətli qurumun verdiyi əsas şəxsiyyət məlumatları.">PID</Term>
+              </strong>{" "}
+              insanın əsas şəxsiyyətidir: ad, soyad, doğum tarixi və oxşar sahələr. Onu dövlət və ya dövlətin səlahiyyət verdiyi qurum
+              verir. 2028-ci ildən Aİ portreti də PID-in məcburi sahəsinə çevirir.
+            </li>
+            <li>
+              <strong>
+                <Term tip="Electronic Attestation of Attributes: insanın atributlarından birini, məsələn, tələbə olmasını və ya bilet sahibi olmasını göstərən elektron sənəd.">EAA</Term>
+              </strong>{" "}
+              insanın atributunu göstərir: tələbə olmaq, tədbirə bileti olmaq, assosiasiyaya üzv olmaq. İstənilən təşkilat EAA verə
+              bilər.
+            </li>
+            <li>
+              <strong>QEAA</strong> kvalifikasiyalı etibar xidməti provayderinin (QTSP) verdiyi EAA-dır. Güclü hüquqi qüvvəyə malikdir.
+            </li>
+            <li>
+              <strong>PuB-EAA</strong> dövlət qurumunun cavabdeh olduğu{" "}
+              <Term tip="Məlumatın rəsmi qeydinin saxlandığı yer, məsələn, əhali reyestri və ya universitetin tələbə reyestri.">mötəbər mənbədən</Term>{" "}
+              verdiyi attestasiyadır, məsələn, nazirliyin öz reyestrindən verdiyi peşə qeydiyyatı.
+            </li>
+          </ul>
+          <h2>Bu fərq niyə vacibdir</h2>
+          <p>
+            Yoxlayan tərəf rəqəmsal sənədə nə dərəcədə etibar edə biləcəyini onun növündən öyrənir. Hesab açan bank insanın
+            şəxsiyyətindən əmin olmalıdır, buna görə PID tələb edir. Konsert girişi üçün bilet, yəni EAA kifayətdir. Həkimin lisenziyasını
+            yoxlayan xəstəxana daha güclü sənədə, QEAA və ya PuB-EAA-ya üstünlük verir. Növ "kimə, nə qədər etibar" sualına əvvəlcədən
+            cavab verir.
+          </p>
+          <Callout kind="turkic" locale="az">
+            <p>
+              Bakıdan olan tələbə Bişkekdəki yay məktəbinə qatılır. Girişdə tələbə endirimi üçün tələbə bileti (EAA) kifayətdir;
+              yataqxanada qeydiyyat üçün isə şəxsiyyət lazımdır. Ölkəsinin dövlət PID-i varsa, ondan istifadə olunur; yoxdursa, keçid
+              dövrü üçün həll lazımdır. Tamga-nın şəxsiyyət sənədi məhz bu boşluq üçün mövcuddur.
+            </p>
+          </Callout>
+          <h2>Tamga-dakı qarşılıqları</h2>
+          <p>
+            Tamga Network-dakı diplomlar, tələbə biletləri və tədbir biletləri EAA-dır. Tamga-nın şəxsiyyət sənədi PID deyil: bu,
+            dövlətlər öz PID-lərini verənədək istifadə olunan qeyri-kvalifikasiyalı, müvəqqəti şəxsiyyət sənədidir və belə də
+            adlandırılır. Dövlət öz PID-ini verdikdə onun yerini PID tutur.
+          </p>
+          <p>
+            Şəbəkə Aİ rəqəmsal sənədlərini də tanıya bilər. Federasiya qaydalarına əsasən, Aİ PID-i və{" "}
+            <Term tip="mobile Driving Licence: ISO 18013-5 ilə müəyyən edilmiş mobil sürücülük vəsiqəsi.">mDL</Term> (mobil sürücülük vəsiqəsi) şəbəkədə
+            "xarici rəqəmsal sənəd növləri" kimi yoxlanıla bilər; hansı xarici siyahıya etibar ediləcəyi hər dəfə ayrıca təsdiqlə qərara alınır.
+          </p>
+        </>
+      ),
     },
     keyPoints: [
       {
         tr: "PID kişinin temel kimliğidir ve devlet verir; EAA ise herhangi bir kurumun verdiği nitelik belgesidir.",
         en: "A PID is a person's core identity, issued by the state; an EAA is an attribute attestation any organisation can issue.",
         tk: "PID adamyň esasy şahsyýeti we döwlet berýär; EAA bolsa islendik guramanyň berip bilýän häsiýet resminamasy.",
+        az: "PID insanın dövlət tərəfindən verilən əsas şəxsiyyətidir; EAA isə istənilən təşkilatın verə biləcəyi atribut attestasiyasıdır.",
       },
       {
         tr: "QEAA nitelikli sağlayıcıdan, PuB-EAA kamunun yetkili kaynağından gelir; ikisi de hukuken daha ağırdır.",
         en: "A QEAA comes from a qualified provider and a PuB-EAA from a public authentic source; both carry more legal weight.",
         tk: "QEAA kwalifisirlenen üpjün edijiden, PuB-EAA döwletiň ygtyýarly çeşmesinden gelýär.",
+        az: "QEAA kvalifikasiyalı provayderdən, PuB-EAA isə dövlətin mötəbər mənbəyindən gəlir; hər ikisi daha böyük hüquqi çəkiyə malikdir.",
       },
       {
         tr: "Tamga'da diploma ve bilet EAA'dır; Tamga'nın kimlik belgesi PID değil, devlet PID'i gelene kadar geçici bir belgedir.",
         en: "In Tamga, diplomas and tickets are EAAs; Tamga's identity credential is not a PID but an interim credential until a state PID exists.",
         tk: "Tamga-da diplom we bilet EAA-dyr; Tamga-nyň şahsyýet resminamasy PID däl, wagtlaýyn resminamadyr.",
+        az: "Tamga-da diplomlar və biletlər EAA-dır; Tamga-nın şəxsiyyət sənədi PID deyil, dövlət PID-i yaranana qədər müvəqqəti rəqəmsal sənəddir.",
       },
     ],
     deeper: [
       {
-        label: { tr: "Identity Rulebook: Tamga kimlik belgesi", en: "Identity Rulebook: the Tamga identity credential", tk: "Identity Rulebook" },
+        label: { tr: "Identity Rulebook: Tamga kimlik belgesi", en: "Identity Rulebook: the Tamga identity credential", tk: "Identity Rulebook", az: "Identity Rulebook: Tamga şəxsiyyət sənədi" },
         href: "rulebooks/identity",
         kind: "arf",
       },
       {
-        label: { tr: "Geçici kimlik belgesi sağlayıcısı kararı", en: "The interim identity provider decision", tk: "Wagtlaýyn şahsyýet karary" },
+        label: { tr: "Geçici kimlik belgesi sağlayıcısı kararı", en: "The interim identity provider decision", tk: "Wagtlaýyn şahsyýet karary", az: "Müvəqqəti şəxsiyyət provayderi qərarı" },
         href: "/adr/0011-provisional-identity-attestation-provider",
         kind: "docs",
       },
       {
-        label: { tr: "Federasyon: dış listeler ve AB PID", en: "Federation: external lists and the EU PID", tk: "Federasiýa: daşky sanawlar" },
+        label: { tr: "Federasyon: dış listeler ve AB PID", en: "Federation: external lists and the EU PID", tk: "Federasiýa: daşky sanawlar", az: "Federasiya: xarici siyahılar və Aİ PID-i" },
         href: "/adr/0036-trust-federation-external-lists",
         kind: "docs",
       },
       {
-        label: { tr: "Tanımlar (Ek D)", en: "Definitions (Annex D)", tk: "Kesgitlemeler (D goşundy)" },
+        label: { tr: "Tanımlar (Ek D)", en: "Definitions (Annex D)", tk: "Kesgitlemeler (D goşundy)", az: "Təriflər (Əlavə D)" },
         href: "definitions",
         kind: "arf",
       },
@@ -1177,11 +1464,12 @@ export const CHAPTER_4: LearnPage[] = [
     chapter: 4,
     order: 5,
     minutes: 4,
-    title: { tr: "Avrupa takvimi", en: "The European timeline", tk: "Ýewropa senenamasy" },
+    title: { tr: "Avrupa takvimi", en: "The European timeline", tk: "Ýewropa senenamasy", az: "Avropa təqvimi" },
     summary: {
       tr: "Tüzük, uygulama tüzükleri, cüzdanların gelişi ve kabul yükümlülüğü: neyin ne zaman olduğu.",
       en: "The regulation, the implementing acts, the arrival of wallets and the duty to accept them: what happens when.",
       tk: "Düzgünnama, ýerine ýetiriş düzgünnamalary, gapjyklaryň gelmegi we kabul etmek borjy: näme haçan bolýar.",
+      az: "Reqlament, icra aktları, rəqəmsal cüzdanların gəlişi və onları qəbul etmək öhdəliyi: nə vaxt nə baş verir.",
     },
     body: {
       tr: (
@@ -1318,42 +1606,91 @@ export const CHAPTER_4: LearnPage[] = [
           </p>
         </>
       ),
+      az: (
+        <>
+          <p>
+            eIDAS 2.0 bir gündə gəlmir; addım-addım gəlir. Əvvəlcə reqlament, sonra texniki qaydalar, ardınca rəqəmsal cüzdanlar və
+            nəhayət qurumların onları qəbul etmək öhdəliyi. Bu səhifə həmin addımları ardıcıllıqla göstərir.
+          </p>
+          <Figure caption="Tarixlər Aİ-nin Rəsmi Jurnalında dərc olunmuş aktlardan götürülüb. Boş halqalar gələcək tarixləri göstərir.">
+            <EuTimeline locale="az" />
+          </Figure>
+          <h2>Üç böyük hədd</h2>
+          <ul>
+            <li>
+              <strong>2026-cı ilin sonu: rəqəmsal cüzdanlar.</strong> Hər üzv dövlət ən azı bir sertifikatlaşdırılmış EUDI Wallet təqdim etməlidir.
+            </li>
+            <li>
+              <strong>2027-ci ilin sonu: qəbul.</strong> Banklar kimi tənzimlənən sektorlar və çox böyük onlayn platformalar insan
+              istədikdə rəqəmsal cüzdanla identifikasiyanı qəbul etməlidir. Yoxlayan tərəflər üçün əsl dəyişiklik burada başlayır.
+            </li>
+            <li>
+              <strong>2028: daha sərt qaydalar.</strong> Rəqəmsal cüzdanlar etibar edən tərəfin{" "}
+              <Term tip="Qeydiyyat orqanının verdiyi, yoxlayan tərəfin kim olduğunu və hansı məlumatları tələb edə biləcəyini göstərən sertifikat.">qeydiyyat sertifikatını</Term> yoxlamalıdır;
+              portret PID-in məcburi sahəsinə çevrilir.
+            </li>
+          </ul>
+          <h2>Hazırkı vəziyyət</h2>
+          <p>
+            Bu səhifə sonuncu dəfə yenilənəndə (oktyabr 2026) reqlament və icra aktlarının əksəriyyəti qüvvədə idi; 2026-cı ilin avqust
+            yenilənmə paketi rəqəmsal cüzdan attestasiyalarını və təqdimat profillərini müəyyənləşdirmişdi. Hələ heç bir
+            sertifikatlaşdırılmış EUDI Wallet dərc edilməmişdi. ARF istinad sənədinin son versiyası 3.0.0 idi (iyul 2026).
+          </p>
+          <Callout kind="turkic" locale="az">
+            <p>
+              2027-ci ildən sonra Avropadakı bank və ya böyük platforma şəxsiyyətini rəqəmsal cüzdanla sübut etmək istəyən hər kəsi
+              qəbul etməli olacaq. Daşkənddən Münhenə köçən mühəndis və ya Aşqabaddan Vyanaya gedən tələbə üçün sual budur: ölkəsinin
+              rəqəmsal sənədləri bu dildə danışacaqmı? Tamga Network bu suala bu gündən hazırlaşmaq üçün mövcuddur.
+            </p>
+          </Callout>
+          <h2>Tamga təqvimi necə izləyir</h2>
+          <p>
+            Tamga Aİ qaydalarını dərc olunduqca izləyir və öz qaydalarını onlara uyğun yeniləyir. Məsələn, rəqəmsal cüzdan
+            attestasiyaları (WIA və açar attestasiyası), yoxlayan tərəflər üçün qeydiyyat sertifikatları və yüksək təminatlı təqdimat
+            profili (HAIP 1.0) müvafiq Aİ qaydaları formalaşdıqca Tamga-nın qərarlarına daxil edildi. Aİ-nin hər yeni addımı şəbəkənin
+            qaydalarında öz qarşılığını tapır.
+          </p>
+        </>
+      ),
     },
     keyPoints: [
       {
         tr: "Tüzük 2024'te yürürlüğe girdi; teknik kurallar 2024'ten bu yana paket paket geliyor.",
         en: "The regulation came into force in 2024; the technical rules have arrived in packages since then.",
         tk: "Düzgünnama 2024-nji ýylda güýje girdi; tehniki düzgünler toplum-toplum gelýär.",
+        az: "Reqlament 2024-cü ildə qüvvəyə mindi; texniki qaydalar o vaxtdan bəri paketlər şəklində gəlir.",
       },
       {
         tr: "2026 sonu cüzdanlar, 2027 sonu düzenlenmiş sektörlerde kabul yükümlülüğü, 2028 daha sıkı kurallar.",
         en: "Wallets by the end of 2026, the duty to accept them in regulated sectors by the end of 2027, tighter rules in 2028.",
         tk: "2026-njy ýylyň ahyrynda gapjyklar, 2027-nji ýylyň ahyrynda kabul etmek borjy, 2028-de has berk düzgünler.",
+        az: "2026-cı ilin sonunadək rəqəmsal cüzdanlar, 2027-ci ilin sonunadək tənzimlənən sektorlarda onları qəbul etmək öhdəliyi, 2028-ci ildə daha sərt qaydalar.",
       },
       {
         tr: "Tamga AB'nin her adımını izler ve kendi kurallarına işler; böylece belgeler Avrupa yazılımıyla teknik olarak çalışır. Hukuki tanınma ise devletler arası anlaşma ister (eIDAS Madde 14).",
         en: "Tamga follows every EU step and writes it into its own rules, so that credentials work with European software. Legal recognition, however, needs an agreement between states (eIDAS Article 14).",
         tk: "Tamga ÝB-niň her ädimini yzarlaýar we öz düzgünlerine girizýär; hukuky ykrar edilmek üçin döwletleriň arasynda şertnama gerek (eIDAS 14-nji madda).",
+        az: "Tamga Aİ-nin hər addımını izləyir və öz qaydalarına daxil edir ki, rəqəmsal sənədlər Avropa proqram təminatı ilə işləsin. Hüquqi tanınma isə dövlətlər arasında saziş tələb edir (eIDAS 14-cü maddə).",
       },
     ],
     deeper: [
       {
-        label: { tr: "Kaynaklar: AB tüzükleri listesi (Ek E)", en: "References: list of EU acts (Annex E)", tk: "Çeşmeler (E goşundy)" },
+        label: { tr: "Kaynaklar: AB tüzükleri listesi (Ek E)", en: "References: list of EU acts (Annex E)", tk: "Çeşmeler (E goşundy)", az: "İstinadlar: Aİ aktlarının siyahısı (Əlavə E)" },
         href: "references",
         kind: "arf",
       },
       {
-        label: { tr: "HAIP 1.0 uyumu kararı", en: "The HAIP 1.0 alignment decision", tk: "HAIP 1.0 karary" },
+        label: { tr: "HAIP 1.0 uyumu kararı", en: "The HAIP 1.0 alignment decision", tk: "HAIP 1.0 karary", az: "HAIP 1.0 uyğunlaşdırma qərarı" },
         href: "/adr/0034-haip-client-id-and-wia-sub",
         kind: "docs",
       },
       {
-        label: { tr: "Kayıt sertifikaları kararı", en: "The registration certificates decision", tk: "Hasaba alyş sertifikatlary" },
+        label: { tr: "Kayıt sertifikaları kararı", en: "The registration certificates decision", tk: "Hasaba alyş sertifikatlary", az: "Qeydiyyat sertifikatları qərarı" },
         href: "/adr/0026-registration-certificates",
         kind: "docs",
       },
       {
-        label: { tr: "Sonraki bölüm: güven listeleri nasıl çalışır", en: "Next chapter: how trust lists work", tk: "Indiki bap: ynam sanawlary" },
+        label: { tr: "Sonraki bölüm: güven listeleri nasıl çalışır", en: "Next chapter: how trust lists work", tk: "Indiki bap: ynam sanawlary", az: "Növbəti fəsil: etibar siyahıları necə işləyir" },
         href: "/learn/trust-lists",
         kind: "site",
       },

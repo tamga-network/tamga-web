@@ -195,6 +195,16 @@ const ID_L = {
     ] as [string, string][],
     caption: "Adamyň şahsyýeti köp maglumatdan ybarat; her biriniň subutnamasyny başga gurama berýär.",
   },
+  az: {
+    person: "Ayşe",
+    attrs: [
+      ["Adı, doğum tarixi", "Şəxsiyyət vəsiqəsi"],
+      ["Tələbə", "Tələbə arayışı"],
+      ["Mühəndis", "Diplom"],
+      ["18 yaşdan yuxarı", "Şəxsiyyət vəsiqəsi"],
+    ] as [string, string][],
+    caption: "İnsanın şəxsiyyəti bir çox şəxsiyyət məlumatından ibarətdir; onların hər birinə başqa bir qurum zəmanət verir.",
+  },
 };
 
 const PAPER_L = {
@@ -218,6 +228,13 @@ const PAPER_L = {
     paperSteps: ["Nusga", "Notarius, apostil", "Terjime", "E-poçta bilen sora"],
     digitalSteps: ["Gapjyk", "Razylyk", "Goly barla", "Dogry"],
     caption: "Häzir resminamany başga ýurtda subut etmek hepdeläp dowam edýär; sanly resminama bilen sekuntlarda gutarýar.",
+  },
+  az: {
+    paper: "KAĞIZ · HƏFTƏLƏR",
+    digital: "RƏQƏMSAL · SANİYƏLƏR",
+    paperSteps: ["Surət", "Notarius, apostil", "Tərcümə", "E-poçtla soruşmaq"],
+    digitalSteps: ["Cüzdan", "Razılıq", "İmzanı yoxla", "Etibarlı"],
+    caption: "Bu gün sənədi başqa ölkədə təsdiqləmək həftələr çəkir; rəqəmsal sənədlə eyni iş saniyələr içində başa çatır.",
   },
 };
 
@@ -246,6 +263,14 @@ const MODELS_L = {
     ],
     caption: "Sanly şahsyýetiň üç modeli. Ýewropa we Tamga üçünjisini saýlady.",
   },
+  az: {
+    models: [
+      { name: "Mərkəzi hesab", a: "Hər sayt üçün parol", b: "Məlumat saytda qalır", note: "Hər sayt öz məlumatını saxlayır" },
+      { name: "“X ilə daxil ol”", a: "Vasitəçi", b: "Hər girişi görür", note: "Asan, amma tək nəzarət nöqtəsi" },
+      { name: "Şəxsin cüzdanı", a: "Sənədlər telefonda", b: "Şəxs razılıq verir", note: "Vasitəçi yoxdur, qərarı şəxs verir" },
+    ],
+    caption: "Rəqəmsal şəxsiyyətin üç modeli. Avropa və Tamga üçüncüsünü seçdi.",
+  },
 };
 
 /* ------------------------------------------------------------------ sayfalar */
@@ -256,11 +281,12 @@ export const CHAPTER_1: LearnPage[] = [
     chapter: 1,
     order: 1,
     minutes: 4,
-    title: { tr: "Kimlik nedir?", en: "What is identity?", tk: "Şahsyýet näme?" },
+    title: { tr: "Kimlik nedir?", en: "What is identity?", tk: "Şahsyýet näme?", az: "Şəxsiyyət nədir?" },
     summary: {
       tr: "Kimlik, kimlik bilgisi ve kanıt: her gün farkında olmadan yaptığımız kimlik gösterme işinin parçaları.",
       en: "Identity, attributes and proof: the parts of something we do every day without noticing.",
       tk: "Şahsyýet, şahsyýet maglumaty we subutnama: her gün duýman edýän işimiziň bölekleri.",
+      az: "Şəxsiyyət, şəxsiyyət məlumatları və sübut: hər gün fərqinə varmadan etdiyimiz bir işin tərkib hissələri.",
     },
     body: {
       tr: (
@@ -426,27 +452,92 @@ export const CHAPTER_1: LearnPage[] = [
           </p>
         </>
       ),
+      az: (
+        <>
+          <p>
+            Gün ərzində neçə dəfə kim olduğunuzu sübut edirsiniz? Bankda hesab açarkən, oteldə qeydiyyatdan keçərkən,
+            kinoteatrda tələbə endirimi istəyərkən, saytda yaşınızı təsdiqləyərkən. Çox vaxt bunu düşünmədən edirik. Lakin
+            hər dəfə eyni şey baş verir: kimsə sizin haqqınızda nəyisə bilmək istəyir, siz də bunu sübut edirsiniz.
+          </p>
+          <h2>Şəxsiyyət tək bir şey deyil</h2>
+          <p>
+            &quot;Şəxsiyyət&quot; sözünü eşidəndə ağlımıza şəxsiyyət vəsiqəsi gəlir. Lakin gündəlik həyatda bizdən demək olar
+            ki, həmişə onun kiçik hissələri soruşulur. Otel adınızı və sənəd nömrənizi istəyir. Kinoteatrı yalnız tələbə
+            olub-olmadığınız maraqlandırır. Xəstəxana qarşısındakı şəxsin həqiqətən həkim olduğunu bilməlidir. Onlayn
+            mağazaya isə yalnız 18 yaşdan yuxarı olduğunuzu bilmək kifayətdir.
+          </p>
+          <p>
+            Bu hissələrin hər biri{" "}
+            <Term tip="Şəxs haqqında tək bir fakt: adı, doğum tarixi, peşəsi, tələbə olub-olmaması." en="attribute">şəxsiyyət məlumatı</Term>{" "}
+            adlanır. Şəxsiyyətiniz bu məlumatların cəmidir.
+          </p>
+          <Figure caption={ID_L.az.caption}>
+            <IdentityDiagram l={ID_L.az} />
+          </Figure>
+          <h2>Demək kifayət deyil</h2>
+          <p>
+            &quot;Mən tələbəyəm&quot; demək heç kimi inandırmır; tələbə bileti göstərirsiniz. &quot;Mən mühəndisəm&quot;
+            demək də kifayət deyil; diplom tələb olunur. Bu sübutların dəyəri onları kimin verdiyindən irəli gəlir. Tələbə
+            biletini və diplomu universitet, şəxsiyyət vəsiqəsini dövlət verir. Qarşı tərəf əslində sizə deyil, sənədin
+            arxasında duran quruma etibar edir.
+          </p>
+          <p>Hər dəfə nəyisə sübut edəndə qarşı tərəf üç suala cavab axtarır:</p>
+          <ul>
+            <li>
+              <strong>Nə iddia olunur?</strong> Məsələn, &quot;bu şəxs Nümunə Universitetinin tələbəsidir&quot;.
+            </li>
+            <li>
+              <strong>Bunu kim iddia edir?</strong> Sənədi həqiqətən həmin universitet verib, yoxsa kimsə onu uydurub?
+            </li>
+            <li>
+              <strong>Hələ də etibarlıdırmı?</strong> Təhsil başa çatmış və ya sənəd geri götürülmüş ola bilərmi?
+            </li>
+          </ul>
+          <Callout kind="turkic" locale="az">
+            <p>
+              Daşkənddən olan bir tələbə Ankarada yay məktəbinə müraciət etdikdə bu üç sual çətinləşir. Sənəd başqa
+              dildədir, qurum qarşı tərəfə tanış deyil, etibarlılığı yoxlamaq isə e-poçt və ya telefon zəngi tələb edir.
+              Türk dünyasında sənədlərin sərhədləri keçə bilməsi üçün bu üç suala hər yerdə eyni şəkildə cavab
+              verilməlidir.
+            </p>
+          </Callout>
+          <h2>Rəqəmsal dünyada nə dəyişir?</h2>
+          <p>
+            Rəqəmsal şəxsiyyətdə suallar eyni qalır; dəyişən onlara kimin cavab verməsidir. Bu gün bu suallara insan sənədə
+            baxaraq və lazım gələrsə telefonu götürərək cavab verir. Rəqəmsal sənəddə isə proqram təminatı qurumla əlaqə
+            saxlamadan saniyələr içində cavab verir. Bunun üçün rəqəmsal sənəd &quot;bunu kim iddia edir&quot; sualının
+            sübutunu (rəqəmsal imza) və onun hələ də etibarlı olub-olmadığını öyrənmək yolunu özündə daşıyır.
+          </p>
+          <p>
+            Növbəti səhifələrdə bugünkü problemlərə, sonra isə rəqəmsal şəxsiyyətin müxtəlif modellərinə baxacağıq. Bu
+            bölmənin sonunda Tamga Network-un əsaslandığı &quot;etibar üçbucağı&quot; ilə tanış olacaqsınız.
+          </p>
+        </>
+      ),
     },
     keyPoints: [
       {
         tr: "Kimlik tek bir şey değil; adı, yaşı, mesleği gibi kimlik bilgilerinin toplamıdır.",
         en: "Identity is not one thing; it is the sum of attributes such as name, age and profession.",
         tk: "Şahsyýet bir zat däl; ady, ýaşy, käri ýaly maglumatlaryň jemi.",
+        az: "Şəxsiyyət tək bir şey deyil; o, ad, yaş və peşə kimi şəxsiyyət məlumatlarının cəmidir.",
       },
       {
         tr: "Bir kanıtın değeri onu veren kurumdan gelir; karşı taraf kuruma güvenir.",
         en: "A proof is worth what its issuer is worth; the other side trusts the institution.",
         tk: "Subutnamanyň gymmaty ony beren guramadan gelýär.",
+        az: "Sübutun dəyəri onu verən qurumun dəyəri qədərdir; qarşı tərəf quruma etibar edir.",
       },
       {
         tr: "Her doğrulama üç soruya cevap arar: ne söyleniyor, kim söylüyor, hâlâ geçerli mi.",
         en: "Every check looks for three answers: what is claimed, who claims it, is it still valid.",
         tk: "Her barlag üç soraga jogap gözleýär: näme, kim, heniz güýjündemi.",
+        az: "Hər yoxlama üç suala cavab axtarır: nə iddia olunur, bunu kim iddia edir, hələ də etibarlıdırmı.",
       },
     ],
     deeper: [
-      { label: { tr: "Sözlük", en: "Glossary", tk: "Sözlük" }, href: "/glossary", kind: "docs" },
-      { label: { tr: "Tanımlar (Ek D)", en: "Definitions (Annex D)", tk: "Kesgitlemeler (D goşundy)" }, href: "definitions", kind: "arf" },
+      { label: { tr: "Sözlük", en: "Glossary", tk: "Sözlük", az: "Lüğət" }, href: "/glossary", kind: "docs" },
+      { label: { tr: "Tanımlar (Ek D)", en: "Definitions (Annex D)", tk: "Kesgitlemeler (D goşundy)", az: "Təriflər (Əlavə D)" }, href: "definitions", kind: "arf" },
     ],
   },
   {
@@ -454,11 +545,12 @@ export const CHAPTER_1: LearnPage[] = [
     chapter: 1,
     order: 2,
     minutes: 5,
-    title: { tr: "Kâğıttan dijitale", en: "From paper to digital", tk: "Kagyzdan sanly görnüşe" },
+    title: { tr: "Kâğıttan dijitale", en: "From paper to digital", tk: "Kagyzdan sanly görnüşe", az: "Kağızdan rəqəmsala" },
     summary: {
       tr: "Bugünkü sorunlar: sahte belge, haftalar süren doğrulama, apostil, fotokopi, gereğinden fazla paylaşılan veri ve sınırda takılan belgeler.",
       en: "Today's problems: forged documents, verification that takes weeks, apostilles, photocopies, oversharing and documents stuck at borders.",
       tk: "Häzirki meseleler: galp resminama, hepdeläp dowam edýän barlag, apostil, nusga, artykmaç paýlaşylýan maglumat we serhetde saklanýan resminamalar.",
+      az: "Bugünkü problemlər: saxta sənədlər, həftələrlə çəkən yoxlama, apostillər, surətlər, lazım olandan artıq məlumat paylaşımı və sərhədlərdə ilişib qalan sənədlər.",
     },
     body: {
       tr: (
@@ -627,32 +719,98 @@ export const CHAPTER_1: LearnPage[] = [
           </p>
         </>
       ),
+      az: (
+        <>
+          <p>
+            Sənədlərimizin əksəriyyəti artıq kompüterdə hazırlanır. Lakin etibarın işləmə üsulu hələ də kağız dövründən
+            qalıb: sənədi göstəririk, qarşı tərəf ona baxır, əmin olmadıqda isə soruşur. Bu səhifədə bunun niyə artıq
+            kifayət etmədiyinə baxırıq.
+          </p>
+          <h2>Beş tanış problem</h2>
+          <ul>
+            <li>
+              <strong>Saxtakarlıq asandır.</strong> PDF-i redaktə etmək və ya surəti dəyişdirmək bir neçə dəqiqə çəkir.
+              Adi gözlə baxan şəxs çox vaxt fərqi görə bilmir.
+            </li>
+            <li>
+              <strong>Yoxlama yavaşdır.</strong> Diplomun həqiqi olub-olmadığını bilmək istəyən işəgötürən universitetə
+              e-poçt yazır və günlərlə, bəzən həftələrlə gözləyir.
+            </li>
+            <li>
+              <strong>Sərhədlər bahadır.</strong> Başqa ölkədə istifadə olunacaq sənəd üçün notarius,{" "}
+              <Term tip="Rəsmi sənədin başqa ölkədə tanınmasına imkan verən təsdiq qeydi (Haaqa Konvensiyası)." en="apostille">apostil</Term>{" "}
+              və andlı tərcümə tələb olunur. Bunların hər biri pul və vaxt deməkdir.
+            </li>
+            <li>
+              <strong>Həddindən artıq məlumat ötürülür.</strong> Yaşınızı sübut etmək üçün şəxsiyyət vəsiqənizin surətini
+              təqdim edirsiniz; adınız, doğum yeriniz və sənəd nömrəniz də onunla birlikdə gedir. Qarşı tərəf bunları
+              saxlayır, bəzən də itirir.
+            </li>
+            <li>
+              <strong>Sistemlər bir-birini tanımır.</strong> Bir çox ölkədə barkodlu və ya onlayn sənəd yoxlama sistemləri
+              var, lakin hər biri yalnız öz ölkəsi daxilində işləyir. Başqa ölkənin sistemi onu tanımır.
+            </li>
+          </ul>
+          <Figure caption={PAPER_L.az.caption}>
+            <PaperVsDigital l={PAPER_L.az} />
+          </Figure>
+          <Callout kind="turkic" locale="az">
+            <p>
+              Diplomunu Bişkekdə almış və İstanbuldakı xəstəxanada işləmək istəyən tibb bacısı diplomunu, lisenziyasını
+              və şəxsiyyət vəsiqəsini ayrı-ayrılıqda notarial qaydada təsdiqlətməli, tərcümə etdirməli, sonra isə
+              xəstəxananın onları təsdiqləməsini gözləməlidir. Bütün sənədlər həqiqi olsa belə, bu, həftələr çəkir. Türk
+              dünyasında ölkələr arasında təhsil alan, işləyən və səyahət edən insanların sayı artdıqca bu yük də artır.
+            </p>
+          </Callout>
+          <h2>PDF niyə kifayət deyil</h2>
+          <p>
+            Kağızı skan etmək və ya PDF göndərmək problemi həll etmir; bu, yalnız kağızın rəqəmsal surətini yaradır. Onun
+            kimdən gəldiyi, dəyişdirilib-dəyişdirilmədiyi və hələ də etibarlı olub-olmadığı qeyri-müəyyən qalır. Əsl həll
+            bu sualların cavablarını sənədin özünə yerləşdirməkdir:
+          </p>
+          <ul>
+            <li>Sənədi verən qurum onu rəqəmsal imzalayır; imza istənilən dəyişikliyi və ya saxtakarlığı üzə çıxarır.</li>
+            <li>Yoxlayan tərəf imzanı qurumla əlaqə saxlamadan saniyələr içində yoxlayır.</li>
+            <li>Şəxs yalnız tələb olunan məlumatı göstərir; qalanı onun telefonunda qalır.</li>
+            <li>Qaydalar ortaq olduğu üçün sənəd hər ölkədə eyni şəkildə yoxlanılır.</li>
+          </ul>
+          <p>
+            Bu yanaşma{" "}
+            <Term tip="Sənədi verən qurumun rəqəmsal imzasını daşıyan və proqram təminatının həmin qurumla əlaqə saxlamadan yoxlaya bildiyi rəqəmsal sənəd." en="verifiable credential">yoxlanıla bilən rəqəmsal sənəd</Term>{" "}
+            adlanır və Avropa İttifaqının (Aİ) yeni rəqəmsal şəxsiyyət çərçivəsi onun üzərində qurulur. Tamga Network eyni
+            çərçivəni Türk dünyası üçün qurur.
+          </p>
+        </>
+      ),
     },
     keyPoints: [
       {
         tr: "Bugünkü düzen sahteciliğe açık, yavaş ve pahalı; belgeler sınırda takılıyor.",
         en: "Today's system is open to forgery, slow and expensive; documents get stuck at borders.",
         tk: "Häzirki tertip galplyga açyk, haýal we gymmat.",
+        az: "Bugünkü sistem saxtakarlığa açıq, yavaş və bahadır; sənədlər sərhədlərdə ilişib qalır.",
       },
       {
         tr: "PDF yalnızca kâğıdın kopyasıdır; kimden geldiğini ve geçerliliğini kanıtlamaz.",
         en: "A PDF is just a copy of paper; it proves neither origin nor validity.",
         tk: "PDF diňe kagyzyň nusgasy; gelip çykyşyny subut etmeýär.",
+        az: "PDF sadəcə kağızın surətidir; nə mənşəyi, nə də etibarlılığı sübut edir.",
       },
       {
         tr: "Çözüm, kanıtı belgenin içine koymaktır: imzalı, kişiye bağlı, ortak kurallarla denetlenen doğrulanabilir belge.",
         en: "The fix is to put the proof inside the document: a signed, person-bound verifiable credential checked by shared rules.",
         tk: "Çözgüt subutnamany resminamanyň içine goýmak.",
+        az: "Həll yolu sübutu sənədin içinə yerləşdirməkdir: imzalanmış, şəxsə bağlı və ortaq qaydalarla yoxlanılan yoxlanıla bilən rəqəmsal sənəd.",
       },
     ],
     deeper: [
       {
-        label: { tr: "Kullanım durumları (ARF §2)", en: "Use cases (ARF §2)", tk: "Ulanyş ýagdaýlary (ARF §2)" },
+        label: { tr: "Kullanım durumları (ARF §2)", en: "Use cases (ARF §2)", tk: "Ulanyş ýagdaýlary (ARF §2)", az: "İstifadə halları (ARF §2)" },
         href: "architecture",
         kind: "arf",
       },
       {
-        label: { tr: "Belge biçimleri", en: "Credential formats", tk: "Resminama görnüşleri" },
+        label: { tr: "Belge biçimleri", en: "Credential formats", tk: "Resminama görnüşleri", az: "Rəqəmsal sənəd formatları" },
         href: "/concepts/credential-formats",
         kind: "docs",
       },
@@ -667,11 +825,13 @@ export const CHAPTER_1: LearnPage[] = [
       tr: "Dijital kimliğin üç modeli",
       en: "Three models of digital identity",
       tk: "Sanly şahsyýetiň üç modeli",
+      az: "Rəqəmsal şəxsiyyətin üç modeli",
     },
     summary: {
       tr: "Merkezi hesap, \"X ile giriş yap\" ve kişinin cüzdanı: her modelin artısı ve eksisi.",
       en: "The central account, \"sign in with X\" and the person's wallet: the pros and cons of each.",
       tk: "Merkezi hasap, \"X bilen gir\" we adamyň gapjygy: her modeliň artykmaçlygy we kemçiligi.",
+      az: "Mərkəzi hesab, \"X ilə daxil ol\" və şəxsin rəqəmsal cüzdanı: hər birinin üstün və zəif cəhətləri.",
     },
     body: {
       tr: (
@@ -836,32 +996,105 @@ export const CHAPTER_1: LearnPage[] = [
           </Callout>
         </>
       ),
+      az: (
+        <>
+          <p>
+            Onlayn mühitdə kim olduğunuzu sübut etməyin üç əsas yolu var. Hamısından hər gün istifadə edirik; fərq
+            məlumatın harada saxlandığında və nəzarətin kimdə olduğundadır.
+          </p>
+          <Figure caption={MODELS_L.az.caption}>
+            <ModelsDiagram l={MODELS_L.az} />
+          </Figure>
+          <h2>1. Mərkəzi hesab</h2>
+          <p>
+            Hər sayt üçün ayrıca hesab açırsınız: istifadəçi adı, parol, bəzən də şəxsi məlumatlarınız. Sayt bunları öz
+            verilənlər bazasında saxlayır. Bu sadədir, lakin hər yeni sayt yeni bir parol və yeni bir məlumat yığını
+            deməkdir. Sayt kiberhücuma məruz qaldıqda məlumatlarınız da sızır. Şəxsiyyətinizi sübut etmək isə adətən yenə də
+            surət yükləmək deməkdir.
+          </p>
+          <h2>2. &quot;X ilə daxil ol&quot;</h2>
+          <p>
+            &quot;Google ilə daxil ol&quot; və ya dövlətin e-hökumət girişi bu modelin nümunələridir.{" "}
+            <Term tip="Kim olduğunuzu yoxlayan və bunu sizin adınızdan saytlara bildirən xidmət." en="identity provider">Şəxsiyyət provayderi</Term>{" "}
+            sizi tanıyır və saytlara &quot;bu, həmin şəxsdir&quot; deyir. Bu, parol yükünü aradan qaldırır, lakin bunun
+            bir bədəli var: vasitəçi hər girişi görür və hansı sayta nə vaxt daxil olduğunuzu bilir. O, sıradan çıxarsa və
+            ya girişi kəsərsə, ondan asılı olan hər şey dayanır. Onun əhatə dairəsi də adətən öz ölkəsi və ya şirkəti ilə
+            məhdudlaşır.
+          </p>
+          <h2>3. Şəxsin rəqəmsal cüzdanı</h2>
+          <p>
+            Üçüncü modeldə rəqəmsal sənədlər şəxsin telefonundakı{" "}
+            <Term tip="Rəqəmsal sənədləri və onlardan istifadə üçün lazım olan açarları telefonda saxlayan tətbiq." en="wallet">rəqəmsal cüzdanda</Term>{" "}
+            saxlanılır. Universitet diplomu, dövlət şəxsiyyət vəsiqəsini, təşkilatçı bileti birbaşa şəxsə verir. Sayt və ya
+            giriş qapısı nəyisə tələb etdikdə şəxs nəyin istənildiyini görür və razılıq verərsə, yalnız həmin məlumat
+            paylaşılır. Yoxlayan tərəf rəqəmsal sənədin imzasını sənədi verən quruma müraciət etmədən yoxlayır. Hər girişi
+            izləyən vasitəçi yoxdur.
+          </p>
+          <p>Bu modelin üç güclü tərəfi var:</p>
+          <ul>
+            <li>
+              <strong>Nəzarət şəxsdədir.</strong> Nəyi paylaşacağına özü qərar verir.
+            </li>
+            <li>
+              <strong>Daha az məlumat ötürülür.</strong> Yalnız lazım olan; yaş yoxlaması üçün hətta doğum tarixi də lazım
+              olmaya bilər.
+            </li>
+            <li>
+              <strong>Sərhədləri aşır.</strong> Ortaq qaydalar olduqda rəqəmsal sənəd hər ölkədə eyni şəkildə yoxlanılır.
+            </li>
+          </ul>
+          <Callout kind="info" locale="az">
+            <p>
+              Avropa İttifaqının (Aİ) yeni rəqəmsal şəxsiyyət çərçivəsi üçüncü modeli seçdi. Tamga Network eyni modeli,
+              eyni standartlarla Türk dünyası üçün qurur. Hətta &quot;Tamga ilə daxil ol&quot; da bu şəkildə işləyir: sayt
+              sizi tanıyır, lakin hər sayt fərqli bir psevdonim görür, buna görə də saytlar sizi bir-biri ilə
+              əlaqələndirə bilmir.
+            </p>
+          </Callout>
+          <h2>Modellər bir-birini istisna etmir</h2>
+          <p>
+            Rəqəmsal cüzdan modeli digərlərini bir gecədə aradan qaldırmır. Sayt yenə də öz hesabını saxlaya bilər, lakin
+            hesab açılarkən şəxsiyyət surət vasitəsilə deyil, rəqəmsal cüzdandan gələn imzalanmış məlumatla yoxlanılır.
+            Dəyişən etibarın mənbəyidir: artıq vasitəçinin sözü və ya surət deyil, sənədi verən qurumun imzası.
+          </p>
+          <Callout kind="turkic" locale="az">
+            <p>
+              Hər bir türk dövlətinin öz e-hökumət girişi var və hər biri öz vətəndaşları üçün yaxşı işləyir. Lakin
+              Bakıdakı bir saytın Almatıda verilmiş sənədi yoxlaya bilməsi üçün bu sistemlər bir-birinə qoşulmalı olardı.
+              Rəqəmsal cüzdan modelində buna ehtiyac yoxdur: ortaq qaydalar və imzalanmış etibar siyahıları kifayətdir.
+            </p>
+          </Callout>
+        </>
+      ),
     },
     keyPoints: [
       {
         tr: "Merkezi hesapta veri her sitede birikir; federe girişte aracı her girişi görür.",
         en: "With central accounts data piles up at every site; with federated login the intermediary sees every login.",
         tk: "Merkezi hasapda maglumat her saýtda ýygnanýar; federe girişde araçy her girişi görýär.",
+        az: "Mərkəzi hesablarda məlumat hər saytda toplanır; federativ girişdə isə vasitəçi hər girişi görür.",
       },
       {
         tr: "Cüzdan modelinde belge kişide durur, kişi onaylar, doğrulayan imzayı kuruma sormadan denetler.",
         en: "In the wallet model the person holds the credential and consents; the verifier checks the signature without asking the issuer.",
         tk: "Gapjyk modelinde resminama adamda, barlaýjy goly guramadan soraman barlaýar.",
+        az: "Rəqəmsal cüzdan modelində rəqəmsal sənəd şəxsdə saxlanılır və şəxs razılıq verir; yoxlayan tərəf imzanı sənədi verən quruma müraciət etmədən yoxlayır.",
       },
       {
         tr: "AB ve Tamga Network cüzdan modelini seçti; ortak kurallarla belge sınır tanımaz.",
         en: "The EU and Tamga Network chose the wallet model; with shared rules credentials cross borders.",
         tk: "ÝB we Tamga Network gapjyk modelini saýlady.",
+        az: "Avropa İttifaqı (Aİ) və Tamga Network rəqəmsal cüzdan modelini seçdi; ortaq qaydalarla rəqəmsal sənədlər sərhədləri aşır.",
       },
     ],
     deeper: [
-      { label: { tr: "Belge gösterme", en: "Presentation", tk: "Görkezmek" }, href: "/concepts/presentation", kind: "docs" },
+      { label: { tr: "Belge gösterme", en: "Presentation", tk: "Görkezmek", az: "Təqdimat" }, href: "/concepts/presentation", kind: "docs" },
       {
-        label: { tr: "“Tamga ile giriş yap” eklemek", en: "Adding “Sign in with Tamga”", tk: "“Tamga bilen gir” goşmak" },
+        label: { tr: "“Tamga ile giriş yap” eklemek", en: "Adding “Sign in with Tamga”", tk: "“Tamga bilen gir” goşmak", az: "“Tamga ilə daxil ol” əlavə etmək" },
         href: "/guides/sign-in-with-tamga",
         kind: "docs",
       },
-      { label: { tr: "Mimari (ARF)", en: "Architecture (ARF)", tk: "Arhitektura (ARF)" }, href: "architecture", kind: "arf" },
+      { label: { tr: "Mimari (ARF)", en: "Architecture (ARF)", tk: "Arhitektura (ARF)", az: "Arxitektura (ARF)" }, href: "architecture", kind: "arf" },
     ],
   },
   {
@@ -870,11 +1103,12 @@ export const CHAPTER_1: LearnPage[] = [
     order: 4,
     minutes: 4,
     diagram: "flow",
-    title: { tr: "Güven üçgeni", en: "The trust triangle", tk: "Ynam üçburçlugy" },
+    title: { tr: "Güven üçgeni", en: "The trust triangle", tk: "Ynam üçburçlugy", az: "Etibar üçbucağı" },
     summary: {
       tr: "Belge veren, kişi ve doğrulayan: kim kime, neden güveniyor.",
       en: "Issuer, person and verifier: who trusts whom, and why.",
       tk: "Resminama beriji, adam we barlaýjy: kim kime we näme üçin ynanýar.",
+      az: "Sənədi verən qurum, şəxs və yoxlayan tərəf: kim kimə və niyə etibar edir.",
     },
     body: {
       tr: (
@@ -1051,28 +1285,96 @@ export const CHAPTER_1: LearnPage[] = [
           </Callout>
         </>
       ),
+      az: (
+        <>
+          <p>
+            Rəqəmsal cüzdan modelində hər əməliyyat üç tərəf arasında baş verir. Onlar <strong>etibar üçbucağını</strong>{" "}
+            təşkil edir. Tamga Network-un bütün qaydaları bu üç tərəfin bir-birinə necə etibar edə biləcəyini təsvir edir.
+          </p>
+          <h2>Üç tərəf</h2>
+          <ul>
+            <li>
+              <strong>
+                <Term tip="Rəqəmsal sənədi hazırlayan, imzalayan və verən qurum: universitet, peşə palatası, bilet satıcısı, dövlət orqanı." en="issuer">Sənədi verən qurum</Term>
+              </strong>
+              . Məlumatın doğruluğuna cavabdeh olan qurum. Diplomu universitet, bileti təşkilatçı, lisenziyanı palata verir.
+            </li>
+            <li>
+              <strong>
+                <Term tip="Rəqəmsal sənədin aid olduğu və onu öz rəqəmsal cüzdanında daşıyan şəxs." en="holder">Sənəd sahibi</Term>
+              </strong>
+              . Rəqəmsal sənədi öz cüzdanında daşıyan və onu nə vaxt, kimə göstərəcəyinə qərar verən şəxs.
+            </li>
+            <li>
+              <strong>
+                <Term tip="Rəqəmsal sənədi tələb edən və onun imzasını və etibarlılığını yoxlayan tərəf: işəgötürən, sayt, giriş qapısı, bank." en="verifier">Yoxlayan tərəf</Term>
+              </strong>
+              . Məlumata ehtiyacı olan tərəf: işə qəbul edən şirkət, konsert girişi, bank, veb-sayt.
+            </li>
+          </ul>
+          <h2>Kim kimə etibar edir?</h2>
+          <p>
+            Maraqlı məqam budur: yoxlayan tərəf sənəd sahibinə etibar etmək məcburiyyətində deyil. Sənəd sahibi bir məlumat
+            göstərir, yoxlayan tərəf imzaya baxır və soruşur: &quot;Bu imza həqiqətən sənədi verən quruma
+            məxsusdurmu?&quot; Deməli, əsl etibar yoxlayan tərəflə sənədi verən qurum arasındadır. Sənəd sahibi isə öz
+            növbəsində iki şeyə əmin olmaq istəyir: rəqəmsal sənədin yalnız onun razılıq verdiyi tərəfə getdiyinə və qarşı
+            tərəfin həqiqətən özünü təqdim etdiyi tərəf olduğuna.
+          </p>
+          <h2>Dördüncü künc: etibar siyahısı</h2>
+          <p>
+            Yoxlayan tərəf dünyadakı bütün universitetləri tanıya bilməz. İmzanın həqiqətən Nümunə Universitetinə məxsus
+            olduğunu haradan bilsin? Cavab hər kəsin oxuya biləcəyi imzalanmış siyahıdır: hansı qurumların rəqəmsal sənəd
+            verə biləcəyini, hansı yoxlayan tərəflərin qeydiyyatda olduğunu və hansı rəqəmsal cüzdanların qaydalara uyğun
+            olduğunu göstərən{" "}
+            <Term tip="Bir ölkədə hansı qurumların rəqəmsal sənəd verə biləcəyini, hansı yoxlayan tərəflərin və rəqəmsal cüzdanların qeydiyyatda olduğunu göstərən imzalanmış, açıq siyahı." en="trust list">etibar siyahısı</Term>
+            . Tamga Network-da hər dövlət öz siyahısını dərc edir; bu gün Türkiyə siyahısını dövlət adından müvəqqəti
+            olaraq Tamga idarə edir.
+          </p>
+          <Callout kind="info" locale="az">
+            <p>
+              Yoxlama anında sənədi verən quruma heç bir sorğu getmir. Yoxlayan tərəf imzanı siyahı ilə tutuşdurur və ləğv
+              statusunu açıq status siyahısından oxuyur. Universitet diplomun harada və kimə göstərildiyini heç vaxt
+              öyrənmir, beləliklə şəxsin məxfiliyi qorunur.
+            </p>
+          </Callout>
+          <Callout kind="turkic" locale="az">
+            <p>
+              Ortaq şəbəkənin Türk dünyası üçün mənası məhz budur: Aşqabaddakı yoxlayan tərəf Ankaradan olan qurumun
+              imzasını Türkiyə siyahısı, Almatıdan olanı isə Qazaxıstan siyahısı əsasında eyni şəkildə yoxlaya bilər. Hər
+              dövlət öz siyahısının sahibidir; şəbəkə isə siyahıların bir-birini tapmasına imkan verir.
+            </p>
+          </Callout>
+          <p>
+            Bu bölmədə şəxsiyyətin nə olduğunu, bugünkü problemləri, modelləri və etibar üçbucağını nəzərdən keçirdik.
+            Növbəti bölmə üçbucağın içindəki texnologiyanı açır: imzalar, sertifikatlar və rəqəmsal sənədin özü.
+          </p>
+        </>
+      ),
     },
     keyPoints: [
       {
         tr: "Güven üçgeni: belge veren, belge sahibi ve doğrulayan.",
         en: "The trust triangle: issuer, holder and verifier.",
         tk: "Ynam üçburçlugy: beriji, eýe we barlaýjy.",
+        az: "Etibar üçbucağı: sənədi verən qurum, sənəd sahibi və yoxlayan tərəf.",
       },
       {
         tr: "Asıl güven doğrulayan ile belge veren arasındadır; imza bunu taşır.",
         en: "The real trust is between verifier and issuer; the signature carries it.",
         tk: "Esasy ynam barlaýjy bilen berijiniň arasynda; gol ony göterýär.",
+        az: "Əsl etibar yoxlayan tərəflə sənədi verən qurum arasındadır; onu imza daşıyır.",
       },
       {
         tr: "Güven listesi dördüncü köşedir: kimin belge verebileceğini herkes aynı listeden okur; kuruma soru gitmez.",
         en: "The trust list is the fourth corner: everyone reads who may issue from the same list; no question goes to the issuer.",
         tk: "Ynam sanawy dördünji burç: hemme şol bir sanawdan okaýar.",
+        az: "Etibar siyahısı dördüncü küncdür: rəqəmsal sənədi kimin verə biləcəyini hər kəs eyni siyahıdan oxuyur; sənədi verən quruma heç bir sorğu getmir.",
       },
     ],
     deeper: [
-      { label: { tr: "Güven listeleri", en: "Trust lists", tk: "Ynam sanawlary" }, href: "/concepts/trust-lists", kind: "docs" },
-      { label: { tr: "Roller (ARF)", en: "Roles (ARF)", tk: "Rollar (ARF)" }, href: "roles", kind: "arf" },
-      { label: { tr: "Mimari (ARF)", en: "Architecture (ARF)", tk: "Arhitektura (ARF)" }, href: "architecture", kind: "arf" },
+      { label: { tr: "Güven listeleri", en: "Trust lists", tk: "Ynam sanawlary", az: "Etibar siyahıları" }, href: "/concepts/trust-lists", kind: "docs" },
+      { label: { tr: "Roller (ARF)", en: "Roles (ARF)", tk: "Rollar (ARF)", az: "Rollar (ARF)" }, href: "roles", kind: "arf" },
+      { label: { tr: "Mimari (ARF)", en: "Architecture (ARF)", tk: "Arhitektura (ARF)", az: "Arxitektura (ARF)" }, href: "architecture", kind: "arf" },
     ],
   },
 ];

@@ -16,7 +16,7 @@ export function generateStaticParams() {
 
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const rfc822 = (iso: string) => new Date(`${iso}T09:00:00Z`).toUTCString();
-const LANG: Record<string, string> = { en: "en", tr: "tr-TR", tk: "tk-TM" };
+const LANG: Record<string, string> = { en: "en", tr: "tr-TR", tk: "tk-TM", az: "az-AZ" };
 
 export async function GET(_req: Request, { params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

@@ -310,6 +310,15 @@ const HASH_L = {
     pubNote: "hemmä açyk; goly barlaýar",
     caption: "Bir harp üýtgese barmak yzy düýbünden üýtgeýär. Gizlin açar gol çekýär, açyk açar barlaýar.",
   },
+  az: {
+    hash: "HASH · BARMAQ İZİ",
+    keys: "AÇAR CÜTÜ",
+    priv: "Gizli açar",
+    privNote: "yalnız sahibində qalır; imzalayır",
+    pub: "Açıq açar",
+    pubNote: "hamıya açıq; imzaları yoxlayır",
+    caption: "Bir hərf dəyişəndə barmaq izi tamamilə dəyişir. Gizli açar imzalayır, açıq açar yoxlayır.",
+  },
 };
 
 const SIGN_L = {
@@ -342,6 +351,16 @@ const SIGN_L = {
     verifyNote: "açyk açar bilen",
     ok: "üýtgemedik, şol guramadan",
     caption: "Gurama gizlin açary bilen gol çekýär; her kim açyk açar bilen barlaýar.",
+  },
+  az: {
+    doc: "Sənəd",
+    sign: "İmzala",
+    signNote: "gizli açarla",
+    signed: "İmzalı sənəd",
+    verify: "Yoxla",
+    verifyNote: "açıq açarla",
+    ok: "dəyişməyib, həmin qurumdan",
+    caption: "Qurum öz gizli açarı ilə imzalayır; hər kəs açıq açarla yoxlaya bilər.",
   },
 };
 
@@ -376,6 +395,16 @@ const FORMATS_L = {
     same: "Şol bir resminama, şol bir düzgünler: diňe görnüşi başga.",
     caption: "Tamga iki görnüşi hem goldaýar.",
   },
+  az: {
+    sd: "SD-JWT VC",
+    sdWhere: "Onlayn: saytlar və tətbiqlər",
+    sdItems: ["JSON əsaslı", "Sahə-sahə paylaşım", "Veb və serverlər üçün asan"],
+    md: "mdoc",
+    mdWhere: "Üzbəüz: girişlər, kassalar, brauzerlər",
+    mdItems: ["ISO/IEC 18013-5 (sürücülük vəsiqəsi)", "Kompakt (CBOR)", "QR və Bluetooth vasitəsilə"],
+    same: "Eyni rəqəmsal sənəd, eyni qaydalar: yalnız daşıyıcı format fərqlidir.",
+    caption: "Tamga hər iki formatı dəstəkləyir: onlayn üçün SD-JWT VC, üzbəüz üçün mdoc.",
+  },
 };
 
 const WALLET_L = {
@@ -406,6 +435,15 @@ const WALLET_L = {
     log: "Amal ýazgysy (diňe telefonda)",
     caption: "Gapjyk resminamalary, enjam açarlaryny we öz subutnamasyny saklaýar.",
   },
+  az: {
+    creds: ["Şəxsiyyət sənədi", "Diplom", "Konsert bileti", "Tələbə arayışı"],
+    key: "Cihaz açarı",
+    keyNote: "telefonda yaradılır, oradan heç vaxt çıxmır",
+    wia: "Cüzdan təsdiqi",
+    wiaNote: "bu tətbiq qaydalara uyğun rəqəmsal cüzdandır",
+    log: "Əməliyyat jurnalı (yalnız telefonda)",
+    caption: "Rəqəmsal cüzdan rəqəmsal sənədləri, onlardan istifadə üçün lazım olan cihaz açarlarını və öz təsdiqini saxlayır.",
+  },
 };
 
 const STATUS_L = {
@@ -433,6 +471,14 @@ const STATUS_L = {
     verifierNote: "sanawy göçürýär; guramadan soramaýar",
     caption: "Gurama ýatyran resminamasynyň ýerini 1 edýär we sanawy gol çekip çap edýär.",
   },
+  az: {
+    list: "STATUS SİYAHISI · HƏR SƏNƏDƏ BİR MÖVQE",
+    slot: "Sizin sənədinizin mövqeyi: 7",
+    revoked: "1 = ləğv edilib, 0 = etibarlı",
+    verifier: "Yoxlayan tərəf",
+    verifierNote: "siyahını endirir; kim olduğunuzu heç vaxt soruşmur",
+    caption: "Sənədi verən qurum ləğv edilmiş sənədin mövqeyini 1 edir, sonra siyahını imzalayıb dərc edir.",
+  },
 };
 
 /* ------------------------------------------------------------------ sayfalar */
@@ -443,11 +489,12 @@ export const CHAPTER_2: LearnPage[] = [
     chapter: 2,
     order: 1,
     minutes: 5,
-    title: { tr: "Kriptografi sade dille", en: "Cryptography in plain words", tk: "Kriptografiýa ýönekeý dilde" },
+    title: { tr: "Kriptografi sade dille", en: "Cryptography in plain words", tk: "Kriptografiýa ýönekeý dilde", az: "Sadə dillə kriptoqrafiya" },
     summary: {
       tr: "Hash bir parmak izidir, anahtar çifti bir kilit ve anahtardır: dijital güvenin iki temel aracı.",
       en: "A hash is a fingerprint, a key pair is a lock and its key: the two basic tools of digital trust.",
       tk: "Heş barmak yzydyr, açar jübüti gulp we onuň açarydyr: sanly ynamyň iki esasy guraly.",
+      az: "Hash barmaq izidir, açar cütü isə kilid və onun açarıdır: rəqəmsal etibarın iki əsas aləti.",
     },
     body: {
       tr: (
@@ -626,28 +673,105 @@ export const CHAPTER_2: LearnPage[] = [
           </Callout>
         </>
       ),
+      az: (
+        <>
+          <p>
+            Rəqəmsal etibarın arxasında riyaziyyat dayanır, lakin ondan istifadə etmək üçün riyaziyyatı bilmək lazım deyil. Sizə yalnız iki alət lazımdır:{" "}
+            <strong>hash</strong> və <strong>açar cütü</strong>. Bu öyrənmə yolunda qalan hər şey onların üzərində qurulub.
+          </p>
+          <Figure caption={HASH_L.az.caption}>
+            <HashKeysDiagram l={HASH_L.az} />
+          </Figure>
+          <h2>Hash: məlumatın barmaq izi</h2>
+          <p>
+            <Term tip="İstənilən ölçüdə məlumatı sabit uzunluqlu barmaq izinə çevirən birtərəfli hesablama. Tamga SHA-256 istifadə edir.">Hash</Term>{" "}
+            istənilən məlumatı qısa, sabit uzunluqlu barmaq izinə çevirir. Bir səhifəlik mətn də, min səhifəlik kitab da eyni
+            uzunluqda barmaq izinə çevrilir. Onun üç xüsusiyyəti var:
+          </p>
+          <ul>
+            <li>
+              <strong>Eyni məlumat, eyni barmaq izi.</strong> &quot;Merhaba&quot; sözünün barmaq izi hər kompüterdə
+              eynidir.
+            </li>
+            <li>
+              <strong>Kiçik dəyişiklik, tamamilə fərqli barmaq izi.</strong> Yalnız ilk hərfi kiçik edin
+              (&quot;merhaba&quot;), barmaq izi tamamilə dəyişəcək. Şəkildə iki sözün real SHA-256 barmaq izlərinin əvvəli
+              və sonu göstərilib.
+            </li>
+            <li>
+              <strong>Geri yol yoxdur.</strong> Barmaq izindən məlumatın özünü bərpa etmək mümkün deyil, necə ki barmaq
+              izindən insanın üzünü çəkmək olmaz.
+            </li>
+          </ul>
+          <p>
+            Buna görə hash sənədin dəyişmədiyini sübut etməyin ən qısa yoludur: onun barmaq izini saxlayırsınız, sonra
+            yenidən hesablayıb müqayisə edirsiniz. Hətta bir simvol dəyişibsə, barmaq izləri uyğun gəlməyəcək.
+          </p>
+          <h2>Açar cütü: möhür və onun izi</h2>
+          <p>
+            İkinci alət{" "}
+            <Term tip="Riyazi olaraq bir-birinə bağlı iki açar: gizli açar imzalayır, açıq açar imzanı yoxlayır.">açar cütüdür</Term>
+            , yəni bir-birinə aid olan iki açar:
+          </p>
+          <ul>
+            <li>
+              <strong>Gizli açar</strong> yalnız sahibində olur. O, qurumun serverində və ya şəxsin telefonunun təhlükəsiz
+              bölməsində saxlanılır və heç vaxt oradan çıxmır.
+            </li>
+            <li>
+              <strong>Açıq açar</strong> hamıya açıqdır. Onu hər kəs bilə bilər; dərc edilə və siyahılara yazıla bilər.
+            </li>
+          </ul>
+          <p>
+            Gizli açarın etdiyini yalnız həmin cütün açıq açarı yoxlaya bilər. Gizli açarı möhür, açıq açarı isə hər kəsin
+            əlində olan möhür izinin nümunəsi kimi təsəvvür edin: möhürü yalnız sahibi vura bilər, amma hər kəs izi
+            nümunə ilə müqayisə edə bilər.
+          </p>
+          <Callout kind="info" locale="az">
+            <p>
+              &quot;Gizli açar oğurlansa nə olar?&quot; Məhz buna görə Tamga-nın qaydaları açarların harada və necə
+              saklanmasına ciddi tələblər qoyur: qurumlar imza açarlarını öz nəzarətlərində saxlayır, şəxslərin açarları isə
+              telefonun təhlükəsiz aparatında yerləşir. Açar ələ keçirilərsə, müvafiq sertifikat ləğv edilir.
+            </p>
+          </Callout>
+          <h2>İkisi birlikdə</h2>
+          <p>
+            Hash və açar cütünü birləşdirdikdə <strong>rəqəmsal imza</strong> alınır: sənədin barmaq izi gizli açarla
+            imzalanır, hər kəs isə onu açıq açarla yoxlayır. Növbəti səhifə məhz bunu izah edir.
+          </p>
+          <Callout kind="turkic" locale="az">
+            <p>
+              Bu alətlərin heç biri bir ölkəyə və ya bir dilə aid deyil. SHA-256 Bakıda da, Aşqabadda da eyni nəticəni
+              verir. Ortaq etibar şəbəkəsini mümkün edən də budur: riyaziyyat hamı üçün eyni işləyir.
+            </p>
+          </Callout>
+        </>
+      ),
     },
     keyPoints: [
       {
         tr: "Hash, verinin kısa parmak izidir; tek harf değişse iz tamamen değişir.",
         en: "A hash is a short fingerprint of data; change one character and it changes completely.",
         tk: "Heş maglumatyň barmak yzy; bir harp üýtgese yz üýtgeýär.",
+        az: "Hash məlumatın qısa barmaq izidir; bir simvol dəyişsə, tamamilə dəyişir.",
       },
       {
         tr: "Anahtar çiftinde gizli anahtar sahibinde kalır, açık anahtar herkese açıktır.",
         en: "In a key pair the private key stays with its owner, the public key is public.",
         tk: "Gizlin açar eýesinde galýar, açyk açar hemmä açyk.",
+        az: "Açar cütündə gizli açar sahibində qalır, açıq açar isə hamıya açıqdır.",
       },
       {
         tr: "İkisi birlikte dijital imzayı oluşturur.",
         en: "Together they make the digital signature.",
         tk: "Ikisi bilelikde sanly goly emele getirýär.",
+        az: "Birlikdə rəqəmsal imzanı yaradırlar.",
       },
     ],
     deeper: [
-      { label: { tr: "Sözlük", en: "Glossary", tk: "Sözlük" }, href: "/glossary", kind: "docs" },
+      { label: { tr: "Sözlük", en: "Glossary", tk: "Sözlük", az: "Lüğət" }, href: "/glossary", kind: "docs" },
       {
-        label: { tr: "Belge biçimi ve protokoller", en: "Credential format and protocols", tk: "Resminama görnüşi we protokollar" },
+        label: { tr: "Belge biçimi ve protokoller", en: "Credential format and protocols", tk: "Resminama görnüşi we protokollar", az: "Rəqəmsal sənəd formatı və protokollar" },
         href: "/specifications/credential-format",
         kind: "docs",
       },
@@ -658,11 +782,12 @@ export const CHAPTER_2: LearnPage[] = [
     chapter: 2,
     order: 2,
     minutes: 4,
-    title: { tr: "Dijital imza", en: "Digital signatures", tk: "Sanly gollar" },
+    title: { tr: "Dijital imza", en: "Digital signatures", tk: "Sanly gollar", az: "Rəqəmsal imzalar" },
     summary: {
       tr: "Dijital imza iki soruyu cevaplar: bunu kim imzaladı ve imzadan sonra değişti mi?",
       en: "A digital signature answers two questions: who signed this, and has it changed since?",
       tk: "Sanly gol iki soraga jogap berýär: muny kim gol çekdi we goldan soň üýtgedimi?",
+      az: "Rəqəmsal imza iki suala cavab verir: bunu kim imzalayıb və o vaxtdan bəri dəyişibmi?",
     },
     body: {
       tr: (
@@ -795,28 +920,84 @@ export const CHAPTER_2: LearnPage[] = [
           </Callout>
         </>
       ),
+      az: (
+        <>
+          <p>
+            Əl ilə atılan imza saxtalaşdırıla bilər, skan edilmiş imza isə heç nəyi sübut etmir; hər kəs şəkli başqa sənədə
+            yapışdıra bilər. Rəqəmsal imza fərqlidir: o, sənədin məzmununa riyazi olaraq bağlıdır.
+          </p>
+          <Figure caption={SIGN_L.az.caption}>
+            <SignVerifyDiagram l={SIGN_L.az} />
+          </Figure>
+          <h2>Necə imzalanır?</h2>
+          <p>
+            Qurum rəqəmsal sənəd verərkən əvvəlcə sənədin barmaq izini (hash) çıxarır, sonra həmin barmaq izini öz{" "}
+            <Term tip="Yalnız qurumda saxlanılan və imzalamaq üçün istifadə olunan açar.">gizli açarı</Term> ilə imzalayır. İmza
+            sənədə əlavə edilir. Tamga-da rəqəmsal sənədlər{" "}
+            <Term tip="Geniş istifadə olunan elliptik əyri imza alqoritmi (ECDSA P-256 + SHA-256); Aİ-nin rəqəmsal şəxsiyyət çərçivəsində də istifadə olunur.">ES256</Term> alqoritmi ilə
+            imzalanır; bu, Avropa İttifaqının (Aİ) rəqəmsal şəxsiyyət çərçivəsinin istifadə etdiyi eyni alqoritmdir.
+          </p>
+          <h2>Necə yoxlanılır?</h2>
+          <p>Yoxlayan tərəf üç iş görür:</p>
+          <ul>
+            <li>Sənədin barmaq izini yenidən hesablayır.</li>
+            <li>İmzanı qurumun açıq açarı ilə açır və iki barmaq izini müqayisə edir.</li>
+            <li>Etibar siyahısında açıq açarın həqiqətən həmin quruma məxsus olduğunu yoxlayır.</li>
+          </ul>
+          <p>
+            Barmaq izləri uyğun gəlirsə, iki suala cavab verilmiş olur: sənəd <strong>imzalandıqdan sonra dəyişməyib</strong>{" "}
+            və o, <strong>həmin qurum tərəfindən imzalanıb</strong>. Bir simvol dəyişsə, barmaq izi artıq uyğun gəlmir; imza
+            etibarsız olur.
+          </p>
+          <Callout kind="info" locale="az">
+            <p>
+              Rəqəmsal imzanın ən vacib xüsusiyyəti: onu yoxlamaq üçün quruma müraciət etmək lazım deyil. Açıq açar artıq
+              məlumdursa, yoxlama hətta oflayn da işləyə bilər. Bu, həm sürət, həm də məxfilik təmin edir: universitet
+              diplomunun harada yoxlanıldığını heç vaxt öyrənmir.
+            </p>
+          </Callout>
+          <h2>Elektron imzadan fərqi</h2>
+          <p>
+            Sənədlərdə gördüyümüz &quot;elektron imza&quot; şəxsin, məsələn, müqaviləni imzalamasıdır; bir çox ölkədə{" "}
+            <Term tip="Qanunla əl imzasına bərabər tutulan elektron imza.">kvalifikasiyalı elektron imza</Term>{" "}
+            əl imzası ilə eyni qüvvəyə malikdir. Yoxlanıla bilən rəqəmsal sənəddəki imza isə qurumun &quot;bu məlumat
+            doğrudur&quot; deməsidir. Texnologiya eynidir, məqsəd fərqlidir; hər ikisi eyni etibar siyahılarına əsaslana
+            bilər.
+          </p>
+          <Callout kind="turkic" locale="az">
+            <p>
+              Türk dövlətlərinin əksəriyyətində artıq elektron imza qanunları və sertifikat xidməti təminatçıları mövcuddur.
+              Ortaq şəbəkə bunun üzərində qurulur: imzanın riyaziyyatı eynidir; çatışmayan yalnız kimin imzalaya biləcəyini
+              göstərən, hər kəsin oxuya bildiyi ortaq siyahıdır.
+            </p>
+          </Callout>
+        </>
+      ),
     },
     keyPoints: [
       {
         tr: "Dijital imza belgenin içeriğine bağlıdır; tek harf değişse geçersiz olur.",
         en: "A digital signature is bound to the content; change one character and it fails.",
         tk: "Sanly gol mazmuna bagly; bir harp üýtgese ýalňyş bolýar.",
+        az: "Rəqəmsal imza məzmuna bağlıdır; bir simvol dəyişsə, etibarsız olur.",
       },
       {
         tr: "Doğrulayan imzayı açık anahtarla, kuruma sormadan denetler.",
         en: "The verifier checks it with the public key, without asking the issuer.",
         tk: "Barlaýjy ony açyk açar bilen, beriji guramadan soraman barlaýar.",
+        az: "Yoxlayan tərəf imzanı sənədi verən quruma müraciət etmədən, açıq açarla yoxlayır.",
       },
       {
         tr: "Açık anahtarın kime ait olduğunu güven listesi söyler.",
         en: "The trust list says whose public key it is.",
         tk: "Açyk açaryň kimiňkidigini ynam sanawy aýdýar.",
+        az: "Açıq açarın kimə məxsus olduğunu etibar siyahısı göstərir.",
       },
     ],
     deeper: [
-      { label: { tr: "SD-JWT VC profili", en: "SD-JWT VC profile", tk: "SD-JWT VC profili" }, href: "/specifications/sd-jwt-vc", kind: "docs" },
+      { label: { tr: "SD-JWT VC profili", en: "SD-JWT VC profile", tk: "SD-JWT VC profili", az: "SD-JWT VC profili" }, href: "/specifications/sd-jwt-vc", kind: "docs" },
       {
-        label: { tr: "Kurum kimliği (X.509)", en: "Institutional identity (X.509)", tk: "Gurama şahsyýeti (X.509)" },
+        label: { tr: "Kurum kimliği (X.509)", en: "Institutional identity (X.509)", tk: "Gurama şahsyýeti (X.509)", az: "Qurumun kimliyi (X.509)" },
         href: "/specifications/x509-identity",
         kind: "docs",
       },
@@ -832,11 +1013,13 @@ export const CHAPTER_2: LearnPage[] = [
       tr: "Sertifikalar ve güven zinciri",
       en: "Certificates and the chain of trust",
       tk: "Sertifikatlar we ynam zynjyry",
+      az: "Sertifikatlar və etibar zənciri",
     },
     summary: {
       tr: "Bir anahtarın gerçekten o kuruma ait olduğunu sertifikalar söyler: kök sertifikadan kurum sertifikasına uzanan zincir.",
       en: "Certificates tell us that a key really belongs to an institution: the chain from a root certificate to an institution's certificate.",
       tk: "Açaryň hakykatdan hem guramanyňkydygyny sertifikatlar aýdýar: kök sertifikatdan gurama sertifikatyna çenli zynjyr.",
+      az: "Sertifikatlar açarın həqiqətən quruma məxsus olduğunu göstərir: kök sertifikatdan qurum sertifikatına qədər uzanan zəncir.",
     },
     body: {
       tr: (
@@ -980,32 +1163,96 @@ export const CHAPTER_2: LearnPage[] = [
           </Callout>
         </>
       ),
+      az: (
+        <>
+          <p>
+            Açıq açar özlüyündə sadəcə uzun bir ədəddir; kimə məxsus olduğunu göstərmir. Kimsə saxta açar dərc edib onun bir
+            universitetə aid olduğunu iddia edə bilər. <Term tip="Açıq açarı quruma bağlayan və daha yuxarı səviyyəli orqan tərəfindən imzalanan rəqəmsal sənəd. Standartı X.509-dur.">Sertifikatlar</Term>{" "}
+            bu boşluğu aradan qaldırır.
+          </p>
+          <h2>Sertifikat nədir?</h2>
+          <p>
+            Sertifikat &quot;bu açıq açar bu quruma məxsusdur&quot; deyən kiçik rəqəmsal sənəddir. Onda qurumun adı, açıq
+            açarı, etibarlılıq tarixləri və bu əlaqəni təsdiqləyən orqanın imzası olur. Veb saytlardakı qıfıl işarəsi də eyni
+            texnologiya ilə işləyir; standartın adı <strong>X.509</strong>-dur.
+          </p>
+          <h2>Etibar zənciri</h2>
+          <p>
+            Sertifikatı kim imzalayır? Daha yuxarıdakı sertifikat. Beləliklə zəncir yaranır və onun ən yuxarısında{" "}
+            <Term tip="Zəncirin ən yuxarısındakı etibar edilən sertifikat. Tamga-da hər ölkənin kök sertifikatı etibar siyahısında sabitlənir.">kök sertifikat</Term> dayanır.
+            Tamga Network-da zəncir belədir:
+          </p>
+          <ol>
+            <li>
+              <strong>Etibar siyahılarının siyahısı</strong> hansı ölkə siyahılarının mövcud olduğunu və onları kimin
+              imzaladığını göstərir.
+            </li>
+            <li>
+              <strong>Ölkə siyahısı</strong> həmin ölkənin kök sertifikatını və qeydiyyatdan keçmiş qurumlarını ehtiva edir.
+            </li>
+            <li>
+              <strong>Qurum sertifikatı</strong> kök sertifikatla imzalanır və qurumun imza açarını daşıyır.
+            </li>
+            <li>
+              <strong>Rəqəmsal sənəd</strong> həmin açarla imzalanır.
+            </li>
+          </ol>
+          <p>
+            Yoxlayan tərəf zənciri aşağıdan yuxarı izləyir: rəqəmsal sənədin imzası qurum sertifikatına, qurum sertifikatı
+            kök sertifikata, kök sertifikat isə siyahıdakı qeydə uyğun gəlirsə, zəncir tamdır.
+          </p>
+          <Callout kind="info" locale="az">
+            <p>
+              Niyə bir açar yox, zəncir? Çünki məsuliyyət bölünür. Bir qurumun açarı ələ keçirilərsə, yalnız həmin qurumun
+              sertifikatı ləğv edilir; zəncirin qalan hissəsi işləməyə davam edir. Kök sertifikat nadir hallarda istifadə
+              olunur və buna görə də daha yaxşı qoruna bilər.
+            </p>
+          </Callout>
+          <h2>Kök sertifikatı kim saxlayır?</h2>
+          <p>
+            Tamga Network-da hər ölkənin kök sertifikatı həmin ölkənin siyahısında yer alır. Hazırda Türkiyə kök sertifikatını
+            dövlət adından müvəqqəti olaraq Tamga idarə edir. Dövlət və ya onun səlahiyyət verdiyi qurum öz kök sertifikatını
+            və siyahısını dərc etdikdə yalnız ünvan və imzalayan dəyişir; rəqəmsal sənədlər və rəqəmsal cüzdanlar olduğu kimi
+            qalır.
+          </p>
+          <Callout kind="turkic" locale="az">
+            <p>
+              Hər Türk dövləti öz kök sertifikatının və siyahısının sahibidir. Heç bir dövlət digərinin qurumlarını
+              təsdiqləmək məcburiyyətində deyil; hər biri hansı siyahıları tanıyacağına özü qərar verir. Bu suverenliyi
+              texniki cəhətdən mümkün edən zəncir quruluşudur.
+            </p>
+          </Callout>
+        </>
+      ),
     },
     keyPoints: [
       {
         tr: "Sertifika bir açık anahtarı bir kuruma bağlar (X.509).",
         en: "A certificate binds a public key to an institution (X.509).",
         tk: "Sertifikat açyk açary gurama baglaýar.",
+        az: "Sertifikat açıq açarı quruma bağlayır (X.509).",
       },
       {
         tr: "Zincir: listelerin listesi → ülke listesi ve kök → kurum sertifikası → belge.",
         en: "The chain: list of trusted lists → country list and root → institution certificate → credential.",
         tk: "Zynjyr: sanawlaryň sanawy → ýurt sanawy → gurama → resminama.",
+        az: "Zəncir: etibar siyahılarının siyahısı → ölkə siyahısı və kök sertifikat → qurum sertifikatı → rəqəmsal sənəd.",
       },
       {
         tr: "Her devlet kendi kökünün sahibidir; Tamga bugün Türkiye kökünü geçici olarak işletir.",
         en: "Each state owns its root; today Tamga operates the Türkiye root provisionally.",
         tk: "Her döwlet öz kökünüň eýesi; häzir Türkiýäniň köküni Tamga wagtlaýyn işledýär.",
+        az: "Hər dövlət öz kök sertifikatının sahibidir; hazırda Türkiyə kök sertifikatını müvəqqəti olaraq Tamga idarə edir.",
       },
     ],
     deeper: [
       {
-        label: { tr: "Kurum kimliği (X.509)", en: "Institutional identity (X.509)", tk: "Gurama şahsyýeti (X.509)" },
+        label: { tr: "Kurum kimliği (X.509)", en: "Institutional identity (X.509)", tk: "Gurama şahsyýeti (X.509)", az: "Qurumun kimliyi (X.509)" },
         href: "/specifications/x509-identity",
         kind: "docs",
       },
-      { label: { tr: "Güven listeleri", en: "Trust lists", tk: "Ynam sanawlary" }, href: "/concepts/trust-lists", kind: "docs" },
-      { label: { tr: "Trust Framework", en: "Trust Framework", tk: "Trust Framework" }, href: "trust-framework", kind: "arf" },
+      { label: { tr: "Güven listeleri", en: "Trust lists", tk: "Ynam sanawlary", az: "Etibar siyahıları" }, href: "/concepts/trust-lists", kind: "docs" },
+      { label: { tr: "Trust Framework", en: "Trust Framework", tk: "Trust Framework", az: "Trust Framework" }, href: "trust-framework", kind: "arf" },
     ],
   },
   {
@@ -1014,11 +1261,12 @@ export const CHAPTER_2: LearnPage[] = [
     order: 4,
     minutes: 5,
     diagram: "credential",
-    title: { tr: "Doğrulanabilir belge", en: "Verifiable credentials", tk: "Barlanyp bilinýän resminama" },
+    title: { tr: "Doğrulanabilir belge", en: "Verifiable credentials", tk: "Barlanyp bilinýän resminama", az: "Yoxlanıla bilən rəqəmsal sənədlər" },
     summary: {
       tr: "Doğrulanabilir belge (credential) nedir, içinde ne vardır, kâğıt belgeden farkı nedir.",
       en: "What a verifiable credential is, what it contains and how it differs from a paper document.",
       tk: "Barlanyp bilinýän resminama (credential) näme, içinde näme bar we kagyz resminamadan tapawudy näme.",
+      az: "Yoxlanıla bilən rəqəmsal sənəd nədir, nədən ibarətdir və kağız sənəddən nə ilə fərqlənir.",
     },
     body: {
       tr: (
@@ -1170,33 +1418,98 @@ export const CHAPTER_2: LearnPage[] = [
           </Callout>
         </>
       ),
+      az: (
+        <>
+          <p>
+            Biz hash, açar, imza və sertifikatlarla tanış olduq. İndi isə bunların hamısını bir araya gətirən anlayışa
+            gəlirik:{" "}
+            <Term tip="Qurumun şəxs haqqında məlumatları imzalayıb həmin şəxsin rəqəmsal cüzdanına verdiyi rəqəmsal sənəd.">yoxlanıla bilən rəqəmsal sənəd</Term>
+            . Diplom, tələbə arayışı, bilet, peşə lisenziyası, şəxsiyyət sənədi: hamısı bu şəkildə verilə bilər.
+          </p>
+          <h2>İçində nə var?</h2>
+          <ul>
+            <li>
+              <strong>Sənədi verən qurum:</strong> sənədi hansı qurumun verdiyi (və onun sertifikatı).
+            </li>
+            <li>
+              <strong>Növ:</strong> bunun diplom, yoxsa bilet olduğu. Tamga-da hər növün daimi adı və qaydaları var.
+            </li>
+            <li>
+              <strong>Məlumatlar:</strong> faktiki məzmun, məsələn, ad, ixtisas, məzuniyyət tarixi və ya oturacaq nömrəsi.
+            </li>
+            <li>
+              <strong>Etibarlılıq:</strong> nə vaxt verildiyi və nə vaxta qədər etibarlı olduğu.
+            </li>
+            <li>
+              <strong>Status göstəricisi:</strong> ləğv edilib-edilmədiyini haradan öyrənmək mümkündür.
+            </li>
+            <li>
+              <strong>Şəxsə bağlılıq:</strong> rəqəmsal sənədin bağlı olduğu cüzdan açarı.
+            </li>
+            <li>
+              <strong>İmza:</strong> bütün bunların üzərində qurumun rəqəmsal imzası.
+            </li>
+          </ul>
+          <h2>Şəxsə bağlı: kopyalana bilməyən rəqəmsal sənəd</h2>
+          <p>
+            Hər kəs PDF faylını kopyalayıb başqasına göndərə bilər. Yoxlanıla bilən rəqəmsal sənəd isə verilən anda şəxsin
+            telefonundakı açara bağlanır. Sənəd təqdim edilərkən rəqəmsal cüzdan həmin açarla daha bir kiçik sübut imzalayır:{" "}
+            <Term tip="Rəqəmsal sənədin cüzdandakı açara bağlanması; belə ki, onu yalnız həmin açarı saxlayan cüzdan təqdim edə bilər.">holder binding</Term>
+            . Sənədin surəti başqasının əlinə keçsə belə, həmin açar olmadan təqdim edilə bilməz.
+          </p>
+          <h2>Kağızdan fərqi</h2>
+          <ul>
+            <li>Onu insan deyil, proqram təminatı yoxlayır; bu, bir neçə saniyə çəkir.</li>
+            <li>Saxta rəqəmsal sənəd imza yoxlamasından keçmir.</li>
+            <li>Məlumatları bir-bir göstərmək olar; bütün sənədi təqdim etməyə ehtiyac yoxdur.</li>
+            <li>Sənəd ləğv edildikdə yoxlayan tərəf bunu dərhal öyrənir.</li>
+          </ul>
+          <Callout kind="info" locale="az">
+            <p>
+              Avropada bu sənədlər həm də <em>attestation</em> adlanır. Şəxsiyyət üçün olanı PID, digərləri isə
+              atributların elektron təsdiqləri (EAA) adlanır. Fərqlər Avropa modelinə həsr olunmuş bölmədə izah
+              olunur.
+            </p>
+          </Callout>
+          <Callout kind="turkic" locale="az">
+            <p>
+              Rəqəmsal sənədin növü və sahələri bütün şəbəkədə eyni şəkildə müəyyən edilərsə, İstanbuldakı xəstəxananın
+              proqram təminatı Bişkekdə verilmiş peşə lisenziyasını heç bir tərcüməyə ehtiyac olmadan oxuya bilər. Buna görə
+              Tamga rəqəmsal sənəd növlərini açıq sxem kataloqunda dərc edir.
+            </p>
+          </Callout>
+        </>
+      ),
     },
     keyPoints: [
       {
         tr: "Doğrulanabilir belge; belge veren, tür, bilgiler, geçerlilik, durum bağlantısı, kişiye bağ ve imzadan oluşur.",
         en: "A verifiable credential holds issuer, type, claims, validity, status pointer, binding and signature.",
         tk: "Resminama: beriji, görnüş, maglumatlar, möhlet, ýagdaý, baglylyk we gol.",
+        az: "Yoxlanıla bilən rəqəmsal sənəd sənədi verən qurumu, növü, məlumatları, etibarlılığı, status göstəricisini, bağlılığı və imzanı ehtiva edir.",
       },
       {
         tr: "Belge kişinin cüzdan anahtarına bağlıdır; kopyası başkasının işine yaramaz.",
         en: "It is bound to the person's wallet key; a copy is useless to anyone else.",
         tk: "Adamyň açaryna bagly; nusgasy başga birine peýdasyz.",
+        az: "O, şəxsin cüzdan açarına bağlıdır; surəti başqası üçün yararsızdır.",
       },
       {
         tr: "Ortak belge türleri sayesinde belge her ülkede aynı biçimde okunur.",
         en: "Shared credential types mean it is read the same way in every country.",
         tk: "Umumy görnüşler sebäpli her ýurtda birmeňzeş okalýar.",
+        az: "Ortaq sənəd növləri sayəsində o, hər ölkədə eyni şəkildə oxunur.",
       },
     ],
     deeper: [
-      { label: { tr: "Belge biçimleri", en: "Credential formats", tk: "Resminama görnüşleri" }, href: "/concepts/credential-formats", kind: "docs" },
+      { label: { tr: "Belge biçimleri", en: "Credential formats", tk: "Resminama görnüşleri", az: "Rəqəmsal sənəd formatları" }, href: "/concepts/credential-formats", kind: "docs" },
       {
-        label: { tr: "Belge biçimi ve protokoller", en: "Credential format and protocols", tk: "Görnüş we protokollar" },
+        label: { tr: "Belge biçimi ve protokoller", en: "Credential format and protocols", tk: "Görnüş we protokollar", az: "Rəqəmsal sənəd formatı və protokollar" },
         href: "/specifications/credential-format",
         kind: "docs",
       },
-      { label: { tr: "Şema kataloğu", en: "Schema catalogue", tk: "Shema katalogy" }, href: "/specifications/schema-catalog", kind: "docs" },
-      { label: { tr: "Tamga Rulebook", en: "Tamga Rulebook", tk: "Tamga Rulebook" }, href: "rulebook", kind: "arf" },
+      { label: { tr: "Şema kataloğu", en: "Schema catalogue", tk: "Shema katalogy", az: "Sxem kataloqu" }, href: "/specifications/schema-catalog", kind: "docs" },
+      { label: { tr: "Tamga Rulebook", en: "Tamga Rulebook", tk: "Tamga Rulebook", az: "Tamga Rulebook" }, href: "rulebook", kind: "arf" },
     ],
   },
   {
@@ -1204,11 +1517,12 @@ export const CHAPTER_2: LearnPage[] = [
     chapter: 2,
     order: 5,
     minutes: 4,
-    title: { tr: "İki biçim: SD-JWT VC ve mdoc", en: "Two formats: SD-JWT VC and mdoc", tk: "Iki görnüş: SD-JWT VC we mdoc" },
+    title: { tr: "İki biçim: SD-JWT VC ve mdoc", en: "Two formats: SD-JWT VC and mdoc", tk: "Iki görnüş: SD-JWT VC we mdoc", az: "İki format: SD-JWT VC və mdoc" },
     summary: {
       tr: "Aynı belge iki biçimde: internet için SD-JWT VC, yüz yüze için mdoc. Neden ikisi birden?",
       en: "One credential in two formats: SD-JWT VC for the internet, mdoc for in person. Why both?",
       tk: "Bir resminama iki görnüşde: internet üçin SD-JWT VC, ýüzbe-ýüz üçin mdoc. Näme üçin ikisi hem?",
+      az: "Bir rəqəmsal sənəd iki formatda: internet üçün SD-JWT VC, üzbəüz istifadə üçün mdoc. Niyə hər ikisi?",
     },
     body: {
       tr: (
@@ -1327,29 +1641,79 @@ export const CHAPTER_2: LearnPage[] = [
           </Callout>
         </>
       ),
+      az: (
+        <>
+          <p>
+            Rəqəmsal sənədin məzmunu eyni qalsa belə, onun necə qablaşdırıldığı əhəmiyyətlidir. Məktubu e-poçtla da, kuryerlə
+            də göndərə bilərsiniz: məktub eynidir, zərf fərqlidir. Rəqəmsal sənədlərin iki geniş yayılmış &quot;zərfi&quot;
+            var və Tamga hər ikisindən istifadə edir.
+          </p>
+          <Figure caption={FORMATS_L.az.caption}>
+            <FormatsDiagram l={FORMATS_L.az} />
+          </Figure>
+          <h2>SD-JWT VC: internet üçün</h2>
+          <p>
+            <Term tip="IETF-in rəqəmsal sənəd formatı: JSON əsaslı, sahələri bir-bir açıla bilən (seçici paylaşım).">SD-JWT VC</Term>{" "}
+            veb dilində yazılmış rəqəmsal sənəddir. JSON əsaslı olduğundan saytlar, tətbiqlər və serverlər onu asanlıqla
+            oxuyur. &quot;SD&quot; seçici paylaşım (selective disclosure) deməkdir: hər sahə ayrıca möhürlənir və şəxs
+            yalnız tələb olunan sahələri açır. &quot;Tamga ilə daxil ol&quot;, onlayn müraciət və ya tətbiqdaxili yaş
+            yoxlaması bu formatdan istifadə edir.
+          </p>
+          <h2>mdoc: üzbəüz istifadə üçün</h2>
+          <p>
+            <Term tip="Mobil sürücülük vəsiqələri üçün hazırlanmış və üzbəüz QR və Bluetooth vasitəsilə təqdim edilən ISO/IEC 18013-5 rəqəmsal sənəd formatı.">mdoc</Term>{" "}
+            mobil sürücülük vəsiqələri üçün hazırlanmış beynəlxalq standartdır (ISO/IEC 18013-5). O, kompakt ikili
+            kodlaşdırmadan istifadə edir və üzbəüz vəziyyətlər üçün, hətta internet olmadan da işləmək üçün nəzərdə tutulub:
+            konsert girişi, otel qəbulu, kassa. Brauzerlərin yeni rəqəmsal sənəd interfeysi də onu dəstəkləyir.
+          </p>
+          <h2>Niyə hər ikisi?</h2>
+          <p>
+            Çünki rəqəmsal sənədlər iki fərqli mühitdə istifadə olunur. Onlayn mühitdə çeviklik və veb uyğunluğu, üzbəüz
+            mühitdə isə sürət və oflayn işləmə vacibdir. Avropa İttifaqının (Aİ) rəqəmsal şəxsiyyət çərçivəsi də hər iki
+            formatı tələb edir. Buna görə Tamga şəxsiyyət sənədini eyni anda hər iki formatda verir; digər sənəd növləri
+            ehtiyacdan asılı olaraq birindən və ya hər ikisindən istifadə edir.
+          </p>
+          <Callout kind="info" locale="az">
+            <p>
+              Format dəyişir, qaydalar isə yox: imzalar, etibar siyahıları, ləğv və seçici paylaşım hər ikisində eyni
+              şəkildə işləyir. Yoxlayan tərəfin proqram təminatı hər ikisini eyni addımlarla yoxlayır.
+            </p>
+          </Callout>
+          <Callout kind="turkic" locale="az">
+            <p>
+              Ortaq standart ortaq avadanlıq deməkdir. Daşkənddəki otel və ya Bakıdakı stadion Aİ ölkələrində istifadə
+              olunan eyni mdoc oxuyucularından istifadə edə bilər. Türk dünyasının ayrıca texnologiya icad etməsinə ehtiyac
+              yoxdur.
+            </p>
+          </Callout>
+        </>
+      ),
     },
     keyPoints: [
       {
         tr: "SD-JWT VC internet için: JSON tabanlı, alan alan seçici paylaşım.",
         en: "SD-JWT VC is for the internet: JSON-based, field-by-field disclosure.",
         tk: "SD-JWT VC internet üçin: JSON esasly, meýdan-meýdan paýlaşmak.",
+        az: "SD-JWT VC internet üçündür: JSON əsaslı, sahə-sahə paylaşım.",
       },
       {
         tr: "mdoc yüz yüze için: ISO/IEC 18013-5, QR ve Bluetooth, çevrim dışı.",
         en: "mdoc is for in person: ISO/IEC 18013-5, QR and Bluetooth, offline.",
         tk: "mdoc ýüzbe-ýüz üçin: ISO/IEC 18013-5, QR we Bluetooth, internetsiz.",
+        az: "mdoc üzbəüz istifadə üçündür: ISO/IEC 18013-5, QR və Bluetooth, oflayn.",
       },
       {
         tr: "Kurallar iki biçimde de aynıdır; AB de ikisini birlikte ister.",
         en: "The rules are the same in both; the EU requires both as well.",
         tk: "Düzgünler ikisinde-de birmeňzeş; ÝB hem ikisini bile talap edýär.",
+        az: "Qaydalar hər ikisində eynidir; Aİ də hər iki formatı tələb edir.",
       },
     ],
     deeper: [
-      { label: { tr: "Belge biçimleri", en: "Credential formats", tk: "Resminama görnüşleri" }, href: "/concepts/credential-formats", kind: "docs" },
-      { label: { tr: "SD-JWT VC profili", en: "SD-JWT VC profile", tk: "SD-JWT VC profili" }, href: "/specifications/sd-jwt-vc", kind: "docs" },
+      { label: { tr: "Belge biçimleri", en: "Credential formats", tk: "Resminama görnüşleri", az: "Rəqəmsal sənəd formatları" }, href: "/concepts/credential-formats", kind: "docs" },
+      { label: { tr: "SD-JWT VC profili", en: "SD-JWT VC profile", tk: "SD-JWT VC profili", az: "SD-JWT VC profili" }, href: "/specifications/sd-jwt-vc", kind: "docs" },
       {
-        label: { tr: "Kimlik belgesi için mdoc (ADR-0013)", en: "mdoc for the identity credential (ADR-0013)", tk: "Şahsyýet resminamasy üçin mdoc (ADR-0013)" },
+        label: { tr: "Kimlik belgesi için mdoc (ADR-0013)", en: "mdoc for the identity credential (ADR-0013)", tk: "Şahsyýet resminamasy üçin mdoc (ADR-0013)", az: "Şəxsiyyət sənədi üçün mdoc (ADR-0013)" },
         href: "/adr/0013-mdoc-dual-format-for-identity",
         kind: "docs",
       },
@@ -1360,11 +1724,12 @@ export const CHAPTER_2: LearnPage[] = [
     chapter: 2,
     order: 6,
     minutes: 5,
-    title: { tr: "Dijital cüzdan", en: "Digital wallets", tk: "Sanly gapjyk" },
+    title: { tr: "Dijital cüzdan", en: "Digital wallets", tk: "Sanly gapjyk", az: "Rəqəmsal cüzdanlar" },
     summary: {
       tr: "Telefondaki cüzdanda ne durur, cihaz anahtarı nedir, telefon kaybolunca ne olur.",
       en: "What a phone wallet holds, what a device key is and what happens when the phone is lost.",
       tk: "Telefondaky gapjykda näme saklanýar, enjam açary näme we telefon ýitende näme bolýar.",
+      az: "Telefondakı rəqəmsal cüzdanda nə saxlanılır, cihaz açarı nədir və telefon itəndə nə baş verir.",
     },
     body: {
       tr: (
@@ -1512,29 +1877,95 @@ export const CHAPTER_2: LearnPage[] = [
           </Callout>
         </>
       ),
+      az: (
+        <>
+          <p>
+            Rəqəmsal cüzdan rəqəmsal sənədlərinizi telefonunuzda saxlayan və onları təqdim etməyə imkan verən tətbiqdir.
+            Lakin o, sadəcə fayl qovluğu deyil; həmin sənədlərdən təhlükəsiz istifadə üçün lazım olan açarları və qaydaları
+            da daşıyır.
+          </p>
+          <Figure caption={WALLET_L.az.caption}>
+            <WalletDiagram l={WALLET_L.az} />
+          </Figure>
+          <h2>Rəqəmsal cüzdanda nə saxlanılır?</h2>
+          <ul>
+            <li>
+              <strong>Rəqəmsal sənədlər:</strong> şəxsiyyət sənədi, diplom, bilet, tələbə arayışı. Əksər sənədlərin bir neçə
+              birdəfəlik surəti saxlanılır; hər təqdimatda fərqli surətdən istifadə olunur.
+            </li>
+            <li>
+              <strong>
+                <Term tip="Telefonda yaradılan, rəqəmsal sənədləri cüzdana bağlayan və təqdimat zamanı imza atan açar. Məqsəd onu telefonun təhlükəsiz aparatında saxlamaqdır.">Cihaz açarları</Term>
+              </strong>
+              : rəqəmsal sənədləri bu telefona bağlayan açarlar. Onlar telefonda yaradılır və heç vaxt oradan çıxmır.
+            </li>
+            <li>
+              <strong>
+                <Term tip="Cüzdan provayderinin imzaladığı, bu tətbiqin həqiqi və qaydalara uyğun rəqəmsal cüzdan olduğunu bildirən bəyanat.">Cüzdan təsdiqi</Term>
+              </strong>
+              : cüzdan provayderinin bu tətbiqin qaydalara əməl edən həqiqi rəqəmsal cüzdan olduğuna dair imzalı bəyanatı.
+              Sənədi verən qurumlar sənəd verməzdən əvvəl onu yoxlayır.
+            </li>
+            <li>
+              <strong>Əməliyyat jurnalı:</strong> hansı sənədi kimə göstərdiyinizin qeydi. O, telefonunuzda qalır; istəsəniz,
+              onu şifrələnmiş şəkildə ixrac edə bilərsiniz.
+            </li>
+          </ul>
+          <h2>Təhlükəsizlik haradan gəlir?</h2>
+          <p>
+            Rəqəmsal sənədlərin özləri gizli deyil; dəyərli olan onları təqdim etməyə imkan verən açarlardır. Buna görə
+            açarlar telefonun təhlükəsiz aparatında saxlanılır, tətbiq kilidlə (PIN və ya biometrik məlumat) açılır və hər
+            təqdimat sizin razılığınızı tələb edir. Rəqəmsal cüzdan sizin təsdiqiniz olmadan heç bir sənədi heç yerə
+            göndərmir.
+          </p>
+          <h2>Telefon itərsə nə olar?</h2>
+          <p>
+            Telefonu tapan şəxs rəqəmsal sənədlərinizdən istifadə edə bilməz: onlar həmin telefonun açarlarına bağlıdır və
+            tətbiq kilidlidir. İtmiş telefondakı rəqəmsal cüzdanı uzaqdan söndürə bilərsiniz. Yeni telefonda şəxsiyyətinizi
+            yenidən təsdiqləyir və rəqəmsal sənədlərinizi qurumlardan yenidən alırsınız. Saytlardakı təxəllüsləriniz
+            şəxsiyyətinizdən törədildiyi üçün dəyişmədən geri qayıdır; hesablarınızı itirmirsiniz.
+          </p>
+          <Callout kind="info" locale="az">
+            <p>
+              Tamga Network rəqəmsal cüzdanları seçmir, onları tanıyır. Şəbəkənin cüzdan qaydalarına əməl edən və uyğunluq
+              testlərindən keçən istənilən rəqəmsal cüzdan şəbəkədə işləyir. Şəbəkənin ilk rəqəmsal cüzdanı Tamga
+              Wallet olsa da, o, yeganə seçim deyil və onu şəbəkə idarə etmir.
+            </p>
+          </Callout>
+          <Callout kind="turkic" locale="az">
+            <p>
+              Rəqəmsal cüzdan ölkəsinə görə deyil, qaydalara əməl edib-etməməsinə görə tanınır. Qazaxıstanda və ya
+              Azərbaycanda hazırlanmış rəqəmsal cüzdan eyni testlərdən keçərək Türkiyə siyahısına daxil edilə bilər.
+            </p>
+          </Callout>
+        </>
+      ),
     },
     keyPoints: [
       {
         tr: "Cüzdan belgeleri, cihaz anahtarlarını, cüzdan kanıtını ve işlem günlüğünü taşır.",
         en: "A wallet holds credentials, device keys, its attestation and a transaction log.",
         tk: "Gapjyk resminamalary, açarlary, subutnamany we ýazgyny saklaýar.",
+        az: "Rəqəmsal cüzdan rəqəmsal sənədləri, cihaz açarlarını, öz təsdiqini və əməliyyat jurnalını saxlayır.",
       },
       {
         tr: "Belgeler telefondaki anahtarlara bağlıdır; telefonu bulan biri onları kullanamaz.",
         en: "Credentials are bound to the phone's keys; a finder cannot use them.",
         tk: "Tapan adam resminamalary ulanyp bilmeýär.",
+        az: "Rəqəmsal sənədlər telefonun açarlarına bağlıdır; telefonu tapan şəxs onlardan istifadə edə bilməz.",
       },
       {
         tr: "Ağ kurallara uyan her cüzdanı tanır; ilk cüzdan Tamga Wallet.",
         en: "The network recognises every compliant wallet; the first one is Tamga Wallet.",
         tk: "Tor düzgünlere laýyk her gapjygy tanaýar; ilkinjisi Tamga Wallet.",
+        az: "Şəbəkə qaydalara uyğun hər rəqəmsal cüzdanı tanıyır; ilki — Tamga Wallet.",
       },
     ],
     deeper: [
-      { label: { tr: "Cüzdan geliştirmek", en: "Building a wallet", tk: "Gapjyk döretmek" }, href: "/guides/build-a-wallet", kind: "docs" },
-      { label: { tr: "Cüzdan kuralları", en: "Wallet rules", tk: "Gapjyk düzgünleri" }, href: "/specifications/wallet", kind: "docs" },
+      { label: { tr: "Cüzdan geliştirmek", en: "Building a wallet", tk: "Gapjyk döretmek", az: "Rəqəmsal cüzdan hazırlamaq" }, href: "/guides/build-a-wallet", kind: "docs" },
+      { label: { tr: "Cüzdan kuralları", en: "Wallet rules", tk: "Gapjyk düzgünleri", az: "Cüzdan qaydaları" }, href: "/specifications/wallet", kind: "docs" },
       {
-        label: { tr: "Cüzdan ve anahtar kanıtı (ADR-0025)", en: "Wallet and key attestation (ADR-0025)", tk: "Gapjyk we açar subutnamasy (ADR-0025)" },
+        label: { tr: "Cüzdan ve anahtar kanıtı (ADR-0025)", en: "Wallet and key attestation (ADR-0025)", tk: "Gapjyk we açar subutnamasy (ADR-0025)", az: "Cüzdan və açar təsdiqi (ADR-0025)" },
         href: "/adr/0025-wallet-instance-and-key-attestations",
         kind: "docs",
       },
@@ -1546,11 +1977,12 @@ export const CHAPTER_2: LearnPage[] = [
     order: 7,
     minutes: 5,
     diagram: "how-it-works",
-    title: { tr: "Belge almak ve göstermek", en: "Receiving and presenting", tk: "Resminama almak we görkezmek" },
+    title: { tr: "Belge almak ve göstermek", en: "Receiving and presenting", tk: "Resminama almak we görkezmek", az: "Rəqəmsal sənədin alınması və təqdim edilməsi" },
     summary: {
       tr: "QR ile teklif, istek, onay ekranı: belgenin kurumdan cüzdana, cüzdandan doğrulayana yolculuğu.",
       en: "A QR offer, a request, a consent screen: the journey from institution to wallet and from wallet to verifier.",
       tk: "QR bilen teklip, haýyş, razylyk ekrany: resminamanyň guramadan gapjyga, gapjykdan barlaýja syýahaty.",
+      az: "QR təklifi, sorğu, razılıq ekranı: qurumdan rəqəmsal cüzdana və cüzdandan yoxlayan tərəfə gedən yol.",
     },
     body: {
       tr: (
@@ -1718,29 +2150,107 @@ export const CHAPTER_2: LearnPage[] = [
           </Callout>
         </>
       ),
+      az: (
+        <>
+          <p>
+            Yuxarıdakı animasiyalı sxem rəqəmsal sənədin əvvəldən sona qədər yolunu göstərir. Bu səhifədə onun iki hissəsini
+            ayrı-ayrılıqda açırıq: rəqəmsal sənədin alınması və təqdim edilməsi. Hər ikisi Aİ-nin seçdiyi açıq
+            protokollardan istifadə edir.
+          </p>
+          <h2>Rəqəmsal sənədin alınması</h2>
+          <ol>
+            <li>
+              <strong>Təklif.</strong> Qurum sizə{" "}
+              <Term tip="Sənədi verən qurumun rəqəmsal cüzdanı sənədi götürməyə dəvət etdiyi mesaj; adətən QR kod və ya keçid.">rəqəmsal sənəd təklifi</Term> göstərir:
+              ekranda QR kod və ya telefonunuzda keçid. Bəzən şəxsiyyətinizi təsdiqləmək üçün ayrıca kanalla (məsələn,
+              SMS) birdəfəlik kod da gəlir.
+            </li>
+            <li>
+              <strong>Rəqəmsal cüzdan özünü təqdim edir.</strong> O, qaydalara uyğun cüzdan olduğunu göstərən təsdiqini və
+              rəqəmsal sənədin bağlanacağı açarı təqdim edir.
+            </li>
+            <li>
+              <strong>Qurum sənədi verir.</strong> Qurum təsdiqi etibar siyahısı üzrə yoxlayır, rəqəmsal sənədi imzalayır
+              və onu rəqəmsal cüzdana bir neçə birdəfəlik surət şəklində göndərir.
+            </li>
+          </ol>
+          <p>
+            Bu addımların texniki adı{" "}
+            <Term tip="Rəqəmsal sənədin qurumdan rəqəmsal cüzdana təhlükəsiz şəkildə verilməsini təsvir edən açıq protokol (OpenID Foundation).">OpenID4VCI</Term>
+            .
+          </p>
+          <h2>Rəqəmsal sənədin təqdim edilməsi</h2>
+          <ol>
+            <li>
+              <strong>Sorğu.</strong> Yoxlayan tərəf sorğu göndərir: &quot;Bu şəxs 18 yaşdan yuxarıdırmı?&quot; və ya
+              &quot;Hansı ixtisas üzrə məzun olub?&quot;. Sorğu yoxlayan tərəfin qeydiyyatdan keçmiş sertifikatı ilə
+              imzalanır.
+            </li>
+            <li>
+              <strong>Razılıq ekranı.</strong> Rəqəmsal cüzdan kimin soruşduğunu (etibar siyahısındakı qeydiyyat adı ilə),
+              nəyi istədiyini və bunu istəməyə icazəsi olub-olmadığını göstərir. Siz təsdiqləyir və ya imtina edirsiniz.
+            </li>
+            <li>
+              <strong>Cavab.</strong> Yalnız təsdiqlədiyiniz sahələr rəqəmsal sənədin yeni surəti və cihaz açarınızın imzası
+              ilə göndərilir.
+            </li>
+            <li>
+              <strong>Yoxlama.</strong> Yoxlayan tərəf imzanı, etibar siyahısındakı qeydi və ləğv statusunu yoxlayır; nəticə
+              bir neçə saniyəyə gəlir.
+            </li>
+          </ol>
+          <p>
+            Bu addımların texniki adı{" "}
+            <Term tip="Rəqəmsal cüzdanın rəqəmsal sənədləri yoxlayan tərəfə necə təqdim etdiyini təsvir edən açıq protokol (OpenID Foundation).">OpenID4VP</Term>.
+          </p>
+          <Callout kind="info" locale="az">
+            <p>
+              İki yol var. Kompüterinizdəki saytda QR kod görünür və siz onu telefonunuzla skan edirsiniz. Telefonunuzdakı
+              saytda isə &quot;Tamga ilə daxil ol&quot; düyməsinə toxunursunuz, rəqəmsal cüzdan açılır, təsdiqləyirsiniz və
+              sayta qayıdırsınız.
+            </p>
+          </Callout>
+          <h2>Yoxlayan tərəf istənilən məlumatı istəyə bilərmi?</h2>
+          <p>
+            Xeyr. Yoxlayan tərəf qeydiyyatdan keçərkən hansı məlumatları hansı məqsədlə tələb edəcəyini bəyan edir. Bu,
+            etibar siyahısına yazılır. Yoxlayan tərəf qeydiyyatından kənar bir şey istəsə, rəqəmsal cüzdan sizi xəbərdar
+            edir. Həddindən artıq məlumat istəyən saytlar görünən olur.
+          </p>
+          <Callout kind="turkic" locale="az">
+            <p>
+              Protokollar açıq və ortaq olduğundan, Aşqabadda hazırlanmış rəqəmsal cüzdan İstanbuldakı universitetdən
+              rəqəmsal sənəd ala və onu Almatıdakı işəgötürənə təqdim edə bilər. Heç kim başqasının proqram təminatından
+              istifadə etmək məcburiyyətində deyil; hamı eyni dildə danışır.
+            </p>
+          </Callout>
+        </>
+      ),
     },
     keyPoints: [
       {
         tr: "Belge almak: teklif → cüzdan kanıtı → imzalı belge, birkaç tek kullanımlık kopya (OpenID4VCI).",
         en: "Receiving: offer → wallet attestation → signed credential, as several single-use copies (OpenID4VCI).",
         tk: "Almak: teklip → gapjyk subutnamasy → gol çekilen resminama, birnäçe bir gezeklik nusga görnüşinde (OpenID4VCI).",
+        az: "Alınma: təklif → cüzdan təsdiqi → imzalı rəqəmsal sənəd, bir neçə birdəfəlik surət şəklində (OpenID4VCI).",
       },
       {
         tr: "Göstermek: imzalı istek → onay ekranı → yalnız seçilen alanlar → saniyeler içinde denetim (OpenID4VP).",
         en: "Presenting: signed request → consent screen → only chosen fields → checked in seconds (OpenID4VP).",
         tk: "Görkezmek: gol çekilen haýyş → razylyk ekrany → diňe saýlanan meýdanlar → birnäçe sekuntda barlanýar (OpenID4VP).",
+        az: "Təqdimetmə: imzalı sorğu → razılıq ekranı → yalnız seçilmiş sahələr → bir neçə saniyədə yoxlama (OpenID4VP).",
       },
       {
         tr: "Doğrulayan yalnız kaydında bildirdiği bilgileri isteyebilir; fazlasında cüzdan uyarır.",
         en: "A verifier may ask only for what it registered; the wallet warns about anything more.",
         tk: "Barlaýjy diňe hasaba alnanda bildiren zadyny sorap bilýär; artykmaç zat soralsa gapjyk duýduryş berýär.",
+        az: "Yoxlayan tərəf yalnız qeydiyyatda bəyan etdiyi məlumatları istəyə bilər; artığını istədikdə rəqəmsal cüzdan xəbərdarlıq edir.",
       },
     ],
     deeper: [
-      { label: { tr: "Belge verme", en: "Issuance", tk: "Resminama bermek" }, href: "/concepts/issuance", kind: "docs" },
-      { label: { tr: "Belge gösterme", en: "Presentation", tk: "Görkezmek" }, href: "/concepts/presentation", kind: "docs" },
-      { label: { tr: "OpenID4VCI profili", en: "OpenID4VCI profile", tk: "OpenID4VCI profili" }, href: "/specifications/openid4vci", kind: "docs" },
-      { label: { tr: "OpenID4VP profili", en: "OpenID4VP profile", tk: "OpenID4VP profili" }, href: "/specifications/openid4vp", kind: "docs" },
+      { label: { tr: "Belge verme", en: "Issuance", tk: "Resminama bermek", az: "Sənədin verilməsi" }, href: "/concepts/issuance", kind: "docs" },
+      { label: { tr: "Belge gösterme", en: "Presentation", tk: "Görkezmek", az: "Təqdimetmə" }, href: "/concepts/presentation", kind: "docs" },
+      { label: { tr: "OpenID4VCI profili", en: "OpenID4VCI profile", tk: "OpenID4VCI profili", az: "OpenID4VCI profili" }, href: "/specifications/openid4vci", kind: "docs" },
+      { label: { tr: "OpenID4VP profili", en: "OpenID4VP profile", tk: "OpenID4VP profili", az: "OpenID4VP profili" }, href: "/specifications/openid4vp", kind: "docs" },
     ],
   },
   {
@@ -1748,11 +2258,12 @@ export const CHAPTER_2: LearnPage[] = [
     chapter: 2,
     order: 8,
     minutes: 4,
-    title: { tr: "İptal ve tazelik", en: "Revocation and freshness", tk: "Ýatyrmak we täzelik" },
+    title: { tr: "İptal ve tazelik", en: "Revocation and freshness", tk: "Ýatyrmak we täzelik", az: "Ləğv və aktuallıq" },
     summary: {
       tr: "Bir belge geri alınabilir mi, doğrulayan bunu kuruma sormadan nasıl anlar?",
       en: "Can a credential be withdrawn, and how does a verifier find out without asking the institution?",
       tk: "Resminama yzyna alnyp bilnermi we barlaýjy guramadan soraman muny nädip bilýär?",
+      az: "Rəqəmsal sənəd geri götürülə bilərmi və yoxlayan tərəf quruma müraciət etmədən bunu necə öyrənir?",
     },
     body: {
       tr: (
@@ -1897,29 +2408,91 @@ export const CHAPTER_2: LearnPage[] = [
           <p>Nusgalar azalanda gapjyk täze nusgalary özbaşdak alýar.</p>
         </>
       ),
+      az: (
+        <>
+          <p>
+            Rəqəmsal sənədlər əbədi etibarlı deyil. Üzvlük başa çatır, lisenziya dayandırılır, səhvən verilmiş diplom geri
+            götürülür. Yoxlayan tərəf bunu bilməlidir, lakin hər dəfə quruma müraciət etmədən; əks halda qurum hər
+            yoxlamadan, yəni şəxsin rəqəmsal sənəddən harada istifadə etdiyindən xəbər tutardı.
+          </p>
+          <Figure caption={STATUS_L.az.caption}>
+            <StatusListDiagram l={STATUS_L.az} />
+          </Figure>
+          <h2>Status siyahısı necə işləyir?</h2>
+          <p>
+            Qurum verdiyi rəqəmsal sənədlər üçün böyük{" "}
+            <Term tip="Hər rəqəmsal sənəd üçün bir mövqe ayırmaqla sənədi verən qurumun sənədlərinin etibarlı və ya ləğv edilmiş olduğunu göstərən imzalı siyahı (IETF Token Status List).">status siyahısı</Term>{" "}
+            saxlayır. Hər sənədə bir mövqe ayrılır: 0 etibarlı, 1 ləğv edilmiş deməkdir. Sənəd verilərkən onun mövqeyi və
+            siyahının ünvanı sənədə yazılır. Qurum sənədi ləğv etdikdə həmin mövqeyi 1 edir, siyahını imzalayır və yenidən
+            dərc edir.
+          </p>
+          <p>
+            Yoxlayan tərəf siyahını endirir və mövqeyə baxır. Siyahı minlərlə mövqeyi birlikdə daşıdığından qurum yoxlayan
+            tərəfin hansı sənədə baxdığını bilə bilməz. Siyahı sıxılmışdır; hətta minlərlə sənəd üçün də kiçik fayldır,
+            əvvəlcədən endirilib keşdə saxlanıla bilər.
+          </p>
+          <h2>Aktuallıq: &quot;hazırda deyə bilmərəm&quot; də cavabdır</h2>
+          <p>
+            Siyahı endirilə bilməsə və ya çox köhnə olsa nə olar? Tamga-nın qaydası aydındır: bu halda yoxlayan tərəf
+            &quot;etibarlıdır&quot; demir; &quot;hazırda yoxlamaq mümkün deyil&quot; deyir. Nəticənin üç dəyəri var:
+          </p>
+          <ul>
+            <li>
+              <strong>Etibarlı:</strong> imza, qeydiyyat və status qaydasındadır.
+            </li>
+            <li>
+              <strong>Etibarsız:</strong> ləğv edilib, müddəti bitib və ya imza uyğun gəlmir.
+            </li>
+            <li>
+              <strong>Qeyri-müəyyən:</strong> siyahılar köhnəlib və ya əlçatan deyil; bir az sonra yenidən cəhd edin.
+            </li>
+          </ul>
+          <Callout kind="caution" locale="az">
+            <p>
+              &quot;Qeyri-müəyyən&quot; nəticənin olması vacibdir. Bir çox sistem əmin olmadıqda &quot;etibarlıdır&quot;
+              deyir və saxtakarlığa yol açır. Tamga-da təsdiqlənə bilməyən vəziyyət heç vaxt etibarlı sayılmır.
+            </p>
+          </Callout>
+          <h2>Surətlər və yenilənmə</h2>
+          <p>
+            Rəqəmsal cüzdan hər sənədin bir neçə birdəfəlik surətini daşıyır. Surətlər azaldıqda və ya müddətləri bitməyə
+            yaxınlaşdıqda rəqəmsal cüzdan sizdən heç nə tələb etmədən yeni surətləri qurumdan özü alır. Qurum ləğv etdiyi
+            sənədin yeni surətlərini vermir.
+          </p>
+          <Callout kind="turkic" locale="az">
+            <p>
+              Status siyahısı açıq fayldır, buna görə də sərhəd tanımır. Bakıdakı yoxlayan tərəf Ankaradakı qurumun status
+              siyahısını eyni yolla endirir; nə telefon zənginə, nə də ortaq verilənlər bazasına ehtiyac var.
+            </p>
+          </Callout>
+        </>
+      ),
     },
     keyPoints: [
       {
         tr: "Kurum iptal ettiği belgenin konumunu iptal listesinde 1 yapar; liste imzalı ve herkese açıktır.",
         en: "The issuer sets a revoked credential's position to 1 in a signed, public status list.",
         tk: "Gurama ýatyran resminamasynyň ornuny gol çekilen, açyk ýatyrylyş sanawynda 1 edýär.",
+        az: "Sənədi verən qurum ləğv edilmiş sənədin mövqeyini imzalı, açıq status siyahısında 1 edir.",
       },
       {
         tr: "Doğrulayan listeyi indirir; kurum hangi belgenin denetlendiğini öğrenmez.",
         en: "The verifier downloads the list; the issuer never learns which credential was checked.",
         tk: "Barlaýjy sanawy göçürip alýar; gurama haýsy resminamanyň barlanandygyny hiç haçan bilmeýär.",
+        az: "Yoxlayan tərəf siyahını endirir; sənədi verən qurum hansı sənədin yoxlandığını heç vaxt öyrənmir.",
       },
       {
         tr: "Emin olunamayan durum 'belirsiz'dir, asla 'geçerli' sayılmaz; cüzdan kopyaları kendiliğinden yeniler.",
         en: "An unconfirmed case is 'indeterminate', never 'valid'; the wallet refreshes copies on its own.",
         tk: "Anyklanmadyk ýagdaý 'näbelli' bolýar, hiç haçan 'dogry' däl; gapjyk nusgalary özbaşdak täzeleýär.",
+        az: "Təsdiqlənməmiş hal 'qeyri-müəyyən'dir, heç vaxt 'etibarlı' deyil; rəqəmsal cüzdan surətləri özü yeniləyir.",
       },
     ],
     deeper: [
-      { label: { tr: "İptal ve tazelik", en: "Revocation and freshness", tk: "Ýatyrmak we täzelik" }, href: "/concepts/revocation", kind: "docs" },
-      { label: { tr: "İptal listesi şartnamesi", en: "Status list specification", tk: "Ýatyrylyş sanawynyň spesifikasiýasy" }, href: "/specifications/status-list", kind: "docs" },
+      { label: { tr: "İptal ve tazelik", en: "Revocation and freshness", tk: "Ýatyrmak we täzelik", az: "Ləğv və aktuallıq" }, href: "/concepts/revocation", kind: "docs" },
+      { label: { tr: "İptal listesi şartnamesi", en: "Status list specification", tk: "Ýatyrylyş sanawynyň spesifikasiýasy", az: "Status siyahısı spesifikasiyası" }, href: "/specifications/status-list", kind: "docs" },
       {
-        label: { tr: "Otomatik kopya yenileme (ADR-0023)", en: "Automatic copy refresh (ADR-0023)", tk: "Nusgalary awtomatik täzelemek (ADR-0023)" },
+        label: { tr: "Otomatik kopya yenileme (ADR-0023)", en: "Automatic copy refresh (ADR-0023)", tk: "Nusgalary awtomatik täzelemek (ADR-0023)", az: "Surətlərin avtomatik yenilənməsi (ADR-0023)" },
         href: "/adr/0023-automatic-copy-refresh",
         kind: "docs",
       },

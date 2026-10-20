@@ -1,9 +1,9 @@
 # Blog yazarı kılavuzu (tamga.network/blog)
 
-Her yazı bir klasördür: `src/content/blog/<slug>/article.en.md` + `article.tr.md` (+ isteğe bağlı `article.tk.md`).
-**İngilizce ve Türkçe zorunlu**; biri eksikse derleme durur. Türkmence yoksa `/tk/blog/<slug>` İngilizce metni bir notla
-gösterir ("Bu ýazgy heniz türkmen diline terjime edilmedi…"); o zaman hreflang ve site haritası tk adresini listelemez,
-tk sayfasının canonical'ı İngilizce yazıdır. Ayrıştırıcı ve denetim: `src/lib/blog.ts` (hata iletileri Türkçe, derlemede
+Her yazı bir klasördür: `src/content/blog/<slug>/article.en.md` + `article.tr.md` (+ isteğe bağlı `article.tk.md`, `article.az.md`).
+**İngilizce ve Türkçe zorunlu**; biri eksikse derleme durur. Türkmence (ya da Azerbaycanca) yoksa `/tk/blog/<slug>` İngilizce
+metni bir notla gösterir ("Bu ýazgy heniz türkmen diline terjime edilmedi…"); o zaman hreflang ve site haritası o dilin
+adresini listelemez, sayfanın canonical'ı İngilizce yazıdır. Ayrıştırıcı ve denetim: `src/lib/blog.ts` (hata iletileri Türkçe, derlemede
 görünür). Denetim: `npm run check` ve `npm run build`.
 
 ## Kim için, hangi sesle
@@ -43,7 +43,7 @@ Başlıkta `:` varsa değeri tırnağa alın (`title: "Gerçek kriptografi: ilk 
 | `slug` | önerilir | Klasör adıyla aynı olmalı. |
 | `description` | evet | Dile göre, tek cümle. |
 | `date` | yayımlananda evet | `YYYY-AA-GG`. Liste yeni tarihten eskiye; en yeni yazı "Tümü"nde öne çıkan geniş kart olur. |
-| `lang` | önerilir | `en` / `tr` / `tk`, dosya adıyla aynı. |
+| `lang` | önerilir | `en` / `tr` / `tk` / `az`, dosya adıyla aynı. |
 | `category` | evet | Aşağıdaki beş değerden biri. |
 | `draft` | hayır | `true` → yayında yok (yalnız `npm run dev` ya da `BLOG_DRAFTS=1` ile, "Taslak" etiketli ve noindex). |
 | `related` | hayır | Virgülle ayrılmış hedefler (aşağıda). Hedef yoksa derleme durur. |

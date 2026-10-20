@@ -27,6 +27,7 @@ export const RELEASE_LABELS: Record<Locale, Record<ReleaseKind, string>> = {
   en: { feature: "Feature", security: "Security", fix: "Fix" },
   tr: { feature: "Özellik", security: "Güvenlik", fix: "Düzeltme" },
   tk: { feature: "Aýratynlyk", security: "Howpsuzlyk", fix: "Düzediş" },
+  az: { feature: "Yenilik", security: "Təhlükəsizlik", fix: "Düzəliş" },
 };
 
 export const SECTION_LABELS: Record<Locale, Record<SectionKind, string>> = {
@@ -47,6 +48,12 @@ export const SECTION_LABELS: Record<Locale, Record<SectionKind, string>> = {
     changed: "Üýtgedildi",
     fixed: "Düzedildi",
     security: "Howpsuzlyk",
+  },
+  az: {
+    added: "Əlavə edildi",
+    changed: "Dəyişdirildi",
+    fixed: "Düzəldildi",
+    security: "Təhlükəsizlik",
   },
 };
 
@@ -88,6 +95,15 @@ export const CHANGELOG_PAGE: Record<
     more: "GitHub-da paket üýtgeşmeleri",
     latest: "Iň soňky",
   },
+  az: {
+    title: "Buraxılış qeydləri",
+    description:
+      "Tamga Network buraxılışları: qaydalar, sənədlər, açıq paketlər, etibar siyahıları və xidmətlər.",
+    eyebrow: "Buraxılış qeydləri",
+    lead: "Şəbəkənin hər buraxılışı, ən yenisi yuxarıda. Paket versiyaları npm-də ayrıca göstərilir. Tamga Wallet öz buraxılış qeydlərini ayrıca aparır.",
+    more: "GitHub-da paket dəyişiklikləri",
+    latest: "Ən son",
+  },
 };
 
 export const RELEASES: Release[] = [
@@ -100,6 +116,7 @@ export const RELEASES: Release[] = [
       en: "Safe package defaults, packages 0.7.0",
       tr: "Paketlerde güvenli varsayılanlar, paketler 0.7.0",
       tk: "Paketlerde howpsuz deslapky sazlamalar, paketler 0.7.0",
+      az: "Paketlərdə təhlükəsiz standart parametrlər, paketlər 0.7.0",
     },
     sections: {
       security: {
@@ -115,6 +132,10 @@ export const RELEASES: Release[] = [
           "@tamga-network/* paketleri indi karara täsir edýän her bir howpsuzlyk girişini hökmany talap edýär (ynam çapalary, ýatyrma barlagy, ynanýan tarapyň hasaba alnyşy, gapjygyň tassyklamasy); ýatdan çykan giriş ret diýmekdir, barlagy geçmek aç-açan ýazylmalydyr.",
           "Hasaba alyş şahadatnamasy bolmadyk haýyşlary gapjyk indi ret edýär, uzakdan we ýüzbe-ýüz (2028-e çenli duýduryş döwri aýryldy).",
         ],
+        az: [
+          "@tamga-network/* paketləri artıq qərara təsir edən hər bir təhlükəsizlik girişini məcburi tələb edir (etibar ankerləri, ləğv yoxlaması, etibar edən tərəfin qeydiyyatı, rəqəmsal cüzdanın təsdiqi); unudulmuş giriş rədd deməkdir, yoxlamanı ötürmək isə açıq şəkildə yazılmalıdır.",
+          "Qeydiyyat sertifikatı olmayan sorğuları rəqəmsal cüzdan artıq rədd edir, həm uzaqdan, həm də üz-üzə (2028-ci ilədək olan xəbərdarlıq dövrü ləğv edildi).",
+        ],
       },
       changed: {
         en: [
@@ -125,6 +146,9 @@ export const RELEASES: Release[] = [
         ],
         tk: [
           "@tamga-network/* paketleri npm-de 0.7.0 synag wersiýasynda; 0.6.0 üçin ýazylan kod täze girişleri bermelidir.",
+        ],
+        az: [
+          "@tamga-network/* paketləri npm-də 0.7.0 sınaq buraxılışı kimi mövcuddur; 0.6.0 üçün yazılmış kod yeni girişləri verməlidir.",
         ],
       },
     },
@@ -138,6 +162,7 @@ export const RELEASES: Release[] = [
       en: "Tamga Wallet listed, EU alignment, packages 0.6.0",
       tr: "Tamga Wallet listede, AB uyumu, paketler 0.6.0",
       tk: "Tamga Wallet sanawda, ÝB laýyklygy, paketler 0.6.0",
+      az: "Tamga Wallet siyahıda, Avropa İttifaqı (Aİ) ilə uyğunlaşma, paketlər 0.6.0",
     },
     sections: {
       added: {
@@ -152,6 +177,10 @@ export const RELEASES: Release[] = [
         tk: [
           "Tamga Wallet-iň gapjyk üpjün edijisi toruň we sandbox-yň ynam sanawlarynda işjeň hökmünde sanawa goşuldy — sanawdaky ilkinji gapjyk. Tor gapjyklary sanawa goşýar, hiç birini işletmeýär.",
           "iPhone we Mac Safari-de brauzerden barlag (ISO/IEC 18013-7 C goşundy); stolüsti kompýuterde esasy ýol brauzer, QR ätiýaçda galýar.",
+        ],
+        az: [
+          "Tamga Wallet-un cüzdan provayderi şəbəkənin və sandbox-un etibar siyahılarında aktiv kimi siyahıya alındı — siyahıdakı ilk rəqəmsal cüzdan. Şəbəkə rəqəmsal cüzdanları siyahıya alır, heç birini idarə etmir.",
+          "iPhone və Mac Safari-də brauzer vasitəsilə yoxlama (ISO/IEC 18013-7 Əlavə C); masaüstü kompüterdə əsas yol brauzerdir, QR kod isə ehtiyat variant kimi qalır.",
         ],
       },
       changed: {
@@ -170,6 +199,11 @@ export const RELEASES: Release[] = [
           'Hasaba alyş şahadatnamasy bolmadyk haýyşlar duýduryş görkezýär we "paýlaşma" bilen başlaýar; 2028-08-11-den soň ret edilýär.',
           "@tamga-network/* paketleri npm-de 0.6.0 synag wersiýasynda.",
         ],
+        az: [
+          "Şəxsiyyət xidmətinin rəqəmsal sənədləri artıq dayandırıla bilməz, yalnız ləğv edilə bilər (şəxsiyyət sənədləri üçün Aİ qaydası); mdoc rəqəmsal sənədləri Aİ status siyahısı formatından (CWT) istifadə edir.",
+          'Qeydiyyat sertifikatı olmayan sorğular xəbərdarlıq göstərir və "paylaşmayın" seçimi ilə başlayır; 2028-08-11-dən etibarən rədd edilir.',
+          "@tamga-network/* paketləri npm-də 0.6.0 sınaq buraxılışı kimi mövcuddur.",
+        ],
       },
     },
   },
@@ -182,6 +216,7 @@ export const RELEASES: Release[] = [
       en: "EU format alignment and security fixes, packages 0.5.2",
       tr: "AB biçim uyumu ve güvenlik düzeltmeleri, paketler 0.5.2",
       tk: "ÝB görnüş laýyklygy we howpsuzlyk düzedişleri, paketler 0.5.2",
+      az: "Aİ format uyğunluğu və təhlükəsizlik düzəlişləri, paketlər 0.5.2",
     },
     sections: {
       changed: {
@@ -197,6 +232,10 @@ export const RELEASES: Release[] = [
           "Görkeziş haýyşlary ÝB profiline laýyk: gol çekilen sözbaşyda berlen wagty, kök şahadatnamasyz zynjyr we her haýyşa bir hasaba alyş şahadatnamasy.",
           "Gapjyk subutnamalary diňe standart ÝB görnüşinde okalýar.",
         ],
+        az: [
+          "Təqdimat sorğuları Aİ profilinə uyğundur: imzalanmış başlıqda verilmə vaxtı, kök sertifikat olmadan sertifikat zənciri və hər sorğu üçün bir qeydiyyat sertifikatı.",
+          "Rəqəmsal cüzdan attestasiyaları yalnız standart Aİ formasında oxunur.",
+        ],
       },
       security: {
         en: [
@@ -207,6 +246,9 @@ export const RELEASES: Release[] = [
         ],
         tk: [
           "Ýatyrma sanawy alnanda her gönükdirme gaýtadan barlanýar we diňe barlanan salga birikilýär; resminama berijiniň dolandyrýan salgylary indi içki torlara ýetip bilmeýär.",
+        ],
+        az: [
+          "Ləğv siyahısı alınarkən hər yönləndirmə yenidən yoxlanılır və yalnız yoxlanılmış ünvana qoşulma həyata keçirilir; sənədi verən qurumun idarə etdiyi ünvanlar artıq daxili şəbəkələrə çata bilmir.",
         ],
       },
     },
@@ -220,6 +262,7 @@ export const RELEASES: Release[] = [
       en: "EU PID names, short-lived ZK copies, embedded disclosure policy, packages 0.4.0 and 0.5.0",
       tr: "AB kimlik alan adları, kısa ömürlü ZK kopyaları, gömülü paylaşım kuralı, paketler 0.4.0 ve 0.5.0",
       tk: "ÝB şahsyýet meýdan atlary, gysga ömürli ZK nusgalary, goşulan paýlaşma düzgüni, paketler 0.4.0 we 0.5.0",
+      az: "Aİ PID adları, qısamüddətli ZK nüsxələri, daxili paylaşım siyasəti, paketlər 0.4.0 və 0.5.0",
     },
     sections: {
       added: {
@@ -238,6 +281,11 @@ export const RELEASES: Release[] = [
           "Nol bilimli subutnama bilen 18+ barlagy gysga ömürli nusgalar bilen geçirilýär (iň köp 24 sagat, gapjyk sessiz täzeleýär); ýatyrylan şahsyýet täze nusga alyp bilmeýär (ADR-0044).",
           "Ynam paketleri ÝB ynam sanawy görnüşini (ETSI TS 119 612, XML) we ÝB ýatyrma sanawyny (Attestation Revocation List) okaýar; düzgünnamalar ÝB resminama düzgünnamasy şablonyna laýyk.",
         ],
+        az: [
+          'Qurumlar bir rəqəmsal sənəd növünü kimlərin ala biləcəyini müəyyən edə bilər (daxili paylaşım siyasəti, ADR-0046). Rəqəmsal cüzdan bunu oflayn yoxlayır; uyğun gəlmədikdə xəbərdarlıq edir və "paylaşmayın" seçimi ilə başlayır.',
+          "Sıfır bilik sübutu ilə 18 yaşdan yuxarı yoxlamaları qısamüddətli nüsxələrlə aparılır (ən çoxu 24 saat, rəqəmsal cüzdan onları səssizcə yeniləyir); ləğv edilmiş şəxsiyyət yeni nüsxə almır (ADR-0044).",
+          "Etibar paketləri Aİ-nin etibar siyahısı formatını (ETSI TS 119 612, XML) və Attestation Revocation List-i oxuyur; qaydalar kitabları Aİ attestasiya qaydalar kitabı şablonuna uyğundur.",
+        ],
       },
       changed: {
         en: [
@@ -248,6 +296,9 @@ export const RELEASES: Release[] = [
         ],
         tk: [
           "Şahsyýet resminamasy ÝB şahsyýet (PID) meýdan atlaryny ulanýar: birthdate we sanaw hökmünde nationalities (ADR-0045).",
+        ],
+        az: [
+          "Şəxsiyyət rəqəmsal sənədi Aİ PID atribut adlarından istifadə edir: birthdate və siyahı şəklində nationalities (ADR-0045).",
         ],
       },
     },
@@ -261,6 +312,7 @@ export const RELEASES: Release[] = [
       en: "OpenID4VCI/VP Final and HAIP alignment, packages 0.3.0 and 0.3.1",
       tr: "OpenID4VCI/VP Final ve HAIP uyumu, paketler 0.3.0 ve 0.3.1",
       tk: "OpenID4VCI/VP Final we HAIP laýyklygy, paketler 0.3.0 we 0.3.1",
+      az: "OpenID4VCI/VP Final və HAIP uyğunluğu, paketlər 0.3.0 və 0.3.1",
     },
     sections: {
       changed: {
@@ -276,6 +328,10 @@ export const RELEASES: Release[] = [
           "Resminama bermek OpenID4VCI 1.0 Final-a laýyk: açar subutnamasynyň görnüşi key-attestation+jwt, ýalňyşlyk kodlary standartdaky ýaly, birgezeklik baha (nonce) diňe öz nokadyndan alynýar.",
           "Ýatyrma sanawlary 6 sagat güýjüne eýe we her 2 minutda täzelenýär: ýatyrma birnäçe minutda görünýär, serweriň gysga kesilmesi barlaglary saklamaýar. Ýatyrma sanawlarynyň nokatlary giriş ýazgysyny saklamaýar.",
         ],
+        az: [
+          "Rəqəmsal sənədlərin verilməsi OpenID4VCI 1.0 Final-a uyğundur: açar attestasiyaları key-attestation+jwt növündən istifadə edir, xəta kodları standarta uyğundur və nonce yalnız nonce endpoint-indən alınır.",
+          "Ləğv siyahıları 6 saat etibarlı qalır və hər 2 dəqiqədən bir yenidən dərc edilir: ləğv bir neçə dəqiqə ərzində görünür, serverin qısa fasiləsi yoxlamaları dayandırmır. Ləğv siyahısı endpoint-ləri giriş jurnalı saxlamır.",
+        ],
       },
     },
   },
@@ -288,6 +344,7 @@ export const RELEASES: Release[] = [
       en: "Network and wallets separated",
       tr: "Ağ ve cüzdanlar ayrıldı",
       tk: "Tor we gapjyklar aýryldy",
+      az: "Şəbəkə və rəqəmsal cüzdanlar ayrıldı",
     },
     sections: {
       changed: {
@@ -303,6 +360,10 @@ export const RELEASES: Release[] = [
           "Tamga Network gapjyk işletmeýär (ADR-0042). Gapjyklary ynam sanawynda görkezýär; toruň ilkinji gapjygy Tamga Wallet aýry önüm we öz gapjyk üpjün edijisini işledýär.",
           "Hemmeler üçin bir sandbox: gapjyk, gurama we barlaýjy işläp düzüjileri sandbox.tamga.network-da synaýar.",
         ],
+        az: [
+          "Tamga Network rəqəmsal cüzdan idarə etmir (ADR-0042). Şəbəkə rəqəmsal cüzdanları öz etibar siyahısına daxil edir; şəbəkənin ilk rəqəmsal cüzdanı olan Tamga Wallet ayrıca məhsuldur və öz cüzdan provayderini idarə edir.",
+          "Hamı üçün bir sandbox: rəqəmsal cüzdan, qurum və yoxlayan tərəf tərtibatçıları sandbox.tamga.network-da sınaq aparır.",
+        ],
       },
       added: {
         en: [
@@ -313,6 +374,9 @@ export const RELEASES: Release[] = [
         ],
         tk: [
           "Täze açyk paket @tamga-network/zk: mdoc resminamalary üçin nol bilimli subutnamanyň gapjyk tarapy, enjamda döredilýär (ADR-0032).",
+        ],
+        az: [
+          "Yeni açıq paket @tamga-network/zk: mdoc rəqəmsal sənədləri üçün sıfır bilik sübutlarının cüzdan tərəfi, sübutlar cihazda yaradılır (ADR-0032).",
         ],
       },
     },
@@ -325,6 +389,7 @@ export const RELEASES: Release[] = [
       en: "First release",
       tr: "İlk yayın",
       tk: "Ilkinji çykyş",
+      az: "İlk buraxılış",
     },
     sections: {
       added: {
@@ -348,6 +413,13 @@ export const RELEASES: Release[] = [
           "Açyk paketler: npm-de @tamga-network/*, synag wersiýalary (0.x).",
           "Hyzmatlar: ynam sanawyny çap ediji, Tamga Verify we toruň salgylanma hyzmatlary.",
           "Federasiýa: daşky ynam sanawlaryny okamak (ETSI TS 119 602).",
+        ],
+        az: [
+          "Qaydalar: Tamga ARF 1.0 — Arxitektura və İstinad Çərçivəsi (Architecture and Reference Framework), Trust Framework, Tamga Rulebook və rəqəmsal sənəd növlərinin rulebook-ları (Education, Identity, Event Ticket).",
+          "İngilis və türk dillərində tərtibatçı sənədləri: bələdçilər, anlayışlar, spesifikasiyalar, qərarlar və lüğət.",
+          "Açıq paketlər: npm-də @tamga-network/*, sınaq buraxılışları (0.x).",
+          "Xidmətlər: etibar siyahısını dərc edən xidmət, Tamga Verify və şəbəkənin istinad xidmətləri.",
+          "Federasiya: xarici etibar siyahılarının oxunması (ETSI TS 119 602).",
         ],
       },
     },
