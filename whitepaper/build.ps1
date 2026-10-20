@@ -1,5 +1,7 @@
 # Build all whitepaper PDFs into ../public/
-# Usage:  powershell -File whitepaper/build.ps1
+# Usage:  powershell -File whitepaper/build.ps1 [-Lang az]
+#   Draft languages (not yet open on the site) go to whitepaper/draft/ (gitignored), never to public/.
+param([string[]]$Lang)
 $ErrorActionPreference = 'Stop'
 $here = Split-Path -Parent $MyInvocation.MyCommand.Path
 $pub  = Join-Path (Split-Path -Parent $here) 'public'
@@ -13,9 +15,14 @@ foreach ($f in @((Join-Path $web 'tools/fonts'), (Join-Path $web '../../marketin
   if (Test-Path $f) { $fontArgs += @('--font-path', (Resolve-Path $f).Path) }
 }
 
-foreach ($lang in 'en','tr','tk') {
+$site  = @('en','tr','tk')
+$draft = @('az')
+if (-not $Lang) { $Lang = $site + $draft }
+foreach ($lang in $Lang) {
   $src = Join-Path $here "tamga-whitepaper-$lang.typ"
-  $out = Join-Path $pub "whitepaper-$lang.pdf"
+  $dir = if ($draft -contains $lang) { Join-Path $here 'draft' } else { $pub }
+  if (-not (Test-Path $dir)) { New-Item -ItemType Directory -Path $dir | Out-Null }
+  $out = Join-Path $dir "whitepaper-$lang.pdf"
   & $typst compile --root $here @fontArgs $src $out
   if ($?) { Write-Output "built whitepaper-$lang.pdf" }
 }

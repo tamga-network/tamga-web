@@ -110,7 +110,7 @@ const en: RoadmapContent = {
         {
           icon: "package",
           title: "Open-source packages",
-          desc: "@tamga-network: 0.6.0 test release on npm; the stable 1.0.0 when everything is ready",
+          desc: "@tamga-network: 0.7.0 test release on npm; the stable 1.0.0 when everything is ready",
         },
         {
           icon: "user",
@@ -299,7 +299,7 @@ const tr: RoadmapContent = {
         {
           icon: "package",
           title: "Açık kaynak paketler",
-          desc: "@tamga-network: npm'de 0.6.0 deneme sürümü; kararlı 1.0.0 hazır olunca",
+          desc: "@tamga-network: npm'de 0.7.0 deneme sürümü; kararlı 1.0.0 hazır olunca",
         },
         {
           icon: "user",
@@ -488,7 +488,7 @@ const tk: RoadmapContent = {
         {
           icon: "package",
           title: "Açyk çeşmeli paketler",
-          desc: "@tamga-network: npm-de 0.6.0 synag wersiýasy; durnukly 1.0.0 taýýar bolanda",
+          desc: "@tamga-network: npm-de 0.7.0 synag wersiýasy; durnukly 1.0.0 taýýar bolanda",
         },
         {
           icon: "user",

@@ -92,6 +92,44 @@ export const CHANGELOG_PAGE: Record<
 
 export const RELEASES: Release[] = [
   {
+    id: "v1.0.0-2026-10-20",
+    version: "v1.0.0",
+    date: "2026-10-20",
+    kind: "security",
+    title: {
+      en: "Safe package defaults, packages 0.7.0",
+      tr: "Paketlerde güvenli varsayılanlar, paketler 0.7.0",
+      tk: "Paketlerde howpsuz deslapky sazlamalar, paketler 0.7.0",
+    },
+    sections: {
+      security: {
+        en: [
+          "The @tamga-network/* packages now require every security input that affects the decision (trust anchors, status checks, the relying party's registration, the wallet's approval); a forgotten input is a rejection, and skipping a check has to be written explicitly.",
+          "Requests without a registration certificate are now refused by the wallet, remotely and in person (the warning period until 2028 is removed).",
+        ],
+        tr: [
+          "@tamga-network/* paketleri artık karara etki eden her güvenlik girdisini zorunlu ister (güven çapaları, iptal denetimi, güvenen tarafın kaydı, cüzdanın onayı); unutulan girdi ret demektir, bir denetimi atlamak açıkça yazılmalıdır.",
+          "Kayıt sertifikası olmayan istekleri cüzdan artık reddeder, uzaktan ve yüz yüze (2028'e kadarki uyarı dönemi kaldırıldı).",
+        ],
+        tk: [
+          "@tamga-network/* paketleri indi karara täsir edýän her bir howpsuzlyk girişini hökmany talap edýär (ynam çapalary, ýatyrma barlagy, ynanýan tarapyň hasaba alnyşy, gapjygyň tassyklamasy); ýatdan çykan giriş ret diýmekdir, barlagy geçmek aç-açan ýazylmalydyr.",
+          "Hasaba alyş şahadatnamasy bolmadyk haýyşlary gapjyk indi ret edýär, uzakdan we ýüzbe-ýüz (2028-e çenli duýduryş döwri aýryldy).",
+        ],
+      },
+      changed: {
+        en: [
+          "The @tamga-network/* packages are on npm as the 0.7.0 test release; code written for 0.6.0 needs the new inputs.",
+        ],
+        tr: [
+          "@tamga-network/* paketleri npm'de 0.7.0 deneme sürümünde; 0.6.0'a göre yazılmış kod yeni girdileri vermelidir.",
+        ],
+        tk: [
+          "@tamga-network/* paketleri npm-de 0.7.0 synag wersiýasynda; 0.6.0 üçin ýazylan kod täze girişleri bermelidir.",
+        ],
+      },
+    },
+  },
+  {
     id: "v1.0.0-2026-10-14",
     version: "v1.0.0",
     date: "2026-10-14",
@@ -186,7 +224,7 @@ export const RELEASES: Release[] = [
     sections: {
       added: {
         en: [
-          'Institutions can set who may receive a credential type (embedded disclosure policy, ADR-0046). The wallet checks it offline; if it doesn\'t match, it warns and starts with "don\'t share".',
+          "Institutions can set who may receive a credential type (embedded disclosure policy, ADR-0046). The wallet checks it offline; if it doesn't match, it warns and starts with \"don't share\".",
           "Zero-knowledge over-18 checks use short-lived copies (at most 24 hours, refreshed silently by the wallet); a revoked identity gets no new copies (ADR-0044).",
           "The trust packages read the EU's trusted-list format (ETSI TS 119 612, XML) and the Attestation Revocation List; the rulebooks follow the EU attestation rulebook template.",
         ],

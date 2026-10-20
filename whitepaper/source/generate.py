@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
-"""Whitepaper üreteci: content.py (tek kaynak) → src/content/whitepaper.tsx + whitepaper/tamga-whitepaper-{en,tr,tk}.typ.
+"""Whitepaper üreteci: content.py (tek kaynak) → src/content/whitepaper.tsx (SITE_LANGS) + whitepaper/tamga-whitepaper-<dil>.typ (bütün diller).
 Kullanım (tamga-web kökünden): python whitepaper/source/generate.py && npx prettier --write src/content/whitepaper.tsx
   && powershell -File whitepaper/build.ps1"""
 import json, os, re, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from content import CODE, IDS, LANGS, TABLES, TABLE_MONO
+
+# Sitede açık diller: yalnız bunlar src/content/whitepaper.tsx'e girer. Diğerleri (az) yalnız .typ üretilir ve PDF'teki
+# site bağlantıları İngilizce sayfalara gider; dil açılınca buraya eklenir (routing ile birlikte).
+SITE_LANGS = ("en", "tr", "tk")
 
 # PDF: bu bölümler yeni sayfada başlar (bölüm geçişleri; web sayfasını etkilemez)
 CHAPTER_BREAKS = {"trust", "privacy", "ledger", "status"}
@@ -130,6 +134,8 @@ function KV({ label, rows, mono }: { label: string; rows: string[][]; mono?: boo
     for k, v in CODE.items():
         L.append(f"const C_{k.upper()} = {json.dumps(v, ensure_ascii=False)};")
     for lang, d in LANGS.items():
+        if lang not in SITE_LANGS:
+            continue
         L.append(f"\nconst {lang}: WhitepaperContent = {{")
         L.append(f"  meta: {{ title: {json.dumps(d['meta_title'], ensure_ascii=False)}, description: {json.dumps(d['meta_desc'], ensure_ascii=False)} }},")
         for key, name in [("eyebrow", "eyebrow"), ("title", "title"), ("subtitle", "subtitle"), ("abstract_label", "abstractLabel"), ("toc", "tocLabel")]:
@@ -185,7 +191,8 @@ def ty_inline(t, lang):
         elif m.group(2) is not None:
             res.append("#raw(" + ty_str(m.group(2)) + ")")
         else:
-            url = m.group(4) if m.group(4).startswith("http") else "https://tamga.network/" + lang + m.group(4)
+            site_lang = lang if lang in SITE_LANGS else "en"
+            url = m.group(4) if m.group(4).startswith("http") else "https://tamga.network/" + site_lang + m.group(4)
             res.append("#link(" + ty_str(url) + ")[" + ty_text(m.group(3)) + "]")
         pos = m.end()
     res.append(ty_text(t[pos:]))
