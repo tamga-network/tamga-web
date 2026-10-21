@@ -200,6 +200,12 @@ export const ECOSYSTEM_GROUPS: Record<Subdomain["group"], L> = {
   services: { en: "Services", tr: "Servisler", tk: "Hyzmatlar", az: "Xidmətlər" },
 };
 
+/**
+ * Tamga Wallet'ın kendi sitesi — ağın listelediği ilk cüzdan (ADR-0042: ağ cüzdan işletmez, listeler; bağlantı tanıtım değil,
+ * cüzdanın kendi sayfasına yönlendirme). Site yalnız tr ve en; diğer diller en'e gider.
+ */
+export const tamgaWalletUrl = (locale: string) => `https://tamgawallet.com/${locale === "tr" ? "tr" : "en"}`;
+
 /** Paket ve kod adresleri (alt bilgi, geliştirici sayfası). */
 export const DEV_LINKS = {
   github: "https://github.com/tamga-network",

@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { useLocale } from "next-intl";
 import { Link, type Href } from "@/i18n/navigation";
+import { EXTERNAL_ATTRS, isExternalHref } from "@/components/external-link";
 
 /*
  * Blog satır içi biçimi: **kalın**, *eğik* / _eğik_, `kod`, [metin](adres). Site içi adres (`/learn/…`, `/blog/…`, `/join`)
@@ -66,9 +67,8 @@ export function SmartLink({ href, children, className }: { href: string; childre
         {children}
       </Link>
     );
-  const external = /^https?:\/\//.test(href);
   return (
-    <a href={href} className={className} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
+    <a href={href} className={className} {...(isExternalHref(href) ? EXTERNAL_ATTRS : {})}>
       {children}
     </a>
   );

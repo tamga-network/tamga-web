@@ -1,3 +1,4 @@
+import { ExternalLink } from "@/components/external-link";
 import { Callout, Figure, Term } from "@/components/learn/prose";
 import type { LearnPage } from "./types";
 
@@ -196,7 +197,7 @@ export const CHAPTER_5: LearnPage[] = [
           </p>
           <p>
             Bir sonraki sayfada, farklı ülkelerin listelerinin birbirini nasıl tanıdığına bakacağız. Canlı listeyi şimdi görmek
-            istersen: <a href="https://trust.tamga.network/">trust.tamga.network</a>.
+            istersen: <ExternalLink href="https://trust.tamga.network/">trust.tamga.network</ExternalLink>.
           </p>
         </>
       ),
@@ -271,7 +272,7 @@ export const CHAPTER_5: LearnPage[] = [
           </p>
           <p>
             On the next page we look at how the lists of different countries recognise each other. To see the live list now:{" "}
-            <a href="https://trust.tamga.network/">trust.tamga.network</a>.
+            <ExternalLink href="https://trust.tamga.network/">trust.tamga.network</ExternalLink>.
           </p>
         </>
       ),
@@ -315,7 +316,7 @@ export const CHAPTER_5: LearnPage[] = [
           <h2>Sanawda şahsy maglumat ýok</h2>
           <p>
             Ynam sanawlarynda guramalar bar, adamlar ýok. Kimiň haýsy resminamany alandygy sanawa ýazylmaýar. Janly sanaw:{" "}
-            <a href="https://trust.tamga.network/">trust.tamga.network</a>.
+            <ExternalLink href="https://trust.tamga.network/">trust.tamga.network</ExternalLink>.
           </p>
         </>
       ),
@@ -390,7 +391,7 @@ export const CHAPTER_5: LearnPage[] = [
           </p>
           <p>
             Növbəti səhifədə müxtəlif ölkələrin siyahılarının bir-birini necə tanıdığına baxacağıq. Canlı siyahını indi görmək üçün:{" "}
-            <a href="https://trust.tamga.network/">trust.tamga.network</a>.
+            <ExternalLink href="https://trust.tamga.network/">trust.tamga.network</ExternalLink>.
           </p>
         </>
       ),

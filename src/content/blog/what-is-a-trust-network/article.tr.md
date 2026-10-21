@@ -50,7 +50,7 @@ Sınırlar da işler kadar önemli ve bağlayıcı kural olarak yazılı.
 
 **Belge tutmaz.** Belge, kurumun sisteminden kişinin telefonuna gider. Ağ kişi kaydı tutmaz; belge verilirken bilgiler kurumun kendi sisteminden, yani yetkili kaynaktan okunur ([ADR-0020](https://docs.tamga.network/tr/adr/0020-authentic-source-at-institution)). Hiçbir listede, günlükte ya da defterde kişisel veri, belge içeriği, hatta belgenin özeti bile yoktur.
 
-**Cüzdan işletmez.** Ağ cüzdanları listeler. Hiçbir cüzdanın uygulamasını, cüzdan sağlayıcısını ya da sitesini işletmez ([ADR-0042](https://docs.tamga.network/tr/adr/0042-network-and-wallets)). Yayımlanan kurallara uyan ve uyum testlerini geçen her cüzdan listeye girebilir. Tamga Wallet ağdaki ilk cüzdan, ayrı bir ürün; listeye herhangi bir cüzdan gibi girer. Sağlayıcı kaydı bugün ayrılmış durumda, anahtarı sağlayıcı servisi açılınca eklenir.
+**Cüzdan işletmez.** Ağ cüzdanları listeler. Hiçbir cüzdanın uygulamasını, cüzdan sağlayıcısını ya da sitesini işletmez ([ADR-0042](https://docs.tamga.network/tr/adr/0042-network-and-wallets)). Yayımlanan kurallara uyan ve uyum testlerini geçen her cüzdan listeye girebilir. [Tamga Wallet](https://tamgawallet.com/tr) ağdaki ilk cüzdan, ayrı bir ürün; listeye herhangi bir cüzdan gibi girer. Sağlayıcı kaydı bugün ayrılmış durumda, anahtarı sağlayıcı servisi açılınca eklenir.
 
 **Kimin neyi kime gösterdiğini görmez.** Doğrulayıcılar iptal listelerini önceden indirip saklar. Kontrol anında ne kuruma ne ağa bir istek gider. Kurum belgelerinin nerede gösterildiğini öğrenemez, biz de öğrenemeyiz.
 

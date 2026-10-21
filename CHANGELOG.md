@@ -14,5 +14,8 @@ tamga.network with the network's 1.0 documentation set, in English, Turkish and 
 - Content follows the network's current state: the network runs no wallet and lists wallet providers (ADR-0042; Tamga
   Wallet's provider is listed as active); one sandbox for wallet, institution and verifier developers; the
   `@tamga-network/*` packages at the 0.6.0 test release.
+- Links: every external link opens in a new tab (`ExternalLink` / `EXTERNAL_ATTRS`, blog markdown via `SmartLink`;
+  `npm run check:links` fails on a raw external anchor); Tamga Wallet, the first listed wallet, links to its own site
+  tamgawallet.com (partners, home band, Learn "first wallet", two blog posts; tr → /tr, other languages → /en).
 - Tagline: "The digital trust network for the Turkic world" (TR "Türk dünyası için dijital güven ağı", TK "Türki
   dünýäsi üçin sanly ynam tory") in the page title, description, OG card, footer, homepage hero and the Learn page.

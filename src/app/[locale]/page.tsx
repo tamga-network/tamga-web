@@ -15,7 +15,8 @@ import {
   ZkDiagram,
 } from "@/components/home-diagrams";
 import { getHomeContent, devCode, INSTALL_CMD, type HomeContent, type Topic } from "@/content/home";
-import { PARTNERS } from "@/content/partners";
+import { PARTNERS, partnerUrl } from "@/content/partners";
+import { EXTERNAL_ATTRS } from "@/components/external-link";
 import { pickL, upcomingEvents } from "@/content/events";
 import { formatDate, getPostsMeta } from "@/lib/blog";
 import { arfUrl, docsUrl } from "@/lib/docs-nav";
@@ -46,7 +47,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   return (
     <>
       <Hero c={c} locale={locale} />
-      <PartnersBand c={c} />
+      <PartnersBand c={c} locale={locale} />
       <StandardsBand c={c} />
       <Why c={c} />
       <Philosophy c={c} />
@@ -146,7 +147,7 @@ function Hero({ c, locale }: { c: HomeContent; locale: string }) {
 
 /* ------------------------------------------------------------------ partners */
 
-function PartnersBand({ c }: { c: HomeContent }) {
+function PartnersBand({ c, locale }: { c: HomeContent; locale: string }) {
   return (
     <section aria-labelledby="home-partners" className="border-y border-border bg-surface/50">
       <div className="shell flex flex-col gap-6 py-9 md:flex-row md:items-center md:justify-between">
@@ -158,9 +159,11 @@ function PartnersBand({ c }: { c: HomeContent }) {
         </div>
         {PARTNERS.length ? (
           <ul className="m-0 grid w-full list-none grid-cols-2 items-center gap-x-5 sm:grid-cols-4 gap-y-5 p-0 md:flex md:w-auto md:flex-wrap md:gap-x-10">
-            {PARTNERS.slice(0, 8).map((p) => (
+            {PARTNERS.slice(0, 8).map((p) => {
+              const url = partnerUrl(p, locale);
+              return (
               <li key={p.name} className="flex h-12 min-w-0 items-center justify-center md:justify-start">
-                <a href={p.url ?? "/partners"} target={p.url ? "_blank" : undefined} rel={p.url ? "noopener noreferrer" : undefined} title={p.name} className="flex h-full min-w-0 max-w-full items-center rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
+                <a href={url ?? `/${locale}/partners`} {...(url ? EXTERNAL_ATTRS : {})} title={p.name} className="flex h-full min-w-0 max-w-full items-center rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
                   {p.logo ? (
                     p.withName ? (
                       <span className="flex items-center gap-2 text-foreground-muted opacity-80 grayscale transition hover:opacity-100 hover:grayscale-0">
@@ -177,7 +180,8 @@ function PartnersBand({ c }: { c: HomeContent }) {
                   )}
                 </a>
               </li>
-            ))}
+              );
+            })}
           </ul>
         ) : (
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center">

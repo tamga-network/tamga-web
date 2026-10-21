@@ -1,5 +1,7 @@
 import type { LearnPage } from "./types";
 import { Callout, Figure, Term } from "@/components/learn/prose";
+import { ExternalLink } from "@/components/external-link";
+import { tamgaWalletUrl } from "@/lib/ecosystem";
 
 /* Bölüm 6 — Tamga Network: ağın ne olduğu, neden Türk dünyası, roller, katmanlar, kurallar, yönetişim, açık kod, ilk cüzdan. */
 
@@ -1554,7 +1556,7 @@ export const CHAPTER_6: LearnPage[] = [
             Tamga Wallet ayrı bir üründür; kendi ekibi, kendi kararları ve kendi sitesi vardır. Ağa diğer her cüzdan gibi katılır:
             cüzdan kurallarına uyduğunu gösterir ve cüzdan sağlayıcısı olarak listeye girer. Ağ ona bir ayrıcalık tanımaz; kurallara
             uyan her cüzdan ağda aynı haklara sahiptir. Ağ cüzdan işletmez: uygulamayı, cüzdan sağlayıcısını ve sitesini Tamga
-            Wallet kendisi işletir; cüzdanın tanıtımı kendi sitesindedir.
+            Wallet kendisi işletir; cüzdanın tanıtımı kendi sitesindedir: <ExternalLink href={tamgaWalletUrl("tr")}>tamgawallet.com</ExternalLink>.
           </p>
           <h2>Ne işe yarar?</h2>
           <ul>
@@ -1596,7 +1598,7 @@ export const CHAPTER_6: LearnPage[] = [
             Tamga Wallet is a separate product with its own team, its own decisions and its own site. It joins the network like any
             other wallet: it shows that it follows the wallet rules and is listed as a wallet provider. The network gives it no
             privilege; every wallet that follows the rules has the same rights on the network. The network runs no wallet: Tamga
-            Wallet runs its own app, wallet provider and site, and the wallet is presented on its own site.
+            Wallet runs its own app, wallet provider and site, and the wallet is presented on its own site: <ExternalLink href={tamgaWalletUrl("en")}>tamgawallet.com</ExternalLink>.
           </p>
           <h2>What does it do?</h2>
           <ul>
@@ -1630,7 +1632,7 @@ export const CHAPTER_6: LearnPage[] = [
         <>
           <p>Toruň işleýändigini görkezmegiň iň gowy ýoly ony ulanýan gapjykdyr. Tamga Wallet bu toruň ilkinji gapjygy: ÝB bilen laýyk programma.</p>
           <h2>Toruň bölegi däl, gatnaşyjysy</h2>
-          <p>Tamga Wallet aýry önüm; öz topary we öz sahypasy bar. Tora beýleki gapjyklar ýaly goşulýar; tor oňa hiç hili artykmaçlyk bermeýär. Tor gapjyk işletmeýär: programmany, gapjyk üpjün edijini we sahypany Tamga Wallet özi işledýär.</p>
+          <p>Tamga Wallet aýry önüm; öz topary we öz sahypasy bar. Tora beýleki gapjyklar ýaly goşulýar; tor oňa hiç hili artykmaçlyk bermeýär. Tor gapjyk işletmeýär: programmany, gapjyk üpjün edijini we sahypany Tamga Wallet özi işledýär: <ExternalLink href={tamgaWalletUrl("tk")}>tamgawallet.com</ExternalLink>.</p>
           <h2>Näme üçin gerek?</h2>
           <ul>
             <li>Guramalardan resminama almak.</li>
@@ -1660,7 +1662,7 @@ export const CHAPTER_6: LearnPage[] = [
             Tamga Wallet öz komandası, öz qərarları və öz saytı olan ayrıca məhsuldur. Şəbəkəyə digər cüzdanlar kimi qoşulur:
             cüzdan qaydalarına əməl etdiyini göstərir və cüzdan provayderi kimi siyahıya daxil edilir. Şəbəkə ona heç bir imtiyaz
             vermir; qaydalara əməl edən hər cüzdan şəbəkədə eyni hüquqlara malikdir. Şəbəkə cüzdan idarə etmir: tətbiqi, cüzdan
-            provayderini və saytı Tamga Wallet özü idarə edir, cüzdan isə öz saytında təqdim olunur.
+            provayderini və saytı Tamga Wallet özü idarə edir, cüzdan isə öz saytında təqdim olunur: <ExternalLink href={tamgaWalletUrl("az")}>tamgawallet.com</ExternalLink>.
           </p>
           <h2>Nə edir?</h2>
           <ul>

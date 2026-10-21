@@ -50,7 +50,7 @@ The limits matter as much as the jobs, and they are written down as binding rule
 
 **It holds no documents.** Credentials travel from the institution's system to the person's phone. The network keeps no register of people; at issuance the data is read from the institution's own system, its authentic source ([ADR-0020](https://docs.tamga.network/adr/0020-authentic-source-at-institution)). No list, log or ledger carries personal data, credential content or even a hash of a credential.
 
-**It runs no wallet.** The network lists wallets. It does not operate any wallet's app, wallet provider or website ([ADR-0042](https://docs.tamga.network/adr/0042-network-and-wallets)). Any wallet that follows the published rules and passes the conformance tests can be listed. Tamga Wallet, the first wallet on the network, is a separate product and enters the list the same way as any other; its provider entry is reserved today and receives keys when its provider service opens.
+**It runs no wallet.** The network lists wallets. It does not operate any wallet's app, wallet provider or website ([ADR-0042](https://docs.tamga.network/adr/0042-network-and-wallets)). Any wallet that follows the published rules and passes the conformance tests can be listed. [Tamga Wallet](https://tamgawallet.com/en), the first wallet on the network, is a separate product and enters the list the same way as any other; its provider entry is reserved today and receives keys when its provider service opens.
 
 **It does not see who shows what to whom.** Verifiers download revocation lists ahead of time and keep them in a cache, so at the moment of a check no request goes to the institution or to the network. The institution cannot learn where its credentials are shown, and neither can we.
 

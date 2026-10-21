@@ -7,8 +7,9 @@
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc --noEmit",
+    "check:links": "node scripts/check-external-links.mjs",
     "check:i18n": "node scripts/check-i18n.mjs",
-    "check": "npm run -s typecheck && npm run -s check:i18n && npm run -s check:examples",
+    "check": "npm run -s typecheck && npm run -s check:i18n && npm run -s check:examples && npm run -s check:links",
     "examples:sync": "node scripts/sync-examples.mjs",
     "check:examples": "node scripts/sync-examples.mjs --check",
     "brand:sync": "node scripts/sync-brand.mjs"

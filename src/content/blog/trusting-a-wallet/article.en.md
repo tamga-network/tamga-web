@@ -125,7 +125,7 @@ Because a network that ran a wallet would be judging its own product. In the EU 
 - its interfaces and packages do not hard-code any wallet's name;
 - there is one sandbox, and it belongs to the network: a wallet developer runs their own provider and registers it in the sandbox list.
 
-Tamga Wallet is one of the wallets on the network. It is a separate product and enters the list the same way as any other. On 8 October 2026 its provider (`TAMGA-WP-1`) has one entry in the production list and the same entry in the sandbox list, both `RESERVED`: the place is held, but the entry carries no signing key until the wallet's operator supplies its own certificate, so no attestation can pass against it yet. The sandbox list also contains the network's own test provider for its scenes. Registration is done by hand today, with project management approval; self-registration of wallet providers needs a separate decision.
+[Tamga Wallet](https://tamgawallet.com/en) is one of the wallets on the network. It is a separate product and enters the list the same way as any other. On 8 October 2026 its provider (`TAMGA-WP-1`) has one entry in the production list and the same entry in the sandbox list, both `RESERVED`: the place is held, but the entry carries no signing key until the wallet's operator supplies its own certificate, so no attestation can pass against it yet. The sandbox list also contains the network's own test provider for its scenes. Registration is done by hand today, with project management approval; self-registration of wallet providers needs a separate decision.
 
 ## What are the honest limits today?
 

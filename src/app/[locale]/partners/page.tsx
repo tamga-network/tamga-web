@@ -5,7 +5,8 @@ import { PageHeader } from "@/components/ui";
 import { Link } from "@/i18n/navigation";
 import { pageMeta } from "@/lib/seo";
 import type { Locale } from "@/i18n/routing";
-import { partnersIn, type PartnerGroup } from "@/content/partners";
+import { partnersIn, partnerUrl, type PartnerGroup } from "@/content/partners";
+import { ExternalLink } from "@/components/external-link";
 
 /*
  * Partnerler: ağa katılan kurumlar ve kuruluşlar. İskelet — yalnız gerçekten katılmış ve adının yazılmasına izin vermiş
@@ -248,7 +249,7 @@ export default async function PartnersPage({
                 <ul className="m-0 grid list-none grid-cols-2 gap-3 p-0 sm:grid-cols-3">
                   {partnersIn(g.key as PartnerGroup).map((p) => (
                     <li key={p.name} className="group relative flex min-h-24 flex-col items-center justify-center gap-3 rounded-xl border border-border bg-background-elevated px-4 py-5">
-                      {p.url ? <a href={p.url} target="_blank" rel="noopener noreferrer" aria-label={p.name} className="absolute inset-0 rounded-xl focus-visible:outline-2 focus-visible:outline-primary" /> : null}
+                      {p.url ? <ExternalLink href={partnerUrl(p, l)!} aria-label={p.name} className="absolute inset-0 rounded-xl focus-visible:outline-2 focus-visible:outline-primary" /> : null}
                       {p.logo && p.withName ? (
                         <span className="flex items-center gap-2.5 opacity-80 grayscale transition group-hover:opacity-100 group-hover:grayscale-0">
                           {/* eslint-disable-next-line @next/next/no-img-element */}

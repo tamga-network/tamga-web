@@ -125,7 +125,7 @@ Kaybolan ya da çalınan bir telefonu uzaktan geri çekmek, kişinin o telefon o
 - arayüzleri ve paketleri hiçbir cüzdanın adını sabit yazmaz;
 - tek bir sandbox var ve ağa ait: cüzdan geliştiricisi kendi sağlayıcısını işletir ve sandbox listesine kaydeder.
 
-Tamga Wallet ağdaki cüzdanlardan biridir. Ayrı bir üründür ve listeye her cüzdan gibi girer. 8 Ekim 2026'da sağlayıcısının (`TAMGA-WP-1`) gerçek listede bir kaydı, sandbox listesinde de aynı kaydı var; ikisi de `RESERVED`. Yer ayrılmış ama cüzdanın işletmecisi kendi sertifikasını verene kadar kayıtta imza anahtarı yok; dolayısıyla henüz bu kayda karşı hiçbir kanıt geçemez. Sandbox listesinde ayrıca ağın kendi deneme sahneleri için test sağlayıcısı bulunur. Kayıt bugün elle ve proje yönetimi onayıyla yapılıyor; cüzdan sağlayıcılarının kendi kendine kaydı ayrı bir karar gerektiriyor.
+[Tamga Wallet](https://tamgawallet.com/tr) ağdaki cüzdanlardan biridir. Ayrı bir üründür ve listeye her cüzdan gibi girer. 8 Ekim 2026'da sağlayıcısının (`TAMGA-WP-1`) gerçek listede bir kaydı, sandbox listesinde de aynı kaydı var; ikisi de `RESERVED`. Yer ayrılmış ama cüzdanın işletmecisi kendi sertifikasını verene kadar kayıtta imza anahtarı yok; dolayısıyla henüz bu kayda karşı hiçbir kanıt geçemez. Sandbox listesinde ayrıca ağın kendi deneme sahneleri için test sağlayıcısı bulunur. Kayıt bugün elle ve proje yönetimi onayıyla yapılıyor; cüzdan sağlayıcılarının kendi kendine kaydı ayrı bir karar gerektiriyor.
 
 ## Bugünkü dürüst sınırlar neler?
 

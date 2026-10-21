@@ -39,7 +39,7 @@ def jsx_inline(t):
             res.append("<code>" + jsx_text(m.group(2)) + "</code>")
         else:
             if m.group(4).startswith("http"):
-                res.append('<a href="' + m.group(4) + '">' + jsx_text(m.group(3)) + "</a>")
+                res.append('<ExternalLink href="' + m.group(4) + '">' + jsx_text(m.group(3)) + "</ExternalLink>")
             else:
                 res.append('<Link href="' + m.group(4) + '">' + jsx_text(m.group(3)) + "</Link>")
         pos = m.end()
@@ -72,6 +72,7 @@ def tsx():
     L = []
     L.append('''import type { ReactNode } from "react";
 import { Link } from "@/i18n/navigation";
+import { ExternalLink } from "@/components/external-link";
 import type { Locale } from "@/i18n/routing";
 
 /*
