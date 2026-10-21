@@ -108,6 +108,52 @@ export const CHANGELOG_PAGE: Record<
 
 export const RELEASES: Release[] = [
   {
+    id: "v1.0.0-2026-10-21",
+    version: "v1.0.0",
+    date: "2026-10-21",
+    kind: "feature",
+    title: {
+      en: "Browser sharing with ISO mdoc, stable pseudonyms, packages 0.7.1",
+      tr: "Tarayıcıdan ISO mdoc paylaşımı, sabit takma adlar, paketler 0.7.1",
+      tk: "Brauzerden ISO mdoc paýlaşmak, durnukly lakamlar, paketler 0.7.1",
+      az: "Brauzerdən ISO mdoc paylaşımı, sabit təxəllüslər, paketlər 0.7.1",
+    },
+    sections: {
+      added: {
+        en: [
+          "The wallet core now answers the browser's ISO/IEC 18013-7 Annex C request (org-iso-mdoc) through the Digital Credentials API; the request must be signed by the reader for the calling site and carry a registration certificate.",
+          "Sandbox: a Digital Credentials API test page on the reference verifier (verify.sandbox.tamga.network/dc-api-test).",
+        ],
+        tr: [
+          "Cüzdan çekirdeği artık tarayıcının ISO/IEC 18013-7 Ek C isteğini (org-iso-mdoc) Digital Credentials API üzerinden yanıtlar; istek, çağıran site için okuyucu tarafından imzalanmış olmalı ve kayıt sertifikası taşımalıdır.",
+          "Sandbox: referans doğrulayıcıda Digital Credentials API deneme sayfası (verify.sandbox.tamga.network/dc-api-test).",
+        ],
+        tk: [
+          "Gapjyk ýadrosy indi brauzeriň ISO/IEC 18013-7 C goşundysy boýunça haýyşyna (org-iso-mdoc) Digital Credentials API arkaly jogap berýär; haýyş çagyrýan saýt üçin okaýjy tarapyndan gol çekilen bolmaly we hasaba alyş şahadatnamasyny götermeli.",
+          "Sandbox: salgylanma barlaýjyda Digital Credentials API synag sahypasy (verify.sandbox.tamga.network/dc-api-test).",
+        ],
+        az: [
+          "Rəqəmsal cüzdan nüvəsi artıq brauzerin ISO/IEC 18013-7 Əlavə C sorğusuna (org-iso-mdoc) Digital Credentials API vasitəsilə cavab verir; sorğu çağıran sayt üçün oxuyucu tərəfindən imzalanmalı və qeydiyyat sertifikatı daşımalıdır.",
+          "Sandbox: istinad yoxlayıcısında Digital Credentials API sınaq səhifəsi (verify.sandbox.tamga.network/dc-api-test).",
+        ],
+      },
+      changed: {
+        en: [
+          "A per-site pseudonym is now always derived from the site's registered domain, never from its access certificate, so renewing a certificate does not change anyone's pseudonym. The packages are on npm as the 0.7.1 test release.",
+        ],
+        tr: [
+          "Siteye özel takma ad artık her zaman sitenin kayıtlı alan adından türetilir, erişim sertifikasından değil; sertifika yenilense de kimsenin takma adı değişmez. Paketler npm'de 0.7.1 deneme sürümünde.",
+        ],
+        tk: [
+          "Saýta degişli lakam indi elmydama saýtyň hasaba alnan domen adyndan alynýar, giriş şahadatnamasyndan däl; şahadatnama täzelense-de hiç kimiň lakamy üýtgemeýär. Paketler npm-de 0.7.1 synag wersiýasynda.",
+        ],
+        az: [
+          "Sayta xas təxəllüs artıq həmişə saytın qeydiyyatdakı domen adından törədilir, giriş sertifikatından yox; sertifikat yenilənsə də heç kimin təxəllüsü dəyişmir. Paketlər npm-də 0.7.1 sınaq buraxılışı kimi mövcuddur.",
+        ],
+      },
+    },
+  },
+  {
     id: "v1.0.0-2026-10-20",
     version: "v1.0.0",
     date: "2026-10-20",
