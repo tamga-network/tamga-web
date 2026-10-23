@@ -3,6 +3,7 @@ title: "ISO mdoc deep dive: CBOR, COSE, MSO and engagement"
 slug: iso-mdoc-deep-dive
 description: How an ISO/IEC 18013-5 mdoc is built and verified - CBOR and COSE, the MSO and value digests, device authentication, session transcripts, QR and BLE.
 date: 2026-10-08
+updated: 2026-10-23
 lang: en
 category: standards
 draft: false
@@ -80,12 +81,12 @@ The MSO is the issuer-signed part. It is encoded, wrapped in tag 24 and used as 
     "validUntil": 0("2028-10-07T08:00:00Z")
   },
   "status": {
-    "status_list": { "idx": 48213, "uri": "https://status.tamga.network/3f9a2c" }
+    "status_list": { "idx": 48213, "uri": "https://status.tamga.network/c7d41e" }
   }
 }
 ```
 
-The `age_over_18` item above hashes to the value stored under `1192084209`. `deviceKey` is a COSE_Key (`1: 2` is an EC2 key, `-1: 1` is curve P-256, `-2`/`-3` are the coordinates), the same public key as the SD-JWT's `cnf.jwk`. `validityInfo.signed` plays the role of the SD-JWT `iat`: Tamga's time-bound trust checks ask whether the issuer was listed and authorised at that moment. `status` points to the same Token Status List index as the SD-JWT copy, so revoking the identity credential revokes both representations with one bit.
+The `age_over_18` item above hashes to the value stored under `1192084209`. `deviceKey` is a COSE_Key (`1: 2` is an EC2 key, `-1: 1` is curve P-256, `-2`/`-3` are the coordinates), the same public key as the SD-JWT's `cnf.jwk`. `validityInfo.signed` plays the role of the SD-JWT `iat`: Tamga's time-bound trust checks ask whether the issuer was listed and authorised at that moment. `status` uses the same index as the SD-JWT copy but points to the CWT form of the same Token Status List (`application/statuslist+cwt`) at its own opaque address, so an mdoc reader never needs a JWT parser. Both forms carry the same bits and are signed in the same publication, so revoking the identity credential revokes both representations at once ([ADR-0048](https://docs.tamga.network/adr/0048-identity-no-suspension-mdoc-cwt-status)).
 
 ## How does the holder prove it is the device the mdoc was issued to?
 
@@ -141,7 +142,7 @@ The two online forms come from OpenID4VP 1.0 Final, Annex B.2.6. `client_id` is 
 
 Session messages use AES-256-GCM with a 12-byte IV made of an 8-byte identifier (all zeros for the reader, `…01` for the device) and a 4-byte message counter that starts at 1. Over BLE the phone acts as a GATT server; each message is split into chunks whose first byte is `0x01` when more follow and `0x00` on the last one.
 
-Status today: the protocol core (engagement, session encryption, BLE framing) is implemented and tested in `@tamga-network/mdoc`, and the BLE radio is supplied by the wallet app. Device testing is still in progress. NFC is not used; engagement always starts from the QR code. Reader authentication is not included yet, so the wallet tells the person the reader is not verified. Online mdoc presentation over OpenID4VP uses the same request flow as SD-JWT VC.
+Status today: the protocol core (engagement, session encryption, BLE framing) is implemented and tested in `@tamga-network/mdoc`, and the BLE radio is supplied by the wallet app. Device testing is still in progress. NFC is not used; engagement always starts from the QR code. Since packages 0.6.0 the reader signs its request (reader authentication) and the wallet checks it against the anchors in the signed trust list; since 0.7.0 a request without a registration certificate is refused, in person as well as online. Online mdoc presentation over OpenID4VP uses the same request flow as SD-JWT VC.
 
 ## How does a verifier check an mdoc?
 

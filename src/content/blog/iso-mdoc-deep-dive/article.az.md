@@ -3,6 +3,7 @@ title: "ISO mdoc-a dərindən baxış: CBOR, COSE, MSO və əlaqə qurma"
 slug: iso-mdoc-deep-dive
 description: "ISO/IEC 18013-5 mdoc-un necə qurulduğu və yoxlandığı: CBOR və COSE, MSO və dəyər heşləri, cihaz autentifikasiyası, sessiya transkriptləri, QR və BLE."
 date: 2026-10-08
+updated: 2026-10-23
 lang: az
 category: standards
 draft: false
@@ -80,12 +81,12 @@ MSO sənədi verən qurumun imzaladığı hissədir. O, kodlaşdırılır, teq 2
     "validUntil": 0("2028-10-07T08:00:00Z")
   },
   "status": {
-    "status_list": { "idx": 48213, "uri": "https://status.tamga.network/3f9a2c" }
+    "status_list": { "idx": 48213, "uri": "https://status.tamga.network/c7d41e" }
   }
 }
 ```
 
-Yuxarıdakı `age_over_18` elementinin heşi `1192084209` altında saxlanan dəyərə bərabərdir. `deviceKey` COSE_Key-dir (`1: 2` EC2 açarı, `-1: 1` P-256 əyrisi, `-2`/`-3` isə koordinatlardır) və SD-JWT-dəki `cnf.jwk` ilə eyni açıq açardır. `validityInfo.signed` SD-JWT-dəki `iat` rolunu oynayır: Tamga-nın zamana bağlı etibar yoxlamaları sənədi verən qurumun həmin anda siyahıda olub-olmadığını və səlahiyyətli olub-olmadığını soruşur. `status` SD-JWT nüsxəsi ilə eyni Token Status List indeksinə işarə edir, buna görə də rəqəmsal şəxsiyyət sənədinin ləğvi bir bitlə hər iki təqdimatı ləğv edir.
+Yuxarıdakı `age_over_18` elementinin heşi `1192084209` altında saxlanan dəyərə bərabərdir. `deviceKey` COSE_Key-dir (`1: 2` EC2 açarı, `-1: 1` P-256 əyrisi, `-2`/`-3` isə koordinatlardır) və SD-JWT-dəki `cnf.jwk` ilə eyni açıq açardır. `validityInfo.signed` SD-JWT-dəki `iat` rolunu oynayır: Tamga-nın zamana bağlı etibar yoxlamaları sənədi verən qurumun həmin anda siyahıda olub-olmadığını və səlahiyyətli olub-olmadığını soruşur. `status` SD-JWT nüsxəsi ilə eyni indeksdən istifadə edir, lakin eyni Token Status List-in ayrıca, qeyri-şəffaf ünvandakı CWT formasına (`application/statuslist+cwt`) işarə edir, beləliklə mdoc oxuyucusuna JWT təhlilçisi lazım olmur. Hər iki forma eyni bitləri daşıyır və eyni dərcdə imzalanır, buna görə də rəqəmsal şəxsiyyət sənədinin ləğvi hər iki təqdimatı birlikdə ləğv edir ([ADR-0048](https://docs.tamga.network/adr/0048-identity-no-suspension-mdoc-cwt-status)).
 
 ## Sənəd sahibi mdoc-un məhz ona verildiyi cihaz olduğunu necə sübut edir?
 
@@ -141,7 +142,7 @@ Deməli, hər şey **SessionTranscript**-dən asılıdır: ona nə daxil edilirs
 
 Sessiya mesajları AES-256-GCM ilə şifrələnir; 12 baytlıq IV 8 baytlıq identifikatordan (oxuyucu üçün tamamilə sıfırlar, cihaz üçün `…01`) və 1-dən başlayan 4 baytlıq mesaj sayğacından ibarətdir. BLE üzərindən telefon GATT serveri kimi çıxış edir; hər mesaj hissələrə bölünür, ardınca başqa hissələr gəlirsə hissənin birinci baytı `0x01`, sonuncu hissədə isə `0x00` olur.
 
-Hazırkı vəziyyət: protokolun nüvəsi (əlaqə qurma, sessiya şifrələnməsi, BLE çərçivələnməsi) `@tamga-network/mdoc` daxilində reallaşdırılıb və test edilib, BLE radiosu isə rəqəmsal cüzdan tətbiqi tərəfindən təmin olunur. Cihazlar üzərində testlər hələ davam edir. NFC istifadə olunmur; əlaqə qurma həmişə QR kodundan başlayır. Oxuyucunun autentifikasiyası hələ daxil edilməyib, buna görə də rəqəmsal cüzdan şəxsə oxuyucunun yoxlanılmadığını bildirir. OpenID4VP üzərindən onlayn mdoc təqdimatı SD-JWT VC ilə eyni sorğu axınından istifadə edir.
+Hazırkı vəziyyət: protokolun nüvəsi (əlaqə qurma, sessiya şifrələnməsi, BLE çərçivələnməsi) `@tamga-network/mdoc` daxilində reallaşdırılıb və test edilib, BLE radiosu isə rəqəmsal cüzdan tətbiqi tərəfindən təmin olunur. Cihazlar üzərində testlər hələ davam edir. NFC istifadə olunmur; əlaqə qurma həmişə QR kodundan başlayır. Paketlərin 0.6.0 versiyasından bəri oxuyucu sorğusunu imzalayır (oxuyucunun autentifikasiyası) və rəqəmsal cüzdan onu imzalanmış etibar siyahısındakı lövbərlərə qarşı yoxlayır; 0.7.0-dan bəri qeydiyyat sertifikatı olmayan sorğu onlayn olduğu kimi üz-üzə də rədd edilir. OpenID4VP üzərindən onlayn mdoc təqdimatı SD-JWT VC ilə eyni sorğu axınından istifadə edir.
 
 ## Yoxlayan tərəf mdoc-u necə yoxlayır?
 

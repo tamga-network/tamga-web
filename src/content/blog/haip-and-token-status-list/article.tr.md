@@ -3,6 +3,7 @@ title: "HAIP ve Token Status List: izlenmeden yüksek güvence"
 slug: haip-and-token-status-list
 description: HAIP 1.0 neyi sabitler, Tamga onu nasıl uygular; Token Status List belgeyi, kuruma nerede kullanıldığını söylemeden nasıl iptal eder.
 date: 2026-10-08
+updated: 2026-10-23
 lang: tr
 category: standards
 draft: false
@@ -74,9 +75,9 @@ Belge bir gösterge taşır, liste de bitleri:
 }
 ```
 
-`sub`, belgedeki `uri` ile aynı olmalıdır. `lst` taslağın tanımladığı üç adımla kurulur: her belge için `bits` kadar bit bir bayt dizisine yazılır ve her bayt **en düşük anlamlı bitten** başlayarak doldurulur; dizi ZLIB biçiminde DEFLATE ile sıkıştırılır; sonuç base64url ile kodlanır.
+`sub`, belgedeki `uri` ile aynı olmalıdır. Aynı belgenin mdoc kopyası aynı `idx`'i kullanır ama listenin ayrı, opak bir adresteki CWT biçimine (`application/statuslist+cwt`) işaret eder; iki biçim aynı bitleri taşır ve aynı yayında imzalanır ([ADR-0048](https://docs.tamga.network/tr/adr/0048-identity-no-suspension-mdoc-cwt-status)). `lst` taslağın tanımladığı üç adımla kurulur: her belge için `bits` kadar bit bir bayt dizisine yazılır ve her bayt **en düşük anlamlı bitten** başlayarak doldurulur; dizi ZLIB biçiminde DEFLATE ile sıkıştırılır; sonuç base64url ile kodlanır.
 
-16 kayıtlık, `bits: 2` olan küçük bir örnek: 1. sıra iptal, 2. sıra askıda, 6. sıra iptal:
+Küçük bir örnek, 16 kayıtlık ve `bits: 2` olan bir kurum listesi: 1. sıra iptal, 2. sıra askıda, 6. sıra iptal:
 
 ```text title="2 bitlik durumları paketlemek (bu yazı için hesaplandı)"
 bayt 0 = sıra 3..0   → 00 10 01 00 → 0x24
@@ -87,7 +88,7 @@ bayt 3 = sıra 15..12 → 0x00
 zlib (düzey 9), base64url → eNpTEWBgAAAAxAA1
 ```
 
-`bits: 2` ile `idx` sırasını okumak için `idx >> 2` numaralı bayt alınır ve `(idx & 3) × 2` kadar sağa kaydırılır. `idx` 48213 için bu, 12053. baytın 2. ve 3. bitleridir. Boyut sorun değil: bir Tamga listesinde en az 100.000 kayıt olur, sıkıştırılmadan 25.000 bayt. Bu yazı için yaptığımız denemede zlib düzey 9 ile hepsi geçerli bir liste 46 bayta, aynı listenin 200 dağınık iptalli hâli 439 bayta sıkıştı.
+`bits: 2` ile `idx` sırasını okumak için `idx >> 2` numaralı bayt alınır ve `(idx & 3) × 2` kadar sağa kaydırılır. `idx` 48213 için bu, 12053. baytın 2. ve 3. bitleridir. `bits: 1` ile `idx >> 3` numaralı baytın `idx & 7`. bitidir. Boyut sorun değil: bir Tamga listesinde en az 100.000 kayıt olur, sıkıştırılmadan iki bitle 25.000 bayt (tek bitle 12.500). Bu yazı için yaptığımız denemede zlib düzey 9 ile hepsi geçerli bir liste 46 bayta, aynı listenin 200 dağınık iptalli hâli 439 bayta sıkıştı.
 
 ![Bir belgenin durumunu dört adımda okumak](/blog/haip-and-token-status-list/tr/fig-bits.png)
 
@@ -97,10 +98,10 @@ zlib (düzey 9), base64url → eNpTEWBgAAAAxAA1
 |---|---|---|
 | `0x00` | VALID | geçerli |
 | `0x01` | INVALID | kalıcı olarak iptal |
-| `0x02` | SUSPENDED | askıda, geri alınabilir |
+| `0x02` | SUSPENDED | askıda, geri alınabilir; yalnız şeması izin veren türlerde |
 | `0x03` | uygulamaya özgü | kullanılmaz; iptal sayılır |
 
-Taslak `bits` için 1, 2, 4 ya da 8'e izin verir. Tamga hep 2 kullanır, çünkü askıya almanın kendi değeri olmalı: bir diploma hakkında inceleme açan kurum inceleme sürerken onu durdurmak ister. Tek bitle ya gerekçesiz iptal eder ya hiçbir şey yapamazdı. Dört ya da sekiz bit, hiçbir yarar sağlamadan listeyi iki ya da dört katına çıkarırdı. Doğrulayıcı `0x00` dışındaki her değeri ret sayar ve "askıda"yı "iptal"den ayrı gösterir.
+Taslak `bits` için 1, 2, 4 ya da 8'e izin verir. Tamga paketlerin 0.6.0 sürümünden beri bunu belge türüne göre belirler ([ADR-0048](https://docs.tamga.network/tr/adr/0048-identity-no-suspension-mdoc-cwt-status)). Kimlik servisinin belgeleri, AB'nin kişi kimlik verisi kuralına uygun olarak askıya alınamaz; bu yüzden listeleri tek bit kullanır: geçerli ya da iptal, ve iptal kalıcıdır. Kurum listeleri iki bit kullanır, çünkü askıya almanın kendi değeri olmalı: bir diploma hakkında inceleme açan kurum inceleme sürerken onu durdurmak ister. Orada da `0x02` yalnız şeması askıya izin veren türlerde yazılır (`suspension_allowed`, bugün diploma); başka bir türde askı değeri bozuk liste sayılır ve reddedilir. Dört ya da sekiz bit, hiçbir yarar sağlamadan listeyi iki ya da dört katına çıkarırdı. Doğrulayıcı `0x00` dışındaki her değeri ret sayar ve "askıda"yı "iptal"den ayrı gösterir.
 
 ## Durum listesi bir izleme kanalına dönüşmekten nasıl kaçınır?
 
@@ -133,7 +134,7 @@ Her yayın önce durum sunucusuna yazılır, sonra özeti kaydedilir. Bugün bu 
 
 İptal denetimleri Tamga hattının D1–D6 adımlarıdır: `status.status_list` okunur, belirteç önceden indirilmiş önbellekten alınır, imzası güven listesinde o kurum için kayıtlı durum anahtarına karşı doğrulanır; `sub`, tazelik ve kayıtlı özet denetlenir, sonra bitler okunur. Liste indirilemiyorsa ya da `exp` geçmişse sonuç `STATUS_UNREACHABLE` ya da `STATUS_STALE` gibi bir gerekçeyle **INDETERMINATE**'tir. "Bu diploma iptal edildi" ile "şu an denetleyemiyorum" bir insan hakkında farklı kararlara yol açar; farklı gösterilmelidir. Çevrim dışında doğrulayıcı önbellekteki belirteç ve bilinen son kayıtla devam edebilir; son eşitleme zamanını gösterir ve sonucu "çevrim dışı doğrulandı" diye işaretler.
 
-Sıfır bilgili yaş ispatı sırası olmayan tek durumdur: ispat, bir liste sırasını belirleyebilecek hiçbir şey açmaz; durum "uygulanamaz" diye bildirilir. Karar, sıfır bilgiyle yalnız en çok 24 saat geçerli ve belge iptal edilince yenilenmeyen kısa ömürlü kopyaların sunulmasıdır ([ADR-0044](https://docs.tamga.network/tr/adr/0044-zk-short-lived-copies)); bu uygulanana kadar doğrulayıcı böyle bir ispatı yalnız politikası açıkça izin veriyorsa kabul eder ([ADR-0032](https://docs.tamga.network/tr/adr/0032-zk-mdoc-presentation)).
+Sıfır bilgili yaş ispatı sırası olmayan tek durumdur: ispat, bir liste sırasını belirleyebilecek hiçbir şey açmaz; durum "uygulanamaz" diye bildirilir. Karar, sıfır bilgiyle yalnız en çok 24 saat geçerli ve belge iptal edilince yenilenmeyen kısa ömürlü kopyaların sunulmasıdır ([ADR-0044](https://docs.tamga.network/tr/adr/0044-zk-short-lived-copies)). Bu, paketlerin 0.4.0 sürümünden beri uygulanıyor: kopyalar iptal listesi girişi taşımaz, cüzdan onları kişiye sormadan yeniler ve kısa ömürleri iptal denetiminin yerini tutar. Böyle bir kopyaya dayanmayan sıfır bilgi ispatını doğrulayıcı yalnız politikası açıkça izin veriyorsa kabul eder ([ADR-0032](https://docs.tamga.network/tr/adr/0032-zk-mdoc-presentation)).
 
 ## Sık sorulan sorular
 

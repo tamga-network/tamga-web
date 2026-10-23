@@ -3,6 +3,7 @@ title: Tamga Network neden kâr amacı gütmüyor ve vakfa gidiyor?
 slug: network-as-a-foundation
 description: Tamga Network hizmet satmaz, cüzdan işletmez; işletmeciliği bir vakfa devredilecek. Tarafsızlık neden önemli, devir nasıl işliyor.
 date: 2026-10-08
+updated: 2026-10-23
 lang: tr
 category: network
 draft: false
@@ -40,7 +41,7 @@ Tamga Network bu modeli izler ([ADR-0042](https://docs.tamga.network/tr/adr/0042
 - Ağın arayüzleri ve paketleri bir cüzdanın adını koda gömmez. Kullanılan ifade "cüzdanında aç"tır; bir cüzdanın adı gerekiyorsa listedeki kaydından gelir.
 - Tek bir sandbox var ve ağa ait. Cüzdan geliştiriciler kendi sağlayıcılarını orada kaydettirir ve herkesle aynı kurumlar, kimlik servisi ve doğrulayıcıyla test eder.
 
-Ağdaki cüzdanlardan biri olan Tamga Wallet, ayrı bir ürün olarak aynı yoldan gider. Cüzdan sağlayıcısını ağ değil, cüzdanın kendi işletmecisi kendi alan adı altında işletir. Listedeki sağlayıcı kaydı (`TAMGA-WP-1`) bugün ayrılmış durumda ve henüz anahtarı yok; o sağlayıcı servisi açılınca, her cüzdanda olduğu gibi sertifikası eklenir.
+Ağdaki cüzdanlardan biri olan Tamga Wallet, ayrı bir ürün olarak aynı yoldan gider. Cüzdan sağlayıcısını ağ değil, cüzdanın kendi işletmecisi kendi alan adı altında işletir. Listedeki sağlayıcı kaydı (`TAMGA-WP-1`) 14 Ekim 2026'dan beri etkin; sertifikasını, her cüzdanda olduğu gibi, o işletmeci verdi.
 
 ## Listeler kimin?
 

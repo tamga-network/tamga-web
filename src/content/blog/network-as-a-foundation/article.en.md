@@ -3,6 +3,7 @@ title: Why Tamga Network is non-profit and bound for a foundation
 slug: network-as-a-foundation
 description: Tamga Network sells no services and runs no wallet, and its operation will pass to a foundation. Why neutrality matters and how the hand-over works.
 date: 2026-10-08
+updated: 2026-10-23
 lang: en
 category: network
 draft: false
@@ -40,7 +41,7 @@ Tamga Network follows that model ([ADR-0042](https://docs.tamga.network/adr/0042
 - The network's interfaces and packages do not hard-code a wallet's name; "open in your wallet" is the wording, and a wallet's name, when needed, comes from its list entry.
 - There is one sandbox, and it belongs to the network. Wallet developers register their own provider there and test against the same institutions, identity service and verifier as everyone else.
 
-Tamga Wallet, one of the wallets on the network and a separate product, follows the same path. Its wallet provider is run by the wallet's own operator under the wallet's own domain, not by the network. Its provider entry (`TAMGA-WP-1`) is reserved in the list today and has no keys yet; it receives a certificate when that provider service opens, like any other wallet's.
+Tamga Wallet, one of the wallets on the network and a separate product, follows the same path. Its wallet provider is run by the wallet's own operator under the wallet's own domain, not by the network. Its provider entry (`TAMGA-WP-1`) has been active in the list since 14 October 2026, with a certificate supplied by that operator, like any other wallet's.
 
 ## Who owns the lists?
 

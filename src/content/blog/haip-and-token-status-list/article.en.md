@@ -3,13 +3,14 @@ title: "HAIP and Token Status List: high assurance without tracking"
 slug: haip-and-token-status-list
 description: What HAIP 1.0 fixes and how Tamga applies it, and how Token Status List revokes credentials without telling the issuer where they are used.
 date: 2026-10-08
+updated: 2026-10-23
 lang: en
 category: standards
 draft: false
 related: status-list-privacy, openid4vp-dcql-deep-dive, openid4vci-deep-dive, sd-jwt-vc-deep-dive, why-no-blockchain-yet
 ---
 
-<!-- Sources: HAIP 1.0 Final (24 Dec 2025) §3–8 (flows, FAPI2/PKCE/PAR, DPoP + DPoP-Nonce, scope, signed metadata, wallet attestation shared sub, key attestations, x509_hash, DCQL, ECDH-ES P-256, A128GCM+A256GCM, ephemeral keys, aki, JAR request_uri, direct_post.jwt, same-device rules, dc_api.jwt, mso_mdoc / dc+sd-jwt, x5c without trust anchor, status_list, unique unpredictable index, KB-JWT always, ES256 / -7 -9, SHA-256). ADR-0034 (K1–K5, CI1–CI6, renewal order). draft-ietf-oauth-status-list-21 (21 Jun 2026; RFC Editor queue per datatracker 2026-10-08; title "Token Status List (TSL)"): §4 bit packing LSB-first, DEFLATE/ZLIB, bits 1/2/4/8, JWT claims sub/iat/exp/ttl/status_list, aggregation_uri, §7 status types (0x03 application specific), §12 herd privacy. SPEC-CRED-0003 v1.0.0 (cites draft-20): bits=2, 100,000 min, 80% fill, random idx, opaque URI, split by type only, 2-min fixed cadence, no emergency publish, exp = iat + 6 h, ttl 120 (2026-10-09: 1% noise rule removed), prefetch, aggregation recommended, separate status key, Ş1–Ş10, S1–S14, anchors.jsonl today. SPEC-API-0001 D1–D6, INDETERMINATE reasons, ZK NOT_APPLICABLE. Compression figures computed for this post with zlib level 9 (same call as @tamga-network/sd-jwt). -->
+<!-- Sources: HAIP 1.0 Final (24 Dec 2025) §3–8 (flows, FAPI2/PKCE/PAR, DPoP + DPoP-Nonce, scope, signed metadata, wallet attestation shared sub, key attestations, x509_hash, DCQL, ECDH-ES P-256, A128GCM+A256GCM, ephemeral keys, aki, JAR request_uri, direct_post.jwt, same-device rules, dc_api.jwt, mso_mdoc / dc+sd-jwt, x5c without trust anchor, status_list, unique unpredictable index, KB-JWT always, ES256 / -7 -9, SHA-256). ADR-0034 (K1–K5, CI1–CI6, renewal order). draft-ietf-oauth-status-list-21 (21 Jun 2026; RFC Editor queue per datatracker 2026-10-08; title "Token Status List (TSL)"): §4 bit packing LSB-first, DEFLATE/ZLIB, bits 1/2/4/8, JWT claims sub/iat/exp/ttl/status_list, aggregation_uri, §7 status types (0x03 application specific), §12 herd privacy. SPEC-CRED-0003 v1.0.0 (cites draft-20): bits=2, 100,000 min, 80% fill, random idx, opaque URI, split by type only, 2-min fixed cadence, no emergency publish, exp = iat + 6 h, ttl 120 (2026-10-09: 1% noise rule removed), prefetch, aggregation recommended, separate status key, Ş1–Ş10, S1–S14, anchors.jsonl today. SPEC-API-0001 D1–D6, INDETERMINATE reasons, ZK NOT_APPLICABLE. ADR-0048 (bits per credential type, identity 1, institutions 2, suspension only where the schema allows; CWT form for mdoc; packages 0.6.0). ADR-0044 implemented in packages 0.4.0. Compression figures computed for this post with zlib level 9 (same call as @tamga-network/sd-jwt). -->
 
 **HAIP** (OpenID4VC High Assurance Interoperability Profile) 1.0 takes the many options in OpenID4VCI, OpenID4VP, SD-JWT VC and ISO mdoc and fixes one set for high-assurance use: which formats, algorithms, client identifiers, encryption and attestations every party must support. **Token Status List** is the revocation mechanism that set relies on: each credential points to a position in a large, signed, compressed bit list that verifiers download in advance, so checking a credential never tells the issuer where or when it was shown.
 
@@ -74,9 +75,9 @@ A credential carries a pointer, and the list carries the bits:
 }
 ```
 
-`sub` must equal the `uri` in the credential. `lst` is built in three steps defined by the draft: write `bits` bits per credential into a byte array, packing from the **least significant bit** of each byte; compress the array with DEFLATE in ZLIB format; base64url-encode the result.
+`sub` must equal the `uri` in the credential. An mdoc copy of the same credential uses the same `idx` but points to the CWT form of the list (`application/statuslist+cwt`) at its own opaque address; both forms carry the same bits and are signed in the same publication ([ADR-0048](https://docs.tamga.network/adr/0048-identity-no-suspension-mdoc-cwt-status)). `lst` is built in three steps defined by the draft: write `bits` bits per credential into a byte array, packing from the **least significant bit** of each byte; compress the array with DEFLATE in ZLIB format; base64url-encode the result.
 
-A tiny worked example with 16 entries and `bits: 2`, where index 1 is revoked, index 2 is suspended and index 6 is revoked:
+A tiny worked example: an institution's list with 16 entries and `bits: 2`, where index 1 is revoked, index 2 is suspended and index 6 is revoked:
 
 ```text title="Packing 2-bit statuses (computed for this post)"
 byte 0 = idx 3..0  → 00 10 01 00 → 0x24
@@ -87,7 +88,7 @@ byte 3 = idx 15..12 → 0x00
 zlib(level 9), base64url → eNpTEWBgAAAAxAA1
 ```
 
-To read index `idx` with `bits: 2`: take byte `idx >> 2` and shift right by `(idx & 3) × 2`. For `idx` 48213 that is byte 12053, bits 2 and 3. Size is not a concern: a Tamga list has at least 100,000 entries, 25,000 bytes uncompressed. With zlib at level 9 an all-valid list compresses to 46 bytes, and the same list with 200 scattered revocations to 439 bytes, in our test run for this post.
+To read index `idx` with `bits: 2`: take byte `idx >> 2` and shift right by `(idx & 3) × 2`. For `idx` 48213 that is byte 12053, bits 2 and 3. With `bits: 1` it is byte `idx >> 3`, bit `idx & 7`. Size is not a concern: a Tamga list has at least 100,000 entries, 25,000 bytes uncompressed with two bits (12,500 with one). With zlib at level 9 an all-valid list compresses to 46 bytes, and the same list with 200 scattered revocations to 439 bytes, in our test run for this post.
 
 ![Reading a credential's status in four steps](/blog/haip-and-token-status-list/en/fig-bits.png)
 
@@ -97,10 +98,10 @@ To read index `idx` with `bits: 2`: take byte `idx >> 2` and shift right by `(id
 |---|---|---|
 | `0x00` | VALID | valid |
 | `0x01` | INVALID | revoked, permanently |
-| `0x02` | SUSPENDED | suspended, reversible |
+| `0x02` | SUSPENDED | suspended, reversible; only in types whose schema allows it |
 | `0x03` | application-specific | not used; treated as revoked |
 
-The draft allows `bits` of 1, 2, 4 or 8. Tamga always uses 2, because suspension needs its own value: an institution investigating a diploma wants to pause it while the investigation runs. With one bit it would have to revoke without cause or do nothing. Four or eight bits would double or quadruple the list for no benefit. A verifier treats anything other than `0x00` as a rejection and shows "suspended" separately from "revoked".
+The draft allows `bits` of 1, 2, 4 or 8. Since packages 0.6.0 Tamga sets it per credential type ([ADR-0048](https://docs.tamga.network/adr/0048-identity-no-suspension-mdoc-cwt-status)). The identity service's credentials cannot be suspended, following the EU rule for person identification data, so their lists use one bit: valid or revoked, and a revocation is final. Institutions' lists use two bits, because suspension needs its own value: an institution investigating a diploma wants to pause it while the investigation runs. Even there `0x02` is written only for types whose schema allows suspension (`suspension_allowed`, today the diploma); a suspension value in any other type is rejected as a broken list. Four or eight bits would double or quadruple the list for no benefit. A verifier treats anything other than `0x00` as a rejection and shows "suspended" separately from "revoked".
 
 ## How does a status list avoid becoming a tracking channel?
 
@@ -133,7 +134,7 @@ Each publication is written to the status server first and its hash recorded sec
 
 Revocation checks run as steps D1–D6 of Tamga's pipeline: read `status.status_list`, take the token from the prefetch cache, verify its signature against the status key registered for that institution in the trust list, check `sub`, freshness and the recorded hash, then read the bits. When the list can't be fetched, or `exp` has passed, the outcome is **INDETERMINATE**, with a reason such as `STATUS_UNREACHABLE` or `STATUS_STALE`. "This diploma was revoked" and "I can't check right now" lead to different decisions about a person and must be shown differently. Offline, a verifier may continue from its cached token and last known record, show the time of the last synchronisation, and mark the result as verified offline.
 
-Zero-knowledge age proofs are the one case without an index: the proof reveals nothing that could identify a list position, so the status is reported as not applicable. The decision is to present with zero knowledge only short-lived copies, valid for at most 24 hours and not refreshed once the credential is revoked ([ADR-0044](https://docs.tamga.network/adr/0044-zk-short-lived-copies)); until that is implemented, a verifier accepts such a proof only when its policy explicitly says so ([ADR-0032](https://docs.tamga.network/adr/0032-zk-mdoc-presentation)).
+Zero-knowledge age proofs are the one case without an index: the proof reveals nothing that could identify a list position, so the status is reported as not applicable. The decision is to present with zero knowledge only short-lived copies, valid for at most 24 hours and not refreshed once the credential is revoked ([ADR-0044](https://docs.tamga.network/adr/0044-zk-short-lived-copies)). This has been in place since packages 0.4.0: the copies carry no status entry, the wallet refreshes them without asking, and their short lifetime stands in for the revocation check. A zero-knowledge proof that is not based on such a copy is accepted only when the verifier's policy explicitly says so ([ADR-0032](https://docs.tamga.network/adr/0032-zk-mdoc-presentation)).
 
 ## Frequently asked questions
 

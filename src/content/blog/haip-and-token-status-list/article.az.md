@@ -3,13 +3,14 @@ title: "HAIP və Token Status List: izləmədən yüksək təminat"
 slug: haip-and-token-status-list
 description: "HAIP 1.0 nəyi müəyyənləşdirir, Tamga onu necə tətbiq edir və Token Status List rəqəmsal sənədləri harada istifadə olunduqlarını sənədi verən quruma bildirmədən necə ləğv edir."
 date: 2026-10-08
+updated: 2026-10-23
 lang: az
 category: standards
 draft: false
 related: status-list-privacy, openid4vp-dcql-deep-dive, openid4vci-deep-dive, sd-jwt-vc-deep-dive, why-no-blockchain-yet
 ---
 
-<!-- Sources: HAIP 1.0 Final (24 Dec 2025) §3–8 (flows, FAPI2/PKCE/PAR, DPoP + DPoP-Nonce, scope, signed metadata, wallet attestation shared sub, key attestations, x509_hash, DCQL, ECDH-ES P-256, A128GCM+A256GCM, ephemeral keys, aki, JAR request_uri, direct_post.jwt, same-device rules, dc_api.jwt, mso_mdoc / dc+sd-jwt, x5c without trust anchor, status_list, unique unpredictable index, KB-JWT always, ES256 / -7 -9, SHA-256). ADR-0034 (K1–K5, CI1–CI6, renewal order). draft-ietf-oauth-status-list-21 (21 Jun 2026; RFC Editor queue per datatracker 2026-10-08; title "Token Status List (TSL)"): §4 bit packing LSB-first, DEFLATE/ZLIB, bits 1/2/4/8, JWT claims sub/iat/exp/ttl/status_list, aggregation_uri, §7 status types (0x03 application specific), §12 herd privacy. SPEC-CRED-0003 v1.0.0 (cites draft-20): bits=2, 100,000 min, 80% fill, random idx, opaque URI, split by type only, 2-min fixed cadence, no emergency publish, exp = iat + 6 h, ttl 120 (2026-10-09: 1% noise rule removed), prefetch, aggregation recommended, separate status key, Ş1–Ş10, S1–S14, anchors.jsonl today. SPEC-API-0001 D1–D6, INDETERMINATE reasons, ZK NOT_APPLICABLE. Compression figures computed for this post with zlib level 9 (same call as @tamga-network/sd-jwt). -->
+<!-- Sources: HAIP 1.0 Final (24 Dec 2025) §3–8 (flows, FAPI2/PKCE/PAR, DPoP + DPoP-Nonce, scope, signed metadata, wallet attestation shared sub, key attestations, x509_hash, DCQL, ECDH-ES P-256, A128GCM+A256GCM, ephemeral keys, aki, JAR request_uri, direct_post.jwt, same-device rules, dc_api.jwt, mso_mdoc / dc+sd-jwt, x5c without trust anchor, status_list, unique unpredictable index, KB-JWT always, ES256 / -7 -9, SHA-256). ADR-0034 (K1–K5, CI1–CI6, renewal order). draft-ietf-oauth-status-list-21 (21 Jun 2026; RFC Editor queue per datatracker 2026-10-08; title "Token Status List (TSL)"): §4 bit packing LSB-first, DEFLATE/ZLIB, bits 1/2/4/8, JWT claims sub/iat/exp/ttl/status_list, aggregation_uri, §7 status types (0x03 application specific), §12 herd privacy. SPEC-CRED-0003 v1.0.0 (cites draft-20): bits=2, 100,000 min, 80% fill, random idx, opaque URI, split by type only, 2-min fixed cadence, no emergency publish, exp = iat + 6 h, ttl 120 (2026-10-09: 1% noise rule removed), prefetch, aggregation recommended, separate status key, Ş1–Ş10, S1–S14, anchors.jsonl today. SPEC-API-0001 D1–D6, INDETERMINATE reasons, ZK NOT_APPLICABLE. ADR-0048 (bits per credential type, identity 1, institutions 2, suspension only where the schema allows; CWT form for mdoc; packages 0.6.0). ADR-0044 implemented in packages 0.4.0. Compression figures computed for this post with zlib level 9 (same call as @tamga-network/sd-jwt). -->
 
 **HAIP** (OpenID4VC High Assurance Interoperability Profile) 1.0 OpenID4VCI, OpenID4VP, SD-JWT VC və ISO mdoc-dakı çoxsaylı seçimlərdən yüksək təminat tələb edən istifadə üçün vahid bir dəst müəyyənləşdirir: hər tərəfin hansı formatları, alqoritmləri, müştəri identifikatorlarını, şifrələməni və attestasiyaları dəstəkləməli olduğunu. **Token Status List** bu dəstin əsaslandığı ləğv mexanizmidir: hər rəqəmsal sənəd yoxlayan tərəflərin əvvəlcədən endirdiyi böyük, imzalanmış, sıxılmış bit siyahısındakı bir mövqeyə işarə edir, buna görə də sənədin yoxlanması sənədi verən quruma onun harada və nə vaxt təqdim olunduğunu heç vaxt bildirmir.
 
@@ -74,9 +75,9 @@ Rəqəmsal sənəd göstərici daşıyır, siyahı isə bitləri:
 }
 ```
 
-`sub` rəqəmsal sənəddəki `uri` ilə eyni olmalıdır. `lst` layihədə müəyyən edilmiş üç addımda qurulur: hər rəqəmsal sənəd üçün `bits` bit bayt massivinə yazılır, hər baytın **ən kiçik mərtəbəli bitindən** başlayaraq doldurulur; massiv ZLIB formatında DEFLATE ilə sıxılır; nəticə base64url ilə kodlaşdırılır.
+`sub` rəqəmsal sənəddəki `uri` ilə eyni olmalıdır. Eyni sənədin mdoc nüsxəsi eyni `idx`-dən istifadə edir, lakin siyahının ayrıca, qeyri-şəffaf ünvandakı CWT formasına (`application/statuslist+cwt`) işarə edir; hər iki forma eyni bitləri daşıyır və eyni dərcdə imzalanır ([ADR-0048](https://docs.tamga.network/adr/0048-identity-no-suspension-mdoc-cwt-status)). `lst` layihədə müəyyən edilmiş üç addımda qurulur: hər rəqəmsal sənəd üçün `bits` bit bayt massivinə yazılır, hər baytın **ən kiçik mərtəbəli bitindən** başlayaraq doldurulur; massiv ZLIB formatında DEFLATE ilə sıxılır; nəticə base64url ilə kodlaşdırılır.
 
-16 qeyd və `bits: 2` ilə kiçik bir nümunə; burada 1-ci indeks ləğv edilib, 2-ci indeks dayandırılıb, 6-cı indeks isə ləğv edilib:
+Kiçik bir nümunə: 16 qeyd və `bits: 2` olan bir qurum siyahısı; burada 1-ci indeks ləğv edilib, 2-ci indeks dayandırılıb, 6-cı indeks isə ləğv edilib:
 
 ```text title="Packing 2-bit statuses (computed for this post)"
 byte 0 = idx 3..0  → 00 10 01 00 → 0x24
@@ -87,7 +88,7 @@ byte 3 = idx 15..12 → 0x00
 zlib(level 9), base64url → eNpTEWBgAAAAxAA1
 ```
 
-`bits: 2` ilə `idx` indeksini oxumaq üçün: `idx >> 2` baytını götürün və `(idx & 3) × 2` qədər sağa sürüşdürün. `idx` 48213 üçün bu, 12053-cü bayt, 2-ci və 3-cü bitlərdir. Ölçü problem deyil: Tamga siyahısında ən azı 100 000 qeyd olur, sıxılmamış halda 25 000 bayt. Bu yazı üçün apardığımız testdə zlib 9-cu səviyyədə tamamilə etibarlı siyahını 46 bayta, 200 səpələnmiş ləğv olan eyni siyahını isə 439 bayta sıxdı.
+`bits: 2` ilə `idx` indeksini oxumaq üçün: `idx >> 2` baytını götürün və `(idx & 3) × 2` qədər sağa sürüşdürün. `idx` 48213 üçün bu, 12053-cü bayt, 2-ci və 3-cü bitlərdir. `bits: 1` ilə bu, `idx >> 3` baytının `idx & 7` bitidir. Ölçü problem deyil: Tamga siyahısında ən azı 100 000 qeyd olur, sıxılmamış halda iki bitlə 25 000 bayt (bir bitlə 12 500). Bu yazı üçün apardığımız testdə zlib 9-cu səviyyədə tamamilə etibarlı siyahını 46 bayta, 200 səpələnmiş ləğv olan eyni siyahını isə 439 bayta sıxdı.
 
 ![Rəqəmsal sənədin statusunun dörd addımda oxunması](/blog/haip-and-token-status-list/en/fig-bits.png)
 
@@ -97,10 +98,10 @@ zlib(level 9), base64url → eNpTEWBgAAAAxAA1
 |---|---|---|
 | `0x00` | VALID | etibarlı |
 | `0x01` | INVALID | ləğv edilib, həmişəlik |
-| `0x02` | SUSPENDED | dayandırılıb, geri qaytarıla bilər |
+| `0x02` | SUSPENDED | dayandırılıb, geri qaytarıla bilər; yalnız sxemi icazə verən növlərdə |
 | `0x03` | tətbiqə xas | istifadə olunmur; ləğv edilmiş kimi qəbul edilir |
 
-Layihə `bits` üçün 1, 2, 4 və ya 8 dəyərinə icazə verir. Tamga həmişə 2-dən istifadə edir, çünki dayandırma üçün ayrıca dəyər lazımdır: diplomu araşdıran qurum araşdırma davam etdiyi müddətdə onu dayandırmaq istəyir. Bir bitlə o, ya əsassız ləğv etməli, ya da heç nə etməməli olardı. Dörd və ya səkkiz bit heç bir fayda vermədən siyahını iki və ya dörd dəfə böyüdərdi. Yoxlayan tərəf `0x00` dəyərindən fərqli istənilən dəyəri rədd kimi qəbul edir və "dayandırılıb" statusunu "ləğv edilib" statusundan ayrıca göstərir.
+Layihə `bits` üçün 1, 2, 4 və ya 8 dəyərinə icazə verir. Paketlərin 0.6.0 versiyasından bəri Tamga bunu rəqəmsal sənəd növünə görə təyin edir ([ADR-0048](https://docs.tamga.network/adr/0048-identity-no-suspension-mdoc-cwt-status)). Şəxsiyyət xidmətinin sənədləri Aİ-nin şəxsiyyət məlumatları qaydasına uyğun olaraq dayandırıla bilməz, ona görə də onların siyahıları bir bitdən istifadə edir: etibarlı və ya ləğv edilib, ləğv isə qətidir. Qurumların siyahıları iki bitdən istifadə edir, çünki dayandırma üçün ayrıca dəyər lazımdır: diplomu araşdıran qurum araşdırma davam etdiyi müddətdə onu dayandırmaq istəyir. Orada da `0x02` yalnız sxemi dayandırmaya icazə verən növlərdə yazılır (`suspension_allowed`, bu gün diplom); başqa növdə dayandırma dəyəri pozulmuş siyahı sayılır və rədd edilir. Dörd və ya səkkiz bit heç bir fayda vermədən siyahını iki və ya dörd dəfə böyüdərdi. Yoxlayan tərəf `0x00` dəyərindən fərqli istənilən dəyəri rədd kimi qəbul edir və "dayandırılıb" statusunu "ləğv edilib" statusundan ayrıca göstərir.
 
 ## Status siyahısı izləmə kanalına çevrilməkdən necə qorunur?
 
@@ -133,7 +134,7 @@ Hər dərc əvvəlcə status serverinə yazılır, sonra isə onun heşi qeydə 
 
 Ləğv yoxlamaları Tamga-nın emal ardıcıllığının (pipeline) D1–D6 addımları kimi icra olunur: `status.status_list` oxunur, token ilkin yükləmə keşindən götürülür, onun imzası etibar siyahısında həmin qurum üçün qeydiyyata alınmış status açarı ilə yoxlanılır, `sub`, aktuallıq və qeydə alınmış heş yoxlanılır, sonra bitlər oxunur. Siyahı yüklənə bilmədikdə və ya `exp` keçdikdə nəticə `STATUS_UNREACHABLE` və ya `STATUS_STALE` kimi səbəblə **INDETERMINATE** olur. "Bu diplom ləğv edilib" və "Hazırda yoxlaya bilmirəm" şəxs barədə fərqli qərarlara aparır və fərqli göstərilməlidir. Oflayn rejimdə yoxlayan tərəf keşdəki token və son məlum qeyd əsasında davam edə, son sinxronizasiya vaxtını göstərə və nəticəni oflayn yoxlanılmış kimi işarələyə bilər.
 
-Sıfır bilikli (zero-knowledge) yaş sübutları indeksi olmayan yeganə haldır: sübut siyahıdakı mövqeyi müəyyən edə biləcək heç nəyi açıqlamır, ona görə də status "tətbiq olunmur" kimi bildirilir. Qərar belədir: sıfır biliklə yalnız qısamüddətli nüsxələr təqdim edilir; onlar ən çoxu 24 saat etibarlıdır və rəqəmsal sənəd ləğv edildikdən sonra yenilənmir ([ADR-0044](https://docs.tamga.network/adr/0044-zk-short-lived-copies)); bu tətbiq olunana qədər yoxlayan tərəf belə sübutu yalnız öz siyasəti bunu açıq şəkildə nəzərdə tutduqda qəbul edir ([ADR-0032](https://docs.tamga.network/adr/0032-zk-mdoc-presentation)).
+Sıfır bilikli (zero-knowledge) yaş sübutları indeksi olmayan yeganə haldır: sübut siyahıdakı mövqeyi müəyyən edə biləcək heç nəyi açıqlamır, ona görə də status "tətbiq olunmur" kimi bildirilir. Qərar belədir: sıfır biliklə yalnız qısamüddətli nüsxələr təqdim edilir; onlar ən çoxu 24 saat etibarlıdır və rəqəmsal sənəd ləğv edildikdən sonra yenilənmir ([ADR-0044](https://docs.tamga.network/adr/0044-zk-short-lived-copies)). Bu, paketlərin 0.4.0 versiyasından bəri tətbiq olunur: nüsxələr ləğv siyahısı qeydi daşımır, rəqəmsal cüzdan onları soruşmadan yeniləyir və qısa ömürləri ləğv yoxlamasını əvəz edir. Belə nüsxəyə əsaslanmayan sıfır bilik sübutunu yoxlayan tərəf yalnız öz siyasəti bunu açıq şəkildə nəzərdə tutduqda qəbul edir ([ADR-0032](https://docs.tamga.network/adr/0032-zk-mdoc-presentation)).
 
 ## Tez-tez verilən suallar
 

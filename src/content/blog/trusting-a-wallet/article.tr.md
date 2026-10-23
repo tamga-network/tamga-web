@@ -3,6 +3,7 @@ title: "Cüzdana nasıl güvenilir? Cüzdan ve anahtar kanıtları"
 slug: trusting-a-wallet
 description: Tamga Network'te bir kurum belge vereceği cüzdana nasıl güvenir: cüzdan kanıtı, anahtar kanıtı, donanım kanıtı ve güven listesi.
 date: 2026-10-08
+updated: 2026-10-23
 lang: tr
 category: privacy
 draft: false
@@ -90,7 +91,7 @@ Kanıt doğrulanana kadar kurulum yazılım seviyesinde sayılır. Bunun ne anla
 
 Donanım anahtarları telefon kilidine de bağlıdır. Belge anahtarı yalnız telefonun kilidi açıkken kullanılabilir ve her sunum cihazın biyometrisi ya da parolasıyla onaylanır (WL11 kuralı).
 
-Android'de sağlayıcı ayrıca uygulamanın mağazadan geldiğini gösteren bir [Play Integrity](https://developer.android.com/google/play/integrity) sonucu gönderebilir. Bugün bu isteğe bağlıdır: anahtar kanıtından gelen seviyeyi hiçbir zaman düşürmez ve yokluğu kaydı engellemez. Zorunlu yapmak kararı değiştirir ve ayrı bir karar kaydı gerektirir.
+Android'de sağlayıcı ayrıca uygulamanın mağazadan geldiğini gösteren bir [Play Integrity](https://developer.android.com/google/play/integrity) sonucu gönderebilir. W2 seviyesinde bu isteğe bağlıdır: anahtar kanıtından gelen seviyeyi hiçbir zaman düşürmez ve yokluğu kaydı engellemez. En yüksek seviye W3'te sağlayıcı, birimi etkinleştirirken ve W3 beyan eden her anahtar kanıtından önce platformun cihaz kanıtını doğrulamak zorundadır (RB-WP-17).
 
 ## Kurum belge vermeden önce neyi denetler?
 
@@ -125,14 +126,14 @@ Kaybolan ya da çalınan bir telefonu uzaktan geri çekmek, kişinin o telefon o
 - arayüzleri ve paketleri hiçbir cüzdanın adını sabit yazmaz;
 - tek bir sandbox var ve ağa ait: cüzdan geliştiricisi kendi sağlayıcısını işletir ve sandbox listesine kaydeder.
 
-[Tamga Wallet](https://tamgawallet.com/tr) ağdaki cüzdanlardan biridir. Ayrı bir üründür ve listeye her cüzdan gibi girer. 8 Ekim 2026'da sağlayıcısının (`TAMGA-WP-1`) gerçek listede bir kaydı, sandbox listesinde de aynı kaydı var; ikisi de `RESERVED`. Yer ayrılmış ama cüzdanın işletmecisi kendi sertifikasını verene kadar kayıtta imza anahtarı yok; dolayısıyla henüz bu kayda karşı hiçbir kanıt geçemez. Sandbox listesinde ayrıca ağın kendi deneme sahneleri için test sağlayıcısı bulunur. Kayıt bugün elle ve proje yönetimi onayıyla yapılıyor; cüzdan sağlayıcılarının kendi kendine kaydı ayrı bir karar gerektiriyor.
+[Tamga Wallet](https://tamgawallet.com/tr) ağdaki cüzdanlardan biridir. Ayrı bir üründür ve listeye her cüzdan gibi girer. Sağlayıcısının (`TAMGA-WP-1`) gerçek listede bir kaydı, sandbox listesinde de aynı kaydı var; ikisi de 14 Ekim 2026'dan beri `ACTIVE`. O gün cüzdanın işletmecisi sağlayıcı servisini cüzdanın kendi alan adı altında açtı ve kendi sertifikasını verdi. Sandbox listesinde ayrıca ağın kendi deneme sahneleri için test sağlayıcısı bulunur. Kayıt bugün elle ve proje yönetimi onayıyla yapılıyor; cüzdan sağlayıcılarının kendi kendine kaydı ayrı bir karar gerektiriyor.
 
 ## Bugünkü dürüst sınırlar neler?
 
-- **Cihaz testi hâlâ önde.** Donanım anahtarları ve cihaz kanıtı uygulandı; gerçek cihazlarda test uygulama mağazası sürümüyle gelecek ([ARF §2.8](https://arf.tamga.network/tr/architecture)).
-- **Gerçek listede henüz etkin bir cüzdan sağlayıcısı yok.** Tek kayıt, yukarıda anlatıldığı gibi ayrılmış durumda.
-- **Play Integrity isteğe bağlı**; anahtar kanıtı olmayan proof'u kabul eden geçiş de pilota kadar sürüyor.
-- **Kaybolan telefonun uzaktan geri çekilmesi** sonraki bir adımı bekliyor.
+- **Cihaz testi sürüyor.** Donanım anahtarları ve cihaz kanıtı uygulandı; gerçek telefonlarda test başladı ve uygulama mağazası sürümünden önce bitecek ([ARF §2.8](https://arf.tamga.network/tr/architecture)).
+- **Şimdilik tek etkin cüzdan sağlayıcısı var.** Gerçek listede yalnız yukarıda anlatılan Tamga Wallet kaydı bulunuyor.
+- **Play Integrity W3'ün altında isteğe bağlı**; anahtar kanıtı olmayan proof'u kabul eden geçiş de pilota kadar sürüyor.
+- **Kaybolan telefonun iptali** hesap gerektirmez, ama kişinin sağlayıcının etkinleştirmede bir kez gösterdiği iptal kodunu saklamasına dayanır (RB-WP-15).
 - **Henüz sertifikalı güvenli öğe yok.** W3 devlet aşamasına ait.
 - **Kanıtlar yazılımı ve anahtarları kanıtlar, kişiyi değil.** Kişinin kim olduğu ayrı bir sorudur ve kurumdaki kimlik doğrulamayla cevaplanır.
 

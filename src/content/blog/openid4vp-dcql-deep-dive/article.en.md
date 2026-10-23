@@ -3,6 +3,7 @@ title: "OpenID4VP and DCQL deep dive: request to verdict"
 slug: openid4vp-dcql-deep-dive
 description: "How a verifier requests and checks credentials with OpenID4VP 1.0: x509_hash signed requests, DCQL, encrypted direct_post.jwt, the A–E pipeline."
 date: 2026-10-08
+updated: 2026-10-23
 lang: en
 category: standards
 draft: false
@@ -196,7 +197,7 @@ HAIP requires both sides to support the same-device flow and recommends it unles
 
 With the W3C Digital Credentials API the browser itself carries the request to the wallet and the response back, using `response_mode: dc_api.jwt`. The audience of the presentation is then the page's origin, written as `origin:https://verifier.example.org`, and the browser itself supplies it: a phishing site can't claim another site's origin. A wallet must never accept `origin:` as a client identifier inside a request. Tamga still recommends a signed request with `x509_hash` in this flow too, because origin binding solves phishing while `x509_hash` is what makes the registry lookup and over-asking check possible.
 
-Status today: QR and link presentation are live. The Tamga verifier is ready for the Digital Credentials API, and the wallet connection to it is not there yet.
+Status today: QR and link presentation are live. The Tamga verifier uses the Digital Credentials API by default in browsers that support it, with the QR code as a fallback on desktop. On the wallet side, Tamga Wallet supports it on Android in its first release, still being tested on devices; iPhone support is not there yet.
 
 ## Frequently asked questions
 

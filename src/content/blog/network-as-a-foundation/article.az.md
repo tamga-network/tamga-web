@@ -3,6 +3,7 @@ title: Tamga Network niyə qeyri-kommersiyadır və fonda keçəcək
 slug: network-as-a-foundation
 description: "Tamga Network heç bir xidmət satmır, rəqəmsal cüzdan idarə etmir və onun fəaliyyəti fonda veriləcək. Neytrallıq niyə vacibdir və təhvil necə həyata keçirilir."
 date: 2026-10-08
+updated: 2026-10-23
 lang: az
 category: network
 draft: false
@@ -40,7 +41,7 @@ Tamga Network bu modeli izləyir ([ADR-0042](https://docs.tamga.network/adr/0042
 - Şəbəkənin interfeyslərində və paketlərində heç bir cüzdanın adı sabit kodla yazılmır; ifadə "rəqəmsal cüzdanınızda açın" şəklindədir, cüzdanın adı isə lazım olduqda onun siyahıdakı qeydindən götürülür.
 - Yalnız bir sınaq mühiti var və o, şəbəkəyə məxsusdur. Cüzdan tərtibatçıları orada öz provayderlərini qeydiyyatdan keçirir və hamı kimi eyni qurumlar, şəxsiyyət xidməti və yoxlayan tərəflə sınaq aparırlar.
 
-Şəbəkədəki rəqəmsal cüzdanlardan biri və ayrıca məhsul olan Tamga Wallet da eyni yolu izləyir. Onun cüzdan provayderini şəbəkə deyil, cüzdanın öz operatoru cüzdanın öz domeni altında idarə edir. Onun provayder qeydi (`TAMGA-WP-1`) bu gün siyahıda rezerv edilib və hələ açarları yoxdur; həmin provayder xidməti açıldıqda, istənilən digər cüzdanınkı kimi, sertifikat alacaq.
+Şəbəkədəki rəqəmsal cüzdanlardan biri və ayrıca məhsul olan Tamga Wallet da eyni yolu izləyir. Onun cüzdan provayderini şəbəkə deyil, cüzdanın öz operatoru cüzdanın öz domeni altında idarə edir. Onun provayder qeydi (`TAMGA-WP-1`) 14 oktyabr 2026-cı ildən bəri siyahıda aktivdir; sertifikatı, istənilən digər cüzdanda olduğu kimi, həmin operator təqdim edib.
 
 ## Siyahılar kimə məxsusdur?
 

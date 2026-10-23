@@ -3,6 +3,7 @@ title: "OpenID4VCI ətraflı: təkliflər, DPoP, sübutlar, paketlər"
 slug: openid4vci-deep-dive
 description: "Tamga-da OpenID4VCI 1.0 ilə sənəd verilməsi: təkliflər və tx_code, PAR və PKCE, DPoP, nonce endpoint-i, açar sübutları, cüzdan attestasiyası, 10-luq paketlər."
 date: 2026-10-08
+updated: 2026-10-23
 lang: az
 category: standards
 draft: false
@@ -232,7 +233,7 @@ Xeyr. Sənədi verən qurum təqdimatları görmür, nüsxələrin isə ortaq a�
 
 ### Nüsxələr bitdikdə nə baş verir?
 
-İki nüsxə qaldıqda rəqəmsal cüzdan birdəfəlik, DPoP-a bağlı yeniləmə tokenindən istifadə edərək yeni dəst tələb edir. Artıq tanıdığı yoxlayan tərəfdə həmin yoxlayan tərəfin nüsxəsindən istifadə etməyə davam edir; yeni yoxlayan tərəfdə isə nüsxədən təkrar istifadə etməzdən əvvəl şəxsdən soruşur.
+İki nüsxə qaldıqda rəqəmsal cüzdan birdəfəlik yeniləmə tokenindən istifadə edərək yeni dəst tələb edir. Token buraxılış zamanı istifadə olunan cüzdan attestasiyasının açarına bağlıdır və rəqəmsal cüzdan bunu həmin açar üçün təzə attestasiya ilə sübut edir; DPoP açarı dəyişə bilər ([ADR-0060](https://docs.tamga.network/adr/0060-refresh-token-client-instance-binding)). Artıq tanıdığı yoxlayan tərəfdə həmin yoxlayan tərəfin nüsxəsindən istifadə etməyə davam edir; yeni yoxlayan tərəfdə isə nüsxədən təkrar istifadə etməzdən əvvəl şəxsdən soruşur.
 
 ## Mənbələr
 

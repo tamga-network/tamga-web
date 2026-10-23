@@ -3,6 +3,7 @@ title: Bir kurum Tamga Network'e nasıl katılır?
 slug: join-as-an-institution
 description: Bir kurum Tamga Network'e nasıl katılır: sandbox'ta deneme, kayıt bilgileri ve CSR ile başvuru, güven listesine giriş ve ilk belge.
 date: 2026-10-08
+updated: 2026-10-23
 lang: tr
 category: network
 draft: false
@@ -104,6 +105,8 @@ Yetki belge türü başına verilir. Sonradan yeni bir tür eklenebilir ya da bi
 | Ne çalıştırır | Tamga'nın belge verme servisi ve Kurum Konsolu | `@tamga-network/issuer` paketi (OpenID4VCI) |
 | Nasıl bağlanırsınız | konsoldan ya da sisteminizden kapsamlı bir API anahtarıyla | kendi kurulumunuz |
 | Kime uygun | hızlı başlamak, masada belge vermek, küçük ekipler | her şeyi kendi bünyesinde tutmak isteyen kurumlar |
+
+Barındırılan serviste de anahtar kurumda kalır: servis kurumun uzaktan imza hizmetine (CSC API v2) yalnız bir özet gönderir ve imzayı geri alır ([ADR-0057](https://docs.tamga.network/tr/adr/0057-hosted-issuance-remote-signing)).
 
 [Kurum Konsolu](https://docs.tamga.network/tr/adr/0019-institution-console-and-database) çalışanların işini yaptığı yerdir: passkey ile girerler, kayıtları yönetirler, masada QR kod ve ayrıca verilen bir PIN'le belge verirler, belgeleri iptal eder ya da askıya alırlar, belge verme istatistiklerini görürler. İstatistiklerde hiçbir zaman kişisel veri yoktur. Kurumun sistemleri aynı işleri kuruma bağlı ve kapsamı sınırlı bir API anahtarıyla da yapabilir ([ADR-0016](https://docs.tamga.network/tr/adr/0016-hosted-issuer-api-access)).
 

@@ -3,6 +3,7 @@ title: Qurum Tamga Network-a necə qoşulur
 slug: join-as-an-institution
 description: "Qurum Tamga Network-a necə qoşulur: sınaq mühitində yoxlayır, qeydiyyat məlumatları və CSR ilə müraciət edir, siyahıya düşür, ilk rəqəmsal sənədi verir."
 date: 2026-10-08
+updated: 2026-10-23
 lang: az
 category: network
 draft: false
@@ -104,6 +105,8 @@ Səlahiyyət hər rəqəmsal sənəd növü üzrə ayrıca verilir. Növ sonrada
 | Nə işlədir | Tamga-nın sənəd vermə xidməti və Qurum Konsolu | `@tamga-network/issuer` paketi (OpenID4VCI) |
 | Necə qoşulursunuz | konsol vasitəsilə və ya sisteminizdən məhdud səlahiyyətli API açarı ilə | öz yerləşdirməniz |
 | Nə üçün uyğundur | sürətli başlanğıc, yerində sənəd vermə, kiçik komandalar | hər şeyi daxildə saxlamaq istəyən qurumlar |
+
+Host edilən xidmətdə də açar qurumda qalır: xidmət qurumun uzaqdan imza xidmətinə (CSC API v2) yalnız heş göndərir və imzanı geri alır ([ADR-0057](https://docs.tamga.network/adr/0057-hosted-issuance-remote-signing)).
 
 [Qurum Konsolu](https://docs.tamga.network/adr/0019-institution-console-and-database) əməkdaşların işlədiyi yerdir: onlar passkey ilə daxil olur, qeydləri idarə edir, QR kod və ayrıca verilən PIN ilə yerində sənəd verir, rəqəmsal sənədləri ləğv edir və ya dayandırır, sənəd vermə statistikasına baxırlar. Statistikada heç vaxt fərdi məlumatlar olmur. Sistemlər eyni əməliyyatları quruma bağlı və əhatəsi məhdud API açarı vasitəsilə yerinə yetirə bilər ([ADR-0016](https://docs.tamga.network/adr/0016-hosted-issuer-api-access)).
 

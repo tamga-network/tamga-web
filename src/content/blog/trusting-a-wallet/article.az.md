@@ -3,6 +3,7 @@ title: "Rəqəmsal cüzdana necə etibar edilir? Attestasiyalar və aparat açar
 slug: trusting-a-wallet
 description: "Tamga Network-da qurum rəqəmsal cüzdana sənəd verməyin təhlükəsiz olduğuna necə qərar verir: cüzdan və açar attestasiyaları, aparat sübutları və etibar siyahısı."
 date: 2026-10-08
+updated: 2026-10-23
 lang: az
 category: privacy
 draft: false
@@ -90,7 +91,7 @@ Sübut yoxlanılana qədər quraşdırma proqram səviyyəsində sayılır. Bunu
 
 Aparat açarları həm də telefonun kilidinə bağlıdır. Rəqəmsal sənəd açarından yalnız telefonun kilidi açıq olduqda istifadə etmək mümkündür və hər təqdimat cihazın biometrik məlumatları və ya parolu ilə təsdiqlənir (WL11 qaydası).
 
-Android-də provayder əlavə olaraq tətbiqin mağazadan yükləndiyini göstərən [Play Integrity](https://developer.android.com/google/play/integrity) nəticəsini də göndərə bilər. Hazırda bu, könüllüdür: o, açar attestasiyasından götürülən səviyyəni heç vaxt aşağı salmır və onun olmaması qeydiyyata mane olmur. Onu məcburi etmək qəbul edilmiş qərarı dəyişərdi və ayrıca qərar qeydi tələb edir.
+Android-də provayder əlavə olaraq tətbiqin mağazadan yükləndiyini göstərən [Play Integrity](https://developer.android.com/google/play/integrity) nəticəsini də göndərə bilər. W2 səviyyəsində bu, könüllüdür: o, açar attestasiyasından götürülən səviyyəni heç vaxt aşağı salmır və onun olmaması qeydiyyata mane olmur. Ən yüksək səviyyə olan W3-də provayder vahidi aktivləşdirərkən və W3 bəyan edən hər açar attestasiyasından əvvəl platformanın cihaz attestasiyasını yoxlamalıdır (RB-WP-17).
 
 ## Qurum sənədi verməzdən əvvəl nəyi yoxlayır?
 
@@ -125,14 +126,14 @@ Telefonda artıq olan rəqəmsal sənədlər bundan ayrıdır: onları verən qu
 - şəbəkənin interfeyslərində və paketlərində heç bir cüzdanın adı sabit kodlaşdırılmayıb;
 - yalnız bir sınaq mühiti (sandbox) var və o, şəbəkəyə məxsusdur: cüzdan tərtibatçısı öz provayderini işlədir və onu sandbox siyahısında qeydiyyatdan keçirir.
 
-[Tamga Wallet](https://tamgawallet.com/en) şəbəkədəki rəqəmsal cüzdanlardan biridir. O, ayrıca məhsuldur və siyahıya digər cüzdanlarla eyni yolla daxil olur. 8 oktyabr 2026-cı il tarixinə onun provayderinin (`TAMGA-WP-1`) istehsal siyahısında bir qeydi, sandbox siyahısında isə eyni qeydi var, hər ikisi `RESERVED`: yer ayrılıb, lakin cüzdanın operatoru öz sertifikatını təqdim edənə qədər qeyddə imza açarı yoxdur, buna görə hələlik heç bir attestasiya bu qeyd əsasında yoxlamadan keçə bilməz. Sandbox siyahısında həmçinin şəbəkənin öz ssenariləri üçün test provayderi var. Qeydiyyat hazırda əl ilə, layihə rəhbərliyinin təsdiqi ilə aparılır; cüzdan provayderlərinin özlərini qeydiyyatdan keçirməsi ayrıca qərar tələb edir.
+[Tamga Wallet](https://tamgawallet.com/en) şəbəkədəki rəqəmsal cüzdanlardan biridir. O, ayrıca məhsuldur və siyahıya digər cüzdanlarla eyni yolla daxil olur. Onun provayderinin (`TAMGA-WP-1`) istehsal siyahısında bir qeydi, sandbox siyahısında isə eyni qeydi var və hər ikisi 14 oktyabr 2026-cı ildən bəri `ACTIVE`-dir: həmin gün cüzdanın operatoru provayder xidmətini cüzdanın öz domeni altında açdı və öz sertifikatını təqdim etdi. Sandbox siyahısında həmçinin şəbəkənin öz ssenariləri üçün test provayderi var. Qeydiyyat hazırda əl ilə, layihə rəhbərliyinin təsdiqi ilə aparılır; cüzdan provayderlərinin özlərini qeydiyyatdan keçirməsi ayrıca qərar tələb edir.
 
 ## Bu gün açığını desək, hansı məhdudiyyətlər var?
 
-- **Real cihazlarda sınaq hələ qarşıdadır.** Aparat açarları və cihaz attestasiyası həyata keçirilib; real cihazlarda sınaq tətbiq mağazalarında buraxılışla birlikdə aparılacaq ([ARF §2.8](https://arf.tamga.network/architecture)).
-- **İstehsal siyahısında hələ aktiv cüzdan provayderi yoxdur.** Yeganə qeyd, yuxarıda təsvir edildiyi kimi, ehtiyatda saxlanılır.
-- **Play Integrity məcburi deyil**, açar attestasiyası olmadan sübutları qəbul edən keçid dövrü isə pilota qədər davam edir.
-- **İtirilmiş telefonun uzaqdan deaktiv edilməsi** sonrakı mərhələni gözləyir.
+- **Real cihazlarda sınaq davam edir.** Aparat açarları və cihaz attestasiyası həyata keçirilib; real telefonlarda sınaq başlayıb və tətbiq mağazalarında buraxılışdan əvvəl başa çatacaq ([ARF §2.8](https://arf.tamga.network/architecture)).
+- **Hələlik yalnız bir aktiv cüzdan provayderi var.** İstehsal siyahısında yalnız yuxarıda təsvir edilən Tamga Wallet qeydi var.
+- **Play Integrity W3-dən aşağıda məcburi deyil**, açar attestasiyası olmadan sübutları qəbul edən keçid dövrü isə pilota qədər davam edir.
+- **İtirilmiş telefonun ləğvi** hesab tələb etmir, lakin şəxsin provayderin aktivləşdirmə zamanı bir dəfə göstərdiyi ləğv kodunu saxlamasına əsaslanır (RB-WP-15).
 - **Hələ sertifikatlaşdırılmış təhlükəsiz element yoxdur.** W3 dövlət mərhələsinə aiddir.
 - **Attestasiyalar şəxsi deyil, proqram təminatını və açarları sübut edir.** Şəxsin kim olduğu ayrıca sualdır və ona qurumda aparılan şəxsiyyət yoxlaması cavab verir.
 

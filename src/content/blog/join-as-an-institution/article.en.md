@@ -3,6 +3,7 @@ title: How an institution joins Tamga Network
 slug: join-as-an-institution
 description: How an institution joins Tamga Network: try it in the sandbox, apply with registration data and a CSR, get listed, issue the first credential.
 date: 2026-10-08
+updated: 2026-10-23
 lang: en
 category: network
 draft: false
@@ -104,6 +105,8 @@ There are two ways, and the credential is the same in both: issued in the instit
 | What runs it | Tamga's issuance service and the Institution Console | the `@tamga-network/issuer` package (OpenID4VCI) |
 | How you connect | the console, or a scoped API key from your system | your own deployment |
 | Good for | starting quickly, desk issuance, small teams | institutions that want everything in-house |
+
+In the hosted service the key still stays with the institution: the service sends only a digest to the institution's remote signing service (CSC API v2) and receives the signature back ([ADR-0057](https://docs.tamga.network/adr/0057-hosted-issuance-remote-signing)).
 
 The [Institution Console](https://docs.tamga.network/adr/0019-institution-console-and-database) is where staff work: they sign in with a passkey, manage records, issue at the desk with a QR code and a PIN given separately, revoke or suspend credentials and see issuance statistics. The statistics never contain personal data. Systems can do the same through an API key bound to the institution and limited in scope ([ADR-0016](https://docs.tamga.network/adr/0016-hosted-issuer-api-access)).
 

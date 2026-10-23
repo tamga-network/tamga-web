@@ -3,6 +3,7 @@ title: "ISO mdoc ayrıntılı: CBOR, COSE, MSO ve bağlantı kurma"
 slug: iso-mdoc-deep-dive
 description: Bir ISO/IEC 18013-5 mdoc nasıl kurulur ve doğrulanır; CBOR ve COSE, MSO ve özetler, cihaz imzası, oturum dökümü, QR ve Bluetooth.
 date: 2026-10-08
+updated: 2026-10-23
 lang: tr
 category: standards
 draft: false
@@ -80,12 +81,12 @@ MSO kurumun imzaladığı parçadır. Kodlanır, etiket 24'e sarılır ve kurumu
     "validUntil": 0("2028-10-07T08:00:00Z")
   },
   "status": {
-    "status_list": { "idx": 48213, "uri": "https://status.tamga.network/3f9a2c" }
+    "status_list": { "idx": 48213, "uri": "https://status.tamga.network/c7d41e" }
   }
 }
 ```
 
-Yukarıdaki `age_over_18` öğesinin özeti `1192084209` altında saklanan değerdir. `deviceKey` bir COSE_Key'dir (`1: 2` EC2 anahtar, `-1: 1` P-256 eğrisi, `-2`/`-3` koordinatlar); SD-JWT'deki `cnf.jwk` ile aynı açık anahtar. `validityInfo.signed`, SD-JWT'deki `iat`'ın yerini tutar: Tamga'nın zamana bağlı güven denetimleri kurumun o anda listede ve yetkili olup olmadığını sorar. `status`, SD-JWT kopyasıyla aynı Token Status List sırasını gösterir; kimlik belgesini iptal etmek tek bitle iki gösterimi birden iptal eder.
+Yukarıdaki `age_over_18` öğesinin özeti `1192084209` altında saklanan değerdir. `deviceKey` bir COSE_Key'dir (`1: 2` EC2 anahtar, `-1: 1` P-256 eğrisi, `-2`/`-3` koordinatlar); SD-JWT'deki `cnf.jwk` ile aynı açık anahtar. `validityInfo.signed`, SD-JWT'deki `iat`'ın yerini tutar: Tamga'nın zamana bağlı güven denetimleri kurumun o anda listede ve yetkili olup olmadığını sorar. `status`, SD-JWT kopyasıyla aynı sırayı kullanır ama aynı Token Status List'in ayrı, opak bir adresteki CWT biçimine (`application/statuslist+cwt`) işaret eder; böylece mdoc okuyucusu JWT ayrıştırıcısı taşımaz. İki biçim aynı bitleri taşır ve aynı yayında imzalanır; kimlik belgesini iptal etmek iki gösterimi birden iptal eder ([ADR-0048](https://docs.tamga.network/tr/adr/0048-identity-no-suspension-mdoc-cwt-status)).
 
 ## Belge sahibi, mdoc'un verildiği cihaz olduğunu nasıl kanıtlar?
 
@@ -141,7 +142,7 @@ Yani her şey **SessionTranscript**'e bağlı: içine ne girerse yanıt ona bağ
 
 Oturum iletileri AES-256-GCM kullanır; 12 baytlık IV, 8 baytlık bir kimlikten (okuyucu için hepsi sıfır, cihaz için `…01`) ve 1'den başlayan 4 baytlık ileti sayacından oluşur. BLE'de telefon GATT sunucusudur; her ileti parçalara bölünür, devamı varsa parçanın ilk baytı `0x01`, son parçada `0x00`'dır.
 
-Bugünkü durum: protokol çekirdeği (tanıtım, oturum şifrelemesi, BLE parçalama) `@tamga-network/mdoc` içinde yazıldı ve test edildi; BLE radyosunu cüzdan uygulaması sağlar. Cihaz testleri sürüyor. NFC kullanılmaz; bağlantı her zaman QR koddan başlar. Okuyucu kimlik doğrulaması henüz yok; bu yüzden cüzdan kişiye okuyucunun doğrulanmadığını söyler. OpenID4VP üzerinden çevrim içi mdoc gösterimi, SD-JWT VC ile aynı istek akışını kullanır.
+Bugünkü durum: protokol çekirdeği (tanıtım, oturum şifrelemesi, BLE parçalama) `@tamga-network/mdoc` içinde yazıldı ve test edildi; BLE radyosunu cüzdan uygulaması sağlar. Cihaz testleri sürüyor. NFC kullanılmaz; bağlantı her zaman QR koddan başlar. Paketlerin 0.6.0 sürümünden beri okuyucu isteğini imzalar (okuyucu kimlik doğrulaması) ve cüzdan bunu imzalı güven listesindeki çapalara karşı denetler; 0.7.0'dan beri kayıt sertifikası olmayan istek, çevrim içinde olduğu gibi yüz yüze de reddedilir. OpenID4VP üzerinden çevrim içi mdoc gösterimi, SD-JWT VC ile aynı istek akışını kullanır.
 
 ## Doğrulayıcı bir mdoc'u nasıl denetler?
 

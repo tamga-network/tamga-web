@@ -3,6 +3,7 @@ title: "OpenID4VCI ayrıntılı: teklif, DPoP, kanıt, 10'lu paket"
 slug: openid4vci-deep-dive
 description: Tamga'da OpenID4VCI 1.0 ile belge verme; teklif ve tx_code, PAR ve PKCE, DPoP, nonce ucu, anahtar kanıtları, cüzdan doğrulaması, 10 kopyalık paket.
 date: 2026-10-08
+updated: 2026-10-23
 lang: tr
 category: standards
 draft: false
@@ -232,7 +233,7 @@ Hayır. Kurum gösterimleri görmez; kopyalar ne anahtar ne durum sırası payla
 
 ### Kopyalar bitince ne olur?
 
-İki kopya kalınca cüzdan, tek kullanımlık ve DPoP'a bağlı bir yenileme belirteciyle yeni paket ister. Tanıdığı bir doğrulayıcıda o doğrulayıcının kopyasını kullanmaya devam eder; yeni bir doğrulayıcıda bir kopyayı yeniden kullanmadan önce kişiye sorar.
+İki kopya kalınca cüzdan, tek kullanımlık bir yenileme belirteciyle yeni paket ister. Belirteç, ihraçta kullanılan cüzdan doğrulamasının anahtarına bağlıdır; cüzdan bunu o anahtar için taze bir doğrulamayla kanıtlar, DPoP anahtarı değişebilir ([ADR-0060](https://docs.tamga.network/tr/adr/0060-refresh-token-client-instance-binding)). Tanıdığı bir doğrulayıcıda o doğrulayıcının kopyasını kullanmaya devam eder; yeni bir doğrulayıcıda bir kopyayı yeniden kullanmadan önce kişiye sorar.
 
 ## Kaynaklar
 

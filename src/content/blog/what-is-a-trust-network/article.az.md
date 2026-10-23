@@ -3,6 +3,7 @@ title: Etibar şəbəkəsi nədir və Tamga Network nə edir?
 slug: what-is-a-trust-network
 description: "Etibar şəbəkəsi rəqəmsal sənədləri kimin verə və yoxlaya biləcəyini göstərən imzalı siyahılar dərc edir. Tamga Network nə edir, nə etmir, haradan başlamalı."
 date: 2026-10-08
+updated: 2026-10-23
 lang: az
 category: network
 draft: false
@@ -50,7 +51,7 @@ Hədlər vəzifələr qədər vacibdir və onlar məcburi qaydalar kimi yazılı
 
 **Heç bir sənəd saxlamır.** Rəqəmsal sənədlər qurumun sistemindən şəxsin telefonuna ötürülür. Şəbəkə insanların reyestrini aparmır; vermə zamanı məlumatlar qurumun öz sistemindən, yəni onun mötəbər mənbəyindən oxunur ([ADR-0020](https://docs.tamga.network/adr/0020-authentic-source-at-institution)). Heç bir siyahı, jurnal və ya reyestr fərdi məlumatları, rəqəmsal sənədin məzmununu, hətta onun heşini belə daşımır.
 
-**Heç bir rəqəmsal cüzdan idarə etmir.** Şəbəkə rəqəmsal cüzdanları siyahıya alır. O, heç bir cüzdanın tətbiqini, cüzdan provayderini və ya veb-saytını idarə etmir ([ADR-0042](https://docs.tamga.network/adr/0042-network-and-wallets)). Dərc olunmuş qaydalara əməl edən və uyğunluq testlərindən keçən istənilən rəqəmsal cüzdan siyahıya daxil edilə bilər. Şəbəkədəki ilk rəqəmsal cüzdan olan [Tamga Wallet](https://tamgawallet.com/en) ayrıca məhsuldur və siyahıya digərləri kimi eyni qaydada daxil olur; onun provayder qeydi bu gün rezerv edilib və provayder xidməti açıldıqda açarlarını alacaq.
+**Heç bir rəqəmsal cüzdan idarə etmir.** Şəbəkə rəqəmsal cüzdanları siyahıya alır. O, heç bir cüzdanın tətbiqini, cüzdan provayderini və ya veb-saytını idarə etmir ([ADR-0042](https://docs.tamga.network/adr/0042-network-and-wallets)). Dərc olunmuş qaydalara əməl edən və uyğunluq testlərindən keçən istənilən rəqəmsal cüzdan siyahıya daxil edilə bilər. Şəbəkədəki ilk rəqəmsal cüzdan olan [Tamga Wallet](https://tamgawallet.com/en) ayrıca məhsuldur və siyahıya digərləri kimi eyni qaydada daxil olur; onun provayder qeydi 14 oktyabr 2026-cı ildən bəri aktivdir.
 
 **Kimin kimə nə göstərdiyini görmür.** Yoxlayan tərəflər ləğv siyahılarını əvvəlcədən yükləyir və keşdə saxlayır, ona görə də yoxlama anında nə quruma, nə də şəbəkəyə heç bir sorğu getmir. Qurum öz rəqəmsal sənədlərinin harada təqdim olunduğunu öyrənə bilmir, biz də öyrənə bilmirik.
 
@@ -72,13 +73,14 @@ Xeyr. Bu gün etibar lövbəri imzalı, versiyalanmış, heş-zəncirlə bağlan
 
 ## Bu gün nə işləyir, nə işləmir?
 
-| Hissə | 8 oktyabr 2026-cı il tarixinə vəziyyət |
+| Hissə | 23 oktyabr 2026-cı il tarixinə vəziyyət |
 |---|---|
 | İmzalı etibar siyahıları və lövbər jurnalı | `trust.tamga.network` ünvanında işləyir |
 | Sxem kataloqu | `schemas.tamga.network` ünvanında işləyir |
 | Yerləşdirilmiş yoxlama xidməti (Tamga Verify) | `verify.tamga.network` ünvanında işləyir |
 | Sıfır bilikli yaş yoxlaması | Tamga Verify-da işləyir (siyasət `age-over-18-zk`); rəqəmsal cüzdan tərəfində Android sübut kitabxanası hazırdır, iOS gözləmədədir |
 | Özünəxidmət test qurumları olan sınaq mühiti | `sandbox.tamga.network` ünvanında işləyir |
+| İstehsal siyahısındakı cüzdan provayderləri | 14 oktyabr 2026-cı ildən bəri bir aktiv qeyd (Tamga Wallet-in) |
 | `@tamga-network/*` paketləri | npm-də 0.7.1 test buraxılışı; sabit 1.0.0 hər şey hazır olduqda |
 | Xarici siyahılar (digər dövlətlər, Aİ) | layihələndirilib; heç biri əlavə edilməyib |
 | Ortaq reyestr | ikinci müstəqil operatoru gözləyir |

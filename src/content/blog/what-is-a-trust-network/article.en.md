@@ -3,6 +3,7 @@ title: What is a trust network, and what does Tamga Network do?
 slug: what-is-a-trust-network
 description: A trust network publishes signed lists of who may issue and check digital credentials. What Tamga Network does, what it does not do, where to start.
 date: 2026-10-08
+updated: 2026-10-23
 lang: en
 category: network
 draft: false
@@ -50,7 +51,7 @@ The limits matter as much as the jobs, and they are written down as binding rule
 
 **It holds no documents.** Credentials travel from the institution's system to the person's phone. The network keeps no register of people; at issuance the data is read from the institution's own system, its authentic source ([ADR-0020](https://docs.tamga.network/adr/0020-authentic-source-at-institution)). No list, log or ledger carries personal data, credential content or even a hash of a credential.
 
-**It runs no wallet.** The network lists wallets. It does not operate any wallet's app, wallet provider or website ([ADR-0042](https://docs.tamga.network/adr/0042-network-and-wallets)). Any wallet that follows the published rules and passes the conformance tests can be listed. [Tamga Wallet](https://tamgawallet.com/en), the first wallet on the network, is a separate product and enters the list the same way as any other; its provider entry is reserved today and receives keys when its provider service opens.
+**It runs no wallet.** The network lists wallets. It does not operate any wallet's app, wallet provider or website ([ADR-0042](https://docs.tamga.network/adr/0042-network-and-wallets)). Any wallet that follows the published rules and passes the conformance tests can be listed. [Tamga Wallet](https://tamgawallet.com/en), the first wallet on the network, is a separate product and enters the list the same way as any other; its provider entry has been active since 14 October 2026.
 
 **It does not see who shows what to whom.** Verifiers download revocation lists ahead of time and keep them in a cache, so at the moment of a check no request goes to the institution or to the network. The institution cannot learn where its credentials are shown, and neither can we.
 
@@ -72,13 +73,14 @@ No. Today the trust anchor is the set of signed, versioned, hash-chained lists p
 
 ## What is working today, and what is not?
 
-| Part | State on 8 October 2026 |
+| Part | State on 23 October 2026 |
 |---|---|
 | Signed trust lists and the anchor log | live at `trust.tamga.network` |
 | Schema catalogue | live at `schemas.tamga.network` |
 | Hosted verifier (Tamga Verify) | live at `verify.tamga.network` |
 | Zero-knowledge age check | live on Tamga Verify (policy `age-over-18-zk`); on the wallet side the Android proving library is ready, iOS is pending |
 | Sandbox with self-service test institutions | live at `sandbox.tamga.network` |
+| Wallet providers in the production list | one active since 14 October 2026 (Tamga Wallet's) |
 | `@tamga-network/*` packages | 0.7.1 test release on npm; stable 1.0.0 when everything is ready |
 | External lists (other states, the EU) | designed; none added |
 | Shared ledger | waits for a second independent operator |

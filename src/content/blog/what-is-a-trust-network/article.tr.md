@@ -3,6 +3,7 @@ title: Güven ağı nedir, Tamga Network tam olarak ne yapar?
 slug: what-is-a-trust-network
 description: Güven ağı, dijital belgeyi kimin verip kimin denetleyebileceğini imzalı listelerle yayımlar. Tamga Network ne yapar, ne yapmaz, nereden başlanır.
 date: 2026-10-08
+updated: 2026-10-23
 lang: tr
 category: network
 draft: false
@@ -50,7 +51,7 @@ Sınırlar da işler kadar önemli ve bağlayıcı kural olarak yazılı.
 
 **Belge tutmaz.** Belge, kurumun sisteminden kişinin telefonuna gider. Ağ kişi kaydı tutmaz; belge verilirken bilgiler kurumun kendi sisteminden, yani yetkili kaynaktan okunur ([ADR-0020](https://docs.tamga.network/tr/adr/0020-authentic-source-at-institution)). Hiçbir listede, günlükte ya da defterde kişisel veri, belge içeriği, hatta belgenin özeti bile yoktur.
 
-**Cüzdan işletmez.** Ağ cüzdanları listeler. Hiçbir cüzdanın uygulamasını, cüzdan sağlayıcısını ya da sitesini işletmez ([ADR-0042](https://docs.tamga.network/tr/adr/0042-network-and-wallets)). Yayımlanan kurallara uyan ve uyum testlerini geçen her cüzdan listeye girebilir. [Tamga Wallet](https://tamgawallet.com/tr) ağdaki ilk cüzdan, ayrı bir ürün; listeye herhangi bir cüzdan gibi girer. Sağlayıcı kaydı bugün ayrılmış durumda, anahtarı sağlayıcı servisi açılınca eklenir.
+**Cüzdan işletmez.** Ağ cüzdanları listeler. Hiçbir cüzdanın uygulamasını, cüzdan sağlayıcısını ya da sitesini işletmez ([ADR-0042](https://docs.tamga.network/tr/adr/0042-network-and-wallets)). Yayımlanan kurallara uyan ve uyum testlerini geçen her cüzdan listeye girebilir. [Tamga Wallet](https://tamgawallet.com/tr) ağdaki ilk cüzdan, ayrı bir ürün; listeye herhangi bir cüzdan gibi girer. Sağlayıcı kaydı 14 Ekim 2026'dan beri etkin.
 
 **Kimin neyi kime gösterdiğini görmez.** Doğrulayıcılar iptal listelerini önceden indirip saklar. Kontrol anında ne kuruma ne ağa bir istek gider. Kurum belgelerinin nerede gösterildiğini öğrenemez, biz de öğrenemeyiz.
 
@@ -72,13 +73,14 @@ Hayır. Bugün güven çapası imzalı, sürümlü, özet zincirli listeler ve h
 
 ## Bugün ne çalışıyor, ne çalışmıyor?
 
-| Parça | 8 Ekim 2026 itibarıyla |
+| Parça | 23 Ekim 2026 itibarıyla |
 |---|---|
 | İmzalı güven listeleri ve çapa günlüğü | `trust.tamga.network` adresinde canlı |
 | Şema kataloğu | `schemas.tamga.network` adresinde canlı |
 | Barındırılan doğrulayıcı (Tamga Verify) | `verify.tamga.network` adresinde canlı |
 | Sıfır bilgi ispatıyla yaş kontrolü | Tamga Verify'da canlı (`age-over-18-zk` politikası); cüzdan tarafında Android ispat kütüphanesi hazır, iOS bekliyor |
 | Kendi test kurumunu açabilen sandbox | `sandbox.tamga.network` adresinde canlı |
+| Gerçek listedeki cüzdan sağlayıcıları | 14 Ekim 2026'dan beri bir etkin kayıt (Tamga Wallet'ınki) |
 | `@tamga-network/*` paketleri | npm'de 0.7.1 deneme sürümü; kararlı 1.0.0 hazır olunca |
 | Dış listeler (başka devletler, AB) | tasarlandı; eklenen yok |
 | Ortak defter | ikinci bağımsız işletmeciyi bekliyor |

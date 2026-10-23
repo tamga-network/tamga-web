@@ -3,6 +3,7 @@ title: "How do you trust a wallet? Attestations and hardware keys"
 slug: trusting-a-wallet
 description: How an institution on Tamga Network decides a wallet is safe to issue to: wallet attestations, key attestations, hardware evidence and the trust list.
 date: 2026-10-08
+updated: 2026-10-23
 lang: en
 category: privacy
 draft: false
@@ -90,7 +91,7 @@ Until the evidence is verified, the installation counts as software level. The n
 
 Hardware keys are also tied to the phone lock. A credential key can be used only while the phone is unlocked, and each presentation is approved with the device's biometrics or passcode (rule WL11).
 
-On Android, a provider may additionally send a [Play Integrity](https://developer.android.com/google/play/integrity) verdict, which shows that the app came from the store. Today it is optional: it never lowers the level taken from the key attestation and its absence does not block registration. Making it mandatory would change the decision and needs a separate decision record.
+On Android, a provider may additionally send a [Play Integrity](https://developer.android.com/google/play/integrity) verdict, which shows that the app came from the store. At the W2 level it is optional: it never lowers the level taken from the key attestation and its absence does not block registration. At W3, the highest level, the provider must verify the platform's device attestation before activating a unit and before every key attestation that claims W3 (RB-WP-17).
 
 ## What does the institution check before it issues?
 
@@ -125,14 +126,14 @@ Because a network that ran a wallet would be judging its own product. In the EU 
 - its interfaces and packages do not hard-code any wallet's name;
 - there is one sandbox, and it belongs to the network: a wallet developer runs their own provider and registers it in the sandbox list.
 
-[Tamga Wallet](https://tamgawallet.com/en) is one of the wallets on the network. It is a separate product and enters the list the same way as any other. On 8 October 2026 its provider (`TAMGA-WP-1`) has one entry in the production list and the same entry in the sandbox list, both `RESERVED`: the place is held, but the entry carries no signing key until the wallet's operator supplies its own certificate, so no attestation can pass against it yet. The sandbox list also contains the network's own test provider for its scenes. Registration is done by hand today, with project management approval; self-registration of wallet providers needs a separate decision.
+[Tamga Wallet](https://tamgawallet.com/en) is one of the wallets on the network. It is a separate product and enters the list the same way as any other. Its provider (`TAMGA-WP-1`) has one entry in the production list and the same entry in the sandbox list, and both have been `ACTIVE` since 14 October 2026, when the wallet's operator opened its provider service under the wallet's own domain and supplied its own certificate. The sandbox list also contains the network's own test provider for its scenes. Registration is done by hand today, with project management approval; self-registration of wallet providers needs a separate decision.
 
 ## What are the honest limits today?
 
-- **Device testing is still ahead.** Hardware keys and device attestation are implemented; testing on real devices comes with the app-store release ([ARF §2.8](https://arf.tamga.network/architecture)).
-- **No active wallet provider in the production list yet.** The only entry is reserved, as described above.
-- **Play Integrity is optional**, and the transition that accepts proofs without a key attestation lasts until the pilot.
-- **Remote withdrawal of a lost phone** waits for a later step.
+- **Device testing is under way.** Hardware keys and device attestation are implemented; testing on real phones has started and finishes before the app-store release ([ARF §2.8](https://arf.tamga.network/architecture)).
+- **One active wallet provider so far.** The production list has a single wallet provider entry, Tamga Wallet's, described above.
+- **Play Integrity is optional below W3**, and the transition that accepts proofs without a key attestation lasts until the pilot.
+- **Revoking a lost phone** needs no account, but it relies on the person keeping the revocation code the provider shows once at activation (RB-WP-15).
 - **No certified secure element yet.** W3 belongs to the state phase.
 - **Attestations prove the software and the keys, not the person.** Who the person is, is a separate question answered by identity verification at the institution.
 

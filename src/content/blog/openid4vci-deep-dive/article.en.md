@@ -3,6 +3,7 @@ title: "OpenID4VCI deep dive: offers, DPoP, proofs, batches"
 slug: openid4vci-deep-dive
 description: "OpenID4VCI 1.0 issuance in Tamga: offers and tx_code, PAR and PKCE, DPoP, the nonce endpoint, key proofs, wallet attestation, batches of 10."
 date: 2026-10-08
+updated: 2026-10-23
 lang: en
 category: standards
 draft: false
@@ -232,7 +233,7 @@ No. The issuer doesn't see presentations, and copies don't share a key or a stat
 
 ### What happens when the copies run out?
 
-The wallet asks for a new batch when two copies remain, using a single-use, DPoP-bound refresh token. At a verifier it already knows it keeps using that verifier's copy; at a new verifier it asks the person before reusing a copy.
+The wallet asks for a new batch when two copies remain, using a single-use refresh token. The token is bound to the key of the wallet attestation used at issuance, and the wallet proves it with a fresh attestation for that key; the DPoP key may change ([ADR-0060](https://docs.tamga.network/adr/0060-refresh-token-client-instance-binding)). At a verifier it already knows it keeps using that verifier's copy; at a new verifier it asks the person before reusing a copy.
 
 ## Sources
 

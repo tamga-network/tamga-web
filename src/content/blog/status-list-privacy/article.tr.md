@@ -4,7 +4,7 @@ slug: status-list-privacy
 description: Tamga Network'ün durum listeleri, belgenin nerede gösterildiğini kuruma söylemeden iptal denetimini nasıl yapar, bu gizlilik nerede biter?
 date: 2026-10-08
 lang: tr
-updated: 2026-10-19
+updated: 2026-10-23
 category: privacy
 draft: false
 related: haip-and-token-status-list, how-trust-lists-work, zero-knowledge-in-tamga, what-the-network-never-sees
@@ -87,7 +87,7 @@ Sıra numarası belgenin ömrü boyunca değişmez. Bir kişi aynı belgeyi iki 
 
 Cevap toplu belge vermedir. Diploma dahil her belge 10 kopya olarak verilir; her kopyanın kendi cihaz anahtarı ve kendi rastgele sıra numarası vardır. Cüzdan aynı doğrulayıcıya hep aynı kopyayı, her farklı doğrulayıcıya farklı bir kopyayı gösterir (WL5 kuralı). Kopyalarla sıra numaraları arasındaki eşleme belgeyi verenin veritabanında kalır, hiçbir zaman dışarı çıkmaz (PR10). Belge iptal edilince bütün kopyalarının bitleri aynı planlı yayında, o aralıkta değişen başka her şeyle birlikte değişir.
 
-Sıfır bilgi ispatıyla yapılan sunum bir adım daha ileri gider: hiçbir sıra numarası açmaz. Bedeli, doğrulayıcının iptali denetleyememesidir. Karar, sıfır bilgiyle yalnız en çok 24 saat geçerli ve belge iptal edilince yenilenmeyen kısa ömürlü kopyaların sunulmasıdır ([ADR-0044](https://docs.tamga.network/tr/adr/0044-zk-short-lived-copies)). Bu uygulanana kadar doğrulayıcı böyle bir sunumu yalnız politikası açıkça izin veriyorsa kabul eder ([Tamga'da sıfır bilgi ispatları](/blog/zero-knowledge-in-tamga)).
+Sıfır bilgi ispatıyla yapılan sunum bir adım daha ileri gider: hiçbir sıra numarası açmaz. Bedeli, doğrulayıcının iptali denetleyememesidir. Karar, sıfır bilgiyle yalnız en çok 24 saat geçerli ve belge iptal edilince yenilenmeyen kısa ömürlü kopyaların sunulmasıdır ([ADR-0044](https://docs.tamga.network/tr/adr/0044-zk-short-lived-copies)). Bu, paketlerin 0.4.0 sürümünden beri uygulanıyor: kısa ömür iptal denetiminin yerini tutar; böyle bir kopyaya dayanmayan sıfır bilgi sunumunu doğrulayıcı yalnız politikası açıkça izin veriyorsa kabul eder ([Tamga'da sıfır bilgi ispatları](/blog/zero-knowledge-in-tamga)).
 
 ## Kim neyi görebilir?
 
