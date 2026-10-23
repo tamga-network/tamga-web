@@ -197,7 +197,7 @@ HAIP hər iki tərəfdən eyni cihaz axınını dəstəkləməyi tələb edir v�
 
 W3C Digital Credentials API (rəqəmsal sənədlər üçün API) ilə sorğunu rəqəmsal cüzdana, cavabı isə geri brauzerin özü `response_mode: dc_api.jwt` vasitəsilə ötürür. Bu halda təqdimatın auditoriyası `origin:https://verifier.example.org` kimi yazılan səhifə mənşəyi (origin) olur və onu brauzerin özü təqdim edir: fişinq saytı başqa saytın mənşəyini özünə aid edə bilməz. Rəqəmsal cüzdan sorğu daxilində `origin:`-ni heç vaxt müştəri identifikatoru kimi qəbul etməməlidir. Tamga bu axında da `x509_hash` ilə imzalanmış sorğunu tövsiyə edir, çünki mənşəyə bağlama fişinq problemini həll edir, reyestrdə yoxlamanı və artıq məlumat tələbinin yoxlanmasını isə `x509_hash` mümkün edir.
 
-Bugünkü vəziyyət: QR kod və link vasitəsilə təqdimat artıq işləyir. Tamga-nın yoxlayan tərəf xidməti onu dəstəkləyən brauzerlərdə Digital Credentials API-dən (rəqəmsal sənədlər üçün API) standart olaraq istifadə edir, masaüstündə isə QR kod ehtiyat yoldur. Rəqəmsal cüzdan tərəfində Tamga Wallet ilk versiyasında Android-də onu dəstəkləyir, cihaz sınaqları davam edir; iPhone-da hələ yoxdur.
+Bugünkü vəziyyət: QR kod və link vasitəsilə təqdimat artıq işləyir. Tamga-nın yoxlayan tərəf xidməti onu dəstəkləyən brauzerlərdə Digital Credentials API-dən (rəqəmsal sənədlər üçün API) standart olaraq istifadə edir, masaüstündə isə QR kod ehtiyat yoldur. Rəqəmsal cüzdan tərəfində Tamga Wallet-ın Android kodu yazılıb, hələ tətbiqə daxil edilməyib və cihazda sınaqdan keçirilməyib; iPhone-da hələ yoxdur.
 
 ## Tez-tez verilən suallar
 

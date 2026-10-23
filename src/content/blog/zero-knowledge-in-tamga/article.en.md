@@ -140,7 +140,7 @@ For a sense of scale, the first trial on a desktop machine measured 518 ms to pr
 
 ## What can it not do yet?
 
-- **Only equality.** The first and only predicate today is `age_over_18 = true`. Next in line are `age_over_21`, nationality, and enrolment or graduation in education credentials, all equality checks. Ranges ("born before") are not in Longfellow yet.
+- **Only equality.** Today's predicates are `age_over_18 = true` and `age_over_15 = true`, proved with the same circuit ([ADR-0064](https://docs.tamga.network/adr/0064-age-over-15-threshold)). Next in line are `age_over_21`, nationality, and enrolment or graduation in education credentials, all equality checks. Ranges ("born before") are not in Longfellow yet.
 - **The institution stays visible.** The verifier still learns which institution issued the credential. Proving "some accredited institution" without naming it is out of scope for now.
 - **No revocation check**, as explained above; short-lived copies of at most 24 hours stand in for it (implemented in October 2026), and a private revocation proof waits for the EU.
 - **Size.** About 350 KB per proof rules out QR codes.

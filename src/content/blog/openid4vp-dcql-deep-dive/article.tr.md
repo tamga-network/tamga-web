@@ -197,7 +197,7 @@ HAIP iki tarafın da aynı cihaz akışını desteklemesini ister; oltalamaya ka
 
 W3C Digital Credentials API'de isteği cüzdana ve yanıtı geri tarayıcının kendisi taşır; `response_mode: dc_api.jwt` kullanılır. Gösterimin alıcısı o zaman sayfanın kaynağıdır (`origin:https://verifier.example.org`) ve bunu tarayıcının kendisi verir: oltalama sitesi başka bir sitenin kaynağını iddia edemez. Cüzdan, istek içinde istemci kimliği olarak `origin:`'i asla kabul etmemelidir. Tamga bu akışta da `x509_hash`'li imzalı istek önerir; kaynak bağlama oltalamayı çözer, kayıt sorgusunu ve aşırı talep denetimini mümkün kılan ise `x509_hash`'tir.
 
-Bugünkü durum: QR ve bağlantıyla gösterim canlıda. Tamga doğrulayıcısı, destekleyen tarayıcılarda Digital Credentials API'yi varsayılan olarak kullanır; masaüstünde QR kod yedektir. Cüzdan tarafında Tamga Wallet ilk sürümünde Android'de destekliyor, cihaz testleri sürüyor; iPhone'da henüz yok.
+Bugünkü durum: QR ve bağlantıyla gösterim canlıda. Tamga doğrulayıcısı, destekleyen tarayıcılarda Digital Credentials API'yi varsayılan olarak kullanır; masaüstünde QR kod yedektir. Cüzdan tarafında Tamga Wallet'ın Android kodu yazıldı, henüz uygulamaya derlenmedi ve cihazda denenmedi; iPhone'da henüz yok.
 
 ## Sık sorulan sorular
 

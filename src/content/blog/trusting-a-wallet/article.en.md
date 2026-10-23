@@ -130,7 +130,7 @@ Because a network that ran a wallet would be judging its own product. In the EU 
 
 ## What are the honest limits today?
 
-- **Device testing is under way.** Hardware keys and device attestation are implemented; testing on real phones has started and finishes before the app-store release ([ARF §2.8](https://arf.tamga.network/architecture)).
+- **Device testing is pending.** Hardware keys and device attestation are implemented; testing on real phones comes before the app-store release ([ARF §2.8](https://arf.tamga.network/architecture)).
 - **One active wallet provider so far.** The production list has a single wallet provider entry, Tamga Wallet's, described above.
 - **Play Integrity is optional below W3**, and the transition that accepts proofs without a key attestation lasts until the pilot.
 - **Revoking a lost phone** needs no account, but it relies on the person keeping the revocation code the provider shows once at activation (RB-WP-15).

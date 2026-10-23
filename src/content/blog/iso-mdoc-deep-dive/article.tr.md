@@ -142,7 +142,7 @@ Yani her şey **SessionTranscript**'e bağlı: içine ne girerse yanıt ona bağ
 
 Oturum iletileri AES-256-GCM kullanır; 12 baytlık IV, 8 baytlık bir kimlikten (okuyucu için hepsi sıfır, cihaz için `…01`) ve 1'den başlayan 4 baytlık ileti sayacından oluşur. BLE'de telefon GATT sunucusudur; her ileti parçalara bölünür, devamı varsa parçanın ilk baytı `0x01`, son parçada `0x00`'dır.
 
-Bugünkü durum: protokol çekirdeği (tanıtım, oturum şifrelemesi, BLE parçalama) `@tamga-network/mdoc` içinde yazıldı ve test edildi; BLE radyosunu cüzdan uygulaması sağlar. Cihaz testleri sürüyor. NFC kullanılmaz; bağlantı her zaman QR koddan başlar. Paketlerin 0.6.0 sürümünden beri okuyucu isteğini imzalar (okuyucu kimlik doğrulaması) ve cüzdan bunu imzalı güven listesindeki çapalara karşı denetler; 0.7.0'dan beri kayıt sertifikası olmayan istek, çevrim içinde olduğu gibi yüz yüze de reddedilir. OpenID4VP üzerinden çevrim içi mdoc gösterimi, SD-JWT VC ile aynı istek akışını kullanır.
+Bugünkü durum: protokol çekirdeği (tanıtım, oturum şifrelemesi, BLE parçalama) `@tamga-network/mdoc` içinde yazıldı ve test edildi; BLE radyosunu cüzdan uygulaması sağlar. Cihaz testleri henüz yapılmadı. NFC kullanılmaz; bağlantı her zaman QR koddan başlar. Paketlerin 0.6.0 sürümünden beri okuyucu isteğini imzalar (okuyucu kimlik doğrulaması) ve cüzdan bunu imzalı güven listesindeki çapalara karşı denetler; 0.7.0'dan beri kayıt sertifikası olmayan istek, çevrim içinde olduğu gibi yüz yüze de reddedilir. OpenID4VP üzerinden çevrim içi mdoc gösterimi, SD-JWT VC ile aynı istek akışını kullanır.
 
 ## Doğrulayıcı bir mdoc'u nasıl denetler?
 

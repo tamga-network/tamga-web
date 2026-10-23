@@ -140,7 +140,7 @@ iOS kütüphanesi çıkana kadar paketi içeren bir iOS uygulaması normal derle
 
 ## Henüz neyi yapamıyor?
 
-- **Yalnız eşitlik.** Bugünkü ilk ve tek yüklem `age_over_18 = true`. Sırada `age_over_21`, uyruk ve eğitim belgelerinde kayıt ya da mezuniyet var; hepsi eşitlik denetimi. Aralıklar ("şu tarihten önce doğmuş") henüz Longfellow'da yok.
+- **Yalnız eşitlik.** Bugünkü yüklemler `age_over_18 = true` ve `age_over_15 = true`; ikisi aynı devreyle ispatlanır ([ADR-0064](https://docs.tamga.network/adr/0064-age-over-15-threshold)). Sırada `age_over_21`, uyruk ve eğitim belgelerinde kayıt ya da mezuniyet var; hepsi eşitlik denetimi. Aralıklar ("şu tarihten önce doğmuş") henüz Longfellow'da yok.
 - **Kurum görünür kalır.** Doğrulayıcı belgeyi hangi kurumun verdiğini yine öğrenir. "Akredite bir kurum" diyip adını söylememek şimdilik kapsam dışı.
 - **İptal denetimi yok**, yukarıda anlatıldığı gibi; yerine en çok 24 saatlik kısa ömürlü kopyalar kullanılır (Ekim 2026'da uygulandı), gizli iptal ispatı AB'nin kararını bekliyor.
 - **Boyut.** İspat başına yaklaşık 350 KB, QR kodu dışarıda bırakır.

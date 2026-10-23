@@ -197,7 +197,7 @@ HAIP requires both sides to support the same-device flow and recommends it unles
 
 With the W3C Digital Credentials API the browser itself carries the request to the wallet and the response back, using `response_mode: dc_api.jwt`. The audience of the presentation is then the page's origin, written as `origin:https://verifier.example.org`, and the browser itself supplies it: a phishing site can't claim another site's origin. A wallet must never accept `origin:` as a client identifier inside a request. Tamga still recommends a signed request with `x509_hash` in this flow too, because origin binding solves phishing while `x509_hash` is what makes the registry lookup and over-asking check possible.
 
-Status today: QR and link presentation are live. The Tamga verifier uses the Digital Credentials API by default in browsers that support it, with the QR code as a fallback on desktop. On the wallet side, Tamga Wallet supports it on Android in its first release, still being tested on devices; iPhone support is not there yet.
+Status today: QR and link presentation are live. The Tamga verifier uses the Digital Credentials API by default in browsers that support it, with the QR code as a fallback on desktop. On the wallet side, Tamga Wallet's Android code for it is written but not yet built into the app or tested on a device; iPhone support is not there yet.
 
 ## Frequently asked questions
 

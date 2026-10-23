@@ -130,7 +130,7 @@ Telefonda artıq olan rəqəmsal sənədlər bundan ayrıdır: onları verən qu
 
 ## Bu gün açığını desək, hansı məhdudiyyətlər var?
 
-- **Real cihazlarda sınaq davam edir.** Aparat açarları və cihaz attestasiyası həyata keçirilib; real telefonlarda sınaq başlayıb və tətbiq mağazalarında buraxılışdan əvvəl başa çatacaq ([ARF §2.8](https://arf.tamga.network/architecture)).
+- **Real cihazlarda sınaq gözlənilir.** Aparat açarları və cihaz attestasiyası həyata keçirilib; real telefonlarda sınaq tətbiq mağazalarında buraxılışdan əvvəl aparılacaq ([ARF §2.8](https://arf.tamga.network/architecture)).
 - **Hələlik yalnız bir aktiv cüzdan provayderi var.** İstehsal siyahısında yalnız yuxarıda təsvir edilən Tamga Wallet qeydi var.
 - **Play Integrity W3-dən aşağıda məcburi deyil**, açar attestasiyası olmadan sübutları qəbul edən keçid dövrü isə pilota qədər davam edir.
 - **İtirilmiş telefonun ləğvi** hesab tələb etmir, lakin şəxsin provayderin aktivləşdirmə zamanı bir dəfə göstərdiyi ləğv kodunu saxlamasına əsaslanır (RB-WP-15).

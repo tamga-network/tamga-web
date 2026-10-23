@@ -142,7 +142,7 @@ The two online forms come from OpenID4VP 1.0 Final, Annex B.2.6. `client_id` is 
 
 Session messages use AES-256-GCM with a 12-byte IV made of an 8-byte identifier (all zeros for the reader, `…01` for the device) and a 4-byte message counter that starts at 1. Over BLE the phone acts as a GATT server; each message is split into chunks whose first byte is `0x01` when more follow and `0x00` on the last one.
 
-Status today: the protocol core (engagement, session encryption, BLE framing) is implemented and tested in `@tamga-network/mdoc`, and the BLE radio is supplied by the wallet app. Device testing is still in progress. NFC is not used; engagement always starts from the QR code. Since packages 0.6.0 the reader signs its request (reader authentication) and the wallet checks it against the anchors in the signed trust list; since 0.7.0 a request without a registration certificate is refused, in person as well as online. Online mdoc presentation over OpenID4VP uses the same request flow as SD-JWT VC.
+Status today: the protocol core (engagement, session encryption, BLE framing) is implemented and tested in `@tamga-network/mdoc`, and the BLE radio is supplied by the wallet app. Device testing is still pending. NFC is not used; engagement always starts from the QR code. Since packages 0.6.0 the reader signs its request (reader authentication) and the wallet checks it against the anchors in the signed trust list; since 0.7.0 a request without a registration certificate is refused, in person as well as online. Online mdoc presentation over OpenID4VP uses the same request flow as SD-JWT VC.
 
 ## How does a verifier check an mdoc?
 

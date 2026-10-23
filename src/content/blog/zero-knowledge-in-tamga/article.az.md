@@ -140,7 +140,7 @@ Miqyas barədə təsəvvür üçün: masaüstü kompüterdə ilk sınaq zamanı 
 
 ## Hələ nəyi edə bilmir?
 
-- **Yalnız bərabərlik.** Bu gün ilk və yeganə predikat budur: `age_over_18 = true`. Növbədə `age_over_21`, vətəndaşlıq, həmçinin təhsil rəqəmsal sənədlərində qeydiyyat və ya məzuniyyət dayanır; bunların hamısı bərabərlik yoxlamalarıdır. Diapazonlar ("müəyyən tarixdən əvvəl doğulub") hələ Longfellow-da yoxdur.
+- **Yalnız bərabərlik.** Bu gün predikatlar bunlardır: `age_over_18 = true` və `age_over_15 = true`; hər ikisi eyni sxemlə sübut olunur ([ADR-0064](https://docs.tamga.network/adr/0064-age-over-15-threshold)). Növbədə `age_over_21`, vətəndaşlıq, həmçinin təhsil rəqəmsal sənədlərində qeydiyyat və ya məzuniyyət dayanır; bunların hamısı bərabərlik yoxlamalarıdır. Diapazonlar ("müəyyən tarixdən əvvəl doğulub") hələ Longfellow-da yoxdur.
 - **Qurum görünən qalır.** Yoxlayan tərəf rəqəmsal sənədi hansı qurumun verdiyini yenə də öyrənir. Adını çəkmədən "hansısa akkreditə olunmuş qurum" olduğunu sübut etmək hələlik əhatə dairəsinə daxil deyil.
 - **Ləğv yoxlaması yoxdur**, yuxarıda izah edildiyi kimi; onu ən çoxu 24 saatlıq qısamüddətli nüsxələr əvəz edir (2026-cı ilin oktyabrında tətbiq edilib), məxfiliyi qoruyan ləğv sübutu isə Aİ-nin qərarını gözləyir.
 - **Həcm.** Hər sübutun təxminən 350 KB olması QR kodlardan istifadəni istisna edir.

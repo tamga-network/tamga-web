@@ -130,7 +130,7 @@ Kaybolan ya da çalınan bir telefonu uzaktan geri çekmek, kişinin o telefon o
 
 ## Bugünkü dürüst sınırlar neler?
 
-- **Cihaz testi sürüyor.** Donanım anahtarları ve cihaz kanıtı uygulandı; gerçek telefonlarda test başladı ve uygulama mağazası sürümünden önce bitecek ([ARF §2.8](https://arf.tamga.network/tr/architecture)).
+- **Cihaz testi bekliyor.** Donanım anahtarları ve cihaz kanıtı uygulandı; gerçek telefonlarda test uygulama mağazası sürümünden önce yapılacak ([ARF §2.8](https://arf.tamga.network/tr/architecture)).
 - **Şimdilik tek etkin cüzdan sağlayıcısı var.** Gerçek listede yalnız yukarıda anlatılan Tamga Wallet kaydı bulunuyor.
 - **Play Integrity W3'ün altında isteğe bağlı**; anahtar kanıtı olmayan proof'u kabul eden geçiş de pilota kadar sürüyor.
 - **Kaybolan telefonun iptali** hesap gerektirmez, ama kişinin sağlayıcının etkinleştirmede bir kez gösterdiği iptal kodunu saklamasına dayanır (RB-WP-15).
