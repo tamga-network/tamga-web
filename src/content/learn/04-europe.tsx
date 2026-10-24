@@ -2,8 +2,8 @@ import { Callout, Figure, Term } from "@/components/learn/prose";
 import type { L, LearnPage } from "./types";
 
 /*
- * Bölüm 4 — Avrupa'nın modeli. AB bilgileri yalnız çalışma alanının kaynak kütüphanesinden (docs/standards: TIMELINE.md,
- * REGISTRY.csv; tüzük tarihleri AB Yayın Ofisi'nden doğrulanmış). Emin olunmayan tarih ya da rakam yazılmaz.
+ * Bölüm 4 — Avrupa'nın modeli. AB bilgileri yalnız özel kaynak kütüphanesinden (eIDAS 2.0 / EUDI zaman çizelgesi ve kaynak
+ * kütüğü; tüzük tarihleri AB Yayın Ofisi'nden doğrulanmış). Emin olunmayan tarih ya da rakam yazılmaz.
  */
 
 /* ------------------------------------------------------------------ Avrupa takvimi (satır içi şema) */

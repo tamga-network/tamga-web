@@ -2,7 +2,7 @@ import type { Locale } from "@/i18n/routing";
 
 /**
  * Marka sayfası (/brand) — Tamga Network'ün markası (2026-10-02): N1 işareti, Gök paleti, Onest + IBM Plex.
- * Logo dosyaları tek kaynaktan: çalışma alanı docs/brand/build-logo-kit.mjs → `npm run brand:sync` → public/brand/.
+ * Logo dosyaları tek kaynaktan: özel marka kiti üreticisi → `npm run brand:sync` (scripts/sync-brand.mjs) → public/brand/.
  * Renk değerleri src/app/globals.css ile aynıdır. Tamga Wallet'ın kendi markası (Al Kızıl, W2) cüzdan sitesindedir.
  */
 
@@ -169,7 +169,7 @@ export const LOCKUPS: Lockup[] = [
     file: "tamga-network-lockup-white.svg",
     files: lockupFiles("tamga-network-lockup-white"),
   },
-  // Dikey logotip (işaret üstte, ad altta büyük harf ve geniş aralıkla) — dosyalar elle hazırlandı, docs/brand/logos'ta.
+  // Dikey logotip (işaret üstte, ad altta büyük harf ve geniş aralıkla) — dosyalar elle hazırlandı, özel marka kitinde.
   {
     id: "vertical",
     label: {

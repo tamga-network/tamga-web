@@ -5,7 +5,7 @@ import { Link } from "@/i18n/navigation";
 
 /*
  * Tamga Network işareti (2026-10-02): N1 — iç içe T (dış T ağ, içteki iki kol ağa katılanlar), her boyutta.
- * Tek kaynak: docs/brand/build-logo-kit.mjs → tamga-network/ops/brand/logo/mark.svg.
+ * Tek kaynak: özel marka kiti üreticisi → tamga-network/ops/brand/logo/mark.svg.
  */
 const N1 = [
   "M144 160 H880 L832 240 H192 Z",

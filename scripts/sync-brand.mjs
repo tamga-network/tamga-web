@@ -25,12 +25,16 @@ for (const f of files) copyFileSync(join(src, f), join(web, "public", f));
 copyFileSync(join(src, "favicon.ico"), join(web, "src", "app", "favicon.ico"));
 console.log(`brand:sync: ${files.length + 1} dosya`);
 
-// Logo kiti (çalışma alanı docs/brand/logos — özel depoda; yoksa atlanır) → public/brand/: /brand sayfasındaki indirmeler.
+// Logo kiti (özel marka kiti, bu depoda değil; yoksa atlanır) → public/brand/: /brand sayfasındaki indirmeler.
+// Yeri: TAMGA_BRAND_KIT ortam değişkeni ya da `--kit <klasör>` (içinde svg/, png/, icons/); varsayılan depo dışı yan klasör.
 {
   const { mkdirSync, readdirSync } = await import("node:fs");
-  const kit = resolve(web, "../../docs/brand/logos/tamga-network");
+  const argKit = process.argv[process.argv.indexOf("--kit") + 1];
+  const kit = resolve(
+    process.argv.includes("--kit") && argKit ? argKit : process.env.TAMGA_BRAND_KIT || resolve(web, "../brand-kit/tamga-network"),
+  );
   if (!existsSync(kit)) {
-    console.log("brand:sync: logo kiti yok — public/brand atlandı");
+    console.log(`brand:sync: logo kiti yok (${kit}) — public/brand atlandı`);
   } else {
     const out = join(web, "public", "brand");
     mkdirSync(out, { recursive: true });

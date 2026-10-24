@@ -19,3 +19,20 @@ tamga.network with the network's 1.0 documentation set, in English, Turkish and 
   tamgawallet.com (partners, home band, Learn "first wallet", two blog posts; tr → /tr, other languages → /en).
 - Tagline: "The digital trust network for the Turkic world" (TR "Türk dünyası için dijital güven ağı", TK "Türki
   dünýäsi üçin sanly ynam tory") in the page title, description, OG card, footer, homepage hero and the Learn page.
+
+### Folded in after 2026-10-16
+
+- 2026-10-20: Azerbaijani (`az`) opened on the site — `/az`, language switcher, blog, whitepaper and manifesto PDFs (draft
+  languages stay in their own folders and out of the public copy; AZ term check fixed). Share image and description carry the
+  full tagline. Packages shown at npm 0.7.0 (SDK page, homepage, roadmap, blog notes, release note). CI: an automated diff-review
+  and translation workflow lives in the dev repo only (manual trigger, per-run spend cap, API key scrubbed from subprocesses;
+  not part of the public repo).
+- 2026-10-21: external links open in a new tab (`ExternalLink` / `EXTERNAL_ATTRS`; `npm run check:links`); Tamga Wallet links
+  to tamgawallet.com. Packages at npm 0.7.1 everywhere a version is shown; release note dated 2026-10-21. AZ wording fix
+  ("deter").
+- 2026-10-23: Next.js 16.4.0 → 16.4.3 (security patch; check + build clean, `npm audit` 0). Blog currency pass: wallet
+  provider record ACTIVE since 14 Oct 2026, bits per credential type (ADR-0048), short-lived ZK copies since 0.4.0, Digital
+  Credentials API status, refresh token bound to the client-instance key (ADR-0060), hosted issuer keeps the key at the
+  institution (ADR-0057); three claims re-verified against source; `updated: 2026-10-23` on changed posts (en, tr, az).
+  Code comments no longer reference private workspace paths; `brand:sync` takes the logo kit location from
+  `TAMGA_BRAND_KIT` or `--kit`.
