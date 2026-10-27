@@ -138,7 +138,6 @@ Dörd tapıntı bağlanmış qərarlara toxunurdu, ona görə əvvəlcə ADR-lə
 - **Sertifikat deyil.** OpenID sertifikasiyası Fondla aparılan ayrıca prosesdir; bizim üçün də ayrıca qərardır.
 - **Planları dərc etmədik.** Alətdə planı dərc etmək nəticələrini hamıya açır, planın konfiqurasiyasında isə alətə verdiyimiz test məxfi açarları (attestasiya imzalayıcısı, saxta PID-in imza açarı) var. İxrac edilmiş logları və ekran görüntülərini özümüzdə saxlayırıq.
 - **Sandbox-u, iki xidməti və hər birinin bir variantını əhatə edir.** Cüzdan planları cihaz üçün ayrıca quruluş tələb etdiyi üçün işlədilmədi. Doğrulayıcının mdoc variantı işlədilmədi. Qurumun issuer xidməti bu planla sınanmadı.
-- **Bəzi düzəlişlər hələ npm-də deyil.** npm-dəki paketlər 0.7.2-dir; 27 oktyabrdakı iki doğrulayıcı düzəlişi və dil teqi dəyişikliyi 0.7.3-dədir və sandbox-da işləyir.
 - **Yalnız protokolu sınayır.** Alət mesajların düzgün formada olduğunu və tələb olunan yoxlamaların aparıldığını sınayır. Qurumun diplom verməyə səlahiyyətli olub-olmaması etibar siyahısının işidir, hüquqi tanınma isə hüququn.
 
 ## Dəstdə nə var?

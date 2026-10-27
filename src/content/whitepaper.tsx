@@ -762,11 +762,10 @@ const en: WhitepaperContent = {
             the verifier side; a hosted issuing service in which the
             institution’s signing key stays at the institution and the service
             sends it only a hash to sign (Cloud Signature Consortium API). Nine
-            open-source packages are on npm as the 0.7.2 test release, and 0.7.3
-            with the verifier fixes from the self-test is running in the
-            sandbox. The real network’s Türkiye list is live with the identity
-            service as its only active issuer; the first real institution, a
-            university, is being prepared.
+            open-source packages are on npm as the 0.7.3 test release, which
+            carries the verifier fixes from the self-test. The real network’s
+            Türkiye list is live with the identity service as its only active
+            issuer; the first real institution, a university, is being prepared.
           </p>
           <KV
             label="Phases"
@@ -1581,10 +1580,10 @@ const tr: WhitepaperContent = {
             bilgi ispatıyla yaş kontrolü; kurumun imza anahtarının kurumda
             kaldığı ve servisin imzalamak için kuruma yalnızca bir özet
             gönderdiği barındırılan belge verme servisi (Cloud Signature
-            Consortium API). Dokuz açık kaynak paket npm’de 0.7.2 deneme
-            sürümünde; öz-testten çıkan doğrulayıcı düzeltmelerini taşıyan 0.7.3
-            sandbox’ta çalışıyor. Gerçek ağın Türkiye listesi yayında ve tek
-            etkin belge vereni kimlik servisi; ilk gerçek kurum, bir üniversite,
+            Consortium API). Dokuz açık kaynak paket npm’de 0.7.3 deneme
+            sürümünde ve bu sürüm öz-testten çıkan doğrulayıcı düzeltmelerini
+            taşıyor. Gerçek ağın Türkiye listesi yayında ve tek etkin belge
+            vereni kimlik servisi; ilk gerçek kurum, bir üniversite,
             hazırlanıyor.
           </p>
           <KV
@@ -2428,10 +2427,10 @@ const tk: WhitepaperContent = {
             ýaş barlagy; guramanyň gol açarynyň guramada galýan we hyzmatyň gol
             çekmek üçin guramaga diňe heş iberýän ýerleşdirilen resminama beriş
             hyzmaty (Cloud Signature Consortium API). Dokuz açyk çeşmeli paket
-            npm-de 0.7.2 synag wersiýasynda; öz-synagdan çykan barlaýjy
-            düzedişlerini göterýän 0.7.3 sandbox-da işleýär. Hakyky toruň
-            Türkiýe sanawy işleýär we ýeke-täk işjeň resminama berijisi şahsyýet
-            hyzmaty; ilkinji hakyky gurama, uniwersitet, taýýarlanýar.
+            npm-de 0.7.3 synag wersiýasynda we bu wersiýa öz-synagdan çykan
+            barlaýjy düzedişlerini göterýär. Hakyky toruň Türkiýe sanawy işleýär
+            we ýeke-täk işjeň resminama berijisi şahsyýet hyzmaty; ilkinji
+            hakyky gurama, uniwersitet, taýýarlanýar.
           </p>
           <KV
             label="Tapgyrlar"
@@ -3278,9 +3277,9 @@ const az: WhitepaperContent = {
             yoxlayan tərəfdə sıfır bilik sübutu ilə yaş yoxlaması; qurumun imza
             açarının qurumda qaldığı və xidmətin imzalamaq üçün quruma yalnız
             hash göndərdiyi hostinqli sənəd vermə xidməti (Cloud Signature
-            Consortium API). Doqquz açıq mənbəli paket npm-də 0.7.2 sınaq
-            buraxılışındadır; öz-sınaqdan çıxan yoxlayıcı düzəlişlərini daşıyan
-            0.7.3 sandbox-da işləyir. Real şəbəkənin Türkiyə siyahısı işləyir və
+            Consortium API). Doqquz açıq mənbəli paket npm-də 0.7.3 sınaq
+            buraxılışındadır və bu versiya öz-sınaqdan çıxan yoxlayıcı
+            düzəlişlərini daşıyır. Real şəbəkənin Türkiyə siyahısı işləyir və
             yeganə aktiv sənəd verəni şəxsiyyət xidmətidir; ilk real qurum, bir
             universitet, hazırlanır.
           </p>

@@ -9,7 +9,7 @@ import { COPY, EX, INSTALL, PACKAGES, npmUrl, pkgDocsUrl } from "@/content/sdk";
 import { DEV_LINKS } from "@/lib/ecosystem";
 
 /* npm'deki deneme sürümü (kararlı 1.0.0 hazır olunca) — pInstall/pPkgs bunu söyler; paketlerin package.json sürümüyle aynı tutulur. */
-const VERSION = "0.7.2";
+const VERSION = "0.7.3";
 
 const UI: Record<
   Locale,
@@ -37,10 +37,10 @@ const UI: Record<
     lead: "Open-source TypeScript packages for everything on the network: verifying, issuing, trust lists and the wallet core. Apache-2.0, following the EUDI profiles.",
     hInstall: "Install",
     pInstall:
-      "The packages are published on npm as the 0.7.2 test release; the stable 1.0.0 comes when everything is ready. In test releases the API may change.",
+      "The packages are published on npm as the 0.7.3 test release; the stable 1.0.0 comes when everything is ready. In test releases the API may change.",
     hPkgs: "Packages",
     pPkgs:
-      "Each package name opens its npm page; “Docs” opens its reference on the developer docs. The version shown (0.7.2) is the current test release.",
+      "Each package name opens its npm page; “Docs” opens its reference on the developer docs. The version shown (0.7.3) is the current test release.",
     docs: "Docs",
     hCode: "Working examples",
     pCode:
@@ -56,10 +56,10 @@ const UI: Record<
     lead: "Ağdaki her iş için açık kaynak TypeScript paketleri: doğrulama, belge verme, güven listeleri ve cüzdan çekirdeği. Apache-2.0, EUDI profillerine uygun.",
     hInstall: "Kurulum",
     pInstall:
-      "Paketler npm'de 0.7.2 deneme sürümüyle yayımlanır; kararlı 1.0.0 hazır olunca gelir. Deneme sürümünde arayüz değişebilir.",
+      "Paketler npm'de 0.7.3 deneme sürümüyle yayımlanır; kararlı 1.0.0 hazır olunca gelir. Deneme sürümünde arayüz değişebilir.",
     hPkgs: "Paketler",
     pPkgs:
-      "Paket adı npm sayfasını açar; “Belge” geliştirici belgelerindeki başvurusunu açar. Gösterilen sürüm (0.7.2) güncel deneme sürümüdür.",
+      "Paket adı npm sayfasını açar; “Belge” geliştirici belgelerindeki başvurusunu açar. Gösterilen sürüm (0.7.3) güncel deneme sürümüdür.",
     docs: "Belge",
     hCode: "Çalışan örnekler",
     pCode:
@@ -75,10 +75,10 @@ const UI: Record<
     lead: "Torda her iş üçin açyk çeşmeli TypeScript paketleri: barlamak, resminama bermek, ynam sanawlary we gapjyk ýadrosy. Apache-2.0, EUDI profillerine laýyk.",
     hInstall: "Gurnamak",
     pInstall:
-      "Paketler npm-de 0.7.2 synag wersiýasy bilen çap edilýär; durnukly 1.0.0 taýýar bolanda geler. Synag wersiýasynda interfeýs üýtgäp biler.",
+      "Paketler npm-de 0.7.3 synag wersiýasy bilen çap edilýär; durnukly 1.0.0 taýýar bolanda geler. Synag wersiýasynda interfeýs üýtgäp biler.",
     hPkgs: "Paketler",
     pPkgs:
-      "Paketiň ady npm sahypasyny açýar; “Resminama” işläp düzüji resminamalaryndaky salgylanmany açýar. Görkezilen wersiýa (0.7.2) häzirki synag wersiýasydyr.",
+      "Paketiň ady npm sahypasyny açýar; “Resminama” işläp düzüji resminamalaryndaky salgylanmany açýar. Görkezilen wersiýa (0.7.3) häzirki synag wersiýasydyr.",
     docs: "Resminama",
     hCode: "Işleýän mysallar",
     pCode:
@@ -94,10 +94,10 @@ const UI: Record<
     lead: "Şəbəkədəki hər iş üçün açıq mənbəli TypeScript paketləri: yoxlama, rəqəmsal sənəd vermə, etibar siyahıları və rəqəmsal cüzdanın nüvəsi. Apache-2.0, EUDI profillərinə uyğun.",
     hInstall: "Quraşdırma",
     pInstall:
-      "Paketlər npm-də 0.7.2 sınaq versiyası kimi dərc olunur; sabit 1.0.0 versiyası hər şey hazır olduqda çıxacaq. Sınaq versiyalarında API dəyişə bilər.",
+      "Paketlər npm-də 0.7.3 sınaq versiyası kimi dərc olunur; sabit 1.0.0 versiyası hər şey hazır olduqda çıxacaq. Sınaq versiyalarında API dəyişə bilər.",
     hPkgs: "Paketlər",
     pPkgs:
-      "Hər paketin adı onun npm səhifəsini açır; “Sənədlər” isə tərtibatçı sənədlərindəki arayışını açır. Göstərilən versiya (0.7.2) cari sınaq versiyasıdır.",
+      "Hər paketin adı onun npm səhifəsini açır; “Sənədlər” isə tərtibatçı sənədlərindəki arayışını açır. Göstərilən versiya (0.7.3) cari sınaq versiyasıdır.",
     docs: "Sənədlər",
     hCode: "İşlək nümunələr",
     pCode:

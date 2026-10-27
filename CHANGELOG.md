@@ -53,3 +53,6 @@ tamga.network with the network's 1.0 documentation set, in English, Turkish and 
   (Android module written, not device-tested; no iOS) and Bluetooth (coded, device tests pending); foundation handover scripted
   and rehearsed; LOTL slots incl. observers. Typst templates: Onest headings, `date` and `edition` parameters; whitepaper
   masthead comes from the generated content (`masthead`); blog links in generated TSX use the typed `/blog/[slug]` route.
+- 2026-10-27 (evening): packages at npm 0.7.3 everywhere a version is shown (SDK page, home, roadmap, blog notes); release note
+  for 0.7.3 (verifier self-test fixes, canonical display locales); the self-test post no longer says that some fixes are not on npm;
+  whitepaper says the nine packages are on npm as 0.7.3 (PDFs rebuilt; version 1.0, edition date unchanged).

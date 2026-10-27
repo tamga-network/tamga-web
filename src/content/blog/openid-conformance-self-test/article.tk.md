@@ -138,7 +138,6 @@ Dört tapyndy ýapylan kararlara degýärdi, şonuň üçin ilki ADR-lerden geç
 - **Sertifikat däl.** OpenID sertifikatlaşdyryşy Gazna bilen alnyp barylýan aýratyn işdir; biziň üçin hem aýratyn karar.
 - **Meýilnamalary çap etmedik.** Guralda meýilnamany çap etmek onuň netijelerini hemmä açýar, meýilnamanyň sazlamasynda bolsa gurala beren synag gizlin açarlarymyz (tassyklama gol çekijisi, ýasama PID-iň gol açary) bar. Eksport edilen žurnallary we ekran suratlaryny özümizde saklaýarys.
 - **Sandbox-y, iki hyzmaty we olaryň her biriniň bir görnüşini öz içine alýar.** Gapjyk meýilnamalary enjam üçin aýratyn gurluşy talap edýänligi üçin işledilmedi. Barlaýjynyň mdoc görnüşi işledilmedi. Guramanyň issuer hyzmaty bu meýilnama bilen synalmady.
-- **Käbir düzedişler heniz npm-de däl.** npm-däki paketler 0.7.2; 27-nji oktýabrdaky iki barlaýjy düzedişi we dil belligi üýtgeşmesi 0.7.3-de we sandbox-da işleýär.
 - **Diňe protokoly synaýar.** Gural habarlaryň dogry görnüşdedigini we talap edilýän barlaglaryň geçirilýändigini synaýar. Guramanyň diplom bermäge ygtyýarlydygy ýa-da däldigi ynam sanawynyň işi, hukuk taýdan ykrar edilmek bolsa hukugyň işi.
 
 ## Toplumda näme bar?

@@ -108,6 +108,48 @@ export const CHANGELOG_PAGE: Record<
 
 export const RELEASES: Release[] = [
   {
+    id: "v1.0.0-2026-10-27-packages-0-7-3",
+    version: "v1.0.0",
+    date: "2026-10-27",
+    kind: "fix",
+    title: {
+      en: "Verifier self-test fixes, packages 0.7.3",
+      tr: "Doğrulayıcı öz-testi düzeltmeleri, paketler 0.7.3",
+      tk: "Barlaýjy öz-synagynyň düzedişleri, paketler 0.7.3",
+      az: "Doğrulayıcı öz-sınağı düzəlişləri, paketlər 0.7.3",
+    },
+    sections: {
+      fixed: {
+        en: [
+          "Fixes from the first verifier round of the OpenID conformance self-test: the signed presentation request no longer carries a non-standard purpose field, because the purpose a wallet shows comes from the verifier's registration certificate; the response endpoint answers with only the redirect address; display language tags in issuer metadata are written in canonical BCP 47 form, one entry per language.",
+        ],
+        tr: [
+          "OpenID uyum öz-testinin ilk doğrulayıcı turundan gelen düzeltmeler: imzalı sunum isteğinde standart dışı amaç alanı artık yok, çünkü cüzdanın gösterdiği amaç doğrulayıcının kayıt sertifikasından geliyor; yanıt ucu yalnız yönlendirme adresiyle cevap veriyor; belge veren bilgilerindeki dil etiketleri kanonik BCP 47 biçiminde yazılıyor ve her dil için tek kayıt var.",
+        ],
+        tk: [
+          "OpenID laýyklyk öz-synagynyň ilkinji barlaýjy tapgyryndan gelen düzedişler: gol çekilen görkeziş haýyşynda standart däl maksat meýdany indi ýok, sebäbi gapjygyň görkezýän maksady barlaýjynyň hasaba alyş şahadatnamasyndan gelýär; jogap nokady diňe gönükdirme salgysy bilen jogap berýär; resminama berijiniň maglumatlaryndaky dil bellikleri kanoniki BCP 47 görnüşinde ýazylýar we her dil üçin bir ýazgy bar.",
+        ],
+        az: [
+          "OpenID uyğunluq öz-sınağının ilk doğrulayıcı turundan gələn düzəlişlər: imzalı təqdimat sorğusunda standart olmayan məqsəd sahəsi artıq yoxdur, çünki cüzdanın göstərdiyi məqsəd doğrulayıcının qeydiyyat sertifikatından gəlir; cavab ucu yalnız yönləndirmə ünvanı ilə cavab verir; sənəd verənin məlumatlarındakı dil teqləri kanonik BCP 47 formasında yazılır və hər dil üçün bir qeyd var.",
+        ],
+      },
+      changed: {
+        en: [
+          "The @tamga-network/* packages are on npm as the 0.7.3 test release; the stable 1.0.0 comes when everything is ready.",
+        ],
+        tr: [
+          "@tamga-network/* paketleri npm'de 0.7.3 deneme sürümünde; kararlı 1.0.0 her şey hazır olunca gelir.",
+        ],
+        tk: [
+          "@tamga-network/* paketleri npm-de 0.7.3 synag wersiýasynda; durnukly 1.0.0 hemme zat taýýar bolanda geler.",
+        ],
+        az: [
+          "@tamga-network/* paketləri npm-də 0.7.3 sınaq buraxılışı kimi mövcuddur; sabit 1.0.0 hər şey hazır olduqda çıxacaq.",
+        ],
+      },
+    },
+  },
+  {
     id: "v1.0.0-2026-10-27",
     version: "v1.0.0",
     date: "2026-10-27",

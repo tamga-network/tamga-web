@@ -138,7 +138,6 @@ Dört bulgu daha önce kapatılmış kararlara dokunuyordu. Bu yüzden önce ADR
 - **Sertifika değildir.** OpenID sertifikası, Vakıfla birlikte yürütülen ayrı bir süreçtir ve bizim için de ayrıca verilecek bir karardır.
 - **Planları yayımlamadık.** Araçta bir planı yayımlamak, sonuçlarını herkese açık hâle getirir. Planın ayarlarında ise araca verdiğimiz test özel anahtarları (kanıt imzacısı ve sahte PID'in imza anahtarı) bulunuyor. Bu yüzden dışa aktarılan logları ve ekran görüntülerini yalnız kendimizde tutuyoruz.
 - **Kapsamı sandbox, iki servis ve her servisin tek bir seçeneğiyle sınırlı.** Cüzdan planları cihaz için ayrı bir derleme gerektirdiğinden çalıştırılmadı. Doğrulayıcının mdoc seçeneği de sınanmadı. Bir kurumun issuer'ı bu planla test edilmedi.
-- **Bazı düzeltmeler henüz npm'de yok.** npm'deki paketlerin sürümü 0.7.2. 27 Ekim'de yapılan iki doğrulayıcı düzeltmesi ve dil etiketi değişikliği 0.7.3 sürümünde yer alıyor ve sandbox'ta şimdiden çalışıyor.
 - **Yalnız protokolü sınar.** Araç, iletilerin doğru biçimde kurulduğunu ve gereken denetimlerin yapıldığını sınar. Bir kurumun diploma vermeye yetkili olup olmadığını güven listesi belirler, hukuki tanınma ise hukukun konusudur.
 
 ## Kitte ne var?
