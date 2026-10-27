@@ -42,3 +42,14 @@ tamga.network with the network's 1.0 documentation set, in English, Turkish and 
 - 2026-10-27: new blog post `openid-conformance-self-test` (en, tr, az, tk): the OpenID Foundation issuer and verifier test
   plans run as a self-test on the sandbox (results, the fixes by theme, what a self-test does not show) and the open-source
   oidf-conformance-kit; three figures (`fig-plans`, `fig-fixes`, `fig-triage`; en + tr).
+- 2026-10-27: whitepaper and manifesto revised edition (version stays 1.0; title page and masthead dated 2026-10-27 with a
+  "revised edition · first published 2026-10-03" line). Both rewritten in plain language in en, tr, tk and az following the
+  writing guide; same section structure. Facts brought up to date: the network runs no wallet and lists wallet providers
+  (Tamga Wallet's record active since 2026-10-14; ADR-0042); the ledger is a projection of the signed lists, contracts written
+  and tested, switched off until two independent operators (ADR-0051…0055, 0063); packages on npm 0.7.2 with 0.7.3 in the
+  sandbox; the OpenID self-test (issuer 63 modules, verifier 14, no failed module) and the oidf-conformance-kit;
+  `age_over_15` next to `age_over_18` (ADR-0064); gate terminal keys (ADR-0065); hosted issuance with remote signing
+  (ADR-0057); access-certificate profile (ADR-0058); token rules from the self-test (ADR-0059…0062); Digital Credentials API
+  (Android module written, not device-tested; no iOS) and Bluetooth (coded, device tests pending); foundation handover scripted
+  and rehearsed; LOTL slots incl. observers. Typst templates: Onest headings, `date` and `edition` parameters; whitepaper
+  masthead comes from the generated content (`masthead`); blog links in generated TSX use the typed `/blog/[slug]` route.

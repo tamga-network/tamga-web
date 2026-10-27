@@ -147,6 +147,20 @@ export const RELEASES: Release[] = [
           "Keçid terminalları artıq operatorun verdiyi terminal açarı ilə özlərini təsdiqləyir; şəkli çəkilmiş birdəfəlik bilet başqası tərəfindən istifadə edilə bilməz. Paketlər npm-də 0.7.2 sınaq buraxılışı kimi mövcuddur.",
         ],
       },
+      changed: {
+        en: [
+          "Whitepaper and manifesto revised (still version 1.0, edition dated 27 October 2026) and rewritten in plain language in all four languages. The whitepaper now describes the network and Tamga Wallet as separate structures, the ledger code as written and tested but switched off, the OpenID self-test, the two age flags, gate terminal keys and remote signing for hosted issuance; the PDFs were rebuilt.",
+        ],
+        tr: [
+          "Whitepaper ve manifesto gözden geçirildi (sürüm 1.0 kaldı, baskı tarihi 27 Ekim 2026) ve dört dilde sade dille yeniden yazıldı. Whitepaper artık ağ ile Tamga Wallet'ı ayrı yapılar olarak, defter kodunu yazılmış ve test edilmiş ama kapalı olarak anlatıyor; OpenID öz-testi, iki yaş alanı, kapı terminali anahtarları ve barındırılan belge vermede uzaktan imza eklendi; PDF'ler yeniden üretildi.",
+        ],
+        tk: [
+          "Whitepaper we manifest gaýtadan seredildi (1.0 wersiýa galdy, neşir senesi 2026-njy ýylyň 27-nji oktýabry) we dört dilde sada dil bilen täzeden ýazyldy. Whitepaper indi tory we Tamga Wallet-i aýry gurluşlar hökmünde, kitabyň koduny ýazylan we synagdan geçen, ýöne ýapyk hökmünde düşündirýär; OpenID öz-synagy, iki ýaş meýdany, gapy terminal açarlary we ýerleşdirilen resminama berişde uzakdan gol goşuldy; PDF-ler täzeden guruldy.",
+        ],
+        az: [
+          "Whitepaper və manifest yenidən baxıldı (versiya 1.0 qaldı, nəşr tarixi 27 oktyabr 2026) və dörd dildə sadə dillə yenidən yazıldı. Whitepaper artıq şəbəkə ilə Tamga Wallet-i ayrı strukturlar kimi, reyestr kodunu yazılmış və test edilmiş, lakin söndürülmüş kimi izah edir; OpenID öz-sınağı, iki yaş sahəsi, keçid terminalı açarları və hostinqli sənəd vermədə uzaqdan imza əlavə olundu; PDF-lər yenidən quruldu.",
+        ],
+      },
     },
   },
   {

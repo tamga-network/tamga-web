@@ -5,7 +5,7 @@ Kullanım (tamga-web kökünden): python whitepaper/source/generate.py && npx pr
 import json, os, re, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-from content import CODE, IDS, LANGS, TABLES, TABLE_MONO
+from content import CODE, DATE, FIRST_DATE, IDS, LANGS, TABLES, TABLE_MONO
 
 # Sitede açık diller: yalnız bunlar src/content/whitepaper.tsx'e girer. Diğerleri yalnız .typ üretilir ve PDF'teki
 # site bağlantıları İngilizce sayfalara gider; dil açılınca buraya eklenir (routing ile birlikte).
@@ -40,6 +40,10 @@ def jsx_inline(t):
         else:
             if m.group(4).startswith("http"):
                 res.append('<ExternalLink href="' + m.group(4) + '">' + jsx_text(m.group(3)) + "</ExternalLink>")
+            elif m.group(4).startswith("/blog/"):
+                # typed routes: blog posts are the dynamic route /blog/[slug]
+                slug = m.group(4)[len("/blog/"):]
+                res.append('<Link href={{ pathname: "/blog/[slug]", params: { slug: ' + json.dumps(slug) + ' } }}>' + jsx_text(m.group(3)) + "</Link>")
             else:
                 res.append('<Link href="' + m.group(4) + '">' + jsx_text(m.group(3)) + "</Link>")
         pos = m.end()
@@ -76,15 +80,18 @@ import { ExternalLink } from "@/components/external-link";
 import type { Locale } from "@/i18n/routing";
 
 /*
- * Whitepaper v1.0 (2026-10-03). Aynı içerik whitepaper/tamga-whitepaper-<dil>.typ (PDF) ile birebir;
- * ikisi de whitepaper/source/content.py dosyasından üretilir (generate.py) — elle düzenleme. Kaynaklar: tamga-network DECISIONS §0,
- * ADR-0009…0014, ADR-0031, ADR-0032, ADR-0035…0038, Tamga ARF 1.0 (FW-ARF-0001…0006), SPEC-TRUST-0001, SPEC-API-0001, SPEC-PROTO-0002.
+ * Whitepaper v1.0, revised edition ''' + DATE + ''' (first edition ''' + FIRST_DATE + '''). Aynı içerik whitepaper/tamga-whitepaper-<dil>.typ (PDF) ile
+ * birebir; ikisi de whitepaper/source/content.py dosyasından üretilir (generate.py) — elle düzenleme. Kaynaklar: tamga-network
+ * DECISIONS §0, ADR-0009…0014, ADR-0031, ADR-0032, ADR-0035…0038, ADR-0042, ADR-0044, ADR-0048, ADR-0051…0065, Tamga ARF 1.0,
+ * SPEC-TRUST-0001, SPEC-API-0001, SPEC-PROTO-0001/0002.
  */
 
 export type WhitepaperSection = { id: string; n: string; title: string; body: ReactNode };
 
 export type WhitepaperContent = {
   meta: { title: string; description: string };
+  /** Masthead line under the logo, e.g. "Whitepaper · v1.0 · 2026-10-27". */
+  masthead: string;
   eyebrow: string;
   title: string;
   subtitle: string;
@@ -139,6 +146,7 @@ function KV({ label, rows, mono }: { label: string; rows: string[][]; mono?: boo
             continue
         L.append(f"\nconst {lang}: WhitepaperContent = {{")
         L.append(f"  meta: {{ title: {json.dumps(d['meta_title'], ensure_ascii=False)}, description: {json.dumps(d['meta_desc'], ensure_ascii=False)} }},")
+        L.append(f"  masthead: {json.dumps(d['masthead'], ensure_ascii=False)},")
         for key, name in [("eyebrow", "eyebrow"), ("title", "title"), ("subtitle", "subtitle"), ("abstract_label", "abstractLabel"), ("toc", "tocLabel")]:
             if name == "abstractLabel":
                 continue
@@ -209,6 +217,8 @@ def typst(lang, d):
          f"  title: [{d['pdf_title']}],",
          f"  subtitle: [{ty_inline(d['subtitle'], lang)}],",
          f'  labels: (abstract: {ty_str(d["abstract_label"])}, contents: {ty_str(d["toc"])}, version: {ty_str(d["version"])}),',
+         f'  date: {ty_str(DATE)},',
+         f'  edition: {ty_str(d["edition"])},',
          f'  footer-right: {ty_str(d["footer"])},',
          "  abstract: ["]
     for para in d["abstract"]:

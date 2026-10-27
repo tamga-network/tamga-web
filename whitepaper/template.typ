@@ -1,7 +1,7 @@
 // Shared whitepaper template for Tamga Network (brand 2026-10-02).
 // Language content files (en/tr/tk) import `conf` and call it with their text.
 // Fonts: headings Onest, body IBM Plex Sans, code IBM Plex Mono (build.ps1 passes --font-path).
-// Onest is not available locally yet; headings fall back to IBM Plex Sans until it is added.
+// Onest comes from the shared font folder; glyphs it lacks (e.g. Azerbaijani ə) fall back to IBM Plex Sans.
 
 #let gok = rgb("#1E5A78")       // primary accent (gok-600)
 #let gok-700 = rgb("#174A63")
@@ -14,7 +14,7 @@
 #let band = rgb("#101820")
 
 #let sans = ("IBM Plex Sans", "New Computer Modern")
-#let head = ("IBM Plex Sans", "New Computer Modern")   // Onest when available
+#let head = ("Onest", "IBM Plex Sans", "New Computer Modern")
 #let mono = ("IBM Plex Mono", "DejaVu Sans Mono")
 
 // Small caption above a figure (kept on the same page as the figure)
@@ -65,7 +65,8 @@
   subtitle: [],
   slogan: "Building Trust Infrastructure for the Digital World.",
   labels: (:),
-  date: "2026-10-03",
+  date: "2026-10-27",
+  edition: "",                 // e.g. "Revised edition · first published 2026-10-03"
   footer-right: "Whitepaper v1.0",
   footer-left: "Tamga Network",
   abstract: [],
@@ -121,6 +122,10 @@
     #text(font: mono, size: 9pt, tracking: 1.2pt, fill: muted)[
       #lb.version · #date
     ]
+    #if edition != "" {
+      v(5pt)
+      text(size: 8.5pt, fill: muted)[#edition]
+    }
     #v(8pt)
     #text(size: 10pt, fill: gok)[#slogan]
   ]

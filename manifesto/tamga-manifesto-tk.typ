@@ -1,4 +1,5 @@
-// Tamga Network — Manifest (Türkmençe)
+// Tamga Network — Manifest (Türkmençe). v1.0, gaýtadan seredilen 2026-10-27 (ilkinji neşir 2026-10-03).
+// Tekst src/content/manifesto.tsx (tk) bilen birmeňzeş; ikisi bilelikde üýtgedilýär.
 // Build:  typst compile --root . tamga-manifesto-tk.typ ../public/manifesto-tk.pdf
 #import "template.typ": conf
 
@@ -7,86 +8,97 @@
   eyebrow: "Manifest",
   title: [Gadymy möhüriň häzirki zaman garşylygyny gurýarys],
   footer-right: "Manifest v1.0",
+  date: "2026-10-27",
+  edition: "Gaýtadan seredilen neşir · ilkinji neşir 2026-10-03",
   lead: [
-    Dünýä ynam gurmagyň usulyny üýtgedýär. Ýewropa muny düzgünnama bilen hökmany
-    etdi; standart emele gelýär. Sowal indi "bu özgeriş boljakmy" däl — "bu
-    özgerişde kim öndüriji bolar."
+    Dünýä ynam gurmagyň usulyny üýtgedýär. Ýewropa täze modeli düzgünnama bilen hökmany
+    etdi we onuň daşynda standart emele gelýär. Bu özgerişiň boljagy ýa-da bolmajagy indi
+    sowal däl. Indi sowal ony kimiň gurjagy we kimiň diňe satyn aljagy.
   ],
   theses: (
     (
-      title: "Ynam önüm däl, infrastrukturadyr",
+      title: "Ynam infrastrukturadyr",
       body: [
-        Her programma şahsyýeti, ygtyýary we resminamany täzeden barlamaly bolmaly
-        däl. Elektrik we internet umumy infrastruktura bolşy ýaly, sanly ynam hem
-        umumy infrastruktura bolmaly. Biz şol infrastrukturany gurýarys.
+        Hiç bir programma şahsyýeti, ygtyýary we resminamany noldan barlamaly bolmaly
+        däl. Elektrik we internet umumy infrastruktura bolşy ýaly, sanly ynam hem şeýle
+        bolmaly; her bank, uniwersitet, iş beriji we gapy ony täzeden gurmagyň ýerine
+        ondan peýdalanmaly. Biz şol infrastrukturany gurýarys we tabşyrmak üçin gurýarys;
+        ilki bir gaznaga, wagtyň geçmegi bilen döwletleriň özüne tabşyrylar.
       ],
     ),
     (
       title: "Maglumat eýesiniň elinde galýar",
       body: [
-        Şahsyýetiňi subut etmek üçin resminamaňyň nusgasyny tabşyrmaly bolmaly
-        däl. Maglumat ulanyjynyň gözegçiliginde galýar; diňe zerur subutnama
-        paýlaşylýar. Doglan seneňi bermän "18 ýaşdan uly" diýip subut edip bilmeli.
-        Bu şaýlyk däl, #strong[hukuk]dyr.
+        Hiç kim özi barada bir zady subut etmek üçin resminamasynyň nusgasyny tabşyrmaly
+        bolmaly däl. Resminama adamyň telefonynda galýar, telefondan diňe zerur
+        subutnama çykýar. Adam doglan senesini bermän 15 ýa-da 18 ýaşdan ulydygyny
+        görkezip bilýär, barlaýjy tarap bolsa diňe hawa ýa-da ýok görýär. Biz muny hukuk
+        hasaplaýarys we tehnologiýa bu hukuga hormat goýmagy indi ýeňilleşdirýär.
       ],
     ),
     (
       title: "Barlag çeşmä ýüz tutman edilmeli",
       body: [
-        Resminamanyň hakykylygy nusganyň ynandyryjylygyna däl, matematikanyň
-        takyklygyna daýanmaly. Kriptografik gol, resminamanyň kimden gelendigini
-        we üýtgedilmändigini çeşmä asla soraman subut edýär.
+        Resminamanyň hakykydygyna matematika karar bermeli; nusganyň näderejede
+        ynandyryjy görünýändigi ölçeg bolup bilmez. Kriptografik gol resminamany kimiň
+        berendigini we içinde hiç zadyň üýtgemändigini subut edýär. Muny resminamany
+        berene soraman edýär, şonuň üçin beren gurama adamyň resminamany nirede we haçan
+        ulanandygyny asla bilmeýär.
       ],
     ),
     (
-      title: "Blokçeýn serişde, maksat däl",
+      title: "Blokçeýn serişdedir, diňe serişde",
       body: [
-        Biz täze blokçeýn tory gurmaýarys. Häzir ynam gol çekilen, açyk ynam
-        sanawlaryna daýanýar; umumy kitap diňe garaşsyz taraplar ony bilelikde
-        dolandyranda goşulýar. *Şahsy maglumat hiç birine ýazylmaýar.* Ulanyjy
+        Biz täze blokçeýn gurmaýarys. Ynam häzir her kimiň ýükläp we barlap bilýän gol
+        çekilen, açyk ynam sanawlaryna daýanýar. Umumy kitap diňe garaşsyz taraplar ony
+        bilelikde dolandyranda bir zat goşýar; kitabyň kody ýazyldy we synagdan geçdi,
+        şol güne çenli ýapyk durýar. *Şahsy maglumat hiç birine asla ýazylmaýar.* Adam
         bularyň hiç birini görmeýär; diňe şahsyýetini ulanýar.
       ],
     ),
     (
-      title: "Açyk standartlar, öndürijiden garaşsyzlyk",
+      title: "Açyk standartlar, baglanyşyk ýok",
       body: [
-        SD-JWT VC, ISO mdoc, OpenID4VC, X.509 we saýlama açyklama — EUDI profilleri. Belli bir
-        kompaniýanyň önümine däl, dünýäniň ylalaşan açyk standartlaryna
-        ygrarlydyrys. Baglanyşyk ýok; bilelikde işlemek esasdyr.
+        SD-JWT VC, ISO mdoc, OpenID4VC, X.509 we saýlap paýlaşmak ÝB-niň öz profilleridir
+        we biz olary bolşy ýaly ulanýarys. Özümizi dünýäniň ylalaşan standartlaryna
+        baglaýarys; haýsydyr bir kompaniýanyň önümine baglamaýarys, öz önümimize-de.
+        Tor gapjyk işletmeýär; düzgünlere eýerýän her gapjygy sanaýar. Ilkinji sanalan
+        gapjyk Tamga Wallet aýratyn önümdir we sanawa başga her gapjygyň girjek ýoly bilen
+        girdi.
       ],
     ),
     (
       title: "Özygtyýarlyk we laýyklyk bir wagtda mümkün",
       body: [
-        Dünýä göçme subutnama modeline geçende öňümizde iki ýol bar: bu özgerişi
-        daşardan getirmek ýa-da öz özygtyýarly, açyk standartlara laýyk
-        infrastrukturamyzy gurmak. Biz ikinji ýoly saýlaýarys — *laýyk ýöne
-        garaşsyz.* Şol bir standartlar, öz torumyz.
+        Dünýä göçme subutnamaga geçende öňümizde iki ýol bar. Ýa bu özgerişi daşardan
+        getireris, ýa-da şol bir açyk standartlarda öz infrastrukturamyzy gurup,
+        açarlaryny öz elimizde saklarys. Biz ikinjisini saýlaýarys. *Şol bir standartlar,
+        öz torumyz* we öz hasabynyň ýeke-täk ýazyjysy bolan her döwlet.
       ],
     ),
     (
       title: "Tamga umumy möhür däbidir",
       body: [
-        _Tamga_ türki taýpalaryň gadymy möhüridi — eýeçiligi, degişliligi we
-        ygtyýary tassyklaýan belgi. Barlanyp bilinýän sanly resminama şonuň
-        häzirki zaman garşylygydyr. Umumy dili, medeniýeti we taryhy paýlaşýan
-        *türki dünýäsiniň halklary*, umumy sanly ynam binýady üçin tebigy
-        topragydyr.
+        _Tamga_ türki halklaryň gadymy möhüridi; eýeçiligi, degişliligi we ygtyýary subut
+        edýän belgi. Barlanyp bilinýän sanly resminama şonuň häzirki zaman garşylygydyr.
+        Umumy dil maşgalasyny, medeniýeti we taryhy paýlaşýan halklar umumy sanly ynam
+        binýady üçin tebigy topragydyr we olaryň her biri öz möhürini öz elinde saklaýar.
       ],
     ),
     (
       title: "Merkez däl, örüm",
       body: [
-        Ýeke-täk häkimiýet däl, bilelikde işleýän garaşsyz torlardan ybarat örüm —
-        *Trust Mesh*. Her ýurt öz ynam toruny, edaralaryny we dolandyryşyny saklap,
-        umumy standartlar arkaly beýleki torlar bilen ynam gatnaşygyny gurýar.
+        Biz ýeke-täk häkimiýet islemeýäris. Bilelikde işläp bilýän garaşsyz torlardan
+        ybarat örüm isleýäris, bir *Trust Mesh*. Bu örümde her ýurt öz ynam sanawyny,
+        edaralaryny we dolandyryşyny saklaýar we beýlekilere umumy standartlar arkaly
+        baglanýar, edil Ýewropa baglanjagy ýaly.
       ],
     ),
   ),
   closing: [
-    Sanly ynamy her programmanyň täzeden çözýän meselesinden çykaryp, Türkiýäniň
-    we türki dünýäsiniň umumy, özygtyýarly we bilelikde işleýän infrastruktura
-    hyzmatyna öwürmegi maksat edinýäris.
+    Maksadymyz sanly ynamy her programmanyň täzeden çözýän meseleleriň sanawyndan
+    çykarmak we Türkiýe bilen türki dünýäsi üçin umumy, özygtyýarly we bilelikde işleýän
+    infrastruktura öwürmek.
   ],
   slogan: "Building Trust Infrastructure for the Digital World.",
 )

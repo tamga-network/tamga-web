@@ -1,6 +1,12 @@
 import type { ReactNode } from "react";
 import type { Locale } from "@/i18n/routing";
 
+/*
+ * Manifesto v1.0, revised edition 2026-10-27 (first edition 2026-10-03). Same text as manifesto/tamga-manifesto-<lang>.typ
+ * (PDF); change both together. Facts: tamga-network DECISIONS §0, ADR-0009 (lists first, ledger threshold), ADR-0042 (the network
+ * runs no wallet), ADR-0051 (chain mirrors the signed lists), ADR-0064 (age_over_15), foundation handover plan.
+ */
+
 export type ManifestoContent = {
   meta: { title: string; description: string };
   mastheadSub: string;
@@ -18,29 +24,31 @@ const en: ManifestoContent = {
   meta: {
     title: "Manifesto",
     description:
-      "The Tamga Network Manifesto — the modern counterpart of the ancient seal. A call to turn digital trust into a shared, sovereign and interoperable infrastructure.",
+      "The Tamga Network Manifesto, the modern counterpart of the ancient seal: why digital trust should be a shared, sovereign and interoperable infrastructure for Türkiye and the Turkic world.",
   },
-  mastheadSub: "Manifesto · v1.0 · 2026-10-03",
+  mastheadSub: "Manifesto · v1.0 · revised 2026-10-27",
   eyebrow: "Manifesto",
   title: "We are building the modern counterpart of the ancient seal",
   lead: (
     <>
-      The world is changing how it establishes trust. Europe made it mandatory
-      by regulation; a standard is forming. The question is no longer “will this
-      transformation happen” —{" "}
-      <span className="text-primary">“who will be a producer in it.”</span>
+      The world is changing how it establishes trust. Europe has made the new model
+      mandatory by regulation, and a standard is taking shape around it. Whether this
+      change will happen is no longer the question.{" "}
+      <span className="text-primary">The question is who will build it and who will only buy it.</span>
     </>
   ),
   theses: [
     {
       n: "01",
-      title: "Trust is not a product, it is an infrastructure",
+      title: "Trust is infrastructure",
       body: (
         <>
-          Every application should not have to re-verify identity, authority and
-          documents. Just as electricity and the internet are shared
-          infrastructure, digital trust should be a shared infrastructure too. We
-          are building that infrastructure.
+          No application should have to verify identity, authority and documents from
+          scratch. Electricity and the internet are shared infrastructure, and digital
+          trust should be one too, something every bank, university, employer and gate
+          draws on rather than rebuilds. We are building that infrastructure, and we are
+          building it to be handed over, first to a foundation and in time to the states
+          themselves.
         </>
       ),
     },
@@ -49,59 +57,64 @@ const en: ManifestoContent = {
       title: "Data stays in the hands of its owner",
       body: (
         <>
-          You should not have to hand over a copy of your document to prove your
-          identity. Data stays under the user’s control; only the necessary proof
-          is shared. You should be able to prove you are “over 18” without giving
-          your birth date. This is not a luxury, it is a <strong>right</strong>.
+          Nobody should have to hand over a copy of a document to prove something about
+          themselves. The document stays on the person’s phone and only the proof that is
+          needed leaves it. A person can show they are over 15 or over 18 without revealing
+          a birth date, and the verifier gets a yes or a no. We treat this as a right, and
+          the technology now makes it cheap to honour.
         </>
       ),
     },
     {
       n: "03",
-      title: "Verification must happen without going back to the source",
+      title: "Verification must not go back to the source",
       body: (
         <>
-          A document’s authenticity should rely on the certainty of mathematics,
-          not on how convincing a photocopy looks. A cryptographic signature
-          proves who a document came from and that it was not altered, without
-          asking the source at all.
+          A document’s authenticity should rest on mathematics rather than on how
+          convincing a photocopy looks. A cryptographic signature proves who issued a
+          document and that nothing in it was changed, and it does so without asking the
+          issuer, so the issuer never learns where and when a person used it.
         </>
       ),
     },
     {
       n: "04",
-      title: "Blockchain is a means, not an end",
+      title: "Blockchain is a tool, and only a tool",
       body: (
         <>
-          We are not building a new blockchain network. Today trust rests on signed,
-          public trust lists; a shared ledger is added only when independent parties run
-          it together.{" "}
-          <strong>Personal data is never written to either.</strong> The user never
-          sees any of it; they only use their identity.
+          We are not building a new blockchain. Trust today rests on signed, public trust
+          lists that anyone can download and check. A shared ledger is worth adding only
+          when independent parties run it together; the code for it is written and tested,
+          and it stays switched off until that day.{" "}
+          <strong>Personal data is never written to either.</strong> The person never sees
+          any of this and simply uses their identity.
         </>
       ),
     },
     {
       n: "05",
-      title: "Open standards, vendor independence",
+      title: "Open standards, no lock-in",
       body: (
         <>
-          SD-JWT VC, ISO mdoc, OpenID4VC, X.509 and selective disclosure — the EUDI profiles. We are
-          committed to the open standards the world agrees on, not to a specific
-          company’s product. No lock-in; interoperability is essential.
+          SD-JWT VC, ISO mdoc, OpenID4VC, X.509 and selective disclosure are the EU’s own
+          profiles, and we use them as they are. We bind ourselves to standards the world
+          agrees on rather than to any company’s product, including our own. The network
+          runs no wallet; it lists every wallet that follows the rules, and the first of
+          them, Tamga Wallet, is a separate product that entered the list the same way any
+          other will.
         </>
       ),
     },
     {
       n: "06",
-      title: "Sovereignty and compatibility are possible at once",
+      title: "Sovereign and compatible at once",
       body: (
         <>
-          As the world moves to the portable proof model, we have two paths:
-          import this transformation from outside, or build our own sovereign,
-          open-standards-compatible infrastructure. We choose the second —{" "}
-          <strong>compatible yet independent.</strong> The same standards, our own
-          network.
+          As the world moves to portable proofs, we have two paths: import the change from
+          outside, or build our own infrastructure on the same open standards and keep the
+          keys to it. We choose the second.{" "}
+          <strong>The same standards, our own network,</strong> and every state the only
+          writer of its own registry.
         </>
       ),
     },
@@ -110,33 +123,32 @@ const en: ManifestoContent = {
       title: "Tamga is a shared tradition of the seal",
       body: (
         <>
-          <em>Tamga</em> was the ancient seal of the Turkic tribes — a mark that
-          proved ownership, belonging and authority. A verifiable digital
-          credential is its modern counterpart. Sharing a common language,
-          culture and history, the{" "}
-          <strong>peoples of the Turkic world</strong> are a natural soil
-          for a shared digital foundation of trust.
+          A <em>tamga</em> was the ancient seal of the Turkic peoples, a mark that proved
+          ownership, belonging and authority. A verifiable digital credential is its modern
+          counterpart. Peoples who share a language family, a culture and a history are
+          natural ground for a shared foundation of digital trust, and every one of them
+          keeps its own seal.
         </>
       ),
     },
     {
       n: "08",
-      title: "Not a center, but a mesh",
+      title: "A mesh, not a center",
       body: (
         <>
-          Not a single authority, but a mesh of interoperable, independent
-          networks — a <strong>Trust Mesh</strong>. Each country keeps its own
-          trust network, institutions and governance while connecting to others
-          through shared standards.
+          We want no single authority. We want a mesh of interoperable, independent
+          networks, a <strong>Trust Mesh</strong>, in which each country keeps its own
+          trust list, institutions and governance and connects to the others through
+          shared standards, exactly as it will connect to Europe.
         </>
       ),
     },
   ],
   closing: (
     <>
-      We aim to turn digital trust from a problem that each application solves
-      anew into a shared, sovereign and interoperable infrastructure service for
-      Türkiye and the Turkic world.
+      Our aim is to take digital trust out of the list of problems each application solves
+      anew, and to make it a shared, sovereign and interoperable infrastructure for Türkiye
+      and the Turkic world.
     </>
   ),
   slogan: "Building Trust Infrastructure for the Digital World.",
@@ -148,27 +160,30 @@ const tr: ManifestoContent = {
   meta: {
     title: "Manifesto",
     description:
-      "Tamga Network Manifestosu — kadim mührün çağdaş karşılığı. Dijital güveni ortak, egemen ve birlikte çalışabilir bir altyapıya dönüştürme çağrısı.",
+      "Tamga Network Manifestosu, kadim mührün çağdaş karşılığı: dijital güven Türkiye ve Türk dünyası için neden ortak, egemen ve birlikte çalışabilir bir altyapı olmalı.",
   },
-  mastheadSub: "Manifesto · v1.0 · 2026-10-03",
+  mastheadSub: "Manifesto · v1.0 · gözden geçirilmiş 2026-10-27",
   eyebrow: "Manifesto",
   title: "Kadim mührün çağdaş karşılığını inşa ediyoruz",
   lead: (
     <>
-      Dünya, güveni kurma biçimini değiştiriyor. Avrupa bunu düzenlemeyle zorunlu
-      kıldı; standart oluşuyor. Soru artık “bu dönüşüm olacak mı” değil —{" "}
-      <span className="text-primary">“bu dönüşümde kim üretici olacak.”</span>
+      Dünya güveni kurma biçimini değiştiriyor. Avrupa yeni modeli düzenlemeyle zorunlu
+      kıldı ve çevresinde bir standart oluşuyor. Bu dönüşümün olup olmayacağı artık soru
+      olmaktan çıktı.{" "}
+      <span className="text-primary">Şimdi soru, onu kimin kuracağı ve kimin yalnızca satın alacağı.</span>
     </>
   ),
   theses: [
     {
       n: "01",
-      title: "Güven bir ürün değil, bir altyapıdır",
+      title: "Güven bir altyapıdır",
       body: (
         <>
-          Her uygulama kimliği, yetkiyi ve belgeyi yeniden doğrulamak zorunda
-          kalmamalı. Nasıl elektrik ve internet ortak bir altyapıysa, dijital
-          güven de ortak bir altyapı olmalıdır. Biz bu altyapıyı inşa ediyoruz.
+          Hiçbir uygulama kimliği, yetkiyi ve belgeyi sıfırdan doğrulamak zorunda kalmamalı.
+          Elektrik ve internet nasıl ortak altyapıysa dijital güven de öyle olmalı; her
+          banka, üniversite, işveren ve kapı onu yeniden kurmak yerine ondan yararlanmalı.
+          Biz bu altyapıyı kuruyoruz ve devredilmek üzere kuruyoruz; önce bir vakfa, zamanla
+          devletlerin kendisine devredilecek.
         </>
       ),
     },
@@ -177,10 +192,11 @@ const tr: ManifestoContent = {
       title: "Veri, sahibinin elinde kalır",
       body: (
         <>
-          Kimliğini kanıtlamak için belgenin kopyasını teslim etmek zorunda
-          kalmamalısın. Veri kullanıcının kontrolünde kalır; yalnızca gerekli olan
-          kanıt paylaşılır. Doğum tarihini vermeden “18 yaş üstü” olduğunu
-          kanıtlayabilmelisin. Bu bir lüks değil, <strong>hak</strong>tır.
+          Kimse kendisiyle ilgili bir şeyi kanıtlamak için belgesinin kopyasını teslim etmek
+          zorunda kalmamalı. Belge kişinin telefonunda kalır, telefondan yalnızca gereken
+          kanıt çıkar. Kişi doğum tarihini vermeden 15 ya da 18 yaşından büyük olduğunu
+          gösterebilir, doğrulayan taraf da yalnızca evet ya da hayır görür. Biz bunu bir hak
+          sayıyoruz ve teknoloji bu hakka saygı göstermeyi artık kolaylaştırıyor.
         </>
       ),
     },
@@ -189,33 +205,38 @@ const tr: ManifestoContent = {
       title: "Doğrulama kaynağa gitmeden yapılmalı",
       body: (
         <>
-          Bir belgenin gerçekliği fotokopinin ikna ediciliğine değil, matematiğin
-          kesinliğine dayanmalı. Kriptografik imza, belgenin kimden geldiğini ve
-          değiştirilmediğini kaynağa hiç sormadan kanıtlar.
+          Bir belgenin gerçek olduğuna matematik karar vermeli; fotokopinin ne kadar ikna
+          edici göründüğü ölçü olamaz. Kriptografik imza belgeyi kimin verdiğini ve içinde
+          hiçbir şeyin değişmediğini kanıtlar. Bunu belgeyi verene sormadan yapar, bu yüzden
+          veren kurum kişinin belgeyi nerede ve ne zaman kullandığını hiç öğrenmez.
         </>
       ),
     },
     {
       n: "04",
-      title: "Blockchain araçtır, amaç değildir",
+      title: "Blockchain araçtır, yalnızca araç",
       body: (
         <>
-          Biz yeni bir blockchain ağı kurmuyoruz. Bugün güven, imzalı ve herkese açık
-          güven listelerine dayanır; ortak bir defter ancak bağımsız taraflar onu birlikte
-          işlettiğinde eklenir.{" "}
-          <strong>Kişisel veri ikisine de asla yazılmaz.</strong> Kullanıcı bunların
-          hiçbirini görmez; yalnızca kimliğini kullanır.
+          Biz yeni bir blockchain kurmuyoruz. Güven bugün herkesin indirip denetleyebildiği
+          imzalı, açık güven listelerine dayanır. Ortak bir defter ancak bağımsız taraflar
+          onu birlikte işlettiğinde bir şey katar; defterin kodu yazıldı ve test edildi, o
+          güne kadar kapalı durur.{" "}
+          <strong>Kişisel veri ikisine de asla yazılmaz.</strong> Kişi bunların hiçbirini
+          görmez; yalnızca kimliğini kullanır.
         </>
       ),
     },
     {
       n: "05",
-      title: "Açık standartlar, üretici bağımsızlığı",
+      title: "Açık standartlar, kilitlenme yok",
       body: (
         <>
-          SD-JWT VC, ISO mdoc, OpenID4VC, X.509 ve seçici paylaşım — EUDI profilleri. Belirli bir
-          şirketin ürününe değil, dünyanın üzerinde uzlaştığı açık standartlara
-          bağlıyız. Kilitlenme yok; birlikte çalışabilirlik esas.
+          SD-JWT VC, ISO mdoc, OpenID4VC, X.509 ve seçici paylaşım AB’nin kendi
+          profilleridir ve biz onları olduğu gibi kullanırız. Kendimizi dünyanın üzerinde
+          uzlaştığı standartlara bağlarız; herhangi bir şirketin ürününe bağlamayız, kendi
+          ürünümüze de. Ağ cüzdan işletmez; kurallara uyan her cüzdanı listeler. İlk
+          listelenen cüzdan Tamga Wallet ayrı bir üründür ve listeye başka her cüzdanın
+          gireceği yoldan girdi.
         </>
       ),
     },
@@ -224,10 +245,11 @@ const tr: ManifestoContent = {
       title: "Egemenlik ve uyum aynı anda mümkündür",
       body: (
         <>
-          Dünya taşınabilir kanıt modeline geçerken önümüzde iki yol var: bu
-          dönüşümü dışarıdan ithal etmek ya da kendi egemen, açık standartlara
-          uyumlu altyapımızı inşa etmek. Biz ikinci yolu seçiyoruz —{" "}
-          <strong>uyumlu ama bağımsız.</strong> Aynı standartlar, kendi ağımız.
+          Dünya taşınabilir kanıta geçerken önümüzde iki yol var. Ya bu dönüşümü dışarıdan
+          ithal ederiz ya da aynı açık standartlar üzerinde kendi altyapımızı kurar ve
+          anahtarlarını elimizde tutarız. Biz ikincisini seçiyoruz.{" "}
+          <strong>Aynı standartlar, kendi ağımız</strong> ve kendi kaydının tek yazarı olan
+          her devlet.
         </>
       ),
     },
@@ -236,11 +258,10 @@ const tr: ManifestoContent = {
       title: "Tamga, ortak bir mühür geleneğidir",
       body: (
         <>
-          <em>Tamga</em>, Türk boylarının kadim mührüydü — mülkiyeti, aidiyeti ve
-          yetkiyi doğrulayan işaret. Doğrulanabilir dijital belge bunun çağdaş
-          karşılığıdır. Ortak dil, kültür ve tarih mirasını paylaşan{" "}
-          <strong>Türk dünyasının halkları</strong>, ortak bir dijital
-          güven zemini için doğal bir topraktır.
+          <em>Tamga</em>, Türk halklarının kadim mührüydü; mülkiyeti, aidiyeti ve yetkiyi
+          kanıtlayan işaret. Doğrulanabilir dijital belge bunun çağdaş karşılığıdır. Ortak
+          bir dil ailesini, kültürü ve tarihi paylaşan halklar ortak bir dijital güven zemini
+          için doğal bir topraktır ve her biri kendi mührünü elinde tutar.
         </>
       ),
     },
@@ -249,19 +270,19 @@ const tr: ManifestoContent = {
       title: "Merkez değil, örgü",
       body: (
         <>
-          Tek bir otorite değil, birlikte çalışabilir bağımsız ağlardan oluşan bir
-          örgü — <strong>Trust Mesh</strong>. Her ülke kendi güven ağını,
-          kurumlarını ve yönetişimini korurken ortak standartlar üzerinden diğer
-          ağlarla güven ilişkisi kurar.
+          Tek bir otorite istemiyoruz. Birlikte çalışabilen bağımsız ağlardan oluşan bir
+          örgü istiyoruz, bir <strong>Trust Mesh</strong>. Bu örgüde her ülke kendi güven
+          listesini, kurumlarını ve yönetişimini korur ve ötekilere ortak standartlar
+          üzerinden bağlanır, tıpkı Avrupa’ya bağlanacağı gibi.
         </>
       ),
     },
   ],
   closing: (
     <>
-      Dijital güveni tek tek uygulamaların yeniden çözdüğü bir problem olmaktan
-      çıkarıp, Türkiye’nin ve Türk dünyasının ortak, egemen ve birlikte
-      çalışabilir bir altyapı hizmetine dönüştürmeyi hedefliyoruz.
+      Amacımız dijital güveni her uygulamanın yeniden çözdüğü sorunlar listesinden çıkarmak
+      ve Türkiye ile Türk dünyası için ortak, egemen ve birlikte çalışabilir bir altyapıya
+      dönüştürmek.
     </>
   ),
   slogan: "Building Trust Infrastructure for the Digital World.",
@@ -273,27 +294,30 @@ const tk: ManifestoContent = {
   meta: {
     title: "Manifest",
     description:
-      "Tamga Network Manifesti — gadymy möhüriň häzirki zaman garşylygy. Sanly ynamy umumy, özygtyýarly we bilelikde işleýän infrastruktura öwürmäge çagyryş.",
+      "Tamga Network Manifesti, gadymy möhüriň häzirki zaman garşylygy: sanly ynam Türkiýe we türki dünýäsi üçin näme üçin umumy, özygtyýarly we bilelikde işleýän infrastruktura bolmaly.",
   },
-  mastheadSub: "Manifest · v1.0 · 2026-10-03",
+  mastheadSub: "Manifest · v1.0 · gaýtadan seredilen 2026-10-27",
   eyebrow: "Manifest",
   title: "Gadymy möhüriň häzirki zaman garşylygyny gurýarys",
   lead: (
     <>
-      Dünýä ynam gurmagyň usulyny üýtgedýär. Ýewropa muny düzgünnama bilen
-      hökmany etdi; standart emele gelýär. Sowal indi “bu özgeriş boljakmy” däl —{" "}
-      <span className="text-primary">“bu özgerişde kim öndüriji bolar.”</span>
+      Dünýä ynam gurmagyň usulyny üýtgedýär. Ýewropa täze modeli düzgünnama bilen hökmany
+      etdi we onuň daşynda standart emele gelýär. Bu özgerişiň boljagy ýa-da bolmajagy indi
+      sowal däl.{" "}
+      <span className="text-primary">Indi sowal ony kimiň gurjagy we kimiň diňe satyn aljagy.</span>
     </>
   ),
   theses: [
     {
       n: "01",
-      title: "Ynam önüm däl, infrastrukturadyr",
+      title: "Ynam infrastrukturadyr",
       body: (
         <>
-          Her programma şahsyýeti, ygtyýary we resminamany täzeden barlamaly
-          bolmaly däl. Elektrik we internet umumy infrastruktura bolşy ýaly, sanly
-          ynam hem umumy infrastruktura bolmaly. Biz şol infrastrukturany gurýarys.
+          Hiç bir programma şahsyýeti, ygtyýary we resminamany noldan barlamaly bolmaly däl.
+          Elektrik we internet umumy infrastruktura bolşy ýaly, sanly ynam hem şeýle bolmaly;
+          her bank, uniwersitet, iş beriji we gapy ony täzeden gurmagyň ýerine ondan
+          peýdalanmaly. Biz şol infrastrukturany gurýarys we tabşyrmak üçin gurýarys; ilki
+          bir gaznaga, wagtyň geçmegi bilen döwletleriň özüne tabşyrylar.
         </>
       ),
     },
@@ -302,10 +326,11 @@ const tk: ManifestoContent = {
       title: "Maglumat eýesiniň elinde galýar",
       body: (
         <>
-          Şahsyýetiňi subut etmek üçin resminamaňyň nusgasyny tabşyrmaly bolmaly
-          däl. Maglumat ulanyjynyň gözegçiliginde galýar; diňe zerur subutnama
-          paýlaşylýar. Doglan seneňi bermän “18 ýaşdan uly” diýip subut edip
-          bilmeli. Bu şaýlyk däl, <strong>hukuk</strong>dyr.
+          Hiç kim özi barada bir zady subut etmek üçin resminamasynyň nusgasyny tabşyrmaly
+          bolmaly däl. Resminama adamyň telefonynda galýar, telefondan diňe zerur subutnama
+          çykýar. Adam doglan senesini bermän 15 ýa-da 18 ýaşdan ulydygyny görkezip bilýär,
+          barlaýjy tarap bolsa diňe hawa ýa-da ýok görýär. Biz muny hukuk hasaplaýarys we
+          tehnologiýa bu hukuga hormat goýmagy indi ýeňilleşdirýär.
         </>
       ),
     },
@@ -314,33 +339,38 @@ const tk: ManifestoContent = {
       title: "Barlag çeşmä ýüz tutman edilmeli",
       body: (
         <>
-          Resminamanyň hakykylygy nusganyň ynandyryjylygyna däl, matematikanyň
-          takyklygyna daýanmaly. Kriptografik gol, resminamanyň kimden gelendigini
-          we üýtgedilmändigini çeşmä asla soraman subut edýär.
+          Resminamanyň hakykydygyna matematika karar bermeli; nusganyň näderejede ynandyryjy
+          görünýändigi ölçeg bolup bilmez. Kriptografik gol resminamany kimiň berendigini we
+          içinde hiç zadyň üýtgemändigini subut edýär. Muny resminamany berene soraman
+          edýär, şonuň üçin beren gurama adamyň resminamany nirede we haçan ulanandygyny asla
+          bilmeýär.
         </>
       ),
     },
     {
       n: "04",
-      title: "Blokçeýn serişde, maksat däl",
+      title: "Blokçeýn serişdedir, diňe serişde",
       body: (
         <>
-          Biz täze blokçeýn tory gurmaýarys. Häzir ynam gol çekilen, açyk ynam
-          sanawlaryna daýanýar; umumy kitap diňe garaşsyz taraplar ony bilelikde
-          dolandyranda goşulýar.{" "}
-          <strong>Şahsy maglumat hiç birine ýazylmaýar.</strong> Ulanyjy bularyň hiç
+          Biz täze blokçeýn gurmaýarys. Ynam häzir her kimiň ýükläp we barlap bilýän gol
+          çekilen, açyk ynam sanawlaryna daýanýar. Umumy kitap diňe garaşsyz taraplar ony
+          bilelikde dolandyranda bir zat goşýar; kitabyň kody ýazyldy we synagdan geçdi, şol
+          güne çenli ýapyk durýar.{" "}
+          <strong>Şahsy maglumat hiç birine asla ýazylmaýar.</strong> Adam bularyň hiç
           birini görmeýär; diňe şahsyýetini ulanýar.
         </>
       ),
     },
     {
       n: "05",
-      title: "Açyk standartlar, öndürijiden garaşsyzlyk",
+      title: "Açyk standartlar, baglanyşyk ýok",
       body: (
         <>
-          SD-JWT VC, ISO mdoc, OpenID4VC, X.509 we saýlap paýlaşmak — EUDI profilleri. Belli bir
-          kompaniýanyň önümine däl, dünýäniň ylalaşan açyk standartlaryna
-          ygrarlydyrys. Baglanyşyk ýok; bilelikde işlemek esasdyr.
+          SD-JWT VC, ISO mdoc, OpenID4VC, X.509 we saýlap paýlaşmak ÝB-niň öz profilleridir
+          we biz olary bolşy ýaly ulanýarys. Özümizi dünýäniň ylalaşan standartlaryna
+          baglaýarys; haýsydyr bir kompaniýanyň önümine baglamaýarys, öz önümimize-de. Tor
+          gapjyk işletmeýär; düzgünlere eýerýän her gapjygy sanaýar. Ilkinji sanalan gapjyk
+          Tamga Wallet aýratyn önümdir we sanawa başga her gapjygyň girjek ýoly bilen girdi.
         </>
       ),
     },
@@ -349,10 +379,11 @@ const tk: ManifestoContent = {
       title: "Özygtyýarlyk we laýyklyk bir wagtda mümkün",
       body: (
         <>
-          Dünýä göçme subutnama modeline geçende öňümizde iki ýol bar: bu özgerişi
-          daşardan getirmek ýa-da öz özygtyýarly, açyk standartlara laýyk
-          infrastrukturamyzy gurmak. Biz ikinji ýoly saýlaýarys —{" "}
-          <strong>laýyk ýöne garaşsyz.</strong> Şol bir standartlar, öz torumyz.
+          Dünýä göçme subutnamaga geçende öňümizde iki ýol bar. Ýa bu özgerişi daşardan
+          getireris, ýa-da şol bir açyk standartlarda öz infrastrukturamyzy gurup, açarlaryny
+          öz elimizde saklarys. Biz ikinjisini saýlaýarys.{" "}
+          <strong>Şol bir standartlar, öz torumyz</strong> we öz hasabynyň ýeke-täk ýazyjysy
+          bolan her döwlet.
         </>
       ),
     },
@@ -361,11 +392,11 @@ const tk: ManifestoContent = {
       title: "Tamga umumy möhür däbidir",
       body: (
         <>
-          <em>Tamga</em> türki taýpalaryň gadymy möhüridi — eýeçiligi, degişliligi
-          we ygtyýary tassyklaýan belgi. Barlanyp bilinýän sanly resminama şonuň
-          häzirki zaman garşylygydyr. Umumy dili, medeniýeti we taryhy paýlaşýan{" "}
-          <strong>türki dünýäsiniň halklary</strong>, umumy sanly ynam
-          binýady üçin tebigy topragydyr.
+          <em>Tamga</em> türki halklaryň gadymy möhüridi; eýeçiligi, degişliligi we ygtyýary
+          subut edýän belgi. Barlanyp bilinýän sanly resminama şonuň häzirki zaman
+          garşylygydyr. Umumy dil maşgalasyny, medeniýeti we taryhy paýlaşýan halklar umumy
+          sanly ynam binýady üçin tebigy topragydyr we olaryň her biri öz möhürini öz elinde
+          saklaýar.
         </>
       ),
     },
@@ -374,19 +405,19 @@ const tk: ManifestoContent = {
       title: "Merkez däl, örüm",
       body: (
         <>
-          Ýeke-täk häkimiýet däl, bilelikde işleýän garaşsyz torlardan ybarat
-          örüm — <strong>Trust Mesh</strong>. Her ýurt öz ynam toruny,
-          edaralaryny we dolandyryşyny saklap, umumy standartlar arkaly beýleki
-          torlar bilen ynam gatnaşygyny gurýar.
+          Biz ýeke-täk häkimiýet islemeýäris. Bilelikde işläp bilýän garaşsyz torlardan
+          ybarat örüm isleýäris, bir <strong>Trust Mesh</strong>. Bu örümde her ýurt öz ynam
+          sanawyny, edaralaryny we dolandyryşyny saklaýar we beýlekilere umumy standartlar
+          arkaly baglanýar, edil Ýewropa baglanjagy ýaly.
         </>
       ),
     },
   ],
   closing: (
     <>
-      Sanly ynamy her programmanyň täzeden çözýän meselesinden çykaryp,
-      Türkiýäniň we türki dünýäsiniň umumy, özygtyýarly we bilelikde işleýän
-      infrastruktura hyzmatyna öwürmegi maksat edinýäris.
+      Maksadymyz sanly ynamy her programmanyň täzeden çözýän meseleleriň sanawyndan çykarmak
+      we Türkiýe bilen türki dünýäsi üçin umumy, özygtyýarly we bilelikde işleýän
+      infrastruktura öwürmek.
     </>
   ),
   slogan: "Building Trust Infrastructure for the Digital World.",
@@ -398,29 +429,30 @@ const az: ManifestoContent = {
   meta: {
     title: "Manifest",
     description:
-      "Tamga Network Manifesti — qədim möhürün müasir qarşılığı. Rəqəmsal etibarı ortaq, suveren və qarşılıqlı işləyə bilən infrastruktura çevirməyə çağırış.",
+      "Tamga Network Manifesti, qədim möhürün müasir qarşılığı: rəqəmsal etibar Türkiyə və türk dünyası üçün niyə ortaq, suveren və qarşılıqlı işləyə bilən infrastruktur olmalıdır.",
   },
-  mastheadSub: "Manifest · v1.0 · 2026-10-03",
+  mastheadSub: "Manifest · v1.0 · yenidən baxılmış 2026-10-27",
   eyebrow: "Manifest",
   title: "Biz qədim möhürün müasir qarşılığını qururuq",
   lead: (
     <>
-      Dünya etibarı qurmaq üsulunu dəyişir. Avropa bunu tənzimləmə ilə məcburi
-      etdi; standart formalaşır. Sual artıq “bu transformasiya baş verəcəkmi”
-      deyil —{" "}
-      <span className="text-primary">“bu transformasiyada kim istehsalçı olacaq.”</span>
+      Dünya etibarı qurmaq üsulunu dəyişir. Avropa yeni modeli tənzimləmə ilə məcburi etdi
+      və ətrafında bir standart formalaşır. Bu dəyişikliyin baş verib-verməyəcəyi artıq sual
+      olmaqdan çıxdı.{" "}
+      <span className="text-primary">İndi sual onu kimin quracağı və kimin yalnız satın alacağıdır.</span>
     </>
   ),
   theses: [
     {
       n: "01",
-      title: "Etibar məhsul deyil, infrastrukturdur",
+      title: "Etibar infrastrukturdur",
       body: (
         <>
-          Hər tətbiq şəxsiyyəti, səlahiyyəti və sənədləri yenidən yoxlamağa
-          məcbur olmamalıdır. Elektrik və internet ortaq infrastruktur olduğu
-          kimi, rəqəmsal etibar da ortaq infrastruktur olmalıdır. Biz bu
-          infrastrukturu qururuq.
+          Heç bir tətbiq şəxsiyyəti, səlahiyyəti və sənədləri sıfırdan yoxlamağa məcbur
+          olmamalıdır. Elektrik və internet ortaq infrastruktur olduğu kimi rəqəmsal etibar da
+          belə olmalıdır; hər bank, universitet, işəgötürən və giriş qapısı onu yenidən qurmaq
+          əvəzinə ondan faydalanmalıdır. Biz bu infrastrukturu qururuq və təhvil verilmək üçün
+          qururuq; əvvəlcə bir fonda, zamanla dövlətlərin özünə təhvil veriləcək.
         </>
       ),
     },
@@ -429,10 +461,11 @@ const az: ManifestoContent = {
       title: "Məlumat sahibinin əlində qalır",
       body: (
         <>
-          Şəxsiyyətinizi sübut etmək üçin sənədinizin surətini təhvil verməyə
-          məcbur olmamalısınız. Məlumat istifadəçinin nəzarətində qalır; yalnız
-          zəruri sübut paylaşılır. Doğum tarixinizi vermədən “18 yaşdan yuxarı”
-          olduğunuzu sübut edə bilməlisiniz. Bu dəbdəbə deyil, <strong>hüquq</strong>dur.
+          Heç kim özü haqqında nəyisə sübut etmək üçün sənədinin surətini təhvil verməyə
+          məcbur olmamalıdır. Sənəd şəxsin telefonunda qalır, telefondan yalnız lazım olan
+          sübut çıxır. Şəxs doğum tarixini vermədən 15 və ya 18 yaşdan yuxarı olduğunu göstərə
+          bilər, yoxlayan tərəf isə yalnız bəli və ya xeyr görür. Biz bunu bir hüquq sayırıq və
+          texnologiya bu hüquqa hörmət etməyi artıq asanlaşdırır.
         </>
       ),
     },
@@ -441,34 +474,38 @@ const az: ManifestoContent = {
       title: "Yoxlama mənbəyə müraciət etmədən aparılmalıdır",
       body: (
         <>
-          Sənədin həqiqiliyi surətin nə qədər inandırıcı göründüyünə deyil,
-          riyaziyyatın dəqiqliyinə əsaslanmalıdır. Kriptoqrafik imza sənədin
-          kimdən gəldiyini və dəyişdirilmədiyini mənbədən heç nə soruşmadan
-          sübut edir.
+          Sənədin həqiqi olduğuna riyaziyyat qərar verməlidir; surətin nə qədər inandırıcı
+          göründüyü ölçü ola bilməz. Kriptoqrafik imza sənədi kimin verdiyini və içində heç
+          nəyin dəyişmədiyini sübut edir. Bunu sənədi verəndən soruşmadan edir, buna görə
+          verən qurum şəxsin sənədi harada və nə vaxt istifadə etdiyini heç vaxt öyrənmir.
         </>
       ),
     },
     {
       n: "04",
-      title: "Blockchain məqsəd deyil, vasitədir",
+      title: "Blockchain vasitədir, yalnız vasitə",
       body: (
         <>
-          Biz yeni blockchain şəbəkəsi qurmuruq. Bu gün etibar imzalanmış, açıq
-          etibar siyahılarına əsaslanır; ortaq reyestr yalnız müstəqil tərəflər onu
-          birlikdə idarə etdikdə əlavə olunur.{" "}
-          <strong>Fərdi məlumatlar heç birinə yazılmır.</strong> İstifadəçi bunların
-          heç birini görmür; yalnız öz şəxsiyyətindən istifadə edir.
+          Biz yeni blockchain qurmuruq. Etibar bu gün hər kəsin yükləyib yoxlaya bildiyi
+          imzalı, açıq etibar siyahılarına əsaslanır. Ortaq reyestr yalnız müstəqil tərəflər
+          onu birlikdə idarə etdikdə nəsə qatır; reyestrin kodu yazılıb və test edilib, o günə
+          qədər söndürülmüş qalır.{" "}
+          <strong>Fərdi məlumat heç birinə heç vaxt yazılmır.</strong> Şəxs bunların heç
+          birini görmür; yalnız öz şəxsiyyətindən istifadə edir.
         </>
       ),
     },
     {
       n: "05",
-      title: "Açıq standartlar, istehsalçıdan asılı olmamaq",
+      title: "Açıq standartlar, asılılıq yoxdur",
       body: (
         <>
-          SD-JWT VC, ISO mdoc, OpenID4VC, X.509 və seçici paylaşım (selective disclosure) — EUDI profilləri. Biz
-          konkret bir şirkətin məhsuluna deyil, dünyanın razılaşdığı açıq
-          standartlara sadiqik. Asılılıq yoxdur; qarşılıqlı işləmə əsasdır.
+          SD-JWT VC, ISO mdoc, OpenID4VC, X.509 və seçici paylaşım Aİ-nin öz profilləridir və
+          biz onları olduğu kimi istifadə edirik. Özümüzü dünyanın razılaşdığı standartlara
+          bağlayırıq; hər hansı şirkətin məhsuluna bağlamırıq, öz məhsulumuza da. Şəbəkə
+          cüzdan idarə etmir; qaydalara uyan hər cüzdanı sıralayır. Siyahıya daxil olan ilk
+          cüzdan Tamga Wallet ayrıca məhsuldur və siyahıya başqa hər cüzdanın daxil olacağı
+          yolla daxil olub.
         </>
       ),
     },
@@ -477,11 +514,11 @@ const az: ManifestoContent = {
       title: "Suverenlik və uyğunluq eyni anda mümkündür",
       body: (
         <>
-          Dünya daşına bilən sübut modelinə keçərkən qarşımızda iki yol var: bu
-          transformasiyanı xaricdən idxal etmək və ya öz suveren, açıq
-          standartlarla uyğun infrastrukturumuzu qurmaq. Biz ikincisini seçirik —{" "}
-          <strong>uyğun, lakin müstəqil.</strong> Eyni standartlar, öz
-          şəbəkəmiz.
+          Dünya daşına bilən sübuta keçərkən qarşımızda iki yol var. Ya bu dəyişikliyi
+          xaricdən idxal edərik, ya da eyni açıq standartlar üzərində öz infrastrukturumuzu
+          qurub açarlarını öz əlimizdə saxlayarıq. Biz ikincisini seçirik.{" "}
+          <strong>Eyni standartlar, öz şəbəkəmiz</strong> və öz qeydiyyatının yeganə müəllifi
+          olan hər dövlət.
         </>
       ),
     },
@@ -490,12 +527,11 @@ const az: ManifestoContent = {
       title: "Tamga ortaq möhür ənənəsidir",
       body: (
         <>
-          <em>Tamga</em> türk tayfalarının qədim möhürü idi — mülkiyyəti, mənsubiyyəti
-          və səlahiyyəti sübut edən nişan. Yoxlanıla bilən rəqəmsal
-          sənəd onun müasir qarşılığıdır. Ortaq dil, mədəniyyət və tarixi
-          paylaşan{" "}
-          <strong>türk dünyasının xalqları</strong> ortaq rəqəmsal etibar
-          təməli üçün təbii zəmindir.
+          <em>Tamga</em> türk xalqlarının qədim möhürü idi; mülkiyyəti, mənsubiyyəti və
+          səlahiyyəti sübut edən nişan. Yoxlanıla bilən rəqəmsal sənəd onun müasir
+          qarşılığıdır. Ortaq dil ailəsini, mədəniyyəti və tarixi paylaşan xalqlar ortaq
+          rəqəmsal etibar təməli üçün təbii zəmindir və hər biri öz möhürünü öz əlində
+          saxlayır.
         </>
       ),
     },
@@ -504,19 +540,19 @@ const az: ManifestoContent = {
       title: "Mərkəz deyil, şəbəkə toxuması",
       body: (
         <>
-          Tək bir hakimiyyət deyil, qarşılıqlı işləyə bilən, müstəqil
-          şəbəkələrdən ibarət toxuma — <strong>Trust Mesh</strong>. Hər ölkə öz
-          etibar şəbəkəsini, qurumlarını və idarəetməsini qoruyaraq ortaq
-          standartlar vasitəsilə digərləri ilə əlaqə qurur.
+          Biz tək bir hakimiyyət istəmirik. Qarşılıqlı işləyə bilən müstəqil şəbəkələrdən
+          ibarət toxuma istəyirik, bir <strong>Trust Mesh</strong>. Bu toxumada hər ölkə öz
+          etibar siyahısını, qurumlarını və idarəetməsini qoruyur və digərlərinə ortaq
+          standartlar vasitəsilə bağlanır, eynilə Avropaya bağlanacağı kimi.
         </>
       ),
     },
   ],
   closing: (
     <>
-      Məqsədimiz rəqəmsal etibarı hər tətbiqin yenidən həll etdiyi problemdən
-      çıxarıb Türkiyə və türk dünyası üçün ortaq, suveren və qarşılıqlı işləyə
-      bilən infrastruktur xidmətinə çevirməkdir.
+      Məqsədimiz rəqəmsal etibarı hər tətbiqin yenidən həll etdiyi problemlər siyahısından
+      çıxarmaq və Türkiyə ilə türk dünyası üçün ortaq, suveren və qarşılıqlı işləyə bilən
+      infrastruktura çevirməkdir.
     </>
   ),
   slogan: "Building Trust Infrastructure for the Digital World.",
