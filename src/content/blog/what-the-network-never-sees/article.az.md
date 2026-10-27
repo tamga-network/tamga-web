@@ -1,7 +1,7 @@
 ---
 title: Tamga Network-un heç vaxt görmədikləri
 slug: what-the-network-never-sees
-description: "Tamga Network-un siyahılarında, jurnallarında və xidmətlərində nə olmur, müvəqqəti xidmətlər fərdi məlumatlara harada toxunur, operatorlar nəyə çıxış əldə edə bilir, nəyə yox."
+description: "Tamga Network-un siyahılarında və jurnallarında nəyin heç vaxt olmadığını, müvəqqəti xidmətlərinin fərdi məlumatlara harada toxunduğunu və operatorların nəyə çıxışı olduğunu izah edirik."
 date: 2026-10-08
 lang: az
 category: privacy
@@ -11,58 +11,58 @@ related: status-list-privacy, trusting-a-wallet, what-is-a-trust-network, zero-k
 
 <!-- Sources: SPEC-TRUST-0001 TL11 (no personal data, credential or credential hash in any list, anchor log or change log); SPEC-BC-0001 DP1 (ledger later: no personal data, content or hash); ADR-0020 K2 + AS1–AS4 (no register of persons; data read from the authentic source at signing and dropped; persistent only subject_ref and keyed digest; Tamga never gets a contact address); ADR-0041 TI3–TI5 (trial register only in the sandbox); SPEC-API-0001 AP3, AP4, AP7; ADR-0017 HV1–HV3 (values once, deleted ≤ 5 min); SPEC-WALLET-0001 WL4, WL9; SPEC-ID-0003 §3 IP4/IP11, §8 IDP3, IDP4, IDP9, IDP11, §9 (identity service, data controller, ≤ 30 days provider image retention by contract, 10 copies, 730 days), §9.1 erasure; ADR-0011 (provisional until a state PID provider; Tamga data controller under KVKK); ADR-0022 (non-qualified, I2); ADR-0031 PS1–PS3 and "known weakening" with mitigations; ARF architecture §2.7 (deletion by resetting the wallet), §4.5 item 4 (no IP), §7.2 items 1, 6, 7 (no images at Tamga; statistics only in aggregate, groups ≥ 50); ARF rulebook RB-GEN-05 (no IP raw, hashed or truncated; debug logs ≤ 7 days); ADR-0038 SB1–SB5; ADR-0040 RI3–RI6; ADR-0041 TI4; ADR-0042 NW1 (no wallet operated). SPEC-TRUST-0001 security notes (single operator, quarterly transparency report, audit). Live check 2026-10-08: lotl.json / tl-tr.json fields and anchors.jsonl payloads contain no personal data. -->
 
-Tamga Network insanların rəqəmsal sənədlərinin məzmununu nə siyahılarında, nə jurnallarında, nə də lövbər jurnalında görür. Şəbəkə insanların reyestrini aparmır, rəqəmsal sənədin harada və kimə təqdim edildiyini öyrənmir və IP ünvanlarını qeydə almır. Bununla belə, şəbəkə fərdi məlumatlara qısa müddət toxunan bir neçə müvəqqəti xidmət işlədir: şəxsiyyətin yoxlanılması zamanı şəxsiyyət xidməti, imzalama anında host edilən sənədvermə xidməti və sayt ondan istifadə etməyi seçdikdə host edilən yoxlayan tərəf. Bunların hər biri üçün qaydalar nəyin, nə qədər müddətə saxlanıla biləcəyini və nəyin heç vaxt saxlanıla bilməyəcəyini müəyyən edir.
+Tamga Network insanların sənədlərinin məzmununu siyahılarında, jurnallarında və ya lövbər jurnalında heç vaxt görmür. Şəxslərlə bağlı qeyd saxlamır, sənədin harada və ya kimə göstərildiyini öyrənmir və IP ünvanlarını qeydə almır. Bununla belə şəbəkə fərdi məlumatlara qısa müddət ərzində toxunan bir neçə müvəqqəti xidmət idarə edir. Şəxsiyyət xidməti şəxsiyyət yoxlaması zamanı, host edilən sənəd vermə xidməti imza anında, host edilən yoxlayan tərəf isə sayt ondan istifadə etməyi seçəndə fərdi məlumatla qarşılaşır. Qaydalar bu xidmətlərin hər biri üçün nəyin nə qədər müddət saxlanıla biləcəyini və nəyin heç vaxt saxlanıla bilməyəcəyini müəyyən edir.
 
 ## Açıq etibar siyahılarında və lövbər jurnalında nə var?
 
-`trust.tamga.network` ünvanındakı imzalanmış etibar siyahıları qurumları, yoxlayan tərəfləri və cüzdan provayderlərini göstərir. Hər qeyddə hüquqi ad, sertifikatın barmaq izi (fingerprint), status və onun tarixçəsi, tarixlər, ünvanlar, həmçinin qurumun verə biləcəyi və ya yoxlayan tərəfin tələb edə biləcəyi rəqəmsal sənəd növləri olur. Qayda qısadır: heç bir siyahı, lövbər jurnalı və ya dəyişikliklər jurnalı fərdi məlumatları, rəqəmsal sənədi, hətta rəqəmsal sənədin heşini belə ehtiva etmir (TL11 qaydası).
+`trust.tamga.network` ünvanındakı imzalanmış etibar siyahıları qurumları, yoxlayan tərəfləri və cüzdan provayderlərini göstərir. Qeyddə hüquqi ad, sertifikat barmaq izi, status və status tarixçəsi, tarixlər, ünvanlar və qurumun verə biləcəyi və ya yoxlayan tərəfin istəyə biləcəyi sənəd növləri olur. Qayda çox qısadır. Heç bir siyahıda, lövbər jurnalında və ya dəyişiklik qeydində fərdi məlumat, sənəd, hətta sənədin heşi belə ola bilməz (TL11 qaydası).
 
 ![Şəbəkənin hər bir açıq hissəsində nə var](/blog/what-the-network-never-sees/en/fig-katman.png)
 
-Lövbər jurnalı qurumun status siyahısının hər dərcini imzalanmış sətir kimi qeydə alır: hansı siyahı, hansı versiya, hansı daycest (digest). Heç bir sətir şəxs haqqında heç nə demir və heç bir sətirdə status siyahısındakı mövqe olmur. Şəbəkə gələcəkdə qeydlərini ortaq reyestrə (ledger) köçürəndə eyni qayda da onunla birlikdə keçəcək: heç bir müqavilə fərdi məlumatları, rəqəmsal sənədin məzmununu və ya heşini saxlamır (DP1). Bunu özünüz yoxlaya bilərsiniz; siyahıların oxunaqlı nüsxələri `trust.tamga.network/lotl.json` və `tl-tr.json` ünvanlarındadır ([İmzalanmış etibar siyahısı necə işləyir](/blog/how-trust-lists-work)).
+Lövbər jurnalı qurumun status siyahısının hər dərcini imzalanmış sətir kimi qeydə alır. Bu sətirdə hansı siyahının, hansı versiyasının və hansı heşlə dərc edildiyi yazılır. Heç bir sətir şəxs haqqında məlumat vermir və heç bir sətirdə status siyahısındakı mövqe yer almır. Şəbəkə qeydlərini gələcəkdə ortaq reyestrə köçürəndə eyni qayda da onunla birlikdə köçəcək və heç bir müqavilə fərdi məlumat, sənəd məzmunu və ya sənəd heşi saxlamayacaq (DP1). Bunu özünüz də yoxlaya bilərsiniz, çünki siyahıların oxuna bilən nüsxələri `trust.tamga.network/lotl.json` və `tl-tr.json` ünvanlarındadır ([İmzalı etibar siyahısı necə işləyir](/blog/how-trust-lists-work)).
 
-## İnsanların rəqəmsal sənədləri harada saxlanılır?
+## İnsanların sənədləri harada saxlanılır?
 
-Şəxsin özündə — şəbəkənin heç bir yerində yox. Rəqəmsal sənəd qurumun sistemindən şəxsin rəqəmsal cüzdanına ötürülür. Tamga insanların reyestrini aparmır: host edilən sənədvermədə məlumatlar imzalama anında qurumun öz sistemindən, yəni onun mötəbər mənbəyindən oxunur və rəqəmsal sənəd verildikdən sonra yaddaşdan silinir ([ADR-0020](https://docs.tamga.network/adr/0020-authentic-source-at-institution)).
+Sənədlər şəxsin özündə saxlanılır və şəbəkənin heç bir yerində olmur. Sənəd qurumun sistemindən birbaşa şəxsin cüzdanına gedir. Tamga şəxslərlə bağlı qeyd saxlamır. Host edilən sənəd vermədə məlumatlar imza anında qurumun öz sistemindən, yəni səlahiyyətli mənbədən oxunur və sənəd verildikdən sonra yaddaşdan silinir ([ADR-0020](https://docs.tamga.network/adr/0020-authentic-source-at-institution)).
 
-Yalnız iki şey saxlanılır, başqa heç nə. Birincisi, qurumun şəxs üçün qeyri-şəffaf istinadı — sonradan rəqəmsal sənədi ləğv edə və ya yeniləyə bilməsi üçün. İkincisi, şəxsin şəxsiyyətinə bağlanmış təklif üçün uyğunlaşdırma açarlarının açarlı daycesti; açıq şəxsiyyət nömrəsi isə heç vaxt saxlanılmır. Tamga təklif üçün şəxsin e-poçt ünvanını və ya telefon nömrəsini heç vaxt almır: keçidi qurum özü göndərir.
+Bu prosesdə yalnız iki məlumat saxlanılır. Birincisi, qurumun şəxs üçün istifadə etdiyi və təkbaşına məna daşımayan identifikatordur. Qurum bunun sayəsində sənədi sonradan ləğv edə və ya yeniləyə bilir. İkincisi, şəxsin kimliyinə bağlı təklif söhbətindədirsə, uyğunlaşdırmada istifadə olunan məlumatların açarlı heşidir. Şəxsiyyət nömrəsinin özü isə heç vaxt saxlanılmır. Tamga təklif üçün şəxsin e-poçt ünvanını və ya telefon nömrəsini də heç vaxt almır, çünki təklif keçidini qurumun özü göndərir.
 
-Qurum Konsolunda (Institution Console) sınaq üçün "nümunə mənbə" reyestri var. O, yalnız sınaq mühitində (sandbox), test qurumları üçün mövcuddur və hər gecə silinir; real şəbəkədə onu açmaq mümkün deyil.
+Qurum Konsolunda sınaqlar üçün istifadə olunan "nümunə mənbə" reyestri var. Bu reyestr yalnız sandbox-da, test qurumları üçün mövcuddur və hər gecə silinir. Real şəbəkədə isə ümumiyyətlə açıla bilmir.
 
 ## Təqdimatı kim görür?
 
-Rəqəmsal cüzdan və yoxlayan tərəf — adi halda başqa heç kim. Təqdimat birbaşa rəqəmsal cüzdandan yoxlayan tərəfə gedir. Status siyahıları və sxem kataloqu əvvəlcədən, toplu şəkildə yüklənir, buna görə rəqəmsal sənəd təqdim edilən anda nə quruma, nə də şəbəkəyə heç bir sorğu göndərilmir ([İzləmədən ləğv](/blog/status-list-privacy)). Şəxsin təqdimat tarixçəsi telefonda qalır; heç vaxt serverə və ya ehtiyat nüsxəyə düşmür və cihazdan yalnız şəxsin özünün etdiyi, parolla qorunan ixrac vasitəsilə çıxır (WL4 qaydası). Yaş yoxlamasında yoxlayan tərəf daha da az görə bilər: sıfır bilikli sübut (zero-knowledge proof) ilə o, yalnız şəxsin 18 yaşdan böyük olduğunu öyrənir ([Tamga-da sıfır bilikli sübut](/blog/zero-knowledge-in-tamga)).
+Adi halda təqdimatı yalnız cüzdan və yoxlayan tərəf görür. Təqdimat birbaşa cüzdandan yoxlayan tərəfə gedir. Status siyahıları və sxem kataloqu əvvəlcədən və toplu şəkildə endirildiyi üçün sənəd göstərildiyi anda nə qurumdan, nə də şəbəkədən heç nə istənilmir ([İzləmədən ləğv](/blog/status-list-privacy)). Şəxsin təqdimat tarixçəsi telefonda qalır və heç vaxt serverə və ya ehtiyat nüsxəyə getmir. Bu tarixçə cihazdan yalnız şəxsin özünün etdiyi, parolla qorunan ixracla çıxa bilər (WL4 qaydası). Yaş yoxlamasında yoxlayan tərəf daha da az görə bilər. Sıfır bilikli sübut istifadə olunanda yalnız şəxsin 18 yaşdan yuxarı olduğunu öyrənir ([Tamga-da sıfır bilik](/blog/zero-knowledge-in-tamga)).
 
-Öz yoxlama proqram təminatını işlətmək istəməyən sayt host edilən yoxlayan tərəfdən — Tamga Verify-dan istifadə edə bilər. Bu halda Tamga Verify şəxsin paylaşmağa razılıq verdiyi sahələri həqiqətən görür, çünki onları saytın adından yoxlayır. Qaydalar bu çıxışı məhdudlaşdırır: dəyərlər yalnız sorğunu açan qeydiyyatdan keçmiş sayta, ən çoxu bir dəfə verilir və nəticədən ən geci beş dəqiqə sonra yaddaşdan silinir ([ADR-0017](https://docs.tamga.network/adr/0017-hosted-verifier-result-access)). Yoxlama nəticəsinin özündə dəyərlər deyil, sahə adları olur və heç vaxt status siyahısındakı mövqe olmur (AP3, AP4).
+Öz yoxlama proqramını idarə etmək istəməyən sayt host edilən yoxlayan tərəf olan Tamga Verify-dan istifadə edə bilər. Bu halda Tamga Verify şəxsin paylaşmağa razı olduğu sahələri görür, çünki onları sayt adından yoxlayır. Qaydalar bu vəziyyəti də məhdudlaşdırır. Dəyərlər yalnız sorğunu açan qeydiyyatlı sayta və ən çoxu bir dəfə verilir. Nəticədən ən geci beş dəqiqə sonra isə yaddaşdan silinir ([ADR-0017](https://docs.tamga.network/adr/0017-hosted-verifier-result-access)). Yoxlama nəticəsinin özü isə sahələrin dəyərlərini deyil, yalnız adlarını daşıyır və heç vaxt status siyahısı mövqeyini ehtiva etmir (AP3, AP4).
 
 ## Şəxsiyyət xidməti nəyi görür?
 
-Dövlət şəxsiyyət provayderi təyin edilənədək Tamga şəxsi uzaqdan yoxlayan və onun rəqəmsal cüzdanına şəxsiyyət rəqəmsal sənədi verən müvəqqəti şəxsiyyət xidməti işlədir ([ADR-0011](https://docs.tamga.network/adr/0011-provisional-identity-attestation-provider)). Bu xidmət qeyri-kvalifikasiyalı xidmət kimi qeydiyyatdadır; "kvalifikasiyalı" müstəqil qiymətləndirmə tələb edən hüquqi statusdur və Tamga-da hələ belə qiymətləndirmə yoxdur. Yoxlama zamanı:
+Dövlət şəxsiyyət provayderi təyin edənə qədər Tamga müvəqqəti şəxsiyyət xidməti idarə edir. Bu xidmət şəxsi uzaqdan yoxlayır və onun cüzdanına şəxsiyyət sənədi verir ([ADR-0011](https://docs.tamga.network/adr/0011-provisional-identity-attestation-provider)). Xidmət kvalifikasiyalı olmayan xidmət kimi qeydiyyatdadır. "Kvalifikasiyalı" sözü hüquqi statusdur və Tamga-nın hələ malik olmadığı müstəqil qiymətləndirmə tələb edir. Yoxlama zamanı bunlar baş verir:
 
-- lisenziyalı uzaqdan yoxlama provayderi şəxsin şəxsiyyət sənədini və üzünü görür; bu emal üzrə məlumat nəzarətçisi Tamga-dır və şəxs yoxlama başlamazdan əvvəl bildirişi oxuyur və açıq razılıq verir;
-- şəxsiyyət xidməti şəxsin sahələrini yalnız rəqəmsal sənəd verilənədək saxlayır;
-- bundan sonra o, qeyri-şəffaf istinadı, sənəd nömrəsinin açarlı heşini, etibarlılıq müddətinin bitmə tarixini və nüsxələrin status siyahısındakı mövqelərini saxlayır, başqa heç nə;
-- sənəd təsvirləri, selfilər, video və sənəddən çıxarılmış xam mətn heç vaxt Tamga-da saxlanılmır; provayderin təsvirləri öz tərəfində saxlaması müqavilə ilə ən çoxu 30 günlə məhdudlaşdırılır ([şəxsiyyətin təsdiqi, §8 və §9](https://docs.tamga.network/specifications/identity-proofing)).
+- lisenziyalı uzaqdan yoxlama provayderi şəxsin şəxsiyyət sənədini və üzünü görür; bu emalın məlumat nəzarətçisi Tamga-dır və şəxs yoxlama başlamazdan əvvəl məlumatlandırma mətnini oxuyub açıq razılıq verir;
+- şəxsiyyət xidməti şəxsin məlumatlarını yalnız sənəd verilənə qədər saxlayır;
+- sənəd verildikdən sonra yalnız təkbaşına məna daşımayan identifikatoru, sənəd nömrəsinin açarlı heşini, etibarlılıq müddətini və nüsxələrin status siyahısındakı mövqelərini saxlayır;
+- sənəd şəkilləri, selfi, video və sənəddən oxunan xam mətn Tamga-da heç vaxt saxlanılmır; provayderin şəkilləri saxlama müddəti isə müqavilə ilə ən çoxu 30 günlə məhdudlaşdırılıb ([şəxsiyyətin yoxlanılması, §8 və §9](https://docs.tamga.network/specifications/identity-proofing)).
 
 ![Fərdi məlumatlar haradan keçir və nə qədər qalır](/blog/what-the-network-never-sees/en/fig-gecis.png)
 
-Şəxs hesab olmadan öz qeydini silə bilər. Rəqəmsal cüzdan sahiblik sübutu kimi şəxsiyyət xidmətinin özünün verdiyi rəqəmsal sənədləri təqdim edir; bundan sonra xidmət qeydi və onun hadisə jurnalı sətirlərini silir, bütün nüsxələri ləğv edir və provayderdən öz sessiyasını silməyi xahiş edir. Rəqəmsal cüzdanı sıfırlamaq da eyni nəticəni verir, üstəlik cüzdanın öz provayderindəki qeydi də silinir.
+Şəxs hesab açmağa ehtiyac olmadan öz qeydini sildirə bilər. Cüzdan sahibliyin sübutu kimi şəxsiyyət xidmətinin verdiyi sənədləri göstərir. Xidmət də qeydi və ona bağlı hadisə jurnalı sətirlərini silir, bütün nüsxələri ləğv edir və provayderdən sessiyanı silməsini istəyir. Cüzdanı sıfırlamaq da eyni nəticəni verir və cüzdanın öz provayderindəki qeydi də silinir.
 
-## Bəs saytlara daxil olmaq üçün istifadə olunan psevdonimlər necə?
+## Saytlara daxil olmaq üçün istifadə olunan psevdonimlər necə?
 
-"Sign in with Tamga" hər sayta özünəməxsus sabit psevdonim verir və iki sayt eyni şəxsi bir-biri ilə uyğunlaşdıra bilmir ([ADR-0031](https://docs.tamga.network/adr/0031-per-site-pseudonyms)). Psevdonim rəqəmsal cüzdanda toxumdan (seed) əldə edilir. Toxum isə şəxsiyyət xidmətində şəxsin dəyişməz şəxsiyyət məlumatlarından ayrıca açarla əldə edilir, rəqəmsal cüzdana heç vaxt sayta göstərilməyən rəqəmsal sənəd növü ilə çatdırılır və xidmət tərəfindən saxlanılmır.
+"Tamga ilə daxil ol" hər sayta özünə məxsus və dəyişməyən psevdonim verir. Beləliklə iki sayt eyni şəxsi bir-biri ilə uyğunlaşdıra bilmir ([ADR-0031](https://docs.tamga.network/adr/0031-per-site-pseudonyms)). Psevdonim cüzdanda toxumdan (seed) əldə edilir. Toxum isə şəxsiyyət xidmətində şəxsin dəyişməyən kimliyindən ayrıca açarla əldə edilir. Cüzdana heç bir sayta göstərilməyən sənəd növü daxilində verilir və xidmət onu saxlamır.
 
-Qərar sənədi bu məhdudiyyəti açıq şəkildə qeyd edir, ona görə də biz də onu burada təkrarlayırıq. Həm həmin açara, həm də şəxsin şəxsiyyət nömrəsinə sahib olan biri, məsələn, saytla sövdələşən şəxsiyyət xidmətinin operatoru, həmin şəxsin həmin saytdakı psevdonimini hesablaya bilər. Riskləri azaldan tədbirlər bunlardır: qorunan açar anbarı, açara girişin qeydiyyatı, şəffaflıq hesabatında açardan istifadə saylarının dərc edilməsi və açarın dövlət şəxsiyyət provayderinə təhvil verilməsi imkanı. Bu dizayndan əvvəl hər sayt hər kəsi uyğunlaşdıra bilirdi.
+Qərar qeydi bu üsulun məhdudiyyətini açıq yazır və biz də burada təkrarlayırıq. Həm həmin açarı, həm də şəxsin şəxsiyyət nömrəsini əlində saxlayan kimsə, məsələn saytla əlbir olan şəxsiyyət xidmətinin operatoru, həmin şəxsin həmin saytdakı psevdonimini hesablaya bilər. Buna qarşı görülən tədbirlər qorunan açar anbarı, qeydə alınan açar girişləri, şəffaflıq hesabatında dərc olunan açar istifadəsi sayları və açarı dövlət şəxsiyyət provayderinə təhvil vermək imkanıdır. Bu dizayndan əvvəl isə hər sayt hər kəsi bir-biri ilə uyğunlaşdıra bilirdi.
 
 ## Şəbəkənin jurnallarında nə olur?
 
-Əksər veb-xidmətlərin saxladığından daha az. Heç bir Tamga xidməti IP ünvanlarını qeydə almır: nə xam, nə heşlənmiş, nə də qısaldılmış şəkildə. Sazlama (debug) jurnalları ən çoxu yeddi gün saxlanılır ([Tamga ARF qaydalar toplusu, RB-GEN-05](https://arf.tamga.network/rulebook)). Jurnallarda və nəticələrdə iddia (claim) dəyərləri, şəxsiyyət nömrələri və status siyahısındakı mövqelər olmur; şəxsiyyət xidməti hadisə növünü, qeyri-şəffaf sessiya istinadını və səviyyəni qeydə alır — heç vaxt adı, sənəd nömrəsini və ya balı yox. İstifadə statistikası yalnız ən azı 50 nəfərlik qruplar üzrə ümumiləşdirilmiş şəkildə dərc olunur ([ARF §7.2](https://arf.tamga.network/architecture)).
+Şəbəkənin jurnalları əksər veb xidmətlərin saxladığından daha az məlumat ehtiva edir. Heç bir Tamga xidməti IP ünvanını nə olduğu kimi, nə heş şəklində, nə də qısaldılmış formada qeydə alır. Sazlama jurnalları ən çoxu yeddi gün saxlanılır ([Tamga ARF qaydalar kitabı, RB-GEN-05](https://arf.tamga.network/rulebook)). Jurnallarda və nəticələrdə sahə dəyərləri, şəxsiyyət nömrələri və status siyahısı mövqeləri olmur. Şəxsiyyət xidməti hadisənin növünü, təkbaşına məna daşımayan sessiya identifikatorunu və səviyyəni yazır, amma heç vaxt ad, sənəd nömrəsi və ya bal yazmır. İstifadə statistikası isə yalnız toplu şəkildə və ən azı 50 nəfərlik qruplar halında dərc olunur ([ARF §7.2](https://arf.tamga.network/architecture)).
 
-## Sınaq mühiti necə ayrı saxlanılır?
+## Sandbox necə ayrı saxlanılır?
 
-`sandbox.tamga.network` ünvanındakı sınaq mühiti (sandbox) öz kök sertifikatı və öz siyahıları olan ayrıca test şəbəkəsidir ([ADR-0038](https://docs.tamga.network/adr/0038-sandbox)). Real şəbəkənin açarları orada heç nə imzalamır, sınaq mühitinin siyahıları özlərini test kimi işarələyir, real şəbəkə üçün qurulmuş rəqəmsal cüzdan və ya yoxlayan tərəf isə onları rədd edir. Buna görə sınaq mühitinin rəqəmsal sənədi real yoxlayan tərəfdə heç vaxt keçərli sayılmır.
+`sandbox.tamga.network` ünvanındakı sandbox öz kök sertifikatı və öz siyahıları olan ayrıca test şəbəkəsidir ([ADR-0038](https://docs.tamga.network/adr/0038-sandbox)). Real şəbəkənin açarları orada heç nə imzalamır. Sandbox siyahıları özlərini test siyahısı kimi işarələyir və real şəbəkə üçün qurulmuş cüzdan və ya yoxlayan tərəf bu siyahıları rədd edir. Ona görə sandbox-da alınmış sənəd real yoxlayan tərəfdən heç vaxt keçmir.
 
-Defolt olaraq sınaq mühitində etibarsız formatlı şəxsiyyət nömrələri olan uydurma şəxslərdən istifadə olunur. Real sənədlə şəxsiyyətin yoxlanılmasını sınamaq üçün istəyə bağlı yol da var. Başlamazdan əvvəl şəxs aydın test xəbərdarlığını təsdiqləyir; rəqəmsal sənədə yalnız ad, soyad və doğum tarixi daxil edilir, şəxsiyyət nömrəsi və ya sənəd nömrəsi heç vaxt; provayderin sessiyası dərhal silinir; gecə sıfırlamasında isə hər şey silinir ([ADR-0040](https://docs.tamga.network/adr/0040-sandbox-invited-real-identity)). Test qurumları Türkiyə şəxsiyyət nömrəsinin nəzarət cəmi (checksum) yoxlamasından keçən 11 rəqəmli nömrə daşıyan qeydi saxlaya bilmir.
+Sandbox standart olaraq şəxsiyyət nömrələri etibarsız formatda yazılmış uydurma şəxslərdən istifadə edir. Real sənədlə şəxsiyyət yoxlamasını sınamaq istəyənlər üçün istəyə bağlı yol da var. Şəxs başlamazdan əvvəl aydın test xəbərdarlığını təsdiqləyir. Sənədə yalnız ad, soyad və doğum tarixi daxil olur, şəxsiyyət nömrəsi və sənəd nömrəsi isə heç vaxt daxil olmur. Provayderdəki sessiya dərhal silinir və hər şey gecə aparılan sıfırlamada təmizlənir ([ADR-0040](https://docs.tamga.network/adr/0040-sandbox-invited-real-identity)). Test qurumları Türkiyə şəxsiyyət nömrəsinin yoxlama cəmi qaydasından keçən 11 rəqəmli ədədi ehtiva edən qeydi saxlaya bilmir.
 
 ## Operatorlar nəyə çıxış əldə edə bilir, nəyə yox?
 
@@ -70,40 +70,40 @@ Defolt olaraq sınaq mühitində etibarsız formatlı şəxsiyyət nömrələri 
 
 | Operatorların çıxışı var | Operatorların çıxışı yoxdur |
 |---|---|
-| host edilən xidmət işləyərkən ötürülən məlumatlar: imzalama anında, şəxsiyyətin yoxlanılması zamanı və Tamga Verify-da beş dəqiqəyədək | verildikdən sonra rəqəmsal sənədlərin məzmunu |
-| şəxsiyyət xidmətinin qeydləri: qeyri-şəffaf istinadlar, sənəd nömrələrinin heşləri, bitmə tarixi, status mövqeləri | şəxsin telefonda qalan təqdimat tarixçəsi |
-| qurumun host edilən sənədvermə xidməti vasitəsilə etdiyi ləğvlər | rəqəmsal sənədin harada, nə vaxt və ya kimə təqdim edildiyi |
-| IP ünvanları olmayan server giriş jurnalları | insanların telefonlarındakı açarlar və ya rəqəmsal cüzdanların öz qeydləri (şəbəkə heç bir rəqəmsal cüzdan işlətmir) |
+| host edilən xidmət işləyərkən keçən məlumatlara: imza anında, şəxsiyyət yoxlaması zamanı və Tamga Verify-da ən çoxu beş dəqiqə | sənəd verildikdən sonra sənədlərin məzmununa |
+| şəxsiyyət xidmətinin qeydlərinə: təkbaşına məna daşımayan identifikatorlar, sənəd nömrəsi heşləri, etibarlılıq müddəti, status mövqeləri | telefonda qalan şəxsi təqdimat tarixçəsinə |
+| qurumun host edilən sənəd vermə xidməti vasitəsilə etdiyi ləğvlərə | sənədin harada, nə vaxt və kimə göstərildiyinə |
+| IP ünvanı olmayan server giriş jurnallarına | insanların telefonlarındakı açarlara və ya cüzdanların öz qeydlərinə (şəbəkə cüzdan idarə etmir) |
 
-Sağ sütun dizaynla təmin olunur: məlumatlar sadəcə orada yoxdur. Sol sütun operatorun qaydalara əməl etməsindən asılıdır və məhz buna görə qısadır, müddətlə məhdudlaşdırılıb və yazılı şəkildə müəyyən edilib.
+Sağ sütundakı məhdudiyyətlər dizayn sayəsində təmin olunur, çünki bu məlumatlar şəbəkədə ümumiyyətlə olmur. Sol sütundakılar isə operatorun qaydalara əməl etməsinə söykənir. Ona görə sol sütun qısa saxlanılıb, müddətlə məhdudlaşdırılıb və yazıya alınıb.
 
 ## Dürüst məhdudiyyətlər hansılardır?
 
-- **Şəxsiyyət xidməti etibar nöqtəsidir.** O, yoxlama zamanı şəxsiyyət məlumatlarını görür və psevdonim açarını saxlayır. O, dizayn etibarilə müvəqqətidir və onun rolunun dövlət şəxsiyyət provayderinə keçməsi nəzərdə tutulur.
-- **Hazırda bir operator.** Siyahıları, lövbər jurnalını və host edilən xidmətləri tək, müvəqqəti operator idarə edir. İctimai jurnal, dəyişikliklər jurnalı, qaydaların tələb etdiyi rüblük şəffaflıq hesabatı və müstəqil auditlər sui-istifadənin qarşısını alır, lakin onu qeyri-mümkün etmir. Bu məhdudiyyət müstəqil operatorlar reyestri birlikdə idarə etməyə başladıqda aradan qalxır ([Niyə blokçeynsiz başlayırıq](/blog/why-no-blockchain-yet)).
-- **Host edilən xidmətlər emal etdikləri məlumatları görür.** Şəbəkədən heç nəyin keçməsini istəməyən qurum və ya sayt açıq mənbəli sənəd vermə və yoxlama paketlərini öz serverlərində işlədə bilər.
+- **Şəxsiyyət xidməti etibar nöqtəsidir.** Yoxlama zamanı şəxsiyyət məlumatlarını görür və psevdonim açarını saxlayır. Bu xidmət dizayn etibarilə müvəqqətidir və onun rolunun dövlət şəxsiyyət provayderinə keçməsi planlaşdırılıb.
+- **Bu gün bir operator var.** Siyahıları, lövbər jurnalını və host edilən xidmətləri bir müvəqqəti operator idarə edir. Açıq jurnal, dəyişiklik qeydi, qaydaların nəzərdə tutduğu rüblük şəffaflıq hesabatı və müstəqil auditlər sui-istifadənin qarşısını alır, amma onu qeyri-mümkün etmir. Bu məhdudiyyət müstəqil operatorlar reyestri birlikdə saxlayanda aradan qalxacaq ([Niyə blokçeynsiz başlayırıq](/blog/why-no-blockchain-yet)).
+- **Host edilən xidmətlər emal etdikləri məlumatları görür.** Şəbəkədən heç bir məlumatın keçməsini istəməyən qurum və ya sayt açıq mənbəli sənəd vermə və yoxlama paketlərini öz serverlərində işlədə bilər.
 
 ## Tez-tez verilən suallar
 
 ### Tamga Network diplomumu və ya şəxsiyyət məlumatlarımı saxlayırmı?
 
-Xeyr. Rəqəmsal sənədləriniz telefonunuzdadır. Siyahılarda yalnız qurum və yoxlayan tərəf məlumatları var. Şəxsiyyət xidməti sənəd verildikdən sonra yalnız qeyri-şəffaf istinadı və sənəd nömrənizin açarlı hash-ini saxlayır, sənədlərinizin təsvirlərini isə heç vaxt saxlamır.
+Xeyr. Sənədləriniz telefonunuzda saxlanılır və siyahılarda yalnız qurumlara və yoxlayan tərəflərə aid məlumatlar olur. Şəxsiyyət xidməti sənəd verildikdən sonra təkbaşına məna daşımayan identifikatoru və sənəd nömrənizin açarlı heşini saxlayır. Sənəd şəkillərinizi isə heç vaxt saxlamır.
 
-### Tamga rəqəmsal sənədlərimdən harada istifadə etdiyimi görə bilərmi?
+### Tamga sənədlərimdən harada istifadə etdiyimi görə bilərmi?
 
-Xeyr. Yoxlayan tərəflər status siyahılarını əvvəlcədən yükləyir, təqdimatlar isə birbaşa rəqəmsal cüzdanınızdan yoxlayan tərəfə gedir. Sayt Tamga Verify-dan istifadə edirsə, o, yalnız paylaşmağa razılıq verdiyiniz sahələri, ən çox beş dəqiqə ərzində görür.
+Xeyr. Yoxlayan tərəflər status siyahılarını əvvəlcədən endirir və təqdimatlar birbaşa cüzdanınızdan yoxlayan tərəfə gedir. Sayt Tamga Verify-dan istifadə edirsə, Tamga Verify yalnız paylaşmağa razı olduğunuz sahələri və ən çoxu beş dəqiqə ərzində görür.
 
 ### Tamga IP ünvanımı qeydə alırmı?
 
-Heç bir Tamga xidməti IP ünvanlarını nə açıq, nə hash edilmiş, nə də qısaldılmış şəkildə qeydə almır.
+Xeyr. Heç bir Tamga xidməti IP ünvanını nə olduğu kimi, nə heş şəklində, nə də qısaldılmış formada qeydə alır.
 
 ### Məlumatlarımın silinməsini tələb edə bilərəmmi?
 
-Bəli. Rəqəmsal cüzdanınız öz rəqəmsal sənədlərini təqdim etməklə şəxsiyyət xidmətindən qeydinizin silinməsini istəyə bilər; cüzdanı sıfırlamaq da eyni nəticəni verir. Siz həmçinin cüzdandan quruma və ya yoxlayan tərəfə silinmə sorğusu göndərə bilərsiniz.
+Bəli. Cüzdanınız şəxsiyyət xidmətinin verdiyi sənədləri göstərərək xidmətdən qeydinizi silməsini istəyə bilər və cüzdanı sıfırlamaq da eyni nəticəni verir. Quruma və ya yoxlayan tərəfə də cüzdandan silmə sorğusu göndərə bilərsiniz.
 
-### Sınaq mühitini real şəxsiyyətimlə yoxlamaq təhlükəsizdirmi?
+### Sandbox-ı real şəxsiyyətimlə sınamaq təhlükəsizdirmi?
 
-Bu, könüllü və məhduddur: test rəqəmsal sənədinə yalnız adınız və doğum tarixiniz daxil edilir, provayder sessiyası dərhal silinir və hər gecə bütün məlumatlar təmizlənir. Sınaq mühiti standart olaraq uydurma şəxslərdən istifadə edir.
+Bu yol istəyə bağlı və məhduddur. Test sənədinə yalnız adınız və doğum tarixiniz daxil olur, provayderdəki sessiya dərhal silinir və hər şey hər gecə təmizlənir. Sandbox standart olaraq uydurma şəxslərdən istifadə edir.
 
 ## Mənbələr
 

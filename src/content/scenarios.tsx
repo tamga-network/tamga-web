@@ -44,13 +44,13 @@ const en: ScenariosContent = {
   meta: {
     title: "Scenarios & use cases",
     description:
-      "How Tamga Network works in practice: education first, from enrolment to the first job; tickets, website sign-in and age checks today; and where the same trust layer can go next.",
+      "How Tamga Network works in practice. Education comes first, from enrolment to the first job, while tickets, website sign-in and age checks already work today. The page also shows where the same trust layer can go next.",
   },
   eyebrow: "Use cases",
   title: "Scenarios: education first, one trust layer",
   intro:
     "Education is the network's first and main scenario: a student's documents from enrolment to the first job application. Tickets, website sign-in and age checks run on the same layer today. Health is at the decision stage; work, public services, logistics and payments show where the layer can go. Every scenario carries its status.",
-  note: "Screens are illustrative mockups of a wallet on the network; example values only. “Works today” means it runs end to end in the sandbox, on the network's live software; the first real institution joins with the pilot.",
+  note: "The screens are illustrative mockups of a wallet on the network and use example values only. “Works today” means the scenario runs end to end in the sandbox on the network's live software. The first real institution joins with the pilot.",
   statusLabels: { today: "Works today", pilot: "With the pilot", later: "Later" },
   verticals: [
     {
@@ -136,7 +136,7 @@ const en: ScenariosContent = {
       scenarios: [
         {
           title: "A ticket with no personal data",
-          body: "The seller issues the ticket into the wallet with the event, the seat and the validity. No name, no ID number.",
+          body: "The seller issues the ticket into the wallet with the event, the seat and the validity, and without any name or ID number.",
         },
         {
           title: "Single use at the gate",
@@ -144,7 +144,7 @@ const en: ScenariosContent = {
         },
         {
           title: "Concerts, cinemas, conferences",
-          body: "One ticket type covers them all: the event and the venue are fields, not new formats, so a new organiser joins without new software.",
+          body: "One ticket type covers all of them. The event and the venue are fields inside it, so a new organiser can join without new formats or new software.",
         },
       ],
       wallet: {
@@ -269,7 +269,7 @@ const en: ScenariosContent = {
       icon: "work",
       eyebrow: "Work",
       name: "Work and professions",
-      badge: "Vision — not built yet",
+      badge: "Vision · not built yet",
       tone: "vision",
       intro:
         "Hiring and professional life repeat the same checks again and again. The same credentials can end that.",
@@ -313,14 +313,14 @@ const en: ScenariosContent = {
       icon: "public",
       eyebrow: "Public",
       name: "Public services and travel",
-      badge: "Vision — not built yet",
+      badge: "Vision · not built yet",
       tone: "vision",
       intro:
         "Public services and travel are where people show documents most often, and where the least should be shared.",
       scenarios: [
         {
           title: "Hotel check-in with only what is required",
-          body: "A hotel receives the fields it must record, and nothing more, straight from the wallet instead of photocopying an ID.",
+          body: "A hotel receives straight from the wallet the fields it must record and nothing more, instead of photocopying an ID.",
         },
         {
           title: "Municipal and resident services",
@@ -357,14 +357,14 @@ const en: ScenariosContent = {
       icon: "logistics",
       eyebrow: "Logistics",
       name: "Logistics",
-      badge: "Research — not built yet",
+      badge: "Research · not built yet",
       tone: "research",
       intro:
         "Deliveries and freight depend on who may carry what and on proof that it arrived. Credentials can carry both; this is a research direction, not part of the network today.",
       scenarios: [
         {
           title: "Last mile: the customer confirms receipt",
-          body: "The customer confirms a delivery from their own wallet: a signed proof of receipt instead of a signature on a screen.",
+          body: "The customer confirms a delivery from their own wallet, which gives a signed proof of receipt instead of a signature on a screen.",
         },
         {
           title: "International freight (TIR)",
@@ -396,10 +396,10 @@ const en: ScenariosContent = {
       icon: "payments",
       eyebrow: "Payments",
       name: "Payments",
-      badge: "Research — not built yet",
+      badge: "Research · not built yet",
       tone: "research",
       intro:
-        "Tamga would prove who may pay and under what mandate; the money itself stays on regulated bank rails. A research direction, not a currency and not part of the network today.",
+        "Tamga would prove who may pay and under what mandate, while the money itself stays on regulated bank rails. This is a research direction. It is not a currency and not part of the network today.",
       scenarios: [
         {
           title: "Payment between verified parties",
@@ -442,13 +442,13 @@ const tr: ScenariosContent = {
   meta: {
     title: "Senaryolar ve kullanım alanları",
     description:
-      "Tamga Network pratikte nasıl çalışır: önce eğitim, kayıttan ilk işe; bugün bilet, sitelere giriş ve yaş kontrolü; aynı güven katmanının sonra nereye uzanabileceği.",
+      "Tamga Network'ün pratikte nasıl çalıştığını anlatıyoruz. İlk sırada kayıttan ilk işe uzanan eğitim senaryosu var. Bilet, sitelere giriş ve yaş kontrolü bugün çalışıyor ve sayfa aynı güven katmanının sonra nereye uzanabileceğini de gösteriyor.",
   },
   eyebrow: "Kullanım alanları",
   title: "Senaryolar: önce eğitim, tek güven katmanı",
   intro:
     "Ağın ilk ve ana senaryosu eğitim: bir öğrencinin belgeleri, kayıttan ilk iş başvurusuna kadar. Bilet, sitelere giriş ve yaş kontrolü bugün aynı katman üzerinde çalışıyor. Sağlık karar aşamasında; iş, kamu hizmetleri, lojistik ve ödeme katmanın nereye uzanabileceğini gösteriyor. Her senaryonun yanında durumu yazıyor.",
-  note: "Ekranlar ağdaki bir cüzdanın temsilî tasarımlarıdır; değerler örnektir. “Bugün çalışıyor”, sandbox'ta, ağın canlıdaki yazılımıyla uçtan uca çalıştığı anlamına gelir; gerçek ağdaki ilk kurum pilotla katılır.",
+  note: "Ekranlar ağdaki bir cüzdan için hazırlanmış temsilî tasarımlardır ve değerler örnektir. “Bugün çalışıyor” ifadesi, senaryonun sandbox'ta ve ağın canlıdaki yazılımıyla uçtan uca çalıştığını anlatır. Gerçek ağa katılacak ilk kurum pilotla gelecek.",
   statusLabels: { today: "Bugün çalışıyor", pilot: "Pilotla", later: "Sonra" },
   verticals: [
     {
@@ -530,11 +530,11 @@ const tr: ScenariosContent = {
       badge: "Bugün çalışıyor",
       tone: "today",
       intro:
-        "Bir bilet tek bir şeyi kanıtlamalı: bu etkinlik için geçerli olduğunu. Taşıyan kişi hakkında hiçbir şeyi değil.",
+        "Bir bilet yalnızca bu etkinlik için geçerli olduğunu kanıtlamalı ve onu taşıyan kişi hakkında hiçbir şey söylememeli.",
       scenarios: [
         {
           title: "Kişisel veri taşımayan bilet",
-          body: "Satıcı bileti etkinlik, koltuk ve geçerlilik bilgisiyle cüzdana verir. Ad yok, kimlik numarası yok.",
+          body: "Satıcı bileti etkinlik, koltuk ve geçerlilik bilgisiyle cüzdana verir. Bilette ad ya da kimlik numarası bulunmaz.",
         },
         {
           title: "Kapıda tek kullanım",
@@ -542,7 +542,7 @@ const tr: ScenariosContent = {
         },
         {
           title: "Konser, sinema, konferans",
-          body: "Hepsi tek bilet türüyle: etkinlik ve mekân birer alandır, yeni biçim değil; yeni bir organizatör yeni yazılım gerekmeden katılır.",
+          body: "Bütün bunlar tek bir bilet türüyle yapılır. Etkinlik ve mekân bu türün içindeki alanlardır, bu yüzden yeni bir organizatör yeni bir biçime ya da yazılıma ihtiyaç duymadan katılabilir.",
         },
       ],
       wallet: {
@@ -667,7 +667,7 @@ const tr: ScenariosContent = {
       icon: "work",
       eyebrow: "İş",
       name: "İş ve meslekler",
-      badge: "Vizyon — henüz kurulmadı",
+      badge: "Vizyon · henüz kurulmadı",
       tone: "vision",
       intro:
         "İşe alım ve meslek hayatı aynı kontrolleri tekrar tekrar yapar. Aynı belgeler buna son verebilir.",
@@ -711,14 +711,14 @@ const tr: ScenariosContent = {
       icon: "public",
       eyebrow: "Kamu",
       name: "Kamu hizmetleri ve seyahat",
-      badge: "Vizyon — henüz kurulmadı",
+      badge: "Vizyon · henüz kurulmadı",
       tone: "vision",
       intro:
         "Kamu hizmetleri ve seyahat, insanların en sık belge gösterdiği ve en az paylaşılması gereken yerlerdir.",
       scenarios: [
         {
           title: "Otelde yalnız gerekeni paylaşarak giriş",
-          body: "Otel, kaydetmek zorunda olduğu alanları ve fazlasını değil, kimliğin fotokopisi yerine doğrudan cüzdandan alır.",
+          body: "Otel, kaydetmek zorunda olduğu alanları kimliğin fotokopisini çekmek yerine doğrudan cüzdandan alır ve bunlardan fazlasını görmez.",
         },
         {
           title: "Belediye ve yerel hizmetler",
@@ -755,14 +755,14 @@ const tr: ScenariosContent = {
       icon: "logistics",
       eyebrow: "Lojistik",
       name: "Lojistik",
-      badge: "Araştırma — henüz kurulmadı",
+      badge: "Araştırma · henüz kurulmadı",
       tone: "research",
       intro:
         "Teslimat ve taşımacılık, kimin neyi taşıyabileceğine ve malın ulaştığının kanıtına dayanır. Belgeler ikisini de taşıyabilir; bu bir araştırma yönüdür, bugün ağın parçası değildir.",
       scenarios: [
         {
           title: "Son teslimat: teslimatı müşteri onaylar",
-          body: "Müşteri teslimatı kendi cüzdanından onaylar: ekrana atılan imza yerine imzalı bir teslim kanıtı.",
+          body: "Müşteri teslimatı kendi cüzdanından onaylar ve böylece ekrana atılan bir imza yerine imzalı bir teslim kanıtı oluşur.",
         },
         {
           title: "Uluslararası taşımacılık (TIR)",
@@ -794,10 +794,10 @@ const tr: ScenariosContent = {
       icon: "payments",
       eyebrow: "Ödeme",
       name: "Ödeme",
-      badge: "Araştırma — henüz kurulmadı",
+      badge: "Araştırma · henüz kurulmadı",
       tone: "research",
       intro:
-        "Tamga, kimin hangi yetkiyle ödeme yapabileceğini kanıtlardı; paranın kendisi düzenlenmiş banka raylarında kalır. Bir araştırma yönüdür: para birimi değildir ve bugün ağın parçası değildir.",
+        "Tamga, kimin hangi yetkiyle ödeme yapabileceğini kanıtlardı, paranın kendisi ise düzenlenmiş banka altyapısında kalırdı. Bu bir araştırma yönüdür. Bir para birimi önerilmiyor ve bugün ağın parçası değildir.",
       scenarios: [
         {
           title: "Doğrulanmış taraflar arasında ödeme",
@@ -840,13 +840,13 @@ const tk: ScenariosContent = {
   meta: {
     title: "Ssenariýalar we ulanyş ugurlary",
     description:
-      "Tamga Network amalda nähili işleýär: ilki bilim, hasaba alnyşdan ilkinji işe çenli; şu gün bilet, saýtlara giriş we ýaş barlagy; şol bir ynam gatlagynyň soňra nirä ýetip biljekdigi.",
+      "Tamga Network-yň amalda nähili işleýändigini düşündirýäris. Ilkinji orunda hasaba alnyşdan ilkinji işe çenli bilim ssenarisi dur. Bilet, saýtlara giriş we ýaş barlagy şu gün işleýär we sahypa şol bir ynam gatlagynyň soňra nirä ýetip biljekdigini hem görkezýär.",
   },
   eyebrow: "Ulanyş ugurlary",
   title: "Ssenariýalar: ilki bilim, bir ynam gatlagy",
   intro:
     "Toruň ilkinji we esasy ssenariýasy bilim: talybyň resminamalary, hasaba alnyşdan ilkinji işe ýüz tutmaga çenli. Bilet, saýtlara giriş we ýaş barlagy şu gün şol bir gatlakda işleýär. Saglyk karar tapgyrynda; iş, döwlet hyzmatlary, logistika we töleg gatlagyň nirä ýetip biljekdigini görkezýär. Her ssenariýanyň ýanynda ýagdaýy ýazylýar.",
-  note: "Ekranlar tordaky bir gapjygyň şertli dizaýnlarydyr; bahalar mysal. “Şu gün işleýär” — sandbox-da, toruň işleýän programma üpjünçiligi bilen başdan-aýak işleýär diýmekdir; hakyky tordaky ilkinji gurama pilot bilen goşulýar.",
+  note: "Ekranlar tordaky bir gapjyk üçin taýýarlanan şertli dizaýnlardyr we bahalar mysaldyr. “Şu gün işleýär” diýmek, ssenariniň sandbox-da we toruň işleýän programma üpjünçiliginde başdan-aýak işleýändigini aňladýar. Hakyky tora goşuljak ilkinji gurama pilot bilen geler.",
   statusLabels: { today: "Şu gün işleýär", pilot: "Pilot bilen", later: "Soňra" },
   verticals: [
     {
@@ -928,11 +928,11 @@ const tk: ScenariosContent = {
       badge: "Şu gün işleýär",
       tone: "today",
       intro:
-        "Bilet diňe bir zady subut etmeli: şu çäre üçin güýjündedigini. Göterýän adam barada hiç zady däl.",
+        "Bilet diňe şu çäre üçin güýjündedigini subut etmeli we ony göterýän adam barada hiç zat aýtmaly däl.",
       scenarios: [
         {
           title: "Şahsy maglumatsyz bilet",
-          body: "Satyjy bileti çäre, oturgyç we möhlet maglumatlary bilen gapjyga berýär. At ýok, şahsyýet belgisi ýok.",
+          body: "Satyjy bileti çäre, oturgyç we möhlet maglumatlary bilen gapjyga berýär. Biletde at ýa-da şahsyýet belgisi bolmaýar.",
         },
         {
           title: "Gapyda bir gezek ulanmak",
@@ -940,7 +940,7 @@ const tk: ScenariosContent = {
         },
         {
           title: "Konsert, kino, konferensiýa",
-          body: "Hemmesi bir bilet görnüşi bilen: çäre we ýer meýdanlardyr, täze format däl; täze gurnaýjy täze programmasyz goşulýar.",
+          body: "Bularyň hemmesi bir bilet görnüşi bilen edilýär. Çäre we ýer şol görnüşiň içindäki meýdanlardyr, şonuň üçin täze gurnaýjy täze formata ýa-da programma mätäç bolman goşulyp bilýär.",
         },
       ],
       wallet: {
@@ -1024,7 +1024,7 @@ const tk: ScenariosContent = {
       badge: "Karar tapgyrynda",
       tone: "proposed",
       intro:
-        "Saglyk hyzmat berýänlerden başlaýar: hünär bilen meşgullanmak hukugy, palata agzalygy we hassahanadaky wezipe — biri-birini doldurýan üç resminama. Dizaýn ýazyldy; karar we resminamany berjek guramalar entek açyk.",
+        "Saglyk hyzmat berýänlerden başlaýar. Hünär bilen meşgullanmak hukugy, palata agzalygy we hassahanadaky wezipe biri-birini doldurýan üç resminama hökmünde göz öňünde tutulýar. Dizaýn ýazyldy, ýöne karar we resminamany berjek guramalar entek kesgitlenmedi.",
       scenarios: [
         {
           title: "Lukmanyň hünär hukugy",
@@ -1065,7 +1065,7 @@ const tk: ScenariosContent = {
       icon: "work",
       eyebrow: "Iş",
       name: "Iş we hünärler",
-      badge: "Wizýa — entek gurulmady",
+      badge: "Wizýa · entek gurulmady",
       tone: "vision",
       intro:
         "Işe almak we hünär durmuşy şol bir barlaglary gaýta-gaýta geçirýär. Şol resminamalar muňa soň goýup biler.",
@@ -1109,14 +1109,14 @@ const tk: ScenariosContent = {
       icon: "public",
       eyebrow: "Döwlet",
       name: "Döwlet hyzmatlary we syýahat",
-      badge: "Wizýa — entek gurulmady",
+      badge: "Wizýa · entek gurulmady",
       tone: "vision",
       intro:
         "Döwlet hyzmatlary we syýahat adamlaryň iň köp resminama görkezýän we iň az paýlaşmaly ýerleridir.",
       scenarios: [
         {
           title: "Myhmanhana diňe gereklisini paýlaşyp giriş",
-          body: "Myhmanhana hasaba almaga borçly meýdanlaryny, artygyny däl, şahsyýetnamanyň nusgasynyň ýerine gönüden-göni gapjykdan alýar.",
+          body: "Myhmanhana hasaba almaga borçly meýdanlaryny şahsyýetnamanyň nusgasyny almagyň ýerine gönüden-göni gapjykdan alýar we mundan artygyny görmeýär.",
         },
         {
           title: "Häkimlik we ýerli hyzmatlar",
@@ -1153,14 +1153,14 @@ const tk: ScenariosContent = {
       icon: "logistics",
       eyebrow: "Logistika",
       name: "Logistika",
-      badge: "Gözleg — entek gurulmady",
+      badge: "Gözleg · entek gurulmady",
       tone: "research",
       intro:
         "Eltip bermek we daşamak kimiň nämäni daşap biljekdigine we ýüküň baryp ýetendiginiň subutnamasyna daýanýar. Resminamalar ikisini hem göterip biler; bu gözleg ugrudyr, şu gün toruň bölegi däl.",
       scenarios: [
         {
           title: "Soňky eltip bermek: alyjy tassyklaýar",
-          body: "Alyjy eltip bermegi öz gapjygyndan tassyklaýar: ekrandaky golyň ýerine gol çekilen alnandygynyň subutnamasy.",
+          body: "Alyjy eltip bermegi öz gapjygyndan tassyklaýar we şeýlelikde ekrandaky golyň ýerine gol çekilen alnyş subutnamasy döreýär.",
         },
         {
           title: "Halkara daşamak (TIR)",
@@ -1192,10 +1192,10 @@ const tk: ScenariosContent = {
       icon: "payments",
       eyebrow: "Töleg",
       name: "Töleg",
-      badge: "Gözleg — entek gurulmady",
+      badge: "Gözleg · entek gurulmady",
       tone: "research",
       intro:
-        "Tamga kimiň haýsy ygtyýar bilen töläp biljekdigini subut ederdi; puluň özi düzgünleşdirilen bank relslerinde galýar. Bu gözleg ugrudyr: pul birligi däl we şu gün toruň bölegi däl.",
+        "Tamga kimiň haýsy ygtyýar bilen töläp biljekdigini subut ederdi, puluň özi bolsa düzgünleşdirilen bank ulgamlarynda galardy. Bu gözleg ugrudyr. Pul birligi teklip edilmeýär we bu ugur şu gün toruň bölegi däl.",
       scenarios: [
         {
           title: "Barlanan taraplaryň arasynda töleg",
@@ -1238,13 +1238,13 @@ const az: ScenariosContent = {
   meta: {
     title: "Ssenarilər və istifadə sahələri",
     description:
-      "Tamga Network praktikada necə işləyir: əvvəlcə təhsil, qeydiyyatdan ilk işə qədər; bu gün biletlər, saytlara giriş və yaş yoxlaması; eyni etibar qatının bundan sonra hara qədər genişlənə biləcəyi.",
+      "Tamga Network-un praktikada necə işlədiyini izah edirik. İlk sırada qeydiyyatdan ilk işə qədər uzanan təhsil ssenarisi durur. Biletlər, saytlara giriş və yaş yoxlaması bu gün işləyir və səhifə eyni etibar qatının bundan sonra hara qədər genişlənə biləcəyini də göstərir.",
   },
   eyebrow: "İstifadə sahələri",
   title: "Ssenarilər: əvvəlcə təhsil, vahid etibar qatı",
   intro:
     "Təhsil şəbəkənin ilk və əsas ssenarisidir: tələbənin qeydiyyatdan ilk iş müraciətinə qədər sənədləri. Biletlər, saytlara giriş və yaş yoxlaması bu gün eyni qat üzərində işləyir. Səhiyyə qərar mərhələsindədir; iş, dövlət xidmətləri, logistika və ödənişlər qatın hara qədər genişlənə biləcəyini göstərir. Hər ssenarinin yanında onun statusu qeyd olunur.",
-  note: "Ekranlar şəbəkədəki bir rəqəmsal cüzdanın təsviri maketləridir; dəyərlər yalnız nümunədir. “Bu gün işləyir” o deməkdir ki, ssenari sandbox-da, şəbəkənin canlı proqram təminatı ilə əvvəldən sona qədər işləyir; real şəbəkəyə ilk qurum pilotla qoşulur.",
+  note: "Ekranlar şəbəkədəki bir rəqəmsal cüzdan üçün hazırlanmış təsviri maketlərdir və dəyərlər yalnız nümunədir. “Bu gün işləyir” ifadəsi ssenarinin sandbox-da və şəbəkənin canlı proqram təminatı ilə əvvəldən sona qədər işlədiyini bildirir. Real şəbəkəyə qoşulacaq ilk qurum pilotla gələcək.",
   statusLabels: { today: "Bu gün işləyir", pilot: "Pilotla", later: "Sonra" },
   verticals: [
     {
@@ -1326,11 +1326,11 @@ const az: ScenariosContent = {
       badge: "Bu gün işləyir",
       tone: "today",
       intro:
-        "Bilet yalnız bir şeyi sübut etməlidir: bu tədbir üçün etibarlı olduğunu, onu daşıyan şəxs haqqında isə heç nəyi.",
+        "Bilet yalnız bu tədbir üçün etibarlı olduğunu sübut etməli və onu daşıyan şəxs haqqında heç nə deməməlidir.",
       scenarios: [
         {
           title: "Fərdi məlumatsız bilet",
-          body: "Satıcı bileti tədbir, oturacaq və etibarlılıq müddəti ilə rəqəmsal cüzdana verir. Ad yoxdur, şəxsiyyət nömrəsi yoxdur.",
+          body: "Satıcı bileti tədbir, oturacaq və etibarlılıq müddəti ilə rəqəmsal cüzdana verir. Biletdə ad və ya şəxsiyyət nömrəsi olmur.",
         },
         {
           title: "Girişdə birdəfəlik istifadə",
@@ -1338,7 +1338,7 @@ const az: ScenariosContent = {
         },
         {
           title: "Konsertlər, kinoteatrlar, konfranslar",
-          body: "Hamısı üçün bir bilet növü kifayətdir: tədbir və məkan yeni format deyil, sahələrdir, buna görə yeni təşkilatçı yeni proqram təminatı olmadan qoşulur.",
+          body: "Bunların hamısı bir bilet növü ilə edilir. Tədbir və məkan həmin növün içindəki sahələrdir, buna görə yeni təşkilatçı yeni formata və ya proqram təminatına ehtiyac duymadan qoşula bilir.",
         },
       ],
       wallet: {
@@ -1422,7 +1422,7 @@ const az: ScenariosContent = {
       badge: "Qərar mərhələsində",
       tone: "proposed",
       intro:
-        "Səhiyyə xidmət göstərənlərdən başlayır: peşə fəaliyyəti hüququ, palata üzvlüyü və xəstəxanadakı vəzifə — bir-birini tamamlayan üç rəqəmsal sənəd kimi. Dizayn hazırlanıb; qərar və sənədi verən qurumlar hələ müəyyənləşməyib.",
+        "Səhiyyə xidmət göstərənlərdən başlayır. Peşə fəaliyyəti hüququ, palata üzvlüyü və xəstəxanadakı vəzifə bir-birini tamamlayan üç rəqəmsal sənəd kimi nəzərdə tutulur. Dizayn hazırlanıb, amma qərar və sənədi verəcək qurumlar hələ müəyyənləşməyib.",
       scenarios: [
         {
           title: "Həkimin peşə fəaliyyəti hüququ",
@@ -1463,7 +1463,7 @@ const az: ScenariosContent = {
       icon: "work",
       eyebrow: "İş",
       name: "İş və peşələr",
-      badge: "Vizyon — hələ qurulmayıb",
+      badge: "Vizyon · hələ qurulmayıb",
       tone: "vision",
       intro:
         "İşə qəbul və peşə həyatı eyni yoxlamaları dəfələrlə təkrarlayır. Eyni rəqəmsal sənədlər buna son qoya bilər.",
@@ -1507,14 +1507,14 @@ const az: ScenariosContent = {
       icon: "public",
       eyebrow: "Dövlət",
       name: "Dövlət xidmətləri və səyahət",
-      badge: "Vizyon — hələ qurulmayıb",
+      badge: "Vizyon · hələ qurulmayıb",
       tone: "vision",
       intro:
         "Dövlət xidmətləri və səyahət insanların ən çox sənəd göstərdiyi və ən az məlumat paylaşılmalı olan sahələrdir.",
       scenarios: [
         {
           title: "Oteldə yalnız tələb olunanla qeydiyyat",
-          body: "Otel qeydə almalı olduğu sahələri, artıq heç nəyi deyil, şəxsiyyət vəsiqəsinin surətini çıxarmaq əvəzinə birbaşa rəqəmsal cüzdandan alır.",
+          body: "Otel qeydə almalı olduğu sahələri şəxsiyyət vəsiqəsinin surətini çıxarmaq əvəzinə birbaşa rəqəmsal cüzdandan alır və bundan artığını görmür.",
         },
         {
           title: "Bələdiyyə və sakinlərə xidmətlər",
@@ -1551,14 +1551,14 @@ const az: ScenariosContent = {
       icon: "logistics",
       eyebrow: "Logistika",
       name: "Logistika",
-      badge: "Tədqiqat — hələ qurulmayıb",
+      badge: "Tədqiqat · hələ qurulmayıb",
       tone: "research",
       intro:
         "Çatdırılma və yükdaşıma kimin nəyi daşıya biləcəyindən və yükün çatdığının sübutundan asılıdır. Rəqəmsal sənədlər hər ikisini daşıya bilər; bu, tədqiqat istiqamətidir, bu gün şəbəkənin hissəsi deyil.",
       scenarios: [
         {
           title: "Son mərhələ: müştəri qəbulu təsdiqləyir",
-          body: "Müştəri çatdırılmanı öz rəqəmsal cüzdanından təsdiqləyir: ekranda imza əvəzinə imzalanmış qəbul sübutu.",
+          body: "Müştəri çatdırılmanı öz rəqəmsal cüzdanından təsdiqləyir və beləliklə ekrandakı imza əvəzinə imzalanmış qəbul sübutu yaranır.",
         },
         {
           title: "Beynəlxalq yükdaşıma (TIR)",
@@ -1590,10 +1590,10 @@ const az: ScenariosContent = {
       icon: "payments",
       eyebrow: "Ödənişlər",
       name: "Ödənişlər",
-      badge: "Tədqiqat — hələ qurulmayıb",
+      badge: "Tədqiqat · hələ qurulmayıb",
       tone: "research",
       intro:
-        "Tamga kimin hansı səlahiyyətlə ödəniş edə biləcəyini sübut edərdi; pulun özü tənzimlənən bank sistemlərində qalır. Bu, tədqiqat istiqamətidir: valyuta deyil və bu gün şəbəkənin hissəsi deyil.",
+        "Tamga kimin hansı səlahiyyətlə ödəniş edə biləcəyini sübut edərdi, pulun özü isə tənzimlənən bank sistemlərində qalardı. Bu, tədqiqat istiqamətidir. Valyuta təklif edilmir və bu istiqamət bu gün şəbəkənin hissəsi deyil.",
       scenarios: [
         {
           title: "Yoxlanılmış tərəflər arasında ödəniş",

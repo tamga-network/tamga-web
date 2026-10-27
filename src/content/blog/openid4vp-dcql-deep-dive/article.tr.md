@@ -1,7 +1,7 @@
 ---
 title: "OpenID4VP ve DCQL ayrıntılı: istekten sonuca"
 slug: openid4vp-dcql-deep-dive
-description: Doğrulayıcı OpenID4VP 1.0 ile belgeyi nasıl ister ve denetler: x509_hash'li imzalı istek, DCQL, şifreli direct_post.jwt ve A–E doğrulama hattı.
+description: Doğrulayıcının OpenID4VP 1.0 ile belgeyi nasıl istediğini ve denetlediğini anlatıyoruz; x509_hash ile imzalı istek, DCQL, şifreli direct_post.jwt ve A–E doğrulama hattı.
 date: 2026-10-08
 updated: 2026-10-23
 lang: tr
@@ -12,22 +12,22 @@ related: add-verification-to-your-site, sd-jwt-vc-deep-dive, iso-mdoc-deep-dive,
 
 <!-- Kaynak: OpenID4VP 1.0 Final (9 Temmuz 2025) §5.9.3, §6, §8.3, Ek A, Ek B.2.6; HAIP 1.0 Final (24 Aralık 2025) §5; SPEC-PROTO-0002 v1.0.0 (PV1–PV14); SPEC-API-0001 (A–E, üç sonuç, AP3); ADR-0034; concepts/presentation (QR/bağlantı canlı, DC API doğrulayıcı hazır / cüzdan bağlantısı yok). Kod: packages/verifier request.ts, wallet-core jwe.ts, apps/verify (yanıttan sonra redirect_uri). -->
 
-OpenID4VP (OpenID for Verifiable Presentations) 1.0, doğrulayıcının cüzdandan belge istediği ve imzalı, cihaza bağlı bir gösterim aldığı protokoldür. Tamga'da doğrulayıcı **imzalı bir istek nesnesi** gönderir: kendini sertifikasının özetiyle (`x509_hash`) tanıtır, ne istediğini bir **DCQL** sorgusuyla söyler ve tek kullanımlık bir şifreleme anahtarı verir. Cüzdan, doğrulayıcıya gönderilen şifreli bir `vp_token` ile yanıt verir (`direct_post.jwt`). Doğrulayıcı sonra biçim, şema, güven, iptal ve politika denetimlerinden oluşan sabit bir hattı çalıştırır ve üç sonuçtan birine varır.
+OpenID4VP (OpenID for Verifiable Presentations) 1.0, doğrulayıcının cüzdandan belge istemek için kullandığı protokoldür. Doğrulayıcı bu protokolle imzalı ve belge sahibinin cihazına bağlı bir gösterim alır. Tamga'da doğrulayıcı cüzdana **imzalı bir istek nesnesi** gönderir. Bu nesnede kendini sertifikasının özetiyle (`x509_hash`) tanıtır, ne istediğini bir **DCQL** sorgusuyla belirtir ve tek kullanımlık bir şifreleme anahtarı verir. Cüzdan da şifrelenmiş bir `vp_token` ile yanıt verir ve bu yanıtı doğrudan doğrulayıcıya gönderir (`direct_post.jwt`). Doğrulayıcı ardından biçim, şema, güven, iptal ve politika denetimlerinden oluşan sabit bir hattı çalıştırır ve üç sonuçtan birine ulaşır.
 
-OpenID4VP 1.0, 9 Temmuz 2025'te; HAIP 1.0, 24 Aralık 2025'te Final oldu. Tamga profili [SPEC-PROTO-0002](https://docs.tamga.network/tr/specifications/openid4vp). Eski taslaklardaki Presentation Exchange (`presentation_definition`) desteklenmez; onu taşıyan istek reddedilir.
+OpenID4VP 1.0, 9 Temmuz 2025'te, HAIP 1.0 ise 24 Aralık 2025'te Final oldu. Tamga'nın profili [SPEC-PROTO-0002](https://docs.tamga.network/tr/specifications/openid4vp) adlı belgede yazılı. Eski taslaklardaki Presentation Exchange (`presentation_definition`) desteklenmiyor ve bu alanı taşıyan istekler reddediliyor.
 
-> **Not:** Sadeleştirilmiş örnekler. Adresler örnektir, JWT'ler kısaltıldı, imzalar ve anahtarlar gösterilmiyor.
+> **Not:** Örnekler sadeleştirildi. Adresler örnek değerlerdir, JWT'ler kısaltıldı, imzalar ve anahtarlar da gösterilmiyor.
 
 ## İstek cüzdana nasıl ulaşır?
 
-Başka bir cihazda doğrulayıcı QR kod gösterir; aynı telefonda bir bağlantı açar. İki durumda da taşınan şey küçüktür, çünkü istek nesnesinin kendisi adresinden çekilir (HAIP'in istediği gibi `request_uri` ile JAR):
+Kişi başka bir cihazdaysa doğrulayıcı bir QR kod gösterir, aynı telefondaysa bir bağlantı açar. İki durumda da taşınan veri küçüktür, çünkü istek nesnesinin kendisi ayrı bir adresten alınır. HAIP'in istediği gibi bunun için `request_uri` ile JAR kullanılır:
 
 ```text title="QR kodun ya da bağlantının taşıdığı"
 openid4vp://?client_id=x509_hash%3AUvo3HtuIxuhC92rShpgqcT3YXwrqRxWEviRiA0OZszk
             &request_uri=https%3A%2F%2Fverifier.example.org%2Frequest%2F7Kc2
 ```
 
-Cüzdan `request_uri`'yi çeker ve `typ: oauth-authz-req+jwt`, `alg: ES256` olan, doğrulayıcının sertifika zincirini `x5c`'de taşıyan bir JWT alır:
+Cüzdan `request_uri` adresine gider ve bir JWT alır. Bu JWT'nin `typ` değeri `oauth-authz-req+jwt`, `alg` değeri `ES256` olur ve doğrulayıcının sertifika zinciri `x5c` alanında bulunur:
 
 ```json title="Sadeleştirilmiş örnek: imzalı istek nesnesinin gövdesi"
 {
@@ -52,11 +52,11 @@ Cüzdan `request_uri`'yi çeker ve `typ: oauth-authz-req+jwt`, `alg: ES256` olan
 }
 ```
 
-`client_metadata.jwks` içindeki şifreleme anahtarı geçicidir, HAIP'in istediği gibi yalnız bu istek için üretilir. `nonce` en az 128 bit rastgelelik taşır ve bir kez kabul edilir. HAIP, doğrulayıcının `A128GCM` ve `A256GCM`'nin ikisini de ilan etmesini ister; ikisini de destekleyen cüzdan `A256GCM`'yi seçmelidir.
+`client_metadata.jwks` içindeki şifreleme anahtarı geçicidir ve HAIP'in istediği gibi yalnız bu istek için üretilir. `nonce` en az 128 bitlik rastgelelik taşır ve yalnız bir kez kabul edilir. HAIP, doğrulayıcının hem `A128GCM`'yi hem de `A256GCM`'yi listelemesini istiyor. İkisini de destekleyen bir cüzdanın `A256GCM`'yi seçmesi gerekir.
 
 ## `x509_hash` nedir, cüzdan neyi denetler?
 
-`x509_hash` istemci kimliği, isteği imzalayan **yaprak** sertifikanın DER kodlamasının base64url SHA-256'sıdır (OpenID4VP 1.0 §5.9.3). HAIP onu, imzalı isteklerde doğrulayıcının kullanması, cüzdanın da kabul etmesi gereken tek önek yapar; Tamga'nın tasarımını bunun için nasıl değiştirdiği [HAIP ve Token Status List](/blog/haip-and-token-status-list) yazısında. Kendiniz hesaplayabilirsiniz:
+`x509_hash` istemci kimliği, isteği imzalayan **yaprak** sertifikanın DER kodlamasının SHA-256 özetinin base64url biçimidir (OpenID4VP 1.0 §5.9.3). HAIP, imzalı isteklerde doğrulayıcının kullanması ve cüzdanın kabul etmesi gereken tek önek olarak bunu belirliyor. Tamga'nın bu yüzden tasarımını nasıl değiştirdiğini [HAIP ve Token Status List](/blog/haip-and-token-status-list) yazısında anlattık. Bu değeri kendiniz de hesaplayabilirsiniz:
 
 ```bash title="x509_hash istemci kimliğini hesaplamak"
 openssl x509 -in verifier-leaf.pem -outform DER \
@@ -65,21 +65,21 @@ openssl x509 -in verifier-leaf.pem -outform DER \
   | sed 's/^/x509_hash:/'
 ```
 
-Tamga kurallarına uyan bir cüzdan (başvuru kitaplığı `@tamga-network/wallet-core`) kişiye bir şey göstermeden önce:
+Tamga'nın kurallarına uyan bir cüzdan, kişiye bir şey göstermeden önce aşağıdaki denetimleri yapar. Bu kuralların başvuru kütüphanesi `@tamga-network/wallet-core`.
 
-1. istek imzasını ve `x5c` zincirini doğrular, `client_id`'deki özetin yaprak sertifikayla tuttuğuna bakar;
-2. `response_uri` alan adının sertifikanın SAN adlarından biri olduğunu denetler; eski `x509_san_dns` önekinin güvenlik özelliği böylece korunur;
-3. `exp` (zorunlu, geçmemiş), `iat` (en çok 60 saniye ileride) ve `aud` değerlerine bakar;
-4. parmak izini imzalı güven listesinde arar. Tamga'nın doğrulayıcı kayıtları `client_id` ile aynı değeri taşır; sertifika her yenilendiğinde özet değiştiği için bir de kalıcı `dns_name` vardır;
-5. istenen her alanı doğrulayıcının kayıtlı kapsamıyla karşılaştırır.
+1. İstek imzasını ve `x5c` zincirini doğrular, `client_id` içindeki özetin yaprak sertifikayla uyuştuğuna bakar.
+2. `response_uri` adresindeki alan adının sertifikanın SAN alanındaki adlardan biri olduğunu denetler. Böylece eski `x509_san_dns` önekinin sağladığı güvenlik korunmuş olur.
+3. `exp` değerinin bulunduğuna ve geçmediğine, `iat` değerinin en çok 60 saniye ileride olduğuna ve `aud` değerinin doğru olduğuna bakar.
+4. Parmak izini imzalı güven listesinde arar. Tamga'daki doğrulayıcı kayıtları `client_id` ile aynı değeri taşır. Sertifika her yenilendiğinde özet değiştiği için kayıtlarda ayrıca kalıcı bir `dns_name` bulunur.
+5. İstenen her alanı doğrulayıcının kayıtlı kapsamıyla karşılaştırır.
 
-Listede olmayan doğrulayıcı, akışı kesen bir uyarı ekranıyla karşılanır. Listede olup kapsamı dışında alan isteyen doğrulayıcıda aşırı talep uyarısı çıkar: kapsam dışı alanlar ayrıca işaretlenir, paylaş düğmesi üç saniye bekler. İkisi de kesin olarak engellenmez; cüzdan kişinin bekçisi değil, vekilidir. `redirect_uri` önekli (imzasız) istekler reddedilir; [ADR-0034](https://docs.tamga.network/tr/adr/0034-haip-client-id-and-wia-sub) uyarınca `x509_san_dns` istekleri de.
+Listede olmayan bir doğrulayıcı, süreci yarıda kesen bir uyarı ekranıyla karşılanır. Listede olduğu hâlde kapsamının dışında alan isteyen bir doğrulayıcı için de fazla veri isteği uyarısı çıkar. Bu durumda kapsam dışındaki alanlar ayrıca işaretlenir ve paylaş düğmesi üç saniye sonra etkinleşir. İki durumda da paylaşım kesin olarak engellenmez, çünkü cüzdan kişinin yerine karar veren bir bekçi değil, onun adına hareket eden bir araçtır. `redirect_uri` önekiyle gelen imzasız istekler ise reddedilir. [ADR-0034](https://docs.tamga.network/tr/adr/0034-haip-client-id-and-wia-sub) uyarınca `x509_san_dns` önekli istekler de reddedilir.
 
 ![İmzalı istekten şifreli yanıta](/blog/openid4vp-dcql-deep-dive/tr/fig-request.png)
 
 ## DCQL sorgusu nasıl yazılır?
 
-DCQL (Digital Credentials Query Language), doğrulayıcının istediği belgeleri ve her biri için alanları listeler. Öğrenci indirimi tek alan ister:
+DCQL (Digital Credentials Query Language), doğrulayıcının istediği belgeleri ve her belgeden hangi alanları istediğini listeler. Öğrenci indirimi için tek bir alan yeterlidir:
 
 ```json title="DCQL: öğrenci indirimi"
 {
@@ -92,9 +92,9 @@ DCQL (Digital Credentials Query Language), doğrulayıcının istediği belgeler
 }
 ```
 
-`meta.vct_values` türü adlandırır; Tamga bu alan olmadan gelen bir `dc+sd-jwt` sorgusunu reddeder. `values` alanı bir koşula çevirir: belge ancak `is_enrolled` `true` ise eşleşir. Cüzdan `is_enrolled`'ı açar, başka hiçbir şeyi değil.
+`meta.vct_values` belge türünü belirtir ve Tamga bu alan olmadan gelen bir `dc+sd-jwt` sorgusunu reddeder. `values` ise alanı bir koşula çevirir. Belge ancak `is_enrolled` değeri `true` ise eşleşir. Cüzdan da yalnız `is_enrolled` alanını açar, başka hiçbir alanı açmaz.
 
-Bir iş başvurusu diploma **ya da** geçerli bir öğrenci belgesi kabul edebilir ve isteğe bağlı bir alan isteyebilir:
+Bir iş başvurusunda ise diploma **ya da** geçerli bir öğrenci belgesi kabul edilebilir ve isteğe bağlı bir alan da istenebilir:
 
 ```json title="DCQL: credential_sets ile seçenekler, claim_sets ile isteğe bağlı alan"
 {
@@ -123,19 +123,19 @@ Bir iş başvurusu diploma **ya da** geçerli bir öğrenci belgesi kabul edebil
 }
 ```
 
-`@tamga-network/wallet-core` bunu OpenID4VP §6.4'e göre şöyle okur:
+`@tamga-network/wallet-core` bu sorguyu OpenID4VP §6.4'e göre şöyle yorumlar:
 
-- Zorunlu bir kümede, doğrulayıcının sırasıyla karşılayabildiği **ilk** seçeneği önerir; kişi karşılanabilen başka bir seçeneği seçebilir. Yalnız seçilen seçenek gider.
-- İsteğe bağlı bir küme (`required: false`) varsayılan olarak kapalıdır, ancak kişi açarsa paylaşılır.
-- `claim_sets` varsa belgenin karşılayabildiği ilk alan bileşimi açılır. Burada tez başlığı olan diploma üç alan, olmayan iki alan gönderir.
-- İstenen bir alanı eksik olan belge **asla** gönderilmez. `thesis_title` düz bir `claims` listesinde olsaydı, tezsiz diploma hiç eşleşmezdi; `claim_sets` tam bunun içindir.
-- Bir istekte en çok üç belge ve iki `credential_sets` kaydı olabilir; onay ekranı anlaşılır kalsın diye.
+- Zorunlu bir kümede, doğrulayıcının belirttiği sırayla karşılayabildiği **ilk** seçeneği önerir. Kişi, karşılanabilen başka bir seçeneği de seçebilir. Doğrulayıcıya yalnız seçilen seçenek gönderilir.
+- İsteğe bağlı bir küme (`required: false`) varsayılan olarak kapalıdır ve ancak kişi açarsa paylaşılır.
+- `claim_sets` varsa, belgenin karşılayabildiği ilk alan bileşimi açılır. Bu örnekte tez başlığı olan bir diploma üç alan, tez başlığı olmayan bir diploma ise iki alan gönderir.
+- İstenen alanlardan biri eksik olan bir belge **hiçbir zaman** gönderilmez. `thesis_title` düz bir `claims` listesinde olsaydı, tezsiz bir diploma sorguyla hiç eşleşmezdi. `claim_sets` tam da bu durum için var.
+- Onay ekranının anlaşılır kalması için bir istekte en çok üç belge ve iki `credential_sets` kaydı bulunabilir.
 
-mdoc'ta yol `[ad alanı, öğe]` biçimindedir, tür de `meta.doctype_value`'ya yazılır ([ISO mdoc ayrıntılı](/blog/iso-mdoc-deep-dive)). HAIP ayrıca `aki` türündeki `trusted_authorities` desteğini şart koşar: belge sorgusunu, zincirinde belirli bir Authority Key Identifier bulunan kurumlarla sınırlar. Tamga doğrulayıcısı da cüzdanı da bunu uygular.
+mdoc'ta alan yolu `[ad alanı, öğe]` biçimindedir ve belge türü `meta.doctype_value` alanına yazılır ([ISO mdoc ayrıntılı](/blog/iso-mdoc-deep-dive)). HAIP ayrıca `aki` türündeki `trusted_authorities` desteğini de şart koşuyor. Bu alan, belge sorgusunu sertifika zincirinde belirli bir Authority Key Identifier bulunan kurumlarla sınırlar. Tamga'nın doğrulayıcısı da cüzdan kütüphanesi de bunu destekliyor.
 
 ## Cüzdan geri ne gönderir?
 
-`vp_token`, her DCQL `id`'sinden bir gösterim dizisine giden bir haritadır:
+`vp_token`, her DCQL `id` değerini bir gösterim dizisiyle eşleyen bir haritadır:
 
 ```json title="Sadeleştirilmiş örnek: şifrelenmeden önce vp_token"
 {
@@ -146,9 +146,9 @@ mdoc'ta yol `[ad alanı, öğe]` biçimindedir, tür de `meta.doctype_value`'ya 
 }
 ```
 
-Her SD-JWT VC gösterimi bir KB-JWT ile biter: `aud`'u **tam** istemci kimliği (`x509_hash:Uvo3…`), `nonce`'u isteğin nonce'u, `sd_hash`'i de tam olarak gösterilen disclosure'ları kapsar ([SD-JWT VC ayrıntılı](/blog/sd-jwt-vc-deep-dive)). mdoc'ta değer, cihaz imzası OpenID4VP el sıkışmasını kapsayan base64url bir `DeviceResponse`'tur.
+Her SD-JWT VC gösterimi bir KB-JWT ile biter. Bu KB-JWT'nin `aud` değeri **tam** istemci kimliğidir (`x509_hash:Uvo3…`), `nonce` değeri isteğin nonce değeridir ve `sd_hash` değeri de tam olarak gösterilen disclosure'ları kapsar ([SD-JWT VC ayrıntılı](/blog/sd-jwt-vc-deep-dive)). mdoc'ta ise değer base64url biçiminde bir `DeviceResponse` yapısıdır ve bu yapıdaki cihaz imzası OpenID4VP el sıkışmasını kapsar.
 
-`direct_post.jwt` ile nesnenin tamamı doğrulayıcının geçici anahtarına bir JWE olarak şifrelenir (`alg: ECDH-ES`, P-256; `enc: A256GCM` ya da `A128GCM`) ve form alanı olarak gönderilir:
+`direct_post.jwt` kullanıldığında nesnenin tamamı, doğrulayıcının geçici anahtarına göre bir JWE olarak şifrelenir. Burada `alg: ECDH-ES` (P-256) ve `enc: A256GCM` ya da `A128GCM` kullanılır. Şifreli nesne bir form alanı olarak gönderilir:
 
 ```http title="Sadeleştirilmiş örnek: şifreli yanıt"
 POST /vp/response HTTP/1.1
@@ -163,23 +163,23 @@ Content-Type: application/json
 { "redirect_uri": "https://verifier.example.org/p/9f3c?st=…" }
 ```
 
-TLS zaten varken neden şifreleme? Gösterim kişisel veri taşır; TLS'in bittiği yerle uygulama arasında istek gövdesini görebilen ters vekiller, güvenlik duvarları ve kayıtlar durur. JWE ile onu yalnız geçici anahtarın sahibi okuyabilir. Tamga şifresiz yanıt biçimi kullanmaz.
+TLS zaten varken yanıtı ayrıca şifrelememizin bir nedeni var. Gösterim kişisel veri taşır ve TLS bağlantısının sona erdiği nokta ile uygulama arasında istek gövdesini görebilen ters vekil sunucular, güvenlik duvarları ve günlükler bulunur. JWE kullanıldığında gösterimi yalnız geçici anahtarın sahibi okuyabilir. Tamga şifresiz bir yanıt biçimi kullanmıyor.
 
-Kişi reddederse cüzdan, gerekçe vermeden `access_denied` döner. "Bu belge bende yok" ile "paylaşmamayı seçtim" aynı görünmelidir; yoksa doğrulayıcı farklı sorgular göndererek kişinin elinde ne olduğunu haritalayabilirdi.
+Kişi paylaşmayı reddederse cüzdan, gerekçe belirtmeden `access_denied` döndürür. "Bu belge bende yok" ile "paylaşmamayı seçtim" yanıtları aynı görünmelidir. Aksi hâlde bir doğrulayıcı farklı sorgular göndererek kişinin elinde hangi belgelerin bulunduğunu çıkarabilirdi.
 
 ## Doğrulayıcı sonuca nasıl varır?
 
-Tamga doğrulayıcısı adımları sabit bir sırayla çalıştırır, ilk başarısızlıkta durur ve o adımın kalıcı kodunu `failed_step` olarak döner:
+Tamga'nın doğrulayıcısı adımları her zaman aynı sırayla çalıştırır. İlk başarısız adımda durur ve o adımın kalıcı kodunu `failed_step` alanında döndürür:
 
 | Katman | Kodlar | Ne denetlenir |
 |---|---|---|
-| A, biçim | A1–A8 | kurum imzası ve zinciri, yaprak sertifikadan kurum kimliği, disclosure özetleri, KB-JWT (`aud`, `nonce`, `iat`, `sd_hash`), süre |
-| B, şema | B1–B6 | `vct` çözülür, `vct#integrity` katalogla tutar, `extends` zinciri |
-| C, güven | C1–C4 | kurum belgenin `iat` anında listede ve bu tür için yetkili |
-| D, iptal | D1–D6 | önceden indirilmiş durum listesi, imza, tazelik, çapa, `idx`'teki bitler |
-| E, politika | E1–E4 | güvence eşiği, istenen her alan açılmış, kapsam aşılmamış, denetim kaydı |
+| A, biçim | A1–A8 | kurum imzası ve zinciri, yaprak sertifikadan çıkarılan kurum kimliği, disclosure özetleri, KB-JWT (`aud`, `nonce`, `iat`, `sd_hash`), geçerlilik süresi |
+| B, şema | B1–B6 | `vct` çözülür, `vct#integrity` katalogla uyuşur, `extends` zinciri denetlenir |
+| C, güven | C1–C4 | kurum, belgenin `iat` anında listede ve bu tür için yetkili |
+| D, iptal | D1–D6 | önceden indirilmiş durum listesi, imza, tazelik, çapa, `idx` sırasındaki bitler |
+| E, politika | E1–E4 | güvence eşiği, istenen her alanın açılması, kapsamın aşılmaması, denetim kaydı |
 
-Sonuç `ACCEPTED`, `REJECTED` ya da `INDETERMINATE`'tir. Üçüncüsü altyapıya ulaşılamadığını söyler (örneğin bayat bir durum listesi) ve belge aleyhine bir şey demez; retten farklı gösterilmelidir. Sonuç nesnesi açılan alanların yalnız **adlarını** taşır, değerlerini asla; çünkü denetim kaydına girer. Kod listesinin tamamı [doğrulama hattında](https://docs.tamga.network/tr/specifications/verification-api).
+Sonuç `ACCEPTED`, `REJECTED` ya da `INDETERMINATE` olur. Üçüncü sonuç, örneğin durum listesi fazla eskidiği için altyapıya ulaşılamadığını gösterir ve belge hakkında olumsuz bir şey söylemez. Bu yüzden bir retten farklı gösterilmesi gerekir. Sonuç nesnesi denetim kaydına girdiği için açılan alanların yalnız **adlarını** taşır ve değerlerini hiçbir zaman taşımaz. Kodların tam listesini [doğrulama hattı](https://docs.tamga.network/tr/specifications/verification-api) belgesinde bulabilirsiniz.
 
 ![Beş doğrulama katmanı](/blog/openid4vp-dcql-deep-dive/tr/fig-pipeline.png)
 
@@ -187,35 +187,35 @@ Sonuç `ACCEPTED`, `REJECTED` ya da `INDETERMINATE`'tir. Üçüncüsü altyapıy
 
 | | Aynı cihaz | Farklı cihaz |
 |---|---|---|
-| Nasıl başlar | telefonun kendi tarayıcısında bağlantı ya da düğme | başka bir ekranda QR kod |
-| Yanıttan sonra | doğrulayıcı `redirect_uri` döner, cüzdan oraya gider | öbür ekrandaki sayfa sonucu kendi sunucusundan alır |
-| Oltalamaya dayanıklılık | yönlendirme, isteği başlatan oturuma döner | daha zayıf: QR kod başkasına aktarılabilir |
+| Nasıl başlar | telefonun kendi tarayıcısındaki bir bağlantı ya da düğmeyle | başka bir ekranda gösterilen QR kodla |
+| Yanıttan sonra | doğrulayıcı bir `redirect_uri` döndürür ve cüzdan o adrese gider | öbür ekrandaki sayfa sonucu kendi sunucusundan alır |
+| Oltalamaya karşı dayanıklılık | yönlendirme, isteği başlatan oturuma geri döner | daha zayıf, çünkü QR kod başka birine iletilebilir |
 
-HAIP iki tarafın da aynı cihaz akışını desteklemesini ister; oltalamaya karşı oturum bağlamaya dayanan doğrulayıcılara yalnız bu akışı kullanmalarını önerir. Bu akışta yönlendirme hiç dönmezse ya da başka bir oturuma dönerse doğrulayıcı gösterimi reddetmelidir. Tamga'nın barındırılan doğrulayıcısı her yanıttan sonra bir `redirect_uri` döner; ağdaki cüzdanlar da onu izler. Bir sitenin protokolü kendisi yazmadan bunu nasıl kuracağı [Sitenize ya da uygulamanıza "Tamga ile doğrula" ekleyin](/blog/add-verification-to-your-site) yazısında.
+HAIP, iki tarafın da aynı cihaz akışını desteklemesini şart koşuyor ve doğrulayıcı oturum bağlamaya dayanmıyorsa bu akışı öneriyor. Bu akışta yönlendirme hiç geri dönmezse ya da başka bir oturuma dönerse doğrulayıcının gösterimi reddetmesi gerekir. Tamga'nın barındırılan doğrulayıcısı her yanıttan sonra bir `redirect_uri` döndürüyor ve ağdaki cüzdanlar bu adrese gidiyor. Bir sitenin protokolü kendisi yazmadan bunu nasıl kurabileceğini [Sitenize ya da uygulamanıza "Tamga ile doğrula" ekleyin](/blog/add-verification-to-your-site) yazısında anlattık.
 
 ## Tarayıcının Digital Credentials API'si ne durumda?
 
-W3C Digital Credentials API'de isteği cüzdana ve yanıtı geri tarayıcının kendisi taşır; `response_mode: dc_api.jwt` kullanılır. Gösterimin alıcısı o zaman sayfanın kaynağıdır (`origin:https://verifier.example.org`) ve bunu tarayıcının kendisi verir: oltalama sitesi başka bir sitenin kaynağını iddia edemez. Cüzdan, istek içinde istemci kimliği olarak `origin:`'i asla kabul etmemelidir. Tamga bu akışta da `x509_hash`'li imzalı istek önerir; kaynak bağlama oltalamayı çözer, kayıt sorgusunu ve aşırı talep denetimini mümkün kılan ise `x509_hash`'tir.
+W3C Digital Credentials API kullanıldığında isteği cüzdana ve yanıtı geri taşıyan şey tarayıcının kendisidir. Bu akışta `response_mode: dc_api.jwt` kullanılır. Gösterimin alıcısı da sayfanın kaynağı (origin) olur ve `origin:https://verifier.example.org` biçiminde yazılır. Bu değeri tarayıcı kendisi verdiği için bir oltalama sitesi başka bir sitenin kaynağını kendi kaynağı gibi gösteremez. Cüzdanın da istek içinde istemci kimliği olarak gelen bir `origin:` değerini hiçbir zaman kabul etmemesi gerekir. Tamga bu akışta da `x509_hash` ile imzalanmış bir istek kullanılmasını öneriyor. Kaynağa bağlama oltalama sorununu çözüyor, ama güven listesindeki kaydın bulunmasını ve fazla veri isteğinin denetlenmesini mümkün kılan şey `x509_hash`.
 
-Bugünkü durum: QR ve bağlantıyla gösterim canlıda. Tamga doğrulayıcısı, destekleyen tarayıcılarda Digital Credentials API'yi varsayılan olarak kullanır; masaüstünde QR kod yedektir. Cüzdan tarafında Tamga Wallet'ın Android kodu yazıldı, henüz uygulamaya derlenmedi ve cihazda denenmedi; iPhone'da henüz yok.
+Bugünkü duruma bakarsak, QR kod ve bağlantıyla gösterim canlıda çalışıyor. Tamga'nın doğrulayıcısı, destekleyen tarayıcılarda Digital Credentials API'yi varsayılan olarak kullanıyor ve masaüstünde QR kodu yedek yol olarak sunuyor. Cüzdan tarafında Tamga Wallet'ın Android kodu yazıldı, ama henüz uygulamaya eklenmedi ve gerçek bir cihazda denenmedi. iPhone desteği ise henüz yok.
 
 ## Sık sorulan sorular
 
-### Neden birçok eski kurulum gibi `x509_san_dns` kullanılmıyor?
+### Neden birçok eski kurulumda olduğu gibi `x509_san_dns` kullanılmıyor?
 
-HAIP 1.0 imzalı isteklerde `x509_hash`'i şart koşar; HAIP'e uyan bir cüzdan onu kabul etmek zorundadır. Tamga `x509_san_dns`'in işe yarayan kısmını korur: yanıt adresi, imzalayan sertifikada yazılı bir alan adında olmalıdır.
+HAIP 1.0 imzalı isteklerde `x509_hash`'i şart koşuyor ve HAIP'e uyan bir cüzdan bu öneki kabul etmek zorunda. Tamga, `x509_san_dns`'in işe yarayan kısmını da koruyor. Yanıt adresi, imzalayan sertifikada yazılı alan adlarından birinde olmak zorunda.
 
-### Doğrulayıcı hangi alanları reddettiğimi öğrenir mi?
+### Doğrulayıcı hangi alanları paylaşmadığımı öğrenir mi?
 
-Hangi alanların geldiğini öğrenir. Zorunlu bir küme karşılanamazsa ya da kişi reddederse cüzdan, nedenini söylemeden `access_denied` döner.
+Doğrulayıcı yalnız hangi alanların geldiğini öğrenir. Zorunlu bir küme karşılanamazsa ya da kişi paylaşmayı reddederse cüzdan, nedenini söylemeden `access_denied` döndürür.
 
 ### Birden çok şema sürümü isteyebilir miyim?
 
-Evet. Kabul ettiğiniz her sürümü `vct_values`'a yazın, örneğin `urn:tamga:edu:DiplomaCredential:1` ve `:2`. İkinci sürüm çıktığında Tamga en az ikisini birden yazmayı önerir; eski belge sahipleri dışarıda kalmasın.
+Evet. Kabul ettiğiniz her sürümü `vct_values` alanına yazın, örneğin `urn:tamga:edu:DiplomaCredential:1` ve `:2`. İkinci bir sürüm çıktığında Tamga en az iki sürümün birlikte yazılmasını öneriyor, böylece eski sürümdeki belgeyi taşıyanlar dışarıda kalmıyor.
 
 ### `transaction_data` destekleniyor mu?
 
-Henüz değil. Bir gösterimi belirli bir işleme bağlamak, finans ve yetkilendirme senaryoları için planlanıyor; eğitim senaryolarının buna ihtiyacı yok.
+Henüz desteklenmiyor. Bir gösterimi belirli bir işleme bağlamak, finans ve yetkilendirme senaryoları için planlanıyor. Eğitim senaryolarında buna ihtiyaç yok.
 
 ## Kaynaklar
 

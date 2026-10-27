@@ -888,8 +888,8 @@ export const CHAPTER_1: LearnPage[] = [
           <h2>Modeller birbirini dışlamaz</h2>
           <p>
             Cüzdan modeli diğerlerini bir gecede ortadan kaldırmaz. Bir site yine kendi hesabını tutabilir, ama hesabı
-            açarken kimliği bir fotokopiyle değil, cüzdandan gelen imzalı bir bilgiyle doğrular. Değişen, güvenin
-            kaynağıdır: artık bir aracının sözü ya da bir fotokopi değil, belgeyi veren kurumun imzası.
+            açarken kimliği fotokopi yerine cüzdandan gelen imzalı bir bilgiyle doğrular. Böylece değişen şey güvenin
+            kaynağı olur. Artık bir aracının sözüne ya da bir fotokopiye değil, belgeyi veren kurumun imzasına güvenilir.
           </p>
           <Callout kind="turkic" locale="tr">
             <p>
@@ -955,7 +955,7 @@ export const CHAPTER_1: LearnPage[] = [
           <p>
             The wallet model does not wipe out the others overnight. A site can still keep its own account, but when the
             account is opened, identity is verified with signed information from the wallet instead of a photocopy. What
-            changes is the source of trust: no longer an intermediary&apos;s word or a copy, but the issuer&apos;s signature.
+            changes is the source of trust, which is now the issuer&apos;s signature instead of an intermediary&apos;s word or a copy.
           </p>
           <Callout kind="turkic" locale="en">
             <p>
@@ -1054,8 +1054,8 @@ export const CHAPTER_1: LearnPage[] = [
           <h2>Modellər bir-birini istisna etmir</h2>
           <p>
             Rəqəmsal cüzdan modeli digərlərini bir gecədə aradan qaldırmır. Sayt yenə də öz hesabını saxlaya bilər, lakin
-            hesab açılarkən şəxsiyyət surət vasitəsilə deyil, rəqəmsal cüzdandan gələn imzalanmış məlumatla yoxlanılır.
-            Dəyişən etibarın mənbəyidir: artıq vasitəçinin sözü və ya surət deyil, sənədi verən qurumun imzası.
+            hesab açılarkən şəxsiyyət surət əvəzinə rəqəmsal cüzdandan gələn imzalanmış məlumatla yoxlanılır.
+            Beləliklə dəyişən etibarın mənbəyi olur. Artıq vasitəçinin sözünə və ya surətə deyil, sənədi verən qurumun imzasına etibar edilir.
           </p>
           <Callout kind="turkic" locale="az">
             <p>
@@ -1206,7 +1206,7 @@ export const CHAPTER_1: LearnPage[] = [
           </ul>
           <h2>Who trusts whom?</h2>
           <p>
-            Here is the interesting part: the verifier does not have to trust the holder. The holder shows a piece of
+            The interesting part is that the verifier does not have to trust the holder. The holder shows a piece of
             information, the verifier looks at the signature and asks, &quot;Does this signature really belong to the
             issuer?&quot; So the real trust is between the verifier and the issuer. The holder, in turn, wants two
             assurances: that the credential goes only to whom they approved, and that the other side really is who it

@@ -1,7 +1,7 @@
 ---
 title: "İmzalı etibar siyahısı necə işləyir: qeydiyyatdan yoxlamaya qədər"
 slug: how-trust-lists-work
-description: "Tamga Network-un imzalı etibar siyahıları necə işləyir: iki səviyyə, imzalama, dərc tezliyi, aktuallıq, anker jurnalı və yoxlayan tərəfin nələri yoxladığı."
+description: "Tamga Network-un imzalı etibar siyahılarını izah edirik: iki səviyyəni, imzanı, dərc qaydasını, aktuallığı, anker jurnalını və yoxlayan tərəfin addım-addım nələri yoxladığını."
 date: 2026-10-08
 lang: az
 category: network
@@ -11,26 +11,26 @@ related: what-is-a-trust-network, join-as-an-institution, add-verification-to-yo
 
 <!-- Sources: SPEC-TRUST-0001 1.0.0 (§1 principles: JWS ES256 x5c, .json for humans only, version + previous_version_hash, next_update ≤ 90 days, change within 24 h, anchors hourly; §2 file layout; §3 lotl fields; §4 tl fields, issuer entry, status vocabulary, record never removed; §5 anchor log, checkpoint at 500 lines; §6 loader order, environment, YES/NO/UNKNOWN; §8 TL1–TL12; security notes: single operator signature, public log, CHANGELOG, quarterly transparency report, audit; open issues: ETSI XML export, ≥2 rolling keys + KMS before the pilot). SPEC-API-0001 §1 (A3b issuerId from certificate, C1/C2 at iat, C2 cannot be skipped, C3, D5 anchor check), §2.1 three results. Guides join-as-institution (registrar, 24 h, WRPRC), sandbox (environment: sandbox). Live files checked 2026-10-08 and 2026-10-23 (anchor_signing_keys: one ACTIVE entry): lotl.json/tl-tr.json list_format_version 1.0, operator.status provisional, next_update 90 days after issued_at, one anchor signing key. External: EU LOTL XML, CID (EU) 2015/1505, ETSI TS 119 612 v2.3.1, ETSI TS 119 602 v1.1.1, IETF Token Status List draft. -->
 
-İmzalı etibar siyahısı siyahı operatorunun imzaladığı fayldır; o, hansı qurumların hansı növ rəqəmsal sənədləri verə biləcəyini, hansı yoxlayan tərəflərin qeydiyyatda olduğunu və hansı cüzdan provayderlərinin tanındığını göstərir. Tamga Network bu siyahıları iki səviyyədə dərc edir: etibarlı siyahılar siyahısı (`lotl.jws`) və Türkiyə üçün ölkə siyahısı (`tl-tr.jws`). Yoxlayan tərəf əvvəlcədən bir kök barmaq izinə etibar edir, siyahıların imzalarını, versiya zəncirini və aktuallığını yoxlayır, sonra isə hər rəqəmsal sənəd barədə bir sual verir: bu qurum həmin sənədi imzaladığı zaman qeydiyyatda idimi və bu növ rəqəmsal sənəd üçün səlahiyyətli idimi?
+İmzalı etibar siyahısı siyahı operatorunun imzaladığı fayldır. Hansı qurumun hansı sənəd növünü verə biləcəyi, hansı yoxlayan tərəflərin qeydiyyatda olduğu və hansı cüzdan provayderlərinin tanındığı bu faylda yazılır. Tamga Network bu siyahıları iki səviyyədə dərc edir. Yuxarıda siyahılar siyahısı (`lotl.jws`), aşağıda isə Türkiyə üçün ölkə siyahısı (`tl-tr.jws`) yerləşir. Yoxlayan tərəf əvvəlcədən yalnız bir kök barmaq izinə etibar edir. Siyahıların imzasını, versiya zəncirini və aktuallığını yoxladıqdan sonra hər sənəd üçün bir sual verir: Bu qurum sənədi imzaladığı anda qeydiyyatda idimi və bu sənəd növünü verməyə səlahiyyəti var idimi?
 
 ## Siyahıların iki səviyyəsi hansılardır?
 
-Model Avropa İttifaqından (Aİ) götürülüb. Avropa Komissiyası üzv dövlətlərin etibarlı siyahılarının siyahısını ([Aİ LOTL](https://ec.europa.eu/tools/lotl/eu-lotl.xml)) dərc edir, hər dövlət isə öz milli siyahısını [Komissiyanın (Aİ) 2015/1505 saylı İcra Qərarı](https://eur-lex.europa.eu/eli/dec_impl/2015/1505/oj) və ETSI TS 119 612 ilə müəyyən edilmiş formatda dərc edir. Tamga da eyni quruluşu izləyir:
+Bu model Aİ-dən gəlir. Avropa Komissiyası üzv dövlətlərin etibar siyahılarını göstərən siyahı dərc edir ([Aİ LOTL](https://ec.europa.eu/tools/lotl/eu-lotl.xml)). Hər dövlət də öz milli siyahısını [(Aİ) 2015/1505 saylı İcra Qərarı](https://eur-lex.europa.eu/eli/dec_impl/2015/1505/oj) və ETSI TS 119 612-də müəyyən edilmiş formatda dərc edir. Tamga da eyni quruluşdan istifadə edir:
 
 | Siyahı | Nəyi ehtiva edir | Ünvan |
 |---|---|---|
-| Etibarlı siyahılar siyahısı (LOTL) | ölkə siyahılarının ünvanları və imza açarları, cüzdan provayderləri, sxemlər kataloqu, qəbul edilmiş sıfır bilik sübutu dövrələri (zero-knowledge circuits) | `trust.tamga.network/lotl.jws` |
+| Etibarlı siyahılar siyahısı (LOTL) | ölkə siyahılarının ünvanları və imza açarları, cüzdan provayderləri, sxemlər kataloqu, qəbul edilmiş sıfır bilik sübutu sxemləri (zero-knowledge circuits) | `trust.tamga.network/lotl.jws` |
 | Ölkə siyahısı | həmin ölkənin kök sertifikatları, qurumları və yoxlayan tərəfləri | `trust.tamga.network/tl-tr.jws` |
 
 ![Sabitlənmiş kök barmaq izindən LOTL və ölkə siyahısı vasitəsilə qurum qeydinə və rəqəmsal sənədə qədər](/blog/how-trust-lists-work/en/fig-zincir.png)
 
-Zəncir yoxlayan tərəfdə artıq olan bir şeydən başlayır: onun konfiqurasiyasına daxil edilmiş, LOTL-u imzalayan sertifikatın SHA-256 barmaq izi. Barmaq izi [tamga.network/trust-anchor](https://tamga.network/trust-anchor) ünvanında dərc olunub. Siyahı serverinin özünə etibar edilmir. Siyahını düzgün ünvandan yükləmək kifayət deyil; onun imzası həmin barmaq izinə uyğun gəlməlidir.
+Zəncir yoxlayan tərəfin artıq əlində olan məlumatla başlayır. Bu, LOTL-u imzalayan sertifikatın SHA-256 barmaq izidir və yoxlayan tərəfin konfiqurasiyasına daxil edilib. Barmaq izi [tamga.network/trust-anchor](https://tamga.network/trust-anchor) ünvanında da dərc olunur. Siyahı serverinin özünə isə etibar edilmir. Siyahının qəbul edilməsi üçün onun düzgün ünvandan endirilməsi kifayət deyil, imzası da bu barmaq izi ilə uyğun gəlməlidir.
 
-Daha sonra LOTL hər ölkə siyahısını kimin imzaladığını göstərir. Hazırda yeganə aktiv siyahı Türkiyə siyahısıdır və onu milli orqan adından müvəqqəti olaraq Tamga idarə edir; məlumat strukturlarında digər dövlətlər üçün artıq yer nəzərdə tutulub.
+LOTL da hər ölkə siyahısını kimin imzaladığını göstərir. Bu gün aktiv olan yeganə siyahı Türkiyə siyahısıdır və Tamga onu milli orqan adından müvəqqəti olaraq idarə edir. Məlumat strukturlarında digər dövlətlər üçün də artıq yer ayrılıb.
 
 ## Qurumun qeydində nə var?
 
-> **Qeyd:** Sadələşdirilmiş nümunə. Qurum uydurmadır, identifikatorlar və barmaq izləri qısaldılıb, bəzi sahələr isə çıxarılıb. Real format [etibar siyahısı spesifikasiyasında](https://docs.tamga.network/specifications/trust-lists) verilib.
+> **Qeyd:** Aşağıdakı nümunə sadələşdirilib. Qurum real deyil, identifikatorlar və barmaq izləri qısaldılıb, bəzi sahələr çıxarılıb. Real formatı [etibar siyahısının spesifikasiyasında](https://docs.tamga.network/specifications/trust-lists) tapa bilərsiniz.
 
 ```json title="Simplified example: one institution entry in tl-tr"
 {
@@ -59,98 +59,98 @@ Daha sonra LOTL hər ölkə siyahısını kimin imzaladığını göstərir. Haz
 }
 ```
 
-Əsas yükü bir neçə sahə daşıyır:
+Bu qeyddə əsas işi bir neçə sahə görür:
 
-- `issuer_id` qurumun sertifikatının barmaq izindən hesablanır, ona görə də onu seçmək və ya kopyalamaq mümkün deyil.
-- `class` qurumun hansı növ rəqəmsal sənəd verdiyini göstərir: dövlət orqanının rəqəmsal sənədi (`PUB`), ixtisaslı rəqəmsal sənəd (`QUALIFIED`) və ya adi attestasiya (`EAA`). `assurance` onun təminat səviyyəsidir, `I1` ilə `I3` arasında.
-- `schema_authorizations` qurumun verə biləcəyi rəqəmsal sənəd növlərini sadalayır, hər birinin öz zaman çərçivəsi var. Etibarlı qeydi olan bilet satıcısı belə yoxlamadan keçən diplom verə bilməz.
-- `status_history` yalnız əlavə olunur, heç vaxt yenidən yazılmır.
+- `issuer_id` qurumun sertifikatının barmaq izindən hesablanır. Ona görə qurum bu dəyəri özü seçə bilmir, başqası da onu köçürə bilmir.
+- `class` qurumun hansı növ sənəd verdiyini göstərir. Dövlət qurumunun sənədi üçün `PUB`, kvalifikasiyalı sənəd üçün `QUALIFIED`, adi attestasiya üçün `EAA` istifadə olunur. `assurance` isə qurumun `I1`-dən `I3`-ə qədər olan etibarlılıq səviyyəsidir.
+- `schema_authorizations` qurumun verə biləcəyi sənəd növlərini hər birinin öz zaman aralığı ilə birlikdə sadalayır. Etibarlı qeydi olan bilet satıcısı belə yoxlamadan keçəcək diplom verə bilməz.
+- `status_history` sahəsinə yalnız yeni sətir əlavə olunur və köhnə sətirlər heç vaxt dəyişdirilmir.
 
-Qeydin nəyi ehtiva etmədiyi də eyni dərəcədə düşünülmüşdür: tələbə adları yoxdur, rəqəmsal sənəd heşləri yoxdur, saylar yoxdur. Qayda belədir: heç bir siyahı, anker jurnalı və ya dəyişiklik jurnalı fərdi məlumatlar daşımır (TL11).
+Qeyddə olmayan məlumatlar da bilərəkdən kənarda saxlanılıb. Qeyddə tələbə adı, sənəd heşi və ya sənəd sayı yoxdur. Qaydaya görə heç bir siyahıda, anker jurnalında və ya dəyişiklik qeydində fərdi məlumat ola bilməz (TL11).
 
 ## Qurum siyahıya necə daxil olur?
 
-Qurum qeydiyyat məlumatları və sertifikat imzalama sorğusu ilə müraciət edir. Qeydiyyatçı müraciəti yoxlayır və bütün çatışmayan sahələri bir dəfəyə bildirir; kök sertifikat orqanı qurumun sertifikatını imzalayır; qurum siyahıya əlavə edilir və siyahı yenidən imzalanır. Dəyişiklik 24 saat ərzində qüvvəyə minir. Qurum tərəfindən atılan addımlar [Qurum Tamga Network-a necə qoşulur](/blog/join-as-an-institution) məqaləsində təsvir olunub.
+Qurum qeydiyyat məlumatlarını və sertifikat imzalama sorğusunu göndərərək müraciət edir. Qeydiyyat orqanı müraciəti yoxlayır və çatışmayan bütün sahələri bir dəfəyə bildirir. Sonra kök sertifikat orqanı qurumun sertifikatını imzalayır, qurum siyahıya əlavə edilir və siyahı yenidən imzalanır. Dəyişiklik 24 saat ərzində qüvvəyə minir. Bu addımları qurumun baxış bucağından [Qurum Tamga Network-a necə qoşulur](/blog/join-as-an-institution) yazısında izah etmişik.
 
-Hər dərc zamanı dərc edən tərəf həmçinin yoxlayan tərəfin hər istifadə halı və hər sənədi verən qurum üçün `trust.tamga.network/wrprc/` altında qeydiyyat sertifikatı (ETSI TS 119 475) yaradır. Onun məzmunu yalnız imzalı siyahıdan götürülür, buna görə də rəqəmsal cüzdan yoxlayan tərəfin qeydiyyatını onunla da yoxlaya bilər.
+Nəşriyyatçı hər dərcdə hər yoxlayan tərəf istifadəsi və hər qurum üçün qeydiyyat sertifikatı (ETSI TS 119 475) da yaradır və onları `trust.tamga.network/wrprc/` altında yerləşdirir. Bu sertifikatların məzmunu yalnız imzalanmış siyahıdan gəldiyi üçün cüzdan yoxlayan tərəfin qeydiyyatını bu sertifikatla da yoxlaya bilər.
 
 ## Siyahı necə imzalanır və dərc olunur?
 
-Hər siyahı ES256 ilə imzalanmış kompakt JWS-dir, operatorun sertifikatı `x5c` başlığında yerləşir. Yanında insanların oxuması üçün `.json` nüsxəsi var; proqram təminatı yalnız `.jws` faylından istifadə edir.
+Hər siyahı ES256 ilə imzalanmış kompakt JWS-dir və başlığındakı `x5c` sahəsində operatorun sertifikatı olur. Siyahının yanında insanların oxuya bilməsi üçün `.json` nüsxəsi də durur. Proqram təminatı isə yalnız `.jws` faylından istifadə edir.
 
-Tarixçənin dürüst qalmasını üç qayda təmin edir:
+Siyahının tarixçəsini dürüst saxlayan üç qayda var:
 
-1. **Versiya yalnız artır.** Köhnə versiyanı yenisi kimi yenidən təqdim etmək olmaz.
-2. **Hər versiya əvvəlkinin heşini daşıyır** (`previous_version_hash`), beləliklə versiyalar zəncir yaradır və boşluq və ya yenidən yazılma üzə çıxır.
-3. **Heç nə silinmir.** Geri çəkilmiş qurum yeni statusla siyahıda qalır; əvvəlki versiyalar `archive/` daxilində saxlanılır.
+1. **Versiya nömrəsi yalnız artır.** Köhnə versiya yeni kimi bir daha təqdim edilə bilməz.
+2. **Hər versiya əvvəlkinin heşini daşıyır** (`previous_version_hash`). Beləliklə versiyalar zəncir yaradır və aradakı boşluq və ya sonradan edilən dəyişiklik dərhal görünür.
+3. **Heç nə silinmir.** Şəbəkədən çıxan qurum siyahıda yeni statusla qalmağa davam edir, köhnə versiyalar isə `archive/` altında saxlanılır.
 
 ![Hər faylın nə vaxt dərc olunduğu və ona tətbiq olunan qayda](/blog/how-trust-lists-work/en/fig-yayin.png)
 
-Heç nə dəyişməsə belə, siyahılar ən azı 90 gündə bir yenidən imzalanır ki, oxucu sakit siyahını tərk edilmiş siyahıdan həmişə ayıra bilsin. Eyni yerdə yerləşən açıq `CHANGELOG.md` hər yığımı (build) qeydə alır.
+Siyahılar heç nə dəyişməsə belə, ən geci 90 gündən bir yenidən imzalanır. Beləliklə oxuyan şəxs uzun müddət dəyişməmiş siyahını tərk edilmiş siyahıdan ayıra bilir. Eyni yerdə duran açıq `CHANGELOG.md` faylı da hər dərci qeydə alır.
 
 ## Anker jurnalı nə üçündür?
 
-Bəzi məlumatlar hər dəfə bütün siyahını yenidən imzalamaq üçün çox tez-tez dəyişir; ilk növbədə qurumların dərc etdiyi ləğv siyahıları. Onlar `anchors.jsonl`, yəni anker jurnalına (anchor log) düşür: hər hadisə üçün bir imzalı sətir, hər sətir heş vasitəsilə əvvəlki sətirlə əlaqələndirilir.
+Bəzi məlumatlar o qədər tez-tez dəyişir ki, hər dəyişiklikdə bütün siyahını yenidən imzalamaq çətin olardı. Bunların başında qurumların dərc etdiyi ləğv siyahıları gəlir. Bu məlumatlar anker jurnalına, yəni `anchors.jsonl` faylına yazılır. Jurnalda hər hadisə üçün imzalanmış bir sətir olur və hər sətir əvvəlki sətrə onun heşi ilə bağlanır.
 
-Sətir, məsələn, hansısa qurumun müəyyən məzmun heşi ilə ləğv siyahısının N versiyasını dərc etdiyini qeydə alır. Yoxlayan tərəf sonradan həmin ləğv siyahısını oxuyanda heşi anker ilə müqayisə edir. Heş uyğun gəlmirsə və ya versiya geriyə gedibsə, rəqəmsal sənəd yoxlamadan keçmir; yoxlayan tərəfin keşdəki nüsxəsi sadəcə ən yeni ankerdən köhnədirsə, nüsxə yenilənənə qədər nəticə "hazırda yoxlamaq mümkün deyil" olur. Yoxlayan tərəf ləğv siyahısının həqiqətən qurumdan gəldiyini və köhnə versiya ilə əvəz edilmədiyini məhz belə bilir.
+Məsələn, sətir qurumun ləğv siyahısının N-ci versiyasını müəyyən məzmun heşi ilə dərc etdiyini qeydə alır. Yoxlayan tərəf sonra həmin ləğv siyahısını oxuyanda siyahının heşini ankerdəki heşlə müqayisə edir. Heş uyğun gəlmirsə və ya versiya geri gedibsə, sənəd yoxlamadan keçmir. Yoxlayan tərəfin əlindəki nüsxə sadəcə ən yeni ankerdən köhnədirsə, nəticə nüsxə yenilənənə qədər "hazırda yoxlamaq mümkün olmadı" olur. Yoxlayan tərəf ləğv siyahısının həqiqətən qurumdan gəldiyini və köhnə versiya ilə əvəz edilmədiyini bu yolla bilir.
 
-Jurnala saatda ən azı bir sətir əlavə olunur; başqa heç nə baş verməyibsə, nəbz (heartbeat) sətri yazılır. Jurnal 500 sətri keçəndə operator sətirləri arxivə köçürür və yeni jurnalı arxivin son sətrinə və arxiv faylının heşinə istinad edən imzalı nəzarət nöqtəsi ilə başladır. Heç bir sətir heç vaxt silinmir və bütün tarixçəni arxivlərdən bərpa etmək mümkündür.
+Jurnala saatda ən azı bir sətir yazılır və həmin saatda başqa hadisə olmayıbsa, bu sətir həyat siqnalı (heartbeat) sətridir. Jurnal 500 sətri keçəndə operator sətirləri arxivə köçürür və yeni jurnalı imzalanmış nəzarət nöqtəsi ilə başladır. Bu nəzarət nöqtəsi arxivin son sətrinə və arxiv faylının heşinə bağlanır. Heç bir sətir silinmədiyi üçün bütün tarixçəni arxivlərdən yenidən qurmaq olar.
 
 ## Siyahı nə dərəcədə aktual olmalıdır?
 
-Hər siyahıda `next_update` var. Xidmətlər siyahıları müntəzəm aralıqlarla yenidən yükləyir, yoxlayan tərəflər isə ləğv siyahılarını əvvəlcədən endirib keşdə saxlayır. Yoxlama anında heç nə endirilmir; qurumun öz rəqəmsal sənədlərinin harada təqdim olunduğunu heç vaxt öyrənməməsinin səbəbi də budur ([İzləmədən ləğv](/blog/status-list-privacy)).
+Hər siyahı `next_update` tarixi daşıyır. Xidmətlər siyahıları müntəzəm fasilələrlə yenidən yükləyir, yoxlayan tərəflər isə ləğv siyahılarını əvvəlcədən endirib keşdə saxlayır. Yoxlama anında heç nə endirilmir və qurumun sənədlərinin harada göstərildiyini heç vaxt öyrənə bilməməsinin səbəbi də budur ([İzləmədən ləğv](/blog/status-list-privacy)).
 
-Siyahını əldə etmək mümkün deyilsə və ya onun `next_update` vaxtı keçibsə, yoxlayan tərəf təxmin etmir. Nəticə "hazırda yoxlamaq mümkün deyil" (`INDETERMINATE`) olur, heç vaxt nə qəbul, nə də rədd (TL5). Server əlçatan olmadığına görə diplom saxta elan edilmir.
+Siyahı alına bilmirsə və ya `next_update` tarixi keçibsə, yoxlayan tərəf təxmin etmir. Bu halda nəticə "hazırda yoxlamaq mümkün olmadı" (`INDETERMINATE`) olur və sənəd nə qəbul, nə də rədd edilmiş sayılır (TL5). Serverə çatmaq mümkün olmadı deyə heç bir diplom saxta elan edilmir.
 
 ## Yoxlayan tərəf addım-addım nəyi yoxlayır?
 
-Yoxlamalar iki qrupa bölünür. Əvvəlcə, siyahılar yüklənəndə:
+Yoxlamalar iki qrupa bölünür. Birinci qrup siyahılar yüklənəndə aparılır:
 
 ![Etibar siyahısı yüklənəndə nə yoxlanılır və uğursuz olduqda nə baş verir](/blog/how-trust-lists-work/en/fig-denetim.png)
 
-Şəbəkə yoxlaması test üçün vacibdir: sınaq mühitinin (sandbox) siyahılarında `"environment": "sandbox"` göstərilir və real şəbəkə üçün qurulmuş yoxlayan tərəf onlarda dayanır. Sınaq mühitinin rəqəmsal sənədi real yoxlayan tərəfdə yoxlamadan keçə bilməz.
+Şəbəkə yoxlaması xüsusilə testlər üçün vacibdir. Sandbox siyahılarında `"environment": "sandbox"` yazılır və real şəbəkə üçün qurulmuş yoxlayan tərəf bu siyahını görəndə dayanır. Ona görə sandbox-da alınmış sənəd real yoxlayan tərəfdən keçə bilmir.
 
-Sonra hər rəqəmsal sənəd üçün yoxlama prosesinin etibar qatı ([yoxlama API-si](https://docs.tamga.network/specifications/verification-api)) soruşur:
+İkinci qrup hər sənəd üçün işləyir. Yoxlama ardıcıllığının etibar qatı ([yoxlama API-si](https://docs.tamga.network/specifications/verification-api)) bu sualları verir:
 
 | Addım | Sual |
 |---|---|
-| A3b | Bu hansı qurumdur? Rəqəmsal sənədi imzalayan sertifikatdan müəyyən edilir; rəqəmsal sənədin özü haqqında iddia etdikləri nəzərə alınmır |
-| C1 | Rəqəmsal sənəd verildiyi anda qurum qəbul edilə bilən idimi? |
-| C2 | Qurum həmin anda bu növ rəqəmsal sənəd üçün səlahiyyətli idimi? Bu addımı söndürmək olmaz |
+| A3b | Bu hansı qurumdur? Qurum sənədi imzalayan sertifikatdan müəyyən edilir; sənədin özü haqqında dediklərinə baxılmır |
+| C1 | Sənəd verildiyi anda qurum qəbul edilə bilən vəziyyətdə idimi? |
+| C2 | Qurum həmin anda bu növ sənədi verməyə səlahiyyətli idimi? Bu addımı söndürmək olmaz |
 | C3 | Yoxlayan tərəfin ölkəsi qurumun ölkəsini tanıyırmı? |
 | D5 | Ləğv siyahısı jurnaldakı ankerə uyğun gəlirmi? |
 
-C1 və C2 bugünə deyil, rəqəmsal sənədin verilmə vaxtına baxır. Universitetin qeydi sonradan istifadədən çıxarılarsa, onun aktiv olduğu dövrdə verdiyi diplomlar etibarlı qalır. Açarı ələ keçirilibsə, qeyd `invalidates_from` tarixi ilə ləğv edilir və yalnız həmin tarixdən etibarən verilmiş rəqəmsal sənədlər yoxlamadan keçmir. Yoxlama keçmişə aiddir: əsas olan verilmə günü siyahının vəziyyətidir.
+C1 və C2 addımları bugünkü vəziyyətə deyil, sənədin verildiyi ana baxır. Universitetin qeydi sonradan təqaüdə çıxarılsa, onun aktiv olduğu dövrdə verdiyi diplomlar etibarlı qalır. Qurumun açarı ələ keçirilibsə, qeyd `invalidates_from` tarixi ilə ləğv edilir və yalnız həmin tarixdən sonra verilmiş sənədlər yoxlamadan keçmir. Yoxlama keçmişə baxır və həlledici olan sənədin verildiyi gündəki siyahıdır.
 
-Kod siyahı fayllarını heç vaxt birbaşa şərh etmir. `@tamga-network/trust` paketi tək bir interfeys – `TrustSource` təqdim edir; o, `YES`, `NO` və ya `UNKNOWN` cavabını verir; `UNKNOWN` nəticəsi `INDETERMINATE` olur. İstifadə qaydası: [Etibar siyahılarını oxuyun](https://docs.tamga.network/guides/read-trust-lists).
+Kod siyahı fayllarını heç vaxt özü şərh etmir. `@tamga-network/trust` paketi bir interfeys təqdim edir. `TrustSource` adlı bu interfeys `YES`, `NO` və ya `UNKNOWN` cavabı verir və `UNKNOWN` nəticədə `INDETERMINATE` kimi görünür. Ondan necə istifadə edildiyini [Etibar siyahılarını oxuyun](https://docs.tamga.network/guides/read-trust-lists) bələdçisində izah etmişik.
 
 ## Bu gün açığını desək, hansı məhdudiyyətlər var?
 
-- **Bir imzalayan.** Anker bir operatorun imzasına əsaslanır. Operator və qurum birlikdə hərəkət etsəydi, müxtəlif oxuculara müxtəlif versiyalar göstərə bilərdilər. Açıq jurnal, dəyişiklik jurnalı, rüblük şəffaflıq hesabatı və müstəqil audit bundan çəkindirir, lakin bunu qeyri-mümkün etmir. Bu boşluğu ən azı iki müstəqil operator tələb edən ortaq reyestr (ledger) bağlayır ([Niyə blokçeynsiz başlayırıq](/blog/why-no-blockchain-yet)).
-- **Hələlik bir açar.** Qaydalar ən azı iki növbəli imza sertifikatı və rotasiyaların 30 gün əvvəldən elan edilməsini tələb edir. Canlı siyahılar birindən istifadə edir (2026-10-23-də yoxlanılıb); qaydalar ikinci açarı və imza açarının açar idarəetmə xidmətində saxlanılmasını pilotdan əvvəl tələb edir.
-- **Hələ ETSI XML yoxdur.** Sahələr ETSI TS 119 612-yə uyğunlaşdırılıb və statusların ETSI qarşılığı var, lakin XML ixracı hələ də açıq məsələlər siyahısındadır. Cüzdan provayderləri üçün ETSI TS 119 602 görünüşləri aktivləşdirildikdə dərc oluna bilər.
+- **Bir imzalayan.** Etibar lövbəri bu gün bir operatorun imzasına söykənir. Operator ilə qurum birlikdə hərəkət etsə, müxtəlif oxuculara siyahının müxtəlif versiyalarını göstərə bilərlər. Açıq jurnal, dəyişiklik qeydi, rübdə bir dərc olunan şəffaflıq hesabatı və müstəqil audit bunun qarşısını alır, amma tamamilə qeyri-mümkün etmir. Bu boşluğu ən azı iki müstəqil operator tələb edən ortaq reyestr bağlayacaq ([Niyə blokçeynsiz başlayırıq](/blog/why-no-blockchain-yet)).
+- **Hələlik bir açar.** Qaydalar ən azı iki növbəli imza sertifikatı və 30 gün əvvəlcədən elan edilən açar dəyişikliyi tələb edir. Canlı siyahılar isə hazırda bir açardan istifadə edir (2026-10-23-də yoxlanılıb). Qaydalar ikinci açarın əlavə edilməsini və imza açarının açar idarəetmə xidmətində saxlanılmasını pilotdan əvvəl şərt qoyur.
+- **Hələ ETSI XML yoxdur.** Sahələr ETSI TS 119 612-yə, statuslar isə ETSI-dəki qarşılıqlarına uyğunlaşdırılıb, amma XML ixracı hələ açıq işlər siyahısındadır. Cüzdan provayderləri üçün ETSI TS 119 602 görünüşləri də aktivləşdiriləndə dərc oluna bilər.
 
 ## Tez-tez verilən suallar
 
 ### Etibar siyahısını özüm oxuya bilərəmmi?
 
-Bəli. `trust.tamga.network/tl-tr.json` və `lotl.json` oxunaqlı nüsxələrdir. Proqram təminatı imzalı `.jws` fayllarını imzanı, zənciri və aktuallığı yoxlayan `TrustSource` vasitəsilə yükləməlidir.
+Bəli. `trust.tamga.network/tl-tr.json` və `lotl.json` faylları oxuna bilən nüsxələrdir. Proqram təminatı isə imzalanmış `.jws` fayllarını `TrustSource` vasitəsilə yükləməlidir, çünki imzanı, zənciri və aktuallığı bu interfeys yoxlayır.
 
 ### Etibar siyahısında fərdi məlumatlar varmı?
 
-Xeyr. Orada qurumların və yoxlayan tərəflərin adları, sertifikat barmaq izləri, statuslar, tarixlər, ünvanlar və rəqəmsal sənəd növləri saxlanılır. Şəxslər, rəqəmsal sənədlərin məzmunu və rəqəmsal sənədlərin heşləri orada yoxdur.
+Xeyr. Siyahıda qurum və yoxlayan tərəf adları, sertifikat barmaq izləri, statuslar, tarixlər, ünvanlar və sənəd növləri olur. Şəxslər, sənədlərin məzmunu və sənəd heşləri siyahıda yer almır.
 
 ### Qurum şəbəkədən çıxdıqda nə baş verir?
 
-Onun qeydi silinmir. Status dəyişir (məsələn, `RETIRED` və ya `REVOKED` olaraq) və bu dəyişiklik onun tarixçəsinə əlavə olunur. Beləliklə, əvvəllər verilmiş rəqəmsal sənədlər yenə də verildikləri tarixdə siyahının vəziyyətinə əsasən qiymətləndirilə bilər.
+Qurumun qeydi silinmir. Statusu dəyişir (məsələn, `RETIRED` və ya `REVOKED` olur) və bu dəyişiklik qeydin tarixçəsinə əlavə edilir. Beləliklə əvvəl verilmiş sənədlər verildikləri gündəki siyahıya əsasən qiymətləndirilməyə davam edir.
 
 ### Siyahı nə qədər tez-tez yenilənir?
 
-Dəyişiklik 24 saat ərzində dərc olunur və hər siyahı ən azı 90 gündən bir yenidən imzalanır. Lövbər jurnalına (anchor log) ən azı saatda bir dəfə yeni sətir əlavə olunur.
+Dəyişiklik 24 saat ərzində dərc olunur və hər siyahı ən geci 90 gündən bir yenidən imzalanır. Anker jurnalına da saatda ən azı bir sətir əlavə olunur.
 
 ### Bu, Aİ-nin etibar siyahısı ilə eynidirmi?
 
-O, eyni iki səviyyəli modelə əsaslanır və sahələri ETSI TS 119 612 standartına uyğunlaşdırılıb. Lakin bu, Aİ siyahısı deyil: onu heç bir Aİ orqanı dərc etmir və Tamga onun Aİ statusuna malik olduğunu iddia etmir.
+Siyahı eyni iki səviyyəli modeli izləyir və sahələri ETSI TS 119 612-yə uyğunlaşdırılır. Yenə də Aİ siyahısı sayılmır, çünki onu Aİ qurumu dərc etmir və Tamga siyahı üçün Aİ statusu iddia etmir.
 
 ## Mənbələr
 

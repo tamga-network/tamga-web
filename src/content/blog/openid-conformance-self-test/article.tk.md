@@ -52,7 +52,7 @@ Verifier-iň birinji tapgyrynda "duýduryş" alan ýedi modul aslynda esasy barl
 
 "Geçdi" bolmadyk her setiriň sebäbi bar:
 
-- **Iki duýduryş (issuer metamaglumaty, ýönekeý we gol çekilen).** Metamaglumatymyzda ETSI TS 119 472-3-iň kesgitleýän we ÝB ARF-iniň ulanýan toplumlaýyn bermek we gaýtadan ulanmak syýasaty `credential_reuse_policy` bar. Guralyň shemasy `credential_metadata` içinde goşmaça meýdanlara rugsat bermeýär. Şonuň üçin bir kanuny giňeltme shemanyň tutuş bir şahasyny ýykýar we gural soňra standart meýdanlary (`scope`, `proof_types_supported` we beýlekiler) näbelli diýip habar berýär. Rugsat sanawy giňeltmäniň adyny ümsüm edip bilýär, bu zynjyry bolsa ýok. Meýdan ÝB standarty, şonuň üçin galýar. Meseläni gaýtalap görkezmek ädimleri we iki mümkin çözgüt bilen bilelikde guralyň işläp düzüjilerine ibermek üçin ýazdyk.
+- **Iki duýduryş (issuer metamaglumaty, ýönekeý we gol çekilen).** Metamaglumatymyzda ETSI TS 119 472-3-iň kesgitleýän we ÝB ARF-iniň ulanýan toplumlaýyn bermek we gaýtadan ulanmak syýasaty `credential_reuse_policy` bar. Guralyň shemasy `credential_metadata` içinde goşmaça meýdanlara rugsat bermeýär. Şonuň üçin bir kanuny giňeltme shemanyň tutuş bir şahasyny ýykýar we gural soňra standart meýdanlary (`scope`, `proof_types_supported` we beýlekiler) näbelli diýip habar berýär. Rugsat sanawy giňeltmäniň adyny ümsüm edip bilýär, bu zynjyry bolsa ýok. Meýdan ÝB standarty, şonuň üçin galýar. Meseläni gaýtalap görkezmek ädimleri we iki mümkin çözgüt bilen bilelikde guralyň toparyna habar berdik.
 - **Gözden geçirme.** Käbir ýaramaz synaglar "ekran suratyny ýükläň" bilen gutarýar, sebäbi gural serwerimiziň adama görkezýän ýalňyşlyk sahypasyny görüp bilmeýär we bu sahypany adam tassyklamaly. Verifier meýilnamasynda Tamga Verify-yň hödürlemäni kabul eden ýa-da netije sahypasynda ret eden (nädogry resminama görnüşi, ýatyrylan resminama) her ýagdaýy şol sebäpden gözden geçirme bilen gutarýar. Barlaýjynyň jogaby gönüden-göni HTTP 400 bilen ret eden ýagdaýlary öz-özünden geçýär.
 - **Geçirildi.** Üç issuer moduly şifrlenen resminama jogabyny synaýar. HAIP muny hökmany etmeýär we metamaglumatymyz bu saýlawy hödürlemeýär. Biri täzeleme tokenini synaýar; şahsyýet hyzmatymyz täzeleme tokenini diňe gysga ömürli nol bilim nusgalary üçin berýär ([ADR-0062](https://docs.tamga.network/adr/0062-zk-copy-refresh-scope)). Guralyň haýyşy şol scope-y soramaýandygy üçin token berilmeýär we modul geçirilýär. Verifier meýilnamasynda `request_uri_method=post` saýlawyny hödürlemeýändigimiz üçin ol modul geçirilýär.
 
@@ -127,7 +127,7 @@ Başdan ahyra çenli bir düzgüne eýerdik. Kody diňe spesifikasiýanyň bir b
 | sazlama | guralyň sazlamasy, synag gurşawy ýa-da synag edýäniň ädimi | sazlamany ýa-da tertibi düzetdik |
 | garaşylýan | goldamaýan görnüşimiz ýa-da resminamalaşdyrylan giňeltme | bolşy ýaly goýduk we ýazga aldyk |
 | karar | spesifikasiýa rugsat berýär, ýöne gural başga ýola garaşýar | taslama ýolbaşçylygy ADR bilen karar berdi |
-| gural çägi | gural hiç bir spesifikasiýanyň talap etmeýän zadyny barlaýar | dogry kody sakladyk, meseläni guralyň işläp düzüjileri üçin ýazdyk |
+| gural çägi | gural hiç bir spesifikasiýanyň talap etmeýän zadyny barlaýar | dogry kody sakladyk, meseläni guralyň toparyna habar berdik |
 
 ![Toparlamak: žurnal setirinden düzedişe](/blog/openid-conformance-self-test/en/fig-triage.png)
 

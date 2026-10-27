@@ -32,13 +32,13 @@ const en: AboutContent = {
   meta: {
     title: "About",
     description:
-      "What Tamga Network is, where its name comes from, and what it does and why. An EU-compatible Digital Trust Infrastructure for the Turkic world, in three layers.",
+      "What Tamga Network is, where its name comes from, what it does and why. It is an EU-compatible Digital Trust Infrastructure for the Turkic world, built in three layers.",
   },
   header: {
     eyebrow: "About",
     title: "What is Tamga Network, and what does it do and why?",
     description:
-      "Not a blockchain network, but a Digital Trust Infrastructure. Digital identity is the starting point; trust is the real value the infrastructure produces.",
+      "Tamga Network is a Digital Trust Infrastructure rather than a blockchain network. Digital identity is where it starts, and trust is the value the infrastructure actually produces.",
   },
   name: {
     eyebrow: "Our name",
@@ -57,30 +57,31 @@ const en: AboutContent = {
           <strong>genuine</strong>.
         </p>
         <p>
-          Every tribe had its own tamga; the tamga was identity, signature and
-          title of ownership all at once. Today a verifiable digital credential
-          (Verifiable Credential) does exactly the same job — only it is engraved
-          into mathematics, not stone.
+          Every tribe had its own tamga, and the tamga served as identity,
+          signature and title of ownership at the same time. Today a verifiable
+          digital credential (Verifiable Credential) does the same job, except
+          that it is engraved into mathematics instead of stone.
         </p>
         <p>
-          That is why our name is <strong>Tamga</strong>: the modern, digital
-          counterpart of an ancient tradition of trust.
+          We chose the name <strong>Tamga</strong> because the network is the
+          modern, digital counterpart of that ancient tradition of trust.
         </p>
       </>
     ),
   },
   mission: {
     title: "Mission",
-    body: "To turn the problem of identity, authorization and document verification — the problem every application solves again and again — into a shared, open infrastructure. To build a world where trust is provided by a shared layer, not by each application alone.",
+    body: "Every application solves identity, authorization and document verification again on its own. Our mission is to turn that repeated work into a shared, open infrastructure, so that trust comes from a common layer that every application can rely on.",
   },
   vision: {
     title: "Vision",
     body: (
       <>
-        A <strong className="text-foreground">trust network</strong> that starts in
-        Türkiye and opens to the Turkic world, where each country keeps its own
-        sovereign trust network while connecting to others through shared
-        standards. Verifiable identity, diplomas and documents across borders.
+        We picture a <strong className="text-foreground">trust network</strong> that
+        starts in Türkiye and opens to the Turkic world. Each country keeps its own
+        sovereign trust network and connects to the others through shared
+        standards, so that identity, diplomas and documents can be verified across
+        borders.
       </>
     ),
   },
@@ -89,25 +90,25 @@ const en: AboutContent = {
     title: "Three layers: EU-compatible, a federation, wallets on the network",
     lead: (
       <>
-        Tamga is built in three layers that each stand on their own. The base is{" "}
-        <strong className="text-foreground">compatibility with the EU’s eIDAS 2.0 / EUDI standards</strong>; on top
+        Tamga is built in three layers, and each of them can stand on its own. The base is{" "}
+        <strong className="text-foreground">compatibility with the EU’s eIDAS 2.0 / EUDI standards</strong>. On top
         of it, <strong className="text-foreground">Tamga Network</strong> brings the trust lists of the Turkic states
-        together; on that base run <strong className="text-foreground">the wallets on the network</strong> (the first is
-        Tamga Wallet) and the network’s reference services.
+        together. <strong className="text-foreground">The wallets on the network</strong> (the first is
+        Tamga Wallet) and the network’s reference services run on that foundation.
       </>
     ),
     rows: [
       {
         k: "EU-compatible base",
-        v: "Credentials, protocols and trust lists follow EU standards. An “EUDI Wallet” is a legal title for wallets that an EU member state provides or recognises; Tamga Wallet, the network’s first wallet, is EU-compatible; interoperability will be shown with test results.",
+        v: "Credentials, protocols and trust lists follow EU standards. “EUDI Wallet” is a legal title reserved for wallets that an EU member state provides or recognises, so we describe Tamga Wallet, the network’s first wallet, as EU-compatible. Interoperability will be shown with test results.",
       },
       {
-        k: "Tamga Network — a light federation",
-        v: "Collects each state’s trust list and lets the states recognise one another. Today Tamga publishes Türkiye’s list provisionally, on behalf of the state; when the state or the body it authorises publishes its own, the network points to it. The network recognises any wallet that follows the published rules. A governance body and a shared ledger come as states join.",
+        k: "Tamga Network, a light federation",
+        v: "The network collects each state’s trust list and lets the states recognise one another. Today Tamga publishes Türkiye’s list provisionally on behalf of the state, and when the state or a body it authorises publishes its own list, the network will point to that one. The network recognises any wallet that follows the published rules. A governance body and a shared ledger will follow as states join.",
       },
       {
         k: "Wallets on the network and the team that builds it",
-        v: "Any wallet that follows the network’s rules works on the network; Tamga Wallet is the first, a separate product that the network does not run. The team that builds the network runs the reference services — the Institution Console, Tamga Verify, trust-list publication — and publishes the code as open-source packages, so no institution is tied to one app.",
+        v: "Any wallet that follows the network’s rules works on the network. Tamga Wallet is the first of them, and it is a separate product that the network does not run. The team that builds the network runs the reference services, namely the Institution Console, Tamga Verify and trust-list publication, and publishes the code as open-source packages so that no institution is tied to one app.",
       },
     ],
   },
@@ -116,18 +117,18 @@ const en: AboutContent = {
     body: (
       <>
         <p>
-          The European Union made the portable digital proof model mandatory at
-          continental scale with eIDAS 2.0. SD-JWT VC, ISO mdoc, OpenID4VC
-          and selective disclosure are no longer academic concepts but applied
-          requirements.
+          With eIDAS 2.0 the European Union made the portable digital proof model
+          mandatory across the continent. SD-JWT VC, ISO mdoc, OpenID4VC and
+          selective disclosure have moved out of research papers and into
+          requirements that are being implemented today.
         </p>
         <p>
           Türkiye has a strong digital public infrastructure (e-Devlet, MERNİS,
           e-signature), but these trust assets are largely centralized and
-          disconnected. As the world moves to the portable proof model, Türkiye
-          will either import it or{" "}
+          disconnected from one another. As the world moves to the portable proof
+          model, Türkiye will either import it or{" "}
           <strong>produce its own sovereign, compatible infrastructure.</strong>{" "}
-          We are building the second path.
+          We are working on the second path.
         </p>
       </>
     ),
@@ -138,10 +139,10 @@ const en: AboutContent = {
   contact: {
     eyebrow: "Contact",
     title: "Get in touch",
-    lead: "Reach the right desk directly. We usually reply within a few business days.",
+    lead: "Write to the address that fits your question. We usually reply within a few business days.",
     items: [
       { email: "info@tamga.network", label: "General", note: "Questions about the project and the network." },
-      { email: "partners@tamga.network", label: "Membership", note: "Joining the network: institutions, wallet providers and states." },
+      { email: "partners@tamga.network", label: "Membership", note: "Joining the network as an institution, wallet provider or state." },
       { email: "security@tamga.network", label: "Security", note: "Responsible disclosure of vulnerabilities." },
     ],
   },
@@ -151,13 +152,13 @@ const tr: AboutContent = {
   meta: {
     title: "Hakkında",
     description:
-      "Tamga Network nedir, ismi nereden gelir, neyi neden yapar. Türk dünyası için AB uyumlu, üç katmanlı bir Dijital Güven Altyapısı.",
+      "Tamga Network’ün ne olduğu, adının nereden geldiği, ne yaptığı ve neden yaptığı. Tamga Network, Türk dünyası için kurulan, AB ile uyumlu ve üç katmandan oluşan bir Dijital Güven Altyapısıdır.",
   },
   header: {
     eyebrow: "Hakkında",
     title: "Tamga Network nedir, neyi neden yapar?",
     description:
-      "Bir blockchain ağı değil, bir Dijital Güven Altyapısı. Dijital kimlik başlangıç noktası, güven ise altyapının ürettiği asıl değerdir.",
+      "Tamga Network bir blockchain ağından çok bir Dijital Güven Altyapısıdır. İşe dijital kimlikle başlar, ama altyapının asıl ürettiği değer güvendir.",
   },
   name: {
     eyebrow: "İsmimiz",
@@ -169,37 +170,38 @@ const tr: AboutContent = {
     body: (
       <>
         <p>
-          <strong>Tamga</strong>; Türk ve Moğol boylarının kadim mührüdür.
+          <strong>Tamga</strong>, Türk ve Moğol boylarının kadim mührüdür.
           Hayvanlara, silahlara, halılara, mezar taşlarına ve belgelere vurulan
           bu işaret, bir şeyin <strong>kime ait olduğunu</strong>, bir sözün{" "}
           <strong>kimden geldiğini</strong> ve bir yetkinin{" "}
           <strong>gerçek olduğunu</strong> kanıtlardı.
         </p>
         <p>
-          Her boyun kendi tamgası vardı; tamga hem kimlikti hem imza hem de
-          mülkiyet belgesi. Bugün doğrulanabilir dijital belge (Verifiable
-          Credential) tam olarak aynı işi görür — yalnızca taşa değil, matematiğe
-          kazınır.
+          Her boyun kendi tamgası vardı ve tamga aynı anda kimlik, imza ve mülkiyet
+          belgesi yerine geçerdi. Bugün doğrulanabilir dijital belge (Verifiable
+          Credential) aynı işi görüyor. Aradaki fark, bu kez işaretin taşa
+          kazınmak yerine matematiğe dayanmasıdır.
         </p>
         <p>
-          Bu yüzden adımız <strong>Tamga</strong>: kadim bir güven geleneğinin
-          çağdaş, dijital karşılığı.
+          Ağa <strong>Tamga</strong> adını, bu kadim güven geleneğinin çağdaş ve
+          dijital karşılığı olduğu için verdik.
         </p>
       </>
     ),
   },
   mission: {
     title: "Misyon",
-    body: "Kimlik, yetkilendirme ve belge doğrulama problemini — her uygulamanın tekrar tekrar çözdüğü bu problemi — ortak ve açık bir altyapıya dönüştürmek. Güveni tek tek uygulamaların değil, ortak bir katmanın sağladığı bir dünya kurmak.",
+    body: "Bugün her uygulama kimlik, yetkilendirme ve belge doğrulama sorununu kendi başına yeniden çözüyor. Amacımız bu tekrarlanan işi ortak ve açık bir altyapıya dönüştürmek ve güveni, bütün uygulamaların dayanabileceği ortak bir katmandan sağlamaktır.",
   },
   vision: {
     title: "Vizyon",
     body: (
       <>
-        Türkiye’den başlayıp Türk dünyasına açılan; her ülkenin kendi egemen
-        güven ağını koruyarak ortak standartlarla birbirine bağlandığı bir{" "}
-        <strong className="text-foreground">güven ağı</strong>. Sınır ötesinde
-        doğrulanabilir kimlik, diploma ve belge.
+        Türkiye’den başlayıp Türk dünyasına açılan bir{" "}
+        <strong className="text-foreground">güven ağı</strong> hayal ediyoruz. Bu
+        ağda her ülke kendi egemen güven ağını korur ve ortak standartlarla
+        diğerlerine bağlanır. Böylece kimlik, diploma ve belgeler sınırın öbür
+        tarafında da doğrulanabilir.
       </>
     ),
   },
@@ -208,25 +210,25 @@ const tr: AboutContent = {
     title: "Üç katman: AB uyumu, federasyon, ağdaki cüzdanlar",
     lead: (
       <>
-        Tamga, her biri tek başına ayakta durabilen üç katmanda kuruludur. Taban,{" "}
-        <strong className="text-foreground">AB’nin eIDAS 2.0 / EUDI standartlarıyla uyumdur</strong>; onun üstünde{" "}
+        Tamga, her biri tek başına ayakta durabilen üç katman üzerine kuruludur. Tabanı{" "}
+        <strong className="text-foreground">AB’nin eIDAS 2.0 / EUDI standartlarıyla uyum</strong> oluşturur. Onun üstünde{" "}
         <strong className="text-foreground">Tamga Network</strong> Türk devletlerinin güven listelerini bir araya
-        getirir; bu zeminde <strong className="text-foreground">ağdaki cüzdanlar</strong> (ilki Tamga Wallet) ve ağın
-        referans hizmetleri çalışır.
+        getirir. <strong className="text-foreground">Ağdaki cüzdanlar</strong> (ilki Tamga Wallet) ve ağın
+        referans hizmetleri de bu zeminin üzerinde çalışır.
       </>
     ),
     rows: [
       {
         k: "AB uyumlu taban",
-        v: "Belgeler, protokoller ve güven listeleri AB standartlarındadır. “EUDI Wallet”, bir AB üye devletinin sunduğu ya da tanıdığı cüzdanlar için hukuki bir unvandır; ağın ilk cüzdanı Tamga Wallet AB uyumludur; birlikte çalışabilirlik test sonuçlarıyla gösterilecek.",
+        v: "Belgeler, protokoller ve güven listeleri AB standartlarına uyar. “EUDI Wallet” unvanı yalnızca bir AB üye devletinin sunduğu ya da tanıdığı cüzdanlara verilen hukuki bir unvan olduğu için ağın ilk cüzdanı Tamga Wallet’ı AB uyumlu bir cüzdan olarak anıyoruz. Birlikte çalışabilirliği test sonuçlarıyla göstereceğiz.",
       },
       {
-        k: "Tamga Network — hafif bir federasyon",
-        v: "Her devletin güven listesini toplar ve devletlerin birbirini tanımasını sağlar. Bugün Türkiye listesini Tamga, devlet adına geçici olarak yayınlar; devlet ya da yetkilendirdiği kurum kendi listesini yayınladığında ağ onu gösterir. Ağ, yayınlanmış kurallara uyan her cüzdanı tanır. Yönetişim kurumu ve ortak defter, devletler katıldıkça gelir.",
+        k: "Tamga Network, hafif bir federasyon",
+        v: "Ağ her devletin güven listesini toplar ve devletlerin birbirini tanımasını sağlar. Türkiye listesini bugün Tamga, devlet adına geçici olarak yayınlıyor. Devlet ya da yetkilendirdiği kurum kendi listesini yayınladığında ağ o listeyi gösterecek. Ağ, yayınlanmış kurallara uyan her cüzdanı tanır. Yönetişim kurumu ve ortak defter de devletler katıldıkça kurulacak.",
       },
       {
         k: "Ağdaki cüzdanlar ve ağı geliştiren ekip",
-        v: "Ağın kurallarına uyan her cüzdan ağda çalışır; ilki Tamga Wallet’tır; ağın işletmediği ayrı bir üründür. Ağı geliştiren ekip referans hizmetleri işletir — Kurum Konsolu, Tamga Verify, güven listesi yayını — ve kodu açık kaynak paketler olarak yayınlar; hiçbir kurum tek bir uygulamaya bağlı kalmaz.",
+        v: "Ağın kurallarına uyan her cüzdan ağda çalışabilir. Bunların ilki Tamga Wallet’tır ve ağın işletmediği ayrı bir üründür. Ağı geliştiren ekip Kurum Konsolu, Tamga Verify ve güven listesi yayını gibi referans hizmetleri işletir. Kodu da açık kaynak paketler olarak yayınladığı için hiçbir kurum tek bir uygulamaya bağlı kalmaz.",
       },
     ],
   },
@@ -235,17 +237,17 @@ const tr: AboutContent = {
     body: (
       <>
         <p>
-          Avrupa Birliği, eIDAS 2.0 ile taşınabilir dijital kanıt modelini
-          kıtasal ölçekte zorunlu hâle getirdi. SD-JWT VC, ISO mdoc,
-          OpenID4VC ve seçici paylaşım artık akademik kavramlar değil, uygulanan
-          gereksinimler.
+          Avrupa Birliği, eIDAS 2.0 ile taşınabilir dijital kanıt modelini bütün
+          kıtada zorunlu hâle getirdi. SD-JWT VC, ISO mdoc, OpenID4VC ve seçici
+          paylaşım böylece makalelerden çıkıp bugün uygulanan gereksinimlere
+          dönüştü.
         </p>
         <p>
           Türkiye güçlü bir dijital kamu altyapısına (e-Devlet, MERNİS, e-imza)
-          sahip; ancak bu güven varlıkları büyük ölçüde merkezî ve birbirinden
-          kopuk. Dünya taşınabilir kanıt modeline geçerken Türkiye ya bunu ithal
-          edecek ya da <strong>kendi egemen, uyumlu altyapısını üretecek.</strong>{" "}
-          Biz ikinci yolu inşa ediyoruz.
+          sahip, ancak bu güven varlıkları büyük ölçüde merkezî ve birbirinden
+          kopuk durumda. Dünya taşınabilir kanıt modeline geçerken Türkiye ya bu
+          modeli dışarıdan alacak ya da <strong>kendi egemen ve uyumlu altyapısını üretecek.</strong>{" "}
+          Biz ikinci yol üzerinde çalışıyoruz.
         </p>
       </>
     ),
@@ -256,10 +258,10 @@ const tr: AboutContent = {
   contact: {
     eyebrow: "İletişim",
     title: "Bize ulaşın",
-    lead: "Doğrudan doğru birime yazın. Genellikle birkaç iş günü içinde yanıt veriyoruz.",
+    lead: "Sorunuza uyan adrese yazmanız yeterli. Genellikle birkaç iş günü içinde yanıt veriyoruz.",
     items: [
       { email: "info@tamga.network", label: "Genel", note: "Proje ve ağ hakkındaki sorular." },
-      { email: "partners@tamga.network", label: "Katılım", note: "Ağa katılım: kurumlar, cüzdan sağlayıcılar ve devletler." },
+      { email: "partners@tamga.network", label: "Katılım", note: "Kurum, cüzdan sağlayıcı ya da devlet olarak ağa katılım." },
       { email: "security@tamga.network", label: "Güvenlik", note: "Güvenlik açıklarının sorumlu bildirimi." },
     ],
   },
@@ -269,13 +271,13 @@ const tk: AboutContent = {
   meta: {
     title: "Biz barada",
     description:
-      "Tamga Network näme, ady nireden gelýär, näme edýär we näme üçin. Türki dünýäsi üçin ÝB bilen laýyk, üç gatlakly Sanly Ynam Infrastrukturasy.",
+      "Tamga Network-yň näme bolýandygy, adynyň nireden gelýändigi, näme edýändigi we näme üçin edýändigi. Tamga Network türki dünýäsi üçin gurlan, ÝB bilen laýyk we üç gatlakdan ybarat Sanly Ynam Infrastrukturasydyr.",
   },
   header: {
     eyebrow: "Biz barada",
     title: "Tamga Network näme, näme edýär we näme üçin?",
     description:
-      "Blokçeýn tory däl, Sanly Ynam Infrastrukturasy. Sanly şahsyýet başlangyç nokat; ynam bolsa infrastrukturanyň öndürýän esasy gymmaty.",
+      "Tamga Network blokçeýn torundan has köp Sanly Ynam Infrastrukturasydyr. Ol işe sanly şahsyýetden başlaýar, ýöne infrastrukturanyň hakyky öndürýän gymmaty ynamdyr.",
   },
   name: {
     eyebrow: "Adymyz",
@@ -287,37 +289,38 @@ const tk: AboutContent = {
     body: (
       <>
         <p>
-          <strong>Tamga</strong> — türki we mongol taýpalarynyň gadymy möhüridir.
+          <strong>Tamga</strong> türki we mongol taýpalarynyň gadymy möhüridir.
           Haýwanlara, ýaraglara, halylara, gonamçylyk daşlaryna we resminamalara
           basylan bu belgi, bir zadyň <strong>kime degişlidigini</strong>, bir
           sözüň <strong>kimden gelendigini</strong> we bir ygtyýaryň{" "}
           <strong>hakykydygyny</strong> subut edýärdi.
         </p>
         <p>
-          Her taýpanyň öz tamgasy bardy; tamga hem şahsyýet, hem gol, hem-de
-          eýeçilik resminamasydy. Bu gün barlanyp bilinýän sanly resminama
-          (Verifiable Credential) hut şol bir işi edýär — diňe daşa däl,
-          matematika ýazylýar.
+          Her taýpanyň öz tamgasy bardy we tamga bir wagtyň özünde şahsyýet, gol
+          we eýeçilik resminamasy hökmünde ulanylýardy. Bu gün barlanyp bilinýän
+          sanly resminama (Verifiable Credential) şol bir işi edýär. Tapawudy,
+          bu gezek belginiň daşa oýulmagynyň deregine matematika daýanmagyndadyr.
         </p>
         <p>
-          Şonuň üçin adymyz <strong>Tamga</strong>: gadymy ynam däbiniň häzirki
-          zaman, sanly garşylygy.
+          Tora <strong>Tamga</strong> adyny, ol şu gadymy ynam däbiniň häzirki
+          zaman we sanly görnüşi bolany üçin berdik.
         </p>
       </>
     ),
   },
   mission: {
     title: "Wezipe",
-    body: "Şahsyýet, ygtyýarlandyrma we resminama barlagy meselesini — her programmanyň gaýta-gaýta çözýän bu meselesini — umumy we açyk infrastruktura öwürmek. Ynamy her programmanyň däl-de, umumy gatlagyň üpjün edýän dünýäsini gurmak.",
+    body: "Häzir her programma şahsyýet, ygtyýarlandyrma we resminama barlagy meselesini özbaşdak täzeden çözýär. Maksadymyz bu gaýtalanýan işi umumy we açyk infrastruktura öwürmek we ynamy ähli programmalaryň daýanyp biljek umumy gatlagyndan üpjün etmekdir.",
   },
   vision: {
     title: "Garaýyş",
     body: (
       <>
-        Türkiýeden başlap türki dünýäsine açylýan; her ýurduň öz özygtyýarly ynam
-        toruny saklap, umumy standartlar bilen biri-birine baglanýan{" "}
-        <strong className="text-foreground">ynam tory</strong>. Serhetden aňry
-        barlanyp bilinýän şahsyýet, diplom we resminama.
+        Biz Türkiýeden başlap türki dünýäsine açylýan{" "}
+        <strong className="text-foreground">ynam toruny</strong> göz öňüne
+        getirýäris. Bu torda her ýurt öz özygtyýarly ynam toruny saklaýar we
+        umumy standartlar arkaly beýlekilere birikýär. Şeýlelikde şahsyýet,
+        diplom we resminamalar serhediň aňyrsynda hem barlanyp bilner.
       </>
     ),
   },
@@ -326,25 +329,25 @@ const tk: AboutContent = {
     title: "Üç gatlak: ÝB bilen laýyklyk, federasiýa, tordaky gapjyklar",
     lead: (
       <>
-        Tamga her biri özbaşdak durup bilýän üç gatlakda gurulýar. Esasy{" "}
-        <strong className="text-foreground">ÝB-niň eIDAS 2.0 / EUDI standartlaryna laýyklykdyr</strong>; onuň
+        Tamga her biri özbaşdak durup bilýän üç gatlakda gurulýar. Onuň esasyny{" "}
+        <strong className="text-foreground">ÝB-niň eIDAS 2.0 / EUDI standartlaryna laýyklyk</strong> düzýär. Onuň
         üstünde <strong className="text-foreground">Tamga Network</strong> türki döwletleriň ynam sanawlaryny bir
-        ýere jemleýär; şu esasda <strong className="text-foreground">tordaky gapjyklar</strong> (ilkinjisi Tamga
-        Wallet) we toruň salgylanma hyzmatlary işleýär.
+        ýere jemleýär. <strong className="text-foreground">Tordaky gapjyklar</strong> (ilkinjisi Tamga
+        Wallet) we toruň salgylanma hyzmatlary hem şu esasyň üstünde işleýär.
       </>
     ),
     rows: [
       {
         k: "ÝB bilen laýyk esas",
-        v: "Resminamalar, protokollar we ynam sanawlary ÝB standartlaryna laýyk. “EUDI Wallet” ÝB agza döwletiniň hödürleýän ýa-da ykrar edýän gapjyklary üçin hukuk adydyr; toruň ilkinji gapjygy Tamga Wallet ÝB bilen laýyk; bilelikde işleýşi synag netijeleri bilen görkeziler.",
+        v: "Resminamalar, protokollar we ynam sanawlary ÝB standartlaryna eýerýär. “EUDI Wallet” diňe ÝB agza döwletiniň hödürleýän ýa-da ykrar edýän gapjyklaryna berilýän hukuk ady bolany üçin, toruň ilkinji gapjygy Tamga Wallet-i ÝB bilen laýyk gapjyk hökmünde agzaýarys. Bilelikde işleýşini synag netijeleri bilen görkezeris.",
       },
       {
-        k: "Tamga Network — ýeňil federasiýa",
-        v: "Her döwletiň ynam sanawyny jemleýär we döwletleriň biri-birini ykrar etmegine mümkinçilik berýär. Häzir Türkiýäniň sanawyny Tamga döwletiň adyndan wagtlaýyn çap edýär; döwlet ýa-da ygtyýarlandyran guramasy öz sanawyny çap edende tor şony görkezýär. Tor çap edilen düzgünlere eýerýän her gapjygy ykrar edýär. Dolandyryş guramasy we umumy kitap döwletler goşulyşdygyça gelýär.",
+        k: "Tamga Network, ýeňil federasiýa",
+        v: "Tor her döwletiň ynam sanawyny jemleýär we döwletleriň biri-birini ykrar etmegine mümkinçilik berýär. Türkiýäniň sanawyny häzir Tamga döwletiň adyndan wagtlaýyn çap edýär. Döwlet ýa-da onuň ygtyýarlandyran guramasy öz sanawyny çap edende tor şol sanawy görkezer. Tor çap edilen düzgünlere eýerýän her gapjygy ykrar edýär. Dolandyryş guramasy we umumy kitap hem döwletler goşulyşdygyça döredilýär.",
       },
       {
         k: "Tordaky gapjyklar we tory gurýan topar",
-        v: "Toruň düzgünlerine eýerýän her gapjyk torda işleýär; ilkinjisi Tamga Wallet; tor ony işletmeýär, ol aýry önüm. Tory gurýan topar salgylanma hyzmatlaryny işledýär — Gurama konsoly, Tamga Verify, ynam sanawynyň çap edilmegi — we kody açyk çeşmeli paketler hökmünde çap edýär; hiç bir gurama bir programma bagly galmaýar.",
+        v: "Toruň düzgünlerine eýerýän her gapjyk torda işläp bilýär. Olaryň ilkinjisi Tamga Wallet we ol toruň işletmeýän aýry önümidir. Tory gurýan topar Gurama konsoly, Tamga Verify we ynam sanawynyň çap edilmegi ýaly salgylanma hyzmatlaryny işledýär. Kody hem açyk çeşmeli paketler hökmünde çap edýändigi üçin hiç bir gurama bir programma bagly galmaýar.",
       },
     ],
   },
@@ -353,17 +356,18 @@ const tk: AboutContent = {
     body: (
       <>
         <p>
-          Ýewropa Bileleşigi eIDAS 2.0 bilen göçme sanly subutnama modelini yklym
-          möçberinde hökmany etdi. SD-JWT VC, ISO mdoc, OpenID4VC we saýlama
-          açyklama indi akademiki düşünjeler däl, ulanylýan talaplardyr.
+          Ýewropa Bileleşigi eIDAS 2.0 bilen göçme sanly subutnama modelini tutuş
+          yklymda hökmany etdi. SD-JWT VC, ISO mdoc, OpenID4VC we saýlap
+          paýlaşmak şeýlelikde ylmy makalalardan çykyp, häzir ulanylýan talaplara
+          öwrüldi.
         </p>
         <p>
           Türkiýe güýçli sanly döwlet infrastrukturasyna (e-Döwlet, MERNİS,
-          elektron gol) eýe; emma bu ynam baýlyklary köplenç merkezleşdirilen we
-          biri-birinden üzňe. Dünýä göçme subutnama modeline geçende Türkiýe ýa
-          muny getirer ýa-da{" "}
-          <strong>öz özygtyýarly, laýyk infrastrukturasyny öndürer.</strong> Biz
-          ikinji ýoly gurýarys.
+          elektron gol) eýe, emma bu ynam baýlyklary köplenç merkezleşdirilen we
+          biri-birinden üzňe ýagdaýda. Dünýä göçme subutnama modeline geçende
+          Türkiýe bu modeli ýa daşardan getirer ýa-da{" "}
+          <strong>öz özygtyýarly we laýyk infrastrukturasyny öndürer.</strong> Biz
+          ikinji ýoluň üstünde işleýäris.
         </p>
       </>
     ),
@@ -374,10 +378,10 @@ const tk: AboutContent = {
   contact: {
     eyebrow: "Habarlaşmak",
     title: "Biz bilen habarlaşyň",
-    lead: "Göni degişli bölüme ýazyň. Adatça birnäçe iş gününiň içinde jogap berýäris.",
+    lead: "Soragyňyza laýyk gelýän salga ýazyň. Adatça birnäçe iş gününiň içinde jogap berýäris.",
     items: [
       { email: "info@tamga.network", label: "Umumy", note: "Taslama we tor barada soraglar." },
-      { email: "partners@tamga.network", label: "Goşulmak", note: "Tora goşulmak: guramalar, gapjyk üpjün edijiler we döwletler." },
+      { email: "partners@tamga.network", label: "Goşulmak", note: "Gurama, gapjyk üpjün ediji ýa-da döwlet hökmünde tora goşulmak." },
       { email: "security@tamga.network", label: "Howpsuzlyk", note: "Howpsuzlyk gowşaklyklarynyň jogapkärli habary." },
     ],
   },
@@ -387,13 +391,13 @@ const az: AboutContent = {
   meta: {
     title: "Haqqımızda",
     description:
-      "Tamga Network nədir, adı haradan gəlir, nə edir və niyə. Türk dünyası üçün Avropa İttifaqı (Aİ) ilə uyğun, üç qatlı Rəqəmsal Etibar İnfrastrukturu.",
+      "Tamga Network-un nə olduğu, adının haradan gəldiyi, nə etdiyi və niyə etdiyi. Tamga Network Türk dünyası üçün qurulan, Avropa İttifaqı (Aİ) ilə uyğun və üç qatdan ibarət Rəqəmsal Etibar İnfrastrukturudur.",
   },
   header: {
     eyebrow: "Haqqımızda",
     title: "Tamga Network nədir, nə edir və niyə?",
     description:
-      "Blokçeyn şəbəkəsi deyil, Rəqəmsal Etibar İnfrastrukturu. Rəqəmsal şəxsiyyət başlanğıc nöqtəsidir; etibar isə infrastrukturun yaratdığı əsl dəyərdir.",
+      "Tamga Network blokçeyn şəbəkəsindən daha çox Rəqəmsal Etibar İnfrastrukturudur. İşə rəqəmsal şəxsiyyətdən başlayır, amma infrastrukturun əslində yaratdığı dəyər etibardır.",
   },
   name: {
     eyebrow: "Adımız",
@@ -412,30 +416,31 @@ const az: AboutContent = {
           <strong>həqiqi olduğunu</strong> sübut edirdi.
         </p>
         <p>
-          Hər tayfanın öz tamgası var idi; tamga eyni zamanda həm şəxsiyyət, həm
-          imza, həm də mülkiyyət sənədi idi. Bu gün yoxlanıla bilən rəqəmsal sənəd
-          (Verifiable Credential) məhz eyni işi görür — sadəcə daşa deyil,
-          riyaziyyata həkk olunur.
+          Hər tayfanın öz tamgası var idi və tamga eyni zamanda şəxsiyyət, imza və
+          mülkiyyət sənədi rolunu oynayırdı. Bu gün yoxlanıla bilən rəqəmsal sənəd
+          (Verifiable Credential) eyni işi görür. Fərq ondadır ki, bu dəfə nişan
+          daşa həkk olunmaq əvəzinə riyaziyyata söykənir.
         </p>
         <p>
-          Buna görə adımız <strong>Tamga</strong>: qədim etibar ənənəsinin
-          müasir, rəqəmsal qarşılığı.
+          Şəbəkəyə <strong>Tamga</strong> adını bu qədim etibar ənənəsinin müasir
+          və rəqəmsal qarşılığı olduğu üçün verdik.
         </p>
       </>
     ),
   },
   mission: {
     title: "Missiya",
-    body: "Şəxsiyyət, səlahiyyətləndirmə və sənəd yoxlaması problemini — hər tətbiqin dəfələrlə yenidən həll etdiyi problemi — ortaq, açıq infrastruktura çevirmək. Etibarın hər tətbiq tərəfindən ayrılıqda deyil, ortaq bir qat tərəfindən təmin edildiyi dünya qurmaq.",
+    body: "Bu gün hər tətbiq şəxsiyyət, səlahiyyətləndirmə və sənəd yoxlaması problemini öz başına yenidən həll edir. Məqsədimiz bu təkrarlanan işi ortaq və açıq infrastruktura çevirmək və etibarı bütün tətbiqlərin söykənə biləcəyi ortaq bir qatdan təmin etməkdir.",
   },
   vision: {
     title: "Vizyon",
     body: (
       <>
-        Türkiyədən başlayıb Türk dünyasına açılan, hər ölkənin öz suveren etibar
-        şəbəkəsini qoruyaraq ortaq standartlar vasitəsilə digərləri ilə birləşdiyi{" "}
-        <strong className="text-foreground">etibar şəbəkəsi</strong>. Sərhədlərarası
-        yoxlanıla bilən şəxsiyyət, diplom və sənədlər.
+        Türkiyədən başlayıb Türk dünyasına açılan bir{" "}
+        <strong className="text-foreground">etibar şəbəkəsi</strong> təsəvvür
+        edirik. Bu şəbəkədə hər ölkə öz suveren etibar şəbəkəsini qoruyur və ortaq
+        standartlar vasitəsilə digərlərinə qoşulur. Beləliklə şəxsiyyət, diplom və
+        sənədlər sərhədin o tayında da yoxlanıla bilir.
       </>
     ),
   },
@@ -444,25 +449,25 @@ const az: AboutContent = {
     title: "Üç qat: Aİ ilə uyğunluq, federasiya, şəbəkədəki rəqəmsal cüzdanlar",
     lead: (
       <>
-        Tamga hər biri müstəqil dayana bilən üç qatda qurulur. Təməl{" "}
-        <strong className="text-foreground">Aİ-nin eIDAS 2.0 / EUDI standartları ilə uyğunluqdur</strong>; onun üzərində{" "}
+        Tamga hər biri müstəqil dayana bilən üç qatda qurulur. Təməli{" "}
+        <strong className="text-foreground">Aİ-nin eIDAS 2.0 / EUDI standartları ilə uyğunluq</strong> təşkil edir. Onun üzərində{" "}
         <strong className="text-foreground">Tamga Network</strong> türk dövlətlərinin etibar siyahılarını bir araya
-        gətirir; bu təməl üzərində <strong className="text-foreground">şəbəkədəki rəqəmsal cüzdanlar</strong> (birincisi
-        Tamga Wallet) və şəbəkənin istinad xidmətləri işləyir.
+        gətirir. <strong className="text-foreground">Şəbəkədəki rəqəmsal cüzdanlar</strong> (birincisi
+        Tamga Wallet) və şəbəkənin istinad xidmətləri də bu təməl üzərində işləyir.
       </>
     ),
     rows: [
       {
         k: "Aİ ilə uyğun təməl",
-        v: "Rəqəmsal sənədlər, protokollar və etibar siyahıları Aİ standartlarına uyğundur. “EUDI Wallet” Aİ üzv dövlətinin təqdim etdiyi və ya tanıdığı rəqəmsal cüzdanlar üçün hüquqi addır; şəbəkənin ilk rəqəmsal cüzdanı olan Tamga Wallet Aİ ilə uyğundur; qarşılıqlı işləmə qabiliyyəti test nəticələri ilə nümayiş etdiriləcək.",
+        v: "Rəqəmsal sənədlər, protokollar və etibar siyahıları Aİ standartlarına əməl edir. “EUDI Wallet” yalnız Aİ üzv dövlətinin təqdim etdiyi və ya tanıdığı rəqəmsal cüzdanlara verilən hüquqi ad olduğu üçün şəbəkənin ilk rəqəmsal cüzdanı Tamga Wallet-i Aİ ilə uyğun cüzdan kimi təqdim edirik. Qarşılıqlı işləmə qabiliyyətini test nəticələri ilə göstərəcəyik.",
       },
       {
-        k: "Tamga Network — yüngül federasiya",
-        v: "Hər dövlətin etibar siyahısını toplayır və dövlətlərin bir-birini tanımasına imkan verir. Hazırda Türkiyənin siyahısını Tamga dövlət adından müvəqqəti olaraq dərc edir; dövlət və ya onun səlahiyyət verdiyi qurum öz siyahısını dərc etdikdə şəbəkə ona istinad edir. Şəbəkə dərc olunmuş qaydalara əməl edən istənilən rəqəmsal cüzdanı tanıyır. İdarəetmə orqanı və ortaq reyestr dövlətlər qoşulduqca formalaşacaq.",
+        k: "Tamga Network, yüngül federasiya",
+        v: "Şəbəkə hər dövlətin etibar siyahısını toplayır və dövlətlərin bir-birini tanımasına imkan verir. Türkiyənin siyahısını hazırda Tamga dövlət adından müvəqqəti olaraq dərc edir. Dövlət və ya onun səlahiyyət verdiyi qurum öz siyahısını dərc edəndə şəbəkə həmin siyahını göstərəcək. Şəbəkə dərc olunmuş qaydalara əməl edən istənilən rəqəmsal cüzdanı tanıyır. İdarəetmə orqanı və ortaq reyestr də dövlətlər qoşulduqca formalaşacaq.",
       },
       {
         k: "Şəbəkədəki rəqəmsal cüzdanlar və şəbəkəni quran komanda",
-        v: "Şəbəkənin qaydalarına əməl edən istənilən rəqəmsal cüzdan şəbəkədə işləyir; Tamga Wallet birincisidir və şəbəkənin idarə etmədiyi ayrıca məhsuldur. Şəbəkəni quran komanda istinad xidmətlərini — Qurum Konsolu, Tamga Verify, etibar siyahısının dərci — idarə edir və kodu açıq mənbəli paketlər kimi dərc edir; beləliklə heç bir qurum bir tətbiqə bağlı qalmır.",
+        v: "Şəbəkənin qaydalarına əməl edən istənilən rəqəmsal cüzdan şəbəkədə işləyə bilər. Bunların birincisi Tamga Wallet-dir və o, şəbəkənin idarə etmədiyi ayrıca məhsuldur. Şəbəkəni quran komanda Qurum Konsolu, Tamga Verify və etibar siyahısının dərci kimi istinad xidmətlərini idarə edir. Kodu da açıq mənbəli paketlər kimi dərc etdiyi üçün heç bir qurum bir tətbiqə bağlı qalmır.",
       },
     ],
   },
@@ -471,18 +476,18 @@ const az: AboutContent = {
     body: (
       <>
         <p>
-          Avropa İttifaqı eIDAS 2.0 ilə daşına bilən rəqəmsal sübut modelini qitə
-          miqyasında məcburi etdi. SD-JWT VC, ISO mdoc, OpenID4VC və seçici
-          paylaşım (selective disclosure) artıq akademik anlayışlar deyil, tətbiq
-          olunan tələblərdir.
+          Avropa İttifaqı eIDAS 2.0 ilə daşına bilən rəqəmsal sübut modelini bütün
+          qitədə məcburi etdi. SD-JWT VC, ISO mdoc, OpenID4VC və seçici paylaşım
+          (selective disclosure) beləliklə elmi məqalələrdən çıxıb bu gün tətbiq
+          olunan tələblərə çevrildi.
         </p>
         <p>
           Türkiyə güclü rəqəmsal dövlət infrastrukturuna (e-Devlet, MERNİS,
           elektron imza) malikdir, lakin bu etibar aktivləri əsasən
-          mərkəzləşdirilmiş və bir-birindən ayrıdır. Dünya daşına bilən sübut
-          modelinə keçdikcə Türkiyə ya onu idxal edəcək, ya da{" "}
-          <strong>öz suveren, uyğun infrastrukturunu yaradacaq.</strong>{" "}
-          Biz ikinci yolu qururuq.
+          mərkəzləşdirilmiş və bir-birindən ayrı vəziyyətdədir. Dünya daşına bilən
+          sübut modelinə keçdikcə Türkiyə bu modeli ya xaricdən gətirəcək, ya da{" "}
+          <strong>öz suveren və uyğun infrastrukturunu yaradacaq.</strong>{" "}
+          Biz ikinci yol üzərində çalışırıq.
         </p>
       </>
     ),
@@ -493,10 +498,10 @@ const az: AboutContent = {
   contact: {
     eyebrow: "Əlaqə",
     title: "Bizimlə əlaqə saxlayın",
-    lead: "Birbaşa müvafiq bölməyə yazın. Adətən bir neçə iş günü ərzində cavab veririk.",
+    lead: "Sualınıza uyğun ünvana yazın. Adətən bir neçə iş günü ərzində cavab veririk.",
     items: [
       { email: "info@tamga.network", label: "Ümumi", note: "Layihə və şəbəkə ilə bağlı suallar." },
-      { email: "partners@tamga.network", label: "Üzvlük", note: "Şəbəkəyə qoşulma: qurumlar, cüzdan provayderləri və dövlətlər." },
+      { email: "partners@tamga.network", label: "Üzvlük", note: "Qurum, cüzdan provayderi və ya dövlət kimi şəbəkəyə qoşulma." },
       { email: "security@tamga.network", label: "Təhlükəsizlik", note: "Zəifliklər barədə məsuliyyətli məlumatlandırma." },
     ],
   },

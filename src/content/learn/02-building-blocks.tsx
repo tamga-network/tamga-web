@@ -1958,7 +1958,7 @@ export const CHAPTER_2: LearnPage[] = [
         tr: "Ağ kurallara uyan her cüzdanı tanır; ilk cüzdan Tamga Wallet.",
         en: "The network recognises every compliant wallet; the first one is Tamga Wallet.",
         tk: "Tor düzgünlere laýyk her gapjygy tanaýar; ilkinjisi Tamga Wallet.",
-        az: "Şəbəkə qaydalara uyğun hər rəqəmsal cüzdanı tanıyır; ilki — Tamga Wallet.",
+        az: "Şəbəkə qaydalara uyğun hər rəqəmsal cüzdanı tanıyır və bunların birincisi Tamga Wallet-dir.",
       },
     ],
     deeper: [

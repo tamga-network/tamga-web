@@ -1,7 +1,7 @@
 ---
 title: "ISO mdoc ayrıntılı: CBOR, COSE, MSO ve bağlantı kurma"
 slug: iso-mdoc-deep-dive
-description: Bir ISO/IEC 18013-5 mdoc nasıl kurulur ve doğrulanır; CBOR ve COSE, MSO ve özetler, cihaz imzası, oturum dökümü, QR ve Bluetooth.
+description: Bir ISO/IEC 18013-5 mdoc'un nasıl kurulduğunu ve doğrulandığını anlatıyoruz; CBOR ve COSE, MSO ve özetler, cihaz imzası, oturum dökümü, QR ve Bluetooth.
 date: 2026-10-08
 updated: 2026-10-23
 lang: tr
@@ -12,34 +12,34 @@ related: sd-jwt-vc-deep-dive, openid4vp-dcql-deep-dive, zero-knowledge-in-tamga,
 
 <!-- Kaynak: ADR-0013 v1.0.0 (2026-09-26 kabul; MD1–MD5; docType/ad alanı; CBOR belirlenimcilik notu; Safari/Chrome DC API bilgisi ADR'deki kayıttan); SPEC-PROTO-0001 PR16; SPEC-PROTO-0002 §4.5, §5.2, PV11; @tamga-network/mdoc README + kaynak (mdoc.ts, proximity.ts); kimlik tür tanımı urn:tamga:id:IdentityAttestation:1 (11 öğe, sd always, portre yok); concepts/presentation (BLE yazıldı, cihaz testi sürüyor). Örnek mdoc bu yazı için @tamga-network/mdoc ile sahte değerlerle üretildi. ISO/IEC 18013-5:2021 katalog kaydı; OpenID4VP 1.0 Final Ek B.2.6; HAIP 1.0 Final §6. -->
 
-**mdoc**, mobil sürücü belgesi standardı ISO/IEC 18013-5:2021'in tanımladığı mobil belge biçimidir. COSE ile imzalanmış CBOR'dur: kurum, her veri öğesinin özetini ve belge sahibinin cihaz anahtarını listeleyen bir **Mobile Security Object (MSO)** imzalar; belge sahibi yalnız okuyucunun istediği öğeleri gönderir; bir **oturum dökümü** (session transcript) üzerine atılan cihaz imzası da yanıtı o tek oturuma bağlar. Tamga kimlik belgesini SD-JWT VC'nin yanında mdoc olarak da verir.
+**mdoc**, mobil sürücü belgesi standardı ISO/IEC 18013-5:2021'in tanımladığı mobil belge biçimidir ve COSE ile imzalanmış CBOR verisinden oluşur. Kurum, her veri öğesinin özetini ve belge sahibinin cihaz anahtarını listeleyen bir **Mobile Security Object (MSO)** imzalar. Belge sahibi okuyucuya yalnız istenen öğeleri gönderir. Bir **oturum dökümü** (session transcript) üzerine atılan cihaz imzası da yanıtı yalnız o oturuma bağlar. Tamga kimlik belgesini SD-JWT VC'nin yanında mdoc olarak da veriyor.
 
-> **Not:** Örnekler bu yazı için açık `@tamga-network/mdoc` paketiyle, sahte değerlerle üretildi. Özetler kısaltıldı, sertifika zinciri gösterilmiyor.
+> **Not:** Örnekleri bu yazı için açık kaynak `@tamga-network/mdoc` paketiyle ve sahte değerlerle ürettik. Özetler kısaltıldı, sertifika zinciri de gösterilmiyor.
 
 ## Tamga kimlik belgesini neden iki biçimde veriyor?
 
-26 Eylül 2026'da kabul edilen [ADR-0013](https://docs.tamga.network/tr/adr/0013-mdoc-dual-format-for-identity) üç gerekçe sayar. AB'nin dijital kimlik cüzdanı mimarisi kişi kimlik verisi için mdoc'u zorunlu, SD-JWT VC'yi isteğe bağlı tutar. ISO 18013-5'e göre yüz yüze gösterim mdoc taşır. Karar alındığında Safari'nin Digital Credentials API'si yalnız mdoc kabul ediyordu, Chrome ise iki biçimi de.
+26 Eylül 2026'da kabul edilen [ADR-0013](https://docs.tamga.network/tr/adr/0013-mdoc-dual-format-for-identity) bunun üç gerekçesini sayıyor. AB'nin dijital kimlik cüzdanı mimarisi, kişi kimlik verisi için mdoc'u zorunlu tutuyor ve SD-JWT VC'yi isteğe bağlı bırakıyor. ISO 18013-5'e göre yapılan yüz yüze gösterim de mdoc ile çalışıyor. Ayrıca karar alındığı sırada Safari'nin Digital Credentials API'si yalnız mdoc kabul ediyordu, Chrome ise iki biçimi de kabul ediyordu.
 
-Bu karardan çıkan kurallar:
+Bu karardan şu kurallar çıkıyor:
 
-- **SD-JWT VC birincil kalır.** mdoc aynı belgenin ikinci gösterimidir ve yalnız kimlik belgesi için vardır (`urn:tamga:id:IdentityAttestation:1`). Öğrenci belgesi, diploma ve bilet yalnız SD-JWT VC'dir.
-- **Aynı alanlar, aynı geçerlilik, aynı anahtar.** mdoc'un `deviceKey`'i SD-JWT'nin `cnf.jwk`'sidir. İkinci bir cihaz anahtarı üretilmez.
-- **Ayrı kurum imzaları.** SD-JWT için JOSE/ES256, mdoc için `COSE_Sign1`/ES256; aynı sertifika zinciri güven listesinde aynı kayda varır.
-- **Tek ihraç, tek durum biti.** Belge yanıtındaki her nesne SD-JWT VC'yi ve mdoc'u (base64url `IssuerSigned`) birlikte taşır; ikisi de aynı kanıt anahtarına ve aynı durum listesi sırasına bağlıdır. Cüzdan mdoc'u, SD-JWT kopyasıyla karşılaştırmadan saklamaz: aynı kurum sertifikası, aynı alanlar, `cnf`'ye eşit `deviceKey`.
+- **SD-JWT VC birincil biçim olarak kalır.** mdoc aynı belgenin ikinci bir gösterimidir ve yalnız kimlik belgesi (`urn:tamga:id:IdentityAttestation:1`) için kullanılır. Öğrenci belgesi, diploma ve bilet yalnız SD-JWT VC olarak verilir.
+- **Alanlar, geçerlilik ve anahtar aynıdır.** mdoc'taki `deviceKey`, SD-JWT'deki `cnf.jwk` ile aynı anahtardır ve ikinci bir cihaz anahtarı üretilmez.
+- **Kurum imzaları ayrıdır.** SD-JWT için JOSE/ES256, mdoc için `COSE_Sign1`/ES256 kullanılır. İki imzanın sertifika zinciri de güven listesinde aynı kayda ulaşır.
+- **Belge bir kez verilir ve tek bir durum biti taşır.** Belge yanıtındaki her nesne SD-JWT VC'yi ve mdoc'u (base64url `IssuerSigned`) birlikte taşır. İkisi de aynı kanıt anahtarına ve durum listesinde aynı sıraya bağlıdır. Cüzdan, mdoc'u SD-JWT kopyasıyla karşılaştırmadan saklamaz. Kurum sertifikasının ve alanların aynı olduğuna, `deviceKey` değerinin de `cnf` ile eşleştiğine bakar.
 
 ![SD-JWT VC ve mdoc, alan alan karşılaştırma](/blog/iso-mdoc-deep-dive/tr/fig-formats.png)
 
 ## mdoc nasıl kodlanır?
 
-Her şey **CBOR**'dur (RFC 8949): JSON'la aynı veri modeline bayt dizgileri, etiketler ve tamsayı anahtarlar ekleyen ikili bir kodlama. Burada iki etiket önemli. Etiket 24 "bu bayt dizgisinin içi de kodlanmış CBOR'dur" demektir; imzacının tam o baytları özetlemesini sağlar. SD-JWT'nin disclosure dizgileriyle öğrettiği ders burada da geçerli ([SD-JWT VC ayrıntılı](/blog/sd-jwt-vc-deep-dive)). Etiket 0 ise RFC 3339 tarih-saat dizgisini işaretler.
+mdoc'taki her şey **CBOR** (RFC 8949) ile kodlanır. CBOR, JSON ile aynı veri modelini kullanan ve buna bayt dizgileri, etiketler ve tamsayı anahtarlar ekleyen ikili bir kodlamadır. Burada iki etiket önemli. Etiket 24, "bu bayt dizgisinin içinde de kodlanmış CBOR var" anlamına gelir. Bu etiket sayesinde imzacı, yapıyı yeniden kodlamak yerine tam o baytların özetini alabilir. SD-JWT de aynı sorunu disclosure dizgileriyle çözüyor ([SD-JWT VC ayrıntılı](/blog/sd-jwt-vc-deep-dive)). Etiket 0 ise RFC 3339 biçimindeki bir tarih-saat dizgisini işaretler.
 
-İmzalar **COSE** ile atılır (RFC 9052), JOSE'nin CBOR karşılığı. `COSE_Sign1` dört elemanlı bir dizidir: korumalı başlık, korumasız başlık, yük ve imza. Tamga'nın kurum imzasında korumalı başlıkta `{1: -7}` (ES256), sertifika zinciri de `x5chain`'de durur.
+İmzalar, JOSE'nin CBOR'daki karşılığı olan **COSE** (RFC 9052) ile atılır. `COSE_Sign1` dört elemanlı bir dizidir ve korumalı başlığı, korumasız başlığı, yükü ve imzayı taşır. Tamga'nın kurum imzasında korumalı başlıkta `{1: -7}` (ES256) yer alır, sertifika zinciri de `x5chain` alanında durur.
 
-ADR-0013 bir birlikte çalışabilirlik notu düşer. Tamga belirlenimci CBOR'u RFC 8949 §4.2.1'e göre (anahtarlar bayt sırasıyla) kodlar; ISO 18013-5:2021 ise RFC 7049'un eski "önce uzunluk" sıralamasına atıf yapar. Özetler, verildiği hâliyle etiket 24 baytları üzerinden alındığı için doğrulama sıralama kuralına bağlı değil; yine de tam uyum için madde açık tutuluyor.
+ADR-0013 birlikte çalışabilirlikle ilgili bir notu da kayda geçiriyor. Tamga belirlenimci CBOR'u RFC 8949 §4.2.1'e göre, yani anahtarları bayt sırasına dizerek kodluyor. ISO 18013-5:2021 ise RFC 7049'daki eski "önce uzunluk" sıralamasına atıf yapıyor. Özetler, belge verildiği hâliyle etiket 24 baytları üzerinden alındığı için doğrulama bu sıralama kuralına bağlı değil. Yine de tam uyum için bu madde açık bir iş olarak izleniyor.
 
 ## Veri öğesi nedir, özeti nasıl alınır?
 
-Her alan bir `IssuerSignedItem`'dır: `digestID`, 16 rastgele bayt, öğe adı ve değerinden oluşan, kodlanıp etiket 24'e sarılmış bir harita. Özeti, bu etiketli baytların SHA-256'sıdır.
+Her alan bir `IssuerSignedItem` olarak tutulur. Bu, `digestID`, 16 rastgele bayt, öğenin adı ve değerinden oluşan bir haritadır. Harita kodlanır ve etiket 24'e sarılır. Öğenin özeti de bu etiketli baytların SHA-256 değeridir.
 
 ```cbor-diag title="Sadeleştirilmiş örnek: bir IssuerSignedItem (@tamga-network/mdoc ile üretildi)"
 24(<< {
@@ -52,13 +52,13 @@ Her alan bir `IssuerSignedItem`'dır: `digestID`, 16 rastgele bayt, öğe adı v
 Etiketli baytların SHA-256'sı: c2418dcd28b95cc1…
 ```
 
-Rastgele değer SD-JWT'deki tuzun işini görür: o olmasa `age_over_18: true` değerinin özeti her belgede aynı olur, tahmin edilebilirdi. `digestID` öğeyi MSO'daki kaydına bağlar. Tamga digestID'leri 0, 1, 2 diye saymak yerine 31 bit içinde rastgele verir; böylece gösterilen kimlikler, öğe sayısı ya da öğelerin yeri hakkında bir şey söylemez.
+Rastgele değer, SD-JWT'deki tuzun (salt) gördüğü işi görür. O olmasaydı `age_over_18: true` değerinin özeti her belgede aynı olurdu ve kolayca tahmin edilebilirdi. `digestID` ise öğeyi MSO'daki kaydına bağlar. Tamga digestID'leri 0, 1, 2 diye saymak yerine 31 bitlik bir aralıktan rastgele seçiyor. Böylece belge sahibinin gösterdiği kimlikler, belgede kaç öğe olduğu ya da öğelerin nerede durduğu hakkında hiçbir şey söylemiyor.
 
-Öğeler **ad alanlarında** (namespace) durur. Tamga'nın kimlik ad alanı `tamga.id.1`'dir ve öğe adları SD-JWT'deki alan adlarıyla birebir aynıdır: `family_name`, `given_name`, `birth_date`, `nationality`, `personal_administrative_number`, `document_type`, `document_number_hash`, `issuing_country`, `document_chip_verified`, `verification_method` ve `age_over_18`. Hepsi seçici paylaşılabilir. Portre öğesi yoktur.
+Öğeler **ad alanlarında** (namespace) bulunur. Tamga'nın kimlik ad alanı `tamga.id.1` ve buradaki öğe adları SD-JWT'deki alan adlarıyla birebir aynı: `family_name`, `given_name`, `birth_date`, `nationality`, `personal_administrative_number`, `document_type`, `document_number_hash`, `issuing_country`, `document_chip_verified`, `verification_method` ve `age_over_18`. Bunların hepsi seçici olarak paylaşılabilir. Portre öğesi ise yok.
 
 ## Mobile Security Object'te ne var?
 
-MSO kurumun imzaladığı parçadır. Kodlanır, etiket 24'e sarılır ve kurumun `COSE_Sign1`'inin (`issuerAuth`) yükü olur:
+MSO, belgenin kurum tarafından imzalanan parçasıdır. Kodlanır, etiket 24'e sarılır ve kurumun `COSE_Sign1` imzasının (`issuerAuth`) yükü olarak kullanılır:
 
 ```cbor-diag title="Sadeleştirilmiş örnek: MobileSecurityObject (@tamga-network/mdoc ile üretildi)"
 {
@@ -86,13 +86,13 @@ MSO kurumun imzaladığı parçadır. Kodlanır, etiket 24'e sarılır ve kurumu
 }
 ```
 
-Yukarıdaki `age_over_18` öğesinin özeti `1192084209` altında saklanan değerdir. `deviceKey` bir COSE_Key'dir (`1: 2` EC2 anahtar, `-1: 1` P-256 eğrisi, `-2`/`-3` koordinatlar); SD-JWT'deki `cnf.jwk` ile aynı açık anahtar. `validityInfo.signed`, SD-JWT'deki `iat`'ın yerini tutar: Tamga'nın zamana bağlı güven denetimleri kurumun o anda listede ve yetkili olup olmadığını sorar. `status`, SD-JWT kopyasıyla aynı sırayı kullanır ama aynı Token Status List'in ayrı, opak bir adresteki CWT biçimine (`application/statuslist+cwt`) işaret eder; böylece mdoc okuyucusu JWT ayrıştırıcısı taşımaz. İki biçim aynı bitleri taşır ve aynı yayında imzalanır; kimlik belgesini iptal etmek iki gösterimi birden iptal eder ([ADR-0048](https://docs.tamga.network/tr/adr/0048-identity-no-suspension-mdoc-cwt-status)).
+Yukarıdaki `age_over_18` öğesinin özeti, `1192084209` anahtarının altında saklanan değerdir. `deviceKey` bir COSE_Key'dir. Burada `1: 2` anahtarın EC2 türünde olduğunu, `-1: 1` P-256 eğrisini, `-2` ve `-3` de koordinatları gösterir. Bu, SD-JWT'deki `cnf.jwk` ile aynı açık anahtardır. `validityInfo.signed`, SD-JWT'deki `iat` alanının yerini tutar. Tamga'nın zamana bağlı güven denetimleri de kurumun tam o anda listede ve yetkili olup olmadığına bakar. `status` alanı SD-JWT kopyasıyla aynı sırayı kullanır, ama aynı Token Status List'in CWT biçimini (`application/statuslist+cwt`) gösterir ve bu biçim kendi opak adresinde durur. Bu sayede mdoc okuyucusunun bir JWT ayrıştırıcısı taşımasına gerek kalmaz. İki biçim de aynı bitleri taşır ve aynı yayında imzalanır, bu yüzden kimlik belgesi iptal edildiğinde iki gösterim birden iptal edilmiş olur ([ADR-0048](https://docs.tamga.network/tr/adr/0048-identity-no-suspension-mdoc-cwt-status)).
 
 ## Belge sahibi, mdoc'un verildiği cihaz olduğunu nasıl kanıtlar?
 
-Seçici paylaşım işin kolay kısmı: cüzdan `IssuerSigned`'ı, `nameSpaces`'te yalnız onaylanan öğelerle ve dokunulmamış `issuerAuth` ile gönderir. Gizli öğeler MSO'da özet olarak kalır.
+Seçici paylaşım işin kolay kısmı. Cüzdan `IssuerSigned` yapısını, `nameSpaces` içinde yalnız onaylanan öğelerle ve hiç dokunulmamış `issuerAuth` ile gönderir. Gösterilmeyen öğeler MSO'da yalnız özet olarak kalır.
 
-Cihaz bağlama **cihaz kimlik doğrulamasından** (device authentication) gelir. Cüzdan şunu kurar:
+Belgenin cihaza bağlı olduğunu ise **cihaz kimlik doğrulaması** (device authentication) gösterir. Cüzdan önce şu yapıyı kurar:
 
 ```cbor-diag title="Cihaz anahtarının imzaladığı"
 DeviceAuthenticationBytes = 24(<< [
@@ -103,9 +103,9 @@ DeviceAuthenticationBytes = 24(<< [
 ] >>)
 ```
 
-ve bunu cihaz anahtarıyla, **ayrık yüklü** (detached payload) bir `COSE_Sign1` olarak imzalar: yük alanı `nil`dir, doğrulayıcı baytları oturumu kendi gördüğü hâliyle yeniden kurar. İmza bir `DeviceResponse`'un `deviceSigned.deviceAuth.deviceSignature` alanında gider (`version "1.0"`, `documents[0]` = `{docType, issuerSigned, deviceSigned}`). Tamga cihazın imzaladığı veri öğesi kullanmaz; `DeviceNameSpaces` hep boş haritadır.
+Ardından bunu cihaz anahtarıyla, **ayrık yüklü** (detached payload) bir `COSE_Sign1` olarak imzalar. Bu imzada yük alanı `nil` olur ve doğrulayıcı baytları, oturumu kendi gördüğü hâliyle yeniden kurar. İmza, bir `DeviceResponse` içindeki `deviceSigned.deviceAuth.deviceSignature` alanında gönderilir (`version "1.0"`, `documents[0]` = `{docType, issuerSigned, deviceSigned}`). Tamga cihazın imzaladığı veri öğelerini kullanmadığı için `DeviceNameSpaces` her zaman boş bir haritadır.
 
-Yani her şey **SessionTranscript**'e bağlı: içine ne girerse yanıt ona bağlanır.
+Bu yüzden her şey **SessionTranscript** yapısına bağlı. Yanıt, bu yapıya ne girdiyse ona bağlanmış olur.
 
 ## Oturum dökümüne ne girer?
 
@@ -115,18 +115,18 @@ Yani her şey **SessionTranscript**'e bağlı: içine ne girerse yanıt ona bağ
 | QR ya da bağlantıyla OpenID4VP | `[null, null, ["OpenID4VPHandover", sha256(cbor([client_id, nonce, jwkThumbprint, response_uri]))]]` | doğrulayıcı kimliği, nonce, şifreleme anahtarı, yanıt adresi |
 | DC API ile OpenID4VP | `[null, null, ["OpenID4VPDCAPIHandover", sha256(cbor([origin, nonce, jwkThumbprint]))]]` | tarayıcı kaynağı (origin), nonce, şifreleme anahtarı |
 
-İki çevrim içi biçim OpenID4VP 1.0 Final'in Ek B.2.6'sından gelir. `client_id` tam `x509_hash:…` değeridir; `jwkThumbprint`, yanıtın şifrelendiği anahtarın RFC 7638 parmak izidir. Bir istekten yakalanan DeviceResponse başka bir istekte geçmez: doğrulayıcı farklı bir döküm kurar ve cihaz imzası tutmaz. Tamga doğrulayıcısı bunu A6 adımında reddeder.
+İki çevrim içi biçim, OpenID4VP 1.0 Final'in Ek B.2.6 bölümünden geliyor. `client_id` tam `x509_hash:…` değeridir, `jwkThumbprint` de yanıtın şifrelendiği anahtarın RFC 7638'e göre hesaplanmış parmak izidir. Bir istekten ele geçirilen bir DeviceResponse başka bir istekte işe yaramaz, çünkü doğrulayıcı farklı bir döküm kurar ve cihaz imzası artık uyuşmaz. Tamga doğrulayıcısı böyle bir yanıtı A6 adımında reddeder.
 
-> **Not:** ADR-0013 çevrim içi dökümü hâlâ belirlenimci bir demo özeti ve "pilotta" ISO 18013-7 el sıkışması olarak anlatıyor. Güncel `@tamga-network/mdoc` yukarıdaki OpenID4VP 1.0 Final el sıkışmalarını uyguluyor; OpenID4VP profili de bunları şart koşuyor.
+> **Not:** ADR-0013, çevrim içi dökümü hâlâ belirlenimci bir demo özeti ve "pilot için" ISO 18013-7 el sıkışması olarak anlatıyor. Güncel `@tamga-network/mdoc` paketi ise yukarıdaki OpenID4VP 1.0 Final el sıkışmalarını uyguluyor ve OpenID4VP profilimiz de bunları şart koşuyor.
 
 ## QR ve Bluetooth ile yüz yüze bağlantı nasıl kurulur?
 
 ![Yüz yüze mdoc gösterimi dört adımda](/blog/iso-mdoc-deep-dive/tr/fig-engagement.png)
 
-1. **Cihaz tanıtımı (device engagement).** Cüzdan geçici bir P-256 anahtarı (`EDeviceKey`) ve rastgele bir BLE hizmet UUID'si üretir; `mdoc:` ve ardından `DeviceEngagement` yapısının base64url hâlini taşıyan bir QR kod gösterir. İçinde kişisel veri yoktur.
-2. **Oturum kurulumu.** Okuyucu kodu tarar, kendi geçici anahtarını (`EReaderKey`) üretir ve oturum anahtarlarını türetir. İki taraf ECDH, ardından tuz olarak `SHA-256(SessionTranscriptBytes)` ve bilgi dizgileri `SKReader` ile `SKDevice` kullanan HKDF-SHA-256 çalıştırır. Okuyucu `SessionEstablishment {eReaderKey, data}` gönderir; `data`, SKReader ile şifrelenmiş `DeviceRequest`'tir.
-3. **İstek ve onay.** Cüzdan isteği çözer, istenen öğeleri gösterir; kişi telefon kilidiyle onaylar ya da reddeder.
-4. **Yanıt.** Cüzdan `DeviceResponse`'u SKDevice ile şifrelenmiş bir `SessionData` iletisinde gönderir ve oturumu `20` durum koduyla kapatır.
+1. **Cihaz tanıtımı (device engagement).** Cüzdan geçici bir P-256 anahtarı (`EDeviceKey`) ve rastgele bir BLE hizmet UUID'si üretir. Ardından `mdoc:` ile başlayan ve `DeviceEngagement` yapısının base64url hâlini taşıyan bir QR kod gösterir. Bu kodda kişisel veri bulunmaz.
+2. **Oturum kurulumu.** Okuyucu kodu tarar, kendi geçici anahtarını (`EReaderKey`) üretir ve oturum anahtarlarını türetir. Bunun için iki taraf önce ECDH, sonra HKDF-SHA-256 çalıştırır. HKDF'de tuz olarak `SHA-256(SessionTranscriptBytes)`, bilgi dizgisi olarak da `SKReader` ve `SKDevice` kullanılır. Okuyucu `SessionEstablishment {eReaderKey, data}` iletisini gönderir. Buradaki `data`, SKReader ile şifrelenmiş `DeviceRequest` yapısıdır.
+3. **İstek ve onay.** Cüzdan isteği çözer ve istenen öğeleri kişiye gösterir. Kişi telefonun kilidiyle onaylar ya da isteği reddeder.
+4. **Yanıt.** Cüzdan `DeviceResponse` yapısını SKDevice ile şifrelenmiş bir `SessionData` iletisinde gönderir ve oturumu `20` durum koduyla kapatır.
 
 ```cbor-diag title="Sadeleştirilmiş örnek: QR koddaki DeviceEngagement"
 {
@@ -140,22 +140,22 @@ Yani her şey **SessionTranscript**'e bağlı: içine ne girerse yanıt ona bağ
 }
 ```
 
-Oturum iletileri AES-256-GCM kullanır; 12 baytlık IV, 8 baytlık bir kimlikten (okuyucu için hepsi sıfır, cihaz için `…01`) ve 1'den başlayan 4 baytlık ileti sayacından oluşur. BLE'de telefon GATT sunucusudur; her ileti parçalara bölünür, devamı varsa parçanın ilk baytı `0x01`, son parçada `0x00`'dır.
+Oturum iletileri AES-256-GCM ile şifrelenir. 12 baytlık IV, 8 baytlık bir kimlik ile 1'den başlayan 4 baytlık bir ileti sayacından oluşur. Kimlik okuyucu için tamamen sıfırdır, cihaz için `…01` ile biter. BLE'de telefon GATT sunucusu rolünü üstlenir. Her ileti parçalara bölünür ve ardından başka parça geliyorsa parçanın ilk baytı `0x01`, son parçada ise `0x00` olur.
 
-Bugünkü durum: protokol çekirdeği (tanıtım, oturum şifrelemesi, BLE parçalama) `@tamga-network/mdoc` içinde yazıldı ve test edildi; BLE radyosunu cüzdan uygulaması sağlar. Cihaz testleri henüz yapılmadı. NFC kullanılmaz; bağlantı her zaman QR koddan başlar. Paketlerin 0.6.0 sürümünden beri okuyucu isteğini imzalar (okuyucu kimlik doğrulaması) ve cüzdan bunu imzalı güven listesindeki çapalara karşı denetler; 0.7.0'dan beri kayıt sertifikası olmayan istek, çevrim içinde olduğu gibi yüz yüze de reddedilir. OpenID4VP üzerinden çevrim içi mdoc gösterimi, SD-JWT VC ile aynı istek akışını kullanır.
+Bugünkü duruma gelince, protokolün çekirdeği (cihaz tanıtımı, oturum şifrelemesi, BLE parçalama) `@tamga-network/mdoc` içinde yazıldı ve test edildi. BLE radyosunu cüzdan uygulaması sağlıyor. Gerçek cihazlarla yapılacak testler ise henüz tamamlanmadı. NFC kullanılmıyor ve bağlantı her zaman QR koddan başlıyor. Paketlerin 0.6.0 sürümünden beri okuyucu isteğini imzalıyor (okuyucu kimlik doğrulaması) ve cüzdan bu imzayı imzalı güven listesindeki çapalara karşı denetliyor. 0.7.0 sürümünden beri de kayıt sertifikası olmayan bir istek, çevrim içinde olduğu gibi yüz yüze gösterimde de reddediliyor. OpenID4VP üzerinden yapılan çevrim içi mdoc gösterimi, SD-JWT VC ile aynı istek akışını kullanıyor.
 
 ## Doğrulayıcı bir mdoc'u nasıl denetler?
 
-1. `DeviceResponse`'u ayrıştırın, `docType`'ın istenenle aynı olduğunu doğrulayın.
-2. `issuerAuth`'u doğrulayın: yalnız ES256, `x5chain` imzalı güven listesindeki bir kuruma varmalı; SD-JWT belgeleriyle aynı çapa.
-3. Gösterilen her öğe için etiket 24 baytlarının özetini alın, `valueDigests[ad alanı][digestID]` ile karşılaştırın.
-4. `validityInfo`'yu şimdiki zamana göre denetleyin.
-5. Bu isteğin ya da oturumun SessionTranscript'ini kendiniz kurun, `DeviceAuthenticationBytes`'ı yeniden oluşturun, `deviceSignature`'ı `deviceKey` ile doğrulayın.
-6. Durum bitini okuyun; sonra SD-JWT VC'deki güven, iptal ve politika katmanlarını aynen çalıştırın.
+1. `DeviceResponse` yapısını ayrıştırın ve `docType` değerinin istediğiniz türle aynı olduğunu doğrulayın.
+2. `issuerAuth` imzasını doğrulayın. Yalnız ES256 kabul edilir ve `x5chain`, imzalı güven listesindeki bir kuruma ulaşmalıdır. Burada SD-JWT belgelerinde kullanılan çapanın aynısı kullanılır.
+3. Gösterilen her öğe için etiket 24 baytlarının özetini alın ve `valueDigests[ad alanı][digestID]` değeriyle karşılaştırın.
+4. `validityInfo` alanını şimdiki zamana göre denetleyin.
+5. Bu isteğin ya da oturumun SessionTranscript yapısını kendiniz kurun, `DeviceAuthenticationBytes` değerini yeniden oluşturun ve `deviceSignature` imzasını `deviceKey` ile doğrulayın.
+6. Durum bitini okuyun ve ardından SD-JWT VC'de kullanılan güven, iptal ve politika katmanlarını aynen çalıştırın.
 
-Sonuç yine üç değerlidir: kabul, ret ya da altyapıya ulaşılamadığında "şu an doğrulanamıyor". Sonuç nesnesinde ham CBOR ya da gösterilmemiş öğe bulunmaz.
+Sonuç burada da üç değerden biridir. Belge kabul edilir, reddedilir ya da altyapıya ulaşılamadığında "şu an doğrulanamadı" sonucu verilir. Sonuç nesnesinde hiçbir zaman ham CBOR ya da gösterilmemiş öğe bulunmaz.
 
-Bir OpenID4VP isteğinde mdoc DCQL ile seçilir ([OpenID4VP ve DCQL ayrıntılı](/blog/openid4vp-dcql-deep-dive)): `format: "mso_mdoc"`, `meta.doctype_value` ve `[ad alanı, öğe]` biçiminde alan yolları:
+Bir OpenID4VP isteğinde mdoc, DCQL ile seçilir ([OpenID4VP ve DCQL ayrıntılı](/blog/openid4vp-dcql-deep-dive)). Bunun için `format: "mso_mdoc"`, `meta.doctype_value` ve `[ad alanı, öğe]` biçimindeki alan yolları kullanılır:
 
 ```json title="mdoc üzerinden yaş kontrolü için DCQL sorgusu"
 {
@@ -168,21 +168,21 @@ Bir OpenID4VP isteğinde mdoc DCQL ile seçilir ([OpenID4VP ve DCQL ayrıntılı
 }
 ```
 
-mdoc kimlik belgesi, Tamga'nın sıfır bilgili yaş ispatının da girdisidir; ispat sıradan ES256 imzalı mdoc'lar üzerinde çalışır ([ADR-0032](https://docs.tamga.network/tr/adr/0032-zk-mdoc-presentation)). Bu denetim Tamga Verify'da canlıda; işleyişi [Tamga'da sıfır bilgi](/blog/zero-knowledge-in-tamga) yazısında.
+mdoc biçimindeki kimlik belgesi, Tamga'nın sıfır bilgili yaş ispatının da girdisidir ve ispat sıradan ES256 imzalı mdoc'lar üzerinde çalışır ([ADR-0032](https://docs.tamga.network/tr/adr/0032-zk-mdoc-presentation)). Bu denetim Tamga Verify'da canlıda çalışıyor. Nasıl işlediğini [Tamga'da sıfır bilgi](/blog/zero-knowledge-in-tamga) yazısında anlattık.
 
 ## Sık sorulan sorular
 
 ### mdoc ile mDL aynı şey mi?
 
-Hayır. mDL (mobil sürücü belgesi), mdoc biçimini kullanan belge türlerinden biridir. Tamga kimlik belgesi kendi docType'ı ve ad alanı olan bir mdoc'tur; Tamga'nın "sürücü belgesi bilgisi" belgesi ise yalnız SD-JWT VC'dir, mDL değildir.
+Hayır. mDL (mobil sürücü belgesi), mdoc biçimini kullanan belge türlerinden yalnız biridir. Tamga'nın kimlik belgesi, kendi docType'ı ve ad alanı olan bir mdoc'tur. Tamga'nın "sürücü belgesi bilgisi" belgesi ise yalnız SD-JWT VC olarak veriliyor ve bir mDL değil.
 
 ### digestID'ler neden sıralı değil de rastgele?
 
-Sıralı kimliklerle doğrulayıcı belgede kaç öğe olduğunu ve hangi sıraların saklandığını çıkarabilirdi. 31 bitlik rastgele kimlikler sıra taşımaz.
+Kimlikler sıralı olsaydı doğrulayıcı, belgede kaç öğe bulunduğunu ve hangi sıraların gizlendiğini çıkarabilirdi. 31 bitlik rastgele kimlikler ise hiçbir sıra bilgisi taşımaz.
 
 ### Tamga mdoc'unu başka bir ISO 18013-5 kütüphanesiyle doğrulayabilir miyim?
 
-Yapılar standart ISO 18013-5 ve OpenID4VP 1.0'dır. İki noktaya bakın: kütüphane etiket 24 baytlarının özetini yeniden kodlamadan, geldiği gibi almalı ve çevrim içi gösterim için OpenID4VP el sıkışmasını desteklemeli.
+Yapılar standart ISO 18013-5 ve OpenID4VP 1.0 yapılarıdır. Yine de iki noktaya dikkat etmeniz gerekir. Kütüphane etiket 24 baytlarının özetini, onları yeniden kodlamadan, geldikleri gibi almalı. Çevrim içi gösterim için de OpenID4VP el sıkışmasını desteklemeli.
 
 ## Kaynaklar
 

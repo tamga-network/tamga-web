@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "Tamga Network",
     short_name: "Tamga",
-    description: "Digital Trust Infrastructure — verifiable credentials on open standards.",
+    description: "Digital Trust Infrastructure for verifiable credentials on open standards.",
     start_url: "/",
     display: "standalone",
     background_color: "#101820",

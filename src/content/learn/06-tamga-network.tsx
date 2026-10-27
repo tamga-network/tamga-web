@@ -1076,7 +1076,7 @@ export const CHAPTER_6: LearnPage[] = [
         <>
           <p>Toruň ynamly bolmagy üçin hemmeler şol bir düzgünlere eýermeli we düzgünler açyk ýazylmaly. Tamga-nyň düzgünleri Tamga ARF-da jemlenýär.</p>
           <h2>Tamga ARF: esasy resminama</h2>
-          <p>ARF — “arhitektura we salgylanma çarçuwasy”. Toruň kimden ybaratdygyny, nähili işleýändigini we ynamyň nireden gelýändigini düşündirýär.</p>
+          <p>ARF “arhitektura we salgylanma çarçuwasy” diýmekdir. Ol toruň kimden ybaratdygyny, nähili işleýändigini we ynamyň nireden gelýändigini düşündirýär.</p>
           <h2>Trust Framework</h2>
           <p>Toruň hukuk we dolandyryş tarapy: kim goşulyp biler, arza nädip berilýär, düzgünleri bozýana näme bolýar.</p>
           <h2>Tamga Rulebook</h2>
@@ -1580,7 +1580,7 @@ export const CHAPTER_6: LearnPage[] = [
           </p>
           <Callout kind="turkic" locale="tr">
             <p>
-              Ağın hedefi tek bir cüzdan değil, Türk dünyasının farklı ülkelerinden çıkacak birçok uyumlu cüzdandır. Bir kişi hangi
+              Ağ, Türk dünyasının farklı ülkelerinden birçok uyumlu cüzdanın çıkmasını hedefliyor. Bir kişi hangi
               cüzdanı seçerse seçsin, belgesi ağın her yerinde aynı şekilde doğrulanır.
             </p>
           </Callout>
@@ -1622,7 +1622,7 @@ export const CHAPTER_6: LearnPage[] = [
           </p>
           <Callout kind="turkic" locale="en">
             <p>
-              The network’s goal is not a single wallet but many compatible wallets from different countries of the Turkic world.
+              The network aims for many compatible wallets from different countries of the Turkic world.
               Whichever wallet a person chooses, their credential is verified the same way everywhere on the network.
             </p>
           </Callout>
@@ -1646,7 +1646,7 @@ export const CHAPTER_6: LearnPage[] = [
           <h2>Ilkinji gapjyk näme üçin möhüm?</h2>
           <p>Ol düzgünleriň hakyky telefonda işleýändigini görkezýär. Gapjyk etmek isleýän her topar şol bir paketleri we synaglary ulanyp bilýär.</p>
           <Callout kind="turkic" locale="tk">
-            <p>Toruň maksady bir gapjyk däl, türki dünýäsiniň dürli ýurtlaryndan köp laýyk gapjyk.</p>
+            <p>Tor türki dünýäsiniň dürli ýurtlaryndan köp laýyk gapjygyň çykmagyny maksat edinýär.</p>
           </Callout>
         </>
       ),
@@ -1686,7 +1686,7 @@ export const CHAPTER_6: LearnPage[] = [
           </p>
           <Callout kind="turkic" locale="az">
             <p>
-              Şəbəkənin məqsədi tək bir cüzdan deyil, Türk dünyasının müxtəlif ölkələrindən çoxlu uyğun cüzdanlardır. Şəxs hansı
+              Şəbəkə Türk dünyasının müxtəlif ölkələrindən çoxlu uyğun cüzdanın çıxmasını hədəfləyir. Şəxs hansı
               cüzdanı seçməsindən asılı olmayaraq, onun rəqəmsal sənədi şəbəkənin hər yerində eyni qaydada yoxlanılır.
             </p>
           </Callout>

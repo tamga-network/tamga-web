@@ -80,7 +80,7 @@ const en: JoinContent = {
     {
       title: "States and national lists",
       who: "federation",
-      body: "A state or trust-list operator keeps its own list. The network reads it with a pinned signer and an agreed scope; it does not copy or overrule it.",
+      body: "A state or trust-list operator keeps its own list. The network reads that list with a pinned signer and an agreed scope, and it never copies or overrules it.",
       items: [
         "an external list in the ETSI format (TS 119 602)",
         "a pinned signing certificate and a defined scope",
@@ -125,7 +125,7 @@ const en: JoinContent = {
     },
     {
       k: "European standards",
-      v: "SD-JWT VC, OpenID4VCI / OpenID4VP, X.509 and signed trust lists — the EU wallet's building blocks.",
+      v: "SD-JWT VC, OpenID4VCI / OpenID4VP, X.509 and signed trust lists, which are the building blocks of the EU wallet.",
     },
     {
       k: "Open source",
@@ -235,7 +235,7 @@ const tr: JoinContent = {
     {
       title: "Devletler ve ülke listeleri",
       who: "federasyon",
-      body: "Bir devlet ya da güven listesi işleticisi kendi listesini tutar. Ağ bu listeyi sabitlenmiş imzacı ve anlaşılmış kapsamla okur; kopyalamaz, üstüne çıkmaz.",
+      body: "Bir devlet ya da güven listesi işleticisi kendi listesini kendisi tutar. Ağ bu listeyi sabitlenmiş bir imzacı ve üzerinde anlaşılmış bir kapsamla okur, listeyi kopyalamaz ve onun üstünde söz sahibi olmaz.",
       items: [
         "ETSI biçiminde dış liste (TS 119 602)",
         "sabitlenmiş imza sertifikası ve tanımlı kapsam",
@@ -277,7 +277,7 @@ const tr: JoinContent = {
     },
     {
       k: "Avrupa standartları",
-      v: "SD-JWT VC, OpenID4VCI / OpenID4VP, X.509 ve imzalı güven listeleri — AB cüzdanının yapı taşları.",
+      v: "AB cüzdanının da yapı taşları olan SD-JWT VC, OpenID4VCI / OpenID4VP, X.509 ve imzalı güven listeleri.",
     },
     {
       k: "Açık kaynak",
@@ -384,7 +384,7 @@ const tk: JoinContent = {
     {
       title: "Döwletler we ýurt sanawlary",
       who: "federasiýa",
-      body: "Döwlet ýa-da ynam sanawyny işleýän öz sanawyny saklaýar. Tor bu sanawy berkidilen gol çekiji we ylalaşylan gerim bilen okaýar; göçürmeýär, üstünden geçmeýär.",
+      body: "Döwlet ýa-da ynam sanawyny işleýän operator öz sanawyny özi saklaýar. Tor bu sanawy berkidilen gol çekiji we ylalaşylan gerim bilen okaýar, ony göçürmeýär we onuň üstünden karar bermeýär.",
       items: [
         "ETSI görnüşinde daşky sanaw (TS 119 602)",
         "berkidilen gol sertifikaty we kesgitlenen gerim",
@@ -426,7 +426,7 @@ const tk: JoinContent = {
     },
     {
       k: "Ýewropa standartlary",
-      v: "SD-JWT VC, OpenID4VCI / OpenID4VP, X.509 we gol çekilen ynam sanawlary — ÝB gapjygynyň gurluş daşlary.",
+      v: "ÝB gapjygynyň hem gurluş daşlary bolan SD-JWT VC, OpenID4VCI / OpenID4VP, X.509 we gol çekilen ynam sanawlary.",
     },
     {
       k: "Açyk çeşme",
@@ -536,7 +536,7 @@ const az: JoinContent = {
     {
       title: "Dövlətlər və milli siyahılar",
       who: "federasiya",
-      body: "Dövlət və ya etibar siyahısının operatoru öz siyahısını özü aparır. Şəbəkə bu siyahını sabitlənmiş imzalayan və razılaşdırılmış əhatə ilə oxuyur; onu köçürmür və onun üzərində söz sahibi olmur.",
+      body: "Dövlət və ya etibar siyahısının operatoru öz siyahısını özü aparır. Şəbəkə bu siyahını sabitlənmiş imzalayan və razılaşdırılmış əhatə ilə oxuyur, onu köçürmür və onun üzərində söz sahibi olmur.",
       items: [
         "ETSI formatında xarici siyahı (TS 119 602)",
         "sabitlənmiş imza sertifikatı və müəyyən edilmiş əhatə",
@@ -581,7 +581,7 @@ const az: JoinContent = {
     },
     {
       k: "Avropa standartları",
-      v: "SD-JWT VC, OpenID4VCI / OpenID4VP, X.509 və imzalanmış etibar siyahıları — Aİ rəqəmsal cüzdanının əsas komponentləri.",
+      v: "Aİ rəqəmsal cüzdanının da əsas komponentləri olan SD-JWT VC, OpenID4VCI / OpenID4VP, X.509 və imzalanmış etibar siyahıları.",
     },
     {
       k: "Açıq mənbə",
@@ -642,7 +642,7 @@ const az: JoinContent = {
     "İşəgötürənlər, veb-saytlar və giriş nöqtələri qeydiyyatlı yoxlayan tərəf kimi qoşulur: hər istifadə halı üçün hansı rəqəmsal sənədi və sahələri tələb etdiklərini, məqsədi və məxfilik siyasətini qeydiyyatdan keçirirlər. Yoxlayan tərəf qeydiyyatdan keçirdiyindən artıq məlumat tələb etdikdə rəqəmsal cüzdan şəxsi xəbərdar edir.",
   apply: {
     title: "Müraciət",
-    body: "Təşkilatınızın adını və necə qoşulmaq istədiyinizi — sənəd vermək, yoxlamaq, cüzdan provayderi kimi və ya milli siyahı ilə — yazaraq bizimlə əlaqə saxlayın. Sizə tələblər üzrə tam bələdçi ilə cavab veririk.",
+    body: "Bizə təşkilatınızın adını və şəbəkəyə necə qoşulmaq istədiyinizi yazın. Sənəd verən, yoxlayan, cüzdan provayderi və ya milli siyahı sahibi kimi qoşula bilərsiniz. Sizə bütün tələbləri izah edən bələdçi ilə cavab veririk.",
     mail: "partners@tamga.network",
     subject: "Tamga Network-a qoşulma",
     docs: "https://docs.tamga.network",

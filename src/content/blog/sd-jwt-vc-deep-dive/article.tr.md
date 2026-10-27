@@ -1,7 +1,7 @@
 ---
 title: "SD-JWT VC ayrıntılı: imza, disclosure ve KB-JWT"
 slug: sd-jwt-vc-deep-dive
-description: Bir SD-JWT VC bayt bayt nasıl kurulur ve denetlenir; tuzlu özetler, _sd, cnf, KB-JWT ve sd_hash, vct#integrity ve status, Tamga profiliyle.
+description: Bir SD-JWT VC'nin bayt bayt nasıl kurulduğunu ve denetlendiğini Tamga profiliyle anlatıyoruz; tuzlu özetler, _sd, cnf, KB-JWT ve sd_hash, vct#integrity ve status.
 date: 2026-10-08
 lang: tr
 updated: 2026-10-19
@@ -12,15 +12,15 @@ related: openid4vci-deep-dive, openid4vp-dcql-deep-dive, haip-and-token-status-l
 
 <!-- Kaynak: SPEC-CRED-0002 v1.0.0 (2026-10-02) §1–9; SPEC-API-0001 v1.0.0 §1 (A1–A8, B1–B6, A3b); SPEC-CRED-0003 (status); şema kataloğu (vct URN, W3C SRI, catalogue.json); conformance/vectors/sd-jwt/diploma-basic.json (vektör sürüm 2, sahte kişi verisi; issuer adresi örnek yolla değiştirildi); canlı katalogda urn:tamga:edu:DiplomaCredential:1 content_hash = vektördeki vct#integrity (2026-10-08 denetlendi). RFC 9901 (Kasım 2025); draft-ietf-oauth-sd-jwt-vc-19 (31 Ağustos 2026, IESG değerlendirmesinde). HAIP 1.0 Final §6. -->
 
-SD-JWT VC, kurumun imzaladığı bir JWT'dir; alan değerleri yerine tuzlu SHA-256 özetleri taşır ve yanında `~` ile birleştirilmiş **disclosure**'lar (tuzlanmış değerlerin kendisi) gelir. Belge sahibi bir alanı göstermek için o alanın disclosure'ını gönderir, gizlemek için göndermez; her gösterimi cihaz anahtarıyla imzalanan bir **KB-JWT** kapatır.
+SD-JWT VC, kurumun imzaladığı bir JWT'dir ve alan değerleri yerine bu değerlerin tuzlanmış SHA-256 özetlerini taşır. JWT'nin yanında, `~` işaretiyle birleştirilmiş **disclosure**'lar gelir. Disclosure'lar, tuzlanmış değerlerin kendisidir. Belge sahibi bir alanı göstermek istediğinde o alanın disclosure'ını gönderir, gizlemek istediğinde göndermez. Her gösterimin sonuna da belge sahibinin cihaz anahtarıyla imzaladığı bir **KB-JWT** eklenir.
 
-İşin içinde iki standart var. **SD-JWT** yöntemin kendisidir; IETF onu Kasım 2025'te RFC 9901 olarak yayımladı. **SD-JWT VC** bunun üstündeki belge profilidir (`draft-ietf-oauth-sd-jwt-vc`); 19. sürüm (31 Ağustos 2026) IESG değerlendirmesinde. Tamga'nın bayt düzeyindeki profili [SPEC-CRED-0002](https://docs.tamga.network/tr/specifications/sd-jwt-vc).
+Burada iki standart söz konusu. **SD-JWT** yöntemin kendisidir ve IETF onu Kasım 2025'te RFC 9901 olarak yayımladı. **SD-JWT VC** ise bunun üzerine kurulan belge profilidir (`draft-ietf-oauth-sd-jwt-vc`) ve 19. sürümü (31 Ağustos 2026) IESG değerlendirmesinde bekliyor. Tamga'nın bayt düzeyindeki profili [SPEC-CRED-0002](https://docs.tamga.network/tr/specifications/sd-jwt-vc) adlı belgede yazılı.
 
-> **Not:** Aşağıdaki bütün örnekler Tamga'nın herkese açık uyum vektöründen (`sd-jwt/diploma-basic`) alındı: kişi verisi sahte, özel anahtar yok. Kurum adresini örnek bir yolla değiştirdik, sertifikaları kısalttık. İmzalar gösterilmiyor; örnekleri sadeleştirilmiş sayın.
+> **Not:** Aşağıdaki örneklerin hepsini Tamga'nın herkese açık uyum vektörü `sd-jwt/diploma-basic`'ten aldık. Vektördeki kişi verisi sahte ve içinde özel anahtar yok. Kurum adresini örnek bir yolla değiştirdik ve sertifikaları kısalttık. İmzalar gösterilmediği için örnekleri sadeleştirilmiş kabul edin.
 
 ## Kurum tam olarak neyi imzalıyor?
 
-İmzalı JWT'nin sıradan bir JOSE başlığı ve gizlenebilen alanların yerine özetlerin konduğu bir gövdesi vardır:
+İmzalı JWT'nin sıradan bir JOSE başlığı ve bir gövdesi vardır. Gövdede gizlenebilen alanların yerinde bu alanların özetleri durur:
 
 ```json title="Sadeleştirilmiş örnek: imzalı JWT'nin başlığı ve gövdesi"
 {
@@ -56,27 +56,27 @@ SD-JWT VC, kurumun imzaladığı bir JWT'dir; alan değerleri yerine tuzlu SHA-2
 }
 ```
 
-Açıkta duran alanlar, doğrulayıcının başka bir şeyi okuyabilmesi için önce bilmesi gerekenlerdir. Tamga'da bunlar tür tanımında `sd: "never"` diye işaretlidir ve hiçbir zaman gizlenemez:
+Açıkta duran alanlar, doğrulayıcının başka bir şeyi okuyabilmesi için önce bilmesi gereken alanlardır. Tamga'da bu alanlar tür tanımında `sd: "never"` olarak işaretlenir ve hiçbir zaman gizlenemez:
 
 | Alan | Neden açıkta |
 |---|---|
-| `iss` | kayıtlı kurumla tutarlılık denetimi |
-| `vct`, `vct#integrity` | türün çözülmesi ve sabitlenmesi |
-| `iat` | güven denetimleri bu ana göre yapılır |
-| `cnf` | KB-JWT'yi doğrulamak için gerekir |
-| `status` | iptal sorgusu |
-| `_sd_alg`, `_sd` | yöntemin kendisi |
+| `iss` | kayıtlı kurumla tutarlılık denetimi için |
+| `vct`, `vct#integrity` | türün çözülmesi ve sabitlenmesi için |
+| `iat` | güven denetimleri bu ana göre yapıldığı için |
+| `cnf` | KB-JWT'yi doğrulamak için |
+| `status` | iptal durumunu sorgulamak için |
+| `_sd_alg`, `_sd` | yöntemin kendisi oldukları için |
 | `exp` | türde varsa |
 
-Taslak 19, `iat`'ın da seçici paylaşılabilmesine izin veriyor. Tamga onu açıkta tutar, çünkü doğrulayıcı güven katmanına "bu kurum bu türü bugün verebilir mi?" diye değil, "bu kurum bu türü `iat` anında verebilir miydi?" diye sorar.
+Taslak 19, kurumun `iat` alanını da seçici olarak paylaşılabilir yapmasına izin veriyor. Tamga bu alanı açıkta tutuyor, çünkü doğrulayıcı güven katmanına kurumun bu türü bugün verip veremeyeceğini değil, `iat` anında verip veremediğini soruyor.
 
-Başlıktaki `x5c` kurumun sertifika zincirini taşır: önce yaprak sertifika, kök sertifika yok. HAIP 1.0 `x5c` ile anahtar çözmeyi zorunlu tutar; Tamga'da `x5c` olmadan belge geçmez. Doğrulayıcı kurumun kimliğini `iss`'ten değil, **yaprak sertifikanın parmak izinden** çıkarır. `iss`'e güvenseydi, aynı kök altında geçerli sertifikası olan herhangi bir kurum `iss`'e başka bir üniversitenin adresini yazıp kendi anahtarıyla imza atabilirdi.
+Başlıktaki `x5c` alanı kurumun sertifika zincirini taşır. Zincirde önce yaprak sertifika yer alır, kök sertifika ise eklenmez. HAIP 1.0 anahtarın `x5c` üzerinden bulunmasını zorunlu tutuyor ve Tamga'da `x5c` olmayan bir belge doğrulamadan geçmiyor. Doğrulayıcı kurumun kimliğini `iss` alanından değil, **yaprak sertifikanın parmak izinden** çıkarır. `iss` alanına güvenseydi, aynı kök altında geçerli sertifikası olan herhangi bir kurum `iss` alanına başka bir üniversitenin adresini yazıp belgeyi kendi anahtarıyla imzalayabilirdi.
 
-`typ` değeri `dc+sd-jwt`. Taslak Kasım 2024'e kadar `vc+sd-jwt` kullanıyordu; bir W3C ortam türüyle çakışmasın diye değiştirildi. Tamga kurumları yalnız `dc+sd-jwt` üretir; doğrulayıcı da `vc+sd-jwt`'yi reddeder. Dış ekosistem belgeleri için bir uyumluluk bayrağı var, varsayılan olarak kapalı.
+`typ` değeri `dc+sd-jwt`. Taslak Kasım 2024'e kadar `vc+sd-jwt` kullanıyordu ve bu değer bir W3C ortam türüyle çakışmasın diye değiştirildi. Tamga kurumları yalnız `dc+sd-jwt` üretiyor ve doğrulayıcı `vc+sd-jwt` değerini reddediyor. Dış ekosistemlerden gelen belgeler için bir uyumluluk seçeneği var, ama bu seçenek varsayılan olarak kapalı.
 
 ## Disclosure nasıl kurulur, neden dizginin özeti alınır?
 
-Disclosure üç elemanlı bir JSON dizisidir: `[tuz, ad, değer]`. UTF-8'e çevrilir, sonra dolgusuz base64url ile kodlanır. Tuz 16 rastgele bayttır (128 bit) ve her disclosure için yenidir. Vektördeki gösterimin dört disclosure'ı:
+Disclosure, `[tuz, ad, değer]` biçiminde üç elemanlı bir JSON dizisidir. Dizi UTF-8 olarak kodlanır, ardından dolgusuz base64url ile kodlanır. Tuz 16 rastgele bayttan (128 bit) oluşur ve her disclosure için yeniden üretilir. Vektördeki gösterimde bulunan dört disclosure şunlar:
 
 ```text title="Uyum vektöründeki disclosure'lar, çözülmüş hâlleri ve özetleri"
 WyJJY3NEZDFmdmh6bS1mcVpTNDJLb1p3IiwiZXFmX2xldmVsIiw2XQ
@@ -96,25 +96,25 @@ WyJjazFtMktWejdVWEg2cTlMNEJad1BRIiwiZ2l2ZW5fbmFtZSIsIlZla3TDtnIiXQ
   → sHl3d9xOXRVt7kU78VQvmAjq4kZzrWjyyJV1sBfRA1M
 ```
 
-Özet şöyle hesaplanır: `base64url(SHA-256(disclosure dizgisinin ASCII baytları))`. Yukarıdaki dört özetin dördü de gövdedeki `_sd` dizisinde var.
+Özet, `base64url(SHA-256(disclosure dizgisinin ASCII baytları))` formülüyle hesaplanır. Yukarıdaki dört özetin hepsi gövdedeki `_sd` dizisinde yer alıyor.
 
-SD-JWT kodunda en sık görülen hata, disclosure'ı çözüp diziyi yeniden JSON'a çevirmek ve onun özetini almaktır. JSON yazımı tek biçimli değildir: virgülden sonra bir boşluk ya da `ö` yerine `\u00f6` yazmak başka baytlar, başka bir özet demektir. Tamga'nın şartnamesi bunu `given_name: "Ayşe"` örneğiyle gösterir: boşluksuz ve kaçışsız yeniden yazınca `nM_EESmLJt3b0fzNu1paGyiAfSLs4Npf2yEjUn0upSo` özeti `c94D71JDfX8hzanT-ZpRWBn5oNX_RkStfSfkvTmY_kU` olur. Doğrulayıcı için kural basit: **dizginin özetini geldiği gibi alın, sonra çözün.** Tersi asla.
+SD-JWT kodunda en sık görülen hata, disclosure'ı çözüp diziyi yeniden JSON'a çevirmek ve sonra bunun özetini almaktır. JSON'un yazılışı tek biçimli değildir. Virgülden sonra bir boşluk bırakmak ya da `ö` harfini `ö` olarak yazmak farklı baytlar ve dolayısıyla farklı bir özet üretir. Tamga'nın şartnamesi bunu `given_name: "Ayşe"` için oluşturulmuş bir disclosure üzerinden gösteriyor. Dizi boşluk ve kaçış karakteri olmadan yeniden yazıldığında `nM_EESmLJt3b0fzNu1paGyiAfSLs4Npf2yEjUn0upSo` özeti `c94D71JDfX8hzanT-ZpRWBn5oNX_RkStfSfkvTmY_kU` oluyor. Doğrulayıcılar için kural basit: **önce dizginin özetini geldiği gibi alın, sonra dizgiyi çözün.** Bu sıra hiçbir zaman tersine çevrilmez.
 
 ![Bir alandan imzalı gövdedeki özete dört adım](/blog/sd-jwt-vc-deep-dive/tr/fig-disclosure.png)
 
 ## `_sd` neden sıralı, sahte özet neden yok?
 
-Tamga `_sd` dizisini artan bayt sırasına dizer. Sıralanmasa özetler kurumun alanları işlediği sırada durur; bu da çoğu zaman şemadaki sıradır. Doğrulayıcı gizli özetleri şemanın alan listesiyle hizalayıp hangi alanların saklandığını çıkarabilirdi.
+Tamga `_sd` dizisini artan bayt sırasına göre diziyor. Dizi sıralanmasaydı, özetler kurumun alanları işlediği sırada dururdu ve bu sıra çoğu zaman şemadaki sıradır. Doğrulayıcı da gizli özetleri şemadaki alan listesiyle yan yana koyarak hangi alanların gizlendiğini çıkarabilirdi.
 
-RFC 9901 kaç alanın gizlendiğini bulanıklaştırmak için **sahte özet** (decoy), yani hiçbir disclosure'a karşılık gelmeyen kayıtlar eklemeye de izin verir. Tamga bunu yasaklar. `vct` açıkta ve tür tanımı bütün alanları listeliyor; sayı zaten biliniyor. Kurumdan kuruma değişen sahte özet sayısı da kendi başına bir parmak izine dönüşür, her sahte özet de QR koduna 43 karakter ekler. Asıl yan kanal değişen bir disclosure kümesidir; bu yüzden Tamga'nın cüzdan kuralları, ağdaki cüzdanların aynı doğrulayıcıya ve aynı türe hep aynı kümeyi göstermesini ister.
+RFC 9901, kaç alanın gizlendiğini belirsizleştirmek için **sahte özetler** (decoy) eklenmesine de izin veriyor. Bunlar hiçbir disclosure'a karşılık gelmeyen kayıtlardır. Tamga ise sahte özetleri yasaklıyor. `vct` açıkta duruyor ve tür tanımı bütün alanları listeliyor, yani alan sayısı zaten herkesçe biliniyor. Kurumdan kuruma değişen sahte özet sayısı da başlı başına bir parmak izine dönüşürdü. Ayrıca her sahte özet QR koda 43 karakter ekliyor. Asıl bilgi sızıntısı, gösterilen disclosure kümesinin değişmesinden kaynaklanıyor. Bu yüzden Tamga'nın cüzdan kuralları, ağdaki cüzdanların aynı doğrulayıcıya aynı tür için her seferinde aynı kümeyi göstermesini istiyor.
 
-İki sınır daha var: iç içe seçici paylaşım en çok iki düzey, dizi elemanlarını tek tek gizleme ise şimdilik kullanılmıyor.
+Profilde iki sınır daha var. İç içe seçici paylaşım en fazla iki düzeye izin veriyor ve dizi elemanlarını tek tek gizleme özelliği şimdilik kullanılmıyor.
 
 ## Cihaz bağlama nasıl çalışır, KB-JWT neyi imzalar?
 
-`cnf.jwk`, belge verilirken telefonun güvenli donanımında üretilen P-256 anahtarın açık yarısıdır (kurum onu cüzdanın anahtar kanıtından kopyalar; bkz. [OpenID4VCI ayrıntılı](/blog/openid4vci-deep-dive)). Özel yarı cihazdan hiç çıkmaz. Tamga'da `cnf`'siz belge de, KB-JWT'siz gösterim de geçersizdir. Standart anahtar bağlamayı isteğe bırakır; HAIP, belge cihaza bağlıysa her gösterimde KB-JWT ister; Tamga ise her belgeyi cihaza bağlar.
+`cnf.jwk`, belge verilirken telefonun güvenli donanımında üretilen P-256 anahtarının açık yarısıdır. Kurum bu anahtarı, cüzdanın gönderdiği sahiplik kanıtından kopyalar ([OpenID4VCI ayrıntılı](/blog/openid4vci-deep-dive)). Anahtarın özel yarısı cihazdan hiç çıkmaz. Tamga'da `cnf` içermeyen bir belge de, KB-JWT içermeyen bir gösterim de geçersizdir. Standart anahtar bağlamayı isteğe bırakıyor. HAIP ise belge cihaza bağlıysa her gösterimde KB-JWT istiyor ve Tamga her belgeyi cihaza bağlıyor.
 
-Gösterimde cüzdan yalnız doğrulayıcının istediği ve kişinin onayladığı disclosure'ları bırakır, sonuna bir KB-JWT ekler:
+Gösterim sırasında cüzdan, yalnız doğrulayıcının istediği ve kişinin onayladığı disclosure'ları bırakır ve sonuna bir KB-JWT ekler:
 
 ![Cüzdanda saklanan ve doğrulayıcıya giden](/blog/sd-jwt-vc-deep-dive/tr/fig-anatomy.png)
 
@@ -128,7 +128,7 @@ Gösterimde cüzdan yalnız doğrulayıcının istediği ve kişinin onayladığ
 }
 ```
 
-`nonce` doğrulayıcının tek kullanımlık meydan okumasıdır; kaydedilmiş bir gösterim yeniden oynatılamaz. `aud`, doğrulayıcının önekiyle birlikte **tam** istemci kimliğidir; OpenID4VP'de bu, `x509_hash:` ile erişim sertifikasının parmak izidir ([OpenID4VP ve DCQL ayrıntılı](/blog/openid4vp-dcql-deep-dive)). `iat` doğrulayıcının saatine en çok 300 saniye uzak olabilir.
+`nonce`, doğrulayıcının yalnız bir kez kullanılabilen meydan okuma değeridir. Bu sayede kaydedilmiş bir gösterim yeniden kullanılamaz. `aud`, doğrulayıcının önekiyle birlikte **tam** istemci kimliğidir. OpenID4VP'de bu değer, `x509_hash:` önekinden ve doğrulayıcının erişim sertifikasının parmak izinden oluşur ([OpenID4VP ve DCQL ayrıntılı](/blog/openid4vp-dcql-deep-dive)). `iat` ise doğrulayıcının saatinden en fazla 300 saniye farklı olabilir.
 
 Aradaki birinin bir disclosure'ı silmesini `sd_hash` engeller:
 
@@ -138,77 +138,77 @@ sd_hash = base64url( SHA-256( şu dizginin ASCII baytları:
 ))
 ```
 
-Yalnız gösterilen disclosure'lar girer; sondaki `~` da hesaba dahildir. `sd_hash` olmasa biri diploma gösteriminden `grade` disclosure'ını çıkarabilir, iki imza da yine doğrulanırdı.
+Hesaba yalnız gösterilen disclosure'lar girer ve sondaki `~` da hesaba dahildir. `sd_hash` olmasaydı, biri bir diploma gösteriminden `grade` disclosure'ını çıkarabilirdi ve iki imza da yine geçerli görünürdü.
 
-Kapsamı unutmayın: geçerli bir KB-JWT, belgeye bağlı anahtarın elde tutulduğunu kanıtlar. Telefonu hangi insanın tuttuğunu kanıtlamaz.
+Bu yöntemin kapsamını da hatırlatalım. Geçerli bir KB-JWT, belgeye bağlı anahtarın elde tutulduğunu kanıtlar. Telefonu hangi insanın tuttuğunu ise kanıtlamaz.
 
 ## `vct` ve `vct#integrity` ne işe yarar?
 
-`vct` belgenin türünü adlandırır. Tamga URN kullanır: `urn:tamga:<alan>:<Tür>:<ana sürüm>`; böylece bir alan adı değişse de kimlik değişmez. Tür tanımı (Type Metadata), açık katalogun URN'den eşlediği bir HTTPS adresinde durur; taslak 19 buna "kayıt defterinden çözme" der (§5.3.2). Diploma için `https://schemas.tamga.network/v1/catalogue.json`, `urn:tamga:edu:DiplomaCredential:1` türünü tanım dosyasına ve `sha256-Vu/H8v+3kpCQBmre8A8It13M6+pUpUqcLc08P57aKKw=` içerik özetine eşler; bu, vektördeki `vct#integrity` ile aynı dizgidir.
+`vct` belgenin türünü adlandırır. Tamga bunun için `urn:tamga:<alan>:<Tür>:<ana sürüm>` biçiminde URN'ler kullanıyor. Böylece bir alan adı değişse bile türün kimliği değişmiyor. Tür tanımı (Type Metadata), herkese açık kataloğun URN'den eşlediği bir HTTPS adresinde duruyor. Taslak 19 bu yönteme "kayıt defterinden çözme" diyor (§5.3.2). Diploma için `https://schemas.tamga.network/v1/catalogue.json`, `urn:tamga:edu:DiplomaCredential:1` türünü tanım dosyasına ve `sha256-Vu/H8v+3kpCQBmre8A8It13M6+pUpUqcLc08P57aKKw=` içerik özetine eşliyor. Bu değer, vektördeki `vct#integrity` alanıyla aynı dizgi.
 
-Bütünlük değeri W3C Subresource Integrity biçimindedir: `sha256-` ve ardından belgenin ham baytlarının base64 SHA-256'sı. Yayımlanan dosya bayt bayt aynı kalmalıdır; hiçbir ara katman onu yeniden biçimlendiremez. Standart `vct#integrity`'yi isteğe bırakır, Tamga zorunlu tutar; böylece doğrulayıcıya, kurumun imzalarken dayandığından başka bir tür tanımı verilemez. Her alanın `sd` politikası (`always`, `allowed`, `never`) da tür tanımında yazılıdır ve Tamga kurumları gizlenmesine izin verilen her alanı gizler.
+Bütünlük değeri W3C Subresource Integrity biçimini kullanır. Değer `sha256-` önekiyle başlar ve belgenin ham baytlarının base64 biçimindeki SHA-256 özetiyle devam eder. Bu yüzden yayımlanan dosyanın bayt bayt aynı kalması gerekir ve hiçbir ara sunucu onu yeniden biçimlendiremez. Standart `vct#integrity` alanını isteğe bırakıyor, Tamga ise zorunlu tutuyor. Böylece doğrulayıcıya, kurumun belgeyi imzalarken dayandığı tanımdan başka bir tür tanımı verilemiyor. Her alanın `sd` politikası (`always`, `allowed`, `never`) da tür tanımında yazılı ve Tamga kurumları gizlenmesine izin verilen her alanı gizliyor.
 
 ## `status` alanı neyi gösterir?
 
-`status.status_list` bir sıra numarası (`idx`) ve bir Token Status List adresi taşır. Doğrulayıcı daha önce indirdiği imzalı, sıkıştırılmış listede o sıradaki girdiyi okur: `0` geçerli, `1` iptal ve yalnız şeması askıya izin veren türlerde `2` askıda; `3` kullanılmaz ve iptal sayılır. Tamga sıra numaralarını rastgele dağıtır, liste adreslerini anlamsız tutar ve doğrulayıcıların listeleri belli aralıklarla önceden indirmesini ister; böylece kurum belgenin ne zaman denetlendiğini öğrenemez. Taslak 19, gösterilen durum listesinin JWT biçiminde olmasını şart koşar. İşleyiş ve gizlilik kuralları: [HAIP ve Token Status List](/blog/haip-and-token-status-list).
+`status.status_list` bir sıra numarası (`idx`) ve bir Token Status List adresi taşır. Doğrulayıcı, daha önce indirdiği imzalı ve sıkıştırılmış listede o sıradaki değeri okur. `0` geçerli, `1` iptal edilmiş anlamına gelir. Şeması askıya almaya izin veren türlerde `2` askıda demektir. `3` ise kullanılmaz ve iptal olarak değerlendirilir. Tamga sıra numaralarını rastgele dağıtıyor, liste adreslerini anlamsız dizgilerden oluşturuyor ve doğrulayıcıların listeleri belli aralıklarla önceden indirmesini istiyor. Böylece kurum, belgenin ne zaman denetlendiğini hiçbir zaman öğrenemiyor. Taslak 19, gösterilen durum listesinin JWT biçiminde olmasını şart koşuyor. İşleyişi ve gizlilik kurallarını [HAIP ve Token Status List](/blog/haip-and-token-status-list) yazısında anlattık.
 
 ## Doğrulayıcı bir SD-JWT VC'yi hangi sırayla denetlemeli?
 
-Tamga her doğrulama adımına kalıcı bir kod verir; doğrulayıcı ilk başarısız adımın kodunu `failed_step` olarak döner. Önce biçim katmanı çalışır:
+Tamga her doğrulama adımına kalıcı bir kod veriyor ve doğrulayıcı ilk başarısız adımın kodunu `failed_step` alanında döndürüyor. İlk çalışan katman biçim katmanı:
 
 | Kod | Denetim |
 |---|---|
-| A1 | `~` ile böl; son parça boş değil, KB-JWT olmalı |
+| A1 | `~` ile böl; son parça boş olmamalı, KB-JWT olmalı |
 | A2 | başlık: `alg` = `ES256`, `typ` = `dc+sd-jwt`, `x5c` var |
-| A3 | zincir listedeki bir köke varıyor, ara sertifikalar CA, JWT imzası geçerli |
-| A3b | kurum kimliği `iss`'ten değil, yaprak sertifikanın parmak izinden |
+| A3 | zincir listedeki bir köke ulaşıyor, ara sertifikalar CA, JWT imzası geçerli |
+| A3b | kurum kimliği `iss` alanından değil, yaprak sertifikanın parmak izinden çıkarılır |
 | A3c | yaprak sertifika iptal edilmemiş |
 | A3d | `cnf` var |
 | A4 | `_sd_alg` = `sha-256` |
-| A5 | her disclosure: dizginin özetini al, `_sd`'de bul, sonra çöz |
+| A5 | her disclosure için önce dizginin özetini al, `_sd` içinde bul, sonra çöz |
 | A6 | KB-JWT: `cnf` ile imza, `aud`, `nonce`, ±300 sn içinde `iat`, `sd_hash` |
-| A7 | `exp` geçmemiş, `nbf` gelmiş |
-| A8 | aynı özet iki kez yok, açık bir alanın üstüne yazan disclosure yok |
+| A7 | `exp` geçmemiş, `nbf` zamanı gelmiş |
+| A8 | aynı özet iki kez kullanılmamış, açıktaki bir alanın üzerine yazan disclosure yok |
 
-İkisine ayrıca bakın. A5, özeti `_sd`'de olmayan her disclosure'ı reddeder; kabul edilseydi herkes kurumun hiç imzalamadığı alanlar ekleyebilirdi. A8, adı örneğin `iss` ya da `vct` olan bir disclosure'ı reddeder; yoksa açıktaki alanın üstüne yazardı.
+Bunlardan ikisi ayrıca açıklanmayı hak ediyor. A5, özeti `_sd` içinde bulunmayan her disclosure'ı reddeder. Bunu kabul etseydi, herkes kurumun hiç imzalamadığı alanları belgeye ekleyebilirdi. A8 ise adı, örneğin, `iss` ya da `vct` olan bir disclosure'ı reddeder, çünkü böyle bir disclosure açıktaki bir alanın üzerine yazardı.
 
-Biçim katmanından sonra şema denetimleri (B1–B6: `vct`'yi çöz, bütünlük özetini katalogla karşılaştır, `extends` zincirini izle), imzalı güven listesine karşı güven denetimleri (C1–C4: kurum `iat` anında listede ve bu tür için yetkili miydi), iptal (D1–D6) ve doğrulayıcının kendi politikası (E1–E4) gelir. Sonuç üç değerlidir: kabul, ret ya da durum listesi gibi bir altyapıya ulaşılamadığında "şu an doğrulanamıyor". "Şu an denetleyemiyorum", hiçbir zaman "geçersiz" diye bildirilmez. Kod listesinin tamamı [doğrulama hattında](https://docs.tamga.network/tr/specifications/verification-api).
+Biçim katmanından sonra şema denetimleri gelir (B1–B6). Bu adımlarda `vct` çözülür, bütünlük özeti katalogla karşılaştırılır ve `extends` zinciri izlenir. Ardından imzalı güven listesine karşı güven denetimleri (C1–C4) yapılır ve kurumun `iat` anında listede bulunup bu tür için yetkili olup olmadığına bakılır. Sonra iptal denetimi (D1–D6) ve doğrulayıcının kendi politikası (E1–E4) çalışır. Sonuç üç değerden biridir. Belge kabul edilir, reddedilir ya da durum listesi gibi bir altyapıya ulaşılamadığında "şu an doğrulanamadı" sonucu verilir. "Şu an denetleyemiyorum" durumu hiçbir zaman "geçersiz" diye bildirilmez. Kodların tam listesini [doğrulama hattı](https://docs.tamga.network/tr/specifications/verification-api) belgesinde bulabilirsiniz.
 
-Bunların hepsini bizim kullandığımız baytlarla kendiniz koşturabilirsiniz: vektör, beş olumsuz durumu (KB-JWT yok, yanlış nonce, 301 saniye kaymış `iat`, eşleşmeyen disclosure, süresi geçmiş belge) ve koşucu, açık deponun [conformance klasöründe](https://github.com/tamga-network/tamga-network/tree/main/conformance).
+Bu denetimlerin hepsini bizim kullandığımız baytlarla kendiniz çalıştırabilirsiniz. Vektör, beş olumsuz durumu ve bunları çalıştıran betik açık deponun [conformance klasöründe](https://github.com/tamga-network/tamga-network/tree/main/conformance) duruyor. Olumsuz durumlar KB-JWT'nin eksik olması, nonce'un yanlış olması, `iat` değerinin 301 saniye kayması, eşleşmeyen bir disclosure ve süresi geçmiş bir belgedir.
 
 ## Tamga profili standarda göre neyi değiştiriyor?
 
 | Konu | Standart | Tamga |
 |---|---|---|
 | İmza | birçok algoritma | yalnız ES256 |
-| `_sd_alg` | birçok | `sha-256`, açıkça yazılır |
+| `_sd_alg` | birçok seçenek | `sha-256`, açıkça yazılır |
 | `typ` | `dc+sd-jwt` | `dc+sd-jwt`; `vc+sd-jwt` varsayılan olarak reddedilir |
-| Kurum anahtarı | `iss` metadata'sı, `x5c` ya da başka | `x5c` zorunlu, kök dahil değil |
+| Kurum anahtarı | `iss` metadata'sı, `x5c` ya da başka bir yol | `x5c` zorunlu, kök sertifika eklenmez |
 | Anahtar bağlama | isteğe bağlı | her belgede zorunlu |
 | Sahte özet | serbest | yasak |
 | `_sd` sırası | belirtilmemiş | sıralı |
 | `vct#integrity` | isteğe bağlı | zorunlu |
-| İç içe disclosure | serbest | en çok iki düzey |
+| İç içe disclosure | serbest | en fazla iki düzey |
 
-Geri kalan her şey RFC 9901 ve taslak 19'u izler. Tamga doğrulayıcısı, Tamga'nın kendi kurumundan farklı yazılmış disclosure'ları da doğrular, çünkü dizilerin değil dizgilerin özetini alır.
+Bunların dışındaki her konuda Tamga RFC 9901'e ve taslak 19'a uyuyor. Tamga doğrulayıcısı, Tamga'nın kendi kurumlarından farklı biçimde yazılmış disclosure'ları da doğrulayabiliyor, çünkü dizilerin değil dizgilerin özetini alıyor.
 
 ## Sık sorulan sorular
 
 ### Tamga belgelerini genel bir SD-JWT kütüphanesiyle doğrulayabilir miyim?
 
-Evet, disclosure dizgilerinin özetini geldiği gibi alıyor ve anahtar bağlamayı zorunlu tutmanıza izin veriyorsa. Üstüne Tamga profilinin denetimlerini ekleyin: yalnız ES256, listedeki bir köke varan `x5c` zinciri, yaprak sertifikadan kurum kimliği, zorunlu KB-JWT ve `vct#integrity`. `@tamga-network/sd-jwt` ve `@tamga-network/verifier` paketleri bunların hepsini yapar.
+Kütüphane disclosure dizgilerinin özetini geldiği gibi alıyor ve anahtar bağlamayı zorunlu tutmanıza izin veriyorsa doğrulayabilirsiniz. Bunun üzerine Tamga profilinin denetimlerini de eklemeniz gerekir. Yalnız ES256 kabul edilmeli, `x5c` zinciri listedeki bir köke ulaşmalı, kurum kimliği yaprak sertifikadan çıkarılmalı, KB-JWT ve `vct#integrity` de zorunlu tutulmalı. `@tamga-network/sd-jwt` ve `@tamga-network/verifier` paketleri bunların hepsini yapıyor.
 
 ### `aud` neden yalnız alan adı değil de tam istemci kimliği?
 
-Çünkü cüzdanın doğruladığı şey istemci kimliğidir. OpenID4VP'de doğrulayıcı `x509_hash:` ve sertifika parmak iziyle tanınır; KB-JWT'yi tam olarak bu değere bağlamak, gösterimi başka herkes için işe yaramaz kılar.
+Cüzdanın doğruladığı değer istemci kimliğidir. OpenID4VP'de doğrulayıcı, `x509_hash:` önekiyle ve sertifikasının parmak iziyle tanınır. KB-JWT'yi tam olarak bu değere bağlamak, gösterimi başka herkes için işe yaramaz hâle getirir.
 
 ### Bir alanı gizlemek kurumun imzasını değiştirir mi?
 
-Hayır. Gizlemek, disclosure'ı `~` ile birleşmiş dizgiden çıkarmaktır. İmzalı JWT hiçbir zaman yeniden imzalanmaz ya da değiştirilmez.
+Hayır. Bir alanı gizlemek, o alanın disclosure'ını `~` ile birleştirilmiş dizgiden çıkarmak demektir. İmzalı JWT hiçbir zaman yeniden imzalanmaz ya da değiştirilmez.
 
-### Neden 128 bitlik tuz?
+### Neden 128 bitlik tuz kullanılıyor?
 
-Doğum tarihi gibi düşük çeşitlilikli bir değerin özeti, bütün olası tarihler denenerek bulunabilirdi. Her disclosure için yeni bir 16 baytlık tuz bunu imkânsız kılar; aynı alanın iki belgede aynı özeti vermesini de önler.
+Tuz olmasaydı, doğum tarihi gibi az sayıda olası değeri olan bir alanın özeti, bütün olası tarihler denenerek bulunabilirdi. Her disclosure için yeniden üretilen 16 baytlık bir tuz bunu pratikte imkânsız hâle getiriyor. Aynı alanın iki farklı belgede aynı özeti üretmesini de önlüyor.
 
 ## Kaynaklar
 
@@ -218,5 +218,5 @@ Doğum tarihi gibi düşük çeşitlilikli bir değerin özeti, bütün olası t
 - [SD-JWT VC profili (SPEC-CRED-0002), Tamga Network belgeleri](https://docs.tamga.network/tr/specifications/sd-jwt-vc)
 - [Doğrulama hattı ve API (SPEC-API-0001), Tamga Network belgeleri](https://docs.tamga.network/tr/specifications/verification-api)
 - [Şema kataloğu (Type Metadata, vct#integrity), Tamga Network belgeleri](https://docs.tamga.network/tr/specifications/schema-catalog)
-- [Uyum vektörleri ve koşucu, Tamga Network deposu](https://github.com/tamga-network/tamga-network/tree/main/conformance)
+- [Uyum vektörleri ve çalıştırıcı betik, Tamga Network deposu](https://github.com/tamga-network/tamga-network/tree/main/conformance)
 - [`@tamga-network/sd-jwt`, Tamga Network belgeleri](https://docs.tamga.network/tr/packages/sd-jwt)

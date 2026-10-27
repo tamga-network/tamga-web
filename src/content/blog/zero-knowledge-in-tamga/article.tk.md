@@ -1,7 +1,7 @@
 ---
 title: "Tamga-da zero-knowledge: Longfellow, zynjyrlar, ynam sanawy"
 slug: zero-knowledge-in-tamga
-description: "Tamga Network “18 ýaşdan uly” barlagyny Longfellow zero-knowledge subutnamasy bilen nähili geçirýär, zynjyrlar näme üçin gol çekilen ynam sanawynda durýar we häzir näme işleýär."
+description: "Tamga Network-yň “18 ýaşdan uly” maglumatyny Longfellow zero-knowledge subutnamasy bilen nähili barlaýandygyny, zynjyrlaryň näme üçin gol çekilen ynam sanawynda durýandygyny we häzir nämäniň işleýändigini düşündirýäris."
 date: 2026-10-08
 lang: tk
 updated: 2026-10-19
@@ -12,41 +12,41 @@ related: status-list-privacy, iso-mdoc-deep-dive, openid4vp-dcql-deep-dive, add-
 
 <!-- Sources: ADR-0032 1.0.0 (plain summary; context: Longfellow open source Apache-2.0, foundation, EU age-verification profile and TS13 built on it, no trusted setup, v8 binds docType not namespace; Stage 1 measurements 518 ms / 211 ms / ~343 KB, negative tests; K1 longfellow-libzk-v1 ≥ v8; K2 circuits by digest in lotl.jws, update = list update + CHANGELOG; K3 first predicate age_over_18, equality predicates next, ranges and hiding the institution out of scope; K4 DCQL mso_mdoc_zk (TS13) + DC API, ~350 KB not in QR; K5 fallback batch copies; K6 no revocation, short-lived, accept_unrevocable_zk; K7 device key signature over SessionTranscript, public key hidden; K8/ZK6 unique attribute names; Stage 2b Android libraries built 2026-10-07, iOS pending; Stage 2c wallet wiring, proving off until phone libraries; Stage 3 verifier WASM 889 KB pinned d5e6be77, ~3 s desktop; native backend 0.2–0.3 s; INDETERMINATE SDK_VERSION_MISMATCH; ZK1–ZK6). @tamga-network/zk README (entry points, circuit files ~300 KB checked against list SHA-256, iOS available() false, any wallet). guides/verify-on-server (policy example, Z1, NOT_APPLICABLE, fallback age-over-18-mdoc). SPEC-API-0001 Z1 and INDETERMINATE list. ARF architecture §2.6, §2.8. Tamga Verify policy set age-over-18-zk with accept_unrevocable_zk: true. Live 2026-10-08: verify.tamga.network/policies lists age-over-18-zk; trust.tamga.network/lotl.json zk_circuits entry (id 5a8938…3c9291, v8, 1 attribute, ACTIVE, sha256 f44ab1…0d83); zk/<id>.zst 299,999 bytes, SHA-256 matches. External: Longfellow ZK GitHub (several independent security reviews), IACR ePrint 2024/2010 "Anonymous credentials from ECDSA", Google announcement of open-sourcing, EU TS13 (exploratory; to ETSI TS 119 476-2), EU age verification blueprint. -->
 
-Zero-knowledge subutnamasy (nol bilimli subutnama) gapjyga resminamanyň özüni görkezmezden ol hakda "bu adam 18 ýaşdan uly" ýaly bir tassyklamany subut etmäge mümkinçilik berýär. Tamga Network-da barlaýjy diňe hasaba alnan guramanyň şahsyýet resminamasynda `age_over_18 = true` ýazylandygyny öwrenýär. Ol doglan senesini, beýleki meýdanlary, guramanyň goluny ýa-da enjam açaryny görmeýär we şol bir adamyň iki görkezişini baglanyşdyryp bolmaýar. Tamga Longfellow ZK-ny guramanyň bar bolan [ISO mdoc](/blog/iso-mdoc-deep-dive) resminamasynyň üstünde ulanýar, şonuň üçin gurama hiç zady üýtgetmeýär. Barlaýjy tarapy Tamga Verify-da işleýär (`age-over-18-zk` syýasaty); kabul edilen subutnama zynjyrlary gol çekilen ynam sanawynda çap edilen; gapjyk tarapynda Android ýerli kitaphanasy taýýar, iOS kitaphanasy garaşylýar.
+Zero-knowledge subutnamasy (zero-knowledge proof) gapjyga resminama barada haýsydyr bir tassyklamany, mysal üçin "bu adam 18 ýaşdan uly" diýen tassyklamany, resminamanyň özüni görkezmezden subut etmäge mümkinçilik berýär. Tamga Network-da barlaýjy diňe hasaba alnan guramanyň şahsyýet resminamasynda `age_over_18 = true` ýazylandygyny bilýär. Doglan senesini, beýleki meýdanlary, guramanyň goluny ýa-da enjam açaryny görmeýär. Şol bir adamyň eden iki görkezişini hem biri-birine baglanyşdyryp bolmaýar. Tamga munuň üçin Longfellow ZK-ny guramanyň eýýäm berýän [ISO mdoc](/blog/iso-mdoc-deep-dive) resminamasynyň üstünde ulanýar, şonuň üçin gurama hiç zady üýtgetmeli bolmaýar. Barlaýjy tarapy Tamga Verify-da `age-over-18-zk` syýasaty bilen eýýäm işleýär we kabul edilen subutnama zynjyrlary gol çekilen ynam sanawynda çap edilýär. Gapjyk tarapynda bolsa Android üçin ýerli kitaphana taýýar, iOS kitaphanasyna entek garaşylýar.
 
 ## Subutnama hakykatdan näme subut edýär?
 
-18 ýaşdan uly meýdanynyň adaty görkezişi doglan senesini eýýäm gizleýär: gapjyk bir meýdany, `age_over_18`-i açýar we başga hiç zady açmaýar. Onuň gizläp bilmeýän zady guramanyň şol meýdanyň üstündäki golydyr we şol bir nusga her görkezilende ol gol birmeňzeşdir. Tamga her resminamany 10 nusga hökmünde berýär, şonuň üçin dürli barlaýjylar dürli gollary görýär. Bu işleýär, ýöne nusgalar gutarýar we olary täzelemeli bolýar.
+18 ýaş maglumatynyň adaty görkezilişi hem doglan senesini eýýäm gizleýär, sebäbi gapjyk diňe `age_over_18` meýdanyny açýar we başga hiç zady görkezmeýär. Bu usulyň gizläp bilmeýän zady guramanyň şol meýdanyň üstünden goýan goludyr. Şol bir nusga her gezek görkezilende bu gol hem birmeňzeş galýar. Tamga her resminamany 10 nusga görnüşinde berýändigi üçin dürli barlaýjylar dürli gollary görýär. Bu usul işe ýaraýar, ýöne nusgalar wagtyň geçmegi bilen gutarýar we olary täzelemeli bolýar.
 
-Zero-knowledge subutnamasy goly gözden doly aýyrýar. Gapjyk özündäki resminamanyň üstünde hasaplama geçirýär we hasaplamanyň dogry çykandygynyň subutnamasyny döredýär. Longfellow zynjyrynyň 8-nji wersiýasy bilen subutnama şulary baglaýar:
+Zero-knowledge subutnamasy bolsa goly doly görünmeýän edýär. Gapjyk elindäki resminamanyň üstünde hasaplama geçirýär we bu hasaplamanyň dogry netije berendigini görkezýän subutnama döredýär. Longfellow zynjyrynyň 8-nji wersiýasynda subutnama şu maglumatlara baglanýar:
 
 ![Zero-knowledge görkezişiniň näme görkezýändigi we näme gizleýändigi](/blog/zero-knowledge-in-tamga/en/fig-gosterir.png)
 
-- guramanyň açyk açary, barlaýjy ony ynam sanawy bilen gabat getirýär;
-- resminama görnüşi (mdoc docType);
-- meýdanyň ady we bahasy, bu ýerde `age_over_18` we `true`;
-- şu sessiýanyň ýazgysynyň (transcript) üstünden enjam açarynyň goly, şeýlelikde subutnama şu barlaýja we şu haýyşa baglanýar, enjamyň açyk açarynyň özi bolsa gizlin galýar;
-- subut edilýän pursatda resminamanyň güýjünde bolmagy.
+- guramanyň açyk açaryna; barlaýjy bu açary ynam sanawy bilen gabat getirýär;
+- resminama görnüşine (mdoc docType);
+- meýdanyň adyna we bahasyna, bu mysalda `age_over_18` we `true`;
+- enjam açarynyň şu sessiýanyň ýazgysynyň üstünden goýan goluna; şeýlelikde subutnama şu barlaýja we şu haýyşa baglanýar, enjamyň açyk açary bolsa gizlin galýar;
+- resminamanyň subutnama döredilen pursatyndaky güýjünde bolmagyna.
 
-Onuň baglamaýan zady resminamanyň içindäki at giňişligidir (namespace). Subutnama "bu guramanyň şu görnüşdäki resminamasynda haýsydyr bir at giňişliginde `age_over_18 = true` bar" diýýär. Tamga bu boşlugy katalog düzgüni bilen ýapýar: bir resminama görnüşiniň içinde meýdan ady diňe bir at giňişliginde bolup biler we shema katalogy muny gurlanda barlaýar (ZK6 düzgüni).
+Subutnamanyň baglamaýan ýeke-täk zady resminamanyň içindäki at giňişligidir (namespace). Subutnama "bu guramanyň bu görnüşdäki resminamasynda at giňişlikleriniň birinde `age_over_18 = true` ýazylan" diýen ýaly bolýar. Tamga bu boşlugy katalog düzgüni bilen ýapýar. Bir resminama görnüşinde meýdan ady diňe bir at giňişliginde bolup bilýär we shema katalogy muny gurlanda barlaýar (ZK6 düzgüni).
 
 ## Näme üçin Longfellow ZK?
 
-Birnäçe çemeleşme bar. Tamga üçin çözüji sorag guramalaryň gol çekiş usulyny üýtgetmeli bolup-bolmajakdygydy. Karar ýazgysy olary deňeşdirýär ([ADR-0032](https://docs.tamga.network/adr/0032-zk-mdoc-presentation)):
+Bu iş üçin birnäçe dürli çemeleşme bar. Tamga üçin kesgitleýji sorag guramalaryň resminama gol çekiş usulyny üýtgetmeli bolup-bolmajakdygydy. Karar ýazgysy saýlawlara şeýle baha berýär ([ADR-0032](https://docs.tamga.network/adr/0032-zk-mdoc-presentation)):
 
-| Görnüş | Netije | Näme üçin |
+| Saýlaw | Netije | Näme üçin |
 |---|---|---|
-| Longfellow ZK | kabul edildi | guramalar ES256 mdoc gollaryny saklaýar; ynamly gurnama (trusted setup) ýok; açyk çeşmeli; garaşsyz gözden geçirilen; ÝB-niň ýaş barlagy boýunça işi onuň üstünde gurulýar |
-| BBS gollary | ret edildi | guramalar açarlary we gol formatyny üýtgetmeli bolardy; ÝB-niň tassyklanan sanawynda ýok |
-| Diňe toplum nusgalary | ätiýaçlyk hökmünde saklandy | häzir işleýär, ýöne nusgalar gutarýar we gol her nusgada gaýtalanýar |
+| Longfellow ZK | kabul edildi | guramalar ES256 mdoc gollaryny saklaýar; ynamly gurnama (trusted setup) gerek däl; açyk çeşmeli; garaşsyz gözden geçirildi; ÝB-niň ýaş barlagy boýunça işi hem şonuň üstünde gurlan |
+| BBS gollary | ret edildi | guramalar açarlaryny we gol formatyny üýtgetmeli bolardy; ÝB-niň tassyklanan sanawynda ýok |
+| Diňe nusga bukjalary | ätiýaçlyk ýol hökmünde galdy | häzir işleýär, ýöne nusgalar gutarýar we her nusgada gol gaýtalanýar |
 
-[Longfellow ZK](https://github.com/longfellow-zk/longfellow-zk) ECDSA bilen gol çekilen mdoc resminamalary hakda tassyklamalary subut edýär. Ol Apache-2.0 boýunça açyk çeşme hökmünde çykaryldy ([yglan](https://blog.google/technology/safety-security/opening-up-zero-knowledge-proof-technology-to-promote-privacy-in-age-assurance/)), [Anonymous credentials from ECDSA](https://eprint.iacr.org/2024/2010) makalasynda beýan edilen we birnäçe garaşsyz howpsuzlyk gözden geçirişinden geçdi. Oňa ynamly gurnama gerek däl, şonuň üçin kimiňdir ony ýok edendigine ynanmaly gizlin dabara ýok. ÝB-niň gapjyklarda arifmetiki zynjyr subutnamalary üçin taslama tehniki spesifikasiýasy [TS13](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts13-zksnarks.md) şol bir çemeleşmäniň töwereginde ýazylan we henizem gözleg häsiýetinde; onuň indiki işi ETSI-ä geçýär.
+[Longfellow ZK](https://github.com/longfellow-zk/longfellow-zk) ECDSA bilen gol çekilen mdoc resminamalary baradaky tassyklamalary subut etmäge mümkinçilik berýär. Ol Apache-2.0 ygtyýarnamasy bilen açyk çeşme hökmünde çap edildi ([habarnama](https://blog.google/technology/safety-security/opening-up-zero-knowledge-proof-technology-to-promote-privacy-in-age-assurance/)), [Anonymous credentials from ECDSA](https://eprint.iacr.org/2024/2010) makalasynda beýan edildi we birnäçe garaşsyz howpsuzlyk barlagyndan geçdi. Ynamly gurnamany talap etmeýändigi üçin kimdir biriniň gizlin bahany ýok edendigine ynanmagyňyzy talap edýän dabara hem ýok. ÝB-niň gapjyklarda arifmetik zynjyrlara esaslanýan subutnamalar üçin taýýarlan tehniki spesifikasiýa taslamasy [TS13](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts13-zksnarks.md) hem şol bir çemeleşmäniň üstünde guruldy. Bu spesifikasiýa entek gözleg tapgyrynda we onuň üstündäki iş ETSI-de dowam eder.
 
-## Näme üçin zynjyrlar gol çekilen ynam sanawynda sanalýar?
+## Näme üçin zynjyrlar gol çekilen ynam sanawynda durýar?
 
-Zynjyr (circuit) subutnamanyň degişli bolan programmasydyr. Islendik zynjyry kabul edýän barlaýja onuň soranyndan başga bir zadyň subutnamasyny görkezip bolardy. Şonuň üçin Tamga barlaýjysy diňe toruň gözden geçiren we gol çekilen ynam sanawlarynyň sanawynda heşi bilen, `ACTIVE` ýagdaýynda çap eden zynjyrlaryny kabul edýär. Näbelli ýa-da işjeň däl zynjyr ret edilýär (ZK2 düzgüni).
+Zynjyr subutnamanyň üstünde gurlan programmasydyr. Islendik zynjyry kabul edýän barlaýja onuň soranyndan başga zadyň subutnamasy görkezilip bilnerdi. Şonuň üçin Tamga barlaýjysy diňe toruň gözden geçiren we gol çekilen sanawlaryň sanawynda heşi we `ACTIVE` ýagdaýy bilen çap eden zynjyrlaryny kabul edýär. Näbelli ýa-da işjeň bolmadyk zynjyr ret edilýär (ZK2 düzgüni).
 
-2026-njy ýylyň 8-nji oktýabryndaky işleýän ýazgy şu:
+2026-njy ýylyň 8-nji oktýabryndaky janly ýazgy şeýle:
 
 ```json title="trust.tamga.network/lotl.json → zk_circuits (işleýär, 2026-njy ýylyň 8-nji oktýabry)"
 {
@@ -59,39 +59,39 @@ Zynjyr (circuit) subutnamanyň degişli bolan programmasydyr. Islendik zynjyry k
 }
 ```
 
-Zynjyr faýlynyň özi sanawlaryň ýanynda `trust.tamga.network/zk/<circuit_id>.zst` salgysynda çap edilen, takmynan 300 KB we onda şahsy maglumat ýok. Gapjyk ony programmanyň içinde berip ýa-da ýükläp biler; islendik ýagdaýda ulanmazdan öň faýly gol çekilen sanawdaky `sha256` bilen barlaýar, şonuň üçin faýlyň nireden gelendigi nämä ynanylýandygyny üýtgetmeýär. Biz ýokarky senede çap edilen faýly sanaw bilen barladyk we heşler gabat gelýär.
+Zynjyr faýly sanawlar bilen bilelikde `trust.tamga.network/zk/<circuit_id>.zst` salgysynda çap edilýär. Faýl takmynan 300 KB tutýar we şahsy maglumat saklamaýar. Gapjyk faýly programmanyň içinde getirip ýa-da ýükläp alyp biler. Iki ýagdaýda hem faýly ulanmazdan öň gol çekilen sanawdaky `sha256` bahasy bilen deňeşdirýär. Şeýlelikde faýlyň nireden gelendigi nämä ynanylýandygyny üýtgetmeýär. Ýokardaky senede çap edilen faýly sanaw bilen deňeşdirdik we heşler gabat gelýär.
 
 ![Berkidilen kök barmak yzyndan kabul edilen subutnama çenli](/blog/zero-knowledge-in-tamga/en/fig-zincir.png)
 
-Zynjyry täzelemek sanawy täzelemekdir. Oňa täze arhitektura karary gerek däl, ýöne ol sanawdaky beýleki üýtgeşmeler ýaly täze gol çekilen sanaw wersiýasy hökmünde çap edilýär we açyk üýtgeşme žurnalyna ýazylýar ([Gol çekilen ynam sanawy nähili işleýär](/blog/how-trust-lists-work)).
+Zynjyryň täzelenmegi sanawyň täzelenmegi diýmekdir. Munuň üçin täze arhitektura karary gerek däl, ýöne sanawdaky her üýtgeşmede bolşy ýaly täze gol çekilen sanaw wersiýasy çap edilýär we üýtgeşme açyk üýtgeşmeler ýazgysyna ýazylýar ([Gol çekilen ynam sanawy nähili işleýär](/blog/how-trust-lists-work)).
 
 ## Barlaýjy subutnamany nähili barlaýar?
 
-Barlaýjy paketi Longfellow-yň diňe barlag koduny WebAssembly-ä terjime edýär. Modul 889 KB, daşarky baglylygy ýok, berkidilen esasy çeşme commit-inden gurulýar we ony gaýtadan birmeňzeş gurup bolýar. WebAssembly-de barlag iş stoly kompýuterinde takmynan 3 sekunt alýar. Köp mukdar üçin şol bir çeşmeden gurlan, takmynan 0,2–0,3 sekunt alýan ýerli (native) backend bar; Tamga Verify ony ulanýar we ýerli proses jogap bermese WebAssembly-ä geçýär. Islendik ýolda ýalňyşlyk hiç haçan "dogry" hasaplanmaýar.
+Barlaýjy paketi Longfellow-yň diňe barlag koduny WebAssembly-ä gurýar. Modul 889 KB tutýar, daşarky baglylygy ýok, berkidilen çeşme wersiýasyndan döredilýär we şol bir netijäni berjek görnüşde täzeden gurlup bilinýär. WebAssembly bilen bir barlag iş stoly kompýuterinde takmynan 3 sekunt dowam edýär. Köp mukdar üçin şol bir çeşmeden gurlan ýerli backend hem bar we barlagy takmynan 0,2–0,3 sekuntda geçirýär. Tamga Verify bu backend-i ulanýar we ýerli proses jogap bermese WebAssembly-ä geçýär. Iki ýolda hem ýalňyşlyk hiç haçan "dogry" netijesi hökmünde hasaplanmaýar.
 
-Barlag hatarynda bu `Z1` ädimidir. Ol dört zady soraýar: zynjyr gol çekilen sanawdamy we faýlyň heşi gabat gelýärmi; diňe soralan elementler bir at giňişliginden açyldymy; wagt belligi öz aralygynyň içindemi; subutnama dogrumy. Guramanyň golunyň, enjam golunyň we güýjünde bolýan döwrüň adaty barlaglary subutnamanyň içinde geçirilýär. `Z1`-den öň barlaýjy henizem jogaby açýar, docType-y barlaýar we guramany ynam sanawynda tapmak üçin guramanyň sertifikat zynjyryny okaýar ([verification API](https://docs.tamga.network/specifications/verification-api)).
+Barlag tertibinde bu ädimiň ady `Z1` we ädim dört soraga jogap gözleýär. Zynjyr gol çekilen sanawdamy we faýlyň heşi gabat gelýärmi? Diňe soralan elementler we bir at giňişliginden açyldymy? Wagt belligi rugsat berlen aralygyň içindemi? Subutnama dogrumy? Guramanyň goly, enjam goly we güýjünde bolýan möhlet barlaglary bolsa subutnamanyň içinde geçirilýär. `Z1` ädiminden öň barlaýjy ýene jogaby açýar, docType bahasyny barlaýar we guramany ynam sanawyndan tapmak üçin guramanyň sertifikat zynjyryny okaýar ([verification API](https://docs.tamga.network/specifications/verification-api)).
 
 ## Netije haçan INDETERMINATE we haçan REJECTED bolýar?
 
-Tamga zero-knowledge üçin hem üç bahaly netijäni saklaýar: barlaýjynyň tarapynda bir zat ýetmändigi üçin resminama hiç haçan galp diýilmeýär.
+Tamga zero-knowledge subutnamalarynda hem üç bahaly netijäni saklaýar. Barlaýjynyň tarapynda bir zat ýetmeýär diýip hiç bir resminama galp diýlip yglan edilmeýär.
 
 ![Zero-knowledge görkezişiniň netijeleri, ýagdaý boýunça](/blog/zero-knowledge-in-tamga/en/fig-sonuc.png)
 
 | Ýagdaý | Netije |
 |---|---|
-| Zynjyr gol çekilen sanawda ýok ýa-da `ACTIVE` däl | `REJECTED` |
-| Subutnama üýtgedilen, guramanyň açary nädogry, başga sessiýa ýa-da başga barlaýjy | `REJECTED` |
+| Zynjyr gol çekilen sanawda ýok ýa-da `ACTIVE` ýagdaýynda däl | `REJECTED` |
+| Subutnama üýtgedilen, guramanyň açary nädogry, başga sessiýa ýa-da başga barlaýja degişli | `REJECTED` |
 | Barlaýjynyň tarapynda zynjyr faýly ýa-da WebAssembly ýok | `INDETERMINATE` (`SDK_VERSION_MISMATCH`) |
-| Dogry subutnama, syýasatda `accept_unrevocable_zk: false` | `INDETERMINATE` (`STATUS_UNREACHABLE`) |
-| Dogry subutnama, syýasatda `accept_unrevocable_zk: true` | `ACCEPTED`, sebäbi bilen `NOT_APPLICABLE` ýagdaýy |
+| Subutnama dogry, syýasatda `accept_unrevocable_zk: false` | `INDETERMINATE` (`STATUS_UNREACHABLE`) |
+| Subutnama dogry, syýasatda `accept_unrevocable_zk: true` | `ACCEPTED`, sebäbi bilen `NOT_APPLICABLE` ýagdaýy |
 
-Ikinji setirdäki ret etmeler ilkinji iş stoly synagynda bilkastlaýyn synagdan geçirildi: üýtgedilen baha, nädogry gurama açary, başga sessiýanyň nonce bahasy, başga barlaýjy, "false" diýen resminamadan "true" talap etmek, başga docType we zaýalanan subutnama — hemmesi şowsuz boldy.
+Ikinji setirdäki ret ýagdaýlary ilkinji iş stoly synagynda bilkastlaýyn barlandy. Üýtgedilen baha, nädogry gurama açary, başga sessiýanyň nonce-y, başga barlaýjy, "false" ýazylan resminamadan edilen "true" tassyklamasy, başga docType we bozulan subutnama synanyldy we olaryň hemmesi barlagdan geçip bilmedi.
 
-## Näme üçin zero-knowledge görkezişi ýatyrylyşy görkezip bilmeýär?
+## Näme üçin zero-knowledge görkezişi ýatyrylyş ýagdaýyny görkezip bilmeýär?
 
-Ýatyrylyşy barlamak üçin barlaýja resminamanyň guramanyň [ýagdaý sanawyndaky](/blog/status-list-privacy) orny gerek. Ol orun her resminama üçin kesgitli, şonuň üçin ony açmak iki görkezişi ýene baglanyşdyrylýan ederdi; subutnama hut şonuň öňüni almak üçin bar. Şonuň üçin zynjyr ýatyrylyşy barlamaýar (ZK4 düzgüni).
+Ýatyrylyş ýagdaýyny barlamak üçin barlaýjy resminamanyň guramanyň [ýagdaý sanawyndaky](/blog/status-list-privacy) ornuny bilmeli. Bu orun her resminama üçin hemişelik bolany üçin, ony açmak iki görkezişi ýene-de biri-birine baglanyşdyryp bolýan ederdi. Subutnamanyň öňüni almak isleýän zady hem edil şu. Şonuň üçin zynjyr ýatyrylyş ýagdaýyny barlamaýar (ZK4 düzgüni).
 
-Tamga-nyň jogaby iki bölekden ybarat. Karar ([ADR-0044](https://docs.tamga.network/adr/0044-zk-short-lived-copies), ÝB ARF-iň gysga ömürli attestasiýa ýoly) zero-knowledge görkezişiniň diňe şahsyýet resminamasynyň iň köp 24 sagat güýjünde bolan we gapjygyň özi tarapyndan täzelenýän gysga ömürli nusgalaryny ulanmagydyr; resminama ýatyrylandan soň täze nusga berilmeýär, şonuň üçin soňkusy bir günüň içinde işlemegini bes edýär. **Täzelenme, 2026-njy ýylyň 19-njy oktýabry:** bu indi durmuşa geçirildi (0.4.0 paketleri, 2026-njy ýylyň 9-njy oktýabry). Zero-knowledge görkezişleri aýry resminama görnüşiniň gysga ömürli nusgalaryny ulanýar we Tamga Verify-yň `age-over-18-zk` syýasaty olary goşmaça baýdaksyz kabul edýär. Uzak ömürli resminamanyň üstündäki subutnama üçin syýasat henizem ýatyrylyşyny barlap bolmaýan görkezişi kabul edýändigini ýa-da etmeýändigini aç-açan aýtmaly; meýdan ýazylmasa, şu öňki mysaldaky ýaly `false` hasaplanýar:
+Tamga-nyň bu meselä jogaby iki bölekden ybarat. Karar ÝB ARF-iniň gysga ömürli attestasiýa ýoluna eýerýär ([ADR-0044](https://docs.tamga.network/adr/0044-zk-short-lived-copies)). Zero-knowledge subutnamasy bilen edilýän görkezişler diňe şahsyýet resminamasynyň gysga ömürli nusgalary bilen geçirilýär. Bu nusgalar iň köp 24 sagat güýjünde we gapjyk olary özi täzeleýär. Resminama ýatyrylanda täze nusga berilmeýär, şonuň üçin iň soňky nusga hem iň giç bir günüň içinde ulanyp bolmaýan ýagdaýa gelýär. **Täzelenme, 2026-njy ýylyň 19-njy oktýabry:** Bu usul indi ulanylýar (paketler 0.4.0, 2026-njy ýylyň 9-njy oktýabry). Zero-knowledge subutnamasy bilen edilýän görkezişler aýry görnüşdäki gysga ömürli nusgalar bilen geçirilýär we Tamga Verify-yň `age-over-18-zk` syýasaty bu nusgalary goşmaça sazlamasyz kabul edýär. Uzak ömürli resminamanyň üstündäki subutnamalarda bolsa syýasat ýatyrylyş ýagdaýyny barlap bolmaýan görkezişi kabul edýändigini ýa-da etmeýändigini ýene aç-açan görkezmeli. Bu meýdan ýazylmasa, onuň bahasy `false` hasaplanýar. Aşakdaky köne mysalda hem ýagdaý şeýle:
 
 ```ts title="Zero-knowledge subutnamasy bilen 18 ýaşdan uly barlagy üçin syýasat"
 const policy: Policy = {
@@ -111,62 +111,62 @@ const policy: Policy = {
 };
 ```
 
-Ýatyrylyş barlanmaly saýt onuň ýerine adaty `mso_mdoc` syýasatyny ulanýar. Gizlin ýatyrylyş subutnamasy ÝB TS13 üçin ýatyrylyş shemasyny kesgitländen soň öz kararyny alar.
+Ýatyrylyş ýagdaýy hökman barlanmaly saýt munuň deregine adaty `mso_mdoc` syýasatyny ulanýar. Ýatyrylyşy gizlinligi bozmazdan subut etjek subutnama üçin bolsa ÝB TS13-däki ýatyrylyş tertibini anyklanda aýratyn karar kabul ediler.
 
 ## Saýt subutnamany nähili soraýar?
 
-Haýyş TS13-däki ýaly formaty `mso_mdoc_zk` bolan DCQL soragy bilen [OpenID4VP](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html)-ni ulanýar; brauzeriň Digital Credentials API-si ikinji ulag ýoludyr (barlaýjy tarapynda taýýar; gapjyklar oňa entek birikdirilmedi). Subutnama takmynan 350 KB, şonuň üçin ony QR kodunda göterip bolmaýar. Bluetooth arkaly ýüzbe-ýüz barlaglar üçin karar enjamdaky ölçeglere garaşýar.
+Haýyş [OpenID4VP](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html) arkaly, TS13-däki ýaly formaty `mso_mdoc_zk` bolan DCQL soragy bilen geçirilýär. Ikinji daşaýyş ýoly brauzeriň Digital Credentials API-sidir. Barlaýjy tarapy bu ýola hem taýýar, ýöne gapjyklar entek oňa birikdirilmedi. Subutnama takmynan 350 KB tutýandygy üçin QR koduna sygmaýar. Bluetooth arkaly geçiriljek ýüzbe-ýüz barlaglar üçin bolsa karar enjamlarda geçiriljek ölçeglere garaşýar.
 
-Tamga Verify-da zero-knowledge we adaty barlaglar iki aýry syýasatdyr, ikisi hem `verify.tamga.network/policies` salgysynda sanalýar: `age-over-18-zk` we `age-over-18-mdoc`. Adamyň gapjygy subutnama döredip bilmese, saýt bu ýola rugsat berýän bolsa, adaty syýasat bilen ýene sorap biler. Şol adaty ýol hem diňe `age_over_18` meýdanyny açýar; onuň goşýan zady adamyň nusgalarynyň biriniň üstündäki guramanyň golydyr. Muny saýta nähili birikdirmelidigi [Web saýtyňyza ýa-da programmaňyza "Tamga bilen barla" goşuň](/blog/add-verification-to-your-site) ýazgysynda.
+Tamga Verify-da zero-knowledge barlagy bilen adaty barlag iki aýry syýasat hökmünde kesgitlenen we ikisi hem `verify.tamga.network/policies` salgysynda sanalýar. Bular `age-over-18-zk` we `age-over-18-mdoc`. Adamyň gapjygy subutnama döredip bilmese, saýt bu ýola rugsat berýän bolsa, şol bir soragy adaty syýasat bilen täzeden berip biler. Adaty ýol hem diňe `age_over_18` meýdanyny açýar. Goşmaça görkezýän ýeke-täk zady adamyň nusgalarynyň birindäki guramanyň golydyr. Muny saýta nähili birikdirmelidigini [Web saýtyňyza ýa-da programmaňyza "Tamga bilen barla" goşuň](/blog/add-verification-to-your-site) ýazgysynda düşündirdik.
 
 ## Gapjyk tarapy häzir nirede?
 
-Subutnama döretmek açyk tor paketi bolan `@tamga-network/zk`-dir, şeýlelikde toruň her gapjygy şol bir subut edijini ulanýar; bu bir gapjygyň aýratynlygy däl. Paketiň üç giriş nokady bar: DCQL soragyny subut ediljek meýdanlara öwürýän, ynam sanawyndan zynjyry saýlaýan we ony heş bilen barlaýan arassa TypeScript özeni; React Native üçin enjamdaky subut ediji; synaglar we laýyklyk barlaglary üçin iş stoly subut edijisi.
+Subutnama döretmek toruň açyk çeşmeli paketleriniň biri bolan `@tamga-network/zk` içinde ýerleşýär. Şonuň netijesinde tordaky her gapjyk şol bir subut edijini ulanýar we subutnama döretmek bir gapjygyň aýratynlygy bolmaýar. Paketiň üç giriş nokady bar. Arassa TypeScript bilen ýazylan özen DCQL soragyny subut ediljek meýdanlara öwürýär, ynam sanawyndan zynjyry saýlaýar we zynjyry heşi bilen barlaýar. React Native üçin enjamda işleýän subut ediji we synaglar hem-de laýyklyk barlaglary üçin iş stoly subut edijisi hem bar.
 
-Gapjyk ilki sessiýa üçin hemişeki ýaly enjam açary we telefon gulpy bilen adaty enjam gol çekilen jogabyny döredýär. Subut ediji şol jogaby giriş hökmünde alýar we telefondan diňe subutnama çykýar.
+Gapjyk ilki sessiýa üçin adaty enjam goly bilen jogabyny döredýär. Munuň üçin enjam açary we telefonyň gulpy hemişeki ýaly ulanylýar. Subut ediji bu jogaby giriş hökmünde alýar we telefondan daşaryk diňe subutnama çykýar.
 
 | Bölek | 2026-njy ýylyň 8-nji oktýabryndaky ýagdaýy |
 |---|---|
 | Barlaýjy (`@tamga-network/verifier/zk`, Tamga Verify `age-over-18-zk`) | işleýär |
-| Gol çekilen ynam sanawyndaky kabul edilen zynjyr | işleýär |
+| Gol çekilen ynam sanawynda kabul edilen zynjyr | işleýär |
 | Subut ediji paket, TypeScript özeni we iş stoly subut edijisi | taýýar |
 | Android ýerli kitaphanasy (arm64-v8a, armeabi-v7a, x86_64) | guruldy |
 | iOS kitaphanasy | garaşylýar; ony gurmak üçin macOS gerek |
-| Enjam synagy we enjamdaky ölçegler | programma dükanyna çykarylanda |
+| Enjam synaglary we enjamdaky ölçegler | programma dükanyndaky wersiýa bilen bilelikde |
 
-iOS kitaphanasy bolýança, paketli iOS programmasy adaty gurulýar we subut edijiniň ýokdugyny habar berýär, gapjyk bolsa adaty ýol bilen görkezýär. Toruň gapjyklarynyň biri bolan Tamga Wallet-de subut ediji birikdirilen; onuň Android gurluşy subutnamany döredýär, iPhone-da bolsa iOS kitaphanasy bolýança diňe hawa/ýok meýdanyny iberýär (täzelenme, 2026-njy ýylyň 19-njy oktýabry).
+iOS kitaphanasy çykýança bu paketi öz içine alýan iOS programmasy adaty görnüşde gurulýar, subut edijiniň ýokdugyny habar berýär we gapjyk resminamany adaty ýol bilen görkezýär. Tordaky gapjyklaryň biri bolan Tamga Wallet-e subut ediji goşuldy. Programmanyň Android wersiýasy subutnamany döredýär, iPhone-da bolsa iOS kitaphanasy çykýança diňe hawa/ýok meýdany iberilýär (täzelenme, 2026-njy ýylyň 19-njy oktýabry).
 
-Ululyk barada düşünje bermek üçin: iş stoly kompýuterindäki ilkinji synagda subutnamany döretmek 518 ms, ony ýerli barlamak 211 ms aldy, subutnama takmynan 343 KB boldy. Telefon görkezijileri enjam synaglaryndan soň çap ediler.
+Göz öňüne getirmek üçin aýtsak, iş stoly kompýuterinde geçirilen ilkinji synagda subutnamany döretmek 518 ms, ony ýerli barlamak bolsa 211 ms dowam etdi. Subutnamanyň ululygy takmynan 343 KB boldy. Telefonlardaky görkezijiler enjam synaglaryndan soň çap ediler.
 
 ## Ol entek näme edip bilmeýär?
 
-- **Diňe deňlik.** Häzirki şertler (predicate) şol bir zynjyr bilen subut edilýän `age_over_18 = true` we `age_over_15 = true` ([ADR-0064](https://docs.tamga.network/adr/0064-age-over-15-threshold)). Indiki nobatda `age_over_21`, raýatlyk we bilim resminamalarynda okaýandygy ýa-da uçurandygy, hemmesi deňlik barlaglary. Aralyklar ("şu seneden öň doglan") entek Longfellow-da ýok.
-- **Gurama görünýär.** Barlaýjy resminamany haýsy guramanyň berendigini henizem öwrenýär. "Haýsydyr bir akkreditasiýaly gurama" diýip, ony atlandyrman subut etmek häzirlikçe gerimden daşarda.
-- **Ýatyrylyş barlagy ýok**, ýokarda düşündirilişi ýaly; onuň ornuny iň köp 24 sagatlyk gysga ömürli nusgalar tutýar (2026-njy ýylyň oktýabrynda durmuşa geçirildi), gizlin ýatyrylyş subutnamasy bolsa ÝB-ä garaşýar.
-- **Ululyk.** Her subutnama üçin takmynan 350 KB QR kodlaryny aradan aýyrýar.
+- **Diňe deňlik barlanýar.** Häzirki predikatlar `age_over_18 = true` we `age_over_15 = true` we ikisi hem şol bir zynjyr bilen subut edilýär ([ADR-0064](https://docs.tamga.network/adr/0064-age-over-15-threshold)). Nobatda `age_over_21`, raýatlyk we bilim resminamalarynda okuwa kabul edilmek ýa-da uçurym bolmak maglumaty bar we olaryň hemmesi hem deňlik barlagydyr. "Şu seneden öň doglan" ýaly aralyk barlaglary bolsa Longfellow-da entek ýok.
+- **Gurama görünýän bolup galýar.** Barlaýjy resminamany haýsy guramanyň berendigini ýene bilýär. Guramanyň adyny aýtmazdan "akkreditirlenen gurama" diýmek häzirlikçe gerimden daşarda.
+- **Ýatyrylyş barlagy ýok.** Ýokarda düşündirişimiz ýaly, munuň deregine iň köp 24 sagat güýjünde bolan gysga ömürli nusgalar ulanylýar (2026-njy ýylyň oktýabrynda durmuşa geçirildi). Ýatyrylyşy gizlinligi bozmazdan subut etjek subutnama bolsa ÝB-niň kararyna garaşýar.
+- **Ululyk.** Her subutnama üçin takmynan 350 KB QR koduny ulanmagy aradan aýyrýar.
 - **iOS** entek taýýar däl.
 
 ## Köp berilýän soraglar
 
-### Zero-knowledge subutnamalary üçin gurama bir zady üýtgetmelimi?
+### Zero-knowledge subutnamasy üçin gurama bir zady üýtgetmelimi?
 
-Ýok. Gurama öňküsi ýaly mdoc resminamalaryna ES256 bilen gol çekmegini dowam etdirýär. Zero-knowledge diňe gapjykda we barlaýjyda ýaşaýar (ZK1 düzgüni).
+Ýok. Gurama mdoc resminamalaryna öňküsi ýaly ES256 bilen gol çekmegini dowam etdirýär. Zero-knowledge subutnamasy diňe gapjykda we barlaýjyda işe girýär (ZK1 düzgüni).
 
-### Barlaýjy 18 ýaşdan uly subutnamasyndan näme öwrenýär?
+### Barlaýjy 18 ýaş subutnamasyndan näme bilýär?
 
-Hasaba alnan guramanyň şahsyýet resminamasynda `age_over_18 = true` ýazylandygyny we subutnamanyň şu sessiýa üçin edilendigini. Başga hiç zat: doglan senesi ýok, başga meýdan ýok, gol bahasy ýok, enjam açary ýok.
+Hasaba alnan guramanyň şahsyýet resminamasynda `age_over_18 = true` ýazylandygyny we subutnamanyň şu sessiýa üçin döredilendigini bilýär. Mundan başga hiç zat bilmeýär. Doglan senesini, başga meýdany, gol bahasyny ýa-da enjam açaryny görmeýär.
 
 ### Iki saýt şol bir adamyň ikisine hem ýaşyny subut edendigini bilip bilermi?
 
-Subutnamadan bilip bilmez. Her subutnama täze we onda görkezişleriň arasynda gaýtalanýan kesgitli baha ýok.
+Subutnama seredip bilip bilmez. Her subutnama täzeden döredilýär we görkezişleriň arasynda gaýtalanýan hemişelik bahany saklamaýar.
 
-### Zero-knowledge barlagy işleýärmi?
+### Zero-knowledge barlagy eýýäm işleýärmi?
 
-Barlaýjy tarapy Tamga Verify-da `age-over-18-zk` syýasaty bilen işleýär. Gapjyklara subut ediji gerek: Android kitaphanasy taýýar, iOS garaşylýar.
+Barlaýjy tarapy Tamga Verify-da `age-over-18-zk` syýasaty bilen işleýär. Gapjyklara bolsa subut ediji gerek. Android kitaphanasy taýýar, iOS kitaphanasyna garaşylýar.
 
 ### Gapjygym subutnama döredip bilmese näme bolýar?
 
-Saýt rugsat berýän bolsa, ol adaty barlag bilen ýene soraýar. Şonda gapjygyňyz nusgalaryňyzyň birinden diňe `age_over_18` meýdanyny açýar.
+Saýt rugsat berýän bolsa, şol bir soragy adaty barlag bilen täzeden berýär. Bu ýagdaýda gapjygyňyz nusgalaryňyzyň birinden diňe `age_over_18` meýdanyny açýar.
 
 ## Çeşmeler
 

@@ -1,7 +1,7 @@
 ---
-title: Gurama Tamga Network-a nähili goşulýar
+title: Gurama Tamga Network-a nähili goşulýar?
 slug: join-as-an-institution
-description: "Gurama Tamga Network-a nähili goşulýar: sandbox-da synap görmek, hasaba alyş maglumatlary we CSR bilen ýüz tutmak, sanawa girmek, ilkinji resminamany bermek."
+description: "Guramanyň Tamga Network-a nähili goşulýandygyny düşündirýäris: sandbox-da synap görmek, hasaba alyş maglumatlary we CSR bilen ýüz tutmak, ynam sanawyna girmek we ilkinji resminama."
 date: 2026-10-08
 updated: 2026-10-23
 lang: tk
@@ -12,13 +12,13 @@ related: what-is-a-trust-network, how-trust-lists-work, add-verification-to-your
 
 <!-- Sources: GUIDE-0007 join-as-institution 1.0.0 (roles and classes, application JSON, ADR-0024 mandatory data, two P-256 keys, CSR, HSM/KMS, certificate 2 years / max 3, registrar reports all gaps at once, live within 24 h, issuer_id from certificate, WRPRC, per-type authorisation, ended authorisation not deleted, hosted vs own server, identity proofing SPEC-ID-0003, statuses table, status at time of issuance); GUIDE-0013 sandbox §9 (test institution: made-up name, "(TEST)" added, no email/phone/person name, real names and official words refused, passkey invite, CSV up to 200 rows, ID-number checksum refused, desk issuance QR + PIN, verify at example verifiers; limits 30 / 10 per 10 min / 200 records / 100 offers per hour; nightly deletion; education type only today); ADR-0041; ADR-0019 (Institution Console: passkey, records, revocation, API keys, users); ADR-0016 (scoped API key); ADR-0020 (authentic source, no register of people); tamga-web join page (participation agreement, DPA when hosted, privacy notice, proof of entitlement, lookup endpoint OpenAPI, statistics never personal data, partners@tamga.network, 6 steps: scope, type, legal, registration, integration, pilot then live). External: CIR (EU) 2025/848, ETSI TS 119 475. -->
 
-Gurama Tamga Network-a iki tapgyrda goşulýar. Ilki ol tutuş akymy sandbox-da synap görýär: ol ýerde birnäçe minutda synag guramasyny özi açyp, oýlanyp tapylan ýazgylardan gapjyga resminama berip bilýär. Soňra ol hasaba alyş maglumatlary we sertifikata gol çekmek haýyşy bilen hakyky tora ýüz tutýar; hasaba alyjy faýly barlaýar, kök sertifikat edarasy guramanyň sertifikatyna gol çekýär we gurama 24 sagadyň içinde belli resminama görnüşleri üçin ygtyýarly bolup gol çekilen ynam sanawynda peýda bolýar. Şondan soň ol resminamalary ýerleşdirilen hyzmat we Institution Console arkaly ýa-da öz serwerinden berýär.
+Gurama Tamga Network-a iki tapgyrda goşulýar. Ilki bilen tutuş işi sandbox-da synap görýär. Ol ýerde birnäçe minudyň içinde öz synag guramasyny açýar we oýlanyp tapylan ýazgylardan gapjyga resminama berýär. Soňra hasaba alyş maglumatlaryny we sertifikata gol çekmek haýyşyny iberip, hakyky tora ýüz tutýar. Hasaba alyş edarasy faýly barlaýar, kök sertifikat edarasy guramanyň sertifikatyna gol çekýär we gurama 24 sagadyň içinde gol çekilen ynam sanawyna girýär. Sanawda onuň haýsy resminama görnüşlerini bermäge ygtyýarlydygy hem ýazylýar. Mundan soň gurama resminamalaryny ýerleşdirilen hyzmat we Institution Console arkaly ýa-da öz serwerinden berip bilýär.
 
 ![Sandbox synagyndan ilkinji resminama çenli dört ädim](/blog/join-as-an-institution/en/fig-yol.png)
 
 ## Haýsy guramalar goşulyp biler?
 
-Adamlaryň bir zady subut etmek üçin gerek bolan resminamalaryny berýän islendik gurama: uniwersitetler we mekdepler, hassahanalar we hünär palatalary, döwlet edaralary, kompaniýalar (işgär we ygtyýarnama resminamalary) we çäre gurnaýjylar (adama baglanan biletler). Sanawda her guramanyň ugry (`EDUCATION`, `HEALTH`, `GOVERNMENT`, `FINANCE`, `LOGISTICS`, `EVENTS`, `IDENTITY`, `OTHER`) we synpy bar:
+Adamlaryň bir zady subut etmek üçin zerur tapýan resminamalaryny berýän her gurama goşulyp biler. Uniwersitetler we mekdepler, hassahanalar we hünär palatalary, döwlet edaralary, işgär we ygtyýarlyk resminamalaryny berýän kompaniýalar we adama bagly bilet satýan çäre guramaçylary munuň mysallarydyr. Sanawda her guramanyň bir ugry (`EDUCATION`, `HEALTH`, `GOVERNMENT`, `FINANCE`, `LOGISTICS`, `EVENTS`, `IDENTITY`, `OTHER`) we bir synpy bolýar:
 
 | Synp | Manysy |
 |---|---|
@@ -26,34 +26,34 @@ Adamlaryň bir zady subut etmek üçin gerek bolan resminamalaryny berýän isle
 | `QUALIFIED` | kwalifisirlenen resminama |
 | `EAA` | talyp resminamasy ýa-da bilet ýaly adaty elektron attestasiýa |
 
-Goşulmak guramany ýazga alýar; oňa öňden bolmadyk hukuklary bermeýär. Diplom bermek hukugy uniwersiteti dolandyrýan kanundan gelýär. Toruň işi şol hukugy maşyn bilen barlap bolar ýaly etmekdir.
+Tora goşulmak guramany ýazga geçirýär, ýöne oňa öň bolmadyk ygtyýary bermeýär. Mysal üçin, diplom bermek hukugy uniwersitetiň tabyn bolan kanunyndan gelýär. Tor bolsa bu hukugyň maşyn tarapyndan barlanyp bilinmegini üpjün edýär.
 
-Resminama bermegiň ýerine ony barlamak isleýän guramalar (iş berijiler, web saýtlar, gapylar) hasaba alnan barlaýjy hökmünde goşulýar. Ol ýol [Web saýtyňyza ýa-da programmaňyza "Tamga bilen barla" goşuň](/blog/add-verification-to-your-site) ýazgysynda.
+Resminama bermegiň deregine resminamalary barlamak isleýän guramalar, mysal üçin iş berijiler, web saýtlar ýa-da giriş gapylary, tora hasaba alnan barlaýjy hökmünde goşulýar. Bu ýoly [Web saýtyňyza ýa-da programmaňyza "Tamga bilen barla" goşuň](/blog/add-verification-to-your-site) ýazgysynda düşündirdik.
 
-## Gurama ýüz tutmazdan öň ony nähili synap görüp biler?
+## Gurama ýüz tutmazdan öň nähili synap görüp biler?
 
-Sandbox-da, ýagny toruň [sandbox.tamga.network](https://sandbox.tamga.network) salgysyndaky aýry synag gurşawynda. Ol ýerdäki hiç zat hakyky tora degmeýär: onuň öz synag kök sertifikaty bar, sanawlary synag sanawy diýlip bellenen we hakyky barlaýjy onuň resminamalaryny kabul etmeýär.
+Gurama hemme zady toruň aýry synag gurşawy bolan sandbox-da synap görüp biler: [sandbox.tamga.network](https://sandbox.tamga.network). Ol ýerdäki hiç bir amal hakyky tora täsir etmeýär. Sandbox-yň öz synag kök sertifikaty bar, sanawlary synag sanawy hökmünde bellenýär we hakyky barlaýjy ondan alnan resminamalary kabul etmeýär.
 
 Synag birnäçe minut alýar ([sandbox gollanmasy, §9](https://docs.tamga.network/guides/sandbox)):
 
-1. Sandbox sahypasynda **Try your institution** düwmesini saýlaň we oýlanyp tapylan gurama adyny ýazyň; oňa "(TEST)" goşulýar. E-poçta, telefon belgisi ýa-da şahsy at soralmaýar. Hakyky guramalaryň atlary we resmi edara sözleri ret edilýär.
-2. Synag guramasy sandbox-yň synag guramalary sertifikat edarasyndan alnan öz gol sertifikaty bilen sandbox ynam sanawyna derrew goşulýar.
+1. Sandbox sahypasynda **Try your institution** düwmesini saýlaň we oýlanyp tapylan gurama adyny ýazyň. Adyň soňuna "(TEST)" goşulýar. Sizden e-poçta, telefon belgisi ýa-da şahsy at soralmaýar. Hakyky guramalaryň atlary we resmi edaralary ýatladýan sözler kabul edilmeýär.
+2. Synag guramasy derrew sandbox-yň ynam sanawyna goşulýar. Guramanyň gol sertifikatyny sandbox-yň synag guramalary üçin bölünip berlen sertifikat edarasy berýär.
 3. Bir gezeklik çakylyk salgysy bilen Institution Console-y açyň we passkey dörediň.
-4. Ýazgylary bir-birden giriziň ýa-da CSV faýlyny ýükläň (200 setire çenli). Türk şahsyýet belgisiniň barlag jemini (checksum) geçýän belgi bolan ýazgy ret edilýär, şonuň üçin diňe bilkastlaýyn nädogry belgiler girýär.
-5. Ýazgynyň ýanyndaky **Issue at the desk** saýlaň, sandbox-a birikdirilen gapjyk bilen QR koduny skanirläň we PIN-i giriziň.
+4. Ýazgylary bir-birden giriziň ýa-da iň köp 200 setirlik CSV faýlyny ýükläň. Türk şahsyýet belgisiniň barlag jemini (checksum) geçýän belgini saklaýan ýazgylar ret edilýär, şonuň üçin ulgama diňe bilkastlaýyn nädogry ýazylan belgiler girip bilýär.
+5. Ýazgynyň ýanyndaky **Issue at the desk** düwmesini saýlaň, sandbox-a birikdirilen gapjyk bilen QR kody skanirläň we PIN-i giriziň.
 6. Resminamany sandbox sahypasyndaky "Diploma check" ýa-da "Student discount" nusga barlaýjysyna görkeziň.
 
-Häzir synag guramasy bilim guramasydyr (talyp resminamasy we diplom). Hemme zat (gurama, onuň hasaby, ýazgylary we sertifikatlary) her gije pozulýar. Çäkler adalatlylygy saklaýar: bir wagtda iň köp 30 synag guramasy, her birinde 200 ýazgy we sagatda 100 teklip.
+Häzir synag guramasy bilim guramasy hökmünde açylýar we talyp resminamasy bilen diplom berip bilýär. Gurama, onuň hasaby, ýazgylary we sertifikatlary her gije pozulýar. Gurşawyň hemmeler üçin ulanmaga ýaramly galmagy üçin käbir çäkler hem bar. Bir wagtda iň köp 30 synag guramasy açylyp bilner, olaryň her birinde iň köp 200 ýazgy bolup biler we sagatda iň köp 100 teklip döredilip bilner.
 
-> **Bellik:** Sandbox-a diňe oýlanyp tapylan maglumatlary giriziň. Bu synag tory: onuň hyzmat borçnamasy ýok we her gije Türkiýe wagty bilen 03:30-da täzeden başlaýar.
+> **Bellik:** Sandbox-a diňe oýlanyp tapylan maglumat giriziň. Sandbox synag torudyr, hyzmat borçnamasy ýok we her gije Türkiýe wagty bilen sagat 03:30-da arassalanýar.
 
 ## Hakyky tora ýüz tutmakda näme bar?
 
-Arza üç görnüşli mazmuny bolan bir faýldyr: gurama kim, ol näme berer we onuň maglumatlary nireden gelýär.
+Arza bir faýldan ybarat we üç görnüşli maglumaty göterýär. Faýl guramanyň kimdigini, haýsy resminamalary berjekdigini we şol resminamalardaky maglumatlaryň nireden geljekdigini düşündirýär.
 
 ![Guramanyň arzasy üçin taýýarlamaly zatlary](/blog/join-as-an-institution/en/fig-gerekenler.png)
 
-Hasaba alyş maglumatlary ÝB-niň gatnaşyjylar üçin umumy maglumat toplumydyr: hukuky we söwda ady, resmi belgisi (salgyt belgisi ýa-da söwda sanawynyň belgisi), poçta salgysy, habarlaşmak üçin maglumat we adamlaryň arz edip biljek maglumatlary goramak edarasy ([ADR-0024](https://docs.tamga.network/adr/0024-participant-registration-data)). Şol bir model [(ÝB) 2025/848 Ýerine ýetiriş regulamentinde](https://eur-lex.europa.eu/eli/reg_impl/2025/848/oj) ÝB gapjyklaryna daýanýan taraplar üçin ulanylýar. Bir meýdan ýetmese ýazgy edilmeýär we hasaba alyjy ähli boşluklary birbada sanaýar.
+Hasaba alyş maglumatlary ÝB-niň gatnaşyjylar üçin kesgitlän umumy maglumat toplumyndan ybarat. Bular hukuky we söwda ady, resmi belgi (salgyt belgisi ýa-da söwda sanawynyň belgisi), poçta salgysy, habarlaşmak üçin maglumat we adamlaryň arz edip bilýän maglumatlary goramak edarasydyr ([ADR-0024](https://docs.tamga.network/adr/0024-participant-registration-data)). ÝB hem gapjyga daýanýan taraplar üçin şol bir modeli [(ÝB) 2025/848 Ýerine ýetiriş regulamenti](https://eur-lex.europa.eu/eli/reg_impl/2025/848/oj) bilen ulanýar. Bir meýdan ýetmese, ýazgy edilmeýär we hasaba alyş edarasy ähli kemçilikleri bir gezekde habar berýär.
 
 ```json title="Gysgaldylan mysal: arza faýly (oýlanyp tapylan gurama)"
 {
@@ -70,17 +70,17 @@ Hasaba alyş maglumatlary ÝB-niň gatnaşyjylar üçin umumy maglumat toplumydy
 }
 ```
 
-Doly nusga işläp düzüjiler üçin gollanmada: [Tora gurama hökmünde goşulmak](https://docs.tamga.network/guides/join-as-institution).
+Mysalyň doly görnüşini [Tora gurama hökmünde goşulmak](https://docs.tamga.network/guides/join-as-institution) atly işläp düzüjiler gollanmasynda tapyp bilersiňiz.
 
-Şol faýldaky iki setir toruň nähili işleýändigi barada köp zat aýdýar. `vcts` guramanyň bermek isleýän resminama görnüşlerini sanaýar; olar açyk [shema katalogyndan](https://docs.tamga.network/specifications/schema-catalog) saýlanýar; täze görnüş ilki öz tassyklamasyndan geçýär. `authentic_source` maglumatlaryň hakykatdan gelýän ulgamyny görkezýär. Toruň adamlaryň hasaba alyş kitaby ýok: resminama berlende maglumatlar guramanyň öz ulgamyndan, guramanyň özüniň dolandyrýan nokady arkaly okalýar ([ADR-0020](https://docs.tamga.network/adr/0020-authentic-source-at-institution)).
+Faýldaky iki setir toruň nähili işleýändigini gowy görkezýär. `vcts` guramanyň bermek isleýän resminama görnüşlerini sanaýar. Bu görnüşler açyk [shema katalogyndan](https://docs.tamga.network/specifications/schema-catalog) saýlanýar we täze görnüş goşuljak bolsa, ilki öz tassyklaýyş işinden geçýär. `authentic_source` bolsa maglumatlaryň hakykatda gelýän ulgamynyň adyny görkezýär. Tor adamlar bilen bagly hiç hili ýazgy saklamaýar. Resminama berlende maglumatlar guramanyň öz ulgamyndan, guramanyň gözegçilik edýän nokady arkaly okalýar ([ADR-0020](https://docs.tamga.network/adr/0020-authentic-source-at-institution)).
 
-Faýl bilen bilelikde hukuky bölekler gelýär: gatnaşmak şertnamasy, ýerleşdirilen hyzmat ulanylsa maglumatlary işlemek şertnamasy (gurama maglumatlara jogapkär bolup galýar), resminama berýän adamlary üçin täzelenen gizlinlik beýannamasy we guramanyň resminamany bermäge hukugynyň bardygynyň subutnamasy.
+Faýl bilen bilelikde hukuky resminamalar hem iberilýär. Bular gatnaşyk şertnamasy, ýerleşdirilen hyzmat ulanyljak bolsa maglumatlary işlemek baradaky şertnama, resminama beriljek adamlar üçin täzelenen gizlinlik habarnamasy we guramanyň bu resminamany bermäge ygtyýarlydygyny görkezýän subutnamadyr. Ýerleşdirilen hyzmat ulanylsa-da, maglumatlara jogapkär gurama bolup galýar.
 
 ## Näme üçin guramanyň açary hiç haçan guramadan çykmaýar?
 
-Sebäbi resminamany guramanyň öz resminamasy edýän zat açardyr. Kimde açar bar bolsa, şol guramanyň adyndan gol çekip biler, şonuň üçin ol her ädimde guramada galýar.
+Resminamany guramanyň resminamasy edýän zat guramanyň açarydyr. Açary elinde saklaýan islendik adam gurama adyndan gol çekip bilýändigi üçin açar her ädimde guramada galýar.
 
-Gurama iki P-256 açar jübütini döredýär: biri resminamalara gol çekýär, beýlekisi onuň ýatyrylyş sanawyna gol çekýär. Ol her biri üçin diňe sertifikata gol çekmek haýyşyny (CSR) iberýär:
+Gurama iki P-256 açar jübütini döredýär. Olaryň biri resminamalara, beýlekisi bolsa guramanyň ýatyrylyş sanawyna gol çekýär. Gurama daşaryk her açar üçin diňe sertifikata gol çekmek haýyşyny (CSR) iberýär:
 
 ```bash title="Açar we sertifikata gol çekmek haýyşyny döretmek"
 openssl ecparam -name prime256v1 -genkey -noout -out issuer.key.pem
@@ -88,63 +88,63 @@ openssl req -new -key issuer.key.pem \
   -subj "/CN=Example University/O=Example University/C=TR" -out issuer.csr.pem
 ```
 
-Hakyky işde açar enjam howpsuzlyk modulynda (HSM) ýa-da bulut açar dolandyryş hyzmatynda (KMS) saklanmaly. Hasaba alyjy CSR-iň goluny barlaýar we kök sertifikat edarasyndan iki ýyl (iň köp üç ýyl) güýjünde bolan sertifikaty yzyna berýär.
+Hakyky gurşawda açaryň ýeri enjam howpsuzlyk moduly (HSM) ýa-da bulutdaky açar dolandyryş hyzmatydyr (KMS). Hasaba alyş edarasy CSR-iň goluny barlaýar we gurama kök sertifikat edarasynyň gol çeken, iki ýyl (iň köp üç ýyl) güýjünde bolan sertifikatyny iberýär.
 
 ## Gurama hasaba alnanda näme bolýar?
 
-Hasaba alyjy guramany Türkiýe sanawyna goşýar we oňa täzeden gol çekýär. 24 sagadyň içinde ýazgy `trust.tamga.network` salgysynda işläp başlaýar. Onda sertifikatyň barmak yzyndan hasaplanan `issuer_id`, synp, ynamlylyk derejesi, ygtyýarly resminama görnüşleri, ýagdaý we onuň taryhy bar. Her çap edilende hasaba alyş sertifikaty (ETSI TS 119 475) awtomatik döredilýär, şonuň üçin gapjyklar ýazgyny şol ýol bilen hem barlap biler. Ýazgynyň nähili görünýändigi we barlaýjylaryň ony nähili okaýandygy: [Gol çekilen ynam sanawy nähili işleýär](/blog/how-trust-lists-work).
+Hasaba alyş edarasy guramany Türkiýe sanawyna goşýar we sanawa täzeden gol çekýär. Ýazgy 24 sagadyň içinde `trust.tamga.network` salgysynda çap edilýär. Ýazgyda sertifikatyň barmak yzyndan hasaplanan `issuer_id`, guramanyň synpy we ynamlylyk derejesi, bermäge ygtyýarly resminama görnüşleri, ýagdaýy we ýagdaý taryhy bolýar. Her çap edilişde awtomatik usulda hasaba alyş sertifikaty (ETSI TS 119 475) hem döredilýär we gapjyklar ýazgyny şu sertifikat bilen hem barlap bilýär. Ýazgynyň nähili görünýändigini we barlaýjynyň ony nähili okaýandygyny [Gol çekilen ynam sanawy nähili işleýär](/blog/how-trust-lists-work) ýazgysynda düşündirdik.
 
-Ygtyýarnama resminama görnüşi boýunça berilýär. Görnüş soňra goşulyp ýa-da tamamlanyp bilner. Tamamlanan ygtyýarnama pozulmaýar, şonuň üçin tamamlanmazdan öň berlen resminamalar barlagdan geçmegini dowam etdirýär.
+Ygtyýar her resminama görnüşi üçin aýratyn berilýär. Soňra täze görnüş goşulyp ýa-da haýsydyr bir görnüşiň ygtyýary tamamlanyp bilner. Tamamlanan ygtyýaryň ýazgysy pozulmaýar we ygtyýar gutarmazdan öň berlen resminamalar barlanmagyny dowam etdirýär.
 
 ## Gurama ilkinji resminamasyny nähili berýär?
 
-Iki ýol bar we ikisinde hem resminama birmeňzeş: guramanyň adyndan berlen we onuň açary bilen gol çekilen.
+Munuň iki ýoly bar we iki ýolda hem döreýän resminama birmeňzeş. Resminama guramanyň adyndan berilýär we guramanyň açary bilen gol çekilýär.
 
 | | Ýerleşdirilen hyzmat | Öz serweriňiz |
 |---|---|---|
 | Ony näme işledýär | Tamga-nyň resminama beriş hyzmaty we Institution Console | `@tamga-network/issuer` paketi (OpenID4VCI) |
-| Nähili birikýärsiňiz | konsol ýa-da ulgamyňyzdan çäklendirilen API açary | öz ýerleşdirişiňiz |
-| Kime amatly | çalt başlamak, stolda bermek, kiçi toparlar | hemme zady öz içinde saklamak isleýän guramalar |
+| Nähili birikýärsiňiz | konsol arkaly ýa-da ulgamyňyzdan gerimi çäklendirilen API açary bilen | öz ýerleşdirişiňiz |
+| Kime amatly | çalt başlamak isleýänler, stolda resminama berýänler, kiçi toparlar | hemme zady öz içinde saklamak isleýän guramalar |
 
-Ýerleşdirilen hyzmatda hem açar guramada galýar: hyzmat guramanyň uzakdan gol çekiş hyzmatyna (CSC API v2) diňe gysgaça heşi (digest) iberýär we goly yzyna alýar ([ADR-0057](https://docs.tamga.network/adr/0057-hosted-issuance-remote-signing)).
+Ýerleşdirilen hyzmat ulanylanda hem açar guramada galýar. Hyzmat guramanyň uzakdan gol çekiş hyzmatyna (CSC API v2) diňe heş iberýär we goly yzyna alýar ([ADR-0057](https://docs.tamga.network/adr/0057-hosted-issuance-remote-signing)).
 
-[Institution Console](https://docs.tamga.network/adr/0019-institution-console-and-database) işgärleriň işleýän ýeri: olar passkey bilen girýär, ýazgylary dolandyrýar, QR kody we aýratyn berlen PIN bilen stolda resminama berýär, resminamalary ýatyrýar ýa-da togtadýar we beriş statistikasyny görýär. Statistikada hiç haçan şahsy maglumat bolmaýar. Ulgamlar şol bir zady guruma baglanan we gerimi çäklendirilen API açary arkaly edip biler ([ADR-0016](https://docs.tamga.network/adr/0016-hosted-issuer-api-access)).
+[Institution Console](https://docs.tamga.network/adr/0019-institution-console-and-database) gurama işgärleriniň öz işlerini edýän ýeridir. Işgärler konsola passkey bilen girýär we ýazgylary dolandyrýar. Stolda resminama berenlerinde QR kody we aýratyn berilýän PIN-i ulanýarlar. Resminamalary ýatyryp ýa-da togtadyp, resminama beriş statistikasyny hem görüp bilýärler. Bu statistikada hiç haçan şahsy maglumat bolmaýar. Guramanyň öz ulgamlary hem şol işleri gurama bagly we gerimi çäklendirilen API açary bilen edip bilýär ([ADR-0016](https://docs.tamga.network/adr/0016-hosted-issuer-api-access)).
 
-Her resminamadan öň gurama adamyň şahsyýetini şol resminama görnüşiniň talap edýän derejesinde barlaýar. Adam gapjykdan hem başlap biler: ol guramany saýlaýar, gurama bolsa ony gapjygynda eýýäm bar bolan barlanan şahsyýet resminamasy arkaly tanaýar.
+Gurama her resminamadan öň adamyň şahsyýetini şol resminama görnüşiniň talap edýän derejesinde barlaýar. Adam işi gapjygyndan hem başlap biler. Gapjykda guramany saýlaýar, gurama hem ony gapjygyndaky tassyklanan şahsyýet resminamasy arkaly öz ýazgylary bilen gabat getirýär.
 
-Her resminama, şol sanda diplom, aýry açarly 10 nusgadan ybarat toplum hökmünde berilýär; şeýlelikde gapjyk her gezek täze nusga görkezip biler we iki barlaýjy şol bir adamy gaýtalanýan baha arkaly baglanyşdyryp bilmez ([OpenID4VCI-a çuňňur seredilişi](/blog/openid4vci-deep-dive)). Resminama üpjün edijisi ynam sanawynda bolan islendik gapjyga gidip biler. Gurama öz adamlary üçin gapjyk saýlamaýar.
+Diplom hem goşulyp, her resminama her biri aýry açara bagly 10 nusgalyk bukja görnüşinde berilýär. Şeýlelikde gapjyk her görkezişde täze nusgany ulanyp bilýär we iki barlaýjy şol bir adamy gaýtalanýan baha arkaly gabat getirip bilmeýär ([OpenID4VCI-a çuňňur seredilişi](/blog/openid4vci-deep-dive)). Resminama üpjün edijisi ynam sanawynda hasaba alnan islendik gapjyga iberilip bilner. Gurama resminama berýän adamlarynyň adyndan gapjyk saýlamaýar.
 
 ## Goşulandan soň näme üýtgäp biler?
 
 ![Gurama ýazgysynyň dört ýagdaýy we olaryň her biriniň manysy](/blog/join-as-an-institution/en/fig-durumlar.png)
 
-Olaryň ählisinde bir düzgün hereket edýär: barlaýjy resminama guramanyň şu günki ýagdaýy boýunça däl, resminama berlen günündäki ýagdaýy boýunça baha berýär. Resminama bermegi bes eden gurama öz uçurymlarynyň diplomlaryny hem özi bilen aýyrmaýar. Açar ele salnan bolsa, ýazgy sene bilen ýatyrylýar we diňe şol seneden başlap berlen resminamalar barlagdan geçmegini bes edýär.
+Ähli ýagdaýlarda şol bir düzgün güýjünde. Barlaýjy resminama guramanyň häzirki ýagdaýyna görä däl-de, resminamanyň berlen günündäki ýagdaýyna görä baha berýär. Şonuň üçin resminama bermegi bes eden gurama uçurymlarynyň diplomlaryny güýjünden düşürmeýär. Guramanyň açary ele salnan bolsa, ýazgy belli bir sene bilen ýatyrylýar we diňe şol seneden soň berlen resminamalar barlagdan geçip bilmeýär.
 
 ## Hakyky goşulyş taslamasy nähili geçýär?
 
-[Tora goşul](/join) sahypasy alty ädimi sanaýar: gerimi ylalaşmak (haýsy resminamalar, haýsy pilot topary), resminama görnüşini saýlamak ýa-da taslamak, şertnamalara gol çekmek we gizlinlik beýannamasyny täzelemek, hasaba durmak, sandbox-da birikdirmek we başdan-aýak synagdan geçirmek, soňra ilki kiçi topar bilen işe girizmek. Başlamak üçin guramanyň adyny we onuň resminama bermek, barlamak ýa-da ikisini hem isleýändigini ýazyp partners@tamga.network salgysyna ýazyň.
+[Tora goşul](/join) sahypasynda alty ädim bar. Ilki gerim kesgitlenýär, ýagny haýsy resminamalaryň beriljekdigi we haýsy pilot topar bilen başlanjakdygy çözülýär. Soňra resminama görnüşi saýlanýar ýa-da bilelikde taýýarlanýar. Şertnamalara gol çekilýär we gizlinlik habarnamasy täzelenýär. Ondan soň hasaba alyş geçirilýär, integrasiýa gurulýar we hemme zat sandbox-da başdan-aýak synagdan geçirilýär. Iň soňunda bolsa ilki kiçi topar bilen hakyky ulanyşa geçilýär. Başlamak üçin guramaňyzyň adyny we resminama bermek, barlamak ýa-da ikisini hem isleýändigiňizi partners@tamga.network salgysyna ýazyp bilersiňiz.
 
 ## Köp berilýän soraglar
 
-### Gurama öz talyp ýa-da agza maglumatlar bazasyny tabşyrmalymy?
+### Gurama öz talyp ýa-da agza maglumatlar binýadyny tabşyrmalymy?
 
-Ýok. Toruň adamlaryň hasaba alyş kitaby ýok. Maglumatlar resminama berlen pursatynda guramanyň öz ulgamyndan okalýar we göni adamyň telefonyna gidýär.
+Ýok. Tor adamlar bilen bagly hiç hili ýazgy saklamaýar. Maglumatlar resminama berlen pursatynda guramanyň öz ulgamyndan okalýar we göni adamyň telefonyna gidýär.
 
 ### Guramanyň öz serwerleri gerekmi?
 
-Ýok. Başlamak üçin ýerleşdirilen resminama beriş hyzmaty we Institution Console ýeterlik. Resminama bermegi özi işletmegi makul bilýän guramalar açyk çeşmeli `@tamga-network/issuer` paketini ulanyp biler.
+Ýok. Başlamak üçin ýerleşdirilen resminama beriş hyzmaty we Institution Console ýeterlik. Resminama beriş işini özi alyp barmak isleýän guramalar açyk çeşmeli `@tamga-network/issuer` paketini ulanyp biler.
 
 ### Sandbox synag guramasyny hakyky tora geçirip bolýarmy?
 
-Ýok. Sandbox guramalary, ýazgylary we sertifikatlary her gije pozulýar we sandbox köküne hakyky torda ynanylmaýar. Hakyky tor üçin aýry arza we açarlar gerek.
+Ýok. Sandbox-daky guramalar, ýazgylar we sertifikatlar her gije pozulýar we sandbox-yň kök sertifikaty hakyky torda ykrar edilmeýär. Hakyky tor üçin aýry arza we aýry açarlar gerek.
 
 ### Guramanyň resminamalaryny haýsy gapjyklar alyp biler?
 
-Üpjün edijisi ynam sanawynda hasaba alnan we toruň gapjyk düzgünlerine eýerýän islendik gapjyk. Tamga Wallet toruň gapjyklarynyň biridir, ýeke-täki däl.
+Üpjün edijisi ynam sanawynda hasaba alnan we toruň gapjyk düzgünlerine eýerýän her gapjyk bu resminamalary alyp biler. Tamga Wallet tordaky gapjyklaryň diňe biridir.
 
 ### Guramanyň gol açary ogurlansa näme bolýar?
 
-Ýazgy `invalidates_from` senesi bilen ýatyrylýar. Şol pursatdan başlap gol çekilen resminamalar barlagdan geçmeýär; öňküler täsir astyna düşmeýär. Soňra gurama täze sertifikaty hasaba aldyrýar.
+Guramanyň ýazgysy `invalidates_from` senesi bilen ýatyrylýar. Şol pursatdan soň gol çekilen resminamalar barlagdan geçip bilmeýär, öň gol çekilenlere bolsa täsir etmeýär. Gurama mundan soň täze sertifikaty hasaba aldyrýar.
 
 ## Çeşmeler
 

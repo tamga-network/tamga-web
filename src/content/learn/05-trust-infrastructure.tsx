@@ -138,8 +138,8 @@ export const CHAPTER_5: LearnPage[] = [
           </p>
           <p>
             Almatı'daki bir işveren, Taşkent'teki bir üniversitenin imzasını taşıyan bir belge görüyor. Üniversitenin adını biliyor,
-            ama anahtarını tanımıyor. Herkes bir anahtar üretip altına "Örnek Üniversite" yazabilir. İşte güven listeleri bu boşluğu
-            doldurur.
+            ama anahtarını tanımıyor. Herkes bir anahtar üretip altına "Örnek Üniversite" yazabilir. Güven listeleri tam olarak bu boşluğu
+            doldurmak için vardır.
           </p>
 
           <h2>Güven listesi nedir?</h2>

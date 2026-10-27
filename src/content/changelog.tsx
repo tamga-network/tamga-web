@@ -73,7 +73,7 @@ export const CHANGELOG_PAGE: Record<
     description:
       "Tamga Network releases: rules, documentation, open packages, trust lists and services.",
     eyebrow: "Release notes",
-    lead: "Every release of the network, newest first. Package versions are listed separately on npm. Tamga Wallet keeps its own release notes.",
+    lead: "This page lists every release of the network, with the newest at the top. Package versions are listed separately on npm, and Tamga Wallet keeps its own release notes.",
     more: "Package changelog on GitHub",
     latest: "Latest",
   },
@@ -82,7 +82,7 @@ export const CHANGELOG_PAGE: Record<
     description:
       "Tamga Network sürümleri: kurallar, belgeler, açık paketler, güven listeleri ve servisler.",
     eyebrow: "Sürüm notları",
-    lead: "Ağın her sürümü, en yenisi üstte. Paket sürümleri npm'de ayrıca listelenir. Tamga Wallet kendi sürüm notlarını tutar.",
+    lead: "Bu sayfada ağın bütün sürümleri, en yenisi üstte olacak şekilde sıralanır. Paket sürümleri npm'de ayrıca listelenir, Tamga Wallet da kendi sürüm notlarını ayrı tutar.",
     more: "GitHub'da paket değişiklikleri",
     latest: "Son sürüm",
   },
@@ -91,7 +91,7 @@ export const CHANGELOG_PAGE: Record<
     description:
       "Tamga Network wersiýalary: düzgünler, resminamalar, açyk paketler, ynam sanawlary we hyzmatlar.",
     eyebrow: "Wersiýa bellikleri",
-    lead: "Toruň her wersiýasy, iň täzesi ýokarda. Paket wersiýalary npm-de aýratyn görkezilýär. Tamga Wallet öz wersiýa belliklerini saklaýar.",
+    lead: "Bu sahypada toruň ähli wersiýalary iň täzesi ýokarda bolar ýaly sanalýar. Paket wersiýalary npm-de aýratyn görkezilýär, Tamga Wallet hem öz wersiýa belliklerini aýratyn saklaýar.",
     more: "GitHub-da paket üýtgeşmeleri",
     latest: "Iň soňky",
   },
@@ -100,7 +100,7 @@ export const CHANGELOG_PAGE: Record<
     description:
       "Tamga Network buraxılışları: qaydalar, sənədlər, açıq paketlər, etibar siyahıları və xidmətlər.",
     eyebrow: "Buraxılış qeydləri",
-    lead: "Şəbəkənin hər buraxılışı, ən yenisi yuxarıda. Paket versiyaları npm-də ayrıca göstərilir. Tamga Wallet öz buraxılış qeydlərini ayrıca aparır.",
+    lead: "Bu səhifədə şəbəkənin bütün buraxılışları ən yenisi yuxarıda olmaqla sıralanır. Paket versiyaları npm-də ayrıca göstərilir, Tamga Wallet isə öz buraxılış qeydlərini ayrıca aparır.",
     more: "GitHub-da paket dəyişiklikləri",
     latest: "Ən son",
   },
@@ -255,19 +255,19 @@ export const RELEASES: Release[] = [
     sections: {
       added: {
         en: [
-          "Tamga Wallet's wallet provider is listed as active in the trust lists of the network and the sandbox — the first listed wallet. The network lists wallets; it runs none.",
+          "Tamga Wallet's wallet provider is listed as active in the trust lists of the network and the sandbox, which makes it the first listed wallet. The network lists wallets and runs none of them.",
           "Browser verification on iPhone and Mac Safari (ISO/IEC 18013-7 Annex C); on desktop the browser path is the default and the QR code stays as a fallback.",
         ],
         tr: [
-          "Tamga Wallet'ın cüzdan sağlayıcısı ağın ve sandbox'ın güven listelerinde etkin olarak listelendi — listedeki ilk cüzdan. Ağ cüzdanları listeler, hiçbirini işletmez.",
+          "Tamga Wallet'ın cüzdan sağlayıcısı ağın ve sandbox'ın güven listelerinde etkin olarak listelendi ve böylece listedeki ilk cüzdan oldu. Ağ cüzdanları listeler, hiçbirini işletmez.",
           "iPhone ve Mac Safari'de tarayıcıdan doğrulama (ISO/IEC 18013-7 Ek C); masaüstünde varsayılan yol tarayıcı, QR yedekte kalır.",
         ],
         tk: [
-          "Tamga Wallet-iň gapjyk üpjün edijisi toruň we sandbox-yň ynam sanawlarynda işjeň hökmünde sanawa goşuldy — sanawdaky ilkinji gapjyk. Tor gapjyklary sanawa goşýar, hiç birini işletmeýär.",
+          "Tamga Wallet-iň gapjyk üpjün edijisi toruň we sandbox-yň ynam sanawlarynda işjeň hökmünde sanawa goşuldy we şeýlelikde sanawdaky ilkinji gapjyk boldy. Tor gapjyklary sanawa goşýar, hiç birini işletmeýär.",
           "iPhone we Mac Safari-de brauzerden barlag (ISO/IEC 18013-7 C goşundy); stolüsti kompýuterde esasy ýol brauzer, QR ätiýaçda galýar.",
         ],
         az: [
-          "Tamga Wallet-un cüzdan provayderi şəbəkənin və sandbox-un etibar siyahılarında aktiv kimi siyahıya alındı — siyahıdakı ilk rəqəmsal cüzdan. Şəbəkə rəqəmsal cüzdanları siyahıya alır, heç birini idarə etmir.",
+          "Tamga Wallet-un cüzdan provayderi şəbəkənin və sandbox-un etibar siyahılarında aktiv kimi siyahıya alındı və beləliklə siyahıdakı ilk rəqəmsal cüzdan oldu. Şəbəkə rəqəmsal cüzdanları siyahıya alır, heç birini idarə etmir.",
           "iPhone və Mac Safari-də brauzer vasitəsilə yoxlama (ISO/IEC 18013-7 Əlavə C); masaüstü kompüterdə əsas yol brauzerdir, QR kod isə ehtiyat variant kimi qalır.",
         ],
       },
@@ -482,28 +482,28 @@ export const RELEASES: Release[] = [
     sections: {
       added: {
         en: [
-          "Rules: Tamga ARF 1.0 — the Architecture and Reference Framework, the Trust Framework, the Tamga Rulebook and the credential-type rulebooks (Education, Identity, Event Ticket).",
+          "Rules: Tamga ARF 1.0 (the Architecture and Reference Framework), the Trust Framework, the Tamga Rulebook and the credential-type rulebooks (Education, Identity, Event Ticket).",
           "Developer documentation in English and Turkish: guides, concepts, specifications, decisions and a glossary.",
           "Open packages: @tamga-network/* on npm as test releases (0.x).",
           "Services: the trust list publisher, Tamga Verify and the network's reference services.",
           "Federation: reading external trust lists (ETSI TS 119 602).",
         ],
         tr: [
-          "Kurallar: Tamga ARF 1.0 — Mimari ve Referans Çerçevesi, Trust Framework, Tamga Rulebook ve belge türü rulebook'ları (Education, Identity, Event Ticket).",
+          "Kurallar: Tamga ARF 1.0 (Mimari ve Referans Çerçevesi), Trust Framework, Tamga Rulebook ve belge türü rulebook'ları (Education, Identity, Event Ticket).",
           "İngilizce ve Türkçe geliştirici belgeleri: rehberler, kavramlar, şartnameler, kararlar ve sözlük.",
           "Açık paketler: npm'de @tamga-network/*, deneme sürümleri (0.x).",
           "Servisler: güven listesi yayıncısı, Tamga Verify ve ağın referans hizmetleri.",
           "Federasyon: dış güven listelerini okuma (ETSI TS 119 602).",
         ],
         tk: [
-          "Düzgünler: Tamga ARF 1.0 — Arhitektura we salgylanma çarçuwasy, Trust Framework, Tamga Rulebook we resminama görnüşleriniň rulebook-lary (Education, Identity, Event Ticket).",
+          "Düzgünler: Tamga ARF 1.0 (Arhitektura we salgylanma çarçuwasy), Trust Framework, Tamga Rulebook we resminama görnüşleriniň rulebook-lary (Education, Identity, Event Ticket).",
           "Iňlis we türk dillerinde işläp düzüjiler üçin resminamalar: gollanmalar, düşünjeler, spesifikasiýalar, kararlar we sözlük.",
           "Açyk paketler: npm-de @tamga-network/*, synag wersiýalary (0.x).",
           "Hyzmatlar: ynam sanawyny çap ediji, Tamga Verify we toruň salgylanma hyzmatlary.",
           "Federasiýa: daşky ynam sanawlaryny okamak (ETSI TS 119 602).",
         ],
         az: [
-          "Qaydalar: Tamga ARF 1.0 — Arxitektura və İstinad Çərçivəsi (Architecture and Reference Framework), Trust Framework, Tamga Rulebook və rəqəmsal sənəd növlərinin rulebook-ları (Education, Identity, Event Ticket).",
+          "Qaydalar: Tamga ARF 1.0 (Arxitektura və İstinad Çərçivəsi, Architecture and Reference Framework), Trust Framework, Tamga Rulebook və rəqəmsal sənəd növlərinin rulebook-ları (Education, Identity, Event Ticket).",
           "İngilis və türk dillərində tərtibatçı sənədləri: bələdçilər, anlayışlar, spesifikasiyalar, qərarlar və lüğət.",
           "Açıq paketlər: npm-də @tamga-network/*, sınaq buraxılışları (0.x).",
           "Xidmətlər: etibar siyahısını dərc edən xidmət, Tamga Verify və şəbəkənin istinad xidmətləri.",

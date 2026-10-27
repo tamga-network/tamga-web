@@ -80,7 +80,7 @@ const UI: Record<UiLocale, BlogUi> = {
     eyebrow: "Blog",
     title: "Writing",
     description:
-      "Decisions, standards and progress behind Tamga Network — digital trust for institutions, developers and states across the Turkic world.",
+      "Decisions, standards and progress behind Tamga Network, the digital trust network for institutions, developers and states across the Turkic world.",
     rss: "RSS feed",
     count: (n) => `${n} ${n === 1 ? "post" : "posts"}`,
     filter: "Filter by category",
@@ -114,7 +114,7 @@ const UI: Record<UiLocale, BlogUi> = {
     eyebrow: "Blog",
     title: "Yazılar",
     description:
-      "Tamga Network’ün ardındaki kararlar, standartlar ve ilerleme — Türk dünyasında kurumlar, geliştiriciler ve devletler için dijital güven.",
+      "Türk dünyasındaki kurumlar, geliştiriciler ve devletler için kurulan dijital güven ağı Tamga Network’ün ardındaki kararlar, standartlar ve ilerleme.",
     rss: "RSS akışı",
     count: (n) => `${n} yazı`,
     filter: "Kategoriye göre süz",
@@ -149,7 +149,7 @@ const UI: Record<UiLocale, BlogUi> = {
     eyebrow: "Blog",
     title: "Ýazgylar",
     description:
-      "Tamga Network-yň aňyrsyndaky kararlar, standartlar we öňegidişlik — türki dünýäsinde guramalar, işläp düzüjiler we döwletler üçin sanly ynam.",
+      "Türki dünýäsindäki guramalar, işläp düzüjiler we döwletler üçin gurlan sanly ynam tory Tamga Network-yň aňyrsyndaky kararlar, standartlar we öňegidişlik.",
     rss: "RSS akymy",
     count: (n) => `${n} ýazgy`,
     filter: "Kategoriýa boýunça süz",
@@ -184,7 +184,7 @@ const UI: Record<UiLocale, BlogUi> = {
     eyebrow: "Bloq",
     title: "Yazılar",
     description:
-      "Tamga Network-un arxasında duran qərarlar, standartlar və irəliləyiş — türk dünyasında qurumlar, tərtibatçılar və dövlətlər üçün rəqəmsal etibar.",
+      "Türk dünyasında qurumlar, tərtibatçılar və dövlətlər üçün qurulan rəqəmsal etibar şəbəkəsi Tamga Network-un arxasında duran qərarlar, standartlar və irəliləyiş.",
     rss: "RSS lenti",
     count: (n) => `${n} yazı`,
     filter: "Kateqoriyaya görə süzün",

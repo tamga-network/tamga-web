@@ -52,11 +52,11 @@ const en: RoadmapContent = {
   meta: {
     title: "Roadmap",
     description:
-      "Tamga Network roadmap: what is live today, what comes before the pilot, the pilot, and the move from lists to a shared ledger.",
+      "The Tamga Network roadmap covers what is live today, what has to be finished before the pilot, the pilot itself and the move from lists to a shared ledger.",
   },
   eyebrow: "Roadmap",
   title: "From signed lists to a shared ledger",
-  lead: "Stages, not dates. Each stage completes and strengthens the one before.",
+  lead: "The roadmap is organised by stages instead of dates. Each stage completes and strengthens the one before it.",
   phaseLabel: "Phase",
   labels: {
     done: "Live",
@@ -70,7 +70,7 @@ const en: RoadmapContent = {
       state: "done",
       title: "Live today",
       summary:
-        "The full flow works end to end with real cryptography, in the sandbox, on the network's live software; the first real institution joins with the pilot.",
+        "The full flow already works end to end in the sandbox, with real cryptography and on the network's live software. The first real institution joins the live network with the pilot.",
       cards: [
         {
           icon: "shield",
@@ -133,7 +133,7 @@ const en: RoadmapContent = {
       n: "2",
       state: "progress",
       title: "Before the pilot",
-      summary: "What an institution needs before real people use it.",
+      summary: "These are the things an institution needs before real people use the network.",
       cards: [
         {
           icon: "smartphone",
@@ -172,7 +172,7 @@ const en: RoadmapContent = {
       state: "planned",
       title: "Pilot",
       summary:
-        "One university, a limited group, success and stop criteria set in advance.",
+        "The pilot runs at one university with a limited group, and its success and stop criteria are set in advance.",
       cards: [
         {
           icon: "graduation",
@@ -195,7 +195,7 @@ const en: RoadmapContent = {
       n: "4",
       state: "planned",
       title: "Network expansion",
-      summary: "More operators, more states.",
+      summary: "The network grows by adding more operators and more states.",
       cards: [
         {
           icon: "network",
@@ -219,7 +219,7 @@ const en: RoadmapContent = {
       state: "research",
       title: "Research",
       summary:
-        "Studied, not yet planned; independent security review before any use.",
+        "These topics are being studied but are not planned yet, and each will get an independent security review before any use.",
       cards: [
         {
           icon: "key",
@@ -234,18 +234,18 @@ const en: RoadmapContent = {
       ],
     },
   ],
-  note: "Details: the whitepaper's “Status and roadmap” and “Known limits” sections.",
+  note: "You can find the details in the whitepaper's “Status and roadmap” and “Known limits” sections.",
 };
 
 const tr: RoadmapContent = {
   meta: {
     title: "Yol haritası",
     description:
-      "Tamga Network yol haritası: bugün yayında olanlar, pilottan önce tamamlanacaklar, pilot ve listelerden ortak deftere geçiş.",
+      "Tamga Network yol haritası bugün yayında olanları, pilottan önce tamamlanacak işleri, pilotun kendisini ve listelerden ortak deftere geçişi anlatır.",
   },
   eyebrow: "Yol haritası",
   title: "İmzalı listelerden ortak deftere",
-  lead: "Tarih değil, aşama. Her aşama bir öncekini tamamlar ve güçlendirir.",
+  lead: "Yol haritası tarihlere göre değil, aşamalara göre düzenlendi. Her aşama bir öncekini tamamlar ve güçlendirir.",
   phaseLabel: "Aşama",
   labels: {
     done: "Yayında",
@@ -259,7 +259,7 @@ const tr: RoadmapContent = {
       state: "done",
       title: "Bugün yayında olanlar",
       summary:
-        "Akışın tamamı gerçek kriptografiyle, sandbox'ta, ağın canlıdaki yazılımıyla uçtan uca çalışıyor; gerçek ağdaki ilk kurum pilotla katılır.",
+        "Akışın tamamı bugün sandbox'ta, gerçek kriptografiyle ve ağın canlıdaki yazılımıyla uçtan uca çalışıyor. Gerçek ağa katılacak ilk kurum pilotla gelecek.",
       cards: [
         {
           icon: "shield",
@@ -322,7 +322,7 @@ const tr: RoadmapContent = {
       n: "2",
       state: "progress",
       title: "Pilottan önce",
-      summary: "Gerçek kişiler kullanmadan önce bir kurumun ihtiyacı olanlar.",
+      summary: "Gerçek kişiler ağı kullanmaya başlamadan önce bir kurumun ihtiyaç duyduğu işler bunlar.",
       cards: [
         {
           icon: "smartphone",
@@ -361,7 +361,7 @@ const tr: RoadmapContent = {
       state: "planned",
       title: "Pilot",
       summary:
-        "Bir üniversite, sınırlı bir grup, başarı ve durdurma ölçütleri önceden belirli.",
+        "Pilot tek bir üniversitede ve sınırlı bir grupla yapılacak. Başarı ve durdurma ölçütleri önceden belirlendi.",
       cards: [
         {
           icon: "graduation",
@@ -384,7 +384,7 @@ const tr: RoadmapContent = {
       n: "4",
       state: "planned",
       title: "Ağın genişlemesi",
-      summary: "Daha çok operatör, daha çok devlet.",
+      summary: "Ağ, katılan operatör ve devlet sayısı arttıkça genişleyecek.",
       cards: [
         {
           icon: "network",
@@ -408,7 +408,7 @@ const tr: RoadmapContent = {
       state: "research",
       title: "Araştırma",
       summary:
-        "İnceleniyor, henüz planlı değil; her kullanımdan önce bağımsız güvenlik incelemesi.",
+        "Bu konular inceleniyor ama henüz plana alınmadı. Hiçbiri bağımsız bir güvenlik incelemesinden geçmeden kullanılmayacak.",
       cards: [
         {
           icon: "key",
@@ -423,18 +423,18 @@ const tr: RoadmapContent = {
       ],
     },
   ],
-  note: "Ayrıntı: whitepaper'ın “Durum ve yol haritası” ve “Bilinen sınırlar” bölümleri.",
+  note: "Ayrıntıları whitepaper'ın “Durum ve yol haritası” ve “Bilinen sınırlar” bölümlerinde bulabilirsiniz.",
 };
 
 const tk: RoadmapContent = {
   meta: {
     title: "Ýol kartasy",
     description:
-      "Tamga Network ýol kartasy: häzir işleýänler, pilotdan öň tamamlanjaklar, pilot we sanawlardan umumy kitaba geçiş.",
+      "Tamga Network ýol kartasy häzir işleýän zatlary, pilotdan öň tamamlanmaly işleri, pilotyň özüni we sanawlardan umumy kitaba geçişi düşündirýär.",
   },
   eyebrow: "Ýol kartasy",
   title: "Gol çekilen sanawlardan umumy kitaba",
-  lead: "Sene däl, tapgyr. Her tapgyr öňküsini tamamlaýar we berkidýär.",
+  lead: "Ýol kartasy senelere görä däl, tapgyrlara görä düzüldi. Her tapgyr öňküsini tamamlaýar we berkidýär.",
   phaseLabel: "Tapgyr",
   labels: {
     done: "Işleýär",
@@ -448,7 +448,7 @@ const tk: RoadmapContent = {
       state: "done",
       title: "Häzir işleýänler",
       summary:
-        "Akymyň hemmesi hakyky kriptografiýa bilen, sandbox-da, toruň işleýän programma üpjünçiligi bilen başdan-aýak işleýär; hakyky tordaky ilkinji gurama pilot bilen goşulýar.",
+        "Akymyň hemmesi häzir sandbox-da, hakyky kriptografiýa bilen we toruň işleýän programma üpjünçiliginde başdan-aýak işleýär. Hakyky tora goşuljak ilkinji gurama pilot bilen geler.",
       cards: [
         {
           icon: "shield",
@@ -511,7 +511,7 @@ const tk: RoadmapContent = {
       n: "2",
       state: "progress",
       title: "Pilotdan öň",
-      summary: "Hakyky adamlar ulanmazdan öň guramanyň zerur zatlary.",
+      summary: "Hakyky adamlar tory ulanyp başlamazdan öň guramanyň zerur görýän işleri şular.",
       cards: [
         {
           icon: "smartphone",
@@ -550,7 +550,7 @@ const tk: RoadmapContent = {
       state: "planned",
       title: "Pilot",
       summary:
-        "Bir uniwersitet, çäkli topar, üstünlik we togtatma ölçegleri öňünden kesgitlenen.",
+        "Pilot bir uniwersitetde we çäkli topar bilen geçiriler. Üstünlik we togtatma ölçegleri öňünden kesgitlendi.",
       cards: [
         {
           icon: "graduation",
@@ -573,7 +573,7 @@ const tk: RoadmapContent = {
       n: "4",
       state: "planned",
       title: "Toruň giňelmegi",
-      summary: "Has köp operator, has köp döwlet.",
+      summary: "Tor goşulýan operatorlaryň we döwletleriň sany artdygyça giňeler.",
       cards: [
         {
           icon: "network",
@@ -597,7 +597,7 @@ const tk: RoadmapContent = {
       state: "research",
       title: "Gözleg",
       summary:
-        "Öwrenilýär, heniz meýilleşdirilmedik; her ulanyşdan öň garaşsyz howpsuzlyk barlagy.",
+        "Bu meseleler öwrenilýär, ýöne heniz meýilnama goşulmady. Olaryň hiç biri garaşsyz howpsuzlyk barlagyndan geçmezden ulanylmaz.",
       cards: [
         {
           icon: "key",
@@ -612,18 +612,18 @@ const tk: RoadmapContent = {
       ],
     },
   ],
-  note: "Jikme-jiklik: whitepaper-iň “Ýagdaý we ýol kartasy” we “Belli çäkler” bölümleri.",
+  note: "Jikme-jiklikleri whitepaper-iň “Ýagdaý we ýol kartasy” we “Belli çäkler” bölümlerinde tapyp bilersiňiz.",
 };
 
 const az: RoadmapContent = {
   meta: {
     title: "Yol xəritəsi",
     description:
-      "Tamga Network-un yol xəritəsi: bu gün işlək olanlar, pilotdan əvvəl görüləcəklər, pilot və siyahılardan ortaq reyestrə keçid.",
+      "Tamga Network-un yol xəritəsi bu gün işlək olanları, pilotdan əvvəl tamamlanmalı işləri, pilotun özünü və siyahılardan ortaq reyestrə keçidi izah edir.",
   },
   eyebrow: "Yol xəritəsi",
   title: "İmzalı siyahılardan ortaq reyestrə",
-  lead: "Tarixlər deyil, mərhələlər. Hər mərhələ əvvəlkini tamamlayır və gücləndirir.",
+  lead: "Yol xəritəsi tarixlərə görə yox, mərhələlərə görə qurulub. Hər mərhələ əvvəlkini tamamlayır və gücləndirir.",
   phaseLabel: "Mərhələ",
   labels: {
     done: "İşləkdir",
@@ -637,7 +637,7 @@ const az: RoadmapContent = {
       state: "done",
       title: "Bu gün işlək olanlar",
       summary:
-        "Bütün axın real kriptoqrafiya ilə, sandbox-da, şəbəkənin işlək proqram təminatı üzərində əvvəldən sona qədər işləyir; ilk real qurum pilotla qoşulur.",
+        "Bütün axın bu gün sandbox-da, real kriptoqrafiya ilə və şəbəkənin işlək proqram təminatı üzərində əvvəldən sona qədər işləyir. Canlı şəbəkəyə qoşulacaq ilk real qurum pilotla gələcək.",
       cards: [
         {
           icon: "shield",
@@ -700,7 +700,7 @@ const az: RoadmapContent = {
       n: "2",
       state: "progress",
       title: "Pilotdan əvvəl",
-      summary: "Real insanlar istifadə etməzdən əvvəl qurumun ehtiyac duyduqları.",
+      summary: "Real insanlar şəbəkədən istifadə etməyə başlamazdan əvvəl qurumun ehtiyac duyduğu işlər bunlardır.",
       cards: [
         {
           icon: "smartphone",
@@ -739,7 +739,7 @@ const az: RoadmapContent = {
       state: "planned",
       title: "Pilot",
       summary:
-        "Bir universitet, məhdud qrup, uğur və dayandırma meyarları əvvəlcədən müəyyən edilir.",
+        "Pilot bir universitetdə və məhdud qrupla keçiriləcək. Uğur və dayandırma meyarları əvvəlcədən müəyyən edilib.",
       cards: [
         {
           icon: "graduation",
@@ -762,7 +762,7 @@ const az: RoadmapContent = {
       n: "4",
       state: "planned",
       title: "Şəbəkənin genişlənməsi",
-      summary: "Daha çox operator, daha çox dövlət.",
+      summary: "Şəbəkə qoşulan operatorların və dövlətlərin sayı artdıqca genişlənəcək.",
       cards: [
         {
           icon: "network",
@@ -786,7 +786,7 @@ const az: RoadmapContent = {
       state: "research",
       title: "Tədqiqat",
       summary:
-        "Öyrənilir, hələ planlaşdırılmayıb; istənilən istifadədən əvvəl müstəqil təhlükəsizlik yoxlaması.",
+        "Bu mövzular öyrənilir, amma hələ plana daxil edilməyib. Onların heç biri müstəqil təhlükəsizlik yoxlamasından keçmədən istifadə olunmayacaq.",
       cards: [
         {
           icon: "key",
@@ -801,7 +801,7 @@ const az: RoadmapContent = {
       ],
     },
   ],
-  note: "Ətraflı: whitepaper-in “Vəziyyət və yol xəritəsi” və “Məlum məhdudiyyətlər” bölmələri.",
+  note: "Ətraflı məlumatı whitepaper-in “Vəziyyət və yol xəritəsi” və “Məlum məhdudiyyətlər” bölmələrində tapa bilərsiniz.",
 };
 
 const content: Record<Locale, RoadmapContent> = { en, tr, tk, az };

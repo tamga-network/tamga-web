@@ -12,13 +12,13 @@ related: status-list-privacy, openid4vp-dcql-deep-dive, openid4vci-deep-dive, sd
 
 <!-- Sources: HAIP 1.0 Final (24 Dec 2025) §3–8 (flows, FAPI2/PKCE/PAR, DPoP + DPoP-Nonce, scope, signed metadata, wallet attestation shared sub, key attestations, x509_hash, DCQL, ECDH-ES P-256, A128GCM+A256GCM, ephemeral keys, aki, JAR request_uri, direct_post.jwt, same-device rules, dc_api.jwt, mso_mdoc / dc+sd-jwt, x5c without trust anchor, status_list, unique unpredictable index, KB-JWT always, ES256 / -7 -9, SHA-256). ADR-0034 (K1–K5, CI1–CI6, renewal order). draft-ietf-oauth-status-list-21 (21 Jun 2026; RFC Editor queue per datatracker 2026-10-08; title "Token Status List (TSL)"): §4 bit packing LSB-first, DEFLATE/ZLIB, bits 1/2/4/8, JWT claims sub/iat/exp/ttl/status_list, aggregation_uri, §7 status types (0x03 application specific), §12 herd privacy. SPEC-CRED-0003 v1.0.0 (cites draft-20): bits=2, 100,000 min, 80% fill, random idx, opaque URI, split by type only, 2-min fixed cadence, no emergency publish, exp = iat + 6 h, ttl 120 (2026-10-09: 1% noise rule removed), prefetch, aggregation recommended, separate status key, Ş1–Ş10, S1–S14, anchors.jsonl today. SPEC-API-0001 D1–D6, INDETERMINATE reasons, ZK NOT_APPLICABLE. ADR-0048 (bits per credential type, identity 1, institutions 2, suspension only where the schema allows; CWT form for mdoc; packages 0.6.0). ADR-0044 implemented in packages 0.4.0. Compression figures computed for this post with zlib level 9 (same call as @tamga-network/sd-jwt). -->
 
-**HAIP** (OpenID4VC High Assurance Interoperability Profile) 1.0 takes the many options in OpenID4VCI, OpenID4VP, SD-JWT VC and ISO mdoc and fixes one set for high-assurance use: which formats, algorithms, client identifiers, encryption and attestations every party must support. **Token Status List** is the revocation mechanism that set relies on: each credential points to a position in a large, signed, compressed bit list that verifiers download in advance, so checking a credential never tells the issuer where or when it was shown.
+**HAIP** (OpenID4VC High Assurance Interoperability Profile) 1.0 takes the many options in OpenID4VCI, OpenID4VP, SD-JWT VC and ISO mdoc and fixes one set for high-assurance use. That set says which formats, algorithms, client identifiers, encryption and attestations every party must support. **Token Status List** is the revocation mechanism the set relies on. Each credential points to a position in a large, signed, compressed bit list that verifiers download in advance, so checking a credential never tells the issuer where or when it was shown.
 
-HAIP 1.0 became Final on 24 December 2025. The Token Status List draft is at version 21 (21 June 2026), now titled "Token Status List (TSL)", and sits in the RFC Editor queue.
+HAIP 1.0 became Final on 24 December 2025. The Token Status List draft has reached version 21 (21 June 2026). It is now titled "Token Status List (TSL)" and sits in the RFC Editor queue.
 
 ## What does HAIP fix that the base specifications leave open?
 
-Two products can each follow OpenID4VP to the letter and still fail to talk to each other: one signs requests with `x509_san_dns`, the other only accepts DIDs; one encrypts responses, the other doesn't. HAIP closes those gaps for three flows (issuance, presentation with redirects, presentation over the browser's Digital Credentials API) and two formats. The main rules:
+Two products can each follow OpenID4VP to the letter and still fail to talk to each other. One may sign requests with `x509_san_dns` while the other only accepts DIDs, or one may encrypt responses while the other does not. HAIP closes those gaps for three flows (issuance, presentation with redirects, presentation over the browser's Digital Credentials API) and two formats. The main rules are these:
 
 | Area | HAIP 1.0 requirement |
 |---|---|
@@ -35,23 +35,23 @@ Two products can each follow OpenID4VP to the letter and still fail to talk to e
 | SD-JWT VC | KB-JWT always present when the credential is holder-bound; `status` uses `status_list` |
 | Status | every credential gets its own unique, unpredictable index |
 
-Tamga's profiles follow all of these, and in a few places go further: ES256 is the only signature algorithm allowed, and every credential is holder-bound, so a KB-JWT is always required. The protocol detail is in the [OpenID4VCI](/blog/openid4vci-deep-dive) and [OpenID4VP and DCQL](/blog/openid4vp-dcql-deep-dive) deep dives.
+Tamga's profiles follow all of these rules and go further in a few places. ES256 is the only signature algorithm allowed, and every credential is holder-bound, so a KB-JWT is always required. The protocol detail is in the [OpenID4VCI](/blog/openid4vci-deep-dive) and [OpenID4VP and DCQL](/blog/openid4vp-dcql-deep-dive) deep dives.
 
 ![HAIP rules and Tamga's choices](/blog/haip-and-token-status-list/en/fig-haip.png)
 
 ## Which HAIP rules changed Tamga's design?
 
-When the HAIP requirements were mapped one by one, two touched closed decisions, so they went through [ADR-0034](https://docs.tamga.network/adr/0034-haip-client-id-and-wia-sub), approved by project management on 1 October 2026.
+When we mapped the HAIP requirements one by one against our own rules, two of them touched closed decisions, so they went through [ADR-0034](https://docs.tamga.network/adr/0034-haip-client-id-and-wia-sub), approved by project management on 1 October 2026.
 
-**Verifier identity is `x509_hash`.** HAIP §5: "For signed requests, the Verifier MUST use, and the Wallet MUST accept the Client Identifier Prefix `x509_hash`". Before the ADR, Tamga verifiers used `x509_san_dns:<domain>`, and trust list records were keyed on that string. Now:
+**Verifier identity is `x509_hash`.** HAIP §5 is explicit: "For signed requests, the Verifier MUST use, and the Wallet MUST accept the Client Identifier Prefix `x509_hash`". Before the ADR, Tamga verifiers used `x509_san_dns:<domain>`, and trust list records were keyed on that string. Since the change, the rules are:
 
 - the verifier's `client_id` is computed from its access certificate, never typed into a configuration file;
 - the wallet accepts only `x509_hash` and rejects the request if the hash doesn't match the leaf certificate, while still requiring the response address to be on a domain in the certificate's SAN;
 - because the hash changes whenever a certificate is renewed, each relying party record carries a permanent `dns_name`, and everything that must survive renewal is bound to it: copy separation, per-site pseudonyms, pass cards and the presentation log.
 
-The operational consequence is an order of operations. On renewal, the new certificate goes into the registry source and the trust list is republished first; only then does the verifier switch. If it switches early, wallets see an unknown `client_id` and refuse.
+In operation, this means the steps have to happen in a fixed order. On renewal, the new certificate goes into the registry source and the trust list is republished first, and only then does the verifier switch. If it switches early, wallets see an unknown `client_id` and refuse the request.
 
-**The wallet attestation's subject is shared.** HAIP §4.4.1 says the attestation `sub` "MUST be a value that is shared by all Wallet instances using the present type of wallet implementation", and the PAR `client_id` is that value. The provider of Tamga Wallet, one of the wallets on the network, used to put the fingerprint of a per-transaction key there. It now uses the wallet solution's identifier. Instances are still told apart only by a fresh `cnf` key and a fresh, unlinkable status entry for each transaction, so what an institution records identifies the wallet product and says nothing about the phone.
+**The wallet attestation's subject is shared.** HAIP §4.4.1 says the attestation `sub` "MUST be a value that is shared by all Wallet instances using the present type of wallet implementation", and the PAR `client_id` is that value. The provider of Tamga Wallet, one of the wallets on the network, used to put the fingerprint of a per-transaction key there. It now uses the wallet solution's identifier. Instances are still told apart only by a fresh `cnf` key and a fresh, unlinkable status entry for each transaction. What an institution records therefore identifies the wallet product and says nothing about the phone.
 
 ## How does a Token Status List encode status?
 
@@ -75,9 +75,9 @@ A credential carries a pointer, and the list carries the bits:
 }
 ```
 
-`sub` must equal the `uri` in the credential. An mdoc copy of the same credential uses the same `idx` but points to the CWT form of the list (`application/statuslist+cwt`) at its own opaque address; both forms carry the same bits and are signed in the same publication ([ADR-0048](https://docs.tamga.network/adr/0048-identity-no-suspension-mdoc-cwt-status)). `lst` is built in three steps defined by the draft: write `bits` bits per credential into a byte array, packing from the **least significant bit** of each byte; compress the array with DEFLATE in ZLIB format; base64url-encode the result.
+`sub` must equal the `uri` in the credential. An mdoc copy of the same credential uses the same `idx` but points to the CWT form of the list (`application/statuslist+cwt`) at its own opaque address; both forms carry the same bits and are signed in the same publication ([ADR-0048](https://docs.tamga.network/adr/0048-identity-no-suspension-mdoc-cwt-status)). `lst` is built in three steps defined by the draft. First, `bits` bits per credential are written into a byte array, packing from the **least significant bit** of each byte. The array is then compressed with DEFLATE in ZLIB format, and the result is base64url-encoded.
 
-A tiny worked example: an institution's list with 16 entries and `bits: 2`, where index 1 is revoked, index 2 is suspended and index 6 is revoked:
+Take a tiny example. An institution's list has 16 entries and `bits: 2`, and in it index 1 is revoked, index 2 is suspended and index 6 is revoked:
 
 ```text title="Packing 2-bit statuses (computed for this post)"
 byte 0 = idx 3..0  → 00 10 01 00 → 0x24
@@ -88,7 +88,7 @@ byte 3 = idx 15..12 → 0x00
 zlib(level 9), base64url → eNpTEWBgAAAAxAA1
 ```
 
-To read index `idx` with `bits: 2`: take byte `idx >> 2` and shift right by `(idx & 3) × 2`. For `idx` 48213 that is byte 12053, bits 2 and 3. With `bits: 1` it is byte `idx >> 3`, bit `idx & 7`. Size is not a concern: a Tamga list has at least 100,000 entries, 25,000 bytes uncompressed with two bits (12,500 with one). With zlib at level 9 an all-valid list compresses to 46 bytes, and the same list with 200 scattered revocations to 439 bytes, in our test run for this post.
+To read index `idx` with `bits: 2`, take byte `idx >> 2` and shift it right by `(idx & 3) × 2`. For `idx` 48213 that gives byte 12053, bits 2 and 3. With `bits: 1` you read byte `idx >> 3`, bit `idx & 7`. Size does not become a problem. A Tamga list has at least 100,000 entries, which take 25,000 bytes uncompressed with two bits (12,500 with one). In our test run for this post, zlib at level 9 compressed an all-valid list to 46 bytes, and the same list with 200 scattered revocations to 439 bytes.
 
 ![Reading a credential's status in four steps](/blog/haip-and-token-status-list/en/fig-bits.png)
 
@@ -101,21 +101,21 @@ To read index `idx` with `bits: 2`: take byte `idx >> 2` and shift right by `(id
 | `0x02` | SUSPENDED | suspended, reversible; only in types whose schema allows it |
 | `0x03` | application-specific | not used; treated as revoked |
 
-The draft allows `bits` of 1, 2, 4 or 8. Since packages 0.6.0 Tamga sets it per credential type ([ADR-0048](https://docs.tamga.network/adr/0048-identity-no-suspension-mdoc-cwt-status)). The identity service's credentials cannot be suspended, following the EU rule for person identification data, so their lists use one bit: valid or revoked, and a revocation is final. Institutions' lists use two bits, because suspension needs its own value: an institution investigating a diploma wants to pause it while the investigation runs. Even there `0x02` is written only for types whose schema allows suspension (`suspension_allowed`, today the diploma); a suspension value in any other type is rejected as a broken list. Four or eight bits would double or quadruple the list for no benefit. A verifier treats anything other than `0x00` as a rejection and shows "suspended" separately from "revoked".
+The draft allows `bits` of 1, 2, 4 or 8. Since packages 0.6.0 Tamga sets it per credential type ([ADR-0048](https://docs.tamga.network/adr/0048-identity-no-suspension-mdoc-cwt-status)). The identity service's credentials cannot be suspended, following the EU rule for person identification data, so their lists use one bit. A credential there is either valid or revoked, and a revocation is final. Institutions' lists use two bits, because suspension needs its own value. An institution investigating a diploma may want to pause it while the investigation runs. Even there `0x02` is written only for types whose schema allows suspension (`suspension_allowed`, today the diploma); a suspension value in any other type is rejected as a broken list. Four or eight bits would double or quadruple the list for no benefit. A verifier treats anything other than `0x00` as a rejection and shows "suspended" separately from "revoked".
 
 ## How does a status list avoid becoming a tracking channel?
 
-The privacy of a status list comes from the herd: a verifier downloading a list could be checking any of its entries. Tamga's rules make the herd real; the same rules seen from the person's side are in [Revocation without tracking](/blog/status-list-privacy).
+The privacy of a status list comes from the herd, because a verifier downloading a list could be checking any of its entries. Tamga's rules make sure the herd really exists. The same rules, seen from the person's side, are in [Revocation without tracking](/blog/status-list-privacy).
 
-- **Big lists.** At least 100,000 entries, and a new list once 80% are allocated. Unused positions carry the same `0x00` as valid credentials, so nobody looking from outside can tell how many positions are allocated.
+- **Big lists.** Every list has at least 100,000 entries, and a new list opens once 80% are allocated. Unused positions carry the same `0x00` as valid credentials, so nobody looking from outside can tell how many positions are in use.
 - **Random indices.** `idx` is drawn at random within the list's capacity. A sequential index would reveal enrolment order and roughly the date, even if `awarding_date` stays hidden. HAIP also requires every credential to have its own unique, unpredictable index.
-- **Opaque URIs.** The list URI is visible in every presentation, so it is a claim. `/sl/2026-engineering` would leak year and faculty; Tamga list identifiers are random strings, and the mapping stays with the issuer.
+- **Opaque URIs.** The list URI is visible in every presentation, so it counts as a claim too. `/sl/2026-engineering` would leak the year and the faculty, so Tamga list identifiers are random strings and only the issuer knows what they map to.
 - **Split by type only.** A new list opens when the previous one is full, never per year or per department.
-- **Copies don't share an index.** Each of the ten batch copies has its own random index, so two verifiers can't link presentations through `idx`.
+- **Copies don't share an index.** Each of the ten batch copies has its own random index, so two verifiers cannot link presentations through `idx`.
 
-One limit is structural and written down as such: for a small institution the herd is only as large as that institution's own set of credentials, because `iss` names it anyway.
+One limit comes from the structure itself, and we state it openly. For a small institution the herd is only as large as that institution's own set of credentials, because `iss` names the institution anyway.
 
-The other half of the privacy story is fetching. If a verifier downloaded the list at every check, the issuer would learn "someone is checking one of my credentials right now", and the source IP would often say who. Tamga verifiers therefore **prefetch** lists on a schedule and verify from the cache; `@tamga-network/verifier` does this by default, and fetching per verification must be switched on explicitly. The draft's optional `aggregation_uri`, which lists all of an issuer's status lists at one address, is recommended in Tamga because it makes prefetching practical.
+The other half of the privacy story is when the list is fetched. If a verifier downloaded the list at every check, the issuer would learn that someone was checking one of its credentials right then, and the source IP would often say who. Tamga verifiers therefore **prefetch** lists on a schedule and verify from the cache. `@tamga-network/verifier` does this by default, and fetching per verification has to be switched on explicitly. The draft's optional `aggregation_uri` lists all of an issuer's status lists at one address, and Tamga recommends it because it makes prefetching practical.
 
 ## How often is a list published, and how long is a copy valid?
 
@@ -128,23 +128,23 @@ The other half of the privacy story is fetching. If a verifier downloaded the li
 | Cache headers | ignored in favour of `exp` and `ttl` | the token's own claims decide |
 | Signing key | separate from the credential key, same X.509 chain | a leaked status key can fake a status, not a diploma |
 
-Each publication is written to the status server first and its hash recorded second. Today that record is the trust list publisher's anchor log; a ledger is a later stage ([why there is no blockchain yet](/blog/why-no-blockchain-yet)). The verifier checks that the token's hash matches the recorded one and that its version hasn't gone backwards, so an issuer can't quietly roll a list back to make a revoked credential look valid.
+Each publication is written to the status server first, and its hash is recorded afterwards. Today that record is the trust list publisher's anchor log, and a ledger belongs to a later stage ([why there is no blockchain yet](/blog/why-no-blockchain-yet)). The verifier checks that the token's hash matches the recorded one and that its version has not gone backwards, so an issuer cannot quietly roll a list back to make a revoked credential look valid.
 
 ## What does a verifier conclude when it can't check?
 
-Revocation checks run as steps D1–D6 of Tamga's pipeline: read `status.status_list`, take the token from the prefetch cache, verify its signature against the status key registered for that institution in the trust list, check `sub`, freshness and the recorded hash, then read the bits. When the list can't be fetched, or `exp` has passed, the outcome is **INDETERMINATE**, with a reason such as `STATUS_UNREACHABLE` or `STATUS_STALE`. "This diploma was revoked" and "I can't check right now" lead to different decisions about a person and must be shown differently. Offline, a verifier may continue from its cached token and last known record, show the time of the last synchronisation, and mark the result as verified offline.
+Revocation checks run as steps D1–D6 of Tamga's pipeline. The verifier reads `status.status_list`, takes the token from the prefetch cache and verifies its signature against the status key registered for that institution in the trust list. It then checks `sub`, freshness and the recorded hash, and finally reads the bits. When the list can't be fetched, or `exp` has passed, the outcome is **INDETERMINATE**, with a reason such as `STATUS_UNREACHABLE` or `STATUS_STALE`. "This diploma was revoked" and "I can't check right now" lead to different decisions about a person, so they must be shown differently. When offline, a verifier may continue from its cached token and last known record. It then shows the time of the last synchronisation and marks the result as verified offline.
 
-Zero-knowledge age proofs are the one case without an index: the proof reveals nothing that could identify a list position, so the status is reported as not applicable. The decision is to present with zero knowledge only short-lived copies, valid for at most 24 hours and not refreshed once the credential is revoked ([ADR-0044](https://docs.tamga.network/adr/0044-zk-short-lived-copies)). This has been in place since packages 0.4.0: the copies carry no status entry, the wallet refreshes them without asking, and their short lifetime stands in for the revocation check. A zero-knowledge proof that is not based on such a copy is accepted only when the verifier's policy explicitly says so ([ADR-0032](https://docs.tamga.network/adr/0032-zk-mdoc-presentation)).
+Zero-knowledge age proofs are the one case without an index. The proof reveals nothing that could identify a list position, so the status is reported as not applicable. For this reason, only short-lived copies are presented with zero knowledge. They are valid for at most 24 hours and are not refreshed once the credential is revoked ([ADR-0044](https://docs.tamga.network/adr/0044-zk-short-lived-copies)). This has been in place since packages 0.4.0. The copies carry no status entry, the wallet refreshes them without asking, and their short lifetime stands in for the revocation check. A zero-knowledge proof that is not based on such a copy is accepted only when the verifier's policy explicitly says so ([ADR-0032](https://docs.tamga.network/adr/0032-zk-mdoc-presentation)).
 
 ## Frequently asked questions
 
 ### Is HAIP a law?
 
-No. It is an OpenID Foundation specification. The European digital identity ecosystem relies on it so that wallets, issuers and verifiers from different makers work together.
+No. HAIP is a specification of the OpenID Foundation. The European digital identity ecosystem relies on it so that wallets, issuers and verifiers from different makers can work together.
 
 ### Why not let the verifier ask the issuer "is this credential still valid"?
 
-Because the question itself is the leak: the issuer would learn which credential is being checked, when, and often by whom. With a status list the verifier holds a copy of everyone's status and asks no one.
+Asking the question would itself leak information. The issuer would learn which credential is being checked, when, and often by whom. With a status list the verifier holds a copy of everyone's status and does not need to ask anyone.
 
 ### Does suspension expire on its own?
 
@@ -152,7 +152,7 @@ No. A suspended credential stays suspended until the issuer sets the bits back t
 
 ### Can a verifier tell that ten copies belong to the same person?
 
-Not through the status list. Each copy has its own random index, and the mapping between copies stays in the issuer's database. On revocation, all ten indices change in the same scheduled publication, along with whatever else changed in that interval.
+It cannot do so through the status list. Each copy has its own random index, and the mapping between copies stays in the issuer's database. On revocation, all ten indices change in the same scheduled publication, together with everything else that changed in that interval.
 
 ## Sources
 

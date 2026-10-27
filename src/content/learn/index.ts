@@ -42,10 +42,10 @@ export const CHAPTERS: LearnChapter[] = [
       az: "Təməl elementlər",
     },
     intro: {
-      tr: "İmza, sertifika, doğrulanabilir belge ve cüzdan: teknik ayrıntıya boğulmadan.",
+      tr: "İmza, sertifika, doğrulanabilir belge ve cüzdanı teknik ayrıntıya boğulmadan anlatıyoruz.",
       en: "Signatures, certificates, verifiable credentials and wallets, without drowning in detail.",
-      tk: "Gol, sertifikat, barlanyp bilinýän resminama we gapjyk: jikme-jikliklere batman.",
-      az: "İmzalar, sertifikatlar, yoxlanıla bilən rəqəmsal sənədlər və rəqəmsal cüzdanlar — təfərrüatlarda boğulmadan.",
+      tk: "Gol, sertifikat, barlanyp bilinýän resminama we gapjyk barada jikme-jikliklere batman gürrüň berýäris.",
+      az: "İmzaları, sertifikatları, yoxlanıla bilən rəqəmsal sənədləri və rəqəmsal cüzdanları təfərrüatlarda boğulmadan izah edirik.",
     },
   },
   {

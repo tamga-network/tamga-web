@@ -1,7 +1,7 @@
 ---
 title: "HAIP və Token Status List: izləmədən yüksək təminat"
 slug: haip-and-token-status-list
-description: "HAIP 1.0 nəyi müəyyənləşdirir, Tamga onu necə tətbiq edir və Token Status List rəqəmsal sənədləri harada istifadə olunduqlarını sənədi verən quruma bildirmədən necə ləğv edir."
+description: "HAIP 1.0-ın nəyi sabitlədiyini və Tamga-nın onu necə tətbiq etdiyini, Token Status List-in isə sənədi harada istifadə olunduğunu verən quruma bildirmədən necə ləğv etdiyini izah edirik."
 date: 2026-10-08
 updated: 2026-10-23
 lang: az
@@ -12,50 +12,50 @@ related: status-list-privacy, openid4vp-dcql-deep-dive, openid4vci-deep-dive, sd
 
 <!-- Sources: HAIP 1.0 Final (24 Dec 2025) §3–8 (flows, FAPI2/PKCE/PAR, DPoP + DPoP-Nonce, scope, signed metadata, wallet attestation shared sub, key attestations, x509_hash, DCQL, ECDH-ES P-256, A128GCM+A256GCM, ephemeral keys, aki, JAR request_uri, direct_post.jwt, same-device rules, dc_api.jwt, mso_mdoc / dc+sd-jwt, x5c without trust anchor, status_list, unique unpredictable index, KB-JWT always, ES256 / -7 -9, SHA-256). ADR-0034 (K1–K5, CI1–CI6, renewal order). draft-ietf-oauth-status-list-21 (21 Jun 2026; RFC Editor queue per datatracker 2026-10-08; title "Token Status List (TSL)"): §4 bit packing LSB-first, DEFLATE/ZLIB, bits 1/2/4/8, JWT claims sub/iat/exp/ttl/status_list, aggregation_uri, §7 status types (0x03 application specific), §12 herd privacy. SPEC-CRED-0003 v1.0.0 (cites draft-20): bits=2, 100,000 min, 80% fill, random idx, opaque URI, split by type only, 2-min fixed cadence, no emergency publish, exp = iat + 6 h, ttl 120 (2026-10-09: 1% noise rule removed), prefetch, aggregation recommended, separate status key, Ş1–Ş10, S1–S14, anchors.jsonl today. SPEC-API-0001 D1–D6, INDETERMINATE reasons, ZK NOT_APPLICABLE. ADR-0048 (bits per credential type, identity 1, institutions 2, suspension only where the schema allows; CWT form for mdoc; packages 0.6.0). ADR-0044 implemented in packages 0.4.0. Compression figures computed for this post with zlib level 9 (same call as @tamga-network/sd-jwt). -->
 
-**HAIP** (OpenID4VC High Assurance Interoperability Profile) 1.0 OpenID4VCI, OpenID4VP, SD-JWT VC və ISO mdoc-dakı çoxsaylı seçimlərdən yüksək təminat tələb edən istifadə üçün vahid bir dəst müəyyənləşdirir: hər tərəfin hansı formatları, alqoritmləri, müştəri identifikatorlarını, şifrələməni və attestasiyaları dəstəkləməli olduğunu. **Token Status List** bu dəstin əsaslandığı ləğv mexanizmidir: hər rəqəmsal sənəd yoxlayan tərəflərin əvvəlcədən endirdiyi böyük, imzalanmış, sıxılmış bit siyahısındakı bir mövqeyə işarə edir, buna görə də sənədin yoxlanması sənədi verən quruma onun harada və nə vaxt təqdim olunduğunu heç vaxt bildirmir.
+**HAIP** (OpenID4VC High Assurance Interoperability Profile) 1.0 OpenID4VCI, OpenID4VP, SD-JWT VC və ISO mdoc-un açıq buraxdığı çoxsaylı seçimlərdən yüksək təminat tələb edən istifadə üçün vahid dəst müəyyən edir. Hər tərəfin hansı formatları, alqoritmləri, müştəri identifikatorlarını, şifrələmə üsullarını və attestasiyaları dəstəkləməli olduğu bu dəstdə yazılıb. **Token Status List** isə bu dəstin söykəndiyi ləğv mexanizmidir. Hər sənəd böyük, imzalanmış və sıxılmış bit siyahısında bir mövqeyə işarə edir və yoxlayan tərəflər bu siyahını əvvəlcədən endirir. Ona görə sənədin yoxlanması onu verən quruma sənədin harada və nə vaxt göstərildiyini heç vaxt bildirmir.
 
-HAIP 1.0 24 dekabr 2025-ci ildə yekun (Final) statusu aldı. Token Status List layihəsi 21-ci versiyadadır (21 iyun 2026), indi "Token Status List (TSL)" adlanır və RFC Editor növbəsində gözləyir.
+HAIP 1.0 24 dekabr 2025-ci ildə Final oldu. Token Status List layihəsi 21-ci versiyaya çatıb (21 iyun 2026). Layihənin adı artıq "Token Status List (TSL)"-dir və mətn RFC Editor növbəsində gözləyir.
 
-## HAIP baza spesifikasiyaların açıq buraxdığı hansı məsələləri müəyyənləşdirir?
+## HAIP əsas spesifikasiyaların açıq buraxdığı nəyi sabitləyir?
 
-İki məhsulun hər biri OpenID4VP-yə hərfi-hərfinə əməl edə və yenə də bir-biri ilə əlaqə qura bilməyə bilər: biri sorğuları `x509_san_dns` ilə imzalayır, digəri yalnız DID-ləri qəbul edir; biri cavabları şifrələyir, digəri şifrələmir. HAIP bu boşluqları üç axın (rəqəmsal sənədin verilməsi, yönləndirmələrlə təqdimat, brauzerin Digital Credentials API-si üzərindən təqdimat) və iki format üçün bağlayır. Əsas qaydalar:
+OpenID4VP-yə hərfi-hərfinə əməl edən iki məhsul yenə də bir-biri ilə anlaşa bilməyə bilər. Məsələn, biri sorğuları `x509_san_dns` ilə imzalayarkən digəri yalnız DID qəbul edə bilər, ya da biri cavabı şifrələyərkən digəri şifrələməyə bilər. HAIP bu boşluqları üç axın və iki format üçün bağlayır. Axınlar sənədin verilməsi, yönləndirmə ilə təqdimat və brauzerin Digital Credentials API-si ilə təqdimatdır. Əsas qaydalar bunlardır:
 
 | Sahə | HAIP 1.0 tələbi |
 |---|---|
-| Formatlar | IETF SD-JWT VC (`dc+sd-jwt`) və ya ISO mdoc (`mso_mdoc`); hansının istifadə olunacağını ekosistemlər müəyyən edir |
-| Alqoritmlər | hamı ən azı ES256 (COSE -7 və ya -9) və SHA-256-nı dəstəkləyir |
-| Verilmə | FAPI 2.0 vasitəsilə PKCE (S256) və PAR ilə authorization code axını; DPoP-a bağlı tokenlər; hər rəqəmsal sənəd konfiqurasiyası üçün `scope`; rəqəmsal sənədlər açara bağlı olduqda `nonce_endpoint` |
-| Cüzdana etibar | PAR və token endpoint-lərində bütün quraşdırmaların paylaşdığı `sub` ilə cüzdan attestasiyası; açar attestasiyaları |
+| Formatlar | IETF SD-JWT VC (`dc+sd-jwt`) və ya ISO mdoc (`mso_mdoc`); hansının lazım olduğunu ekosistem müəyyən edir |
+| Alqoritmlər | hər kəs ən azı ES256 (COSE -7 və ya -9) və SHA-256 dəstəkləyir |
+| Sənədin verilməsi | FAPI 2.0 vasitəsilə PKCE (S256) və PAR ilə avtorizasiya kodu axını; DPoP-a bağlı tokenlər; hər sənəd konfiqurasiyası üçün `scope`; sənəd açara bağlıdırsa, `nonce_endpoint` |
+| Cüzdana etibar | PAR və token endpoint-lərində `sub` dəyəri bütün quraşdırmalarda eyni olan cüzdan attestasiyası; açar attestasiyaları |
 | Yoxlayan tərəfin kimliyi | imzalanmış sorğular `x509_hash` müştəri identifikatorundan istifadə edir |
-| Sorğu | DCQL, o cümlədən `aki` tipli `trusted_authorities` |
-| Cavab | şifrələnmiş: P-256 üzərində ECDH-ES; yoxlayan tərəflər həm A128GCM, həm də A256GCM göstərir; hər sorğu üçün yeni açar |
-| Yönləndirmə axını | `request_uri`, `direct_post.jwt` ilə JAR, eyni cihazda ilkin sessiyaya geri yönləndirmə |
+| Sorğu | DCQL, `aki` tipli `trusted_authorities` daxil olmaqla |
+| Cavab | şifrələnmiş: P-256 üzərində ECDH-ES; yoxlayan tərəf həm A128GCM, həm də A256GCM-i siyahıya alır; hər sorğu üçün yeni açar |
+| Yönləndirmə axını | `request_uri` ilə JAR, `direct_post.jwt`, eyni cihazda sorğunu başladan sessiyaya geri qayıtma |
 | Brauzer axını | `dc_api.jwt` ilə Digital Credentials API |
-| Başlıqlarda açarlar | sənədi verən qurumun imzaları, imzalanmış metadata və status siyahısı tokenləri üçün `x5c`, etibar ankeri daxil edilmədən, heç vaxt öz-özünə imzalanmış deyil |
-| SD-JWT VC | rəqəmsal sənəd sənəd sahibinə bağlı olduqda KB-JWT həmişə mövcuddur; `status` `status_list` istifadə edir |
-| Status | hər rəqəmsal sənəd öz unikal, proqnozlaşdırılmaz indeksini alır |
+| Başlıqdakı açarlar | qurum imzaları, imzalanmış metaməlumat və status siyahısı tokenləri üçün `x5c`; etibar lövbəri əlavə edilmir, özünü imzalayan sertifikatdan istifadə olunmur |
+| SD-JWT VC | sənəd cihaza bağlıdırsa, KB-JWT həmişə olur; `status` sahəsi `status_list` istifadə edir |
+| Status | hər sənədin özünə məxsus, unikal və təxmin edilə bilməyən mövqeyi olur |
 
-Tamga-nın profilləri bunların hamısına əməl edir, bəzi yerlərdə isə daha irəli gedir: icazə verilən yeganə imza alqoritmi ES256-dır və hər rəqəmsal sənəd sənəd sahibinə bağlıdır, buna görə də KB-JWT həmişə tələb olunur. Protokol təfərrüatları [OpenID4VCI](/blog/openid4vci-deep-dive) və [OpenID4VP və DCQL](/blog/openid4vp-dcql-deep-dive) üzrə ətraflı yazılardadır.
+Tamga profilləri bu qaydaların hamısına əməl edir və bir neçə yerdə daha irəli gedir. İcazə verilən yeganə imza alqoritmi ES256-dır və hər sənəd cihaza bağlı olduğu üçün KB-JWT həmişə tələb olunur. Protokolun təfərrüatlarını [OpenID4VCI](/blog/openid4vci-deep-dive) və [OpenID4VP və DCQL](/blog/openid4vp-dcql-deep-dive) yazılarında izah etmişik.
 
 ![HAIP qaydaları və Tamga-nın seçimləri](/blog/haip-and-token-status-list/en/fig-haip.png)
 
 ## Hansı HAIP qaydaları Tamga-nın dizaynını dəyişdi?
 
-HAIP tələbləri bir-bir tutuşdurulanda onlardan ikisi artıq qəbul edilmiş qərarlara toxundu, buna görə də onlar layihə rəhbərliyi tərəfindən 1 oktyabr 2026-cı ildə təsdiqlənmiş [ADR-0034](https://docs.tamga.network/adr/0034-haip-client-id-and-wia-sub) prosesindən keçdi.
+HAIP tələblərini bir-bir öz qaydalarımızla tutuşdurduqda onlardan ikisinin əvvəl bağlanmış qərarlara toxunduğunu gördük. Ona görə hər ikisi [ADR-0034](https://docs.tamga.network/adr/0034-haip-client-id-and-wia-sub) ilə həll edildi və layihə rəhbərliyi bu ADR-i 1 oktyabr 2026-cı ildə təsdiqlədi.
 
-**Yoxlayan tərəfin kimliyi: `x509_hash`.** HAIP §5: "İmzalanmış sorğular üçün Yoxlayan tərəf `x509_hash` Client Identifier Prefix-dən istifadə ETMƏLİ, Cüzdan isə onu qəbul ETMƏLİDİR". ADR-dən əvvəl Tamga yoxlayan tərəfləri `x509_san_dns:<domain>` istifadə edirdi və etibar siyahısı qeydləri bu sətrə əsasən açarlanırdı. İndi:
+**Yoxlayan tərəfin kimliyi artıq `x509_hash`-dır.** HAIP §5 bu barədə aydın danışır: "For signed requests, the Verifier MUST use, and the Wallet MUST accept the Client Identifier Prefix `x509_hash`". ADR-dən əvvəl Tamga yoxlayan tərəfləri `x509_san_dns:<domen>` istifadə edirdi və etibar siyahısındakı qeydlər də bu sətrə görə saxlanılırdı. Dəyişiklikdən sonra qaydalar belədir:
 
-- yoxlayan tərəfin `client_id` dəyəri konfiqurasiya faylına əl ilə yazılmır, onun giriş sertifikatından hesablanır;
-- rəqəmsal cüzdan yalnız `x509_hash` qəbul edir və hash son (leaf) sertifikatla uyğun gəlmədikdə sorğunu rədd edir; bununla yanaşı, cavab ünvanının sertifikatın SAN sahəsindəki domenlərdən birində olmasını yenə də tələb edir;
-- sertifikat hər dəfə yeniləndikdə hash dəyişdiyi üçün hər etibar edən tərəf qeydində daimi `dns_name` saxlanılır və yenilənmədən sonra da qorunmalı olan hər şey ona bağlanır: nüsxələrin ayrılması, hər sayt üçün ayrıca psevdonimlər, keçid kartları və təqdimat jurnalı.
+- yoxlayan tərəfin `client_id` dəyəri giriş sertifikatından hesablanır və heç bir konfiqurasiya faylına əllə yazılmır;
+- cüzdan yalnız `x509_hash` qəbul edir və heş yarpaq sertifikatla uyğun gəlmirsə, sorğunu rədd edir; cavab ünvanının sertifikatın SAN sahəsindəki domendə olmasını da tələb etməyə davam edir;
+- sertifikat hər yenilənəndə heş dəyişdiyi üçün hər yoxlayan tərəf qeydi daimi `dns_name` daşıyır; nüsxələrin ayrılması, sayta xas psevdonimlər, keçid kartları və təqdimat jurnalı kimi yenilənmədən təsirlənməməli olan hər şey bu ada bağlanır.
 
-Bunun əməliyyat nəticəsi müəyyən ardıcıllıqdır. Yeniləmə zamanı əvvəlcə yeni sertifikat reyestr mənbəyinə əlavə edilir və etibar siyahısı yenidən dərc olunur; yalnız bundan sonra yoxlayan tərəf keçid edir. Əgər tez keçid etsə, rəqəmsal cüzdanlar naməlum `client_id` görür və imtina edir.
+Bunun istismar tərəfindəki nəticəsi addımların müəyyən ardıcıllıqla atılmasıdır. Sertifikat yenilənəndə əvvəlcə yeni sertifikat reyestr mənbəyinə daxil edilir və etibar siyahısı yenidən dərc olunur. Yoxlayan tərəf yeni sertifikata yalnız bundan sonra keçir. Tez keçsə, cüzdanlar tanımadıqları `client_id` görür və sorğunu rədd edir.
 
-**Cüzdan attestasiyasının subyekti ortaqdır.** HAIP §4.4.1 bildirir ki, attestasiyanın `sub` dəyəri "mövcud cüzdan implementasiyası tipindən istifadə edən bütün Cüzdan instansiyaları tərəfindən paylaşılan dəyər OLMALIDIR", PAR `client_id` isə məhz həmin dəyərdir. Şəbəkədəki rəqəmsal cüzdanlardan biri olan Tamga Wallet-ın provayderi əvvəllər ora hər əməliyyat üçün yaradılan açarın barmaq izini yazırdı. İndi cüzdan həllinin identifikatorundan istifadə edir. İnstansiyalar hələ də yalnız hər əməliyyat üçün yeni `cnf` açarı və yeni, əlaqələndirilə bilməyən status qeydi ilə bir-birindən fərqləndirilir, buna görə də qurumun qeydə aldığı məlumat cüzdan məhsulunu müəyyən edir və telefon haqqında heç nə demir.
+**Cüzdan attestasiyasının subyekti ortaqdır.** HAIP §4.4.1-ə görə attestasiyadakı `sub` "MUST be a value that is shared by all Wallet instances using the present type of wallet implementation" və PAR-dakı `client_id` də bu dəyərdir. Şəbəkədəki cüzdanlardan biri olan Tamga Wallet-in provayderi əvvəllər bu sahəyə hər əməliyyatda yenidən yaradılan açarın barmaq izini yazırdı. İndi cüzdan məhsulunun identifikatorunu yazır. Quraşdırmalar yenə də yalnız hər əməliyyatda yeni yaradılan `cnf` açarı və bir-biri ilə əlaqələndirilə bilməyən yeni status qeydi ilə fərqləndirilir. Beləliklə qurumun qeydə aldığı məlumat cüzdan məhsulunu göstərir və telefon haqqında heç nə demir.
 
 ## Token Status List statusu necə kodlaşdırır?
 
-Rəqəmsal sənəd göstərici daşıyır, siyahı isə bitləri:
+Sənəd siyahıdakı yerini göstərən işarə daşıyır, bitlər isə siyahıdadır:
 
 ```json title="In the credential (SD-JWT VC payload, or the MSO for mdoc)"
 "status": {
@@ -75,9 +75,9 @@ Rəqəmsal sənəd göstərici daşıyır, siyahı isə bitləri:
 }
 ```
 
-`sub` rəqəmsal sənəddəki `uri` ilə eyni olmalıdır. Eyni sənədin mdoc nüsxəsi eyni `idx`-dən istifadə edir, lakin siyahının ayrıca, qeyri-şəffaf ünvandakı CWT formasına (`application/statuslist+cwt`) işarə edir; hər iki forma eyni bitləri daşıyır və eyni dərcdə imzalanır ([ADR-0048](https://docs.tamga.network/adr/0048-identity-no-suspension-mdoc-cwt-status)). `lst` layihədə müəyyən edilmiş üç addımda qurulur: hər rəqəmsal sənəd üçün `bits` bit bayt massivinə yazılır, hər baytın **ən kiçik mərtəbəli bitindən** başlayaraq doldurulur; massiv ZLIB formatında DEFLATE ilə sıxılır; nəticə base64url ilə kodlaşdırılır.
+`sub` dəyəri sənəddəki `uri` ilə eyni olmalıdır. Eyni sənədin mdoc nüsxəsi eyni `idx` dəyərindən istifadə edir, amma siyahının CWT formasına (`application/statuslist+cwt`) işarə edir və bu forma öz qeyri-şəffaf ünvanında yerləşir. Hər iki forma eyni bitləri daşıyır və eyni dərcdə imzalanır ([ADR-0048](https://docs.tamga.network/adr/0048-identity-no-suspension-mdoc-cwt-status)). `lst` sahəsi layihənin müəyyən etdiyi üç addımla qurulur. Əvvəlcə hər sənəd üçün `bits` qədər bit bayt massivinə yazılır və hər bayt **ən kiçik dərəcəli bitdən** başlayaraq doldurulur. Sonra massiv ZLIB formatında DEFLATE ilə sıxılır və nəticə base64url ilə kodlaşdırılır.
 
-Kiçik bir nümunə: 16 qeyd və `bits: 2` olan bir qurum siyahısı; burada 1-ci indeks ləğv edilib, 2-ci indeks dayandırılıb, 6-cı indeks isə ləğv edilib:
+Kiçik bir nümunə götürək. Qurumun 16 qeydli və `bits: 2` olan siyahısında 1-ci indeks ləğv edilib, 2-ci indeks dayandırılıb və 6-cı indeks ləğv edilib:
 
 ```text title="Packing 2-bit statuses (computed for this post)"
 byte 0 = idx 3..0  → 00 10 01 00 → 0x24
@@ -88,9 +88,9 @@ byte 3 = idx 15..12 → 0x00
 zlib(level 9), base64url → eNpTEWBgAAAAxAA1
 ```
 
-`bits: 2` ilə `idx` indeksini oxumaq üçün: `idx >> 2` baytını götürün və `(idx & 3) × 2` qədər sağa sürüşdürün. `idx` 48213 üçün bu, 12053-cü bayt, 2-ci və 3-cü bitlərdir. `bits: 1` ilə bu, `idx >> 3` baytının `idx & 7` bitidir. Ölçü problem deyil: Tamga siyahısında ən azı 100 000 qeyd olur, sıxılmamış halda iki bitlə 25 000 bayt (bir bitlə 12 500). Bu yazı üçün apardığımız testdə zlib 9-cu səviyyədə tamamilə etibarlı siyahını 46 bayta, 200 səpələnmiş ləğv olan eyni siyahını isə 439 bayta sıxdı.
+`bits: 2` olan siyahıda `idx` indeksini oxumaq üçün `idx >> 2` nömrəli bayt götürülür və `(idx & 3) × 2` bit sağa sürüşdürülür. `idx` 48213 üçün bu, 12053-cü baytın 2-ci və 3-cü bitlərinə uyğun gəlir. `bits: 1` olan siyahıda isə `idx >> 3` nömrəli baytın `idx & 7`-ci bitinə baxılır. Siyahının ölçüsü də problem yaratmır. Tamga siyahısında ən azı 100 000 qeyd olur və bu siyahı sıxılmadan iki bitlə 25 000 bayt, bir bitlə 12 500 bayt tutur. Bu yazı üçün apardığımız sınaqda zlib 9-cu səviyyədə bütün qeydləri etibarlı olan siyahını 46 bayta, eyni siyahının 200 səpələnmiş ləğv olan halını isə 439 bayta sıxdı.
 
-![Rəqəmsal sənədin statusunun dörd addımda oxunması](/blog/haip-and-token-status-list/en/fig-bits.png)
+![Sənədin statusunu dörd addımda oxumaq](/blog/haip-and-token-status-list/en/fig-bits.png)
 
 ## Status dəyərləri Tamga-da nə deməkdir?
 
@@ -101,58 +101,58 @@ zlib(level 9), base64url → eNpTEWBgAAAAxAA1
 | `0x02` | SUSPENDED | dayandırılıb, geri qaytarıla bilər; yalnız sxemi icazə verən növlərdə |
 | `0x03` | tətbiqə xas | istifadə olunmur; ləğv edilmiş kimi qəbul edilir |
 
-Layihə `bits` üçün 1, 2, 4 və ya 8 dəyərinə icazə verir. Paketlərin 0.6.0 versiyasından bəri Tamga bunu rəqəmsal sənəd növünə görə təyin edir ([ADR-0048](https://docs.tamga.network/adr/0048-identity-no-suspension-mdoc-cwt-status)). Şəxsiyyət xidmətinin sənədləri Aİ-nin şəxsiyyət məlumatları qaydasına uyğun olaraq dayandırıla bilməz, ona görə də onların siyahıları bir bitdən istifadə edir: etibarlı və ya ləğv edilib, ləğv isə qətidir. Qurumların siyahıları iki bitdən istifadə edir, çünki dayandırma üçün ayrıca dəyər lazımdır: diplomu araşdıran qurum araşdırma davam etdiyi müddətdə onu dayandırmaq istəyir. Orada da `0x02` yalnız sxemi dayandırmaya icazə verən növlərdə yazılır (`suspension_allowed`, bu gün diplom); başqa növdə dayandırma dəyəri pozulmuş siyahı sayılır və rədd edilir. Dörd və ya səkkiz bit heç bir fayda vermədən siyahını iki və ya dörd dəfə böyüdərdi. Yoxlayan tərəf `0x00` dəyərindən fərqli istənilən dəyəri rədd kimi qəbul edir və "dayandırılıb" statusunu "ləğv edilib" statusundan ayrıca göstərir.
+Layihə `bits` üçün 1, 2, 4 və ya 8 dəyərinə icazə verir. Tamga bu dəyəri paketlərin 0.6.0 versiyasından bəri sənəd növünə görə müəyyən edir ([ADR-0048](https://docs.tamga.network/adr/0048-identity-no-suspension-mdoc-cwt-status)). Şəxsiyyət xidmətinin sənədləri Aİ-nin şəxsi identifikasiya məlumatları üçün qoyduğu qaydaya uyğun olaraq dayandırıla bilməz. Ona görə bu sənədlərin siyahıları bir bitdən istifadə edir, yəni sənəd ya etibarlıdır, ya da ləğv edilib və ləğv həmişəlikdir. Qurumların siyahıları isə iki bitdən istifadə edir, çünki dayandırmanın ayrıca dəyərə ehtiyacı var. Diplom barədə araşdırma başladan qurum araşdırma davam edərkən diplomu müvəqqəti dayandırmaq istəyə bilər. Qurum siyahılarında da `0x02` yalnız sxemi dayandırmaya icazə verən növlər üçün yazılır (`suspension_allowed`, bu gün diplom). Başqa növdə dayandırma dəyəri görünsə, siyahı pozulmuş sayılır və rədd edilir. Dörd və ya səkkiz bit siyahını heç bir fayda vermədən iki və ya dörd dəfə böyüdərdi. Yoxlayan tərəf `0x00`-dan başqa hər dəyəri rədd kimi qiymətləndirir, amma "dayandırılıb" və "ləğv edilib" nəticələrini istifadəçiyə ayrı-ayrı göstərir.
 
 ## Status siyahısı izləmə kanalına çevrilməkdən necə qorunur?
 
-Status siyahısının məxfiliyini kütlə təmin edir: siyahını endirən yoxlayan tərəf onun qeydlərindən istənilən birini yoxlaya bilər. Tamga-nın qaydaları bu kütləni real edir; eyni qaydaların şəxsin tərəfindən necə göründüyü [İzləmədən ləğv](/blog/status-list-privacy) yazısında izah olunur.
+Status siyahısının məxfiliyi kütlədən gəlir. Siyahını endirən yoxlayan tərəf onun istənilən qeydini yoxlayır ola bilər. Tamga qaydaları bu kütlənin həqiqətən yaranmasını təmin edir. Eyni qaydaların şəxsin baxış bucağından izahını [İzləmədən ləğv](/blog/status-list-privacy) yazısında tapa bilərsiniz.
 
-- **Böyük siyahılar.** Ən azı 100 000 qeyd və qeydlərin 80%-i ayrıldıqdan sonra yeni siyahı. İstifadə olunmamış mövqelər etibarlı rəqəmsal sənədlərlə eyni `0x00` dəyərini daşıyır, buna görə də kənardan baxan heç kim neçə mövqenin ayrıldığını müəyyən edə bilməz.
-- **Təsadüfi indekslər.** `idx` siyahının tutumu daxilində təsadüfi seçilir. Ardıcıl indeks, `awarding_date` gizli qalsa belə, qeydiyyat sırasını və təxmini tarixi üzə çıxarardı. HAIP də hər rəqəmsal sənədin öz unikal, proqnozlaşdırılmaz indeksinin olmasını tələb edir.
-- **Qeyri-şəffaf URI-lər.** Siyahının URI-si hər təqdimatda görünür, yəni o da bir iddiadır (claim). `/sl/2026-engineering` ili və fakültəni ifşa edərdi; Tamga siyahı identifikatorları təsadüfi sətirlərdir, uyğunluq cədvəli isə sənədi verən qurumda qalır.
-- **Yalnız tipə görə bölünmə.** Yeni siyahı əvvəlki dolduqda açılır, heç vaxt ilə və ya şöbəyə görə yox.
-- **Nüsxələr indeksi paylaşmır.** On paket nüsxəsinin hər birinin öz təsadüfi indeksi var, buna görə də iki yoxlayan tərəf təqdimatları `idx` vasitəsilə əlaqələndirə bilməz.
+- **Böyük siyahılar.** Hər siyahıda ən azı 100 000 qeyd olur və qeydlərin 80%-i paylananda yeni siyahı açılır. İstifadə olunmayan mövqelər də etibarlı sənədlərlə eyni `0x00` dəyərini daşıdığı üçün kənardan baxan şəxs neçə mövqenin istifadədə olduğunu görə bilmir.
+- **Təsadüfi indekslər.** `idx` siyahının tutumu daxilində təsadüfi seçilir. Ardıcıl nömrə, `awarding_date` gizli qalsa belə, qeydiyyat sırasını və təxmini tarixi üzə çıxarardı. HAIP də hər sənədin özünə məxsus, unikal və təxmin edilə bilməyən mövqeyi olmasını tələb edir.
+- **Mənasız ünvanlar.** Siyahı ünvanı hər təqdimatda göründüyü üçün o da məlumat sahəsi sayılır. `/sl/2026-engineering` kimi ünvan ili və fakültəni üzə çıxarardı. Ona görə Tamga-da siyahı identifikatorları təsadüfi sətirlərdən ibarətdir və hansı identifikatorun nəyə uyğun gəldiyini yalnız qurum bilir.
+- **Yalnız növə görə bölmə.** Yeni siyahı əvvəlki siyahı dolanda açılır. Siyahılar heç vaxt ilə və ya şöbəyə görə ayrılmır.
+- **Nüsxələr indeksi bölüşmür.** Paketdəki on nüsxənin hər birinin öz təsadüfi indeksi var. Ona görə iki yoxlayan tərəf təqdimatları `idx` üzərindən bir-biri ilə əlaqələndirə bilmir.
 
-Bir məhdudiyyət strukturdur və elə bu şəkildə də qeyd olunub: kiçik qurum üçün kütlə yalnız həmin qurumun öz rəqəmsal sənədləri qədər böyükdür, çünki `iss` onsuz da onun adını göstərir.
+Bu üsulun quruluşundan gələn bir məhdudiyyəti var və biz onu açıq yazırıq. Kiçik qurumda kütlə həmin qurumun özünün verdiyi sənədlərin sayı qədərdir, çünki `iss` sahəsi qurumu onsuz da adı ilə göstərir.
 
-Məxfiliyin digər yarısı siyahının əldə edilməsi ilə bağlıdır. Əgər yoxlayan tərəf hər yoxlamada siyahını endirsəydi, sənədi verən qurum "kimsə hazırda mənim rəqəmsal sənədlərimdən birini yoxlayır" məlumatını öyrənərdi, mənbə IP ünvanı isə çox vaxt bunun kim olduğunu göstərərdi. Buna görə də Tamga yoxlayan tərəfləri siyahıları cədvəl üzrə **əvvəlcədən endirir** (prefetch) və yoxlamanı keşdən aparır; `@tamga-network/verifier` bunu standart olaraq edir, hər yoxlamada endirmə isə açıq şəkildə aktivləşdirilməlidir. Layihədəki ixtiyari `aggregation_uri` sənədi verən qurumun bütün status siyahılarını bir ünvanda sadalayır və Tamga-da tövsiyə olunur, çünki əvvəlcədən endirməni praktik edir.
+Məxfiliyin digər yarısı siyahının nə vaxt endirildiyi ilə bağlıdır. Yoxlayan tərəf siyahını hər yoxlamada yenidən endirsəydi, qurum həmin an kiminsə onun sənədlərindən birini yoxladığını öyrənərdi. Sorğunun gəldiyi IP ünvanı da çox vaxt bunun kim olduğunu deyərdi. Ona görə Tamga yoxlayan tərəfləri siyahıları müəyyən fasilələrlə **əvvəlcədən endirir** və yoxlamanı keşdən aparır. `@tamga-network/verifier` bunu standart olaraq edir və hər yoxlamada endirmə yalnız açıq şəkildə aktivləşdirildikdə işə düşür. Layihənin istəyə bağlı `aggregation_uri` sahəsi qurumun bütün status siyahılarını bir ünvanda sadalayır. Əvvəlcədən endirməni asanlaşdırdığı üçün Tamga bu sahədən istifadəni tövsiyə edir.
 
-## Siyahı nə qədər tez-tez dərc olunur və nüsxə nə qədər müddət etibarlıdır?
+## Siyahı nə qədər tez-tez dərc olunur və nüsxə nə qədər etibarlıdır?
 
 | Qayda | Tamga dəyəri | Səbəb |
 |---|---|---|
-| Dərc intervalı | 2 dəqiqəyə sabitlənib, heç nə dəyişmədikdə belə saxlanılır | yalnız ləğv zamanı dərc etmək "indicə ləğv baş verdi" məlumatını sızdırardı; qısa interval ləğvi bir neçə dəqiqə ərzində görünən edir |
-| Təcili dərc | edilmir | sabit ritmi pozardı; təcili hallarda sənədi verən qurumun sertifikatının dayandırılması və ya sxemin ləğvi tətbiq olunur |
-| `ttl` | 120 san (interval) | yoxlayan tərəfin yenidən yükləməzdən əvvəl öz nüsxəsindən nə qədər istifadə edə biləcəyi |
-| `exp` | `iat` + 6 saat | mütləq hədd; status serverinin qısamüddətli nasazlığı yoxlamanı dayandırmasın deyə; istinad yoxlayan tərəf siyasətlərindəki maksimum token yaşına bərabərdir |
-| Keş başlıqları | `exp` və `ttl` xeyrinə nəzərə alınmır | qərarı tokenin öz iddiaları (claims) verir |
-| İmza açarı | rəqəmsal sənəd açarından ayrı, eyni X.509 zənciri | sızan status açarı ilə statusu saxtalaşdırmaq olar, diplomu yox |
+| Dərc intervalı | sabit, 2 dəqiqə; heç nə dəyişməsə də saxlanılır | yalnız ləğv olanda dərc etmək "indicə ləğv baş verdi" məlumatını sızdırardı; qısa interval ləğvin bir neçə dəqiqə ərzində görünməsini təmin edir |
+| Təcili dərc | edilmir | sabit ritmi pozardı; təcili hallarda qurumun sertifikatı dayandırılır və ya sxem ləğv edilir |
+| `ttl` | 120 san (dərc intervalı) | yoxlayan tərəfin əlindəki nüsxədən yenidən endirmədən istifadə edə biləcəyi müddət |
+| `exp` | `iat` + 6 saat | mütləq yuxarı hədd; status serverindəki qısa fasilə yoxlamanı dayandırmasın deyə; istinad yoxlayan tərəf siyasətlərindəki ən yüksək token yaşına bərabərdir |
+| Keş başlıqları | `exp` və `ttl` olduqda nəzərə alınmır | qərarı tokenin öz sahələri verir |
+| İmza açarı | sənəd açarından ayrı, eyni X.509 zəncirində | status açarı sızarsa, saxta status dərc etmək olar, amma saxta diplom vermək olmaz |
 
-Hər dərc əvvəlcə status serverinə yazılır, sonra isə onun heşi qeydə alınır. Bu gün həmin qeyd etibar siyahısını dərc edən tərəfin lövbər jurnalıdır (anchor log); ledger isə sonrakı mərhələdir ([niyə hələ blokçeyn yoxdur](/blog/why-no-blockchain-yet)). Yoxlayan tərəf tokenin heşinin qeydə alınmış heşlə üst-üstə düşdüyünü və versiyasının geriyə getmədiyini yoxlayır; beləliklə, sənədi verən qurum ləğv edilmiş rəqəmsal sənədi etibarlı göstərmək üçün siyahını xəlvətcə geri qaytara bilməz.
+Hər dərc əvvəlcə status serverinə yazılır, sonra isə dərcin heşi qeydə alınır. Bu gün həmin qeyd etibar siyahısı nəşriyyatçısının lövbər jurnalında saxlanılır, reyestrdən (ledger) istifadə isə sonrakı mərhələnin işidir ([niyə hələ blokçeyn yoxdur](/blog/why-no-blockchain-yet)). Yoxlayan tərəf tokenin heşinin qeyddəki heşlə üst-üstə düşdüyünü və versiya nömrəsinin geri getmədiyini yoxlayır. Beləliklə qurum ləğv etdiyi sənədi etibarlı göstərmək üçün siyahısını səssizcə köhnə versiyaya qaytara bilmir.
 
 ## Yoxlaya bilmədikdə yoxlayan tərəf hansı nəticəyə gəlir?
 
-Ləğv yoxlamaları Tamga-nın emal ardıcıllığının (pipeline) D1–D6 addımları kimi icra olunur: `status.status_list` oxunur, token ilkin yükləmə keşindən götürülür, onun imzası etibar siyahısında həmin qurum üçün qeydiyyata alınmış status açarı ilə yoxlanılır, `sub`, aktuallıq və qeydə alınmış heş yoxlanılır, sonra bitlər oxunur. Siyahı yüklənə bilmədikdə və ya `exp` keçdikdə nəticə `STATUS_UNREACHABLE` və ya `STATUS_STALE` kimi səbəblə **INDETERMINATE** olur. "Bu diplom ləğv edilib" və "Hazırda yoxlaya bilmirəm" şəxs barədə fərqli qərarlara aparır və fərqli göstərilməlidir. Oflayn rejimdə yoxlayan tərəf keşdəki token və son məlum qeyd əsasında davam edə, son sinxronizasiya vaxtını göstərə və nəticəni oflayn yoxlanılmış kimi işarələyə bilər.
+Ləğv yoxlaması Tamga-nın yoxlama ardıcıllığında D1–D6 addımları ilə aparılır. Yoxlayan tərəf əvvəlcə `status.status_list` sahəsini oxuyur və tokeni əvvəlcədən endirilmiş keşdən götürür. Tokenin imzasını etibar siyahısında həmin qurum üçün qeydə alınmış status açarı ilə yoxlayır. Sonra `sub` dəyərini, siyahının təzəliyini və qeydə alınmış heşi yoxlayır və sonda bitləri oxuyur. Siyahı endirilə bilməyibsə və ya `exp` müddəti keçibsə, nəticə **INDETERMINATE** olur və yanında `STATUS_UNREACHABLE` və ya `STATUS_STALE` kimi səbəb göstərilir. "Bu diplom ləğv edilib" və "hazırda yoxlaya bilmirəm" insan barəsində fərqli qərarlara gətirib çıxarır, ona görə ikisi fərqli göstərilməlidir. Oflayn olanda yoxlayan tərəf keşdəki tokenlə və bilinən son qeydlə işi davam etdirə bilər. Bu halda son sinxronizasiyanın vaxtını göstərir və nəticəni "oflayn yoxlanılıb" kimi işarələyir.
 
-Sıfır bilikli (zero-knowledge) yaş sübutları indeksi olmayan yeganə haldır: sübut siyahıdakı mövqeyi müəyyən edə biləcək heç nəyi açıqlamır, ona görə də status "tətbiq olunmur" kimi bildirilir. Qərar belədir: sıfır biliklə yalnız qısamüddətli nüsxələr təqdim edilir; onlar ən çoxu 24 saat etibarlıdır və rəqəmsal sənəd ləğv edildikdən sonra yenilənmir ([ADR-0044](https://docs.tamga.network/adr/0044-zk-short-lived-copies)). Bu, paketlərin 0.4.0 versiyasından bəri tətbiq olunur: nüsxələr ləğv siyahısı qeydi daşımır, rəqəmsal cüzdan onları soruşmadan yeniləyir və qısa ömürləri ləğv yoxlamasını əvəz edir. Belə nüsxəyə əsaslanmayan sıfır bilik sübutunu yoxlayan tərəf yalnız öz siyasəti bunu açıq şəkildə nəzərdə tutduqda qəbul edir ([ADR-0032](https://docs.tamga.network/adr/0032-zk-mdoc-presentation)).
+Sıfır bilikli yaş sübutları indeksi olmayan yeganə haldır. Sübut siyahıda mövqeyi müəyyən edə biləcək heç bir məlumatı açmadığı üçün status "tətbiq olunmur" kimi bildirilir. Ona görə sıfır bilikli sübut yalnız qısaömürlü nüsxələrlə təqdim olunur. Bu nüsxələr ən çoxu 24 saat etibarlıdır və sənəd ləğv ediləndə yenilənmir ([ADR-0044](https://docs.tamga.network/adr/0044-zk-short-lived-copies)). Paketlərin 0.4.0 versiyasından bəri belə işləyir. Nüsxələr status siyahısında qeyd daşımır, cüzdan onları şəxsdən soruşmadan yeniləyir və qısa ömürləri ləğv yoxlamasını əvəz edir. Belə nüsxəyə əsaslanmayan sıfır bilikli sübutu yoxlayan tərəf yalnız siyasəti buna açıq icazə verdikdə qəbul edir ([ADR-0032](https://docs.tamga.network/adr/0032-zk-mdoc-presentation)).
 
 ## Tez-tez verilən suallar
 
 ### HAIP qanundurmu?
 
-Xeyr. Bu, OpenID Foundation-un spesifikasiyasıdır. Avropa rəqəmsal şəxsiyyət ekosistemi müxtəlif istehsalçıların rəqəmsal cüzdanlarının, sənədi verən qurumlarının və yoxlayan tərəflərinin birlikdə işləməsi üçün ona əsaslanır.
+Xeyr. HAIP OpenID Foundation-ın dərc etdiyi spesifikasiyadır. Avropa rəqəmsal şəxsiyyət ekosistemi müxtəlif istehsalçıların cüzdanları, qurumları və yoxlayan tərəfləri birlikdə işləyə bilsin deyə bu spesifikasiyaya söykənir.
 
-### Niyə yoxlayan tərəf sənədi verən qurumdan "bu rəqəmsal sənəd hələ də etibarlıdırmı" deyə soruşmur?
+### Yoxlayan tərəf niyə quruma "bu sənəd hələ də etibarlıdırmı" deyə soruşmur?
 
-Çünki sualın özü sızmadır: sənədi verən qurum hansı rəqəmsal sənədin, nə vaxt və çox vaxt kim tərəfindən yoxlandığını öyrənərdi. Status siyahısı ilə yoxlayan tərəfdə hamının statusunun nüsxəsi olur və o, heç kimdən soruşmur.
+Məlumat elə bu sualın özü ilə sızardı. Qurum hansı sənədin, nə vaxt və çox vaxt kim tərəfindən yoxlandığını öyrənərdi. Status siyahısı istifadə edildikdə yoxlayan tərəf hər kəsin statusunun nüsxəsini əlində saxlayır və heç kimdən heç nə soruşmur.
 
-### Dayandırma öz-özünə başa çatırmı?
+### Dayandırma öz-özünə bitirmi?
 
-Xeyr. Dayandırılmış rəqəmsal sənəd sənədi verən qurum bitləri yenidən etibarlı vəziyyətə qaytarana və ya onu ləğv edənə qədər dayandırılmış qalır. Yoxlayan tərəf yalnız cari dəyəri oxuyur.
+Xeyr. Dayandırılmış sənəd qurum bitləri yenidən etibarlı dəyərə qaytarana və ya sənədi ləğv edənə qədər dayandırılmış qalır. Yoxlayan tərəf yalnız həmin anki dəyəri oxuyur.
 
-### Yoxlayan tərəf on nüsxənin eyni şəxsə məxsus olduğunu müəyyən edə bilərmi?
+### Yoxlayan tərəf on nüsxənin eyni şəxsə aid olduğunu anlaya bilərmi?
 
-Status siyahısı vasitəsilə yox. Hər nüsxənin öz təsadüfi indeksi var, nüsxələr arasındakı uyğunluq isə sənədi verən qurumun verilənlər bazasında qalır. Ləğv zamanı on indeksin hamısı eyni planlı dərcdə, həmin intervalda dəyişən digər hər şeylə birlikdə dəyişir.
+Status siyahısına baxaraq anlaya bilməz. Hər nüsxənin öz təsadüfi indeksi var və nüsxələr arasındakı uyğunluq qurumun verilənlər bazasında qalır. Sənəd ləğv ediləndə on indeksin hamısı eyni planlı dərcdə dəyişir və həmin intervalda dəyişən bütün digər qeydlərlə birlikdə görünür.
 
 ## Mənbələr
 

@@ -1,7 +1,7 @@
 ---
 title: "İzləmədən ləğv: status siyahısında məxfilik"
 slug: status-list-privacy
-description: Tamga Network-un status siyahıları yoxlayan tərəfə ləğvi sənədin harada təqdim olunduğunu sənədi verən quruma bildirmədən yoxlamağa necə imkan verir və bu məxfiliyin hüdudları.
+description: "Tamga Network-un status siyahıları ilə ləğv yoxlamasının sənədin harada göstərildiyi quruma bildirilmədən necə aparıldığını və bu məxfiliyin harada bitdiyini izah edirik."
 date: 2026-10-08
 lang: az
 updated: 2026-10-23
@@ -12,21 +12,21 @@ related: haip-and-token-status-list, how-trust-lists-work, zero-knowledge-in-tam
 
 <!-- Sources: SPEC-CRED-0003 1.0.0 (§2 status claim sd never; §3.3 bits=2, values; §3.4 separate status key; §5.1 fixed cadence even without change, §5.3 no emergency publish, suspend certificate instead; §6.1 random idx; §6.2 capacity ≥100,000, fill ≤80%; §6.3 opaque URI; §6.4 split by type only; §7.1 invalid vs cannot verify; §9.1 per-verification fetch forbidden, SDK prefetch default; §9.3 herd privacy and small-institution problem; §9.4 idx correlation → batch copies; §10.2 hosted status sees all revocations; S1–S14). @tamga-network/sd-jwt status list module (MIN_CAPACITY, MAX_FILL, IndexAllocator randomInt, newListId opaque). concepts/revocation (status.tamga.network/{opaque}, PrefetchStatusCache, INDETERMINATE). ARF architecture §5.4 (2026-10-09: interval 2 min, revocation effective within a few minutes, list valid 6 h; addresses reveal neither institution, year nor group), §4.5 (no IP records, no list positions in records), §7.2. SPEC-WALLET-0001 WL5; SPEC-PROTO-0001 PR6, PR10; SPEC-API-0001 AP4. ADR-0032 ZK4/K6. Live anchor log anchors.jsonl kind "status_list" lines checked 2026-10-08. External: IETF Token Status List draft (herd privacy section), HAIP 1.0. ADR-0044 (ZK short-lived copies ≤ 24 h, implemented in packages 0.4.0). -->
 
-Status siyahısı yoxlayan tərəfə rəqəmsal sənədin ləğv edilib-edilmədiyini onu verən quruma müraciət etmədən öyrənməyə imkan verir. Tamga Network-da hər qurum IETF Token Status List formatında böyük, imzalanmış bir bit sətri dərc edir; hər rəqəmsal sənəd bu sətirdə təsadüfi bir mövqeyə işarə edir. Yoxlayan tərəflər siyahıları əvvəlcədən tam şəkildə yükləyir və biti öz nüsxələrindən oxuyur, beləliklə qurum rəqəmsal sənədin nə vaxt, harada və kimə göstərildiyini heç vaxt öyrənmir.
+Status siyahısı (status list) yoxlayan tərəfə sənədin ləğv edilib-edilmədiyini sənədi verən quruma heç nə soruşmadan öyrənməyə imkan verir. Tamga Network-da hər qurum IETF Token Status List formatında böyük və imzalanmış bit sətri dərc edir və hər sənəd bu sətirdə təsadüfi seçilmiş mövqeyə işarə edir. Yoxlayan tərəflər siyahıları tamamilə əvvəlcədən endirir və lazım olan biti öz nüsxələrindən oxuyur. Ona görə qurum sənədin nə vaxt, harada və kimə göstərildiyini heç vaxt öyrənə bilmir.
 
 ## Ləğv yoxlaması niyə izləmə kanalına çevrilə bilər?
 
-Ləğvi yoxlamağın ən aşkar yolu soruşmaqdır: yoxlayan tərəf rəqəmsal sənədin seriya nömrəsini sənədi verən quruma göndərir və cavab olaraq "etibarlıdır" və ya "ləğv edilib" alır. Vebdə sertifikatların yoxlanması illərlə məhz belə işləyib. Bunun insanlar üçün əhəmiyyətli bir yan təsiri var. Hər yoxlama sənədi verən quruma bildirir ki, kimsə məhz bu anda, bu şəbəkə ünvanından bu şəxsin rəqəmsal sənədinə baxır.
+Ləğvi yoxlamağın ilk ağla gələn yolu qurumdan soruşmaqdır. Yoxlayan tərəf sənədin seriya nömrəsini quruma göndərir və "etibarlıdır" və ya "ləğv edilib" cavabını alır. Vebdə sertifikatlar illərlə bu üsulla yoxlanılıb. Amma bu üsulun insanlar üçün vacib yan təsiri var. Hər sorğu quruma kiminsə məhz həmin anda, müəyyən şəbəkə ünvanından həmin şəxsin sənədinə baxdığını bildirir.
 
-Diplom üçün bu o deməkdir ki, universitet hər məzunun hansı işəgötürənlərə müraciət etdiyini görə bilərdi. Kağız diplom universitetə belə bir şey heç vaxt bildirmirdi. Rəqəmsal diplom da bildirməməlidir. Tamga-nın status siyahısı spesifikasiyası bunu ilk məxfilik qaydası kimi müəyyən edir: yoxlayan tərəf siyahını yoxlama anında yükləməməlidir ([SPEC-CRED-0003 §9.1](https://docs.tamga.network/specifications/status-list)).
+Diplom söhbəti gedəndə bu, universitetin hər məzununun hansı işəgötürənlərə müraciət etdiyini görə bilməsi deməkdir. Kağız diplom universitetə belə məlumat vermirdi və rəqəmsal diplom da verməməlidir. Tamga-nın status siyahısı spesifikasiyası bunu ilk məxfilik qaydası kimi yazır. Yoxlayan tərəf siyahını yoxlama anında endirə bilməz ([SPEC-CRED-0003 §9.1](https://docs.tamga.network/specifications/status-list)).
 
 ## Token Status List necə işləyir?
 
-[IETF Token Status List](https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/) sənədi verən qurumun imzaladığı, kiçik ədədlərdən ibarət sıxılmış massivdir. 2026-cı ilin oktyabrından bitlərin sayı rəqəmsal sənədin növündən asılıdır (ADR-0048, paketlər 0.6.0). Şəxsiyyət xidmətinin rəqəmsal sənədləri dayandırıla bilməz və onların siyahıları bir bit istifadə edir: `0` etibarlıdır, `1` ləğv edilib. Qurumların siyahıları iki bit istifadə edir: `0` etibarlıdır, `1` birdəfəlik ləğv edilib, `2` dayandırılıb (bərpa oluna bilər) və `3` istifadə olunmur — yoxlayan tərəf bunu ləğv edilmiş kimi qəbul edir. `2` dəyəri yalnız sxemi dayandırmaya icazə verən növlər, məsələn, diplom üçün istifadə olunur. Dayandırma ona görə mövcuddur ki, universitet araşdırma zamanı diplomu birbaşa ləğv etmək əvəzinə müvəqqəti saxlaya bilsin.
+[IETF Token Status List](https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/) sənədi verən qurumun imzaladığı və kiçik ədədlərdən ibarət sıxılmış massivdir. 2026-cı ilin oktyabrından bəri hər girişin neçə bit tutduğu sənəd növündən asılıdır (ADR-0048, paketlər 0.6.0). Şəxsiyyət xidmətinin sənədləri dayandırıla bilmədiyi üçün bu sənədlərin siyahıları bir bitdən istifadə edir. Bu siyahılarda `0` etibarlı, `1` ləğv edilib deməkdir. Qurumların siyahıları isə iki bitdən istifadə edir. Bu siyahılarda `0` etibarlı, `1` həmişəlik ləğv edilib, `2` dayandırılıb və geri qaytarıla bilər deməkdir. `3` dəyəri istifadə olunmur və yoxlayan tərəf onu ləğv kimi qiymətləndirir. `2` dəyəri yalnız sxemi dayandırmaya icazə verən növlərdə, məsələn diplomda istifadə olunur. Dayandırma universitetin araşdırma davam edərkən diplomu həmişəlik ləğv etmək əvəzinə gözlətməsi üçün mövcuddur.
 
-Hər rəqəmsal sənəd siyahıya işarə edən bir göstərici daşıyır. Bu göstərici seçici paylaşımla (selective disclosure) gizlədilə bilməz: o, hər təqdimatla birlikdə ötürülür, çünki yoxlayan tərəfə lazımdır.
+Hər sənəd siyahıdakı yerini göstərən işarə daşıyır. Bu işarə seçici açıqlama ilə gizlədilə bilməz və hər təqdimatda sənədlə birlikdə gedir, çünki yoxlayan tərəfin ona ehtiyacı var.
 
-> **Qeyd:** Sadələşdirilmiş nümunə. Ünvan və indeks uydurmadır. Real format [status siyahısı spesifikasiyasında](https://docs.tamga.network/specifications/status-list) verilib.
+> **Qeyd:** Aşağıdakı nümunə sadələşdirilib. Ünvan və indeks uydurma dəyərlərdir. Real formatı [status siyahısı spesifikasiyasında](https://docs.tamga.network/specifications/status-list) tapa bilərsiniz.
 
 ```json title="Simplified example: the status claim inside a credential"
 {
@@ -39,24 +39,24 @@ Hər rəqəmsal sənəd siyahıya işarə edən bir göstərici daşıyır. Bu g
 }
 ```
 
-Yoxlayan tərəf `uri` ünvanındakı tokeni yükləyir, onun imzasını [imzalanmış etibar siyahısında](/blog/how-trust-lists-work) qurumun qeydi ilə yoxlayır, həzmini (digest) lövbər jurnalı ilə müqayisə edir, onu açır və `idx` mövqeyindəki qeydi oxuyur. Siyahının özü rəqəmsal sənədləri imzalayan açardan ayrı olan status açarı ilə imzalanır; buna görə oğurlanmış status açarı ilə saxta statuslar dərc etmək mümkündür, lakin diplomu saxtalaşdırmaq mümkün deyil.
+Yoxlayan tərəf `uri` ünvanındakı siyahını alır və onun imzasını qurumun [imzalanmış etibar siyahısındakı](/blog/how-trust-lists-work) qeydinə görə yoxlayır. Sonra siyahının heşini anker jurnalındakı qeydlə müqayisə edir, siyahını açır və `idx` mövqeyindəki girişi oxuyur. Siyahı sənədləri imzalayan açardan ayrı status açarı ilə imzalanır. Ona görə status açarı oğurlanarsa, saxta status dərc etmək olar, amma saxta diplom yaratmaq olmaz.
 
 ## Kütlə məxfiliyi nədir və kütlə nə qədər böyükdür?
 
-Yüklənmiş siyahı yoxlayan tərəfin onun hansı qeydləri ilə maraqlandığı barədə heç nə demir. Bu, kütlə məxfiliyidir (herd privacy): Sizin rəqəmsal sənədiniz eyni siyahıdakı bütün digər sənədlər arasında gizlənir. Kütlə yalnız böyük olduqda və Sizin mövqeyinizlə bağlı heç nə seçilmədikdə faydalıdır. Tamga-nın qaydaları hər ikisini təmin etmək üçün yazılıb:
+Endirilmiş siyahı yoxlayan tərəfin siyahıdakı hansı girişlə maraqlandığı barədə heç nə demir. Kütlə məxfiliyi (herd privacy) adlanan budur. Sənədiniz eyni siyahıdakı bütün digər sənədlərin arasında gizlənir. Amma kütlə yalnız kifayət qədər böyükdürsə və siyahıdakı mövqeyiniz heç bir şəkildə gözə çarpmırsa işə yarayır. Tamga-nın qaydaları bu iki şərti təmin etmək üçün yazılıb:
 
 ![Status siyahısının rəqəmsal sənədin kimə məxsus olduğunu sızdırmasına imkan verməyən qaydalar](/blog/status-list-privacy/en/fig-suru.png)
 
-- **Böyük siyahılar.** Hər siyahıda ən azı 100 000 qeyd üçün yer var. Qeydlərin 80%-i ayrıldıqda yeni siyahı açılır. Əsasən sıfırlardan ibarət siyahı sıxıldıqda cəmi bir neçə yüz bayt tutur, buna görə ölçü heç bir xərc yaratmır.
-- **Təsadüfi mövqelər.** İndeks bütün siyahı üzrə təsadüfi seçilir. Sayğaca icazə verilmir: ardıcıl nömrələrlə 12 nömrəli indeks ilin on ikinci məzunu olardı, iki məzunun indeksləri isə məzuniyyət tarixi heç vaxt açıqlanmasa belə, onların bir-birindən nə qədər fərqli vaxtda məzun olduğunu göstərərdi.
-- **Qeyri-şəffaf ünvanlar.** Siyahının ünvanı təsadüfi sətirdir. `.../edu-2026` və ya `.../medicine` kimi ünvan, şəxs məhz həmin sahəni gizlətdiyi halda, hər təqdimatda ili və ya fakültəni açıqlayardı.
-- **Yalnız növə görə bölgü.** Siyahılar onsuz da görünən rəqəmsal sənəd növünə görə ayrıla bilər. İlə, fakültəyə və ya qrupa görə bölünə bilməz, çünki sadəcə "2026-cı il siyahısında" olmaq özü bir açıqlama olardı.
+- **Böyük siyahılar.** Hər siyahıda ən azı 100 000 giriş üçün yer olur və girişlərin 80%-i dolanda yeni siyahı açılır. Girişlərinin çoxu sıfır olan siyahı sıxılanda cəmi bir neçə yüz bayt tutur, yəni siyahının ölçüsü xərc yaratmır.
+- **Təsadüfi mövqelər.** İndeks bütün siyahıdan təsadüfi seçilir və sayğacdan istifadəyə icazə verilmir. İndekslər ardıcıl verilsəydi, 12 nömrəli indeks həmin ilin on ikinci məzunu olardı. İki məzunun indeksləri arasındakı fərq də, məzuniyyət tarixi heç paylaşılmasa belə, onların arasında nə qədər vaxt olduğunu göstərərdi.
+- **Mənasız ünvanlar.** Siyahının ünvanı təsadüfi sətirdən ibarətdir. `.../edu-2026` və ya `.../medicine` kimi ünvan şəxsin xüsusi olaraq gizlətdiyi ili və ya fakültəni hər təqdimatda üzə çıxarardı.
+- **Yalnız növə görə bölmə.** Siyahılar sənəd növünə görə ayrıla bilər, çünki növ onsuz da görünür. Amma ilə, fakültəyə və ya dövrə görə bölünə bilməz, çünki "2026 siyahısında" olmaq belə özlüyündə məlumat verir.
 
-Bu qaydalar yalnız kağız üzərində deyil, açıq paketlərdə də mövcuddur. Sənədi verən qurumun kitabxanası 100 000 qeyddən kiçik siyahını qəbul etmir, 80%-dən artıq ayırmaya icazə vermir və hər indeksi kriptoqrafik təsadüfi ədəd generatoru ilə seçir.
+Bu qaydalar yalnız kağız üzərində qalmır, açıq paketlərdə də tətbiq olunur. Sənəd vermə kitabxanası 100 000 girişdən kiçik siyahını qəbul etmir, 80%-dən artıq yer ayırmır və hər indeksi kriptoqrafik təsadüfi ədəd generatoru ilə seçir.
 
-## Yoxlayan tərəf siyahını niyə əvvəlcədən yükləyir?
+## Yoxlayan tərəf siyahını niyə əvvəlcədən endirir?
 
-Çünki yoxlama anında yükləmə məhz yuxarıda təsvir olunan izləmə kanalıdır. Tamga-nın yoxlayan tərəfi ehtiyac duyduğu hər status siyahısını cədvəl üzrə yeniləyir və yoxlamanı keşdən aparır:
+Siyahını yoxlama anında endirmək yuxarıda izah etdiyimiz izləmə kanalını açmaq deməkdir. Ona görə Tamga yoxlayan tərəfi ehtiyac duyduğu hər status siyahısını müəyyən cədvələ görə yeniləyir və yoxlamanı keşdən aparır:
 
 ```ts title="Prefetching status lists with @tamga-network/verifier"
 import { PrefetchStatusCache } from "@tamga-network/verifier";
@@ -65,29 +65,29 @@ const statusCache = new PrefetchStatusCache();
 await statusCache.refresh(listUris); // on a schedule, never per verification
 ```
 
-Yoxlayan tərəf paketində yoxlama statusu yalnız bu keşdən oxuyur. Host edilən yoxlama xidməti Tamga Verify də eyni qaydada işləyir.
+Yoxlayan tərəf paketində yoxlama sənədin statusunu yalnız bu keşdən oxuyur. Host edilən yoxlayan tərəf Tamga Verify də eyni şəkildə işləyir.
 
-Hər siyahı tokeni iki vaxt həddi daşıyır. `ttl` təzəlik hədəfidir: nüsxənin yenilənənədək nə qədər istifadə oluna biləcəyi. `exp` isə sərt həddir; ondan sonra nüsxə ümumiyyətlə istifadə oluna bilməz. Keşdəki nüsxə yoxlayan tərəfin siyasəti üçün çox köhnədirsə, nəticə "hazırda yoxlamaq mümkün deyil" (`INDETERMINATE`) olur, heç vaxt "ləğv edilib" yox. "Bu diplom ləğv edilib" ilə "hazırda yoxlaya bilmirəm" arasındakı fərq kiminsə işə qəbul olunub-olunmamasını həll edir, buna görə ikisi fərqli göstərilir ([yoxlamanın bunu necə idarə etdiyi](/blog/add-verification-to-your-site)).
+Hər siyahı iki vaxt həddi daşıyır. `ttl` aktuallıq hədəfidir və nüsxədən yenilənmədən nə qədər istifadə oluna biləcəyini göstərir. `exp` isə qəti həddir və bu andan sonra nüsxədən ümumiyyətlə istifadə etmək olmaz. Keşdəki nüsxə yoxlayan tərəfin siyasətinə görə çox köhnədirsə, nəticə heç vaxt "ləğv edilib" olmur, "hazırda yoxlamaq mümkün olmadı" (`INDETERMINATE`) olur. "Bu diplom ləğv edilib" ilə "hazırda yoxlaya bilmirəm" arasındakı fərq kiminsə işə götürülüb-götürülməməsini həll edə bilər. Ona görə iki nəticə fərqli göstərilir ([yoxlamanın bunu necə idarə etdiyi](/blog/add-verification-to-your-site)).
 
 ## Heç nə dəyişmədikdə siyahı niyə yenidən dərc olunur?
 
-Qurum siyahını yalnız nəyisə ləğv etdikdə yenidən dərc etsəydi, dərcin özü xəbər olardı: "Example University-də 14:00 ilə 15:00 arasında ləğv baş verib". Xarici məlumatla, məsələn, intizam qərarının tarixi ilə birləşdikdə bu, dairəni bir nəfərə qədər daralda bilər.
+Qurum yalnız sənədi ləğv edəndə dərc etsəydi, dərcin özü xəbərə çevrilərdi. Məsələn, "Nümunə Universitetində saat 14:00 ilə 15:00 arasında ləğv baş verdi" məlumatı üzə çıxardı. Bu məlumat intizam qərarının tarixi kimi kənardan bilinən məlumatla birləşəndə bir şəxsi göstərə bilər.
 
-Buna görə hər siyahı nəyinsə dəyişib-dəyişməməsindən asılı olmayaraq sabit intervalla yenidən dərc olunur. Kənardan hər interval eyni görünür: yeni versiya var. Interval 2 dəqiqədir, buna görə status serveri işlədiyi müddətdə ləğv yoxlayan tərəflərə bir neçə dəqiqə ərzində çatır; hər dərc olunmuş siyahı 6 saat etibarlıdır ([ARF §5.4](https://arf.tamga.network/architecture)).
+Ona görə hər siyahı daxilində dəyişiklik olub-olmamasından asılı olmayaraq sabit fasilələrlə yenidən dərc olunur. Kənardan baxan şəxs üçün hər fasilə eyni görünür, çünki hər fasilədə yeni versiya çıxır. Bu fasilə 2 dəqiqədir. Status serveri işlədiyi müddətdə ləğv yoxlayan tərəflərə bir neçə dəqiqə ərzində çatır və dərc olunan hər siyahı 6 saat etibarlı qalır ([ARF §5.4](https://arf.tamga.network/architecture)).
 
 ![Status siyahısının bir dərc dövrü](/blog/status-list-privacy/en/fig-dongu.png)
 
-Dövrdən kənar "təcili" dərc qəsdən nəzərdə tutulmayıb; dövrdən kənar bir dərc hamı üçün qorumanı aradan qaldırardı. Nəyisə dərhal dayandırmaq lazım olduqda, məsələn, imza açarı oğurlandıqda, düzgün vasitə status siyahısı deyil, qurumun etibar siyahısındakı sertifikatının dayandırılmasıdır.
+Dövrdən kənar "təcili" dərcin olmaması bilərəkdən edilmiş seçimdir, çünki dövrdən kənar bir dərc belə qorumanı hamı üçün pozardı. Nəyisə dərhal dayandırmaq lazımdırsa, məsələn imza açarı oğurlanıbsa, düzgün vasitə status siyahısı deyil. Bu halda qurumun etibar siyahısındakı sertifikatı dayandırılır.
 
-Hər dərc həmçinin etibar siyahısını dərc edənin açıq lövbər jurnalında qeydə alınır. Yoxlayan tərəf siyahının həzmini və versiyasını həmin qeydlə müqayisə edir; bu, qurumun ləğv edilmiş rəqəmsal sənədi gizlicə yenidən "etibarlı" vəziyyətinə qaytarmasının qarşısını alır. Lövbər jurnalında siyahı identifikatorları, versiyalar və həzmlər saxlanılır, siyahıdakı mövqe isə heç vaxt.
+Hər dərc etibar siyahısı nəşriyyatçısının açıq anker jurnalına da yazılır. Yoxlayan tərəf siyahının heşini və versiya nömrəsini bu qeydlə müqayisə edir. Beləliklə qurum ləğv etdiyi sənədi səssizcə yenidən "etibarlı" vəziyyətinə qaytara bilmir. Anker jurnalında siyahı identifikatorları, versiyalar və heşlər olur, amma siyahıdakı heç bir mövqe yer almır.
 
 ## Nüsxələr iki yoxlayan tərəfin bir şəxsi uyğunlaşdırmasının qarşısını necə alır?
 
-İndeks rəqəmsal sənədin bütün ömrü boyu sabitdir. Şəxs eyni rəqəmsal sənədi iki yoxlayan tərəfə göstərsə və onlar məlumatlarını müqayisə etsələr, eyni `idx` və `uri` onlara bunun eyni şəxs olduğunu deyərdi. Spesifikasiya bunu Token Status List-in struktur məhdudiyyəti kimi açıq qeyd edir.
+Sənədin indeksi sənədin bütün ömrü boyu dəyişmir. Şəxs eyni sənədi iki yoxlayan tərəfə göstərsə və bu iki tərəf əllərindəki məlumatları müqayisə etsə, eyni `idx` və `uri` dəyərləri onlara qarşılarındakının eyni şəxs olduğunu deyərdi. Spesifikasiya bunu Token Status List-in quruluşundan gələn məhdudiyyət kimi açıq yazır.
 
-Həll paket şəklində verilmədir. Hər rəqəmsal sənəd, o cümlədən diplom, 10 nüsxə şəklində verilir və hər nüsxənin öz cihaz açarı və öz təsadüfi indeksi var. Rəqəmsal cüzdan eyni yoxlayan tərəfə eyni nüsxəni, hər fərqli yoxlayan tərəfə isə fərqli nüsxəni göstərir (WL5 qaydası). Nüsxələrlə indekslər arasındakı uyğunluq sənədi verən qurumun verilənlər bazasında qalır və oradan heç vaxt çıxmır (PR10). Rəqəmsal sənəd ləğv edildikdə onun bütün nüsxələrinin bitləri həmin intervalda dəyişən digər hər şeylə birlikdə eyni planlı dərcdə dəyişir.
+Bu problemin həlli sənədləri paket şəklində verməkdir. Diplom da daxil olmaqla hər sənəd 10 nüsxə kimi verilir və hər nüsxənin öz cihaz açarı və öz təsadüfi indeksi olur. Cüzdan eyni yoxlayan tərəfə hər dəfə eyni nüsxəni, fərqli yoxlayan tərəflərə isə fərqli nüsxələri göstərir (WL5 qaydası). Nüsxələrlə indekslər arasındakı uyğunluq sənədi verən qurumun verilənlər bazasında qalır və heç vaxt kənara çıxmır (PR10). Sənəd ləğv ediləndə onun bütün nüsxələrinin bitləri eyni planlı dərcdə, həmin fasilədə dəyişən bütün digər qeydlərlə birlikdə dəyişir.
 
-Sıfır biliklə təqdimat bir addım irəli gedir: heç bir indeks açıqlamır. Bunun bədəli odur ki, yoxlayan tərəf ləğvi yoxlaya bilmir. Qərar budur ki, sıfır biliklə yalnız qısamüddətli nüsxələr təqdim olunsun: onlar ən çoxu 24 saat etibarlıdır və rəqəmsal sənəd ləğv edildikdən sonra yenilənmir ([ADR-0044](https://docs.tamga.network/adr/0044-zk-short-lived-copies)). Bu, paketlərin 0.4.0 versiyasından bəri tətbiq olunur: qısa ömür ləğv yoxlamasını əvəz edir; belə nüsxəyə əsaslanmayan sıfır bilik təqdimatını yoxlayan tərəf yalnız siyasəti buna açıq şəkildə icazə verdikdə qəbul edir ([Tamga-da sıfır bilik sübutları](/blog/zero-knowledge-in-tamga)).
+Sıfır bilikli sübutla aparılan təqdimat bir addım da irəli gedir və heç bir indeksi açmır. Bunun bədəli yoxlayan tərəfin ləğv vəziyyətini yoxlaya bilməməsidir. Ona görə sıfır bilikli sübut yalnız qısaömürlü nüsxələrlə təqdim olunur. Bu nüsxələr ən çoxu 24 saat etibarlıdır və sənəd ləğv ediləndə yenilənmir ([ADR-0044](https://docs.tamga.network/adr/0044-zk-short-lived-copies)). Paketlərin 0.4.0 versiyasından bəri belə işləyir və qısa ömür ləğv yoxlamasını əvəz edir. Belə nüsxəyə əsaslanmayan sıfır bilikli təqdimatı yoxlayan tərəf yalnız siyasəti buna açıq icazə verdikdə qəbul edir ([Tamga-da sıfır bilikli sübutlar](/blog/zero-knowledge-in-tamga)).
 
 ## Kim nəyi görə bilər?
 
@@ -95,44 +95,44 @@ Sıfır biliklə təqdimat bir addım irəli gedir: heç bir indeks açıqlamır
 
 | Tərəf | Görə bilər | Görə bilməz |
 |---|---|---|
-| Sənədi verən qurum | özünün etdiyi ləğvləri və dayandırmaları | rəqəmsal sənədin harada, nə vaxt və ya kimə göstərildiyini |
-| Yoxlayan tərəf | ona göstərilən nüsxənin bu gün və sonrakı statusunu | eyni rəqəmsal sənədin digər nüsxələrini |
-| Status siyahısının hostu | yoxlayan tərəfin siyahını təzə saxladığını | hansı rəqəmsal sənədin və ya nə vaxt yoxlandığını |
-| Siyahını oxuyan hər kəs | hər intervalda yeni versiyanı; versiyalar arasında hansı bitlərin fərqləndiyini | bitin kimin rəqəmsal sənədinə aid olduğunu |
+| Sənədi verən qurum | özünün etdiyi ləğvləri və dayandırmaları | sənədin harada, nə vaxt və kimə göstərildiyini |
+| Yoxlayan tərəf | ona göstərilən nüsxənin bugünkü və sonrakı statusunu | eyni sənədin digər nüsxələrini |
+| Siyahını host edən tərəf | yoxlayan tərəfin siyahını aktual saxladığını | hansı sənədin nə vaxt yoxlandığını |
+| Siyahını oxuyan hər kəs | hər fasilədə çıxan yeni versiyanı və versiyalar arasında dəyişən bitləri | bitin kimin sənədinə aid olduğunu |
 
-Heç bir Tamga xidməti IP ünvanlarını qeydə almır və heç bir qeyd, jurnal və ya nəticə status siyahısındakı mövqeyi ehtiva etmir ([ARF §4.5](https://arf.tamga.network/architecture)).
+Heç bir Tamga xidməti IP ünvanlarını qeydə almır. Heç bir qeyddə, jurnalda və ya nəticədə status siyahısındakı mövqe yer almır ([ARF §4.5](https://arf.tamga.network/architecture)).
 
 ## Bu məxfilik harada bitir?
 
-Bəzi məhdudiyyətlər spesifikasiyada qəbul edilmiş kimi yazılıb və onları açıq şəkildə qeyd etmək lazımdır.
+Bəzi məhdudiyyətlər spesifikasiyada qəbul edilmiş məhdudiyyətlər kimi yazılıb və onları açıq demək lazımdır.
 
-- **Kiçik qurumların anonimlik kütləsi də kiçikdir.** 100 000 qeydlik siyahıda 300 məzunu olan kollecin siyahısı böyükdür, lakin kütləsi cəmi 300 nəfərdir, çünki rəqəmsal sənəddə onu verən qurumun adı hər halda göstərilir. Bunun texniki həlli yoxdur; bu, qəbul edilmiş məhdudiyyət kimi qeydə alınıb.
-- **Yoxlayan tərəf gördüyü nüsxəni izləyə bilər.** Yoxlayan tərəf həmin nüsxənin indeksini bilir, ona görə də sonradan həmin nüsxənin ləğv edilib-edilmədiyini görə bilər. Status siyahısının məqsədi elə budur, lakin bu, həm də məlumatdır. Nüsxələr bu məlumatı həmin şəxsi onsuz da tanıyan yeganə yoxlayan tərəflə məhdudlaşdırır.
-- **Zaman bulanıqlaşdırılır, silinmir.** Sabit interval ləğvin dəqiq anını həmin interval daxilində gizlədir. Lakin əsas hadisənin tarixini artıq bilən və dəyişən biti izləyə bilən şəxsdən ləğvi gizlətmir.
-- **Host edilən status xidməti dərc etdiyi ləğvləri görür.** Qurum öz status xidmətini işlədə və ya şəbəkənin host edilən sənəd vermə xidmətindən istifadə edə bilər. İkinci halda həmin qurumun ləğvlərini operator dərc edir və deməli, onları görür. Spesifikasiya bunu real mərkəzləşmə nöqtəsi kimi açıq göstərir və onu yox saymaq əvəzinə idarəetmə qaydalarına bağlayır.
-- **Lövbər bu gün bir imzalayana söykənir.** Lövbər jurnalı tək, müvəqqəti operator tərəfindən imzalanır. Bu məhdudiyyəti aradan qaldıran ortaq reyestr ikinci müstəqil operatoru gözləyir ([Niyə blokçeynsiz başlayırıq](/blog/why-no-blockchain-yet)).
+- **Kiçik qurumların kütləsi də kiçikdir.** 300 məzunu olan kollecin sənədləri 100 000 girişlik siyahıda dursa belə, kütlə 300 nəfərdən ibarət olur, çünki sənəd onsuz da onu verən qurumu göstərir. Bunun texniki həlli yoxdur və spesifikasiyada qəbul edilmiş məhdudiyyət kimi qeydə alınıb.
+- **Yoxlayan tərəf gördüyü nüsxəni izləyə bilər.** Yoxlayan tərəf həmin nüsxənin indeksini bildiyi üçün nüsxənin sonradan ləğv edilib-edilmədiyini görə bilər. Status siyahısının məqsədi də elə budur, amma bu da məlumat sayılır. Nüsxələr bu məlumatı şəxsi onsuz da tanıyan bir yoxlayan tərəflə məhdudlaşdırır.
+- **Vaxt məlumatı bulanıqlaşır, amma tamamilə silinmir.** Sabit dərc fasiləsi ləğvin dəqiq anını həmin fasilənin içində gizlədir. Amma əsl hadisənin tarixini onsuz da bilən və dəyişəcək biti gözləyən şəxsdən ləğvi gizlədə bilməz.
+- **Host edilən status xidməti dərc etdiyi ləğvləri görür.** Qurum öz status xidmətini işlədə və ya şəbəkənin host edilən sənəd vermə xidmətindən istifadə edə bilər. İkinci halda qurumun ləğvlərini operator dərc edir və deməli bu ləğvləri görür. Spesifikasiya bunu real mərkəzləşmə nöqtəsi kimi adlandırır və idarəetmə qaydalarına bağlayır.
+- **Etibar lövbəri bu gün bir imzalayana söykənir.** Anker jurnalını bir müvəqqəti operator imzalayır. Bu məhdudiyyəti aradan qaldıracaq ortaq reyestr isə ikinci müstəqil operatorun qoşulmasını gözləyir ([Niyə blokçeynsiz başlayırıq](/blog/why-no-blockchain-yet)).
 
 ## Tez-tez verilən suallar
 
-### Rəqəmsal sənədimi təqdim etdiyim zaman sənədi verən qurum bundan xəbər tutur?
+### Sənədimi göstərəndə qurum bunu öyrənirmi?
 
-Xeyr. Yoxlayan tərəflər status siyahılarını əvvəlcədən yükləyir və yoxlamanı öz nüsxələri üzərindən aparır. Yoxlama anında quruma heç bir sorğu getmir.
+Xeyr. Yoxlayan tərəflər status siyahılarını əvvəlcədən endirir və yoxlamanı öz nüsxələrindən aparır. Yoxlama anında quruma heç bir sorğu getmir.
 
-### Siyahıya baxaraq kimin rəqəmsal sənədinin ləğv edildiyini müəyyən etmək olarmı?
+### Siyahıya baxan şəxs kimin sənədinin ləğv edildiyini anlaya bilərmi?
 
-İki versiya arasında bəzi mövqelərin dəyişdiyini görmək mümkündür. Lakin həmin mövqelərin kimin rəqəmsal sənədlərinə aid olduğunu müəyyən etmək olmur, çünki mövqelər təsadüfi seçilir və onların uyğunluğu yalnız sənədi verən qurumda saxlanılır.
+İki versiya arasında bəzi mövqelərin dəyişdiyini görə bilər. Amma bu mövqelərin kimin sənədinə aid olduğunu anlaya bilməz, çünki mövqelər təsadüfi paylanır və uyğunluq sənədi verən qurumda qalır.
 
-### Ləğv nə qədər tez qüvvəyə minir?
+### Ləğv nə qədər müddətə qüvvəyə minir?
 
-Bir dərc intervalı və yoxlayan tərəfin yeniləmə müddəti ərzində. Siyahılar hər 2 dəqiqədən bir yenidən dərc olunur, buna görə də status serveri işlək olduqda bu, bir neçə dəqiqə çəkir.
+Bir dərc fasiləsi və yoxlayan tərəfin siyahını yeniləmə müddəti ərzində qüvvəyə minir. Siyahılar 2 dəqiqədən bir yenidən dərc olunduğu üçün status serveri işləyərkən bu müddət bir neçə dəqiqəni keçmir.
 
-### Siyahını yükləmək mümkün olmasa nə baş verir?
+### Siyahı endirilə bilməsə, nə baş verir?
 
-Yoxlayan tərəf son etibarlı nüsxədən onun müddəti bitənədək, yəni dərc olunduqdan 6 saat sonrayadək istifadə etməyə davam edir. Bundan sonra nəticə "ləğv edilib" deyil, "hazırda yoxlamaq mümkün deyil" olur.
+Yoxlayan tərəf əlindəki son etibarlı nüsxədən onun müddəti bitənə qədər istifadə edir. Bu müddət nüsxənin dərc edilməsindən 6 saat sonra bitir. Bundan sonra nəticə "ləğv edilib" olmur, "hazırda yoxlamaq mümkün olmadı" olur.
 
 ### Təcili halda niyə dərhal dərc edilmir?
 
-Qrafikdən kənar dərc nəyinsə baş verdiyini üzə çıxarardı. Təcili hallarda bunun əvəzinə qurumun sertifikatı etibar siyahısında dayandırılır.
+Dövrdən kənar aparılan dərc nəyinsə baş verdiyini üzə çıxarardı. Ona görə təcili hallarda bunun əvəzinə qurumun etibar siyahısındakı sertifikatı dayandırılır.
 
 ## Mənbələr
 

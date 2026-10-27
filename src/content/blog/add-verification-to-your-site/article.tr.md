@@ -1,7 +1,7 @@
 ---
 title: Sitenize ya da uygulamanıza "Tamga ile doğrula" ekleyin
 slug: add-verification-to-your-site
-description: Tamga belgelerini sitenizde ya da uygulamanızda denetlemenin iki yolu: sayfa kitiyle barındırılan doğrulayıcı ya da kendi sunucunuz.
+description: Tamga belgelerini sitenizde ya da uygulamanızda iki yoldan biriyle denetleyebilirsiniz; sayfa kitiyle barındırılan doğrulayıcıyı kullanır ya da denetimi kendi sunucunuzda yaparsınız.
 date: 2026-10-08
 lang: tr
 category: network
@@ -11,39 +11,39 @@ related: openid4vp-dcql-deep-dive, zero-knowledge-in-tamga, how-trust-lists-work
 
 <!-- Kaynak: GUIDE-0001 sign-in-with-tamga 1.0.0 (Tamga Verify; erişim sertifikası anahtarıyla imzalı kısa ömürlü beyan, ≤60 sn, tek kullanım; POST /presentations → presentation_id, qr_payload, expires_at, status_token; sayfa kiti tamga-verifier.js, TamgaVerifier.mount, /web; kit doğrulamaz ve değer görmez; değerler bir kez, ikinci okumada 410, sonuçtan 5 dk sonra silinir; başkasına 404; siteye özel takma ad; passkey; politika adları Tamga ile belirlenir; sandbox örnek site). GUIDE-0002 verify-on-server 1.0.0 (politika → dcqlFromPolicy → createPresentationRequest → decryptResponse → verifyPresentation; üç sonuç; checks_performed; nonce tek kullanım; ZK: mso_mdoc_zk, WASM masaüstünde ~3 sn, yerel ~0,2–0,3 sn, accept_unrevocable_zk, Z1, mso_mdoc'a dönüş). GUIDE-0008 register-verifier (dns_name, erişim sertifikası, kapsamlar, WRPRC, kapsam dışı uyarısı, kayıtsız takma ad isteği kabul edilmez). SPEC-API-0001 §2–§4 (AP2–AP6). Kod örnekleri sayfası: paketler npm'de 0.7.2 deneme sürümü, kararlı 1.0.0 hazır olunca. Sandbox rehberi §6 (age-zk dahil örnek doğrulayıcılar). Dış: OpenID4VP 1.0, HAIP 1.0. -->
 
-Bir web sitesine ya da uygulamaya "Tamga ile doğrula" eklemenin iki yolu var. Daha hızlı olanı Tamga'nın barındırılan doğrulayıcısı Tamga Verify'ı kullanır: sayfanıza QR kod ya da "cüzdanında aç" düğmesi gösteren küçük bir sayfa kiti, sunucunuza da isteği açan ve onaylanan alanları alan iki kısa uç eklersiniz. Öbür yolda bütün denetim, açık kaynak `@tamga-network/verifier` paketiyle kendi sunucunuzda yapılır: neye ihtiyacınız olduğunu bir politikayla tarif eder, imzalı bir OpenID4VP isteği gönderir, cüzdanın şifreli yanıtını çözer ve üç sonuçtan birini alırsınız. İki yolda da önce doğrulayıcı olarak kaydolursunuz; böylece cüzdan kimin, ne için sorduğunu bilir.
+Bir web sitesine ya da uygulamaya "Tamga ile doğrula" eklemenin iki yolu var. Daha hızlı olan yolda Tamga'nın barındırılan doğrulayıcısı Tamga Verify'ı kullanırsınız. Sayfanıza QR kodu ya da "cüzdanında aç" düğmesini gösteren küçük bir sayfa kiti, sunucunuza da isteği açan ve onaylanan alanları alan iki kısa uç eklemeniz yeterli. Öbür yolda bütün denetimi açık kaynak `@tamga-network/verifier` paketiyle kendi sunucunuzda yaparsınız. Neye ihtiyacınız olduğunu bir politikada tarif eder, imzalı bir OpenID4VP isteği gönderir, cüzdanın şifreli yanıtını çözer ve üç sonuçtan birini alırsınız. Hangi yolu seçerseniz seçin önce doğrulayıcı olarak kaydolmanız gerekir, çünkü cüzdan kimin ve ne amaçla sorduğunu bu kayıttan öğrenir.
 
-> **Not:** `@tamga-network/*` paketleri npm'de 0.7.2 deneme sürümüyle yayımlanır; kararlı 1.0.0 hazır olunca gelir. Deneme sürümünde arayüz değişebilir. Aşağıdaki kod bu sürümün API'sidir.
+> **Not:** `@tamga-network/*` paketleri npm'de 0.7.2 deneme sürümüyle yayımlanıyor; kararlı 1.0.0 sürümü her şey hazır olduğunda gelecek. Deneme sürümlerinde arayüz değişebilir. Aşağıdaki kod bu sürümün API'sini kullanıyor.
 
 ## Kod yazmadan önce ne gerekiyor?
 
-Güven listesinde bir doğrulayıcı kaydı. İstek geldiğinde cüzdan üç şeye bakar: isteği kim gönderiyor, bu gönderen kayıtlı ve etkin mi, istenen alanlar kayıtlı kapsamın içinde mi. Kayıtsız bir site de cüzdana ulaşır ama istediği her alan "kayıtlı kapsamın dışında" uyarısıyla gösterilir, takma ad isteği ise hiç kabul edilmez.
+Önce güven listesinde bir doğrulayıcı kaydınızın olması gerekir. Cüzdan bir istek aldığında üç şeye bakar. İsteği kimin gönderdiğini, bu gönderenin kayıtlı ve etkin olup olmadığını ve istenen alanların kayıtlı kapsamın içinde kalıp kalmadığını denetler. Kayıtsız bir site de cüzdana ulaşabilir, ama istediği her alan "kayıtlı kapsamın dışında" uyarısıyla gösterilir. Böyle bir siteden gelen takma ad isteği ise hiç kabul edilmez.
 
-Kayıt için kayıt makamına şunları verirsiniz ([Doğrulayıcı olarak kayıt](https://docs.tamga.network/tr/guides/register-verifier)):
+Kaydolmak için kayıt makamına şu bilgileri verirsiniz ([Doğrulayıcı olarak kayıt](https://docs.tamga.network/tr/guides/register-verifier)):
 
-- kalıcı kimliğiniz olacak alan adınız;
-- istekleri imzalayacağınız anahtar için bir sertifika imzalama isteği (anahtar sizde kalır); istemci tanımlayıcınız ortaya çıkan erişim sertifikasından türetilir;
-- her kullanım amacı için bir **kapsam**: sade bir dille yazılmış amaç, tek bir belge türü ve o amacın gerektirdiği en az alan, bir de gizlilik politikası bağlantısı;
-- AB ortak kayıt bilgileri: ticari ad, resmî tanımlayıcı, adres, iletişim, veri koruma makamı.
+- alan adınız; bu ad kalıcı kimliğiniz olur;
+- istekleri imzalayacağınız anahtar için bir sertifika imzalama isteği (anahtar sizde kalır); istemci tanımlayıcınız bu istekten çıkan erişim sertifikasından türetilir;
+- her kullanım amacı için ayrı bir **kapsam**, yani sade bir dille yazılmış amaç, tek bir belge türü, bu amacın gerektirdiği en az sayıda alan ve gizlilik politikanızın bağlantısı;
+- AB'nin ortak kayıt bilgileri: ticari ad, resmî tanımlayıcı, adres, iletişim bilgisi ve bağlı olduğunuz veri koruma makamı.
 
-Örneğin öğrenci indirimi sunan bir mağaza öğrenci belgesinden yalnız `is_enrolled` alanını ister; adı, okulu, öğrenci numarasını istemez. Kapsamları bu kadar dar tutarsanız cüzdanın onay ekranı da kısa kalır.
+Öğrenci indirimi yapan bir mağaza, örneğin, öğrenci belgesinden yalnız `is_enrolled` alanını ister. Öğrencinin adını, okulunu ya da öğrenci numarasını istemesine gerek yoktur. Kapsamları bu kadar dar tutarsanız cüzdanın onay ekranı da kısa kalır.
 
-Kayıttan önce denemek için sandbox'ı kullanın: [verify.sandbox.tamga.network](https://verify.sandbox.tamga.network) adresinde giriş, yaş, diploma, öğrenci indirimi ve etkinlik kapısı için örnek doğrulayıcılar ve [/sample-site](https://verify.sandbox.tamga.network/sample-site) adresinde çalışan bir örnek site var.
+Kaydolmadan önce her şeyi sandbox'ta deneyebilirsiniz. [verify.sandbox.tamga.network](https://verify.sandbox.tamga.network) adresinde giriş, yaş, diploma, öğrenci indirimi ve etkinlik girişi için örnek doğrulayıcılar, [/sample-site](https://verify.sandbox.tamga.network/sample-site) adresinde de çalışan bir örnek site bulunuyor.
 
 ## Hangi yolu seçmelisiniz?
 
 ![Barındırılan doğrulayıcı mı, kendi sunucunuz mu: paket, kim doğrular, değerler nereye gider, listeleri kim tutar](/blog/add-verification-to-your-site/tr/fig-iki-yol.png)
 
-Barındırılan doğrulayıcı kayıt ve giriş için ve hızlı başlamak isteyen ekipler için uygundur. Kendi sunucunuz, belge değerlerinin hiçbir aracıdan geçmesini istemeyen ya da zaten yoğun doğrulama altyapısı işleten kurumlar içindir. İkisi de aynı doğrulama hattını çalıştırır; `verify.tamga.network` adresindeki referans doğrulayıcı sizin kuracağınız kütüphanenin üzerine kuruludur.
+Barındırılan doğrulayıcı, kayıt ve giriş sayfaları için ve hızlı başlamak isteyen ekipler için uygundur. Belge değerlerinin hiçbir aracıdan geçmesini istemeyen ya da zaten yoğun doğrulama yapan bir altyapı işleten kurumlar ise denetimi kendi sunucularında yapmayı tercih eder. İki yol da aynı doğrulama hattını çalıştırır. `verify.tamga.network` adresindeki referans doğrulayıcı da sizin kuracağınız kütüphanenin üzerine kurulu.
 
 ## Barındırılan doğrulayıcı nasıl çalışır?
 
-Dört hamle var ve değerler yalnız sizin sunucunuza ulaşır:
+Süreç dört adımdan oluşur ve belge değerleri yalnız sizin sunucunuza ulaşır:
 
-1. **Sunucunuz bir sunum açar.** Doğrulayıcıyı bir politika adıyla ve erişim sertifikanızın anahtarıyla imzalanmış kısa ömürlü bir beyanla çağırır (en çok 60 saniye geçerli, tek kullanımlık). Ayrı bir parola yoktur.
-2. **Sayfa isteği gösterir.** Bilgisayarda QR kod, telefonda "cüzdanında aç" düğmesi. Kişi yalnız istenen alanları görür ve onaylar.
-3. **Doğrulayıcı belgeyi denetler** (imza, güven listesi, iptal, sahiplik bağı) ve sayfa kiti sonucu öğrenir.
-4. **Sunucunuz sonucu alır** ve kabul edildiyse onaylanan alanları, bir kez.
+1. **Sunucunuz bir sunum açar.** Doğrulayıcıyı bir politika adıyla çağırır ve isteğe, erişim sertifikanızın anahtarıyla imzalanmış kısa ömürlü bir beyan ekler. Bu beyan en çok 60 saniye geçerlidir ve yalnız bir kez kullanılabilir, bu yüzden ayrıca bir parolaya gerek kalmaz.
+2. **Sayfa isteği gösterir.** Kişi bilgisayardaysa bir QR kod, telefondaysa "cüzdanında aç" düğmesi görür. Cüzdan ona yalnız istenen alanları gösterir ve kişi onaylar.
+3. **Doğrulayıcı belgeyi denetler.** İmzaya, güven listesine, iptal durumuna ve belgenin sunan kişiye bağlı olup olmadığına bakar. Sayfa kiti de sonucu bu sırada öğrenir.
+4. **Sunucunuz sonucu alır.** Belge kabul edildiyse onaylanan alanları da alır, ama yalnız bir kez.
 
 ```http title="Barındırılan doğrulayıcıda sunum açmak"
 POST /presentations HTTP/1.1
@@ -54,7 +54,7 @@ Content-Type: application/json
 { "policy_id": "site-signup" }
 ```
 
-Yanıtta `presentation_id`, `qr_payload`, `expires_at` ve bir `status_token` gelir; sunucunuz bunları sayfaya iletir. Sayfa kitini doğrulayıcı sunar:
+Yanıtta `presentation_id`, `qr_payload`, `expires_at` ve `status_token` değerleri gelir ve sunucunuz bunları sayfaya iletir. Sayfa kitini doğrulayıcının kendisi sunar:
 
 ```html title="Kayıt sayfanızdaki sayfa kiti"
 <script src="https://verify.tamga.network/tamga-verifier.js"></script>
@@ -74,7 +74,7 @@ Yanıtta `presentation_id`, `qr_payload`, `expires_at` ve bir `status_token` gel
 </script>
 ```
 
-Kit hiçbir şeyi doğrulamaz ve hiçbir değeri görmez; yalnız durumu izler. Karar sizin sunucunuzda verilir:
+Kit hiçbir şeyi doğrulamaz ve hiçbir değeri görmez. Yalnız sunumun durumunu izler ve kararı sizin sunucunuza bırakır:
 
 ```ts title="Sunucunuz: önce sonucu, sonra onaylanan alanları okuyun"
 import { createRpAssertion } from "@tamga-network/verifier";
@@ -89,11 +89,11 @@ if (res.status === 410) return; // değerler bir kez verilir
 const { claims } = await res.json(); // ör. claims.pseudonym, claims.given_name
 ```
 
-Bir sunumun sonucunu yalnız onu açan site okuyabilir; başkası `404` alır. Değerler bir kez verilir ve sonuçtan beş dakika sonra silinir, bu yüzden onları hemen işleyin. Barındırılan doğrulayıcıda politika adları ve alan setleri ağla birlikte belirlenir (örneğin 18 yaş kontrolü yalnız `age_over_18` alanını kullanır). Kayıttan sonra passkey dahil bütün adımlar: ["Tamga ile giriş" ekleme](https://docs.tamga.network/tr/guides/sign-in-with-tamga).
+Bir sunumun sonucunu yalnız o sunumu açan site okuyabilir, başka biri denediğinde `404` alır. Değerler bir kez verilir ve sonuçtan beş dakika sonra silinir. Bu yüzden onları hemen işlemeniz gerekir. Barındırılan doğrulayıcıda politika adları ve her politikanın hangi alanları istediği ağla birlikte belirlenir. 18 yaş kontrolü, örneğin, yalnız `age_over_18` alanını kullanır. Kayıttan sonra passkey eklemek dahil bütün adımları ["Tamga ile giriş" ekleme](https://docs.tamga.network/tr/guides/sign-in-with-tamga) rehberinde bulabilirsiniz.
 
 ## Kendi sunucunuzda nasıl doğrularsınız?
 
-`@tamga-network/verifier` ve `@tamga-network/trust` ile. İlk istekten önce güven listelerini `TrustSource` üzerinden yükleyin ([listeler nasıl denetlenir](/blog/how-trust-lists-work)) ve iptal listelerini bir zamanlayıcıyla önceden indirmeye başlayın; kontrol anında hiçbir şey indirilmemeli. Sonra:
+Bunun için `@tamga-network/verifier` ve `@tamga-network/trust` paketlerini kullanırsınız. İlk istekten önce güven listelerini `TrustSource` üzerinden yükleyin ([listeler nasıl denetlenir](/blog/how-trust-lists-work)) ve iptal listelerini bir zamanlayıcıyla önceden indirmeye başlayın. Kontrol anında hiçbir şeyin indirilmemesi gerekir. Ardından isteği kurar, yanıtı çözer ve sunumu doğrularsınız:
 
 ```ts title="Kendi sunucunuz: istek, çözme, doğrulama"
 import { dcqlFromPolicy, createPresentationRequest, decryptResponse, verifyPresentation,
@@ -112,42 +112,42 @@ const { result, claims } = await verifyPresentation({ presentation: answer.vp_to
   trust, statusCache, rootCertsDer, rp: trust.relyingParty(signer.clientId) });
 ```
 
-`verifyPresentation`'ın arkasındaki adımlar sabit ve numaralıdır: biçim ve imza (A), belge türü (B), güven (C), iptal (D) ve sizin politikanız (E). Hepsi [doğrulama API'sinde](https://docs.tamga.network/tr/specifications/verification-api) yazılı. Bu kodun test edilmiş, çalışan sürümü [kod örnekleri](https://docs.tamga.network/tr/guides/code-examples) arasında; rehberi [Kendi sunucunuzda doğrulama](https://docs.tamga.network/tr/guides/verify-on-server).
+`verifyPresentation` her seferinde aynı sırayla, numaralı adımlarla çalışır. Önce biçimi ve imzayı (A), sonra belge türünü (B), güveni (C) ve iptal durumunu (D) denetler, en son da sizin politikanızı (E) uygular. Adımların hepsi [doğrulama API'sinde](https://docs.tamga.network/tr/specifications/verification-api) yazılı. Bu kodun test edilmiş ve çalışan bir sürümünü [kod örnekleri](https://docs.tamga.network/tr/guides/code-examples) arasında, ayrıntılı anlatımını da [Kendi sunucunuzda doğrulama](https://docs.tamga.network/tr/guides/verify-on-server) rehberinde bulabilirsiniz.
 
-## Politika nedir, neden kod değildir?
+## Politika nedir, neden kod olarak yazılmaz?
 
-Politika neye ihtiyacınız olduğunu söyler: hangi belge türü, hangi alanlar, hangi güvence düzeyi, listeler ne kadar taze olmalı. Cüzdanın gördüğü istek (bir DCQL sorgusu) politikadan üretilir, elle yazılmaz. Bu yüzden daha fazlasını istemek kod değil politika değişikliği gerektirir ve bir politika kaydınızdaki kapsamın ötesini hiçbir zaman isteyemez (AP6 kuralı). İsteğin ve şifreli yanıtın nasıl kurulduğu [OpenID4VP ve DCQL ayrıntılı](/blog/openid4vp-dcql-deep-dive) yazısında.
+Politika neye ihtiyacınız olduğunu söyler. Hangi belge türünü, hangi alanları ve hangi güvence düzeyini istediğinizi, listelerin en fazla ne kadar eski olabileceğini burada belirtirsiniz. Cüzdanın gördüğü istek (bir DCQL sorgusu) bu politikadan üretilir ve kimse onu elle yazmaz. Bu yüzden daha fazla alan istemek için kodu değiştirmeniz gerekmez, politikayı değiştirmeniz yeterlidir. Bir politika da kaydınızdaki kapsamın ötesinde bir şey isteyemez (AP6 kuralı). İsteğin ve şifreli yanıtın nasıl kurulduğunu [OpenID4VP ve DCQL ayrıntılı](/blog/openid4vp-dcql-deep-dive) yazısında anlattık.
 
 ## Sonuç nasıl okunur?
 
 ![Üç sonuç, her birinin anlamı ve kullanıcıya ne söyleneceği](/blog/add-verification-to-your-site/tr/fig-sonuclar.png)
 
-Doğru kurulması gereken üçüncü sonuç. `INDETERMINATE`, doğrulayıcının şu an denetleyemediği anlamına gelir: bir liste alınamamıştır ya da fazla eskidir. Belge pekâlâ geçerli olabilir. "Şu an doğrulanamadı, lütfen tekrar deneyin" deyin ve bunu hiçbir zaman `REJECTED` ile aynı kefeye koymayın (AP2 kuralı). "Bu diploma sahte" ile "şu an kontrol edemiyorum" arasındaki fark birinin işe alınıp alınmamasını belirleyebilir.
+Üç sonuçtan en dikkatli ele alınması gereken üçüncüsü. `INDETERMINATE`, doğrulayıcının o an denetimi yapamadığını gösterir. Bir liste alınamamış ya da izin verilenden daha eski olabilir, ama belge pekâlâ geçerli olabilir. Kullanıcıya "Şu an doğrulanamadı, lütfen tekrar deneyin" deyin ve bu sonucu hiçbir zaman `REJECTED` ile bir tutmayın (AP2 kuralı). "Bu diploma sahte" demekle "şu an kontrol edemiyorum" demek arasındaki fark, birinin işe alınıp alınmamasını belirleyebilir.
 
-Sonuç nesnesi yapılan ve atlanan kontrolleri sayar; bunları denetim için saklayabilirsiniz. İçinde alan adları vardır, değerler hiçbir zaman yoktur. Günlüklere adlar ve anahtarlar dahil kişisel veri yazmayın.
+Sonuç nesnesi hangi kontrollerin yapıldığını ve hangilerinin atlandığını listeler. Bu listeyi denetim kaydı olarak saklayabilirsiniz, çünkü içinde yalnız alan adları bulunur ve değerler hiçbir zaman yer almaz. Günlüklerinize adlar ve anahtarlar dahil hiçbir kişisel veri yazmayın.
 
 ## Doğum tarihini görmeden yaş denetlenebilir mi?
 
-Evet; bu, Tamga Verify'da `age-over-18-zk` politikasıyla canlıda. `mso_mdoc_zk` biçimindeki bir politika sıfır bilgi ispatı ister: cüzdan, kayıtlı bir kurumun verdiği kimlik belgesinde `age_over_18 = true` yazdığını kanıtlar ve siz başka hiçbir şey öğrenmezsiniz. Belgeyi, doğum tarihini, kurumun imzasını ya da cihaz anahtarını görmezsiniz; aynı kişinin iki ispatı birbirine bağlanamaz ([ADR-0032](https://docs.tamga.network/tr/adr/0032-zk-mdoc-presentation)).
+Evet. Tamga Verify'da bu denetim `age-over-18-zk` politikasıyla canlıda çalışıyor. `mso_mdoc_zk` biçimindeki bir politika cüzdandan sıfır bilgi ispatı ister. Cüzdan, kayıtlı bir kurumun verdiği kimlik belgesinde `age_over_18 = true` yazdığını kanıtlar ve siz bunun dışında hiçbir şey öğrenmezsiniz. Belgenin kendisini, doğum tarihini, kurumun imzasını ya da cihaz anahtarını görmezsiniz. Aynı kişinin ürettiği iki ispat da birbiriyle ilişkilendirilemez ([ADR-0032](https://docs.tamga.network/tr/adr/0032-zk-mdoc-presentation)).
 
-Rehberden birkaç pratik not:
+Rehberde bu konuda birkaç pratik not var:
 
-- Doğrulama pakete gömülü WebAssembly ile çalışır; bir masaüstünde ispat başına yaklaşık 3 saniye. Yüksek hacim için yerel derleme yaklaşık 0,2 ile 0,3 saniye sürer.
+- Doğrulama pakete gömülü WebAssembly ile yapılır ve bir masaüstü bilgisayarda ispat başına yaklaşık 3 saniye sürer. Yüksek hacimde çalışacaksanız yerel derleme bu süreyi 0,2 ile 0,3 saniyeye indirir.
 - Yalnız imzalı güven listesinde yer alan devreler kabul edilir.
-- ZK sunumu iptal indeksi taşımaz; bu yüzden politikanın `accept_unrevocable_zk: true` ifadesini açıkça yazması gerekir. İptal kontrolü şartsa klasik `mso_mdoc` politikasını kullanın.
-- Cüzdan tarafında Android ispat kütüphanesi hazır, iOS henüz bekliyor. İspat üretemeyen cüzdan, politikanız izin veriyorsa klasik mdoc denetimine döner; bu yol da yalnız `age_over_18` alanını açar. İkisini birlikte sunun.
+- ZK sunumu iptal indeksi taşımaz. Bu yüzden politikanızda `accept_unrevocable_zk: true` değerini açıkça yazmanız gerekir. İptal kontrolü sizin için şartsa klasik `mso_mdoc` politikasını kullanın.
+- Cüzdan tarafında Android için ispat kütüphanesi hazır, iOS sürümü ise henüz bekleniyor. İspat üretemeyen bir cüzdan, politikanız izin veriyorsa klasik mdoc denetimine geçer ve bu yolda da yalnız `age_over_18` alanı açılır. Bu yüzden iki yolu birlikte sunmanızı öneriyoruz.
 
-Sandbox'taki `age-zk` örnek doğrulayıcısı akışı uçtan uca gösterir. Devreler, güven listesinin rolü ve sınırlar [Tamga'da sıfır bilgi](/blog/zero-knowledge-in-tamga) yazısında.
+Sandbox'taki `age-zk` örnek doğrulayıcısı bu süreci baştan sona gösteriyor. Devreleri, güven listesinin buradaki rolünü ve yöntemin sınırlarını [Tamga'da sıfır bilgi](/blog/zero-knowledge-in-tamga) yazısında anlattık.
 
 ## Sık sorulan sorular
 
 ### Sitemiz kişinin bütün belgesini görür mü?
 
-Hayır. Yalnız kişinin onayladığı alanları alır ve bu alanlar kayıtlı kapsamınızın içinde olmak zorundadır. Sıfır bilgi politikasıyla yalnız bir evet ya da hayır alır.
+Hayır. Siteniz yalnız kişinin onayladığı alanları alır ve bu alanların kayıtlı kapsamınızın içinde olması gerekir. Sıfır bilgi politikası kullanıyorsanız yalnız bir evet ya da hayır yanıtı alırsınız.
 
 ### Belgeyi veren kurum, belgeyi denetlediğimizi görebilir mi?
 
-Hayır. İptal listeleri önceden indirilip saklanır; kontrol anında ne kuruma ne ağa bir istek gider.
+Hayır. İptal listeleri önceden indirilip önbellekte tutulur, bu yüzden kontrol anında ne kuruma ne de ağa bir istek gider.
 
 ### Yalnız Tamga Wallet ile mi çalışır?
 
@@ -155,11 +155,11 @@ Hayır. Sağlayıcısı güven listesinde kayıtlı olan ve ağın cüzdan kural
 
 ### Bir girişten sonra ne saklamalıyız?
 
-Kişisel veri değil, bir hesap anahtarı. Örnek site siteye özel takma adın anahtarlı bir özetini saklar. Başka bir site aynı kişi için farklı bir takma ad gördüğünden bunu eşleştiremez.
+Kişisel veri saklamanız gerekmez, bir hesap anahtarı yeterlidir. Örnek site, siteye özel takma adın anahtarlı bir özetini saklıyor. Başka bir site aynı kişiyi farklı bir takma adla gördüğü için bu özeti kendi kayıtlarıyla eşleştiremez.
 
 ### Kayıt olmadan deneyebilir miyiz?
 
-Evet, sandbox'ta. Örnek doğrulayıcılar ve örnek site, sandbox'ın örnek kurumlarından alınan belgelerle çalışır. Gerçek belgeler için gerçek ağda kayıtlı bir doğrulayıcı gerekir.
+Evet, sandbox'ta deneyebilirsiniz. Oradaki örnek doğrulayıcılar ve örnek site, sandbox'ın örnek kurumlarından alınan belgelerle çalışır. Gerçek belgeleri doğrulamak için ise gerçek ağda kayıtlı bir doğrulayıcı olmanız gerekir.
 
 ## Kaynaklar
 

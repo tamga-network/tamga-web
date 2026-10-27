@@ -570,7 +570,7 @@ export const CHAPTER_4: LearnPage[] = [
       {
         tr: "eIDAS 2.0, Tüzük (AB) 2024/1183'tür; 20 Mayıs 2024'ten beri yürürlükte ve her AB vatandaşına bir dijital kimlik cüzdanı getirir.",
         en: "eIDAS 2.0 is Regulation (EU) 2024/1183; in force since 20 May 2024, it brings a digital identity wallet to every EU citizen.",
-        tk: "eIDAS 2.0 — (ÝB) 2024/1183 düzgünnamasy; 2024-nji ýylyň 20-nji maýyndan bäri güýje girdi we her ÝB raýatyna sanly şahsyýet gapjygyny getirýär.",
+        tk: "eIDAS 2.0 (ÝB) 2024/1183 düzgünnamasydyr. Ol 2024-nji ýylyň 20-nji maýyndan bäri güýjünde we her ÝB raýatyna sanly şahsyýet gapjygyny getirýär.",
         az: "eIDAS 2.0 (Aİ) 2024/1183 saylı Reqlamentdir; 20 may 2024-cü ildən qüvvədədir və hər Aİ vətəndaşına rəqəmsal şəxsiyyət cüzdanı gətirir.",
       },
       {
@@ -749,7 +749,7 @@ export const CHAPTER_4: LearnPage[] = [
       tk: (
         <>
           <p>
-            EUDI Wallet — Ýewropa sanly şahsyýet gapjygy. Bu telefondaky programma bolup, içinde adamyň şahsyýeti we resminamalary
+            EUDI Wallet Ýewropanyň sanly şahsyýet gapjygydyr. Bu telefondaky programma bolup, içinde adamyň şahsyýeti we resminamalary
             durýar. Adam sahypa girende, bankda hasap açanda ýa-da derwezeden geçende diňe soralan maglumaty öz razylygy bilen
             görkezýär.
           </p>
@@ -1318,19 +1318,19 @@ export const CHAPTER_4: LearnPage[] = [
           <AttestationTypes locale="tk" />
           <ul>
             <li>
-              <strong><Term tip="Person Identification Data: döwletiň berýän esasy şahsyýet maglumaty.">PID</Term></strong> — adamyň esasy
-              şahsyýeti; döwlet berýär. 2028-nji ýyldan surat hökmany meýdan bolýar.
+              <strong><Term tip="Person Identification Data: döwletiň berýän esasy şahsyýet maglumaty.">PID</Term></strong> adamyň esasy
+              şahsyýet resminamasy bolup, ony döwlet berýär. 2028-nji ýyldan surat hökmany meýdan bolýar.
             </li>
             <li>
-              <strong><Term tip="Electronic Attestation of Attributes: adamyň bir häsiýetini görkezýän elektron resminama.">EAA</Term></strong> —
-              talyp bolmak, bilet eýesi bolmak ýaly häsiýetleri görkezýär; islendik gurama berip bilýär.
+              <strong><Term tip="Electronic Attestation of Attributes: adamyň bir häsiýetini görkezýän elektron resminama.">EAA</Term></strong>
+              talyp bolmak, bilet eýesi bolmak ýaly häsiýetleri görkezýär we ony islendik gurama berip bilýär.
             </li>
             <li>
-              <strong>QEAA</strong> — QTSP-niň berýän EAA-sy; hukuk taýdan agramly.
+              <strong>QEAA</strong> kwalifisirlenen ynam hyzmatyny üpjün edijiniň (QTSP) berýän EAA-sydyr. Onuň hukuk taýdan agramy uludyr.
             </li>
             <li>
-              <strong>PuB-EAA</strong> — döwlet edarasynyň öz{" "}
-              <Term tip="Maglumatyň resmi ýazgysynyň saklanýan ýeri." en="authentic source">ygtyýarly çeşmesinden</Term> berýän resminamasy.
+              <strong>PuB-EAA</strong> döwlet edarasynyň öz{" "}
+              <Term tip="Maglumatyň resmi ýazgysynyň saklanýan ýeri." en="authentic source">ygtyýarly çeşmesinden</Term> berýän resminamasydyr.
             </li>
           </ul>
           <h2>Tapawut näme üçin möhüm</h2>

@@ -1,7 +1,7 @@
 ---
 title: "OpenID4VCI ayrıntılı: teklif, DPoP, kanıt, 10'lu paket"
 slug: openid4vci-deep-dive
-description: Tamga'da OpenID4VCI 1.0 ile belge verme; teklif ve tx_code, PAR ve PKCE, DPoP, nonce ucu, anahtar kanıtları, cüzdan doğrulaması, 10 kopyalık paket.
+description: Tamga'da OpenID4VCI 1.0 ile belge vermeyi anlatıyoruz; teklif ve tx_code, PAR ve PKCE, DPoP, nonce ucu, sahiplik kanıtları, cüzdan kanıtı ve 10 kopyalık paket.
 date: 2026-10-08
 updated: 2026-10-23
 lang: tr
@@ -12,17 +12,17 @@ related: trusting-a-wallet, sd-jwt-vc-deep-dive, openid4vp-dcql-deep-dive, haip-
 
 <!-- Kaynak: OpenID4VCI 1.0 Final (16 Eylül 2025): Nonce Endpoint §7 (yalnız c_nonce, no-store), proofs §8.2, ertelenmiş ihraç §9 (HTTP 202 + transaction_id + interval), bildirim olayları §11, imzalı metadata typ openidvci-issuer-metadata+jwt, anahtar kanıtı typ key-attestation+jwt (Ek D). HAIP 1.0 Final (24 Aralık 2025) §4. SPEC-PROTO-0001 v1.0.0 (2026-10-08). Kod: @tamga-network/issuer oid4vci.ts, wallet-core authcode.ts, dpop.ts, oid4vci.ts; platform issuer (c_nonce 300 sn). RFC 9449, RFC 9126, RFC 7636. -->
 
-OpenID4VCI (OpenID for Verifiable Credential Issuance) 1.0, cüzdanın bir kurumdan belge almak için kullandığı OAuth tabanlı protokoldür. Cüzdan token ucundan bir erişim belirteci, **nonce ucundan** taze bir `c_nonce` alır ve anahtar kanıtlarını **belge ucuna** gönderir; belge ucu kanıtlanan her anahtar için bir belge döner. Tamga bunun üstüne HAIP 1.0 profilini uygular: DPoP'a bağlı belirteçler, yetkilendirme kodu akışında PAR ve PKCE, token ucunda cüzdan doğrulaması (wallet attestation), anahtar kanıtları (key attestation) ve 10 ayrı anahtara bağlı 10 kopyalık paket.
+OpenID4VCI (OpenID for Verifiable Credential Issuance) 1.0, cüzdanın bir kurumdan belge almak için kullandığı OAuth tabanlı protokoldür. Cüzdan token ucundan bir erişim belirteci, **nonce ucundan** da taze bir `c_nonce` alır. Ardından anahtarlarının sahiplik kanıtlarını **belge ucuna** gönderir ve belge ucu, sahipliği kanıtlanan her anahtar için bir belge döndürür. Tamga bunun üzerine HAIP 1.0 profilini uyguluyor. Bu profilde belirteçler DPoP'a bağlıdır, yetki kodu akışında PAR ve PKCE kullanılır, token ucunda cüzdan kanıtı (wallet attestation) istenir, anahtar kanıtları (key attestation) desteklenir ve belge, 10 ayrı anahtara bağlı 10 kopyalık bir paket olarak verilir.
 
-OpenID4VCI 1.0, 16 Eylül 2025'te Final oldu. Taslaklara göre yazılmış kodu hâlâ iki değişiklik şaşırtıyor: `c_nonce` artık token yanıtından değil nonce ucundan geliyor; anahtar kanıtları da `proof` (tekil) yerine `proofs` (dizilerden oluşan bir nesne) içinde gidiyor. Tamga profili [SPEC-PROTO-0001](https://docs.tamga.network/tr/specifications/openid4vci).
+OpenID4VCI 1.0, 16 Eylül 2025'te Final oldu. Taslaklara göre yazılmış kodda iki değişiklik hâlâ sorun çıkarıyor. `c_nonce` artık token yanıtından değil nonce ucundan geliyor. Sahiplik kanıtları da tekil `proof` alanı yerine, dizilerden oluşan bir nesne olan `proofs` içinde gönderiliyor. Tamga'nın profili [SPEC-PROTO-0001](https://docs.tamga.network/tr/specifications/openid4vci) adlı belgede yazılı.
 
 ![Tamga'da belge vermenin iki başlangıcı](/blog/openid4vci-deep-dive/tr/fig-flows.png)
 
-> **Not:** Sadeleştirilmiş örnekler. Adresler ve kimlikler örnektir, JWT'ler kısaltıldı, imzalar gösterilmiyor.
+> **Not:** Örnekler sadeleştirildi. Adresler ve kimlikler örnek değerlerdir, JWT'ler kısaltıldı ve imzalar gösterilmiyor.
 
 ## Cüzdan başlamadan önce neyi okur?
 
-Her Tamga kurumu, barındırılan issuer hizmetinin altında bir yoldur; metadata adresi de well-known adresin yola eklenmiş biçimini kullanır:
+Her Tamga kurumu, barındırılan issuer servisinin altında bir yol olarak yer alır. Bu yüzden kurumun metadata adresi, well-known adresin yola eklenmiş biçimini kullanır:
 
 ```http title="Kurum metadata isteği (örnek kurum)"
 GET /.well-known/openid-credential-issuer/example-university HTTP/1.1
@@ -30,7 +30,7 @@ Host: issuer.tamga.network
 Accept: application/jwt
 ```
 
-`Accept: application/jwt` ile kurum **imzalı metadata** döner (`typ` `openidvci-issuer-metadata+jwt`, kurumun `x5c`'deki belge imza sertifikasıyla imzalı). Cüzdan imzacının parmak izini güven listesindeki kurum kaydıyla karşılaştırır; tutmazsa metadata kullanılmaz. Düz istek JSON döner:
+`Accept: application/jwt` başlığıyla istendiğinde kurum **imzalı metadata** döndürür. Bu metadata'nın `typ` değeri `openidvci-issuer-metadata+jwt` olur ve kurum onu, sertifikası `x5c` alanında duran belge imza anahtarıyla imzalar. Cüzdan, imzalayan sertifikanın parmak izini güven listesindeki kurum kaydıyla karşılaştırır. Parmak izi uyuşmazsa metadata kullanılmaz. Başlıksız bir istek ise düz JSON döndürür:
 
 ```json title="Sadeleştirilmiş örnek: kurum metadata'sı"
 {
@@ -68,13 +68,13 @@ Accept: application/jwt
 }
 ```
 
-Dikkat edilecek noktalar. Her yapılandırma bir `scope` ilan eder; HAIP her yapılandırma için bir kapsam ister, cüzdan da onu yetkilendirme isteğinde kullanır. Tamga hem yapılandırma kimliği hem kapsam olarak `vct` URN'sini kullanır. Belgeler anahtara bağlı olduğu için `nonce_endpoint` vardır. `key_attestations_required`, kurumun kabul ettiği anahtar saklama düzeylerini sayar. Kopya politikası cüzdana her doğrulayıcı için ayrı kopya kullanmasını, iki kopya kalınca ya da süre bitimine yedi gün kala yeni paket almasını söyler.
+Bu metadata'da birkaç noktaya dikkat etmek gerekiyor. Her yapılandırma bir `scope` değeri taşıyor, çünkü HAIP her yapılandırma için bir kapsam istiyor ve cüzdan bu kapsamı yetki isteğinde kullanıyor. Tamga, `vct` URN'sini hem yapılandırma kimliği hem de kapsam olarak kullanıyor. Belgeler anahtara bağlı olduğu için `nonce_endpoint` da yer alıyor. `key_attestations_required`, kurumun kabul ettiği anahtar saklama düzeylerini listeliyor. Yeniden kullanım politikası da cüzdana her doğrulayıcı için ayrı bir kopya kullanmasını ve iki kopya kaldığında ya da belgenin süresinin bitmesine yedi gün kaldığında yeni bir paket almasını söylüyor.
 
-`/.well-known/oauth-authorization-server/example-university` adresindeki yetkilendirme sunucusu metadata'sı (RFC 8414) şunları ekler: `token_endpoint`, `dpop_signing_alg_values_supported: ["ES256"]`, içinde `attest_jwt_client_auth` geçen `token_endpoint_auth_methods_supported`; cüzdandan başlayan ihraç açıksa `pushed_authorization_request_endpoint`, `require_pushed_authorization_requests: true` ve `code_challenge_methods_supported: ["S256"]`.
+`/.well-known/oauth-authorization-server/example-university` adresindeki yetkilendirme sunucusu metadata'sı (RFC 8414) bunlara birkaç alan daha ekliyor. Bunlar `token_endpoint`, `dpop_signing_alg_values_supported: ["ES256"]` ve içinde `attest_jwt_client_auth` bulunan `token_endpoint_auth_methods_supported` alanları. Cüzdanın başlattığı belge verme açıksa `pushed_authorization_request_endpoint`, `require_pushed_authorization_requests: true` ve `code_challenge_methods_supported: ["S256"]` alanları da metadata'da yer alıyor.
 
 ## Kurumun başlattığı teklif nasıl işler?
 
-Kurum bir **belge teklifi** (credential offer) oluşturur ve QR kod ya da bağlantı olarak gösterir. QR küçük kalsın diye Tamga yalnız `credential_offer_uri` gönderir; cüzdan teklif nesnesini oradan çeker. Adres tek kullanımlıktır ve beş dakikada düşer; ikinci istek 404 alır.
+Kurum bir **belge teklifi** (credential offer) oluşturur ve bunu bir QR kod ya da bağlantı olarak gösterir. QR kodun küçük kalması için Tamga yalnız `credential_offer_uri` değerini gönderir ve cüzdan teklif nesnesini bu adresten alır. Adres yalnız bir kez kullanılabilir ve beş dakika sonra geçersiz olur. Adres ikinci kez istendiğinde 404 yanıtı döner.
 
 ```json title="Sadeleştirilmiş örnek: ön yetkili kodlu teklif"
 {
@@ -89,15 +89,15 @@ Kurum bir **belge teklifi** (credential offer) oluşturur ve QR kod ya da bağla
 }
 ```
 
-`tx_code`, QR kodu kişinin omzunun üstünden fotoğraflayan birine karşı ikinci etkendir. Tamga'da ön yetkili akışta atlanamaz, altı hanelidir, üç yanlış deneme teklifi düşürür ve teklifle asla aynı kanaldan gitmez:
+`tx_code`, QR kodu kişinin omzunun üzerinden fotoğraflayan birine karşı ikinci bir güvenlik katmanıdır. Tamga'da ön yetkili akışta bu kod atlanamaz. Kod altı hanelidir, üç yanlış deneme teklifi geçersiz kılar ve kod hiçbir zaman teklifle aynı kanaldan gönderilmez:
 
-| Teklif sınıfı | Nerede görünür | Ömür | Kişi kendisi olduğunu nasıl gösterir |
+| Teklif sınıfı | Nerede görünür | Ömrü | Kişi kendisi olduğunu nasıl gösterir |
 |---|---|---|---|
-| ekranda | portal ekranı, kişi oturum açmış | 5 dk, tek kullanım | oturum içinde gösterilen `tx_code` |
-| kanal dışı | e-posta ya da SMS ile QR/bağlantı | en çok 72 saat, tek kullanım | *öbür* kanaldan, kurum kayıtlarındaki adrese giden `tx_code` |
-| kimliğe bağlı | kurumun kendi kanalından bağlantı | 7 gün, tek kullanım | kimlik belgesini göstererek (yetkilendirme kodu, `issuer_state`) |
+| ekranda | portal ekranında, kişi oturum açmışken | 5 dk, tek kullanımlık | oturum içinde gösterilen `tx_code` ile |
+| kanal dışı | e-posta ya da SMS ile gönderilen QR ya da bağlantı | en çok 72 saat, tek kullanımlık | *öbür* kanaldan, kurum kayıtlarındaki adrese gönderilen `tx_code` ile |
+| kimliğe bağlı | kurumun kendi kanalından gönderilen bağlantı | 7 gün, tek kullanımlık | kimlik belgesini göstererek (yetki kodu, `issuer_state`) |
 
-## Token isteği neye benzer, neden DPoP?
+## Token isteği neye benzer, DPoP neden gerekli?
 
 ```http title="Sadeleştirilmiş örnek: DPoP ve cüzdan doğrulamalı token isteği"
 POST /example-university/token HTTP/1.1
@@ -116,13 +116,13 @@ grant_type=urn:ietf:params:oauth:grant-type:pre-authorized_code
 { "access_token": "eyJ0eXAiOiJhdCtqd3QiLCJhbGciOiJFUzI1NiJ9…", "token_type": "DPoP", "expires_in": 300 }
 ```
 
-**DPoP** (RFC 9449) erişim belirtecini bir anahtara bağlar. Cüzdan her ihraç akışı için geçici bir P-256 anahtar üretir ve `jwk`, `jti`, `htm`, `htu` ve `iat` taşıyan bir `dpop+jwt` kanıtı imzalar. Kurum belirteci anahtarın parmak izine bağlar; çalınan belirteç anahtar olmadan işe yaramaz. Belge ucuna giden istekler `Authorization: DPoP <belirteç>` ve belirtecin SHA-256'sı olan `ath`'ı taşıyan yeni bir kanıtla gelir. Sunucu `DPoP-Nonce` başlığıyla `use_dpop_nonce` derse cüzdan o nonce ile bir kez yeniden dener; HAIP cüzdanların buna hazır olmasını ister. Tamga'da erişim belirteci beş dakika yaşar.
+**DPoP** (RFC 9449), erişim belirtecini bir anahtara bağlar. Cüzdan her belge verme işlemi için geçici bir P-256 anahtarı üretir ve `jwk`, `jti`, `htm`, `htu` ve `iat` alanlarını taşıyan bir `dpop+jwt` kanıtı imzalar. Kurum belirteci bu anahtarın parmak izine bağlar. Böylece çalınan bir belirteç, anahtar olmadan işe yaramaz. Belge ucuna giden istekler `Authorization: DPoP <belirteç>` başlığını ve belirtecin SHA-256 özeti olan `ath` alanını taşıyan yeni bir kanıtı içerir. Sunucu `DPoP-Nonce` başlığıyla birlikte `use_dpop_nonce` yanıtını verirse, cüzdan bu nonce ile isteği bir kez daha dener. HAIP cüzdanların buna hazır olmasını istiyor. Tamga'da erişim belirteçleri beş dakika geçerli.
 
-İki `OAuth-Client-Attestation` başlığı **cüzdan doğrulamasıdır**: HAIP'in kullandığı, OAuth'un doğrulamaya dayalı istemci kimlik doğrulaması. İlki cüzdan sağlayıcının imzaladığı, sağlayıcı sertifikası `x5c`'de olan bir JWT'dir; ikincisi doğrulamanın `cnf`'sindeki anahtarla imzalanmış, `aud`'u kurum olan bir sahiplik kanıtıdır. Kurum imza sertifikasının güven listesindeki bir cüzdan sağlayıcıya ait olduğunu denetler; değilse belirteç vermez (`invalid_client`). HAIP'e göre doğrulamanın `sub`'ı bir cüzdan ürününün bütün kurulumlarında aynı olmalıdır, yani telefona özgü bir değer taşımaz; ağdaki cüzdanlardan Tamga Wallet ürün kimliğini kullanır. Kısa ömürlü Wallet Instance Attestation (24 saatten kısa, her işlemde yeni anahtar ve yeni iptal kaydı) ayrıca `client_status` taşır; kurum bunu cüzdan sağlayıcının durum listesine karşı denetler. Kurumun bu kanıtlara neden güvendiği [Cüzdana nasıl güvenilir?](/blog/trusting-a-wallet) yazısında.
+İki `OAuth-Client-Attestation` başlığı **cüzdan kanıtını** taşır. Bu, HAIP'in kullandığı ve OAuth'ta kanıta dayalı istemci kimlik doğrulaması diye bilinen yöntemdir. İlk başlık, cüzdan sağlayıcısının imzaladığı ve sağlayıcının sertifikasını `x5c` alanında taşıyan bir JWT'dir. İkincisi ise kanıttaki `cnf` anahtarıyla imzalanmış ve `aud` değeri kurum olan bir sahiplik kanıtıdır. Kurum, imzalayan sertifikanın güven listesindeki bir cüzdan sağlayıcısına ait olup olmadığını denetler. Değilse belirteç vermez ve `invalid_client` hatası döndürür. HAIP'e göre kanıttaki `sub` değerinin bir cüzdan ürününün bütün kurulumlarında aynı olması gerekir, bu yüzden bu alan telefona özgü bir değer taşımaz. Ağdaki cüzdanlardan biri olan Tamga Wallet, burada ürününün kimliğini kullanıyor. Kısa ömürlü Wallet Instance Attestation ise 24 saatten kısa sürer ve her işlemde yeni bir anahtar ve yeni bir iptal kaydıyla üretilir. Bu kanıt ayrıca `client_status` alanını taşır ve kurum bu alanı cüzdan sağlayıcısının durum listesine karşı denetler. Kurumun bu kanıtlara neden güvendiğini [Cüzdana nasıl güvenilir?](/blog/trusting-a-wallet) yazısında anlattık.
 
-## Cüzdandan başlayan akış PAR ve PKCE'yi nasıl kullanır?
+## Cüzdanın başlattığı akış PAR ve PKCE'yi nasıl kullanır?
 
-Kişi uygulamadaki listeden bir kurum seçtiğinde (liste ayrı bir dizin sunucusundan değil, güven listesinden okunur) cüzdan yetkilendirme kodu akışını başlatır:
+Kişi uygulamadaki listeden bir kurum seçtiğinde cüzdan yetki kodu akışını başlatır. Bu liste ayrı bir dizin sunucusundan değil, güven listesinden okunur:
 
 ```http title="Sadeleştirilmiş örnek: PAR isteği"
 POST /example-university/par HTTP/1.1
@@ -140,13 +140,13 @@ client_id=example-wallet-solution
 &state=af0ifjsldkj
 ```
 
-PAR (RFC 9126) yetkilendirme parametrelerini arka kanaldan giden bir isteğe taşır; S256'lı PKCE (RFC 7636) de kodu akışı başlatan cüzdana bağlar. HAIP ikisini de FAPI 2.0 üzerinden şart koşar. `client_id`, cüzdan doğrulamasının `sub`'ıdır. `redirect_uri` PAR'da sabitlenir ve kayıtlı bir adresle birebir aynı olmalıdır. Kimliğe bağlı teklifte cüzdan `issuer_state`'i de gönderir.
+PAR (RFC 9126), yetki isteğinin parametrelerini tarayıcı yerine arka kanaldan giden bir isteğe taşır. S256 yöntemiyle kullanılan PKCE (RFC 7636) de yetki kodunu, akışı başlatan cüzdana bağlar. HAIP, FAPI 2.0 üzerinden ikisini de şart koşuyor. `client_id`, cüzdan kanıtındaki `sub` değeridir. `redirect_uri` PAR isteğinde sabitlenir ve kayıtlı bir adresle birebir aynı olmalıdır. Kimliğe bağlı bir teklifte cüzdan `issuer_state` değerini de gönderir.
 
-`/authorize` adımında Tamga kurumu ağa özgü bir şey yapar: giriş sayfası yerine, kişinin kimlik belgesi için imzalı bir OpenID4VP isteği döner. Cüzdan olağan gösterim akışını çalıştırır; kurum gösterimi doğrulama hattının tamamından geçirir ve kişiyi kendi kayıtlarıyla eşleştirir; başarılıysa en çok 60 saniye geçerli, tek kullanımlık bir `code` ile yönlendirir. Token isteği bu kez `grant_type=authorization_code`, `code`, `code_verifier`, aynı `redirect_uri` ve aynı cüzdan doğrulamasını taşır.
+`/authorize` adımında Tamga kurumu ağa özgü bir şey yapar. Kişiye bir giriş sayfası göstermek yerine, kişinin kimlik belgesini isteyen imzalı bir OpenID4VP isteği döndürür. Cüzdan olağan gösterim adımlarını uygular. Kurum gösterimi doğrulama hattının bütün adımlarından geçirir ve kişiyi kendi kayıtlarıyla eşleştirir. Bu başarılı olursa kişiyi en çok 60 saniye geçerli ve tek kullanımlık bir `code` ile geri yönlendirir. Ardından gelen token isteği `grant_type=authorization_code` değerini, `code` ve `code_verifier` değerlerini, aynı `redirect_uri` adresini ve aynı cüzdan kanıtını taşır.
 
-## Anahtar kanıtları ve 10'lu paket nasıl gönderilir?
+## Sahiplik kanıtları ve 10'lu paket nasıl gönderilir?
 
-Önce cüzdan bir nonce ister. Bu uç belirteç istemez ve `Cache-Control: no-store` ile yanıt verir:
+Cüzdan önce bir nonce ister. Bu uç bir belirteç istemez ve yanıtı `Cache-Control: no-store` başlığıyla döndürür:
 
 ```http title="Nonce ucu"
 POST /example-university/nonce HTTP/1.1
@@ -158,7 +158,7 @@ Cache-Control: no-store
 { "c_nonce": "wKI4LT-mMoScTmxmQaMbtcMbtcpaSl" }
 ```
 
-Her `c_nonce` bir kez ve bölünmez biçimde tüketilir; "önce denetle, sonra sil" arasındaki bir yarış, tek kanıtın iki kez kullanılmasına yol açardı. Sonra cüzdan cihaz anahtarlarını güvenli donanımda üretir ve belge isteğini gönderir:
+Her `c_nonce` yalnız bir kez ve bölünemez bir işlemle tüketilir. "Önce denetle, sonra sil" biçiminde iki adımlı bir işlem, aradaki bir yarış durumunda aynı kanıtın iki kez kullanılmasına yol açabilirdi. Ardından cüzdan cihaz anahtarlarını güvenli donanımda üretir ve belge isteğini gönderir:
 
 ```http title="Sadeleştirilmiş örnek: on kanıtlı belge isteği"
 POST /example-university/credential HTTP/1.1
@@ -180,7 +180,7 @@ Content-Type: application/json
 }
 ```
 
-Her kanıtın başlığında `typ: openid4vci-proof+jwt`, `alg: ES256` ve `jwk` içinde açık anahtar; gövdesinde `aud` (kurum kimliği), `iat` ve `nonce` vardır. Kurum her kanıtı denetler, on anahtarın **hepsinin farklı** olduğuna bakar ve on belge verir; her kopyanın `cnf`'sine o kanıtın anahtarını koyar:
+Her kanıtın başlığında `typ: openid4vci-proof+jwt`, `alg: ES256` ve `jwk` içinde açık anahtar bulunur. Gövdesinde ise `aud` (kurumun kimliği), `iat` ve `nonce` alanları yer alır. Kurum her kanıtı denetler ve on anahtarın **hepsinin birbirinden farklı** olduğuna bakar. Ardından on belge verir ve her kopyanın `cnf` alanına o kopyanın kanıtındaki anahtarı yazar:
 
 ```json title="Belge yanıtı (kısaltılmış)"
 {
@@ -191,49 +191,49 @@ Her kanıtın başlığında `typ: openid4vci-proof+jwt`, `alg: ES256` ve `jwk` 
 }
 ```
 
-Her dizgi boş bir `~` ile biter: cüzdan göstermeden KB-JWT yoktur ([SD-JWT VC ayrıntılı](/blog/sd-jwt-vc-deep-dive)). Kimlik belgesinde her nesne ayrıca aynı anahtara bağlı bir `mso_mdoc` taşır ([ISO mdoc ayrıntılı](/blog/iso-mdoc-deep-dive)).
+Her dizgi boş bir `~` ile biter, çünkü KB-JWT ancak cüzdan belgeyi gösterdiğinde eklenir ([SD-JWT VC ayrıntılı](/blog/sd-jwt-vc-deep-dive)). Kimlik belgesinde her nesne ayrıca aynı anahtara bağlı bir `mso_mdoc` da taşır ([ISO mdoc ayrıntılı](/blog/iso-mdoc-deep-dive)).
 
 ![On anahtar, on kanıt, on kopya](/blog/openid4vci-deep-dive/tr/fig-batch.png)
 
-Neden on ayrı anahtar? Her kopya aynı `cnf`'yi taşısaydı, bilgi paylaşan iki doğrulayıcı kopyaları birbirine bağlayabilir, paket hiçbir şeyi korumazdı. Her kopya kendi rastgele durum listesi sırasını da alır; kopyalar `idx` üzerinden de bağlanamaz. Bir belge iptal edildiğinde kurum bütün kopyaların sıralarını birlikte işaretler; kopya ile sıra arasındaki eşleşme kurumun kendi veritabanında kalır. Bu kural diploma dahil bütün belge türleri için geçerlidir.
+On ayrı anahtar kullanılmasının bir nedeni var. Her kopya aynı `cnf` değerini taşısaydı, bilgi paylaşan iki doğrulayıcı kopyaları birbirine bağlayabilirdi ve paket hiçbir şeyi korumamış olurdu. Her kopya durum listesinde de kendi rastgele sırasını alır, bu yüzden kopyalar `idx` üzerinden de birbirine bağlanamaz. Bir belge iptal edildiğinde kurum bütün kopyaların sıralarını birlikte işaretler. Hangi kopyanın hangi sıraya karşılık geldiği ise yalnız kurumun kendi veritabanında tutulur. Bu kural diploma dahil bütün belge türlerinde geçerli.
 
-**Anahtar kanıtı** (key attestation) ile paket tek bir kanıtla da istenebilir. Kanıtın başlığı `key_attestation` taşır: cüzdan sağlayıcının imzaladığı, `attested_keys` listesini ve saklama düzeylerini bildiren bir JWT. Kanıt ilk doğrulanmış anahtarla imzalanır. Kurum anahtar kanıtını, iptal durumunu ve nonce'u denetler, kurumun en düşük anahtar saklama düzeyini uygular ve her doğrulanmış anahtara bir kopya bağlar. OpenID4VCI 1.0 bu biçimi Ek D'de tanımlar.
+**Anahtar kanıtı** (key attestation) kullanıldığında paket tek bir sahiplik kanıtıyla da istenebilir. Bu durumda kanıtın başlığı bir `key_attestation` alanı taşır. Bu alan, cüzdan sağlayıcısının imzaladığı, `attested_keys` listesini ve anahtarların saklama düzeyini bildiren bir JWT'dir. Sahiplik kanıtı da listedeki ilk anahtarla imzalanır. Kurum anahtar kanıtını, onun iptal durumunu ve nonce değerini denetler, kurumun istediği en düşük anahtar saklama düzeyini uygular ve listedeki her anahtara bir kopya bağlar. OpenID4VCI 1.0 bu biçimi Ek D'de tanımlıyor.
 
-## Tamga ertelenmiş ihracı kullanıyor mu?
+## Tamga ertelenmiş belge vermeyi kullanıyor mu?
 
-Profil onu tek bir durum için tarif ediyor: mezuniyet kararı henüz onaylanmamış bir diploma. Kuralları da var: bir `transaction_id` en çok 30 gün yaşar, sorgulama `interval`'ı en az 300 saniyedir ve cüzdan bekleme süresini katlayarak artırır; çünkü düzenli sorgulama kuruma "bu kişi hâlâ bekliyor" sinyali verir. Bugün hiçbir Tamga kurumu bunu sunmuyor: metadata'da `deferred_credential_endpoint` yok, diploma ancak imzalanabildiğinde teklif ediliyor. OpenID4VCI 1.0 Final'de ertelenmiş yanıt, `transaction_id` ve `interval` taşıyan HTTP 202'dir; hâlâ bekleyen bir ertelenmiş istek de yine HTTP 202 alır. Eski taslaklara göre yazılmış uygulamalar bunun yerine `issuance_pending` hatası bekler.
+Profil ertelenmiş belge vermeyi tek bir durum için tarif ediyor. Bu durum, mezuniyet kararı henüz onaylanmamış bir diploma. Bunun kendine özgü kuralları da var. Bir `transaction_id` en çok 30 gün geçerli, sorgulama aralığı (`interval`) en az 300 saniye ve cüzdan bekleme süresini her seferinde katlayarak artırıyor. Bunun nedeni, düzenli aralıklarla yapılan sorgulamanın kuruma "bu kişi hâlâ bekliyor" bilgisini vermesi. Bugün hiçbir Tamga kurumu ertelenmiş belge vermeyi sunmuyor. Metadata'da `deferred_credential_endpoint` yok ve diploma ancak imzalanabilecek durumdaysa teklif ediliyor. OpenID4VCI 1.0 Final'de ertelenmiş yanıt, `transaction_id` ve `interval` taşıyan bir HTTP 202 yanıtıdır. Hâlâ bekleyen bir ertelenmiş istek de yine HTTP 202 alır. Eski taslaklara göre yazılmış uygulamalar ise bunun yerine `issuance_pending` hatası bekliyor.
 
 ## Cüzdan hangi hataları karşılamalı?
 
 | Hata | Anlamı | Cüzdan ne yapar |
 |---|---|---|
-| `invalid_proof` | kanıt eksik, geçersiz ya da nonce'suz | yeni `c_nonce` al, yeniden dene |
-| `invalid_nonce` | nonce bayat ya da kullanılmış | yeni `c_nonce` al, yeniden dene |
-| `invalid_credential_request` | bozuk istek | bildir, yeniden deneme |
-| `unknown_credential_configuration` | yapılandırma sunulmuyor | metadata'yı yenile |
-| `credential_request_denied` | yetki yok ya da geri alındı | yeniden deneme |
-| `invalid_client` (token) | cüzdan doğrulaması eksik, geçersiz ya da iptal | dur |
-| `invalid_token` | erişim belirtecinin süresi doldu | akışı baştan başlat |
+| `invalid_proof` | kanıt eksik, geçersiz ya da nonce içermiyor | yeni bir `c_nonce` alır ve yeniden dener |
+| `invalid_nonce` | nonce eskimiş ya da kullanılmış | yeni bir `c_nonce` alır ve yeniden dener |
+| `invalid_credential_request` | istek bozuk | durumu bildirir, yeniden denemez |
+| `unknown_credential_configuration` | yapılandırma sunulmuyor | metadata'yı yeniler |
+| `credential_request_denied` | yetki yok ya da yetki geri alınmış | yeniden denemez |
+| `invalid_client` (token) | cüzdan kanıtı eksik, geçersiz ya da iptal edilmiş | işlemi durdurur |
+| `invalid_token` | erişim belirtecinin süresi dolmuş | akışı baştan başlatır |
 
-Hata yanıtları kişisel veri taşımaz. "Bu kişiye ait kayıt yok" yanıtı `credential_request_denied` olarak döner; ayrıntı kurumun kendi denetim kaydında kalır.
+Hata yanıtları kişisel veri taşımaz. Örneğin "bu kişiye ait kayıt yok" durumu `credential_request_denied` hatasıyla bildirilir ve ayrıntı kurumun kendi denetim kaydında kalır.
 
 ## Sık sorulan sorular
 
-### `tx_code` neden hiç QR kodun içinde olmaz?
+### `tx_code` neden hiçbir zaman QR kodun içinde olmaz?
 
-Çünkü QR kodu başkası görebilir ya da fotoğraflayabilir. Kod onunla birlikte gitseydi o kişi belgeyi kendi cüzdanına alabilirdi. İkisini ayrı kanallara bölmek, ikisinin birden ele geçirilmesini gerektirir.
+QR kodu başka biri görebilir ya da fotoğraflayabilir. Kod QR ile birlikte gönderilseydi, o kişi belgeyi kendi cüzdanına alabilirdi. İkisini ayrı kanallardan göndermek, belgeyi ele geçirmek isteyen birinin iki kanalı birden ele geçirmesini gerektirir.
 
 ### HAIP ön yetkili kod akışını şart koşuyor mu?
 
-Hayır. HAIP yetkilendirme kodu akışını şart koşar. Tamga ikisini de destekler: portalı kişiyi zaten tanıyan kurumlar için ön yetkili teklif, cüzdandan başlayan istekler için PAR, PKCE ve kimlik gösterimli yetkilendirme kodu akışı.
+Hayır. HAIP yetki kodu akışını şart koşuyor. Tamga ise iki akışı da destekliyor. Portalı kişiyi zaten tanıyan kurumlar için ön yetkili teklifi, cüzdanın başlattığı istekler için de PAR, PKCE ve kimlik gösterimi içeren yetki kodu akışını kullanıyor.
 
 ### Kurum bir kopyanın hangi doğrulayıcıda kullanıldığını anlayabilir mi?
 
-Hayır. Kurum gösterimleri görmez; kopyalar ne anahtar ne durum sırası paylaşır. Bilgi paylaşan doğrulayıcılar bile onları belge üzerinden bağlayamaz.
+Hayır. Kurum gösterimleri görmez ve kopyalar ne anahtar ne de durum sırası paylaşır. Bu yüzden bilgi paylaşan doğrulayıcılar bile kopyaları belge üzerinden birbirine bağlayamaz.
 
 ### Kopyalar bitince ne olur?
 
-İki kopya kalınca cüzdan, tek kullanımlık bir yenileme belirteciyle yeni paket ister. Belirteç, ihraçta kullanılan cüzdan doğrulamasının anahtarına bağlıdır; cüzdan bunu o anahtar için taze bir doğrulamayla kanıtlar, DPoP anahtarı değişebilir ([ADR-0060](https://docs.tamga.network/tr/adr/0060-refresh-token-client-instance-binding)). Tanıdığı bir doğrulayıcıda o doğrulayıcının kopyasını kullanmaya devam eder; yeni bir doğrulayıcıda bir kopyayı yeniden kullanmadan önce kişiye sorar.
+İki kopya kaldığında cüzdan, tek kullanımlık bir yenileme belirteciyle yeni bir paket ister. Bu belirteç, belge verilirken kullanılan cüzdan kanıtının anahtarına bağlıdır. Cüzdan da bunu o anahtar için üretilmiş taze bir kanıtla gösterir, DPoP anahtarı ise değişebilir ([ADR-0060](https://docs.tamga.network/tr/adr/0060-refresh-token-client-instance-binding)). Cüzdan daha önce karşılaştığı bir doğrulayıcıda o doğrulayıcıya ayırdığı kopyayı kullanmaya devam eder. Yeni bir doğrulayıcıda ise bir kopyayı yeniden kullanmadan önce kişiye sorar.
 
 ## Kaynaklar
 

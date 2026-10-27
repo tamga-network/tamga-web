@@ -21,10 +21,10 @@ export const LOGO_VARIANTS: LogoVariant[] = [
   {
     id: "gok-paper",
     label: {
-      en: "Gök on paper — primary",
-      tr: "Kâğıt üstünde Gök — ana kullanım",
-      tk: "Kagyz üstünde Gök — esasy ulanyş",
-      az: "Kağız üzərində Gök — əsas istifadə",
+      en: "Gök on paper · primary",
+      tr: "Kâğıt üstünde Gök · ana kullanım",
+      tk: "Kagyz üstünde Gök · esasy ulanyş",
+      az: "Kağız üzərində Gök · əsas istifadə",
     },
     bg: "#F8F6F1",
     fg: "#1E5A78",
@@ -37,10 +37,10 @@ export const LOGO_VARIANTS: LogoVariant[] = [
   {
     id: "black-paper",
     label: {
-      en: "Black — one colour",
-      tr: "Siyah — tek renk",
-      tk: "Gara — bir reňk",
-      az: "Qara — tək rəng",
+      en: "Black · one colour",
+      tr: "Siyah · tek renk",
+      tk: "Gara · bir reňk",
+      az: "Qara · tək rəng",
     },
     bg: "#F8F6F1",
     fg: "#14120F",
@@ -129,10 +129,10 @@ export const LOCKUPS: Lockup[] = [
   {
     id: "paper",
     label: {
-      en: "On paper — primary",
-      tr: "Kâğıt üstünde — ana kullanım",
-      tk: "Kagyz üstünde — esasy ulanyş",
-      az: "Kağız üzərində — əsas istifadə",
+      en: "On paper · primary",
+      tr: "Kâğıt üstünde · ana kullanım",
+      tk: "Kagyz üstünde · esasy ulanyş",
+      az: "Kağız üzərində · əsas istifadə",
     },
     bg: "#F8F6F1",
     file: "tamga-network-lockup.svg",
@@ -148,10 +148,10 @@ export const LOCKUPS: Lockup[] = [
   {
     id: "black",
     label: {
-      en: "Black — one colour",
-      tr: "Siyah — tek renk",
-      tk: "Gara — bir reňk",
-      az: "Qara — tək rəng",
+      en: "Black · one colour",
+      tr: "Siyah · tek renk",
+      tk: "Gara · bir reňk",
+      az: "Qara · tək rəng",
     },
     bg: "#F8F6F1",
     file: "tamga-network-lockup-black.svg",
@@ -173,10 +173,10 @@ export const LOCKUPS: Lockup[] = [
   {
     id: "vertical",
     label: {
-      en: "Stacked — primary",
-      tr: "Dikey — ana kullanım",
-      tk: "Dik — esasy ulanyş",
-      az: "Şaquli — əsas istifadə",
+      en: "Stacked · primary",
+      tr: "Dikey · ana kullanım",
+      tk: "Dik · esasy ulanyş",
+      az: "Şaquli · əsas istifadə",
     },
     bg: "#F8F6F1",
     vertical: true,
@@ -188,7 +188,7 @@ export const LOCKUPS: Lockup[] = [
   },
   {
     id: "vertical-black",
-    label: { en: "Stacked — black", tr: "Dikey — siyah", tk: "Dik — gara", az: "Şaquli — qara" },
+    label: { en: "Stacked · black", tr: "Dikey · siyah", tk: "Dik · gara", az: "Şaquli · qara" },
     bg: "#F8F6F1",
     vertical: true,
     file: "tamga-network-lockup-vertical-black.svg",
@@ -200,10 +200,10 @@ export const LOCKUPS: Lockup[] = [
   {
     id: "vertical-white",
     label: {
-      en: "Stacked — white on ink",
-      tr: "Dikey — mürekkep üstünde beyaz",
-      tk: "Dik — garaňky fonda ak",
-      az: "Şaquli — tünd fonda ağ",
+      en: "Stacked · white on ink",
+      tr: "Dikey · mürekkep üstünde beyaz",
+      tk: "Dik · garaňky fonda ak",
+      az: "Şaquli · tünd fonda ağ",
     },
     bg: "#101820",
     vertical: true,
@@ -461,7 +461,7 @@ export const BRAND_PAGE: Record<Locale, BrandPage> = {
   en: {
     title: "Brand",
     description:
-      "The Tamga Network mark, colours, typefaces and names — with every logo file to download and the rules for using them.",
+      "The Tamga Network mark, colours, typefaces and names, with every logo file to download and the rules for using them.",
     eyebrow: "Brand",
     lead: "One mark, one blue, three typefaces. Everything here can be downloaded and used to point to the network.",
     nav: {
@@ -473,7 +473,7 @@ export const BRAND_PAGE: Record<Locale, BrandPage> = {
       use: "Using the brand",
     },
     logo: {
-      body: "The mark is a nested T: the outer T is the network, the two inner arms are the states and institutions that join it. It is cut like a seal — one stroke weight, one angle, no curves.",
+      body: "The mark is a nested T. The outer T stands for the network, and the two inner arms stand for the states and institutions that join it. It is cut like a seal, with one stroke weight, one angle and no curves.",
       story: "A tamga is the seal of the steppe: the mark a clan pressed on what it vouched for.",
       lockup: "Logotype",
       lockupBody:
@@ -486,7 +486,7 @@ export const BRAND_PAGE: Record<Locale, BrandPage> = {
       rulesLabel: "Rules",
       rules: [
         "Keep clear space of at least 15 % of the mark’s width on every side.",
-        "Use the full mark everywhere — pages, headers, documents and icons at every size, including the browser tab.",
+        "Use the full mark everywhere, on pages, headers, documents and icons at every size, including the browser tab.",
         "Use only the colours on this page: Gök, light Gök on dark, black or white.",
         "Don’t rotate, stretch or redraw the mark; don’t add shadows, outlines or gradients.",
         "Don’t place it on busy photos or grounds with weak contrast.",
@@ -509,7 +509,7 @@ export const BRAND_PAGE: Record<Locale, BrandPage> = {
       body: "The full name is Tamga Network. In running text, after the first mention, Tamga is enough.",
       rows: [
         ["Tamga Network", "the network: rules, trust lists, open packages, reference services"],
-        ["Tamga Wallet", "the network’s first wallet — a separate product with its own brand"],
+        ["Tamga Wallet", "the network’s first wallet, a separate product with its own brand"],
         ["Sign in with Tamga", "the sign-in button and flow"],
         ["Tamga Verify", "the hosted verifier"],
         ["Tamga ARF · Tamga Docs", "the reference framework · developer documentation"],
@@ -548,7 +548,7 @@ export const BRAND_PAGE: Record<Locale, BrandPage> = {
   },
   tr: {
     title: "Marka",
-    description: "Tamga Network işareti, renkleri, yazı tipleri ve adları — bütün logo dosyaları ve kullanım kurallarıyla.",
+    description: "Tamga Network işareti, renkleri, yazı tipleri ve adları, bütün logo dosyaları ve kullanım kurallarıyla birlikte.",
     eyebrow: "Marka",
     lead: "Tek işaret, tek mavi, üç yazı tipi. Buradaki her şey indirilebilir ve ağa işaret etmek için kullanılabilir.",
     nav: {
@@ -560,7 +560,7 @@ export const BRAND_PAGE: Record<Locale, BrandPage> = {
       use: "Kullanım",
     },
     logo: {
-      body: "İşaret iç içe bir T’dir: dıştaki T ağ, içteki iki kol ağa katılan devletler ve kurumlar. Bir mühür gibi kesilmiştir — tek çizgi kalınlığı, tek açı, eğri yok.",
+      body: "İşaret iç içe geçmiş bir T’dir. Dıştaki T ağı, içteki iki kol da ağa katılan devletleri ve kurumları temsil eder. İşaret bir mühür gibi tek çizgi kalınlığıyla ve tek açıyla, hiç eğri kullanılmadan kesilmiştir.",
       story: "Tamga, bozkırın mührüdür: bir boyun kefil olduğu şeye bastığı işaret.",
       lockup: "Logotip",
       lockupBody:
@@ -597,7 +597,7 @@ export const BRAND_PAGE: Record<Locale, BrandPage> = {
       body: "Tam ad Tamga Network’tür. Metin içinde ilk anıştan sonra Tamga yeterlidir.",
       rows: [
         ["Tamga Network", "ağ: kurallar, güven listeleri, açık paketler, referans hizmetler"],
-        ["Tamga Wallet", "ağın ilk cüzdanı — kendi markası olan ayrı bir ürün"],
+        ["Tamga Wallet", "ağın ilk cüzdanı, kendi markası olan ayrı bir ürün"],
         ["Tamga ile giriş yap", "giriş düğmesi ve akışı"],
         ["Tamga Verify", "barındırılan doğrulayıcı"],
         ["Tamga ARF · Tamga Docs", "başvuru çerçevesi · geliştirici belgeleri"],
@@ -635,7 +635,7 @@ export const BRAND_PAGE: Record<Locale, BrandPage> = {
   },
   tk: {
     title: "Marka",
-    description: "Tamga Network belgisi, reňkleri, şriftleri we atlary — ähli logo faýllary we ulanyş düzgünleri bilen.",
+    description: "Tamga Network belgisi, reňkleri, şriftleri we atlary, ähli logo faýllary we ulanyş düzgünleri bilen bilelikde.",
     eyebrow: "Marka",
     lead: "Bir belgi, bir gök reňk, üç şrift. Bu ýerdäki hemme zady göçürip alyp, tora salgylanmak üçin ulanyp bilersiňiz.",
     nav: {
@@ -647,8 +647,8 @@ export const BRAND_PAGE: Record<Locale, BrandPage> = {
       use: "Ulanyş",
     },
     logo: {
-      body: "Belgi biri-biriniň içindäki T: daşky T tor, içki iki gol tora goşulýan döwletler we guramalar. Möhür ýaly kesilen — bir çyzyk galyňlygy, bir burç, egri ýok.",
-      story: "Tamga — sähranyň möhri: tiräniň kepil geçen zadyna basýan belgisi.",
+      body: "Belgi biri-biriniň içine giren T harpydyr. Daşky T tory, içki iki gol bolsa tora goşulýan döwletleri we guramalary aňladýar. Belgi möhür ýaly bir çyzyk galyňlygy we bir burç bilen, hiç hili egri ulanylman kesildi.",
+      story: "Tamga sähranyň möhri, tiräniň kepil geçen zadyna basýan belgisidir.",
       lockup: "Logotip",
       lockupBody:
         "Iki görnüş: keseligine (saýtyň sözbaşysyndaky ýaly) we dik (belgi ýokarda, at aşakda). Ýazgylar çyzyga öwrüldi; faýllar şrift gurnalmadyk ýerde-de şol bir görünýär. Faýllary bolşy ýaly ulanyň; belginiň ýanyna ady elde täzeden ýazmaň.",
@@ -683,7 +683,7 @@ export const BRAND_PAGE: Record<Locale, BrandPage> = {
       body: "Doly ady Tamga Network. Tekstde ilkinji agzalandan soň Tamga ýeterlikdir.",
       rows: [
         ["Tamga Network", "tor: düzgünler, ynam sanawlary, açyk paketler, salgylanma hyzmatlary"],
-        ["Tamga Wallet", "toruň ilkinji gapjygy — öz markasy bolan aýratyn önüm"],
+        ["Tamga Wallet", "toruň ilkinji gapjygy, öz markasy bolan aýratyn önüm"],
         ["Tamga bilen gir", "giriş düwmesi we akymy"],
         ["Tamga Verify", "ýerleşdirilen barlaýjy"],
         ["Tamga ARF · Tamga Docs", "salgylanma çarçuwasy · işläp düzüji resminamalary"],
@@ -721,7 +721,7 @@ export const BRAND_PAGE: Record<Locale, BrandPage> = {
   },
   az: {
     title: "Brend",
-    description: "Tamga Network-un nişanı, rəngləri, şriftləri və adları — bütün loqo faylları və istifadə qaydaları ilə.",
+    description: "Tamga Network-un nişanı, rəngləri, şriftləri və adları, bütün loqo faylları və istifadə qaydaları ilə birlikdə.",
     eyebrow: "Brend",
     lead: "Bir nişan, bir mavi, üç şrift. Buradakı hər şeyi yükləyib şəbəkəyə istinad etmək üçün istifadə edə bilərsiniz.",
     nav: {
@@ -733,7 +733,7 @@ export const BRAND_PAGE: Record<Locale, BrandPage> = {
       use: "Brendin istifadəsi",
     },
     logo: {
-      body: "Nişan iç-içə T-dir: xarici T şəbəkədir, daxili iki qol isə ona qoşulan dövlətlər və qurumlardır. Möhür kimi kəsilib — bir xətt qalınlığı, bir bucaq, əyri yoxdur.",
+      body: "Nişan iç-içə keçmiş T hərfidir. Xarici T şəbəkəni, daxili iki qol isə ona qoşulan dövlətləri və qurumları təmsil edir. Nişan möhür kimi bir xətt qalınlığı və bir bucaqla, heç bir əyri istifadə edilmədən kəsilib.",
       story: "Tamga çölün möhürüdür: tayfanın zəmanət verdiyi şeyin üzərinə basdığı nişan.",
       lockup: "Loqotip",
       lockupBody:
@@ -747,7 +747,7 @@ export const BRAND_PAGE: Record<Locale, BrandPage> = {
       rulesLabel: "Qaydalar",
       rules: [
         "Nişanın hər tərəfində onun eninin ən azı 15 %-i qədər boş sahə saxlayın.",
-        "Hər yerdə tam nişandan istifadə edin — səhifələrdə, başlıqlarda, sənədlərdə və brauzer tabı da daxil olmaqla hər ölçüdə ikonlarda.",
+        "Hər yerdə tam nişandan istifadə edin: səhifələrdə, başlıqlarda, sənədlərdə və brauzer tabı da daxil olmaqla hər ölçüdə ikonlarda.",
         "Yalnız bu səhifədəki rənglərdən istifadə edin: Gök, tünd fonda açıq Gök, qara və ya ağ.",
         "Nişanı döndərməyin, dartmayın və yenidən çəkməyin; kölgə, kontur və ya qradiyent əlavə etməyin.",
         "Onu qarışıq fotoşəkillərin və ya zəif kontrastlı fonların üzərində yerləşdirməyin.",
@@ -770,7 +770,7 @@ export const BRAND_PAGE: Record<Locale, BrandPage> = {
       body: "Tam ad Tamga Network-dur. Mətndə ilk qeyddən sonra Tamga kifayətdir.",
       rows: [
         ["Tamga Network", "şəbəkə: qaydalar, etibar siyahıları, açıq paketlər, istinad xidmətləri"],
-        ["Tamga Wallet", "şəbəkənin ilk rəqəmsal cüzdanı — öz brendi olan ayrıca məhsul"],
+        ["Tamga Wallet", "şəbəkənin ilk rəqəmsal cüzdanı, öz brendi olan ayrıca məhsul"],
         ["Tamga ilə daxil olun", "giriş düyməsi və prosesi"],
         ["Tamga Verify", "host edilən yoxlayan tərəf xidməti"],
         ["Tamga ARF · Tamga Docs", "istinad çərçivəsi · tərtibatçı sənədləri"],

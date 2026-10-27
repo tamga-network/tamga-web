@@ -108,32 +108,32 @@ const tr: HomeContent = {
     lead: "Okullar, hastaneler, odalar ve şirketler her gün belge veriyor. Ama bir belgenin gerçek olduğunu başka bir ülkede, hatta başka bir kurumda kanıtlamak hâlâ zor.",
     problems: [
       { title: "Belgeler sınırda takılıyor", body: "Bakü'de verilen bir belgeyi Almatı'daki bir kurum doğrulamak istediğinde telefon, e-posta, apostil ve haftalar gerekiyor." },
-      { title: "Sahte belge kolay", body: "Taranmış bir PDF ya da fotokopi kolayca değiştirilebiliyor; gerçeğini sahtesinden ayırmak uzmanlık istiyor." },
+      { title: "Sahte belge kolay", body: "Taranmış bir PDF ya da fotokopi kolayca değiştirilebiliyor ve gerçeğini sahtesinden ayırmak uzmanlık istiyor." },
       { title: "Gereğinden fazla veri veriliyor", body: "Yaşını kanıtlamak için kimliğin tamamını, mezuniyetini kanıtlamak için bütün not dökümünü göstermek zorunda kalıyorsun." },
-      { title: "Her ülkenin sistemi ayrı", body: "Her ülke kendi dijital sistemini kuruyor; bu sistemler birbirini tanımıyor, aynı dili konuşmuyor." },
+      { title: "Her ülkenin sistemi ayrı", body: "Her ülke kendi dijital sistemini kuruyor, ama bu sistemler birbirini tanımıyor ve aynı dili konuşmuyor." },
       { title: "Avrupa ilerliyor, Türk dünyası dışarıda kalabilir", body: "AB, 2026 sonuna kadar her üye ülkenin vatandaşlarına bir dijital kimlik cüzdanı sunmasını zorunlu kıldı. Ortak bir güven yapısı olmazsa Türk dünyasının belgeleri bu düzenin dışında kalır." },
     ],
     purposeTitle: "Amacımız",
-    purpose: "Türk dünyasındaki her kurumun verdiği belgenin, başka bir ülkede de aynı güvenle kabul edilmesi. Bunu tek bir şirketin ya da tek bir devletin elinde olmayan, açık kurallarla işleyen ortak bir ağla yapıyoruz. Belgeler kişinin telefonunda durur; kişi yalnız gerekeni gösterir; doğrulayan kaynağa sormadan, saniyeler içinde emin olur.",
+    purpose: "Türk dünyasında bir kurumun verdiği belgenin başka bir ülkede de aynı güvenle kabul edilmesini istiyoruz. Bunu tek bir şirketin ya da tek bir devletin elinde olmayan, açık kurallarla işleyen ortak bir ağla yapıyoruz. Belgeler kişinin telefonunda durur ve kişi yalnızca gerekeni gösterir. Doğrulayan da kaynağa sormadan, saniyeler içinde emin olur.",
   },
   philosophy: {
     eyebrow: "Felsefemiz",
     title: "Beş ilke.",
     items: [
       { title: "Kişi merkezde", body: "Belge kişinin cüzdanında durur. Ne gösterileceğine kişi karar verir." },
-      { title: "Ağ kimsenin malı değil", body: "Ağ hizmet satmaz, kimseye ayrıcalık tanımaz. Hedef: bağımsız bir vakıf." },
+      { title: "Ağ kimsenin malı değil", body: "Ağ hizmet satmaz ve kimseye ayrıcalık tanımaz. Ulaşmak istediğimiz yer bağımsız bir vakıftır." },
       { title: "Liste devletin", body: "Her devlet kendi güven listesinin sahibidir; kimi tanıyacağına kendisi karar verir." },
-      { title: "Kişisel veri ağa yazılmaz", body: "Listelere, kayıtlara ve günlüklere kişisel veri girmez; özeti bile." },
+      { title: "Kişisel veri ağa yazılmaz", body: "Listelere, kayıtlara ve günlüklere kişisel veri girmez, verinin özeti bile yazılmaz." },
       { title: "Açık kural, açık kod", body: "Her kural numaralı ve herkese açık; her paket açık kaynak." },
     ],
   },
   how: {
     eyebrow: "Nasıl çalışır",
     title: "Üç taraf, bir güven listesi.",
-    lead: "Belgeyi veren kurum, belgeyi taşıyan kişi ve belgeyi kontrol eden taraf. Üçü de aynı imzalı listeye bakar; kimse kimseye telefon açmaz.",
+    lead: "Belgeyi veren kurum, belgeyi taşıyan kişi ve belgeyi kontrol eden taraf aynı imzalı listeye bakar. Bu yüzden kimsenin kimseye telefon açması gerekmez.",
     flow: {
       title: "Tamga Network akışı",
-      desc: "Belge veren kurum imzalı belgeyi kişinin cüzdanına verir; kişi yalnız istenen alanları doğrulayana gösterir; üç taraf da devletin imzalı güven listesine bakar.",
+      desc: "Belge veren kurum imzalı belgeyi kişinin cüzdanına verir. Kişi doğrulayana yalnızca istenen alanları gösterir ve üç taraf da devletin imzalı güven listesine bakar.",
       issuer: "Belge veren kurum",
       issuerSub: "üniversite · hastane · oda",
       wallet: "Kişinin cüzdanı",
@@ -149,13 +149,13 @@ const tr: HomeContent = {
     steps: [
       { title: "Kurum belgeyi imzalar", body: "Kurum belgeyi kendi anahtarıyla imzalar ve kişinin cüzdanına gönderir. Kurumun anahtarı, devletin listesinde kayıtlıdır." },
       { title: "Kişi belgeyi taşır", body: "Belge telefonda durur. Biri isterse kişi neyin istendiğini görür ve yalnız onayladığı bilgileri gösterir." },
-      { title: "Doğrulayan saniyede emin olur", body: "İmzayı ve kurumun listedeki kaydını kontrol eder. Kaynağa sormaz, beklemez; belge ya geçerlidir ya değildir." },
+      { title: "Doğrulayan saniyede emin olur", body: "İmzayı ve kurumun listedeki kaydını kontrol eder. Bunun için kaynağa sorması ya da beklemesi gerekmez." },
     ],
   },
   tech: {
     eyebrow: "Teknoloji, sade dille",
     title: "Arkadaki beş fikir.",
-    lead: "Tamga Network yeni bir icat değil; Avrupa'nın dijital kimlik düzeninde kullanılan, test edilmiş teknikleri Türk dünyası için bir araya getirir.",
+    lead: "Tamga Network yeni bir şey icat etmiyor. Avrupa'nın dijital kimlik düzeninde kullanılan ve test edilmiş teknikleri Türk dünyası için bir araya getiriyor.",
     labels: { what: "Nedir", why: "Türk dünyasında neden lazım", solves: "Çözdüğü sorun" },
     topics: [
       {
@@ -182,11 +182,11 @@ const tr: HomeContent = {
         id: "disclosure",
         title: "Seçici paylaşım",
         what: "Belgenin her alanı ayrı ayrı kilitlenir (selective disclosure). Kişi yalnız istenen alanı açar; diğerleri kapalı kalır.",
-        why: "Bir sınav merkezi, bir banka ya da bir konser kapısı aynı belgeden farklı bilgiler ister; hepsine her şeyi vermek gerekmez.",
+        why: "Bir sınav merkezi, bir banka ya da bir konser kapısı aynı belgeden farklı bilgiler ister ve hiçbirine her şeyi vermek gerekmez.",
         solves: "Gereğinden fazla kişisel veri paylaşımı.",
         d: {
           title: "Seçici paylaşım",
-          desc: "Belgenin dört alanı, her biri kendi özetiyle; yalnız 18 yaş üstü bilgisi açılır, doğum tarihi gizli kalır.",
+          desc: "Belgenin her biri kendi özetiyle saklanan dört alanı var. Yalnızca 18 yaş üstü bilgisi açılır, doğum tarihi gizli kalır.",
           card: "belgedeki alanlar",
           shared: "doğrulayanın gördüğü",
           hidden: "gizli",
@@ -206,7 +206,7 @@ const tr: HomeContent = {
         solves: "Bir evet-hayır sorusu için bütün kimliği göstermek.",
         d: {
           title: "Sıfır bilgi ispatı",
-          desc: "Doğum tarihi ispata girer, çıkan tek bilgi 18 yaşından büyük olmaktır; doğum tarihi doğrulayana gitmez.",
+          desc: "Doğum tarihi ispatın girdisidir ve ispattan çıkan tek bilgi kişinin 18 yaşından büyük olduğudur. Doğum tarihinin kendisi doğrulayana gitmez.",
           input: "telefonda",
           inputSub: "Doğum tarihi",
           proof: "ispat",
@@ -222,7 +222,7 @@ const tr: HomeContent = {
         solves: "Siteler arası izlenme ve profil çıkarılması.",
         d: {
           title: "Site başına takma ad",
-          desc: "Bir kişi, üç sitede üç farklı kimlik; siteler bu kimlikleri birbirine bağlayamaz.",
+          desc: "Aynı kişi üç sitede üç farklı kimlikle görünür ve siteler bu kimlikleri birbirine bağlayamaz.",
           person: "Sen",
           sites: [
             ["bilet sitesi", "k7f2…9a"],
@@ -240,7 +240,7 @@ const tr: HomeContent = {
         solves: "\"Bu kurum gerçekten var mı?\" sorusunun ülke ülke ayrı cevaplanması.",
         d: {
           title: "Güven zinciri",
-          desc: "Listelerin listesi ülke listesini, ülke listesi kurum sertifikasını, kurum sertifikası belgeyi imzalar.",
+          desc: "Listelerin listesi ülke listesini, ülke listesi kurum sertifikasını, kurum da belgeyi imzalar.",
           steps: [
             ["Listelerin listesi", "LOTL · trust.tamga.network"],
             ["Türkiye listesi", "devletin imzası"],
@@ -255,7 +255,7 @@ const tr: HomeContent = {
   verify: {
     eyebrow: "Kendiniz deneyin",
     title: "Güven, bir imza kadar açık.",
-    lead: "Liste her değişiklikte yeniden imzalanır ve bir öncekine hash ile bağlanır; herkese açık çapa günlüğüne en az saatte bir satır eklenir. Kimse sessizce değiştiremez; herkes doğrulayabilir.",
+    lead: "Liste her değişiklikte yeniden imzalanır ve bir önceki sürüme hash ile bağlanır. Herkese açık çapa günlüğüne de en az saatte bir satır eklenir. Bu sayede kimse listeyi sessizce değiştiremez ve herkes doğrulayabilir.",
     button: "İmzayı doğrula",
     how: "Nasıl çalışır",
     sample: "lotl.jws · örnek",
@@ -289,8 +289,8 @@ const tr: HomeContent = {
     title: "Ağa üç kapıdan girilir.",
     items: [
       { kicker: "Kurumlar", title: "Belge verin, belge doğrulayın.", body: "Kaydınızı yapın, anahtarınızı listeye ekletin, ilk belgenizi verin.", cta: "Kurum olarak katıl", href: "/join" },
-      { kicker: "Cüzdan sağlayıcılar", title: "Cüzdanınızı ağa tanıtın.", body: "Ağ cüzdan seçmez, tanır. Kurallara uyan ve uyum testlerini geçen her cüzdan listeye girer. Cüzdanınızı önce sandbox'ta deneyin.", cta: "Uyum testlerine başla", href: "/join" },
-      { kicker: "Devletler", title: "Listenizi kendiniz yayınlayın.", body: "Kendi güven listenizi yayınladığınızda ağ onu gösterir; cüzdanlar için yalnız adres değişir.", cta: "Federasyonu incele", href: "/learn/trust-lists" },
+      { kicker: "Cüzdan sağlayıcılar", title: "Cüzdanınızı ağa tanıtın.", body: "Ağ cüzdan seçmez, kurallara uyan cüzdanları tanır. Kurallara uyan ve uyum testlerini geçen her cüzdan listeye girer. Cüzdanınızı önce sandbox'ta deneyebilirsiniz.", cta: "Uyum testlerine başla", href: "/join" },
+      { kicker: "Devletler", title: "Listenizi kendiniz yayınlayın.", body: "Kendi güven listenizi yayınladığınızda ağ o listeyi gösterir. Cüzdanlar için değişen tek şey adres olur.", cta: "Federasyonu incele", href: "/learn/trust-lists" },
     ],
   },
   news: {
@@ -305,15 +305,15 @@ const tr: HomeContent = {
   gov: {
     eyebrow: "Yönetişim",
     title: "Bugün geçici işletmeci. Yarın vakıf.",
-    lead: "Ağı bugün Tamga işletiyor; ama ağ Tamga'nın değil. Yol baştan yazılı: devletler katıldıkça yönetim ortaklaşır, iki bağımsız işletmeci olunca kayıtlar ortak deftere taşınır.",
+    lead: "Ağı bugün Tamga işletiyor, ama ağ Tamga'ya ait değil. İzlenecek yol baştan yazıldı. Devletler katıldıkça yönetim ortaklaşacak, iki bağımsız işletmeci olduğunda da kayıtlar ortak deftere taşınacak.",
     steps: [
       { when: "Bugün", title: "Geçici işletmeci", body: "Tamga, Türkiye listesini devlet adına açık kurallarla ve herkese açık çapa günlüğüyle yayınlar." },
-      { when: "Devletler katılınca", title: "Konsey ya da vakıf", body: "Listeler sahiplerine devredilir; ağın kuralları ortak kararla değişir." },
-      { when: "İki bağımsız işletmeci", title: "Ortak defter", body: "Kayıtlar izinli bir deftere taşınır; hiçbir taraf tek başına değiştiremez." },
+      { when: "Devletler katılınca", title: "Konsey ya da vakıf", body: "Listeler sahiplerine devredilir ve ağın kuralları ortak kararla değişir." },
+      { when: "İki bağımsız işletmeci", title: "Ortak defter", body: "Kayıtlar izinli bir deftere taşınır ve hiçbir taraf onları tek başına değiştiremez." },
     ],
     roles: {
       title: "Yönetişim rolleri",
-      desc: "Ağın kuralları ortada; işletmeci, kayıt kurumu ve devlet listeleri bu kurallara göre çalışır.",
+      desc: "Ağın kuralları ortadadır. İşletmeci, kayıt kurumu ve devlet listeleri bu kurallara göre çalışır.",
       operator: "İşletmeci",
       registrar: "Kayıt kurumu",
       states: "Devlet listeleri",
@@ -383,32 +383,32 @@ const en: HomeContent = {
     lead: "Schools, hospitals, chambers and companies issue documents every day. Yet proving that a document is real in another country, or even another institution, is still hard.",
     problems: [
       { title: "Documents get stuck at borders", body: "When an institution in Almaty wants to verify a document issued in Baku, it takes phone calls, emails, apostilles and weeks." },
-      { title: "Forgery is easy", body: "A scanned PDF or a photocopy is easy to alter; telling the real one from a fake takes expertise." },
+      { title: "Forgery is easy", body: "A scanned PDF or a photocopy is easy to alter, and telling the real one from a fake takes expertise." },
       { title: "People share too much", body: "To prove your age you show your whole ID; to prove you graduated you show your whole transcript." },
-      { title: "Every country has its own system", body: "Each country builds its own digital system; they don't recognise each other or speak the same language." },
-      { title: "Europe moves ahead; the Turkic world could be left out", body: "The EU requires every member state to offer its citizens a digital identity wallet by the end of 2026. Without a shared trust structure, Turkic-world credentials stay outside that order." },
+      { title: "Every country has its own system", body: "Each country builds its own digital system, but these systems don't recognise each other or speak the same language." },
+      { title: "Europe is moving ahead, and the Turkic world could be left out", body: "The EU requires every member state to offer its citizens a digital identity wallet by the end of 2026. Without a shared trust structure, Turkic-world credentials stay outside that order." },
     ],
     purposeTitle: "Our purpose",
-    purpose: "That a credential issued by any institution in the Turkic world is accepted with the same confidence in another country. We do it with a shared network that no single company or state owns, run by open rules. Credentials stay on the person's phone; the person shows only what is needed; the verifier is sure in seconds, without asking the source.",
+    purpose: "We want a credential issued by an institution in the Turkic world to be accepted with the same confidence in another country. We do it with a shared network that no single company or state owns and that runs on open rules. Credentials stay on the person's phone, and the person shows only what is needed. The verifier can be sure within seconds without asking the source.",
   },
   philosophy: {
     eyebrow: "Our philosophy",
     title: "Five principles.",
     items: [
       { title: "The person at the centre", body: "The credential stays in the person's wallet. The person decides what to show." },
-      { title: "Owned by no one", body: "The network sells no services and gives no one privileges. The goal: an independent foundation." },
+      { title: "Owned by no one", body: "The network sells no services and gives no one privileges. Where we want to end up is an independent foundation." },
       { title: "The list belongs to the state", body: "Every state owns its trust list and decides whom it recognises." },
-      { title: "No personal data on the network", body: "No personal data in lists, records or logs; not even a hash of it." },
+      { title: "No personal data on the network", body: "No personal data goes into lists, records or logs, not even a hash of it." },
       { title: "Open rules, open code", body: "Every rule is numbered and public; every package is open source." },
     ],
   },
   how: {
     eyebrow: "How it works",
     title: "Three parties, one trust list.",
-    lead: "The institution that issues, the person who carries, and the party that checks. All three look at the same signed list; nobody has to phone anybody.",
+    lead: "The institution that issues a credential, the person who carries it and the party that checks it all look at the same signed list, so nobody has to phone anybody.",
     flow: {
       title: "Tamga Network flow",
-      desc: "The issuing institution gives a signed credential to the person's wallet; the person shows only the requested fields to the verifier; all three consult the state's signed trust list.",
+      desc: "The issuing institution gives a signed credential to the person's wallet. The person shows the verifier only the requested fields, and all three consult the state's signed trust list.",
       issuer: "Issuing institution",
       issuerSub: "university · hospital · chamber",
       wallet: "Person's wallet",
@@ -424,13 +424,13 @@ const en: HomeContent = {
     steps: [
       { title: "The institution signs", body: "The institution signs the credential with its own key and sends it to the person's wallet. Its key is registered in the state's list." },
       { title: "The person carries it", body: "The credential stays on the phone. When someone asks, the person sees what is requested and shows only what they approve." },
-      { title: "The verifier is sure in seconds", body: "It checks the signature and the institution's entry in the list. No asking the source, no waiting: the credential is either valid or not." },
+      { title: "The verifier is sure in seconds", body: "It checks the signature and the institution's entry in the list without asking the source and without waiting." },
     ],
   },
   tech: {
     eyebrow: "Technology, in plain words",
     title: "Five ideas behind it.",
-    lead: "Tamga Network is not a new invention; it brings together tested techniques from Europe's digital identity framework for the Turkic world.",
+    lead: "Tamga Network does not invent anything new. It brings together tested techniques from Europe's digital identity framework for the Turkic world.",
     labels: { what: "What it is", why: "Why the Turkic world needs it", solves: "Problem it solves" },
     topics: [
       {
@@ -457,11 +457,11 @@ const en: HomeContent = {
         id: "disclosure",
         title: "Selective disclosure",
         what: "Each field of the credential is locked separately. The person opens only the field that is asked for; the rest stay closed.",
-        why: "An exam centre, a bank and a concert gate ask for different things from the same credential; none of them needs everything.",
+        why: "An exam centre, a bank and a concert gate ask for different things from the same credential, and none of them needs everything.",
         solves: "Sharing more personal data than necessary.",
         d: {
           title: "Selective disclosure",
-          desc: "Four fields of a credential, each with its own digest; only the over-18 fact is revealed, the birth date stays hidden.",
+          desc: "The credential has four fields, each stored with its own digest. Only the over-18 fact is revealed, and the birth date stays hidden.",
           card: "fields in the credential",
           shared: "what the verifier sees",
           hidden: "hidden",
@@ -481,7 +481,7 @@ const en: HomeContent = {
         solves: "Showing a whole ID for a yes-or-no question.",
         d: {
           title: "Zero-knowledge proof",
-          desc: "The birth date goes into the proof; the only output is being over 18; the birth date never reaches the verifier.",
+          desc: "The birth date is the input to the proof, and the only thing that comes out is that the person is over 18. The birth date itself never reaches the verifier.",
           input: "on the phone",
           inputSub: "Birth date",
           proof: "proof",
@@ -497,7 +497,7 @@ const en: HomeContent = {
         solves: "Cross-site tracking and profiling.",
         d: {
           title: "A pseudonym per site",
-          desc: "One person, three sites, three different identifiers; the sites cannot link them.",
+          desc: "The same person appears with three different identifiers on three sites, and the sites cannot link them.",
           person: "You",
           sites: [
             ["ticket site", "k7f2…9a"],
@@ -515,7 +515,7 @@ const en: HomeContent = {
         solves: "Answering \"does this institution really exist?\" separately in every country.",
         d: {
           title: "Chain of trust",
-          desc: "The list of lists signs the national list, the national list the institution certificate, the institution the credential.",
+          desc: "The list of lists signs the national list, the national list signs the institution certificate, and the institution signs the credential.",
           steps: [
             ["List of lists", "LOTL · trust.tamga.network"],
             ["Türkiye list", "signed by the state"],
@@ -530,7 +530,7 @@ const en: HomeContent = {
   verify: {
     eyebrow: "Try it yourself",
     title: "Trust, as open as a signature.",
-    lead: "The list is re-signed on every change and chained to the previous one by hash; the public anchor log gets a new line at least every hour. No one can change it silently; anyone can verify it.",
+    lead: "The list is re-signed on every change and chained to the previous version by hash. The public anchor log also gets a new line at least every hour, so no one can change the list silently and anyone can verify it.",
     button: "Verify the signature",
     how: "How it works",
     sample: "lotl.jws · sample",
@@ -554,7 +554,7 @@ const en: HomeContent = {
       { title: "Rules", body: "Tamga ARF, the Trust Framework, the Tamga Rulebook and the credential-type rulebooks.", status: "In force" },
       { title: "Trust lists", body: "Signed, versioned national lists and the list of lists that points to them.", status: "In force" },
       { title: "Credential formats", body: "SD-JWT VC and ISO mdoc; issuance with OpenID4VCI, presentation with OpenID4VP.", status: "In force" },
-      { title: "Open packages", body: "Verification, issuance and wallet core; anyone can run them on their own server.", status: "Pre-release" },
+      { title: "Open packages", body: "Verification, issuance and the wallet core, which anyone can run on their own server.", status: "Pre-release" },
       { title: "On top of the network", body: "Wallets and service providers that follow the network's rules. The first wallet is Tamga Wallet.", status: "On top" },
       { title: "Shared ledger", body: "Once at least two independent operators join, the same records move to a permissioned ledger.", status: "Later", future: true },
     ],
@@ -564,8 +564,8 @@ const en: HomeContent = {
     title: "Three doors into the network.",
     items: [
       { kicker: "Institutions", title: "Issue and verify credentials.", body: "Register, get your key on the list, issue your first credential.", cta: "Join as an institution", href: "/join" },
-      { kicker: "Wallet providers", title: "Get your wallet recognised.", body: "The network doesn't pick wallets; it recognises them. Every wallet that follows the rules and passes the conformance tests is listed. Test your wallet in the sandbox first.", cta: "Start conformance tests", href: "/join" },
-      { kicker: "States", title: "Publish your own list.", body: "When you publish your own trust list, the network points to it; for wallets only the address changes.", cta: "Explore the federation", href: "/learn/trust-lists" },
+      { kicker: "Wallet providers", title: "Get your wallet recognised.", body: "The network doesn't pick wallets, it recognises the ones that follow the rules. Every wallet that follows the rules and passes the conformance tests is listed. You can test your wallet in the sandbox first.", cta: "Start conformance tests", href: "/join" },
+      { kicker: "States", title: "Publish your own list.", body: "When you publish your own trust list, the network points to it. For wallets, only the address changes.", cta: "Explore the federation", href: "/learn/trust-lists" },
     ],
   },
   news: {
@@ -580,15 +580,15 @@ const en: HomeContent = {
   gov: {
     eyebrow: "Governance",
     title: "A provisional operator today. A foundation tomorrow.",
-    lead: "Tamga runs the network today, but the network is not Tamga's. The path is written down from the start: as states join, governance becomes shared; with two independent operators, the records move to a shared ledger.",
+    lead: "Tamga runs the network today, but the network does not belong to Tamga. The path was written down from the start. As states join, governance will be shared, and once there are two independent operators the records will move to a shared ledger.",
     steps: [
       { when: "Today", title: "Provisional operator", body: "Tamga publishes the Türkiye list on behalf of the state, with open rules and a public anchor log." },
-      { when: "When states join", title: "Council or foundation", body: "Lists are handed to their owners; the network's rules change by joint decision." },
-      { when: "Two independent operators", title: "Shared ledger", body: "Records move to a permissioned ledger; no single party can change them alone." },
+      { when: "When states join", title: "Council or foundation", body: "Lists are handed over to their owners, and the network's rules change by joint decision." },
+      { when: "Two independent operators", title: "Shared ledger", body: "Records move to a permissioned ledger, and no single party can change them alone." },
     ],
     roles: {
       title: "Governance roles",
-      desc: "The network's rules sit in the middle; the operator, the registrar and the state lists work by those rules.",
+      desc: "The network's rules sit in the middle, and the operator, the registrar and the state lists work by those rules.",
       operator: "Operator",
       registrar: "Registrar",
       states: "State lists",
@@ -657,33 +657,33 @@ const tk: HomeContent = {
     title: "Resminamalar sanly, ynam bolsa entek kagyzda.",
     lead: "Mekdepler, hassahanalar, palatalar we kompaniýalar her gün resminama berýär. Emma resminamanyň hakykydygyny başga ýurtda, hatda başga guramada subut etmek henizem kyn.",
     problems: [
-      { title: "Resminamalar serhetde saklanýar", body: "Bakuwda berlen resminamany Almatydaky gurama barlamak isläninde jaňlar, e-poçta, apostil we hepdeler gerek bolýar." },
-      { title: "Galp resminama aňsat", body: "Skanirlenen PDF ýa-da nusga aňsat üýtgedilýär; hakykysyny galpyndan aýyrmak tejribe talap edýär." },
+      { title: "Resminamalar serhetde saklanýar", body: "Bakuwda berlen resminamany Almatydaky gurama barlamak islände jaňlar, e-poçta, apostil we hepdeler gerek bolýar." },
+      { title: "Galp resminama aňsat", body: "Skanirlenen PDF ýa-da nusga aňsat üýtgedilýär we hakykysyny galpyndan aýyrmak tejribe talap edýär." },
       { title: "Gerekdeninden köp maglumat berilýär", body: "Ýaşyňy subut etmek üçin tutuş şahsyýetnamaňy, okuwy gutarandygyňy subut etmek üçin tutuş baha sanawyňy görkezmeli bolýarsyň." },
-      { title: "Her ýurduň ulgamy aýry", body: "Her ýurt öz sanly ulgamyny gurýar; bu ulgamlar biri-birini tanaýanok we bir dilde gürleşenok." },
+      { title: "Her ýurduň ulgamy aýry", body: "Her ýurt öz sanly ulgamyny gurýar, ýöne bu ulgamlar biri-birini tanaýanok we bir dilde gürleşenok." },
       { title: "Ýewropa öňe gidýär, türki dünýäsi daşda galyp biler", body: "ÝB her agza ýurduň 2026-njy ýylyň ahyryna çenli raýatlaryna sanly şahsyýet gapjygyny hödürlemegini hökmany etdi. Umumy ynam gurluşy bolmasa, türki dünýäsiniň resminamalary bu tertipden daşda galar." },
     ],
     purposeTitle: "Maksadymyz",
-    purpose: "Türki dünýäsindäki islendik guramanyň beren resminamasynyň başga ýurtda hem şol bir ynam bilen kabul edilmegi. Muny hiç bir kompaniýanyň ýa-da hiç bir döwletiň elinde bolmadyk, açyk düzgünler bilen işleýän umumy tor arkaly edýäris. Resminamalar adamyň telefonynda durýar; adam diňe gerek zady görkezýär; barlaýjy çeşmä soramazdan birnäçe sekuntda ynanýar.",
+    purpose: "Türki dünýäsinde bir guramanyň beren resminamasynyň başga ýurtda hem şol bir ynam bilen kabul edilmegini isleýäris. Muny hiç bir kompaniýanyň ýa-da hiç bir döwletiň elinde bolmadyk, açyk düzgünler bilen işleýän umumy tor arkaly edýäris. Resminamalar adamyň telefonynda durýar we adam diňe gerek zady görkezýär. Barlaýjy hem çeşmä soramazdan birnäçe sekuntda ynanýar.",
   },
   philosophy: {
     eyebrow: "Pelsepämiz",
     title: "Bäş ýörelge.",
     items: [
       { title: "Adam merkezde", body: "Resminama adamyň gapjygynda durýar. Näme görkeziljekdigini adam özi çözýär." },
-      { title: "Tor hiç kimiň eýeçiligi däl", body: "Tor hyzmat satmaýar, hiç kime artykmaçlyk bermeýär. Maksat: garaşsyz gazna." },
-      { title: "Sanaw döwletiňki", body: "Her döwlet öz ynam sanawynyň eýesidir; kimi ykrar etjegini özi çözýär." },
-      { title: "Şahsy maglumat tora ýazylmaýar", body: "Sanawlara, ýazgylara we žurnallara şahsy maglumat girmeýär; onuň hash-i hem." },
+      { title: "Tor hiç kimiň eýeçiligi däl", body: "Tor hyzmat satmaýar we hiç kime artykmaçlyk bermeýär. Ýetmek isleýän ýerimiz garaşsyz gaznadyr." },
+      { title: "Sanaw döwletiňki", body: "Her döwlet öz ynam sanawynyň eýesidir we kimi ykrar etjegini özi çözýär." },
+      { title: "Şahsy maglumat tora ýazylmaýar", body: "Sanawlara, ýazgylara we žurnallara şahsy maglumat girmeýär, onuň hash-i hem ýazylmaýar." },
       { title: "Açyk düzgün, açyk kod", body: "Her düzgün belgilenen we açyk; her paket açyk çeşmeli." },
     ],
   },
   how: {
     eyebrow: "Nähili işleýär",
     title: "Üç tarap, bir ynam sanawy.",
-    lead: "Resminamany berýän gurama, ony göterýän adam we ony barlaýan tarap. Üçüsi hem şol bir gol çekilen sanawa seredýär; hiç kim hiç kime jaň etmeli däl.",
+    lead: "Resminamany berýän gurama, ony göterýän adam we ony barlaýan tarap şol bir gol çekilen sanawa seredýär. Şonuň üçin hiç kimiň hiç kime jaň etmegi gerek däl.",
     flow: {
       title: "Tamga Network akymy",
-      desc: "Resminama berýän gurama gol çekilen resminamany adamyň gapjygyna berýär; adam diňe soralan meýdanlary barlaýja görkezýär; üç tarap hem döwletiň gol çekilen ynam sanawyna seredýär.",
+      desc: "Resminama berýän gurama gol çekilen resminamany adamyň gapjygyna berýär. Adam barlaýja diňe soralan meýdanlary görkezýär we üç tarap hem döwletiň gol çekilen ynam sanawyna seredýär.",
       issuer: "Resminama berýän gurama",
       issuerSub: "uniwersitet · hassahana · palata",
       wallet: "Adamyň gapjygy",
@@ -699,13 +699,13 @@ const tk: HomeContent = {
     steps: [
       { title: "Gurama gol çekýär", body: "Gurama resminama öz açary bilen gol çekýär we ony adamyň gapjygyna iberýär. Onuň açary döwletiň sanawynda hasaba alnandyr." },
       { title: "Adam ony göterýär", body: "Resminama telefonda durýar. Kimdir biri sorasa, adam näme soralýandygyny görýär we diňe tassyklan zadyny görkezýär." },
-      { title: "Barlaýjy birnäçe sekuntda ynanýar", body: "Goly we guramanyň sanawdaky ýazgysyny barlaýar. Çeşmä soramaýar, garaşmaýar: resminama ýa hakyky, ýa däl." },
+      { title: "Barlaýjy birnäçe sekuntda ynanýar", body: "Goly we guramanyň sanawdaky ýazgysyny barlaýar. Munuň üçin çeşmä soramagy ýa-da garaşmagy gerek däl." },
     ],
   },
   tech: {
     eyebrow: "Tehnologiýa, ýönekeý dilde",
     title: "Arkasyndaky bäş pikir.",
-    lead: "Tamga Network täze oýlap tapyş däl; Ýewropanyň sanly şahsyýet tertibinde ulanylýan, synagdan geçen usullary türki dünýäsi üçin bir ýere jemleýär.",
+    lead: "Tamga Network täze bir zat oýlap tapmaýar. Ol Ýewropanyň sanly şahsyýet tertibinde ulanylýan we synagdan geçen usullary türki dünýäsi üçin bir ýere jemleýär.",
     labels: { what: "Bu näme", why: "Türki dünýäsinde näme üçin gerek", solves: "Çözýän meselesi" },
     topics: [
       {
@@ -731,12 +731,12 @@ const tk: HomeContent = {
       {
         id: "disclosure",
         title: "Saýlap paýlaşmak",
-        what: "Resminamanyň her meýdany aýratyn gulplanýar (selective disclosure). Adam diňe soralan meýdany açýar; galanlary ýapyk galýar.",
-        why: "Synag merkezi, bank we konsert gapysy şol bir resminamadan dürli zatlary soraýar; olaryň hiç birine hemme zat gerek däl.",
+        what: "Resminamanyň her meýdany aýratyn gulplanýar (selective disclosure). Adam diňe soralan meýdany açýar, galanlary ýapyk galýar.",
+        why: "Synag merkezi, bank we konsert gapysy şol bir resminamadan dürli zatlary soraýar we olaryň hiç birine hemme zat gerek däl.",
         solves: "Gerekdeninden köp şahsy maglumat paýlaşmak.",
         d: {
           title: "Saýlap paýlaşmak",
-          desc: "Resminamanyň dört meýdany, her biri öz hash-i bilen; diňe 18 ýaşdan uly maglumaty açylýar, doglan senesi gizlin galýar.",
+          desc: "Resminamanyň her biri öz hash-i bilen saklanýan dört meýdany bar. Diňe 18 ýaşdan uly maglumaty açylýar, doglan senesi gizlin galýar.",
           card: "resminamadaky meýdanlar",
           shared: "barlaýjynyň görýäni",
           hidden: "gizlin",
@@ -756,7 +756,7 @@ const tk: HomeContent = {
         solves: "Hawa-ýok soragy üçin tutuş şahsyýetnamany görkezmek.",
         d: {
           title: "Nol bilim subutnamasy",
-          desc: "Doglan senesi subutnama girýär; çykýan ýeke-täk maglumat 18 ýaşdan uly bolmakdyr; doglan senesi barlaýja ýetmeýär.",
+          desc: "Doglan senesi subutnamanyň girişidir we subutnamadan çykýan ýeke-täk maglumat adamyň 18 ýaşdan uludygydyr. Doglan senesiniň özi barlaýja ýetmeýär.",
           input: "telefonda",
           inputSub: "Doglan senesi",
           proof: "subutnama",
@@ -772,7 +772,7 @@ const tk: HomeContent = {
         solves: "Saýtlaryň arasynda yzarlamak we profil düzmek.",
         d: {
           title: "Her saýt üçin lakam",
-          desc: "Bir adam, üç saýtda üç dürli kimlik; saýtlar olary birleşdirip bilmeýär.",
+          desc: "Şol bir adam üç saýtda üç dürli kimlik bilen görünýär we saýtlar olary biri-birine baglap bilmeýär.",
           person: "Sen",
           sites: [
             ["bilet saýty", "k7f2…9a"],
@@ -786,11 +786,11 @@ const tk: HomeContent = {
         id: "chain",
         title: "Ynam zynjyry",
         what: "Guramanyň hakykatdan hem şol guramadygy döwletiň gol çeken sanawyndan okalýar. Sanawlar hem sanawlaryň sanawyna baglanýar.",
-        why: "Her döwlet öz sanawynyň eýesi bolup galýar; sanawlar bir görnüşde bolany üçin biri-birini tanaýar.",
+        why: "Her döwlet öz sanawynyň eýesi bolup galýar we sanawlar bir görnüşde bolany üçin biri-birini tanaýar.",
         solves: "\"Bu gurama hakykatdan barmy?\" soragyna her ýurtda aýratyn jogap bermek.",
         d: {
           title: "Ynam zynjyry",
-          desc: "Sanawlaryň sanawy ýurt sanawyna, ýurt sanawy guramanyň sertifikatyna, gurama resminama gol çekýär.",
+          desc: "Sanawlaryň sanawy ýurt sanawyna, ýurt sanawy guramanyň sertifikatyna, gurama bolsa resminama gol çekýär.",
           steps: [
             ["Sanawlaryň sanawy", "LOTL · trust.tamga.network"],
             ["Türkiýäniň sanawy", "döwletiň goly"],
@@ -805,7 +805,7 @@ const tk: HomeContent = {
   verify: {
     eyebrow: "Özüň synap gör",
     title: "Ynam, gol ýaly açyk.",
-    lead: "Sanaw her üýtgände täzeden gol çekilýär we öňkisine hash bilen baglanýar; açyk labyr žurnalyna azyndan sagatda bir setir goşulýar. Hiç kim ony ýuwaşlyk bilen üýtgedip bilmez; her kim barlap biler.",
+    lead: "Sanaw her üýtgände täzeden gol çekilýär we öňki wersiýasyna hash bilen baglanýar. Açyk labyr žurnalyna hem azyndan sagatda bir setir goşulýar. Şonuň üçin hiç kim sanawy ýuwaşlyk bilen üýtgedip bilmez we her kim ony barlap biler.",
     button: "Goly barla",
     how: "Nähili işleýär",
     sample: "lotl.jws · nusga",
@@ -829,7 +829,7 @@ const tk: HomeContent = {
       { title: "Düzgünler", body: "Tamga ARF, Trust Framework, Tamga Rulebook we resminama görnüşleriniň rulebook-lary.", status: "Güýjünde" },
       { title: "Ynam sanawlary", body: "Gol çekilen, wersiýaly ýurt sanawlary we olary görkezýän sanawlaryň sanawy.", status: "Güýjünde" },
       { title: "Resminama görnüşleri", body: "SD-JWT VC we ISO mdoc; OpenID4VCI bilen bermek, OpenID4VP bilen görkezmek.", status: "Güýjünde" },
-      { title: "Açyk paketler", body: "Barlamak, resminama bermek we gapjyk ýadrosy; her kim öz serwerinde işledip biler.", status: "Deslapky" },
+      { title: "Açyk paketler", body: "Barlamak, resminama bermek we gapjyk ýadrosy, olary her kim öz serwerinde işledip biler.", status: "Deslapky" },
       { title: "Toruň üstündäkiler", body: "Toruň düzgünlerine eýerýän gapjyklar we hyzmat üpjün edijiler. Ilkinji gapjyk Tamga Wallet.", status: "Toruň üstünde" },
       { title: "Umumy kitap", body: "Azyndan iki garaşsyz operator goşulanda şol ýazgylar rugsatly kitaba geçirilýär.", status: "Soňra", future: true },
     ],
@@ -839,8 +839,8 @@ const tk: HomeContent = {
     title: "Tora üç gapydan girilýär.",
     items: [
       { kicker: "Guramalar", title: "Resminama beriň we barlaň.", body: "Hasaba duruň, açaryňyzy sanawa goşduryň, ilkinji resminamaňyzy beriň.", cta: "Gurama hökmünde goşul", href: "/join" },
-      { kicker: "Gapjyk üpjün edijiler", title: "Gapjygyňyzy tora tanadyň.", body: "Tor gapjyk saýlamaýar, ykrar edýär. Düzgünlere eýerýän we laýyklyk synaglaryndan geçen her gapjyk sanawa girýär. Gapjygyňyzy ilki sandbox-da synaň.", cta: "Laýyklyk synaglaryna başla", href: "/join" },
-      { kicker: "Döwletler", title: "Sanawyňyzy özüňiz çap ediň.", body: "Öz ynam sanawyňyzy çap edeniňizde tor ony görkezýär; gapjyklar üçin diňe salgy üýtgeýär.", cta: "Federasiýany öwren", href: "/learn/trust-lists" },
+      { kicker: "Gapjyk üpjün edijiler", title: "Gapjygyňyzy tora tanadyň.", body: "Tor gapjyk saýlamaýar, düzgünlere eýerýän gapjyklary ykrar edýär. Düzgünlere eýerýän we laýyklyk synaglaryndan geçen her gapjyk sanawa girýär. Gapjygyňyzy ilki sandbox-da synap bilersiňiz.", cta: "Laýyklyk synaglaryna başla", href: "/join" },
+      { kicker: "Döwletler", title: "Sanawyňyzy özüňiz çap ediň.", body: "Öz ynam sanawyňyzy çap edeniňizde tor şol sanawy görkezýär. Gapjyklar üçin diňe salgy üýtgeýär.", cta: "Federasiýany öwren", href: "/learn/trust-lists" },
     ],
   },
   news: {
@@ -855,15 +855,15 @@ const tk: HomeContent = {
   gov: {
     eyebrow: "Dolandyryş",
     title: "Häzir wagtlaýyn operator. Ertir gazna.",
-    lead: "Tory häzir Tamga işledýär, emma tor Tamganyňky däl. Ýol başdan ýazylan: döwletler goşuldygyça dolandyryş umumy bolýar; iki garaşsyz operator bolanda ýazgylar umumy kitaba geçirilýär.",
+    lead: "Tory häzir Tamga işledýär, ýöne tor Tamga degişli däl. Gidiljek ýol başdan ýazyldy. Döwletler goşuldygyça dolandyryş umumy bolar, iki garaşsyz operator bolanda bolsa ýazgylar umumy kitaba geçiriler.",
     steps: [
       { when: "Häzir", title: "Wagtlaýyn operator", body: "Tamga Türkiýäniň sanawyny döwletiň adyndan açyk düzgünler we açyk labyr žurnaly bilen çap edýär." },
-      { when: "Döwletler goşulanda", title: "Geňeş ýa-da gazna", body: "Sanawlar eýelerine geçirilýär; toruň düzgünleri bilelikdäki karar bilen üýtgeýär." },
-      { when: "Iki garaşsyz operator", title: "Umumy kitap", body: "Ýazgylar rugsatly kitaba geçirilýär; hiç bir tarap olary ýeke özi üýtgedip bilmez." },
+      { when: "Döwletler goşulanda", title: "Geňeş ýa-da gazna", body: "Sanawlar eýelerine geçirilýär we toruň düzgünleri bilelikdäki karar bilen üýtgeýär." },
+      { when: "Iki garaşsyz operator", title: "Umumy kitap", body: "Ýazgylar rugsatly kitaba geçirilýär we hiç bir tarap olary ýeke özi üýtgedip bilmez." },
     ],
     roles: {
       title: "Dolandyryş rollary",
-      desc: "Toruň düzgünleri ortada; operator, hasaba alyş guramasy we döwlet sanawlary şu düzgünlere görä işleýär.",
+      desc: "Toruň düzgünleri ortada durýar. Operator, hasaba alyş guramasy we döwlet sanawlary şu düzgünlere görä işleýär.",
       operator: "Operator",
       registrar: "Hasaba alyş guramasy",
       states: "Döwlet sanawlary",
@@ -933,32 +933,32 @@ const az: HomeContent = {
     lead: "Məktəblər, xəstəxanalar, palatalar və şirkətlər hər gün sənəd verir. Lakin sənədin həqiqi olduğunu başqa ölkədə, hətta başqa qurumda sübut etmək hələ də çətindir.",
     problems: [
       { title: "Sənədlər sərhəddə ilişib qalır", body: "Almatıdakı qurum Bakıda verilmiş sənədi yoxlamaq istədikdə telefon zəngləri, e-poçtlar, apostil və həftələr tələb olunur." },
-      { title: "Saxtakarlıq asandır", body: "Skan edilmiş PDF və ya surəti asanlıqla dəyişdirmək olar; həqiqisini saxtasından ayırmaq ekspertiza tələb edir." },
-      { title: "İnsanlar həddindən artıq məlumat paylaşır", body: "Yaşınızı sübut etmək üçün bütün şəxsiyyət vəsiqənizi, məzun olduğunuzu sübut etmək üçün bütün qiymət cədvəlinizi göstərirsiniz." },
-      { title: "Hər ölkənin öz sistemi var", body: "Hər ölkə öz rəqəmsal sistemini qurur; bu sistemlər bir-birini tanımır və eyni dildə danışmır." },
+      { title: "Saxtakarlıq asandır", body: "Skan edilmiş PDF və ya surəti asanlıqla dəyişdirmək olar və həqiqisini saxtasından ayırmaq ekspertiza tələb edir." },
+      { title: "İnsanlar həddindən artıq məlumat paylaşır", body: "Yaşınızı sübut etmək üçün bütün şəxsiyyət vəsiqənizi, məzun olduğunuzu sübut etmək üçün isə bütün qiymət cədvəlinizi göstərməli olursunuz." },
+      { title: "Hər ölkənin öz sistemi var", body: "Hər ölkə öz rəqəmsal sistemini qurur, amma bu sistemlər bir-birini tanımır və eyni dildə danışmır." },
       { title: "Avropa irəliləyir; Türk dünyası kənarda qala bilər", body: "Avropa İttifaqı (Aİ) hər üzv dövlətdən 2026-cı ilin sonunadək vətəndaşlarına rəqəmsal şəxsiyyət cüzdanı təqdim etməyi tələb edir. Ortaq etibar strukturu olmadan Türk dünyasının rəqəmsal sənədləri bu nizamdan kənarda qalır." },
     ],
     purposeTitle: "Məqsədimiz",
-    purpose: "Türk dünyasında istənilən qurumun verdiyi rəqəmsal sənədin başqa ölkədə də eyni etimadla qəbul edilməsi. Bunu heç bir şirkətin və ya dövlətin tək başına sahib olmadığı, açıq qaydalarla işləyən ortaq şəbəkə vasitəsilə həyata keçiririk. Rəqəmsal sənədlər şəxsin telefonunda saxlanılır; şəxs yalnız lazım olanı göstərir; yoxlayan tərəf mənbəyə müraciət etmədən saniyələr ərzində əmin olur.",
+    purpose: "Türk dünyasında bir qurumun verdiyi rəqəmsal sənədin başqa ölkədə də eyni etimadla qəbul edilməsini istəyirik. Bunu heç bir şirkətin və ya dövlətin tək başına sahib olmadığı, açıq qaydalarla işləyən ortaq şəbəkə vasitəsilə edirik. Rəqəmsal sənədlər şəxsin telefonunda saxlanılır və şəxs yalnız lazım olanı göstərir. Yoxlayan tərəf də mənbəyə müraciət etmədən saniyələr ərzində əmin olur.",
   },
   philosophy: {
     eyebrow: "Fəlsəfəmiz",
     title: "Beş prinsip.",
     items: [
       { title: "Şəxs mərkəzdədir", body: "Rəqəmsal sənəd şəxsin rəqəmsal cüzdanında saxlanılır. Nəyin göstəriləcəyinə şəxs özü qərar verir." },
-      { title: "Heç kimin mülkiyyəti deyil", body: "Şəbəkə xidmət satmır və heç kimə imtiyaz vermir. Məqsəd: müstəqil fond." },
+      { title: "Heç kimin mülkiyyəti deyil", body: "Şəbəkə xidmət satmır və heç kimə imtiyaz vermir. Çatmaq istədiyimiz yer müstəqil fonddur." },
       { title: "Siyahı dövlətə məxsusdur", body: "Hər dövlət öz etibar siyahısının sahibidir və kimi tanıyacağına özü qərar verir." },
-      { title: "Şəbəkədə fərdi məlumat yoxdur", body: "Siyahılarda, qeydlərdə və jurnallarda fərdi məlumatlar yoxdur; hətta onların hash-i belə." },
-      { title: "Açıq qaydalar, açıq kod", body: "Hər qayda nömrələnib və hamıya açıqdır; hər paket açıq mənbəlidir." },
+      { title: "Şəbəkədə fərdi məlumat yoxdur", body: "Siyahılara, qeydlərə və jurnallara fərdi məlumat daxil edilmir, hətta onun hash-i belə yazılmır." },
+      { title: "Açıq qaydalar, açıq kod", body: "Hər qayda nömrələnib və hamıya açıqdır, hər paket də açıq mənbəlidir." },
     ],
   },
   how: {
     eyebrow: "Necə işləyir",
     title: "Üç tərəf, bir etibar siyahısı.",
-    lead: "Sənədi verən qurum, onu daşıyan şəxs və onu yoxlayan tərəf. Üçü də eyni imzalanmış siyahıya baxır; heç kim heç kimə zəng etməli deyil.",
+    lead: "Sənədi verən qurum, onu daşıyan şəxs və onu yoxlayan tərəf eyni imzalanmış siyahıya baxır. Ona görə heç kimin heç kimə zəng etməsinə ehtiyac qalmır.",
     flow: {
       title: "Tamga Network axını",
-      desc: "Sənədi verən qurum imzalanmış rəqəmsal sənədi şəxsin rəqəmsal cüzdanına verir; şəxs yoxlayan tərəfə yalnız tələb olunan sahələri göstərir; üç tərəfin hamısı dövlətin imzaladığı etibar siyahısına müraciət edir.",
+      desc: "Sənədi verən qurum imzalanmış rəqəmsal sənədi şəxsin rəqəmsal cüzdanına verir. Şəxs yoxlayan tərəfə yalnız tələb olunan sahələri göstərir və üç tərəfin hamısı dövlətin imzaladığı etibar siyahısına müraciət edir.",
       issuer: "Sənədi verən qurum",
       issuerSub: "universitet · xəstəxana · palata",
       wallet: "Şəxsin rəqəmsal cüzdanı",
@@ -974,13 +974,13 @@ const az: HomeContent = {
     steps: [
       { title: "Qurum imzalayır", body: "Qurum rəqəmsal sənədi öz açarı ilə imzalayır və şəxsin rəqəmsal cüzdanına göndərir. Qurumun açarı dövlətin siyahısında qeydiyyatdadır." },
       { title: "Şəxs onu daşıyır", body: "Rəqəmsal sənəd telefonda saxlanılır. Kimsə tələb etdikdə şəxs nəyin istənildiyini görür və yalnız təsdiqlədiyi məlumatları göstərir." },
-      { title: "Yoxlayan tərəf saniyələr ərzində əmin olur", body: "İmzanı və qurumun siyahıdakı qeydini yoxlayır. Mənbəyə müraciət yoxdur, gözləmə yoxdur: rəqəmsal sənəd ya etibarlıdır, ya da yox." },
+      { title: "Yoxlayan tərəf saniyələr ərzində əmin olur", body: "İmzanı və qurumun siyahıdakı qeydini yoxlayır. Bunun üçün mənbəyə müraciət etməyə və ya gözləməyə ehtiyac yoxdur." },
     ],
   },
   tech: {
     eyebrow: "Texnologiya, sadə dillə",
     title: "Arxasında duran beş ideya.",
-    lead: "Tamga Network yeni ixtira deyil; Avropanın rəqəmsal şəxsiyyət çərçivəsində sınaqdan keçmiş üsulları Türk dünyası üçün bir araya gətirir.",
+    lead: "Tamga Network yeni bir şey icad etmir. Avropanın rəqəmsal şəxsiyyət çərçivəsində istifadə olunan və sınaqdan keçmiş üsulları Türk dünyası üçün bir araya gətirir.",
     labels: { what: "Nədir", why: "Türk dünyasına nə üçün lazımdır", solves: "Həll etdiyi problem" },
     topics: [
       {
@@ -1006,12 +1006,12 @@ const az: HomeContent = {
       {
         id: "disclosure",
         title: "Seçici paylaşım",
-        what: "Rəqəmsal sənədin hər sahəsi ayrıca kilidlənir (selective disclosure). Şəxs yalnız tələb olunan sahəni açır; qalanları qapalı qalır.",
-        why: "İmtahan mərkəzi, bank və konsert girişi eyni rəqəmsal sənəddən müxtəlif məlumatlar tələb edir; onların heç birinə hər şey lazım deyil.",
+        what: "Rəqəmsal sənədin hər sahəsi ayrıca kilidlənir (selective disclosure). Şəxs yalnız tələb olunan sahəni açır, qalanları qapalı qalır.",
+        why: "İmtahan mərkəzi, bank və konsert girişi eyni rəqəmsal sənəddən müxtəlif məlumatlar tələb edir və onların heç birinə hər şey lazım deyil.",
         solves: "Lazım olduğundan artıq fərdi məlumat paylaşmaq.",
         d: {
           title: "Seçici paylaşım",
-          desc: "Rəqəmsal sənədin dörd sahəsi, hər biri öz xülasəsi (digest) ilə; yalnız 18 yaşdan yuxarı olma faktı açılır, doğum tarixi gizli qalır.",
+          desc: "Rəqəmsal sənədin hər biri öz xülasəsi (digest) ilə saxlanılan dörd sahəsi var. Yalnız 18 yaşdan yuxarı olma faktı açılır, doğum tarixi gizli qalır.",
           card: "rəqəmsal sənəddəki sahələr",
           shared: "yoxlayan tərəfin gördüyü",
           hidden: "gizli",
@@ -1031,7 +1031,7 @@ const az: HomeContent = {
         solves: "Bəli-xeyr sualı üçün bütün şəxsiyyət vəsiqəsini göstərmək.",
         d: {
           title: "Sıfır bilik sübutu",
-          desc: "Doğum tarixi sübuta daxil olur; yeganə nəticə 18 yaşdan yuxarı olmaqdır; doğum tarixi heç vaxt yoxlayan tərəfə çatmır.",
+          desc: "Doğum tarixi sübutun girişidir və sübutdan çıxan yeganə məlumat şəxsin 18 yaşdan yuxarı olmasıdır. Doğum tarixinin özü heç vaxt yoxlayan tərəfə çatmır.",
           input: "telefonda",
           inputSub: "Doğum tarixi",
           proof: "sübut",
@@ -1047,7 +1047,7 @@ const az: HomeContent = {
         solves: "Saytlararası izləmə və profil yaradılması.",
         d: {
           title: "Hər sayt üçün təxəllüs",
-          desc: "Bir şəxs, üç sayt, üç fərqli identifikator; saytlar onları əlaqələndirə bilmir.",
+          desc: "Eyni şəxs üç saytda üç fərqli identifikatorla görünür və saytlar onları bir-biri ilə əlaqələndirə bilmir.",
           person: "Siz",
           sites: [
             ["bilet saytı", "k7f2…9a"],
@@ -1061,7 +1061,7 @@ const az: HomeContent = {
         id: "chain",
         title: "Etibar zənciri",
         what: "Qurumun həqiqətən həmin qurum olduğu dövlətin imzaladığı siyahıdan oxunur. Siyahılar da öz növbəsində siyahılar siyahısına bağlıdır.",
-        why: "Hər dövlət öz siyahısının sahibi olaraq qalır; siyahılar eyni formatda olduğu üçün bir-birini tanıyır.",
+        why: "Hər dövlət öz siyahısının sahibi olaraq qalır və siyahılar eyni formatda olduğu üçün bir-birini tanıyır.",
         solves: "\"Bu qurum həqiqətən mövcuddurmu?\" sualına hər ölkədə ayrıca cavab vermək.",
         d: {
           title: "Etibar zənciri",
@@ -1079,8 +1079,8 @@ const az: HomeContent = {
   },
   verify: {
     eyebrow: "Özünüz sınayın",
-    title: "Etibar — imza qədər açıq.",
-    lead: "Siyahı hər dəyişiklikdə yenidən imzalanır və hash vasitəsilə əvvəlki versiyaya bağlanır; ictimai lövbər jurnalına ən azı saatda bir yeni sətir əlavə olunur. Heç kim onu xəbərsiz dəyişə bilməz; hər kəs yoxlaya bilər.",
+    title: "Etibar imza qədər açıqdır.",
+    lead: "Siyahı hər dəyişiklikdə yenidən imzalanır və hash vasitəsilə əvvəlki versiyaya bağlanır. İctimai lövbər jurnalına da ən azı saatda bir yeni sətir əlavə olunur. Buna görə heç kim siyahını xəbərsiz dəyişə bilməz və hər kəs onu yoxlaya bilər.",
     button: "İmzanı yoxlayın",
     how: "Necə işləyir",
     sample: "lotl.jws · nümunə",
@@ -1104,7 +1104,7 @@ const az: HomeContent = {
       { title: "Qaydalar", body: "Tamga ARF, Trust Framework, Tamga Rulebook və rəqəmsal sənəd növlərinin rulebook-ları.", status: "Qüvvədədir" },
       { title: "Etibar siyahıları", body: "İmzalanmış, versiyalı ölkə siyahıları və onlara istinad edən siyahılar siyahısı.", status: "Qüvvədədir" },
       { title: "Rəqəmsal sənəd formatları", body: "SD-JWT VC və ISO mdoc; OpenID4VCI ilə vermə, OpenID4VP ilə təqdimetmə.", status: "Qüvvədədir" },
-      { title: "Açıq paketlər", body: "Yoxlama, sənəd vermə və rəqəmsal cüzdan nüvəsi; hər kəs onları öz serverində işlədə bilər.", status: "İlkin versiya" },
+      { title: "Açıq paketlər", body: "Yoxlama, sənəd vermə və rəqəmsal cüzdan nüvəsi, onları hər kəs öz serverində işlədə bilər.", status: "İlkin versiya" },
       { title: "Şəbəkənin üzərində", body: "Şəbəkənin qaydalarına əməl edən rəqəmsal cüzdanlar və xidmət provayderləri. İlk rəqəmsal cüzdan Tamga Wallet-dır.", status: "Şəbəkə üzərində" },
       { title: "Ortaq reyestr", body: "Ən azı iki müstəqil operator qoşulduqda eyni qeydlər icazəli reyestrə köçürülür.", status: "Gələcəkdə", future: true },
     ],
@@ -1114,8 +1114,8 @@ const az: HomeContent = {
     title: "Şəbəkəyə üç qapıdan daxil olunur.",
     items: [
       { kicker: "Qurumlar", title: "Rəqəmsal sənəd verin və yoxlayın.", body: "Qeydiyyatdan keçin, açarınızı siyahıya əlavə etdirin, ilk rəqəmsal sənədinizi verin.", cta: "Qurum kimi qoşulun", href: "/join" },
-      { kicker: "Cüzdan provayderləri", title: "Rəqəmsal cüzdanınızı tanıdın.", body: "Şəbəkə rəqəmsal cüzdan seçmir, onları tanıyır. Qaydalara əməl edən və uyğunluq testlərindən keçən hər rəqəmsal cüzdan siyahıya daxil edilir. Rəqəmsal cüzdanınızı əvvəlcə sandbox-da sınayın.", cta: "Uyğunluq testlərinə başlayın", href: "/join" },
-      { kicker: "Dövlətlər", title: "Öz siyahınızı dərc edin.", body: "Öz etibar siyahınızı dərc etdiyiniz zaman şəbəkə ona istinad edir; rəqəmsal cüzdanlar üçün yalnız ünvan dəyişir.", cta: "Federasiya ilə tanış olun", href: "/learn/trust-lists" },
+      { kicker: "Cüzdan provayderləri", title: "Rəqəmsal cüzdanınızı tanıdın.", body: "Şəbəkə rəqəmsal cüzdan seçmir, qaydalara əməl edən cüzdanları tanıyır. Qaydalara əməl edən və uyğunluq testlərindən keçən hər rəqəmsal cüzdan siyahıya daxil edilir. Rəqəmsal cüzdanınızı əvvəlcə sandbox-da sınaya bilərsiniz.", cta: "Uyğunluq testlərinə başlayın", href: "/join" },
+      { kicker: "Dövlətlər", title: "Öz siyahınızı dərc edin.", body: "Öz etibar siyahınızı dərc edəndə şəbəkə həmin siyahını göstərir. Rəqəmsal cüzdanlar üçün yalnız ünvan dəyişir.", cta: "Federasiya ilə tanış olun", href: "/learn/trust-lists" },
     ],
   },
   news: {
@@ -1130,15 +1130,15 @@ const az: HomeContent = {
   gov: {
     eyebrow: "İdarəetmə",
     title: "Bu gün müvəqqəti operator. Sabah fond.",
-    lead: "Bu gün şəbəkəni Tamga idarə edir, lakin şəbəkə Tamga-ya məxsus deyil. Yol əvvəldən yazılıb: dövlətlər qoşulduqca idarəetmə ortaq olur; iki müstəqil operator olduqda qeydlər ortaq reyestrə köçürülür.",
+    lead: "Bu gün şəbəkəni Tamga idarə edir, amma şəbəkə Tamga-ya məxsus deyil. Gediləcək yol əvvəldən yazılıb. Dövlətlər qoşulduqca idarəetmə ortaq olacaq, iki müstəqil operator olanda isə qeydlər ortaq reyestrə köçürüləcək.",
     steps: [
       { when: "Bu gün", title: "Müvəqqəti operator", body: "Tamga Türkiyə siyahısını dövlət adından açıq qaydalar və ictimai lövbər jurnalı ilə dərc edir." },
-      { when: "Dövlətlər qoşulduqda", title: "Şura və ya fond", body: "Siyahılar sahiblərinə təhvil verilir; şəbəkənin qaydaları birgə qərarla dəyişir." },
-      { when: "İki müstəqil operator", title: "Ortaq reyestr", body: "Qeydlər icazəli reyestrə köçürülür; heç bir tərəf onları təkbaşına dəyişə bilməz." },
+      { when: "Dövlətlər qoşulduqda", title: "Şura və ya fond", body: "Siyahılar sahiblərinə təhvil verilir və şəbəkənin qaydaları birgə qərarla dəyişir." },
+      { when: "İki müstəqil operator", title: "Ortaq reyestr", body: "Qeydlər icazəli reyestrə köçürülür və heç bir tərəf onları təkbaşına dəyişə bilməz." },
     ],
     roles: {
       title: "İdarəetmə rolları",
-      desc: "Şəbəkənin qaydaları mərkəzdədir; operator, qeydiyyat orqanı və dövlət siyahıları bu qaydalara əsasən işləyir.",
+      desc: "Şəbəkənin qaydaları mərkəzdə durur. Operator, qeydiyyat orqanı və dövlət siyahıları bu qaydalara əsasən işləyir.",
       operator: "Operator",
       registrar: "Qeydiyyat orqanı",
       states: "Dövlət siyahıları",

@@ -25,7 +25,7 @@ const TRUST = { a: "TRUST", b: "no integration needed" };
 
 const en: Content = {
   eyebrow: "The platform",
-  title: "One credential, verified anywhere — no integration",
+  title: "One credential, verified anywhere without integration",
   description:
     "The issuer signs a credential into the holder's wallet; the holder presents it to any verifier, who checks it against the signed trust lists without ever contacting the issuer. Personal data never enters the lists.",
   issuerSub: "University · X.509",
@@ -40,7 +40,7 @@ const en: Content = {
 
 const tr: Content = {
   eyebrow: "Platform",
-  title: "Tek credential, her yerde doğrulanır — entegrasyon yok",
+  title: "Tek credential, entegrasyon gerekmeden her yerde doğrulanır",
   description:
     "Issuer, belgeyi imzalayıp holder'ın cüzdanına verir; holder bunu herhangi bir verifier'a sunar, verifier ise issuer'a hiç ulaşmadan imzalı güven listelerine karşı doğrular. Kişisel veri listelere asla girmez.",
   issuerSub: "Üniversite · X.509",
@@ -55,7 +55,7 @@ const tr: Content = {
 
 const tk: Content = {
   eyebrow: "Platforma",
-  title: "Bir credential, islendik ýerde barlanýar — integrasiýa ýok",
+  title: "Bir credential integrasiýasyz islendik ýerde barlanýar",
   description:
     "Issuer resminamany imzalap holder-yň gapjygyna berýär; holder ony islendik verifier-e hödürleýär, verifier bolsa issuer-e ýüz tutman gol çekilen ynam sanawlaryna görä barlaýar. Şahsy maglumat sanawlara asla girmeýär.",
   issuerSub: "Uniwersitet · X.509",
@@ -70,7 +70,7 @@ const tk: Content = {
 
 const az: Content = {
   eyebrow: "Platforma",
-  title: "Bir rəqəmsal sənəd, hər yerdə yoxlanılır — inteqrasiya tələb olunmur",
+  title: "Bir rəqəmsal sənəd inteqrasiya tələb etmədən hər yerdə yoxlanılır",
   description:
     "Sənədi verən qurum rəqəmsal sənədi imzalayaraq sənəd sahibinin rəqəmsal cüzdanına verir; sənəd sahibi onu istənilən yoxlayan tərəfə təqdim edir, yoxlayan tərəf isə sənədi verən quruma heç vaxt müraciət etmədən onu imzalanmış etibar siyahıları əsasında yoxlayır. Fərdi məlumatlar heç vaxt siyahılara daxil edilmir.",
   issuerSub: "Universitet · X.509",

@@ -52,7 +52,7 @@ Verifier'ın ilk turunda "uyarı" alan yedi modül asıl denetimi aslında geçm
 
 "Geçti" dışında kalan her satırın bir açıklaması var:
 
-- **İki uyarı (issuer metadata'sı, düz ve imzalı hâli).** Metadata'mızda `credential_reuse_policy` alanı bulunuyor. Bu alan, toplu belge verme ve belgelerin yeniden kullanımıyla ilgili politikayı anlatır; ETSI TS 119 472-3 tanımlar, AB'nin ARF'si de kullanır. Aracın şeması ise `credential_metadata` içine ek alan konmasına izin vermiyor. Bu yüzden tek bir meşru uzantı şemanın bütün bir dalını geçersiz kılıyor ve araç ardından `scope`, `proof_types_supported` gibi standart alanları da bilinmeyen alan diye işaretliyor. Aracın izin listesi uzantının adını susturabiliyor, ama arkasından gelen bu hata zincirini durduramıyor. Alan bir AB standardından geldiği için onu koruyoruz. Sorunu, yeniden üretme adımları ve iki olası çözümle birlikte, aracı geliştiren ekibe iletilmek üzere yazdık.
+- **İki uyarı (issuer metadata'sı, düz ve imzalı hâli).** Metadata'mızda `credential_reuse_policy` alanı bulunuyor. Bu alan, toplu belge verme ve belgelerin yeniden kullanımıyla ilgili politikayı anlatır; ETSI TS 119 472-3 tanımlar, AB'nin ARF'si de kullanır. Aracın şeması ise `credential_metadata` içine ek alan konmasına izin vermiyor. Bu yüzden tek bir meşru uzantı şemanın bütün bir dalını geçersiz kılıyor ve araç ardından `scope`, `proof_types_supported` gibi standart alanları da bilinmeyen alan diye işaretliyor. Aracın izin listesi uzantının adını susturabiliyor, ama arkasından gelen bu hata zincirini durduramıyor. Alan bir AB standardından geldiği için onu koruyoruz. Sorunu, yeniden üretme adımları ve iki olası çözümle birlikte aracı geliştiren ekibe bildirdik.
 - **İnceleme.** Bazı olumsuz testler "ekran görüntüsü yükleyin" adımıyla biter, çünkü araç sunucumuzun kişiye gösterdiği hata sayfasını göremez ve bu sayfayı bir insanın onaylaması gerekir. Verifier planında da aynı nedenle, Tamga Verify'ın sunumu kabul ettiği ya da sonuç sayfasında reddettiği her durum (yanlış belge türü, iptal edilmiş belge) incelemeyle sonuçlanır. Doğrulayıcının yanıtı doğrudan HTTP 400 ile geri çevirdiği durumlar ise kendiliğinden geçer.
 - **Atlandı.** Üç issuer modülü şifreli belge yanıtını sınıyor. HAIP bu özelliği isteğe bağlı bıraktığı için metadata'mızda sunmuyoruz. Bir modül de yenileme belirtecini (refresh token) sınıyor. Kimlik servisimiz yenileme belirtecini yalnız kısa ömürlü sıfır bilgi kopyaları için veriyor ([ADR-0062](https://docs.tamga.network/tr/adr/0062-zk-copy-refresh-scope)). Aracın isteği bu kapsamı istemediği için belirteç verilmiyor ve modül atlanıyor. Verifier planında da `request_uri_method=post` seçeneğini sunmadığımız için ilgili modül atlanıyor.
 
@@ -127,7 +127,7 @@ Baştan sona tek bir ilkeye uyduk. Kodu yalnız bir şartname maddesi gerektirdi
 | ayar | aracın ayarı, test ortamı ya da test edenin adımı | ayarı ya da yöntemi düzelttik |
 | beklenen | desteklemediğimiz bir seçenek ya da belgelenmiş bir uzantı | olduğu gibi bıraktık ve kayda geçirdik |
 | karar | şartname izin veriyor ama araç başka bir yol bekliyor | proje yönetimi bir ADR ile karar verdi |
-| araç sınırı | araç, hiçbir şartnamenin istemediği bir şeyi denetliyor | doğru kodu koruduk, sorunu aracı geliştiren ekip için yazdık |
+| araç sınırı | araç, hiçbir şartnamenin istemediği bir şeyi denetliyor | doğru kodu koruduk, sorunu aracı geliştiren ekibe bildirdik |
 
 ![Sınıflandırma: log satırından düzeltmeye](/blog/openid-conformance-self-test/tr/fig-triage.png)
 

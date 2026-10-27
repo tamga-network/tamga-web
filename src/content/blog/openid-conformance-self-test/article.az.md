@@ -52,7 +52,7 @@ Verifier-in birinci turunda "xəbərdarlıq" alan yeddi modul əslində əsas yo
 
 "Keçdi" olmayan hər sətrin səbəbi var:
 
-- **İki xəbərdarlıq (issuer metaməlumatı, adi və imzalı).** Metaməlumatımızda ETSI TS 119 472-3-ün müəyyən etdiyi və AB ARF-nin istifadə etdiyi paket verilməsi və təkrar istifadə siyasəti `credential_reuse_policy` var. Alətin sxemi `credential_metadata` daxilində əlavə sahələrə icazə vermir. Ona görə bir qanuni genişlənmə sxemin bütöv bir qolunu keçərsiz edir və alət sonra standart sahələri (`scope`, `proof_types_supported` və s.) naməlum kimi bildirir. İcazə siyahısı genişlənmənin adını susdura bilir, bu zənciri isə yox. Sahə AB standartıdır, ona görə qalır. Problemi təkrarlama addımları və iki mümkün həll ilə birlikdə alətin tərtibatçılarına göndərmək üçün yazdıq.
+- **İki xəbərdarlıq (issuer metaməlumatı, adi və imzalı).** Metaməlumatımızda ETSI TS 119 472-3-ün müəyyən etdiyi və AB ARF-nin istifadə etdiyi paket verilməsi və təkrar istifadə siyasəti `credential_reuse_policy` var. Alətin sxemi `credential_metadata` daxilində əlavə sahələrə icazə vermir. Ona görə bir qanuni genişlənmə sxemin bütöv bir qolunu keçərsiz edir və alət sonra standart sahələri (`scope`, `proof_types_supported` və s.) naməlum kimi bildirir. İcazə siyahısı genişlənmənin adını susdura bilir, bu zənciri isə yox. Sahə AB standartıdır, ona görə qalır. Problemi təkrarlama addımları və iki mümkün həll ilə birlikdə alətin komandasına bildirdik.
 - **Baxış.** Bəzi mənfi testlər "ekran görüntüsü yükləyin" ilə bitir, çünki alət serverimizin şəxsə göstərdiyi xəta səhifəsini görə bilmir və bu səhifəni insan təsdiqləməlidir. Verifier planında Tamga Verify-ın təqdimatı qəbul etdiyi və ya nəticə səhifəsində rədd etdiyi (yanlış sənəd növü, ləğv edilmiş sənəd) hər hal eyni səbəbdən baxışla bitir. Doğrulayıcının cavabı birbaşa HTTP 400 ilə rədd etdiyi hallar öz-özünə keçir.
 - **Buraxıldı.** Üç issuer modulu şifrələnmiş sənəd cavabını sınayır. HAIP bunu ixtiyari saxlayır və metaməlumatımız bu seçimi təklif etmir. Biri yeniləmə tokenini sınayır; şəxsiyyət xidmətimiz yeniləmə tokenini yalnız qısa ömürlü sıfır bilik nüsxələri üçün verir ([ADR-0062](https://docs.tamga.network/adr/0062-zk-copy-refresh-scope)). Alətin sorğusu həmin scope-u istəmədiyi üçün token verilmir və modul buraxılır. Verifier planında `request_uri_method=post` seçimini təklif etmədiyimiz üçün həmin modul buraxılır.
 
@@ -127,7 +127,7 @@ Bəzi tapıntılar bizim idi, amma kodda deyildi. Yerləşdirmə zamanı yenidə
 | konfiqurasiya | alətin konfiqurasiyası, test mühiti və ya test edənin addımı | konfiqurasiyanı və ya proseduru düzəltdik |
 | gözlənilən | dəstəkləmədiyimiz variant və ya sənədləşdirilmiş genişlənmə | olduğu kimi saxladıq və qeyd etdik |
 | qərar | spesifikasiya icazə verir, amma alət başqa yol gözləyir | layihə rəhbərliyi ADR ilə qərar verdi |
-| alət məhdudiyyəti | alət heç bir spesifikasiyanın tələb etmədiyini yoxlayır | düzgün kodu saxladıq, problemi alətin tərtibatçıları üçün yazdıq |
+| alət məhdudiyyəti | alət heç bir spesifikasiyanın tələb etmədiyini yoxlayır | düzgün kodu saxladıq, problemi alətin komandasına bildirdik |
 
 ![Təsnifat: log sətrindən düzəlişə](/blog/openid-conformance-self-test/en/fig-triage.png)
 

@@ -1,7 +1,7 @@
 ---
 title: "SD-JWT VC-ä çuňňur seredilişi: gol, disclosure-lar, KB-JWT"
 slug: sd-jwt-vc-deep-dive
-description: SD-JWT VC baýtma-baýt nähili gurulýar we barlanýar - duzly heşler, _sd, cnf, KB-JWT we sd_hash, vct#integrity we status - Tamga profili bilen.
+description: SD-JWT VC-niň baýtma-baýt nähili gurulýandygyny we barlanýandygyny Tamga profili bilen düşündirýäris; duzly heşler, _sd, cnf, KB-JWT we sd_hash, vct#integrity we status.
 date: 2026-10-08
 lang: tk
 updated: 2026-10-19
@@ -12,15 +12,15 @@ related: openid4vci-deep-dive, openid4vp-dcql-deep-dive, haip-and-token-status-l
 
 <!-- Sources: SPEC-CRED-0002 v1.0.0 (2026-10-02) §1–9 (Tamga constraints, disclosure, hash-the-string rule, _sd sorted, decoys forbidden, x5c, typ, cnf, KB-JWT, sd_hash, Ş1–Ş10, C1–C18); SPEC-API-0001 v1.0.0 §1 (A1–A8, B1–B6, A3b issuerId from leaf cert); SPEC-CRED-0003 (status claim); schema-catalog (vct URN, W3C SRI integrity string, catalogue.json); conformance/vectors/sd-jwt/diploma-basic.json (vector v2, fake person data; issuer URL replaced with an example path); live catalogue entry for urn:tamga:edu:DiplomaCredential:1 (content_hash = vector vct#integrity, checked 2026-10-08). RFC 9901 (Nov 2025); draft-ietf-oauth-sd-jwt-vc-19 (31 Aug 2026, IESG evaluation; iat may be disclosable, vct#integrity optional, status JWT list). HAIP 1.0 Final §6 (x5c, KB-JWT always with holder binding). -->
 
-SD-JWT VC beriji tarapyndan gol çekilen JWT bolup, onda meýdan bahalarynyň ýerine duzly (salted) SHA-256 heşleri, ýanynda bolsa `~` bilen birleşdirilip iberilýän **disclosure-laryň** (duzly bahalaryň özleriniň) sanawy bar. Eýesi meýdany onuň disclosure-yny iberip açýar we disclosure-y goşman gizleýär, eýesiniň enjam açary bilen gol çekilen **KB-JWT** bolsa her görkezişi tamamlaýar.
+SD-JWT VC guramanyň gol çeken JWT-sidir we meýdan bahalarynyň deregine olaryň duzlanan SHA-256 heşlerini göterýär. JWT-niň ýanynda `~` belgisi bilen birleşdirilen **disclosure**-lar gelýär. Disclosure-lar duzlanan bahalaryň özüdir. Resminama eýesi meýdany görkezmek isläninde şol meýdanyň disclosure-ny iberýär, gizlemek isläninde ibermeýär. Her görkezişiň soňuna resminama eýesiniň enjam açary bilen gol çeken **KB-JWT**-si goşulýar.
 
-Iki standart gatnaşýar. **SD-JWT** mehanizmdir, ony IETF 2025-nji ýylyň noýabrynda RFC 9901 hökmünde çap etdi. **SD-JWT VC** onuň üstündäki resminama profilidir, `draft-ietf-oauth-sd-jwt-vc`; 19-njy wersiýa (2026-njy ýylyň 31-nji awgusty) IESG bahalandyrmasynda. Tamga-nyň baýt derejesindäki profili [SPEC-CRED-0002](https://docs.tamga.network/specifications/sd-jwt-vc).
+Bu ýerde iki standart bar. **SD-JWT** usulyň özüdir we IETF ony 2025-nji ýylyň noýabrynda RFC 9901 hökmünde çap etdi. **SD-JWT VC** bolsa munuň üstünde gurlan resminama profilidir (`draft-ietf-oauth-sd-jwt-vc`) we onuň 19-njy wersiýasy (2026-njy ýylyň 31-nji awgusty) IESG bahalandyrmasynda. Tamga-nyň baýt derejesindäki profili [SPEC-CRED-0002](https://docs.tamga.network/specifications/sd-jwt-vc) resminamasynda ýazylan.
 
-> **Bellik:** Aşakdaky her mysal Tamga-nyň açyk laýyklyk wektory `sd-jwt/diploma-basic`-den alnan (ýasama şahsy maglumatlar, hususy açarlar ýok). Berijiniň salgysyny nusga ýoly bilen çalyşdyk we sertifikatlary gysgaltdyk. Gollar aýryldy, şonuň üçin mysallara ýönekeýleşdirilen diýip garaň.
+> **Bellik:** Aşakdaky mysallaryň hemmesini Tamga-nyň açyk laýyklyk wektory bolan `sd-jwt/diploma-basic`-den aldyk. Wektordaky şahsy maglumatlar galp we onda gizlin açar ýok. Guramanyň salgysyny mysal ýol bilen çalşyrdyk we sertifikatlary gysgaltdyk. Gollar görkezilmeýändigi üçin mysallary ýönekeýleşdirilen hasaplaň.
 
-## Beriji hakykatdan nämä gol çekýär?
+## Gurama hakykatda nämä gol çekýär?
 
-Beriji tarapyndan gol çekilen JWT-niň adaty JOSE başlygy we gizlenip bilinýän meýdanlary heşler bilen çalşyrylan mazmuny (payload) bar:
+Gol çekilen JWT-niň adaty JOSE başlygy we mazmuny bolýar. Mazmunda gizlenip bilinýän meýdanlaryň ýerinde olaryň heşleri durýar:
 
 ```json title="Ýönekeýleşdirilen mysal: beriji tarapyndan gol çekilen JWT-niň başlygy we mazmuny"
 {
@@ -56,27 +56,27 @@ Beriji tarapyndan gol çekilen JWT-niň adaty JOSE başlygy we gizlenip biliný�
 }
 ```
 
-Açyk duran meýdanlar barlaýja başga zatlary okamazdan öň gerek bolanlardyr. Tamga-da olar görnüş metamaglumatlarynda `sd: "never"` diýlip bellenýär we olary hiç haçan gizläp bolmaýar:
+Açyk galýan meýdanlar barlaýjynyň başga bir zady okap bilmegi üçin ilki bilmeli meýdanlarydyr. Tamga-da bu meýdanlar görnüş metamaglumatynda `sd: "never"` hökmünde bellenýär we hiç haçan gizlenip bilinmeýär:
 
-| Meýdan | Näme üçin görünýän galýar |
+| Meýdan | Näme üçin açyk galýar |
 |---|---|
-| `iss` | hasaba alnan beriji bilen gabatlygy barlamak |
-| `vct`, `vct#integrity` | görnüşi kesgitlemek we berkitmek |
-| `iat` | ynam barlaglary şu wagta baglanýar |
-| `cnf` | KB-JWT-ni barlamak üçin gerek |
-| `status` | ýatyrylyşy gözlemek |
-| `_sd_alg`, `_sd` | mehanizmiň özi |
+| `iss` | hasaba alnan gurama bilen gabat gelşini barlamak üçin |
+| `vct`, `vct#integrity` | görnüşi kesgitlemek we berkitmek üçin |
+| `iat` | ynam barlaglary şu pursata görä geçirilýändigi üçin |
+| `cnf` | KB-JWT-ni barlamak üçin |
+| `status` | ýatyrylyş ýagdaýyny soramak üçin |
+| `_sd_alg`, `_sd` | usulyň özi bolandyklary üçin |
 | `exp` | görnüşde bar bolsa |
 
-19-njy taslama berijä `iat`-y saýlap açylýan etmäge rugsat berýär. Tamga ony görünýän saklaýar, sebäbi barlaýjy ynam gatlagyndan "bu beriji şu görnüşi bermäge şu gün rugsatlymy" däl-de, "bu beriji şu görnüşi `iat` **wagtynda** bermäge rugsatlymydy?" diýip soraýar.
+19-njy taslama guramanyň `iat` meýdanyny hem saýlap açylýan etmegine rugsat berýär. Tamga bu meýdany açyk saklaýar, sebäbi barlaýjy ynam gatlagyndan guramanyň bu görnüşi şu gün berip bilýändigini däl-de, `iat` pursatynda berip bilendigini soraýar.
 
-Başlyk berijiniň sertifikat zynjyryny `x5c` içinde, ilki ýaprak (leaf), köksüz göterýär. HAIP 1.0 açary `x5c` arkaly kesgitlemegi talap edýär, Tamga bolsa `x5c`-ni hökmany edýär. Barlaýjy berijiniň şahsyýetini hiç haçan `iss`-den däl, **ýaprak sertifikatyň barmak yzyndan** alýar. Eger ol `iss`-e ynansa, şol bir kök astynda dogry sertifikaty bolan islendik gurama `iss`-e başga uniwersitetiň salgysyny ýazyp, öz açary bilen gol çekip bilerdi.
+Başlykdaky `x5c` meýdany guramanyň sertifikat zynjyryny göterýär. Zynjyrda ilki ýaprak sertifikat gelýär, kök sertifikat bolsa goşulmaýar. HAIP 1.0 açaryň `x5c` arkaly tapylmagyny hökmany edýär we Tamga-da `x5c` bolmadyk resminama barlagdan geçmeýär. Barlaýjy guramanyň şahsyýetini `iss` meýdanyndan däl-de, **ýaprak sertifikatyň barmak yzyndan** alýar. `iss` meýdanyna ynansa, şol bir kök astynda güýjünde sertifikaty bolan islendik gurama `iss` meýdanyna başga uniwersitetiň salgysyny ýazyp, resminama öz açary bilen gol çekip bilerdi.
 
-`typ` `dc+sd-jwt`. Taslama 2024-nji ýylyň noýabryna çenli `vc+sd-jwt` ulanýardy we W3C media görnüşi bilen çaknyşmazlyk üçin ony üýtgetdi. Tamga berijileri diňe `dc+sd-jwt` döredýär, barlaýjy bolsa daşarky resminamalar üçin gabatlyk baýdagy açylmasa (adatça ýapyk) `vc+sd-jwt`-ni ret edýär.
+`typ` bahasy `dc+sd-jwt`. Taslama 2024-nji ýylyň noýabryna çenli `vc+sd-jwt` ulanýardy we bu baha W3C media görnüşi bilen çaknyşmazlygy üçin üýtgedildi. Tamga guramalary diňe `dc+sd-jwt` döredýär we barlaýjy `vc+sd-jwt` bahasyny ret edýär. Daşarky ekoulgamlardan gelýän resminamalar üçin laýyklyk saýlawy bar, ýöne bu saýlaw adaty ýagdaýda öçük.
 
-## Disclosure nähili gurulýar we näme üçin setiriň heşini almaly?
+## Disclosure nähili gurulýar we näme üçin setiriň heşi alynýar?
 
-Disclosure üç elementli JSON toplumydyr `[salt, name, value]`, UTF-8 bilen kodlanýar, soňra doldurgyçsyz base64url bilen kodlanýar. Duz (salt) 16 tötänleýin baýt (128 bit), her disclosure üçin täze. Ine wektoryň görkezişindäki dört disclosure:
+Disclosure `[duz, at, baha]` görnüşindäki üç elementli JSON massiwidir. Massiw UTF-8 bilen, soňra bolsa doldurmasyz base64url bilen kodlanýar. Duz 16 tötänleýin baýtdan (128 bit) ybarat we her disclosure üçin täzeden döredilýär. Wektordaky görkezişde şu dört disclosure bar:
 
 ```text title="Laýyklyk wektoryndan disclosure-lar, açylan görnüşde, heşleri bilen"
 WyJJY3NEZDFmdmh6bS1mcVpTNDJLb1p3IiwiZXFmX2xldmVsIiw2XQ
@@ -96,25 +96,25 @@ WyJjazFtMktWejdVWEg2cTlMNEJad1BRIiwiZ2l2ZW5fbmFtZSIsIlZla3TDtnIiXQ
   → sHl3d9xOXRVt7kU78VQvmAjq4kZzrWjyyJV1sBfRA1M
 ```
 
-Heş `base64url(SHA-256(disclosure setiriniň ASCII baýtlary))`-dyr. Ýokarky dört heşiň her biri mazmunyň `_sd` toplumynda bar.
+Heş `base64url(SHA-256(disclosure setiriniň ASCII baýtlary))` formulasy bilen hasaplanýar. Ýokardaky dört heşiň hemmesi mazmundaky `_sd` massiwinde bar.
 
-SD-JWT kodunda iň köp duş gelýän ýalňyşlyk disclosure-y açmak, toplumy täzeden serializasiýa etmek we netijäniň heşini almakdyr. JSON serializasiýasy kesgitli däl: otudan soňky boşluk ýa-da `ö`-niň `\u00f6` görnüşinde ýazylmagy başga baýtlar we başga heş berýär. Tamga-nyň spesifikasiýasy muny `given_name: "Ayşe"` üçin disclosure bilen görkezýär: boşluklarsyz ýa-da escape-siz täzeden serializasiýa etmek `nM_EESmLJt3b0fzNu1paGyiAfSLs4Npf2yEjUn0upSo`-y `c94D71JDfX8hzanT-ZpRWBn5oNX_RkStfSfkvTmY_kU`-a öwürýär. Barlaýjylar üçin düzgün ýönekeý: **setiriň heşini alnyşy ýaly alyň, soňra ony açyň.** Hiç haçan tersine däl.
+SD-JWT kodunda iň köp duş gelýän ýalňyşlyk disclosure-ny açyp, massiwi täzeden JSON-a öwürmek we soňra onuň heşini almakdyr. JSON-yň ýazylyşy ýeke-täk görnüşli däl. Otudan soň boşluk goýmak ýa-da `ö` harpyny `ö` görnüşinde ýazmak başga baýtlary we şonuň üçin başga heşi döredýär. Tamga-nyň spesifikasiýasy muny `given_name: "Ayşe"` üçin gurlan disclosure arkaly görkezýär. Massiw boşluksyz we gaçyş nyşanlarysyz täzeden ýazylanda `nM_EESmLJt3b0fzNu1paGyiAfSLs4Npf2yEjUn0upSo` heşi `c94D71JDfX8hzanT-ZpRWBn5oNX_RkStfSfkvTmY_kU` bolýar. Barlaýjylar üçin düzgün ýönekeý: **ilki setiriň heşini gelşi ýaly alyň, soňra setiri açyň.** Bu tertip hiç haçan tersine öwrülmeýär.
 
 ![Meýdandan gol çekilen mazmundaky heşe çenli dört ädim](/blog/sd-jwt-vc-deep-dive/en/fig-disclosure.png)
 
-## Näme üçin `_sd` toplumy tertiplenen we näme üçin ýalan heşler ýok?
+## Näme üçin `_sd` massiwi tertiplenýär we näme üçin galp heşler ýok?
 
-Tamga `_sd`-ni baýtlaryň ösýän tertibinde tertipleýär. Tertiplenmedik ýagdaýynda heşler berijiniň meýdanlary işlän tertibinde, köplenç shema boýunça durardy. Şonda barlaýjy gizlin heşleri shemanyň meýdan sanawy bilen deňeşdirip, haýsy meýdanlaryň saklanandygyny bilip bilerdi.
+Tamga `_sd` massiwini artýan baýt tertibinde düzýär. Massiw tertiplenmedik bolsa, heşler guramanyň meýdanlary işleýän tertibinde durardy we bu tertip köplenç shemadaky tertipdir. Barlaýjy hem gizlin heşleri shemadaky meýdan sanawy bilen ýanaşyk goýup, haýsy meýdanlaryň gizlenendigini anyklap bilerdi.
 
-RFC 9901 näçe meýdanyň gizlenendigini bulanyklaşdyrmak üçin hiç bir disclosure-a gabat gelmeýän ýalan ýazgylar bolan **ýalan heşlere (decoy digest)** hem rugsat berýär. Tamga olary gadagan edýär. `vct` açyk we görnüş metamaglumatlary her meýdany sanaýar, şonuň üçin san her niçigem bolsa açyk. Berijileriň arasynda ýalan heşleriň dürli sany özi barmak yzyna öwrülerdi we her ýalan heş QR koduna 43 nyşan goşýar. Hakyky gapdal kanal üýtgeýän disclosure toplumydyr, şonuň üçin Tamga-nyň gapjyk düzgünleri toruň gapjyklaryndan munuň ýerine toplumy her barlaýjy we görnüş üçin durnukly saklamagy talap edýär.
+RFC 9901 näçe meýdanyň gizlenendigini bulaşdyrmak üçin **galp heşleri** (decoy) goşmaga hem rugsat berýär. Bular hiç bir disclosure-a gabat gelmeýän ýazgylardyr. Tamga bolsa galp heşleri gadagan edýär. `vct` açyk we görnüş metamaglumaty ähli meýdanlary sanaýar, ýagny meýdanlaryň sany eýýäm hemmä belli. Guramadan gurama üýtgeýän galp heş sany hem öz-özünden barmak yzyna öwrülerdi. Mundan başga-da, her galp heş QR koduna 43 nyşan goşýar. Hakyky maglumat syzmasy görkezilýän disclosure toplumynyň üýtgemeginden ýüze çykýar. Şonuň üçin Tamga-nyň gapjyk düzgünleri tordaky gapjyklaryň şol bir barlaýja şol bir görnüş üçin her gezek şol bir toplumy görkezmegini talap edýär.
 
-Profiliň ýene iki çägi: içki saýlap açmak iki dereje bilen çäklendirilen we toplumyň aýry elementlerini gizlemek entek ulanylmaýar.
+Profilde ýene iki çäk bar. Içleýin saýlap açmak iň köp iki derejä rugsat berýär, massiw elementlerini aýratynlykda gizlemek bolsa häzirlikçe ulanylmaýar.
 
 ## Eýesine baglamak nähili işleýär we KB-JWT nämä gol çekýär?
 
-`cnf.jwk` resminama berlende telefonyň howpsuz enjamynda döredilen P-256 açarynyň açyk ýarysydyr (beriji ony gapjygyň açar subutnamasyndan göçürýär; [OpenID4VCI-a çuňňur seredilişi](/blog/openid4vci-deep-dive) ýazgysyna serediň). Hususy ýarysy hiç haçan enjamdan çykmaýar. Tamga-da `cnf`-siz resminama nädogry, KB-JWT-siz görkeziş hem şeýle. Standart açara baglamagy hökmany etmeýär; HAIP resminamada eýesine baglylyk bar wagty KB-JWT-ni talap edýär, Tamga bolsa her resminamany baglaýar.
+`cnf.jwk` resminama berlende telefonyň howpsuz enjam modulynda döredilýän P-256 açarynyň açyk ýarysydyr. Gurama bu açary gapjygyň iberen eýeçilik subutnamasyndan göçürýär ([OpenID4VCI-a çuňňur seredilişi](/blog/openid4vci-deep-dive)). Açaryň gizlin ýarysy enjamdan hiç haçan çykmaýar. Tamga-da `cnf` bolmadyk resminama hem, KB-JWT bolmadyk görkeziş hem güýjünde däl. Standart açara baglamagy islege goýýar. HAIP bolsa resminama enjama bagly bolsa her görkezişde KB-JWT talap edýär we Tamga her resminamany enjama baglaýar.
 
-Görkeziş wagtynda gapjyk diňe barlaýjynyň soran we adamyň tassyklan disclosure-laryny saklaýar, soňra KB-JWT goşýar:
+Görkeziş wagtynda gapjyk diňe barlaýjynyň soran we adamyň tassyklan disclosure-laryny galdyrýar we soňuna KB-JWT goşýar:
 
 ![Gapjykda näme saklanýar we barlaýja näme iberilýär](/blog/sd-jwt-vc-deep-dive/en/fig-anatomy.png)
 
@@ -128,9 +128,9 @@ Görkeziş wagtynda gapjyk diňe barlaýjynyň soran we adamyň tassyklan disclo
 }
 ```
 
-`nonce` barlaýjynyň bir gezeklik çagyryşydyr, şonuň üçin ýazgy edilen görkezişi gaýtadan ulanyp bolmaýar. `aud` barlaýjynyň öňki goşulmasy bilen **doly** müşderi belgisidir (client identifier); OpenID4VP arkaly ol `x509_hash:` we onuň giriş sertifikatynyň barmak yzydyr ([OpenID4VP we DCQL-a çuňňur seredilişi](/blog/openid4vp-dcql-deep-dive)). `iat` barlaýjynyň sagadyndan 300 sekundyň içinde bolmaly.
+`nonce` barlaýjynyň diňe bir gezek ulanylyp bilinýän çagyryş bahasydyr. Şonuň netijesinde ýazga alnan görkezişi gaýtadan ulanyp bolmaýar. `aud` barlaýjynyň prefiksi bilen bilelikde **doly** müşderi belgisidir. OpenID4VP-de bu baha `x509_hash:` prefiksinden we barlaýjynyň giriş sertifikatynyň barmak yzyndan ybarat ([OpenID4VP we DCQL-a çuňňur seredilişi](/blog/openid4vp-dcql-deep-dive)). `iat` bolsa barlaýjynyň sagadyndan iň köp 300 sekunt tapawutly bolup biler.
 
-`sd_hash` araçynyň disclosure-y pozmagynyň öňüni alýan zatdyr:
+Aradaky biriniň disclosure-ny pozmagynyň öňüni `sd_hash` alýar:
 
 ```text title="sd_hash-a näme girýär"
 sd_hash = base64url( SHA-256( ASCII bytes of
@@ -138,77 +138,77 @@ sd_hash = base64url( SHA-256( ASCII bytes of
 ))
 ```
 
-Diňe görkezilen disclosure-lar goşulýar we soňky `~` hem girişiň bir bölegi. `sd_hash` bolmasa, kimdir biri diplom görkezişinden `grade` disclosure-yny aýryp biler we iki gol hem barlagdan geçerdi.
+Hasaba diňe görkezilen disclosure-lar girýär we soňundaky `~` hem hasaba goşulýar. `sd_hash` bolmasa, kimdir biri diplom görkezişinden `grade` disclosure-ny aýryp bilerdi we iki gol hem ýene güýjünde görnerdi.
 
-Gerimi ýatlatmak: dogry KB-JWT resminama baglanan açary dolandyrýandygyňy subut edýär. Ol telefony haýsy adamyň saklaýandygyny subut etmeýär.
+Bu usulyň gerimini hem ýatladalyň. Güýjündäki KB-JWT resminama bagly açaryň elde saklanýandygyny subut edýär. Telefony haýsy adamyň tutýandygyny bolsa subut etmeýär.
 
 ## `vct` we `vct#integrity` näme üçin gerek?
 
-`vct` resminama görnüşini atlandyrýar. Tamga `urn:tamga:<domain>:<Type>:<major>` görnüşindäki URN-leri ulanýar, şeýlelikde domen ady üýtgese hem belgi üýtgemeýär. Görnüş metamaglumat resminamasy açyk katalogyň URN-den gabatlaşdyrýan HTTPS salgysynda ýerleşýär; 19-njy taslama muny "sanawdan (registry)" kesgitlemek diýip atlandyrýar (§5.3.2). Diplom üçin `https://schemas.tamga.network/v1/catalogue.json` `urn:tamga:edu:DiplomaCredential:1`-i onuň metamaglumat faýlyna we wektordaky `vct#integrity` bilen birmeňzeş setir bolan `sha256-Vu/H8v+3kpCQBmre8A8It13M6+pUpUqcLc08P57aKKw=` mazmun heşine gabatlaşdyrýar.
+`vct` resminamanyň görnüşini atlandyrýar. Tamga munuň üçin `urn:tamga:<ugur>:<Görnüş>:<esasy wersiýa>` görnüşli URN-leri ulanýar. Şeýlelikde domen ady üýtgese-de, görnüşiň belgisi üýtgemeýär. Görnüş metamaglumaty (Type Metadata) açyk katalogyň URN-den gabat getirýän HTTPS salgysynda ýerleşýär. 19-njy taslama bu usuly "sanawdan kesgitlemek" diýip atlandyrýar (§5.3.2). Diplom üçin `https://schemas.tamga.network/v1/catalogue.json` `urn:tamga:edu:DiplomaCredential:1` görnüşini metamaglumat faýlyna we `sha256-Vu/H8v+3kpCQBmre8A8It13M6+pUpUqcLc08P57aKKw=` mazmun heşine gabat getirýär. Bu baha wektordaky `vct#integrity` meýdany bilen şol bir setirdir.
 
-Bitewilik (integrity) bahasy W3C Subresource Integrity formatyny ulanýar: `sha256-` we ondan soň resminamanyň çig baýtlarynyň base64 SHA-256-sy. Çap edilen faýl baýtma-baýt birmeňzeş galmaly; hiç bir proksi ony täzeden formatlap bilmez. Standart `vct#integrity`-ni hökmany etmeýär. Tamga ony hökmany edýär, şeýlelikde barlaýja hiç haçan berijiniň gol çekende esaslanan görnüş kesgitlemesinden başga kesgitleme berlip bilinmez. Görnüş metamaglumatlary her meýdanyň `sd` syýasatynyň (`always`, `allowed`, `never`) ýazylýan ýeri hem bolup, Tamga berijileri gizlenmäge rugsat berlen her meýdany gizleýär.
+Bitewilik bahasy W3C Subresource Integrity formatyny ulanýar. Baha `sha256-` prefiksi bilen başlaýar we resminamanyň çig baýtlarynyň base64 görnüşindäki SHA-256 heşi bilen dowam edýär. Şonuň üçin çap edilen faýl baýtma-baýt üýtgewsiz galmaly we hiç bir aralyk serwer ony täzeden formatlap bilmez. Standart `vct#integrity` meýdanyny islege goýýar, Tamga bolsa hökmany edýär. Şeýlelikde barlaýja guramanyň resminama gol çekende daýanan kesgitlemesinden başga görnüş kesgitlemesi berlip bilinmeýär. Her meýdanyň `sd` syýasaty (`always`, `allowed`, `never`) hem görnüş metamaglumatynda ýazylýar we Tamga guramalary gizlenmegine rugsat berlen her meýdany gizleýär.
 
 ## `status` meýdany nämä salgylanýar?
 
-`status.status_list` indeksi (`idx`) we Token Status List-iň URI-sini saklaýar. Barlaýjy şol indeksdäki ýazgyny öňünden alan gol çekilen, gysylan sanawyndan okaýar: `0` güýjünde, `1` ýatyrylan we diňe shemasy togtatmaga rugsat berýän görnüşler üçin `2` togtadylan; `3` ulanylmaýar we ýatyrylan hasaplanýar. Tamga indeksleri tötänleýin paýlaýar, sanaw URI-lerini açyk däl görnüşde saklaýar we barlaýjylardan sanawlary tertip boýunça öňünden almagy garaşýar, şeýlelikde beriji resminamanyň haçan barlanýandygyny hiç haçan bilmeýär. 19-njy taslama salgylanýan ýagdaý sanawynyň JWT görnüşinde bolmagyny talap edýär. Mehanizm we gizlinlik düzgünleri [HAIP we Token Status List](/blog/haip-and-token-status-list) ýazgysynda.
+`status.status_list` indeksi (`idx`) we Token Status List salgysyny göterýär. Barlaýjy öňünden ýükläp alan gol çekilen we gysylan sanawynda şol indeksdäki bahany okaýar. `0` güýjünde, `1` ýatyrylan diýmegi aňladýar. Shemasy togtatmaga rugsat berýän görnüşlerde `2` togtadylan diýmekdir. `3` bolsa ulanylmaýar we ýatyrylan hökmünde bahalandyrylýar. Tamga indeksleri tötänleýin paýlaýar, sanaw salgylaryny manysyz setirlerden döredýär we barlaýjylaryň sanawlary belli aralyklarda öňünden ýüklemegini talap edýär. Şeýlelikde gurama resminamanyň haçan barlanandygyny hiç haçan bilip bilmeýär. 19-njy taslama salgylanylýan ýagdaý sanawynyň JWT görnüşinde bolmagyny talap edýär. Işleýiş tertibini we gizlinlik düzgünlerini [HAIP we Token Status List](/blog/haip-and-token-status-list) ýazgysynda düşündirdik.
 
 ## Barlaýjy SD-JWT VC-ni haýsy tertipde barlamaly?
 
-Tamga her barlag ädimine hemişelik kod berýär we onuň barlaýjysy ilkinji şowsuz kody `failed_step` hökmünde gaýtarýar. Format gatlagy ilki işleýär:
+Tamga her barlag ädimine hemişelik kod berýär we barlaýjy ilkinji şowsuz ädimiň koduny `failed_step` meýdanynda gaýtarýar. Ilki işleýän gatlak format gatlagydyr:
 
 | Kod | Barlag |
 |---|---|
-| A1 | `~` boýunça bölmek; soňky bölek boş däl-de KB-JWT bolmaly |
+| A1 | `~` boýunça böl; soňky bölek boş bolmaly däl, KB-JWT bolmaly |
 | A2 | başlyk: `alg` = `ES256`, `typ` = `dc+sd-jwt`, `x5c` bar |
-| A3 | sanawdaky köke zynjyr, aralykdakylar CA, JWT goly dogry |
-| A3b | berijiniň şahsyýeti `iss`-den däl, ýaprak sertifikatyň barmak yzyndan |
+| A3 | zynjyr sanawdaky köküň birine ýetýär, aralyk sertifikatlar CA, JWT goly güýjünde |
+| A3b | guramanyň şahsyýeti `iss` meýdanyndan däl-de, ýaprak sertifikatyň barmak yzyndan alynýar |
 | A3c | ýaprak sertifikat ýatyrylmadyk |
 | A3d | `cnf` bar |
 | A4 | `_sd_alg` = `sha-256` |
-| A5 | her disclosure: setiriň heşini al, ony `_sd`-de tap, soňra aç |
+| A5 | her disclosure üçin ilki setiriň heşini al, `_sd` içinde tap, soňra aç |
 | A6 | KB-JWT: `cnf` bilen gol, `aud`, `nonce`, ±300 s içinde `iat`, `sd_hash` |
-| A7 | `exp` geçmedik, `nbf` gelen |
-| A8 | hiç bir heş iki gezek talap edilmedik, hiç bir disclosure görünýän meýdanyň üstünden ýazmaýar |
+| A7 | `exp` geçmedik, `nbf` wagty geldi |
+| A8 | şol bir heş iki gezek ulanylmadyk, açyk meýdanyň üstüne ýazýan disclosure ýok |
 
-Olaryň ikisine ýene bir gezek seretmek gerek. A5 heşi `_sd`-de bolmadyk islendik disclosure-y ret edýär, sebäbi ony kabul etmek islendik adama berijiniň hiç haçan gol çekmedik meýdanlaryny goşmaga mümkinçilik bererdi. A8, mysal üçin, `iss` ýa-da `vct` atly disclosure-y ret edýär, sebäbi ol görünýän meýdanyň üstünden ýazardy.
+Bulardan ikisi aýratyn düşündirmäge mynasyp. A5 heşi `_sd` içinde bolmadyk her disclosure-ny ret edýär. Ony kabul etse, her kim guramanyň hiç haçan gol çekmedik meýdanlaryny resminama goşup bilerdi. A8 bolsa ady, mysal üçin, `iss` ýa-da `vct` bolan disclosure-ny ret edýär, sebäbi şeýle disclosure açyk meýdanyň üstüne ýazardy.
 
-Format gatlagyndan soň shema barlaglary (B1–B6: `vct`-ni kesgitlemek, bitewilik heşini katalog bilen deňeşdirmek, `extends`-e eýermek), gol çekilen ynam sanawyna garşy ynam barlaglary (C1–C4: beriji `iat` wagtynda sanawdamydy we şu görnüş üçin ygtyýarlymydy), ýatyrylyş (D1–D6) we barlaýjynyň öz syýasaty (E1–E4) gelýär. Netijäniň üç bahasy bar: kabul edildi, ret edildi ýa-da ýagdaý sanawy ýaly infrastruktura ýetip bolmasa kesgitsiz. "Häzir barlap bilemok" hiç haçan "nädogry" diýlip habar berilmeýär. Doly sanaw [barlag hatarynda](https://docs.tamga.network/specifications/verification-api).
+Format gatlagyndan soň shema barlaglary gelýär (B1–B6). Bu ädimlerde `vct` kesgitlenýär, bitewilik heşi katalog bilen deňeşdirilýär we `extends` zynjyry yzarlanýar. Soňra gol çekilen ynam sanawyna garşy ynam barlaglary (C1–C4) geçirilýär we guramanyň `iat` pursatynda sanawda bolandygyna we bu görnüş üçin ygtyýarlydygyna seredilýär. Ondan soň ýatyrylyş barlagy (D1–D6) we barlaýjynyň öz syýasaty (E1–E4) işleýär. Netije üç bahanyň biri bolýar. Resminama kabul edilýär, ret edilýär ýa-da ýagdaý sanawy ýaly infrastruktura baryp bolmasa "häzir barlap bolmady" netijesi berilýär. "Häzir barlap bilemok" ýagdaýy hiç haçan "güýjünde däl" diýlip habar berilmeýär. Kodlaryň doly sanawyny [barlag tertibi](https://docs.tamga.network/specifications/verification-api) resminamasynda tapyp bilersiňiz.
 
-Bularyň ählisini biziň ulanýan şol bir baýtlarymyza garşy işledip bilersiňiz: wektor, onuň bäş negatiw ýagdaýy (KB-JWT ýok, nädogry nonce, 301 sekunt tapawutly `iat`, gabat gelmeýän disclosure, möhleti geçen resminama) we işlediji açyk ammaryň [conformance bukjasynda](https://github.com/tamga-network/tamga-network/tree/main/conformance).
+Bu barlaglaryň hemmesini biziň ulanýan baýtlarymyz bilen özüňiz işledip bilersiňiz. Wektor, bäş ýaramaz ýagdaý we olary işledýän programma açyk ammaryň [conformance bukjasynda](https://github.com/tamga-network/tamga-network/tree/main/conformance) dur. Ýaramaz ýagdaýlar KB-JWT-niň ýoklugy, nädogry nonce, `iat` bahasynyň 301 sekunt süýşmegi, gabat gelmeýän disclosure we möhleti geçen resminamadyr.
 
 ## Tamga profili standart bilen deňeşdirilende näme üýtgedýär?
 
-| Tema | Standart | Tamga |
+| Mowzuk | Standart | Tamga |
 |---|---|---|
 | Gol | birnäçe algoritm | diňe ES256 |
-| `_sd_alg` | birnäçe | `sha-256`, aç-açan ýazylan |
-| `typ` | `dc+sd-jwt` | `dc+sd-jwt`; `vc+sd-jwt` adatça ret edilýär |
-| Beriji açary | `iss` metamaglumatlary, `x5c` ýa-da başga | `x5c` hökmany, kök goşulmaýar |
-| Açara baglamak | hökmany däl | her resminama üçin hökmany |
-| Ýalan heşler | rugsat berilýär | gadagan |
+| `_sd_alg` | birnäçe saýlaw | `sha-256`, aç-açan ýazylýar |
+| `typ` | `dc+sd-jwt` | `dc+sd-jwt`; `vc+sd-jwt` adaty ýagdaýda ret edilýär |
+| Guramanyň açary | `iss` metamaglumaty, `x5c` ýa-da başga ýol | `x5c` hökmany, kök sertifikat goşulmaýar |
+| Açara baglamak | islege bagly | her resminamada hökmany |
+| Galp heşler | rugsat berilýär | gadagan |
 | `_sd` tertibi | kesgitlenmedik | tertiplenen |
-| `vct#integrity` | hökmany däl | hökmany |
-| Içki disclosure | rugsat berilýär | iň köp iki dereje |
+| `vct#integrity` | islege bagly | hökmany |
+| Içleýin disclosure | rugsat berilýär | iň köp iki dereje |
 
-Galan hemme zat RFC 9901-e we 19-njy taslama eýerýär we Tamga barlaýjysy Tamga-nyň öz berijisinden başgaça serializasiýa edilen disclosure-lary hem barlaýar, sebäbi ol toplumlaryň däl, setirleriň heşini alýar.
+Bulardan başga ähli meselede Tamga RFC 9901-e we 19-njy taslama eýerýär. Tamga barlaýjysy Tamga-nyň öz guramalaryndan tapawutly görnüşde ýazylan disclosure-lary hem barlap bilýär, sebäbi massiwleriň däl-de, setirleriň heşini alýar.
 
 ## Köp berilýän soraglar
 
-### Tamga resminamalaryny barlamak üçin umumy SD-JWT kitaphanasyny ulanyp bolýarmy?
+### Tamga resminamalaryny umumy SD-JWT kitaphanasy bilen barlap bilerinmi?
 
-Hawa, eger ol disclosure setirleriniň heşini alnyşy ýaly alýan bolsa we açara baglamagy talap etmäge mümkinçilik berýän bolsa. Onuň üstüne Tamga-nyň profil barlaglaryny goşuň: diňe ES256, sanawdaky köke `x5c` zynjyry, ýaprak sertifikatdan berijiniň şahsyýeti, hökmany KB-JWT we `vct#integrity`. `@tamga-network/sd-jwt` we `@tamga-network/verifier` paketleri bularyň ählisini edýär.
+Kitaphana disclosure setirleriniň heşini gelşi ýaly alýan bolsa we açara baglamagy hökmany etmäge mümkinçilik berýän bolsa, barlap bilersiňiz. Munuň üstüne Tamga profiliniň barlaglaryny hem goşmaly. Diňe ES256 kabul edilmeli, `x5c` zynjyry sanawdaky köküň birine ýetmeli, guramanyň şahsyýeti ýaprak sertifikatdan alynmaly, KB-JWT we `vct#integrity` hem hökmany bolmaly. `@tamga-network/sd-jwt` we `@tamga-network/verifier` paketleri bularyň hemmesini edýär.
 
 ### Näme üçin `aud` diňe host ady däl-de, doly müşderi belgisi?
 
-Sebäbi gapjygyň barlan zady müşderi belgisidir. OpenID4VP arkaly barlaýjy `x509_hash:` we onuň sertifikat barmak yzy bilen tanalýar we KB-JWT-ni takyk şol baha baglamak görkezişiň başga hiç kime peýdasynyň ýokdugyny aňladýar.
+Gapjygyň barlan bahasy müşderi belgisidir. OpenID4VP-de barlaýjy `x509_hash:` prefiksi we sertifikatynyň barmak yzy bilen tanalýar. KB-JWT-ni edil şu baha baglamak görkezişi başga her kim üçin peýdasyz edýär.
 
-### Meýdany gizlemek berijiniň goluny üýtgedýärmi?
+### Meýdany gizlemek guramanyň goluny üýtgedýärmi?
 
-Ýok. Gizlemek disclosure-y `~` bilen birleşdirilen setirden aýyrmagy aňladýar. Gol çekilen JWT-ä hiç haçan täzeden gol çekilmeýär we ol üýtgedilmeýär.
+Ýok. Meýdany gizlemek şol meýdanyň disclosure-ny `~` bilen birleşdirilen setirden aýyrmak diýmekdir. Gol çekilen JWT hiç haçan täzeden gol çekilmeýär we üýtgedilmeýär.
 
-### Näme üçin 128 bitlik duzlar?
+### Näme üçin 128 bitlik duz ulanylýar?
 
-Doglan senesi ýaly entropiýasy pes bahanyň heşini başga ýagdaýda her mümkin seneni synap tapyp bolardy. Her disclosure üçin täze 16 baýtlyk duz muny mümkin däl edýär we şol bir meýdanyň iki resminamada şol bir heşi bermeginiň hem öňüni alýar.
+Duz bolmasa, doglan senesi ýaly mümkin bahalary az bolan meýdanyň heşini ähli mümkin seneleri synap tapyp bolardy. Her disclosure üçin täzeden döredilýän 16 baýtlyk duz muny amalda mümkin däl edýär. Şol bir meýdanyň iki dürli resminamada şol bir heşi döretmeginiň hem öňüni alýar.
 
 ## Çeşmeler
 

@@ -31,7 +31,7 @@ export function LogoMark({ size = 28, className, mono = false }: { size?: number
 /** Başlıktaki logotip. */
 export function Logo() {
   return (
-    <Link href="/" className="group flex items-center gap-2.5" aria-label="Tamga Network — ana sayfa">
+    <Link href="/" className="group flex items-center gap-2.5" aria-label="Tamga Network ana sayfa">
       <LogoMark size={30} className="transition-transform duration-300 group-hover:-translate-y-0.5" />
       <span className="font-serif text-[1.08rem] font-semibold tracking-tight text-foreground">Tamga Network</span>
     </Link>

@@ -1,7 +1,7 @@
 ---
 title: "Saytınıza və ya tətbiqinizə \"Tamga ilə yoxla\" əlavə edin"
 slug: add-verification-to-your-site
-description: "Tamga rəqəmsal sənədlərini saytda və ya tətbiqdə yoxlamağın iki yolu: səhifə dəsti ilə host edilən yoxlayan tərəf və ya @tamga-network/verifier ilə öz serveriniz."
+description: "Tamga sənədlərini saytınızda və ya tətbiqinizdə iki yolla yoxlaya bilərsiniz: səhifə dəsti ilə host edilən yoxlayan tərəfdən istifadə edirsiniz və ya yoxlamanı @tamga-network/verifier ilə öz serverinizdə aparırsınız."
 date: 2026-10-08
 lang: az
 category: network
@@ -11,39 +11,39 @@ related: openid4vp-dcql-deep-dive, zero-knowledge-in-tamga, how-trust-lists-work
 
 <!-- Sources: GUIDE-0001 sign-in-with-tamga 1.0.0 (hosted verifier Tamga Verify; RP assertion signed with the access-certificate key, ≤60 s, single use; POST /presentations → presentation_id, qr_payload, expires_at, status_token; page kit tamga-verifier.js, TamgaVerifier.mount, /web subpath; kit does not verify and sees no values; claims given once, 410 on second read, deleted 5 min after the result; 404 for others; pseudonym per site; passkeys; policy names agreed with Tamga; sample site in the sandbox). GUIDE-0002 verify-on-server 1.0.0 (policy → dcqlFromPolicy → createPresentationRequest → decryptResponse → verifyPresentation; three outcomes; checks_performed; nonce single use; ZK: mso_mdoc_zk, WASM ~3 s desktop, native ~0.2–0.3 s, accept_unrevocable_zk, Z1, fallback to mso_mdoc; wallet-side Android prover ready, iOS pending). GUIDE-0008 register-verifier (dns_name, access certificate, scopes, WRPRC, out-of-scope warning, pseudonym not accepted without registration). SPEC-API-0001 §2–§4 (result object, AP2–AP6, policy → DCQL, claims endpoint). Code examples page: packages 0.7.2 test release on npm, stable 1.0.0 when ready. examples/01-web-login/server.ts. Sandbox guide §6 (example verifiers incl. age-zk). External: OpenID4VP 1.0, HAIP 1.0, ISO/IEC 18013-5. -->
 
-Vebsayta və ya tətbiqə "Tamga ilə yoxla" funksiyasını əlavə etməyin iki yolu var. Daha sürətli yol Tamga-nın host etdiyi yoxlayan tərəfdən, yəni Tamga Verify-dan istifadə edir: QR kod və ya "rəqəmsal cüzdanınızda açın" düyməsini göstərən kiçik səhifə dəsti, həmçinin sorğunu açan və təsdiqlənmiş sahələri toplayan iki qısa server endpoint-i əlavə edirsiniz. Digər yolda bütün yoxlama açıq mənbəli `@tamga-network/verifier` paketi ilə sizin öz serverinizdə aparılır: nəyə ehtiyacınız olduğunu siyasətdə (policy) təsvir edirsiniz, imzalanmış OpenID4VP sorğusu göndərirsiniz, rəqəmsal cüzdanın şifrələnmiş cavabını deşifrə edirsiniz və üç nəticədən birini alırsınız. Hər iki halda əvvəlcə yoxlayan tərəf kimi qeydiyyatdan keçirsiniz ki, rəqəmsal cüzdanlar kimin və nə üçün soruşduğunu bilsin.
+Vebsayta və ya tətbiqə "Tamga ilə yoxla" əlavə etməyin iki yolu var. Daha sürətli yolda Tamga-nın host etdiyi yoxlayan tərəfdən, Tamga Verify-dan istifadə edirsiniz. Səhifənizə QR kodu və ya "cüzdanda aç" düyməsini göstərən kiçik səhifə dəsti, serverinizə isə sorğunu açan və təsdiqlənmiş sahələri alan iki qısa endpoint əlavə etmək kifayətdir. Digər yolda bütün yoxlamanı açıq mənbəli `@tamga-network/verifier` paketi ilə öz serverinizdə aparırsınız. Nəyə ehtiyacınız olduğunu siyasətdə (policy) təsvir edir, imzalanmış OpenID4VP sorğusu göndərir, cüzdanın şifrələnmiş cavabını açır və üç nəticədən birini alırsınız. Hansı yolu seçsəniz də, əvvəlcə yoxlayan tərəf kimi qeydiyyatdan keçməlisiniz, çünki cüzdan kimin və hansı məqsədlə soruşduğunu bu qeyddən öyrənir.
 
-> **Qeyd:** `@tamga-network/*` paketləri npm-də 0.7.2 test buraxılışı kimi dərc olunub; sabit 1.0.0 versiyası hər şey hazır olduqda çıxacaq. Test buraxılışlarında API dəyişə bilər. Aşağıdakı kod həmin buraxılışın API-sinə aiddir.
+> **Qeyd:** `@tamga-network/*` paketləri npm-də 0.7.2 test buraxılışı kimi dərc olunur; sabit 1.0.0 versiyası hər şey hazır olanda çıxacaq. Test buraxılışlarında API dəyişə bilər. Aşağıdakı kod həmin buraxılışın API-sindən istifadə edir.
 
-## Kod yazmazdan əvvəl nəyə ehtiyacınız var?
+## Kod yazmazdan əvvəl nə lazımdır?
 
-Etibar siyahısında yoxlayan tərəf qeydi. Sorğu daxil olduqda rəqəmsal cüzdan üç şeyi yoxlayır: sorğunu kimin göndərdiyini, həmin göndərənin qeydiyyatda olub-olmadığını və aktiv olduğunu, habelə istənilən sahələrin qeydiyyatdan keçmiş əhatə dairəsinə daxil olub-olmadığını. Qeydiyyatda olmayan sayt da rəqəmsal cüzdana sorğu göndərə bilir, lakin onun istədiyi hər bir sahə "qeydiyyatdan keçmiş əhatə dairəsindən kənar" xəbərdarlığı ilə göstərilir, belə saytdan gələn psevdonim sorğusu isə birbaşa rədd edilir.
+Əvvəlcə etibar siyahısında yoxlayan tərəf qeydiniz olmalıdır. Sorğu gələndə cüzdan üç şeyə baxır. Sorğunu kimin göndərdiyini, göndərənin qeydiyyatda və aktiv olub-olmadığını və istənilən sahələrin qeydiyyatdakı əhatə dairəsinə (scope) düşüb-düşmədiyini yoxlayır. Qeydiyyatsız sayt da cüzdana çata bilər, amma onun istədiyi hər sahə "qeydiyyatdakı əhatə dairəsindən kənar" xəbərdarlığı ilə göstərilir. Belə saytdan gələn psevdonim sorğusu isə ümumiyyətlə qəbul edilmir.
 
-Qeydiyyat qeydiyyatçıya ([Yoxlayan tərəf kimi qeydiyyat](https://docs.tamga.network/guides/register-verifier)) aşağıdakıları təqdim etmək deməkdir:
+Qeydiyyat üçün qeydiyyat orqanına bu məlumatları verirsiniz ([Yoxlayan tərəf kimi qeydiyyat](https://docs.tamga.network/guides/register-verifier)):
 
-- domen adınız; bu, sizin daimi kimliyiniz olur;
-- sorğuları imzalayacağınız açar üçün sertifikat imzalama sorğusu (açar sizdə qalır); müştəri identifikatorunuz (client identifier) nəticədə verilən giriş sertifikatından əldə edilir;
-- hər nəzərdə tutulan istifadə üçün bir **əhatə dairəsi (scope)**: sadə sözlərlə ifadə olunmuş məqsəd, bir rəqəmsal sənəd növü və həmin məqsəd üçün lazım olan ən az sahə, üstəlik məxfilik siyasətinin linki;
-- Avropa İttifaqının (Aİ) ümumi qeydiyyat məlumatları: ticarət adı, rəsmi identifikator, ünvan, əlaqə məlumatları, məlumatların qorunması üzrə nəzarət orqanı.
+- domen adınız; bu ad sizin daimi kimliyiniz olur;
+- sorğuları imzalayacağınız açar üçün sertifikat imzalama sorğusu (açar sizdə qalır); müştəri identifikatorunuz (client identifier) bu sorğudan çıxan giriş sertifikatından alınır;
+- hər istifadə məqsədi üçün ayrıca **əhatə dairəsi**, yəni sadə dillə yazılmış məqsəd, bir sənəd növü, bu məqsəd üçün lazım olan ən az sahə və məxfilik siyasətinizin linki;
+- Aİ-nin ümumi qeydiyyat məlumatları: ticarət adı, rəsmi identifikator, ünvan, əlaqə məlumatı və tabe olduğunuz məlumatların qorunması orqanı.
 
-Məsələn, tələbə endirimi təklif edən mağaza tələbə rəqəmsal sənədindən yalnız `is_enrolled` tələb edir: adı, məktəbi, tələbə nömrəsini yox. Əhatə dairələrini bu qədər dar saxlasanız, rəqəmsal cüzdanın razılıq ekranı da qısa qalır.
+Məsələn, tələbə endirimi edən mağaza tələbə sənədindən yalnız `is_enrolled` sahəsini istəyir. Tələbənin adına, məktəbinə və ya tələbə nömrəsinə ehtiyacı yoxdur. Əhatə dairələrini bu qədər dar saxlasanız, cüzdanın razılıq ekranı da qısa olur.
 
-Qeydiyyatdan əvvəl sınamaq üçün sandbox mühitindən istifadə edin: [verify.sandbox.tamga.network](https://verify.sandbox.tamga.network) ünvanında giriş, yaş, diplom, tələbə endirimi və tədbirə giriş üçün nümunə yoxlayan tərəflər, [/sample-site](https://verify.sandbox.tamga.network/sample-site) ünvanında isə işlək nümunə sayt var.
+Qeydiyyatdan əvvəl hər şeyi sandbox-da sınaya bilərsiniz. [verify.sandbox.tamga.network](https://verify.sandbox.tamga.network) ünvanında giriş, yaş, diplom, tələbə endirimi və tədbirə giriş üçün nümunə yoxlayan tərəflər, [/sample-site](https://verify.sandbox.tamga.network/sample-site) ünvanında isə işlək nümunə sayt var.
 
 ## Hansı yolu seçməlisiniz?
 
 ![Host edilən yoxlayan tərəf, yoxsa öz serveriniz: paket, kim yoxlayır, dəyərlər hara gedir, siyahıları kim saxlayır](/blog/add-verification-to-your-site/en/fig-iki-yol.png)
 
-Host edilən yoxlayan tərəf qeydiyyat və giriş üçün, eləcə də tez başlamaq istəyən komandalar üçün uyğundur. Öz serveriniz isə rəqəmsal sənəd dəyərlərinin heç bir vasitəçidən keçməsini istəməyən və ya artıq intensiv yoxlama infrastrukturu işlədən təşkilatlara uyğundur. Hər ikisi eyni yoxlama prosesini icra edir; `verify.tamga.network` ünvanındakı istinad yoxlayan tərəfi də sizin quraşdıracağınız eyni kitabxana üzərində qurulub.
+Host edilən yoxlayan tərəf qeydiyyat və giriş səhifələri, eləcə də tez başlamaq istəyən komandalar üçün uyğundur. Sənəd dəyərlərinin heç bir vasitəçidən keçməsini istəməyən və ya artıq intensiv yoxlama aparan infrastruktur işlədən təşkilatlar isə adətən yoxlamanı öz serverlərində edir. Hər iki yol eyni yoxlama ardıcıllığını işlədir. `verify.tamga.network` ünvanındakı istinad yoxlayan tərəfi də sizin quraşdıracağınız kitabxananın üzərində qurulub.
 
 ## Host edilən yoxlayan tərəf necə işləyir?
 
-Dörd addım, dəyərlər isə yalnız sizin serverinizə çatır:
+Proses dörd addımdan ibarətdir və sənəd dəyərləri yalnız sizin serverinizə çatır:
 
-1. **Serveriniz təqdimat açır.** O, siyasət adı və giriş sertifikatınızın açarı ilə imzalanmış qısamüddətli bəyanatla (ən çoxu 60 saniyə etibarlı, birdəfəlik) yoxlayan tərəfə müraciət edir. Ayrıca parol yoxdur.
-2. **Səhifə sorğunu göstərir.** Kompüterdə QR kod, telefonda "rəqəmsal cüzdanınızda açın" düyməsi. Şəxs yalnız tələb olunan sahələri görür və təsdiqləyir.
-3. **Yoxlayan tərəf rəqəmsal sənədi yoxlayır** (imza, etibar siyahısı, ləğv, sənəd sahibinə bağlılıq), səhifə dəsti isə nəticəni öyrənir.
-4. **Serveriniz nəticəni götürür**, qəbul edilibsə, təsdiqlənmiş sahələri də bir dəfə alır.
+1. **Serveriniz təqdimat açır.** Yoxlayan tərəfnı siyasət adı ilə çağırır və sorğuya giriş sertifikatınızın açarı ilə imzalanmış qısamüddətli bəyanat əlavə edir. Bəyanat ən çoxu 60 saniyə etibarlıdır və bir dəfə istifadə oluna bilər, ona görə ayrıca parola ehtiyac qalmır.
+2. **Səhifə sorğunu göstərir.** Kompüterdə olan şəxs QR kod, telefonda olan şəxs isə "cüzdanda aç" düyməsini görür. Cüzdan ona yalnız istənilən sahələri göstərir və şəxs təsdiqləyir.
+3. **Yoxlayan tərəf sənədi yoxlayır.** İmzaya, etibar siyahısına, ləğv vəziyyətinə və sənədin onu təqdim edən şəxsə bağlı olub-olmamasına baxır. Səhifə dəsti də nəticəni bu zaman öyrənir.
+4. **Serveriniz nəticəni alır.** Sənəd qəbul edilibsə, təsdiqlənmiş sahələri də alır, amma yalnız bir dəfə.
 
 ```http title="Opening a presentation at the hosted verifier"
 POST /presentations HTTP/1.1
@@ -54,7 +54,7 @@ Content-Type: application/json
 { "policy_id": "site-signup" }
 ```
 
-Cavabda `presentation_id`, `qr_payload`, `expires_at` və `status_token` olur; serveriniz bunları səhifəyə ötürür. Səhifə dəsti yoxlayan tərəf tərəfindən təqdim edilir:
+Cavabda `presentation_id`, `qr_payload`, `expires_at` və `status_token` dəyərləri gəlir və serveriniz onları səhifəyə ötürür. Səhifə dəstini yoxlayan tərəfin özü təqdim edir:
 
 ```html title="The page kit on your sign-up page"
 <script src="https://verify.tamga.network/tamga-verifier.js"></script>
@@ -74,7 +74,7 @@ Cavabda `presentation_id`, `qr_payload`, `expires_at` və `status_token` olur; s
 </script>
 ```
 
-Dəst heç nəyi yoxlamır və heç bir dəyəri görmür; o, yalnız vəziyyəti izləyir. Qərar sizin serverinizdə verilir:
+Dəst heç nəyi yoxlamır və heç bir dəyəri görmür. O, yalnız təqdimatın vəziyyətini izləyir və qərarı sizin serverinizə buraxır:
 
 ```ts title="Your server: read the result, then the approved fields"
 import { createRpAssertion } from "@tamga-network/verifier";
@@ -89,11 +89,11 @@ if (res.status === 410) return; // values are handed out once
 const { claims } = await res.json(); // e.g. claims.pseudonym, claims.given_name
 ```
 
-Təqdimatın nəticəsini yalnız onu açan sayt oxuya bilər; başqa hər kəs `404` alır. Dəyərlər bir dəfə verilir və nəticədən beş dəqiqə sonra silinir, ona görə də onları dərhal emal edin. Host edilən yoxlayan tərəfdə siyasət adları və onların sahə dəstləri şəbəkə ilə razılaşdırılır (məsələn, 18 yaşdan yuxarı yoxlaması yalnız `age_over_18` sahəsindən istifadə edir). Qeydiyyatdan sonrakı passkey-lər daxil olmaqla tam təlimat ["Tamga ilə daxil ol" funksiyasını əlavə edin](https://docs.tamga.network/guides/sign-in-with-tamga) bələdçisindədir.
+Təqdimatın nəticəsini yalnız onu açan sayt oxuya bilər, başqası cəhd etsə `404` alır. Dəyərlər bir dəfə verilir və nəticədən beş dəqiqə sonra silinir. Ona görə onları dərhal emal etməlisiniz. Host edilən yoxlayan tərəfdə siyasət adları və hər siyasətin hansı sahələri istədiyi şəbəkə ilə birlikdə müəyyən edilir. Məsələn, 18 yaş yoxlaması yalnız `age_over_18` sahəsindən istifadə edir. Qeydiyyatdan sonra passkey əlavə etmək də daxil olmaqla bütün addımlar ["Tamga ilə daxil ol" funksiyasını əlavə edin](https://docs.tamga.network/guides/sign-in-with-tamga) bələdçisindədir.
 
-## Öz serverinizdə necə yoxlamaq olar?
+## Öz serverinizdə necə yoxlayırsınız?
 
-`@tamga-network/verifier` və `@tamga-network/trust` ilə. İlk sorğudan əvvəl etibar siyahılarını `TrustSource` vasitəsilə yükləyin ([siyahılar necə yoxlanılır](/blog/how-trust-lists-work)) və ləğv siyahılarını taymerlə əvvəlcədən yükləməyə başlayın; yoxlama anında heç nə endirilməməlidir. Sonra:
+Bunun üçün `@tamga-network/verifier` və `@tamga-network/trust` paketlərindən istifadə edirsiniz. İlk sorğudan əvvəl etibar siyahılarını `TrustSource` vasitəsilə yükləyin ([siyahılar necə yoxlanılır](/blog/how-trust-lists-work)) və ləğv siyahılarını taymerlə əvvəlcədən endirməyə başlayın, çünki yoxlama anında heç nə endirilməməlidir. Sonra sorğunu qurur, cavabı açır və təqdimatı yoxlayırsınız:
 
 ```ts title="Your own server: request, decrypt, verify"
 import { dcqlFromPolicy, createPresentationRequest, decryptResponse, verifyPresentation,
@@ -112,54 +112,54 @@ const { result, claims } = await verifyPresentation({ presentation: answer.vp_to
   trust, statusCache, rootCertsDer, rp: trust.relyingParty(signer.clientId) });
 ```
 
-`verifyPresentation` arxasındakı addımlar sabit və nömrələnmişdir: format və imza (A), rəqəmsal sənəd növü (B), etibar (C), ləğv (D) və öz siyasətiniz (E). Onlar [yoxlama API-si](https://docs.tamga.network/specifications/verification-api) sənədində sadalanır. Bu kodun sınaqdan keçirilmiş, işlək versiyası [kod nümunələri](https://docs.tamga.network/guides/code-examples) arasındadır; bələdçi isə [Serverinizdə yoxlayın](https://docs.tamga.network/guides/verify-on-server) səhifəsindədir.
+`verifyPresentation` hər dəfə eyni nömrəli addımları eyni ardıcıllıqla işlədir. Əvvəlcə formatı və imzanı (A), sonra sənəd növünü (B), etibarı (C) və ləğv vəziyyətini (D) yoxlayır, sonda isə sizin siyasətinizi (E) tətbiq edir. Addımların hamısı [yoxlama API-si](https://docs.tamga.network/specifications/verification-api) sənədində yazılıb. Bu kodun sınaqdan keçmiş, işlək versiyası [kod nümunələri](https://docs.tamga.network/guides/code-examples) arasındadır, ətraflı izahı isə [Serverinizdə yoxlayın](https://docs.tamga.network/guides/verify-on-server) bələdçisindədir.
 
-## Siyasət nədir və niyə kod deyil?
+## Siyasət nədir və niyə kod kimi yazılmır?
 
-Siyasət nəyə ehtiyacınız olduğunu müəyyən edir: hansı rəqəmsal sənəd növü, hansı sahələr, hansı etibarlılıq səviyyəsi, siyahılar nə dərəcədə təzə olmalıdır. Rəqəmsal cüzdanın gördüyü sorğu (DCQL sorğusu) heç vaxt əllə yazılmır, siyasətdən yaradılır. Buna görə daha çox məlumat istəmək kod dəyişikliyi deyil, siyasət dəyişikliyi tələb edir və siyasət heç vaxt qeydiyyatınızdakı əhatə dairəsindən artığını tələb edə bilməz (AP6 qaydası). Sorğunun və şifrələnmiş cavabın necə qurulduğu [OpenID4VP və DCQL-ə ətraflı baxış](/blog/openid4vp-dcql-deep-dive) yazısında izah olunur.
+Siyasət nəyə ehtiyacınız olduğunu deyir. Hansı sənəd növünü, hansı sahələri və hansı etibar səviyyəsini istədiyinizi, siyahıların ən çoxu nə qədər köhnə ola biləcəyini burada göstərirsiniz. Cüzdanın gördüyü sorğu (DCQL sorğusu) bu siyasətdən yaradılır və heç kim onu əllə yazmır. Ona görə daha çox sahə istəmək üçün kodu dəyişmək lazım deyil, siyasəti dəyişmək kifayətdir. Siyasət qeydiyyatınızdakı əhatə dairəsindən artıq heç nə istəyə bilməz (AP6 qaydası). Sorğunun və şifrələnmiş cavabın necə qurulduğunu [OpenID4VP və DCQL-ə ətraflı baxış](/blog/openid4vp-dcql-deep-dive) yazısında izah etmişik.
 
-## Nəticəni necə oxumaq lazımdır?
+## Nəticəni necə oxumalı?
 
 ![Üç nəticə, hər birinin mənası və istifadəçiyə nə deməli](/blog/add-verification-to-your-site/en/fig-sonuclar.png)
 
-Düzgün işlənməli olan üçüncü nəticədir. `INDETERMINATE` o deməkdir ki, yoxlayan tərəf hazırda yoxlama apara bilmədi: siyahını əldə etmək mümkün olmadı və ya siyahı çox köhnədir. Rəqəmsal sənəd tamamilə etibarlı ola bilər. "Hazırda yoxlamaq mümkün deyil, zəhmət olmasa yenidən cəhd edin" mesajını göstərin və bunu heç vaxt `REJECTED` ilə eyni kateqoriyaya salmayın (AP2 qaydası). "Bu diplom saxtadır" ilə "hazırda yoxlaya bilmirəm" arasındakı fərq kiminsə işə götürülüb-götürülməyəcəyini həll edə bilər.
+Üç nəticədən ən diqqətli yanaşma tələb edəni üçüncüsüdür. `INDETERMINATE` yoxlayan tərəfin həmin an yoxlamanı başa çatdıra bilmədiyini göstərir. Siyahı alına bilməyib və ya icazə veriləndən köhnə ola bilər, amma sənədin özü tamamilə etibarlı ola bilər. İstifadəçiyə "Hazırda yoxlamaq mümkün olmadı, zəhmət olmasa yenidən cəhd edin" deyin və bu nəticəni heç vaxt `REJECTED` ilə bir tutmayın (AP2 qaydası). "Bu diplom saxtadır" demək ilə "hazırda yoxlaya bilmirəm" demək arasındakı fərq kiminsə işə götürülüb-götürülməməsini həll edə bilər.
 
-Nəticə obyekti icra edilən və buraxılan yoxlamaları sadalayır; bunları audit üçün saxlaya bilərsiniz. Orada sahə adları olur, dəyərlər isə heç vaxt. Adlar və açarlar da daxil olmaqla fərdi məlumatları loglara yazmayın.
+Nəticə obyekti hansı yoxlamaların aparıldığını və hansılarının buraxıldığını sadalayır. Onu audit qeydi kimi saxlaya bilərsiniz, çünki orada yalnız sahə adları olur və dəyərlər heç vaxt yer almır. Loglarınıza adlar və açarlar da daxil olmaqla heç bir fərdi məlumat yazmayın.
 
 ## Doğum tarixini görmədən yaşı yoxlamaq olarmı?
 
-Bəli, və bu, Tamga Verify-da `age-over-18-zk` siyasəti kimi artıq işləyir. `mso_mdoc_zk` formatındakı siyasət sıfır biliklə sübut (zero-knowledge proof) tələb edir: rəqəmsal cüzdan qeydiyyatdan keçmiş qurumun verdiyi şəxsiyyət rəqəmsal sənədində `age_over_18 = true` göstərildiyini sübut edir, siz isə başqa heç nə öyrənmirsiniz. Siz rəqəmsal sənədi, doğum tarixini, qurumun imzasını və ya cihaz açarını görmürsünüz, eyni şəxsin iki sübutunu isə bir-biri ilə əlaqələndirmək mümkün deyil ([ADR-0032](https://docs.tamga.network/adr/0032-zk-mdoc-presentation)).
+Bəli. Tamga Verify-da bu yoxlama `age-over-18-zk` siyasəti ilə artıq işləyir. `mso_mdoc_zk` formatındakı siyasət cüzdandan sıfır bilikli sübut (zero-knowledge proof) istəyir. Cüzdan qeydiyyatdakı qurumun verdiyi şəxsiyyət sənədində `age_over_18 = true` yazıldığını sübut edir və siz bundan başqa heç nə öyrənmirsiniz. Sənədin özünü, doğum tarixini, qurumun imzasını və ya cihaz açarını görmürsünüz. Eyni şəxsin hazırladığı iki sübutu da bir-biri ilə əlaqələndirmək olmur ([ADR-0032](https://docs.tamga.network/adr/0032-zk-mdoc-presentation)).
 
-Bələdçidən bir neçə praktik məqam:
+Bələdçidə bu barədə bir neçə praktik qeyd var:
 
-- Yoxlama paketə daxil olan WebAssembly üzərində işləyir və masaüstü kompüterdə hər sübut üçün təxminən 3 saniyə çəkir. Yüksək həcm üçün yerli (native) yığım təxminən 0,2–0,3 saniyə çəkir.
-- Yalnız imzalanmış etibar siyahısında göstərilən sxemlər (circuits) qəbul edilir.
-- ZK təqdimatında ləğv indeksi olmur, ona görə də siyasətdə `accept_unrevocable_zk: true` açıq şəkildə göstərilməlidir. Ləğv yoxlamasına ehtiyacınız varsa, klassik `mso_mdoc` siyasətindən istifadə edin.
-- Rəqəmsal cüzdan tərəfində Android üçün sübut kitabxanası hazırdır, iOS isə hələ gözlənilir. Sübut yarada bilməyən rəqəmsal cüzdan, siyasətiniz icazə verirsə, yalnız `age_over_18` açıqlayan klassik mdoc yoxlamasına keçir. Hər ikisini təklif edin.
+- Yoxlama paketə daxil edilmiş WebAssembly ilə aparılır və masaüstü kompüterdə hər sübut üçün təxminən 3 saniyə çəkir. Yüksək həcmdə işləyəcəksinizsə, yerli (native) yığım bu müddəti 0,2–0,3 saniyəyə endirir.
+- Yalnız imzalanmış etibar siyahısında olan sxemlər (circuits) qəbul edilir.
+- ZK təqdimatı ləğv indeksi daşımır. Ona görə siyasətinizdə `accept_unrevocable_zk: true` dəyərini açıq yazmalısınız. Ləğv yoxlaması sizin üçün şərtdirsə, klassik `mso_mdoc` siyasətindən istifadə edin.
+- Cüzdan tərəfində Android üçün sübut kitabxanası hazırdır, iOS versiyası isə hələ gözlənilir. Sübut yarada bilməyən cüzdan, siyasətiniz icazə verirsə, klassik mdoc yoxlamasına keçir və bu yolda da yalnız `age_over_18` sahəsi açılır. Ona görə hər iki yolu birlikdə təklif etməyi tövsiyə edirik.
 
-Sandbox-dakı `age-zk` nümunə yoxlayan tərəfi axını əvvəldən sona qədər göstərir. Sxemlər, etibar siyahısının rolu və məhdudiyyətlər [Tamga-da sıfır bilik (zero-knowledge)](/blog/zero-knowledge-in-tamga) yazısında izah olunur.
+Sandbox-dakı `age-zk` nümunə yoxlayan tərəfi bu prosesi əvvəldən axıra qədər göstərir. Sxemləri, etibar siyahısının buradakı rolunu və üsulun məhdudiyyətlərini [Tamga-da sıfır bilik (zero-knowledge)](/blog/zero-knowledge-in-tamga) yazısında izah etmişik.
 
 ## Tez-tez verilən suallar
 
-### Saytım şəxsin bütün rəqəmsal sənədini görürmü?
+### Saytımız şəxsin bütün sənədini görürmü?
 
-Xeyr. Sayt yalnız şəxsin təsdiqlədiyi sahələri alır və bu sahələr qeydiyyatdakı əhatə dairənizin daxilində olmalıdır. Sıfır bilik siyasəti ilə isə yalnız "bəli" və ya "xeyr" cavabı alır.
+Xeyr. Saytınız yalnız şəxsin təsdiqlədiyi sahələri alır və bu sahələr qeydiyyatdakı əhatə dairənizin daxilində olmalıdır. Sıfır bilik siyasəti ilə isə yalnız "bəli" və ya "xeyr" cavabı alırsınız.
 
-### Sənədi verən qurum rəqəmsal sənədi yoxladığımızı görə bilərmi?
+### Sənədi verən qurum onu yoxladığımızı görə bilərmi?
 
-Xeyr. Ləğv siyahıları əvvəlcədən əldə edilir və keşdə saxlanılır; yoxlama anında nə quruma, nə də şəbəkəyə heç bir sorğu getmir.
+Xeyr. Ləğv siyahıları əvvəlcədən endirilir və keşdə saxlanılır, ona görə yoxlama anında nə quruma, nə də şəbəkəyə sorğu getmir.
 
 ### Bu, yalnız Tamga Wallet ilə işləyirmi?
 
-Xeyr. Cüzdan provayderi etibar siyahısında olan və şəbəkənin rəqəmsal cüzdan qaydalarına əməl edən istənilən rəqəmsal cüzdan sorğunuza cavab verə bilər.
+Xeyr. Provayderi etibar siyahısında olan və şəbəkənin cüzdan qaydalarına əməl edən istənilən cüzdan sorğunuza cavab verə bilər.
 
 ### Girişdən sonra nəyi saxlamalıyıq?
 
-Fərdi məlumatlar deyil, hesab açarı. Nümunə sayt sayta xas psevdonimin açarlı heşini saxlayır; başqa sayt bu heşi uyğunlaşdıra bilməz, çünki o, eyni şəxs üçün fərqli psevdonim görür.
+Fərdi məlumat saxlamağa ehtiyac yoxdur, hesab açarı kifayətdir. Nümunə sayt sayta xas psevdonimin açarlı heşini saxlayır. Başqa sayt eyni şəxsi fərqli psevdonimlə gördüyü üçün bu heşi öz qeydləri ilə uyğunlaşdıra bilməz.
 
-### Qeydiyyatdan keçmədən sınaq aparmaq olarmı?
+### Qeydiyyatdan keçmədən sınaya bilərikmi?
 
-Bəli, sandbox-da. Onun nümunə yoxlayan tərəfləri və nümunə saytı sandbox-ın nümunə qurumlarının verdiyi rəqəmsal sənədlərlə işləyir. Real rəqəmsal sənədlər üçün real şəbəkədə qeydiyyatdan keçmiş yoxlayan tərəf lazımdır.
+Bəli, sandbox-da sınaya bilərsiniz. Oradakı nümunə yoxlayan tərəflər və nümunə sayt sandbox-ın nümunə qurumlarının verdiyi sənədlərlə işləyir. Real sənədləri yoxlamaq üçün isə real şəbəkədə qeydiyyatdan keçmiş yoxlayan tərəf olmalısınız.
 
 ## Mənbələr
 
