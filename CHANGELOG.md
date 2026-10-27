@@ -39,3 +39,6 @@ tamga.network with the network's 1.0 documentation set, in English, Turkish and 
 - 2026-10-27: packages at npm 0.7.2 everywhere a version is shown (SDK page, home, roadmap, blog notes); release note dated
   2026-10-27 (OpenID self-test fixes, gate terminal keys); code examples re-synced (the verify-own-server example no longer
   passes a `purpose` to `createPresentationRequest`).
+- 2026-10-27: new blog post `openid-conformance-self-test` (en, tr, az, tk): the OpenID Foundation issuer and verifier test
+  plans run as a self-test on the sandbox (results, the fixes by theme, what a self-test does not show) and the open-source
+  oidf-conformance-kit; three figures (`fig-plans`, `fig-fixes`, `fig-triage`; en + tr).
