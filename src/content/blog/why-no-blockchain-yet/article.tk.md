@@ -17,7 +17,7 @@ Blokçeýn birnäçe **garaşsyz** tarap şol bir ýazgyny saklanda we hiç biri
 
 ## Ýerine näme edýäris
 
-[Gol çekilen ynam sanawlaryny](/learn/trust-lists) çap edýäris — ÝB-niň öz ynam sanawlary üçin ulanýan modeli. Sanawlar wersiýaly we heş-zynjyrly, hiç zat pozulmaýar; her ýatyrylyş sanawynyň çap edilmegi we shema üýtgeşmesi açyk, sagatlaýyn **labyr žurnalyna** ýazylýar. Yza aýlanan ýa-da täzeden ýazylan sanawy islendik adam anyklap biler.
+[Gol çekilen ynam sanawlaryny](/learn/trust-lists) çap edýäris — ÝB-niň öz ynam sanawlary üçin ulanýan modeli. Sanawlar wersiýaly we heş-zynjyrly, hiç zat pozulmaýar; her ýatyrylyş sanawynyň çap edilmegi we shema üýtgeşmesi açyk, sagatlaýyn **labyr žurnalyna** ýazylýar. Yza aýlanan ýa-da täzeden ýazylan sanawy islendik adam anyklap biler ([gol çekilen ynam sanawy nähili işleýär](/blog/how-trust-lists-work)).
 
 ## Üýtgemeýän
 
@@ -27,4 +27,4 @@ Blokçeýn birnäçe **garaşsyz** tarap şol bir ýazgyny saklanda we hiç biri
 
 ## Kitap haçan gelýär
 
-Rugsatly Besu/QBFT kitaby azyndan iki garaşsyz validator operatory ýazmaça razylyk berende başladylýar. Oňa çenli aç-açan aýdýarys: labyr bir operatoryň goluna daýanýar; açyk žurnal, açyklyk hasabaty we barlaglar hyýanatçylygyň öňüni alýar, ýöne ony mümkin däl etmeýär. Jikme-jiklik [whitepaper v1.0](/whitepaper)-da.
+Rugsatly Besu/QBFT kitaby azyndan iki garaşsyz validator operatory ýazmaça razylyk berende başladylýar. Oňa çenli aç-açan aýdýarys ([näme üçin tor fonda geçmeli](/blog/network-as-a-foundation)): labyr bir operatoryň goluna daýanýar; açyk žurnal, açyklyk hasabaty we barlaglar hyýanatçylygyň öňüni alýar, ýöne ony mümkin däl etmeýär. Jikme-jiklik [whitepaper v1.0](/whitepaper)-da.
