@@ -98,7 +98,7 @@ WyJjazFtMktWejdVWEg2cTlMNEJad1BRIiwiZ2l2ZW5fbmFtZSIsIlZla3TDtnIiXQ
 
 The digest is `base64url(SHA-256(ASCII bytes of the disclosure string))`. Every one of the four digests above appears in the payload's `_sd` array.
 
-The single most common bug in SD-JWT code is to decode the disclosure, re-serialise the array and hash the result. JSON serialisation is not deterministic: a space after a comma, or `ö` written as `ö`, gives different bytes and a different digest. Tamga's spec shows this with a disclosure for `given_name: "Ayşe"`, where re-serialising without spaces or escapes turns `nM_EESmLJt3b0fzNu1paGyiAfSLs4Npf2yEjUn0upSo` into `c94D71JDfX8hzanT-ZpRWBn5oNX_RkStfSfkvTmY_kU`. The rule for verifiers is simple: **hash the string as received, then decode it.** Never the other way round.
+The single most common bug in SD-JWT code is to decode the disclosure, re-serialise the array and hash the result. JSON serialisation is not deterministic: a space after a comma, or `ö` written as `\u00f6`, gives different bytes and a different digest. Tamga's spec shows this with a disclosure for `given_name: "Ayşe"`, where re-serialising without spaces or escapes turns `nM_EESmLJt3b0fzNu1paGyiAfSLs4Npf2yEjUn0upSo` into `c94D71JDfX8hzanT-ZpRWBn5oNX_RkStfSfkvTmY_kU`. The rule for verifiers is simple: **hash the string as received, then decode it.** Never the other way round.
 
 ![Four steps from a claim to a digest in the signed payload](/blog/sd-jwt-vc-deep-dive/en/fig-disclosure.png)
 

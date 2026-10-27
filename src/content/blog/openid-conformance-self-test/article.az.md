@@ -11,15 +11,15 @@ related: openid4vci-deep-dive, openid4vp-dcql-deep-dive, haip-and-token-status-l
 
 <!-- Sources: same as the English article (OpenID self-test results ledger and module notes; issuer plan 63 modules, final run 2026-10-23: 0 FAILED, 2 WARNING, 4 REVIEW, 4 SKIPPED; round 2 29/22/5; verifier plan 14 modules, round 1: 0 FAILED, 6 REVIEW, 7 WARNING, 1 SKIPPED; round 2 logs: 7 PASSED, 6 REVIEW, 1 SKIPPED; tamga-network CHANGELOG 0.7.2 and 0.7.3; ADR-0059…0062; kit README, CONTRIBUTING, common-failures). -->
 
-21–27 oktyabr 2026-cı il tarixləri arasında OpenID Foundation-ın iki uyğunluq test planını Tamga-nın sandbox mühitində işlətdik: şəxsiyyət xidmətinə qarşı **issuer** planı (HAIP və FAPI 2.0 Security Profile ilə OpenID4VCI 1.0 Final, 63 modul) və Tamga Verify-a qarşı **verifier** planı (HAIP ilə OpenID4VP 1.0 Final, 14 modul). Issuer planının son işində uğursuz modul yoxdur; verifier planının son işində nə uğursuz modul, nə də xəbərdarlıq var. Buna çatmaq iyirmiyə yaxın kod dəyişikliyi tələb etdi və hər biri spesifikasiyanın bir bəndinə əsaslanır. Növbəti komanda daha tez keçsin deyə öyrəndiklərimizi açıq mənbəli dəstdə topladıq: [oidf-conformance-kit](https://github.com/tamga-network/oidf-conformance-kit) (Apache-2.0).
+21–27 oktyabr 2026-cı il tarixləri arasında OpenID Foundation-ın iki uyğunluq test planını Tamga-nın sandbox mühitində işlətdik: şəxsiyyət xidmətinə qarşı **issuer** planı (HAIP və FAPI 2.0 Security Profile ilə OpenID4VCI 1.0 Final, 63 modul) və Tamga Verify-a qarşı **verifier** planı (HAIP ilə OpenID4VP 1.0 Final, 14 modul). Issuer planının son təkrarında uğursuz modul qalmadı, verifier planının son turunda isə nə uğursuz modul, nə də xəbərdarlıq var. Buna çatmaq iyirmiyə yaxın kod dəyişikliyi tələb etdi və hər biri spesifikasiyanın bir bəndinə əsaslanır. Bizdən sonra eyni testlərdən keçəcək komandalar daha az əziyyət çəksin deyə öyrəndiklərimizi [oidf-conformance-kit](https://github.com/tamga-network/oidf-conformance-kit) adlı açıq mənbəli dəstdə (Apache-2.0) topladıq.
 
 > **Vacib:** Bu, OpenID Foundation-ın öz test aləti ilə etdiyimiz özünütestdir. OpenID sertifikatı deyil; test planlarını alətdə dərc etmədik (səbəbi aşağıdadır).
 
 ## AB ilə uyğun şəbəkə üçün uyğunluq testi niyə vacibdir?
 
-İki məhsul OpenID4VP-yə hərfi-hərfinə əməl edib yenə də bir-biri ilə danışa bilməyə bilər. Yüksək təminatlı qarşılıqlı işləmə profili [HAIP](/blog/haip-and-token-status-list) vahid seçimlər toplusunu sabitləyərək bu boşluqların çoxunu bağlayır; Avropanın rəqəmsal şəxsiyyət ekosistemi də ona söykənir. Tamga özünü AB ilə uyğun adlandırır. Sual budur: bu iddianı öz ev tapşırığımıza özümüz qiymət vermədən necə yoxlayaq?
+İki məhsul OpenID4VP-yə hərfi-hərfinə əməl edib yenə də bir-biri ilə anlaşa bilməyə bilər, çünki spesifikasiya bir çox məqamda bir neçə seçimə yol verir. Yüksək təminatlı qarşılıqlı işləmə profili [HAIP](/blog/haip-and-token-status-list) vahid seçimlər toplusunu sabitləyərək bu boşluqların çoxunu bağlayır; Avropanın rəqəmsal şəxsiyyət ekosistemi də ona söykənir. Tamga özünü AB ilə uyğun adlandırır. Bu iddianı yalnız öz testlərimizlə yoxlasaq, öz ev tapşırığımıza özümüz qiymət vermiş olarıq.
 
-Öz testlərimiz və uyğunluq vektorlarımız kodu spesifikasiyaları bizim oxuduğumuz kimi yoxlayır. OpenID Foundation-ın [conformance suite](https://gitlab.com/openid/conformance-suite) aləti isə başqasının oxunuşu ilə yoxlayır: Fondun saxladığı, protokolun o biri tərəfini oynayan və diqqətsiz bir tətbiqin səhv edəcəyi yüzlərlə şeyi sınayan açıq mənbəli alət. Fondun [sertifikasiya proqramının](https://openid.net/certification/) arxasında da bu alət dayanır. Alət bizimlə razılaşmırsa, ikimizdən biri səhvdir; hansımız olduğunu tapmaq işin faydalı hissəsidir.
+Öz testlərimiz və uyğunluq vektorlarımız kodu spesifikasiyaları bizim oxuduğumuz kimi yoxlayır. OpenID Foundation-ın [conformance suite](https://gitlab.com/openid/conformance-suite) aləti isə başqasının oxunuşu ilə yoxlayır: Fondun hazırladığı, protokolun o biri tərəfini oynayan və diqqətsiz bir tətbiqin səhv edəcəyi yüzlərlə şeyi sınayan açıq mənbəli alət. Fondun [sertifikasiya proqramının](https://openid.net/certification/) arxasında da bu alət dayanır. Alət bizimlə razılaşmırsa, ikimizdən biri səhvdir; hansımız olduğunu tapmaq işin faydalı hissəsidir.
 
 ## Nəyi, nəyə qarşı sınadıq?
 
@@ -34,31 +34,31 @@ related: openid4vci-deep-dive, openid4vp-dcql-deep-dive, haip-and-token-status-l
 
 ![İki plan: alət hər ikisində cüzdanı oynayır](/blog/openid-conformance-self-test/en/fig-plans.png)
 
-Alətin `demo.certification.openid.net` ünvanındakı host edilən versiyasından istifadə etdik. Alətin imza sertifikatları yalnız **sandbox** etibar siyahısına əlavə edildi: cüzdan attestasiyası imzalayıcısı test cüzdan provayderi kimi, PID imzalayıcısı ayrıca test siyahısında. Real şəbəkənin siyahıları dəyişmədi.
+Alətin `demo.certification.openid.net` ünvanındakı host edilən versiyasından istifadə etdik. Alətin imza sertifikatlarını yalnız sandbox etibar siyahısına əlavə etdik. Cüzdan attestasiyasının imzalayıcısı orada test cüzdan provayderi kimi, PID imzalayıcısı isə ayrıca test siyahısında yer alır. Real şəbəkənin siyahıları dəyişmədi.
 
-İki praktik seçim planları formalaşdırdı. Issuer planı qurumun issuer xidmətinə deyil, şəxsiyyət xidmətinə qarşı işlədildi, çünki qurumun avtorizasiya addımı şəxsdən əvvəlcə şəxsiyyət sənədini təqdim etməyi istəyir və alət bunu edə bilmir. Alətin öz attestasiyalarında siyasətimizin tələb etdiyi iki sahə də yoxdur (cüzdan attestasiyasında ləğv qeydi, açar attestasiyasında açarın saxlanma statusu); sandbox bunları ixtiyari qəbul edir. Real şəbəkədə hər ikisi məcburidir.
+İki praktik seçim planları formalaşdırdı. Issuer planı qurumun issuer xidmətinə deyil, şəxsiyyət xidmətinə qarşı işlədildi, çünki qurumun avtorizasiya addımı şəxsdən əvvəlcə şəxsiyyət sənədini təqdim etməyi istəyir və alət bunu edə bilmir. Bundan başqa, alətin öz attestasiyalarında siyasətimizin tələb etdiyi iki sahə yoxdur: cüzdan attestasiyasında ləğv qeydi və açar attestasiyasında açarın saxlanma statusu. Ona görə sandbox bu sahələri ixtiyari sayır, real şəbəkədə isə hər ikisi məcburi olaraq qalır.
 
 ## Nəticələr necə oldu?
 
-Issuer planı 21–23 oktyabr tarixlərində üç tur və bir təkrar işlə başa çatdı. Birinci tur 63 modulun 42-sini işlətdi və səhvlərin çoxunu tapdı; ikinci tur 63-ün hamısını işlətdi (29 keçdi, 22 xəbərdarlıq, 5 uğursuz); üçüncü tur və son təkrar qalanları bağladı.
+Issuer planı 21–23 oktyabr tarixlərində üç tur və bir təkrarla başa çatdı. Birinci turda 63 modulun 42-si işlədi və səhvlərin çoxu bu turda üzə çıxdı. İkinci turda 63 modulun hamısı işlədi: 29-u keçdi, 22-si xəbərdarlıq verdi, 5-i uğursuz oldu. Üçüncü tur və son təkrar qalan problemləri bağladı.
 
-| Plan | İş | Keçdi | Xəbərdarlıq | Uğursuz | Baxış | Buraxıldı |
+| Plan | Tur | Keçdi | Xəbərdarlıq | Uğursuz | Baxış | Buraxıldı |
 |---|---|---|---|---|---|---|
-| Issuer (63) | son iş, 23 oktyabr | 53 | 2 | 0 | 4 | 4 |
+| Issuer (63) | son təkrar, 23 oktyabr | 53 | 2 | 0 | 4 | 4 |
 | Verifier (14) | 1-ci tur, 27 oktyabr | 0 | 7 | 0 | 6 | 1 |
 | Verifier (14) | 2-ci tur, 27 oktyabr | 7 | 0 | 0 | 6 | 1 |
 
-Verifier-in birinci turunda yeddi "xəbərdarlıq" modulu əsas yoxlamadan keçmişdi (Tamga pozulmuş təqdimatı rədd etdi); xəbərdarlıq hər modulda eyni idi və həmin gün düzəldildi.
+Verifier-in birinci turunda "xəbərdarlıq" alan yeddi modul əslində əsas yoxlamadan keçmişdi, çünki Tamga pozulmuş təqdimatı rədd etmişdi. Yeddisində də eyni xəbərdarlıq var idi və onu həmin gün düzəltdik.
 
 "Keçdi" olmayan hər sətrin səbəbi var:
 
-- **İki xəbərdarlıq (issuer metaməlumatı, adi və imzalı).** Metaməlumatımızda ETSI TS 119 472-3-ün müəyyən etdiyi və AB ARF-nin istifadə etdiyi paket verilməsi və təkrar istifadə siyasəti `credential_reuse_policy` var. Alətin sxemi `credential_metadata`-nı əlavə sahələrə bağlayır; bir qanuni genişlənmə sxemin bütöv bir qolunu yıxır və alət sonra standart sahələri (`scope`, `proof_types_supported` və s.) naməlum kimi bildirir. İcazə siyahısı genişlənmənin adını susdura bilir, bu zənciri isə yox. Sahə AB standartıdır, ona görə qalır. Problemi təkrar addımları və iki mümkün həll ilə alətin saxlayıcıları üçün yazdıq.
-- **Baxış.** Bəzi mənfi testlər "ekran görüntüsü yükləyin" ilə bitir: alət serverimizin şəxsə göstərdiyi xəta səhifəsini görə bilmir, onu insan təsdiqləyir. Verifier planında Tamga Verify-ın təqdimatı qəbul etdiyi və ya nəticə səhifəsində rədd etdiyi (yanlış sənəd növü, ləğv edilmiş sənəd) hər hal eyni səbəbdən baxışla bitir. Doğrulayıcının cavabı birbaşa HTTP 400 ilə rədd etdiyi hallar öz-özünə keçir.
-- **Buraxıldı.** Üç issuer modulu şifrələnmiş sənəd cavabını sınayır; biz bunu elan etmirik (HAIP-də ixtiyaridir). Biri yeniləmə tokenini sınayır; şəxsiyyət xidmətimiz yeniləmə tokenini yalnız qısa ömürlü sıfır bilik nüsxələri üçün verir ([ADR-0062](https://docs.tamga.network/adr/0062-zk-copy-refresh-scope)). Alətin sorğusu həmin scope-u istəmədiyi üçün token verilmir və modul buraxılır. Verifier planında `request_uri_method=post` elan edilmədiyi üçün həmin modul buraxılır.
+- **İki xəbərdarlıq (issuer metaməlumatı, adi və imzalı).** Metaməlumatımızda ETSI TS 119 472-3-ün müəyyən etdiyi və AB ARF-nin istifadə etdiyi paket verilməsi və təkrar istifadə siyasəti `credential_reuse_policy` var. Alətin sxemi `credential_metadata` daxilində əlavə sahələrə icazə vermir. Ona görə bir qanuni genişlənmə sxemin bütöv bir qolunu keçərsiz edir və alət sonra standart sahələri (`scope`, `proof_types_supported` və s.) naməlum kimi bildirir. İcazə siyahısı genişlənmənin adını susdura bilir, bu zənciri isə yox. Sahə AB standartıdır, ona görə qalır. Problemi təkrarlama addımları və iki mümkün həll ilə birlikdə alətin tərtibatçılarına göndərmək üçün yazdıq.
+- **Baxış.** Bəzi mənfi testlər "ekran görüntüsü yükləyin" ilə bitir, çünki alət serverimizin şəxsə göstərdiyi xəta səhifəsini görə bilmir və bu səhifəni insan təsdiqləməlidir. Verifier planında Tamga Verify-ın təqdimatı qəbul etdiyi və ya nəticə səhifəsində rədd etdiyi (yanlış sənəd növü, ləğv edilmiş sənəd) hər hal eyni səbəbdən baxışla bitir. Doğrulayıcının cavabı birbaşa HTTP 400 ilə rədd etdiyi hallar öz-özünə keçir.
+- **Buraxıldı.** Üç issuer modulu şifrələnmiş sənəd cavabını sınayır. HAIP bunu ixtiyari saxlayır və metaməlumatımız bu seçimi təklif etmir. Biri yeniləmə tokenini sınayır; şəxsiyyət xidmətimiz yeniləmə tokenini yalnız qısa ömürlü sıfır bilik nüsxələri üçün verir ([ADR-0062](https://docs.tamga.network/adr/0062-zk-copy-refresh-scope)). Alətin sorğusu həmin scope-u istəmədiyi üçün token verilmir və modul buraxılır. Verifier planında `request_uri_method=post` seçimini təklif etmədiyimiz üçün həmin modul buraxılır.
 
 ## Testlər nə tapdı, biz nəyi dəyişdik?
 
-İyirmiyə yaxın dəyişiklik, aşağıda mövzulara görə qruplaşdırılıb. Hər biri onu tələb edən bəndi göstərir; mötərizədəki şərt adları alətin loglarında görünən adlardır.
+Aşağıda iyirmiyə yaxın dəyişikliyi mövzulara görə qruplaşdırdıq. Hər biri onu tələb edən bəndi göstərir, mötərizədəki şərt adları alətin loglarında görünən adlardır.
 
 ![Mövzulara görə düzəltdiklərimiz](/blog/openid-conformance-self-test/en/fig-fixes.png)
 
@@ -75,9 +75,11 @@ Verifier-in birinci turunda yeddi "xəbərdarlıq" modulu əsas yoxlamadan keçm
 
 ### DPoP, PAR və avtorizasiya serveri
 
+DPoP giriş tokenini müştərinin əlindəki açara bağlayan üsuldur. PAR (pushed authorization request) isə avtorizasiya sorğusunun parametrlərini brauzerdən keçmədən birbaşa serverə göndərir.
+
 - **PAR-da DPoP.** Pushed authorization request DPoP sübutunu `dpop_jkt` ilə müqayisə etmədən qəbul edirdi, token endpoint-i isə PAR-dakından fərqli DPoP açarını qəbul edirdi (RFC 9449 §10). Sübut indi PAR-da yoxlanılır, kod həmin açara bağlanır, token endpoint-ində fərqli açar `invalid_grant` alır.
 - **`htu` normallaşdırması.** `htu`-da host adı böyük hərflə və ya açıq `:443` ilə gələn DPoP sübutu rədd edilirdi; RFC 9449 §4.3 əvvəlcə RFC 3986 normallaşdırmasını istəyir. Sxem və host indi hərf registrindən asılı olmadan müqayisə edilir, standart port atılır.
-- **İşdən əvvəl bağlananlar.** Birinci turdan əvvəl hələ işlədilməmiş FAPI 2.0 modullarını oxuduq və tapacaqlarını əvvəlcədən bağladıq: PAR POST olmayan metodlara 405 qaytarır (RFC 9126 §2.3); təkrarlanan parametrlər və PAR daxilində `request_uri` `invalid_request` alır; yalnız `response_type=code` qəbul edilir; `plain` PKCE rədd edilir; attestasiya edilmiş müştəridən fərqli `client_id` `invalid_client` alır; kod verildikdən sonra `request_uri` təkrar istifadə edilə bilməz (RFC 9126 §4). Bu modulların hamısı ilk işdə keçdi.
+- **Testdən əvvəl bağladıqlarımız.** Birinci turdan əvvəl hələ işlədilməmiş FAPI 2.0 modullarını oxuduq və tapacaqlarını əvvəlcədən bağladıq: PAR POST olmayan metodlara 405 qaytarır (RFC 9126 §2.3); təkrarlanan parametrlər və PAR daxilində `request_uri` `invalid_request` alır; yalnız `response_type=code` qəbul edilir; `plain` PKCE rədd edilir; attestasiya edilmiş müştəridən fərqli `client_id` `invalid_client` alır; kod verildikdən sonra `request_uri` təkrar istifadə edilə bilməz (RFC 9126 §4). Bu modulların hamısı ilk dəfədə keçdi.
 
 ### TLS
 
@@ -85,9 +87,9 @@ Verifier-in birinci turunda yeddi "xəbərdarlıq" modulu əsas yoxlamadan keçm
 
 ### Tokenlər
 
-- **Access token-in təkrar istifadəsi.** Access token-lərimiz birdəfəlik idi; bir tokenlə bir neçə sənəd sorğusu göndərən FAPI uğurlu axını buna görə yıxıldı. Spesifikasiyalar təkrar istifadəyə icazə verir; [ADR-0059](https://docs.tamga.network/adr/0059-access-token-multiple-credential-requests) indi tokenin ömrü (ən çox beş dəqiqə) ərzində, yalnız əhatə etdiyi konfiqurasiyalar üçün, cəmi ən çox on nüsxə və həmişə eyni DPoP açarı ilə bir neçə sorğuya icazə verir.
+- **Access token-in təkrar istifadəsi.** Access token-lərimiz birdəfəlik idi. FAPI testlərinin adi ssenarisi isə eyni tokenlə bir neçə sənəd sorğusu göndərir və buna görə uğursuz oldu. Spesifikasiyalar təkrar istifadəyə icazə verdiyi üçün qaydanı [ADR-0059](https://docs.tamga.network/adr/0059-access-token-multiple-credential-requests) ilə dəyişdik. Token indi öz ömrü (ən çox beş dəqiqə) ərzində bir neçə sorğuda istifadə oluna bilər, amma yalnız əhatə etdiyi konfiqurasiyalar üçün, cəmi ən çox on nüsxə və hər dəfə eyni DPoP açarı ilə.
 - **Kodun təkrar istifadəsi.** Avtorizasiya kodu ikinci dəfə istifadə edildikdə, ilk istifadədən verilən tokenlər artıq işləmir (RFC 6749 §4.1.2, RFC 9700 §4.5).
-- **Yeniləmə tokeninin bağlanması.** Yeniləmə tokenlərini DPoP açarına bağlayırdıq; alət yeni DPoP açarı və eyni müştəri ilə yeniləyir. RFC 9449 §5 və attestation-based client authentication §10.3 yeniləmə tokenini müştəri nümunəsinə bağlayır. [ADR-0060](https://docs.tamga.network/adr/0060-refresh-token-client-instance-binding) onu cüzdan attestasiyasındakı nümunə açarına bağlayır; DPoP açarı dəyişə bilər.
+- **Yeniləmə tokeninin bağlanması.** Yeniləmə tokenlərini DPoP açarına bağlayırdıq; alət yeni DPoP açarı və eyni müştəri ilə yeniləyir. RFC 9449 §5 və attestation-based client authentication §10.3 yeniləmə tokenini müştəri nümunəsinə bağlayır. [ADR-0060](https://docs.tamga.network/adr/0060-refresh-token-client-instance-binding) onu cüzdan attestasiyasındakı nümunə açarına bağlayır, beləliklə DPoP açarı dəyişsə də token işləməyə davam edir.
 - **İlk sənəddən əvvəl yeniləmə.** Alət token cavabından dərhal sonra, sənəd istəmədən yeniləyir; yeniləmə tokeninin göstərdiyi qeyd hələ yaranmadığı üçün bunu rədd edirdik. RFC 6749 §6 yeniləmə tokeninin verildiyi andan istifadə edilməsinə icazə verir; indi istifadə edilə bilir.
 
 ### Xəta kodları və başlıqlar
@@ -100,23 +102,23 @@ Verifier-in birinci turunda yeddi "xəbərdarlıq" modulu əsas yoxlamadan keçm
 
 ### Sənəd cavabının forması
 
-- Sənəd cavabımız əlavə bir sahə daşıyırdı: sayt üzrə təxəllüslərin toxumu. Alət sənəd cavablarındakı naməlum sahələri qeyd edir. Spesifikasiyada genişlənməni qadağan edən heç nə yoxdur, yəni bu qiymətləndirmə məsələsi idi; amma daha təmiz, standart yol var idi. [ADR-0061](https://docs.tamga.network/adr/0061-pseudonym-seed-separate-configuration) toxumu ayrıca sənəd konfiqurasiyası edir; ikinci standart sənəd sorğusu ilə alınır. Toxumla bağlı məxfilik qaydaları dəyişmədi.
+- Sənəd cavabımız hər sayt üçün ayrıca təxəllüs yaratmaqda istifadə olunan toxumu əlavə sahə kimi daşıyırdı. Alət sənəd cavablarındakı naməlum sahələri qeyd edir. Spesifikasiyada genişlənməni qadağan edən heç nə olmadığı üçün bu, yozuma açıq məsələ idi, amma daha təmiz, standart yol var idi. [ADR-0061](https://docs.tamga.network/adr/0061-pseudonym-seed-separate-configuration) toxumu ayrıca sənəd konfiqurasiyası edir; ikinci standart sənəd sorğusu ilə alınır. Toxumla bağlı məxfilik qaydaları dəyişmədi.
 
 ### Doğrulayıcı
 
-- **Sorğudakı `purpose`.** İmzalı sorğu obyekti OpenID4VP 1.0-ın (§5.1) müəyyən etmədiyi `purpose` parametrini daşıyırdı (`CheckForUnexpectedParametersInVpAuthorizationRequest`). Çıxarıldı. Cüzdanın göstərdiyi məqsəd `verifier_info` daxilindəki qeydiyyat sertifikatından (ETSI TS 119 475) və etibar siyahısındakı qeydə alınmış istifadədən gəlir; onsuz da belə idi.
+- **Sorğudakı `purpose`.** İmzalı sorğu obyekti OpenID4VP 1.0-ın (§5.1) müəyyən etmədiyi `purpose` parametrini daşıyırdı (`CheckForUnexpectedParametersInVpAuthorizationRequest`). Bu parametri çıxardıq. Cüzdanın göstərdiyi məqsəd onsuz da `verifier_info` daxilindəki qeydiyyat sertifikatından (ETSI TS 119 475) və etibar siyahısındakı qeydə alınmış istifadədən gəlirdi.
 - **`direct_post` cavabı.** Qəbul edilmiş təqdimatdan sonra cavab endpoint-i `redirect_uri` ilə yanaşı `show_url` da qaytarırdı (`ValidateDirectPostResponse`, OpenID4VP §8.2). İndi yalnız `redirect_uri` qaytarır; üzbəüz yoxlama görünüşünün açarı bu ünvanın içindədir.
-- **Doğrulama zamanı çəkilən status siyahıları.** Tamga doğrulayıcıları status siyahılarını əvvəlcədən yükləyir və keşdən yoxlayır; beləliklə qurum sənədin nə vaxt yoxlandığını öyrənmir. Alət hər testdə yeni siyahı ünvanı verir və doğrulayıcının onu çəkdiyini yoxlayır. Doğrulama zamanı çatışmayan siyahını çəkmək üçün defolt olaraq söndürülmüş, açıq şəkildə yandırılan seçim əlavə etdik; siyahı yalnız qurumun bildirdiyi status hostundan və eyni şəbəkə yoxlamaları ilə çəkilir. Yalnız sandbox-un özünütest siyasətində yanılıdır. Eyni iş real bir boşluğu da bağladı: xarici qurumun status siyahısı ünvanı artıq ilk görüldüyü anda öyrənilir; bu real AB PID-ləri üçün də vacibdir.
+- **Doğrulama zamanı çəkilən status siyahıları.** Tamga doğrulayıcıları status siyahılarını əvvəlcədən yükləyir və keşdən yoxlayır; beləliklə qurum sənədin nə vaxt yoxlandığını öyrənmir. Alət hər testdə yeni siyahı ünvanı verir və doğrulayıcının onu çəkdiyini yoxlayır. Buna görə doğrulama zamanı çatışmayan siyahını çəkməyə imkan verən seçim əlavə etdik. Seçim defolt olaraq söndürülüb və yalnız açıq şəkildə yandırılanda işləyir; siyahı da yalnız qurumun bildirdiyi status hostundan, eyni şəbəkə yoxlamalarından keçərək çəkilir. Bu seçim yalnız sandbox-un özünütest siyasətində yanılıdır. Eyni iş real bir boşluğu da bağladı, çünki xarici qurumun status siyahısının ünvanı artıq ilk görüldüyü anda öyrənilir və bu, real AB PID-lərinin yoxlanmasına da kömək edir.
 - **Sorğu obyektinin sahələri.** Sorğu obyektinin gövdəsi indi başlıqla yanaşı `aud` və `iat` da daşıyır.
-- HAIP altında yeni yoxlama cavab şifrələmə açarını təkrar istifadə edən doğrulayıcını yıxır. Bizimki onsuz da hər sorğuda yeni açar yaradır; reqressiya testləri əlavə etdik.
+- HAIP altında yeni yoxlama cavab şifrələmə açarını təkrar istifadə edən doğrulayıcını yıxır. Bizimki onsuz da hər sorğuda yeni açar yaradır, yenə də bunun üçün reqressiya testləri əlavə etdik.
 
-### Kod deyil: konfiqurasiya və test addımları
+### Koddan kənarda: konfiqurasiya və test addımları
 
-Bəzi tapıntılar bizim idi, amma kodda deyildi. Yerləşdirmə zamanı yenidən başlayan xidmət üç modula 502 qaytardı (iş zamanı yerləşdirmə edilmir). İkinci müştərinin geri dönmə ünvanında sorğu sətri var və sandbox-un icazə siyahısı bunu saxlamırdı. Bir neçə modul test edəndən dəqiq addım tələb edir: rədd testində Təsdiqlə deyil, Ləğv et düyməsini basmaq, `request_uri` təkrar istifadə testində ilk açılışda heç nə etməmək, on dəqiqəlik müddətin bitməsini gözləmək, düzgün ekran görüntüsünü yükləmək, bir təxəllüslə eyni anda tək test işlətmək. Hər biri bizə bir dəfə təkrar işə başa gəldi.
+Bəzi tapıntılar bizim idi, amma kodda deyildi. Yerləşdirmə zamanı yenidən başlayan xidmət üç modula 502 qaytardı, ona görə testlər gedərkən yerləşdirmə edilməməlidir. İkinci müştərinin geri dönmə ünvanında sorğu sətri var və sandbox-un icazə siyahısı bunu saxlamırdı. Bir neçə modul isə test edəndən müəyyən addımı dəqiq yerinə yetirməyi tələb edir. Rədd testində Təsdiqlə yerinə Ləğv et düyməsini basmaq, `request_uri` təkrar istifadə testində ilk açılışda heç nə etməmək, on dəqiqəlik müddətin bitməsini gözləmək, düzgün ekran görüntüsünü yükləmək və bir alias ilə eyni anda yalnız bir test işlətmək bunlardan bəziləridir. Hər biri bizə bir dəfə təkrar tura başa gəldi.
 
 ## Nəyi düzəldəcəyimizə necə qərar verdik?
 
-Əməl etdiyimiz qayda: **düzəlişi spesifikasiya üçün et, test aləti üçün yox; hər şüurlu fərqi yaz.** Hər tapıntı koda toxunulmazdan əvvəl bir sinfə yerləşdirildi.
+Əvvəldən axıra qədər bir qaydaya əməl etdik. Kodu yalnız spesifikasiyanın bir bəndi tələb edəndə dəyişdik, test alətinin özünəməxsus gözləntiləri üçün dəyişmədik və bilərəkdən saxladığımız hər fərqi yazıya aldıq. Koda toxunmazdan əvvəl hər tapıntını aşağıdakı siniflərdən birinə yerləşdirdik.
 
 | Sinif | Mənası | Nə etdik |
 |---|---|---|
@@ -125,34 +127,34 @@ Bəzi tapıntılar bizim idi, amma kodda deyildi. Yerləşdirmə zamanı yenidə
 | konfiqurasiya | alətin konfiqurasiyası, test mühiti və ya test edənin addımı | konfiqurasiyanı və ya proseduru düzəltdik |
 | gözlənilən | dəstəkləmədiyimiz variant və ya sənədləşdirilmiş genişlənmə | olduğu kimi saxladıq və qeyd etdik |
 | qərar | spesifikasiya icazə verir, amma alət başqa yol gözləyir | layihə rəhbərliyi ADR ilə qərar verdi |
-| alət məhdudiyyəti | alət heç bir spesifikasiyanın tələb etmədiyini yoxlayır | düzgün kodu saxladıq, saxlayıcılara bildirdik |
+| alət məhdudiyyəti | alət heç bir spesifikasiyanın tələb etmədiyini yoxlayır | düzgün kodu saxladıq, problemi alətin tərtibatçıları üçün yazdıq |
 
-![Seçmə: log sətrindən düzəlişə](/blog/openid-conformance-self-test/en/fig-triage.png)
+![Təsnifat: log sətrindən düzəlişə](/blog/openid-conformance-self-test/en/fig-triage.png)
 
-Dörd tapıntı bağlanmış qərarlara toxunurdu; ona görə əvvəlcə ADR-lərdən keçdi (0059–0062) və hər biri kod dəyişməzdən əvvəl layihə rəhbərliyi tərəfindən təsdiqləndi. Bir genişlənməni bilərəkdən saxladıq (`credential_reuse_policy`); digərini təmiz standart forma olduğu üçün o formaya köçürdük. Testdən keçməklə haqlı olmaq arasındakı fərq buradadır: təmiz nəticə üçün AB-nin müəyyən etdiyi sahəni silsəydik, nəticə daha pis olardı.
+Dörd tapıntı bağlanmış qərarlara toxunurdu, ona görə əvvəlcə ADR-lərdən keçdi (0059–0062) və layihə rəhbərliyi hər birini kod dəyişməzdən əvvəl təsdiqlədi. Bir genişlənməni (`credential_reuse_policy`) bilərəkdən saxladıq, digərini isə təmiz standart forma olduğu üçün o formaya köçürdük. Təmiz nəticə üçün AB-nin müəyyən etdiyi sahəni silə bilərdik, amma onda əlimizdə testdən keçən, lakin standarta daha az uyğun gələn xidmət qalardı.
 
 ## Özünütest nəyi göstərmir?
 
 - **Sertifikat deyil.** OpenID sertifikasiyası Fondla aparılan ayrıca prosesdir; bizim üçün də ayrıca qərardır.
 - **Planları dərc etmədik.** Alətdə planı dərc etmək nəticələrini hamıya açır, planın konfiqurasiyasında isə alətə verdiyimiz test məxfi açarları (attestasiya imzalayıcısı, saxta PID-in imza açarı) var. İxrac edilmiş logları və ekran görüntülərini özümüzdə saxlayırıq.
-- **Sandbox-u, iki xidməti və hər birinin bir variantını əhatə edir.** Cüzdan planları cihaz quruluşu tələb etdiyi üçün işlədilmədi. Doğrulayıcının mdoc variantı işlədilmədi. Qurumun issuer xidməti bu planla sınanmadı.
+- **Sandbox-u, iki xidməti və hər birinin bir variantını əhatə edir.** Cüzdan planları cihaz üçün ayrıca quruluş tələb etdiyi üçün işlədilmədi. Doğrulayıcının mdoc variantı işlədilmədi. Qurumun issuer xidməti bu planla sınanmadı.
 - **Bəzi düzəlişlər hələ npm-də deyil.** npm-dəki paketlər 0.7.2-dir; 27 oktyabrdakı iki doğrulayıcı düzəlişi və dil teqi dəyişikliyi 0.7.3-dədir və sandbox-da işləyir.
-- **Protokolu sınayır, etibarı yox.** Alət mesajların düzgün formada olduğunu və yoxlamaların edildiyini sınayır. Qurumun diplom verməyə səlahiyyətli olub-olmaması etibar siyahısının işidir, hüquqi tanınma isə hüququn.
+- **Yalnız protokolu sınayır.** Alət mesajların düzgün formada olduğunu və tələb olunan yoxlamaların aparıldığını sınayır. Qurumun diplom verməyə səlahiyyətli olub-olmaması etibar siyahısının işidir, hüquqi tanınma isə hüququn.
 
 ## Dəstdə nə var?
 
-Dəst ilk tam işin öyrətdiklərini istənilən OpenID4VCI issuer və ya OpenID4VP verifier üçün yazılmış şəkildə toplayır. Heç bir məhsul və ya host adı keçmir; nümunələr `example.com` istifadə edir.
+Dəst ilk tam test turunun öyrətdiklərini istənilən OpenID4VCI issuer və ya OpenID4VP verifier üçün yazılmış şəkildə toplayır. Dəstdə heç bir məhsul və ya host adı keçmir, nümunələrdə isə `example.com` istifadə olunur.
 
 | Hissə | Nə edir |
 |---|---|
-| İş axını | plan və variantlar, konfiqurasiya, iş sırası, brauzer addımları və baxış görüntüləri, loglar, seçmə, düzəliş, təkrar iş |
+| İş axını | plan və variantlar, konfiqurasiya, işə salma sırası, brauzer addımları və baxış görüntüləri, loglar, tapıntıların təsnifatı, düzəliş, təkrar tur |
 | Issuer planı arayışı | hər OpenID4VCI modulu: nəyi yoxlayır, spesifikasiya bəndi, tipik xəta, düzəliş |
 | FAPI 2.0 arayışı | issuer planının içində işləyən 40 FAPI 2.0 Security Profile modulu |
 | Verifier planı arayışı | hər modul və 400 ilə 200 cavablarının keçdi və baxışa necə uyğun gəldiyi |
 | Tez-tez rast gəlinən xətalar | əlamət → şərt → səbəb → düzəliş, hər tapıntının sinfi ilə |
 | Konfiqurasiya şablonları | iki plan üçün açarları çıxarılmış suite JSON-u, sahə-sahə |
 | Test PKI | test kökü, attestasiya imzalayıcısı və saxta PID açarları üçün openssl resepti |
-| İlkin yoxlama siyahısı | ilk işdən əvvəl kodda baxılacaqlar |
+| İlkin yoxlama siyahısı | ilk test turundan əvvəl kodda baxılacaqlar |
 | Log xülasəçisi | modul üzrə nəticə və hər uğursuz, xəbərdarlıq və baxış sətri; açar və hesab məlumatı olmadan |
 
 Dəst süni intellekt kodlaşdırma köməkçisi üçün plagin kimi paketlənib; quraşdırma əmrləri [README](https://github.com/tamga-network/oidf-conformance-kit#install) faylındadır. İçindəki hər şey sadə Markdown və yalnız standart kitabxanadan istifadə edən Python skriptidir, köməkçi olmadan da işləyir:
@@ -169,13 +171,13 @@ python scripts/oidf-log-summary.py ./logs --latest --format markdown --redact -o
 
 ## Necə töhfə verə bilərsiniz?
 
-Alət sürətlə dəyişir: modullar əlavə olunur, adları dəyişir və ya yeni bir şeyi yoxlamağa başlayır. Dəstdəki modul adları alətin 26 oktyabr 2026-cı il tarixli əsas budağına görə yoxlanılıb və zamanla köhnələcək. Ən çox kömək edən üç töhfə:
+Alət sürətlə dəyişir. Yeni modullar əlavə olunur, bəzilərinin adı dəyişir, bəziləri isə yeni bir şeyi yoxlamağa başlayır. Dəstdəki modul adlarını alətin 26 oktyabr 2026-cı il tarixli əsas budağı ilə tutuşdurduq, amma bu məlumatlar zamanla köhnələcək. Ən çox kömək edən üç töhfə:
 
 - əlavə olunan və ya dəyişən modul və ya şərt, yoxladığınız alət commit-i ilə;
 - rastlaşdığınız və düzəltdiyiniz xəta: şərt adı, səbəb, düzəliş və onu tələb edən bənd;
-- alət məhdudiyyəti: davranışı heç bir spesifikasiyanın niyə tələb etmədiyi və saxlayıcılara açılan qeydin linki.
+- alət məhdudiyyəti: davranışı heç bir spesifikasiyanın niyə tələb etmədiyi və alətin problem qeydinə link.
 
-Dəstdəki hər düzəliş spesifikasiyaya istinad etməlidir; yeganə mənbə alətdirsə, məhdudiyyət kimi daxil olur. Cüzdan planları hələ əhatə olunmur; ən böyük boşluq odur. Issue və pull request-lər [github.com/tamga-network/oidf-conformance-kit](https://github.com/tamga-network/oidf-conformance-kit) ünvanında qəbul edilir.
+Dəstdəki hər düzəliş spesifikasiyaya istinad etməlidir, yeganə mənbəyi alət olan tapıntı isə məhdudiyyət kimi daxil olur. Cüzdan planları hələ əhatə olunmur; ən böyük boşluq odur. Issue və pull request-lər [github.com/tamga-network/oidf-conformance-kit](https://github.com/tamga-network/oidf-conformance-kit) ünvanında qəbul edilir.
 
 ## Tez-tez verilən suallar
 
@@ -185,7 +187,7 @@ Xeyr. Fondun test alətini sandbox-da özümüz işlətdik. Sertifikasiya ayrıc
 
 ### Niyə bəzi modullar "keçdi" deyil, "baxış" ilə bitir?
 
-Alət şəxsə göstərilən səhifəni görə bilmir. Doğrulayıcımız nəticəni öz səhifəsində göstərdikdə və ya serverimiz xəta səhifəsi göstərdikdə alət ekran görüntüsü istəyir və insan təsdiqləyir. Bu modulların adi sonu belədir.
+Çünki alət şəxsə göstərilən səhifəni görə bilmir. Doğrulayıcımız nəticəni öz səhifəsində göstərdikdə və ya serverimiz xəta səhifəsi göstərdikdə alət ekran görüntüsü istəyir və insan təsdiqləyir. Bu modulların adi sonu belədir.
 
 ### Yalnız aləti razı salmaq üçün kodu dəyişdiniz?
 

@@ -98,7 +98,7 @@ WyJjazFtMktWejdVWEg2cTlMNEJad1BRIiwiZ2l2ZW5fbmFtZSIsIlZla3TDtnIiXQ
 
 Həş `base64url(SHA-256(ASCII bytes of the disclosure string))` kimi hesablanır. Yuxarıdakı dörd həşin hər biri faydalı yükün `_sd` massivində yer alır.
 
-SD-JWT kodunda ən çox rast gəlinən xəta açıqlamanı dekod etmək, massivi yenidən seriallaşdırmaq və nəticəni həşləməkdir. JSON seriallaşdırması deterministik deyil: vergüldən sonrakı boşluq və ya `ö` simvolunun `ö` kimi yazılması fərqli baytlar və fərqli həş verir. Tamga spesifikasiyası bunu `given_name: "Ayşe"` üçün açıqlama nümunəsində göstərir: boşluqsuz və ya escape ardıcıllıqları olmadan yenidən seriallaşdırma `nM_EESmLJt3b0fzNu1paGyiAfSLs4Npf2yEjUn0upSo` həşini `c94D71JDfX8hzanT-ZpRWBn5oNX_RkStfSfkvTmY_kU` həşinə çevirir. Yoxlayan tərəflər üçün qayda sadədir: **sətri alındığı kimi həşləyin, sonra dekod edin.** Heç vaxt əksinə yox.
+SD-JWT kodunda ən çox rast gəlinən xəta açıqlamanı dekod etmək, massivi yenidən seriallaşdırmaq və nəticəni həşləməkdir. JSON seriallaşdırması deterministik deyil: vergüldən sonrakı boşluq və ya `ö` simvolunun `\u00f6` kimi yazılması fərqli baytlar və fərqli həş verir. Tamga spesifikasiyası bunu `given_name: "Ayşe"` üçün açıqlama nümunəsində göstərir: boşluqsuz və ya escape ardıcıllıqları olmadan yenidən seriallaşdırma `nM_EESmLJt3b0fzNu1paGyiAfSLs4Npf2yEjUn0upSo` həşini `c94D71JDfX8hzanT-ZpRWBn5oNX_RkStfSfkvTmY_kU` həşinə çevirir. Yoxlayan tərəflər üçün qayda sadədir: **sətri alındığı kimi həşləyin, sonra dekod edin.** Heç vaxt əksinə yox.
 
 ![İddiadan imzalanmış faydalı yükdəki həşə qədər dörd addım](/blog/sd-jwt-vc-deep-dive/en/fig-disclosure.png)
 

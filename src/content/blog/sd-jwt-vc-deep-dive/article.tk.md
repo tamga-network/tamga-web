@@ -98,7 +98,7 @@ WyJjazFtMktWejdVWEg2cTlMNEJad1BRIiwiZ2l2ZW5fbmFtZSIsIlZla3TDtnIiXQ
 
 Heş `base64url(SHA-256(disclosure setiriniň ASCII baýtlary))`-dyr. Ýokarky dört heşiň her biri mazmunyň `_sd` toplumynda bar.
 
-SD-JWT kodunda iň köp duş gelýän ýalňyşlyk disclosure-y açmak, toplumy täzeden serializasiýa etmek we netijäniň heşini almakdyr. JSON serializasiýasy kesgitli däl: otudan soňky boşluk ýa-da `ö`-niň `ö` görnüşinde ýazylmagy başga baýtlar we başga heş berýär. Tamga-nyň spesifikasiýasy muny `given_name: "Ayşe"` üçin disclosure bilen görkezýär: boşluklarsyz ýa-da escape-siz täzeden serializasiýa etmek `nM_EESmLJt3b0fzNu1paGyiAfSLs4Npf2yEjUn0upSo`-y `c94D71JDfX8hzanT-ZpRWBn5oNX_RkStfSfkvTmY_kU`-a öwürýär. Barlaýjylar üçin düzgün ýönekeý: **setiriň heşini alnyşy ýaly alyň, soňra ony açyň.** Hiç haçan tersine däl.
+SD-JWT kodunda iň köp duş gelýän ýalňyşlyk disclosure-y açmak, toplumy täzeden serializasiýa etmek we netijäniň heşini almakdyr. JSON serializasiýasy kesgitli däl: otudan soňky boşluk ýa-da `ö`-niň `\u00f6` görnüşinde ýazylmagy başga baýtlar we başga heş berýär. Tamga-nyň spesifikasiýasy muny `given_name: "Ayşe"` üçin disclosure bilen görkezýär: boşluklarsyz ýa-da escape-siz täzeden serializasiýa etmek `nM_EESmLJt3b0fzNu1paGyiAfSLs4Npf2yEjUn0upSo`-y `c94D71JDfX8hzanT-ZpRWBn5oNX_RkStfSfkvTmY_kU`-a öwürýär. Barlaýjylar üçin düzgün ýönekeý: **setiriň heşini alnyşy ýaly alyň, soňra ony açyň.** Hiç haçan tersine däl.
 
 ![Meýdandan gol çekilen mazmundaky heşe çenli dört ädim](/blog/sd-jwt-vc-deep-dive/en/fig-disclosure.png)
 

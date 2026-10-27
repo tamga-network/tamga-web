@@ -98,7 +98,7 @@ WyJjazFtMktWejdVWEg2cTlMNEJad1BRIiwiZ2l2ZW5fbmFtZSIsIlZla3TDtnIiXQ
 
 Özet şöyle hesaplanır: `base64url(SHA-256(disclosure dizgisinin ASCII baytları))`. Yukarıdaki dört özetin dördü de gövdedeki `_sd` dizisinde var.
 
-SD-JWT kodunda en sık görülen hata, disclosure'ı çözüp diziyi yeniden JSON'a çevirmek ve onun özetini almaktır. JSON yazımı tek biçimli değildir: virgülden sonra bir boşluk ya da `ö` yerine `ö` yazmak başka baytlar, başka bir özet demektir. Tamga'nın şartnamesi bunu `given_name: "Ayşe"` örneğiyle gösterir: boşluksuz ve kaçışsız yeniden yazınca `nM_EESmLJt3b0fzNu1paGyiAfSLs4Npf2yEjUn0upSo` özeti `c94D71JDfX8hzanT-ZpRWBn5oNX_RkStfSfkvTmY_kU` olur. Doğrulayıcı için kural basit: **dizginin özetini geldiği gibi alın, sonra çözün.** Tersi asla.
+SD-JWT kodunda en sık görülen hata, disclosure'ı çözüp diziyi yeniden JSON'a çevirmek ve onun özetini almaktır. JSON yazımı tek biçimli değildir: virgülden sonra bir boşluk ya da `ö` yerine `\u00f6` yazmak başka baytlar, başka bir özet demektir. Tamga'nın şartnamesi bunu `given_name: "Ayşe"` örneğiyle gösterir: boşluksuz ve kaçışsız yeniden yazınca `nM_EESmLJt3b0fzNu1paGyiAfSLs4Npf2yEjUn0upSo` özeti `c94D71JDfX8hzanT-ZpRWBn5oNX_RkStfSfkvTmY_kU` olur. Doğrulayıcı için kural basit: **dizginin özetini geldiği gibi alın, sonra çözün.** Tersi asla.
 
 ![Bir alandan imzalı gövdedeki özete dört adım](/blog/sd-jwt-vc-deep-dive/tr/fig-disclosure.png)
 
