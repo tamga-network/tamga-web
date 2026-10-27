@@ -108,6 +108,48 @@ export const CHANGELOG_PAGE: Record<
 
 export const RELEASES: Release[] = [
   {
+    id: "v1.0.0-2026-10-27",
+    version: "v1.0.0",
+    date: "2026-10-27",
+    kind: "security",
+    title: {
+      en: "OpenID self-test fixes, gate terminal keys, packages 0.7.2",
+      tr: "OpenID öz-testi düzeltmeleri, kapı terminali anahtarları, paketler 0.7.2",
+      tk: "OpenID öz-synagynyň düzedişleri, gapy terminal açarlary, paketler 0.7.2",
+      az: "OpenID öz-sınağı düzəlişləri, keçid terminalı açarları, paketlər 0.7.2",
+    },
+    sections: {
+      fixed: {
+        en: [
+          "Fixes from the OpenID conformance self-test: the issuer's authorization server metadata, DPoP key binding, standard error codes, and revocation lists of external issuers are now checked as the standards require.",
+        ],
+        tr: [
+          "OpenID uyum öz-testinden gelen düzeltmeler: belge verenin yetkilendirme sunucusu bilgileri, DPoP anahtar bağı, standart hata kodları ve dış kurumların iptal listeleri artık standartların istediği gibi denetleniyor.",
+        ],
+        tk: [
+          "OpenID laýyklyk öz-synagyndan gelen düzedişler: resminama berijiniň ygtyýarlandyryş serweriniň maglumatlary, DPoP açar baglanyşygy, standart ýalňyşlyk kodlary we daşary guramalaryň ýatyrylyş sanawlary indi standartlaryň talap edişi ýaly barlanýar.",
+        ],
+        az: [
+          "OpenID uyğunluq öz-sınağından gələn düzəlişlər: sənəd verənin avtorizasiya serveri məlumatları, DPoP açar bağlantısı, standart xəta kodları və xarici qurumların ləğv siyahıları artıq standartların tələb etdiyi kimi yoxlanılır.",
+        ],
+      },
+      security: {
+        en: [
+          "Gate terminals now prove who they are with an operator-issued terminal key; a photographed single-use ticket can no longer be spent by someone else. The packages are on npm as the 0.7.2 test release.",
+        ],
+        tr: [
+          "Kapı terminalleri artık işletmecinin verdiği terminal anahtarıyla kimlik gösteriyor; fotoğrafı çekilen tek kullanımlık bilet başkası tarafından harcanamaz. Paketler npm'de 0.7.2 deneme sürümünde.",
+        ],
+        tk: [
+          "Gapy terminallary indi operatoryň beren terminal açary bilen özlerini tanadýarlar; suraty alnan bir gezeklik bilet başga biri tarapyndan ulanylyp bilinmez. Paketler npm-de 0.7.2 synag wersiýasynda.",
+        ],
+        az: [
+          "Keçid terminalları artıq operatorun verdiyi terminal açarı ilə özlərini təsdiqləyir; şəkli çəkilmiş birdəfəlik bilet başqası tərəfindən istifadə edilə bilməz. Paketlər npm-də 0.7.2 sınaq buraxılışı kimi mövcuddur.",
+        ],
+      },
+    },
+  },
+  {
     id: "v1.0.0-2026-10-21",
     version: "v1.0.0",
     date: "2026-10-21",

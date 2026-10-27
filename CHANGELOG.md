@@ -36,3 +36,6 @@ tamga.network with the network's 1.0 documentation set, in English, Turkish and 
   institution (ADR-0057); three claims re-verified against source; `updated: 2026-10-23` on changed posts (en, tr, az).
   Code comments no longer reference private workspace paths; `brand:sync` takes the logo kit location from
   `TAMGA_BRAND_KIT` or `--kit`.
+- 2026-10-27: packages at npm 0.7.2 everywhere a version is shown (SDK page, home, roadmap, blog notes); release note dated
+  2026-10-27 (OpenID self-test fixes, gate terminal keys); code examples re-synced (the verify-own-server example no longer
+  passes a `purpose` to `createPresentationRequest`).
