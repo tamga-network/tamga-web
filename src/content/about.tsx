@@ -108,7 +108,7 @@ const en: AboutContent = {
       },
       {
         k: "Wallets on the network and the team that builds it",
-        v: "Any wallet that follows the network’s rules works on the network. Tamga Wallet is the first of them, and it is a separate product that the network does not run. The team that builds the network runs the reference services, namely the Institution Console, Tamga Verify and trust-list publication, and publishes the code as open-source packages so that no institution is tied to one app.",
+        v: "Any wallet that follows the network’s rules works on the network. Tamga Wallet is the first of them, and it is a separate product that the network does not run. The team that builds the network runs the reference services, namely the Institution Console, Tamga Verify and trust-list publication, and publishes the code as open-source packages so that no institution is tied to one app. Operated provisionally by BROS İNŞAAT SANAYİ VE DIŞ TİCARET LİMİTED ŞİRKETİ on behalf of Tamga Network (foundation to be established).",
       },
     ],
   },
@@ -228,7 +228,7 @@ const tr: AboutContent = {
       },
       {
         k: "Ağdaki cüzdanlar ve ağı geliştiren ekip",
-        v: "Ağın kurallarına uyan her cüzdan ağda çalışabilir. Bunların ilki Tamga Wallet’tır ve ağın işletmediği ayrı bir üründür. Ağı geliştiren ekip Kurum Konsolu, Tamga Verify ve güven listesi yayını gibi referans hizmetleri işletir. Kodu da açık kaynak paketler olarak yayınladığı için hiçbir kurum tek bir uygulamaya bağlı kalmaz.",
+        v: "Ağın kurallarına uyan her cüzdan ağda çalışabilir. Bunların ilki Tamga Wallet’tır ve ağın işletmediği ayrı bir üründür. Ağı geliştiren ekip Kurum Konsolu, Tamga Verify ve güven listesi yayını gibi referans hizmetleri işletir. Kodu da açık kaynak paketler olarak yayınladığı için hiçbir kurum tek bir uygulamaya bağlı kalmaz. Tamga Network (kurulacak vakıf) adına geçici işletmeci: BROS İNŞAAT SANAYİ VE DIŞ TİCARET LİMİTED ŞİRKETİ.",
       },
     ],
   },
@@ -347,7 +347,7 @@ const tk: AboutContent = {
       },
       {
         k: "Tordaky gapjyklar we tory gurýan topar",
-        v: "Toruň düzgünlerine eýerýän her gapjyk torda işläp bilýär. Olaryň ilkinjisi Tamga Wallet we ol toruň işletmeýän aýry önümidir. Tory gurýan topar Gurama konsoly, Tamga Verify we ynam sanawynyň çap edilmegi ýaly salgylanma hyzmatlaryny işledýär. Kody hem açyk çeşmeli paketler hökmünde çap edýändigi üçin hiç bir gurama bir programma bagly galmaýar.",
+        v: "Toruň düzgünlerine eýerýän her gapjyk torda işläp bilýär. Olaryň ilkinjisi Tamga Wallet we ol toruň işletmeýän aýry önümidir. Tory gurýan topar Gurama konsoly, Tamga Verify we ynam sanawynyň çap edilmegi ýaly salgylanma hyzmatlaryny işledýär. Kody hem açyk çeşmeli paketler hökmünde çap edýändigi üçin hiç bir gurama bir programma bagly galmaýar. Tamga Network (dörediljek gazna) adyndan wagtlaýyn işlediji: BROS İNŞAAT SANAYİ VE DIŞ TİCARET LİMİTED ŞİRKETİ.",
       },
     ],
   },
@@ -467,7 +467,7 @@ const az: AboutContent = {
       },
       {
         k: "Şəbəkədəki rəqəmsal cüzdanlar və şəbəkəni quran komanda",
-        v: "Şəbəkənin qaydalarına əməl edən istənilən rəqəmsal cüzdan şəbəkədə işləyə bilər. Bunların birincisi Tamga Wallet-dir və o, şəbəkənin idarə etmədiyi ayrıca məhsuldur. Şəbəkəni quran komanda Qurum Konsolu, Tamga Verify və etibar siyahısının dərci kimi istinad xidmətlərini idarə edir. Kodu da açıq mənbəli paketlər kimi dərc etdiyi üçün heç bir qurum bir tətbiqə bağlı qalmır.",
+        v: "Şəbəkənin qaydalarına əməl edən istənilən rəqəmsal cüzdan şəbəkədə işləyə bilər. Bunların birincisi Tamga Wallet-dir və o, şəbəkənin idarə etmədiyi ayrıca məhsuldur. Şəbəkəni quran komanda Qurum Konsolu, Tamga Verify və etibar siyahısının dərci kimi istinad xidmətlərini idarə edir. Kodu da açıq mənbəli paketlər kimi dərc etdiyi üçün heç bir qurum bir tətbiqə bağlı qalmır. Tamga Network (yaradılacaq fond) adından müvəqqəti operator: BROS İNŞAAT SANAYİ VE DIŞ TİCARET LİMİTED ŞİRKETİ.",
       },
     ],
   },
