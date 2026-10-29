@@ -1,8 +1,8 @@
 import type { TeamMember } from "./types";
 
 /*
- * Berke Karataş. Metinler kişinin kendi profil metninden uyarlandı (üçüncü kişi). Boş listeler sayfada görünmez;
- * eğitim, yazılar, yayınlar ve sosyal adresler kişi verdikçe eklenir (nasıl: README.md).
+ * Berke Karataş. Metinler ve bilgiler kişinin kendi verdiği özgeçmiş verisinden (2026-10-30): eğitim, uzmanlık, bağlantılar.
+ * İş geçmişi, telefon, kişisel e-posta ve konum bilinçli olarak yok. Boş listeler sayfada görünmez (nasıl eklenir: README.md).
  */
 export const berkeKaratas: TeamMember = {
   slug: "berke-karatas",
@@ -28,26 +28,23 @@ export const berkeKaratas: TeamMember = {
   },
   bio: {
     en: [
-      "Berke Karataş is the founder of Tamga Network, an open, EU-compatible digital trust network for the Turkic world. Proving that a document is genuine should not require a phone call to the issuer, and the person should share only what is asked: that is the problem the network sets out to solve.",
-      "He defines the network's rules (Tamga ARF 1.0), principles and roadmap, leads relations with institutions and the public sector, and takes the product and architecture decisions.",
-      "He follows the EU's eIDAS 2.0 framework closely. Tamga uses the same standards (SD-JWT VC, ISO mdoc, OpenID4VC), while the rules and trust lists belong to the states of the Turkic world. The network's goal is an independent, non-profit foundation.",
+      "Berke Karataş is the founder of Tamga Network, an open, EU-compatible digital trust network for the Turkic world. He defines the network's rules (Tamga ARF 1.0), principles and roadmap.",
+      "His interest is digital identity and verifiable credentials: proving that a document is genuine without calling the issuer, while the person shares only what is asked. He follows the EU's eIDAS 2.0 framework and the EUDI Wallet architecture closely, and works on software architecture and backend development.",
     ],
     tr: [
-      "Berke Karataş, Türk dünyası için açık ve AB uyumlu dijital güven ağı Tamga Network'ün kurucusu. Bir belgenin gerçek olduğunu kanıtlamak için belgeyi verene telefon açılmasın, kişi yalnız istenen bilgiyi paylaşsın: ağın çözmeye çalıştığı sorun bu.",
-      "Ağın kurallarını (Tamga ARF 1.0), ilkelerini ve yol haritasını belirliyor; kurumlar ve kamu tarafıyla ilişkileri yürütüyor; ürün ve mimari kararlarını veriyor.",
-      "Avrupa'nın eIDAS 2.0 düzenini yakından izliyor. Tamga aynı standartları (SD-JWT VC, ISO mdoc, OpenID4VC) kullanıyor; kurallar ve güven listeleri ise Türk dünyasının devletlerine ait. Ağın hedefi bağımsız, kâr amacı gütmeyen bir vakıf.",
+      "Berke Karataş, Türk dünyası için açık ve AB uyumlu dijital güven ağı Tamga Network'ün kurucusu. Ağın kurallarını (Tamga ARF 1.0), ilkelerini ve yol haritasını belirliyor.",
+      "İlgi alanı dijital kimlik ve doğrulanabilir belgeler: bir belgenin gerçek olduğunu belgeyi verene sormadan kanıtlamak, kişinin yalnız istenen bilgiyi paylaşması. Avrupa'nın eIDAS 2.0 düzenini ve EUDI cüzdan mimarisini yakından izliyor; yazılım mimarisi ve backend geliştirme üzerine çalışıyor.",
     ],
     tk: [
-      "Berke Karataş türki dünýäsi üçin açyk, ÝB bilen laýyk sanly ynam tory bolan Tamga Network-yň esaslandyryjysy. Resminamanyň hakykydygyny subut etmek üçin ony berene jaň etmek gerek bolmasyn, adam diňe soralan maglumaty paýlaşsyn: toruň çözmäge çalyşýan meselesi şu.",
-      "Toruň düzgünlerini (Tamga ARF 1.0), ýörelgelerini we ýol kartasyny kesgitleýär, guramalar we döwlet pudagy bilen gatnaşyklary alyp barýar, önüm we arhitektura kararlaryny kabul edýär.",
-      "Ýewropanyň eIDAS 2.0 düzgünini ýakyndan yzarlaýar. Tamga şol bir standartlary (SD-JWT VC, ISO mdoc, OpenID4VC) ulanýar, düzgünler we ynam sanawlary bolsa türki dünýäsiniň döwletlerine degişli. Toruň maksady garaşsyz, girdeji gazanmaýan gazna.",
+      "Berke Karataş türki dünýäsi üçin açyk, ÝB bilen laýyk sanly ynam tory bolan Tamga Network-yň esaslandyryjysy. Toruň düzgünlerini (Tamga ARF 1.0), ýörelgelerini we ýol kartasyny kesgitleýär.",
+      "Onuň gyzyklanýan ugry sanly şahsyýet we barlanyp bilinýän resminamalar: resminamanyň hakykydygyny ony berene ýüz tutman subut etmek, adamyň diňe soralan maglumaty paýlaşmagy. Ýewropanyň eIDAS 2.0 düzgünini we EUDI gapjyk arhitekturasyny ýakyndan yzarlaýar; programma arhitekturasy we backend işläp taýýarlamak bilen meşgullanýar.",
     ],
     az: [
-      "Berke Karataş Türk dünyası üçün açıq, Aİ ilə uyğun rəqəmsal etibar şəbəkəsi olan Tamga Network-un təsisçisidir. Sənədin həqiqi olduğunu sübut etmək üçün onu verən quruma zəng etmək lazım olmasın, insan yalnız istənilən məlumatı paylaşsın: şəbəkənin həll etməyə çalışdığı problem budur.",
-      "Şəbəkənin qaydalarını (Tamga ARF 1.0), prinsiplərini və yol xəritəsini müəyyənləşdirir, qurumlar və dövlət sektoru ilə əlaqələri aparır, məhsul və arxitektura qərarlarını verir.",
-      "Avropanın eIDAS 2.0 çərçivəsini yaxından izləyir. Tamga eyni standartlardan (SD-JWT VC, ISO mdoc, OpenID4VC) istifadə edir, qaydalar və etibar siyahıları isə Türk dünyası dövlətlərinə məxsusdur. Şəbəkənin məqsədi müstəqil, qeyri-kommersiya fondudur.",
+      "Berke Karataş Türk dünyası üçün açıq, Aİ ilə uyğun rəqəmsal etibar şəbəkəsi olan Tamga Network-un təsisçisidir. Şəbəkənin qaydalarını (Tamga ARF 1.0), prinsiplərini və yol xəritəsini müəyyənləşdirir.",
+      "Maraq sahəsi rəqəmsal kimlik və yoxlanıla bilən sənədlərdir: sənədin həqiqi olduğunu onu verən quruma müraciət etmədən sübut etmək, insanın yalnız istənilən məlumatı paylaşması. Avropanın eIDAS 2.0 çərçivəsini və EUDI pul kisəsi arxitekturasını yaxından izləyir; proqram arxitekturası və backend inkişafı üzərində işləyir.",
     ],
   },
+  // İlgi alanları (üst bölümde etiket)
   focus: [
     { en: "Digital identity", tr: "Dijital kimlik", tk: "Sanly şahsyýet", az: "Rəqəmsal kimlik" },
     {
@@ -56,18 +53,78 @@ export const berkeKaratas: TeamMember = {
       tk: "Barlanyp bilinýän resminamalar",
       az: "Yoxlanıla bilən sənədlər",
     },
-    { en: "eIDAS 2.0" },
     { en: "Trust frameworks", tr: "Güven çerçeveleri", tk: "Ynam çarçuwalary", az: "Etibar çərçivələri" },
-    { en: "Software architecture", tr: "Yazılım mimarisi", tk: "Programma arhitekturasy", az: "Proqram arxitekturası" },
     { en: "Privacy by design", tr: "Tasarımda gizlilik", tk: "Dizaýnda gizlinlik", az: "Dizaynda məxfilik" },
+    { en: "Software architecture", tr: "Yazılım mimarisi", tk: "Programma arhitekturasy", az: "Proqram arxitekturası" },
   ],
-  // Eğitim: kişi verdiğinde doldurulacak (ör. { period: "2016 – 2020", title: { en: "…", tr: "…" }, place: "…" }).
-  education: [],
+  // Uzmanlık alanları: kişinin kendi beceri listesinden (teknik adlar çevrilmez)
+  expertise: [
+    {
+      group: { en: "Digital identity", tr: "Dijital kimlik", tk: "Sanly şahsyýet", az: "Rəqəmsal kimlik" },
+      items: [
+        { en: "eIDAS 2.0" },
+        { en: "EUDI Wallet" },
+        { en: "SD-JWT VC" },
+        { en: "ISO mdoc" },
+        { en: "OpenID4VCI" },
+        { en: "OpenID4VP" },
+        {
+          en: "Verifiable credentials",
+          tr: "Doğrulanabilir belgeler",
+          tk: "Barlanyp bilinýän resminamalar",
+          az: "Yoxlanıla bilən sənədlər",
+        },
+        { en: "Selective disclosure", tr: "Seçici paylaşım", tk: "Saýlap paýlaşmak", az: "Seçici paylaşım" },
+        { en: "Trust lists", tr: "Güven listeleri", tk: "Ynam sanawlary", az: "Etibar siyahıları" },
+      ],
+    },
+    {
+      group: { en: "Backend" },
+      items: [{ en: "Python" }, { en: "Django" }, { en: "REST APIs", tr: "REST API", az: "REST API" }, { en: "PostgreSQL" }],
+    },
+    {
+      group: { en: "Web and mobile", tr: "Web ve mobil", tk: "Web we mobil", az: "Veb və mobil" },
+      items: [{ en: "TypeScript" }, { en: "React" }, { en: "Next.js" }, { en: "React Native" }],
+    },
+    {
+      group: { en: "Infrastructure", tr: "Altyapı", tk: "Infrastruktura", az: "İnfrastruktur" },
+      items: [{ en: "Linux" }, { en: "Docker" }, { en: "Nginx" }],
+    },
+    {
+      group: { en: "Architecture", tr: "Mimari", tk: "Arhitektura", az: "Arxitektura" },
+      items: [
+        { en: "Software architecture", tr: "Yazılım mimarisi", tk: "Programma arhitekturasy", az: "Proqram arxitekturası" },
+        { en: "Privacy by design", tr: "Tasarımda gizlilik", tk: "Dizaýnda gizlinlik", az: "Dizaynda məxfilik" },
+      ],
+    },
+  ],
+  education: [
+    {
+      period: "2018 – 2022",
+      title: {
+        en: "Management Information Systems, Bachelor's degree (BSc)",
+        tr: "Yönetim Bilişim Sistemleri, Lisans",
+        tk: "Dolandyryş maglumat ulgamlary, bakalawr",
+        az: "İdarəetmə informasiya sistemləri, bakalavr",
+      },
+      place: {
+        en: "Istanbul Bilgi University",
+        tr: "İstanbul Bilgi Üniversitesi",
+        tk: "Stambul Bilgi uniwersiteti",
+        az: "İstanbul Bilgi Universiteti",
+      },
+    },
+    // Lise: kişi verince buraya (liste yeniden eskiye):
+    // { period: "20XX – 2018", title: { en: "High school", tr: "Lise", tk: "Orta mekdep", az: "Orta məktəb" }, place: "Okulun adı" },
+  ],
+  // İş geçmişi bilinçli olarak yazılmıyor (profil özgeçmiş değil).
   experience: [],
-  // LinkedIn yazıları: adresleri eklendikçe görünür (README.md, "Yazı ekleme").
+  // Yazılar: adresleri eklendikçe görünür (README.md, "Yazı ekleme").
   writings: [],
-  // PDF yayınlar: dosya public/files/team/berke-karatas/ altına, kayıt buraya (README.md, "PDF ekleme").
+  // Yayınlar (PDF): dosya public/files/team/berke-karatas/ altına, kayıt buraya (README.md, "PDF ekleme"). Boşken bölüm görünmez.
   publications: [],
-  // Sosyal adresler: kişi verdiğinde (linkedin, github, x, email …).
-  links: {},
+  links: {
+    linkedin: "https://www.linkedin.com/in/uberke-karatas",
+    github: "https://github.com/bekowashere",
+  },
 };

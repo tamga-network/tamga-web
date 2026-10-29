@@ -5,7 +5,7 @@ import { Button, PageHeader } from "@/components/ui";
 import { Link } from "@/i18n/navigation";
 import { pageMeta } from "@/lib/seo";
 import { TEAM, teamUi, tx } from "@/content/team";
-import { MemberLinkIcons, MemberPhoto } from "@/components/team/member-parts";
+import { MemberAvatar, MemberLinkIcons } from "@/components/team/member-parts";
 
 /*
  * Ekibimiz: ağı kuran kişiler. Veri src/content/team/ (kişi başına bir dosya; ekleme rehberi README.md). Kart → /team/<slug>.
@@ -27,46 +27,46 @@ export default async function TeamPage({ params }: { params: Promise<{ locale: s
       <PageHeader eyebrow={ui.eyebrow} title={ui.title} description={ui.lead} />
 
       <section className="shell py-16 sm:py-20">
-        <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {TEAM.map((m, i) => (
-            <li key={m.slug}>
-              <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface/50 transition-[transform,box-shadow,border-color,background-color] duration-200 focus-within:border-primary hover:-translate-y-0.5 hover:border-border-strong hover:bg-surface hover:shadow-soft">
-                <MemberPhoto
-                  member={m}
-                  locale={locale}
-                  priority={i < 3}
-                  sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"
-                  className="aspect-[4/3.4] w-full [&_img]:transition-transform [&_img]:duration-500 group-hover:[&_img]:scale-[1.03]"
-                />
-                <div className="flex flex-1 flex-col p-6">
-                  <p className="mono-label text-primary">{tx(m.role, locale)}</p>
-                  <h2 className="mt-2 font-serif text-2xl font-semibold text-foreground">
-                    {/* Kartın tamamı tıklanabilir: bağlantı kartı kaplar; simge bağlantıları z-10 ile üstte kalır */}
-                    <Link
-                      href={{ pathname: "/team/[slug]", params: { slug: m.slug } }}
-                      className="after:absolute after:inset-0 after:content-[''] focus-visible:outline-none"
-                    >
-                      {m.name}
-                    </Link>
-                  </h2>
+        {/* Ortalanmış kartlar: yuvarlak resim (dönen halka) · rol · ad · kısa tanıtım · bağlantılar · "Profili gör".
+            Resim ve düğme ayrı bağlantılar (iç içe etkileşimli öğe yok); resim bağlantısı klavye sırasından çıkarıldı,
+            aynı hedef düğmede. Animasyon ve vurgu: globals.css `.team-*`. */}
+        <ul className="team-grid flex flex-wrap justify-center gap-6">
+          {TEAM.map((m, i) => {
+            const href = { pathname: "/team/[slug]" as const, params: { slug: m.slug } };
+            return (
+              <li key={m.slug} className="w-full max-w-sm sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]">
+                <article className="team-card flex h-full flex-col items-center rounded-2xl border border-border bg-surface/50 px-6 pb-7 pt-9 text-center">
+                  <Link href={href} tabIndex={-1} aria-hidden="true" className="rounded-full">
+                    <MemberAvatar
+                      member={m}
+                      locale={locale}
+                      priority={i < 3}
+                      sizes="152px"
+                      className="[--team-size:9.5rem]"
+                    />
+                  </Link>
+                  <p className="mono-label mt-6 text-primary">{tx(m.role, locale)}</p>
+                  <h2 className="mt-2 font-serif text-2xl font-semibold text-foreground">{m.name}</h2>
                   {m.headline && (
-                    <p className="mt-3 text-sm leading-relaxed text-foreground-muted">{tx(m.headline, locale)}</p>
+                    <p className="mt-3 line-clamp-2 max-w-[34ch] text-sm leading-relaxed text-foreground-muted">
+                      {tx(m.headline, locale)}
+                    </p>
                   )}
-                  <div className="mt-auto flex items-center justify-between gap-4 pt-6">
-                    <span className="inline-flex items-center gap-1.5 text-sm font-medium text-primary">
+                  <MemberLinkIcons member={m} size={15} className="mt-5 justify-center" />
+                  <div className="mt-auto pt-7">
+                    <Link
+                      href={href}
+                      className="team-cta inline-flex items-center gap-2 rounded-full border border-primary/40 bg-background/60 px-5 py-2 text-sm font-medium text-primary transition-colors hover:border-primary hover:bg-primary hover:text-primary-contrast focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                    >
                       {ui.viewProfile}
-                      <ArrowRight
-                        size={16}
-                        aria-hidden="true"
-                        className="transition-transform duration-200 group-hover:translate-x-0.5"
-                      />
-                    </span>
-                    <MemberLinkIcons member={m} size={15} />
+                      <span className="sr-only">: {m.name}</span>
+                      <ArrowRight size={16} aria-hidden="true" />
+                    </Link>
                   </div>
-                </div>
-              </article>
-            </li>
-          ))}
+                </article>
+              </li>
+            );
+          })}
         </ul>
       </section>
 

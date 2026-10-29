@@ -13,6 +13,8 @@ export const memberBySlug = (slug: string) => TEAM.find((m) => m.slug === slug);
 
 /** Dile göre metin; eksikse İngilizce. */
 export const tx = (v: LText, locale: string) => v[locale as Locale] ?? v.en;
+/** Tek metin ya da dile göre metin. */
+export const txs = (v: string | LText, locale: string) => (typeof v === "string" ? v : tx(v, locale));
 
 export const bioOf = (m: TeamMember, locale: string): string[] =>
   m.bio ? (m.bio[locale as Locale] ?? m.bio.en) : [];
@@ -51,6 +53,7 @@ type Ui = {
   back: string;
   about: string;
   focus: string;
+  expertise: string;
   education: string;
   experience: string;
   writings: string;
@@ -80,7 +83,8 @@ const UI: Record<Locale, Ui> = {
     viewProfile: "View profile",
     back: "Team",
     about: "About",
-    focus: "Focus areas",
+    focus: "Interests",
+    expertise: "Areas of expertise",
     education: "Education",
     experience: "Background",
     writings: "Writings",
@@ -122,7 +126,8 @@ const UI: Record<Locale, Ui> = {
     viewProfile: "Profili gör",
     back: "Ekibimiz",
     about: "Hakkında",
-    focus: "Çalışma alanları",
+    focus: "İlgi alanları",
+    expertise: "Uzmanlık alanları",
     education: "Eğitim",
     experience: "Geçmiş",
     writings: "Yazılar",
@@ -161,10 +166,11 @@ const UI: Record<Locale, Ui> = {
     description: "Tamga Network-y gurýan topar.",
     eyebrow: "Biz barada",
     lead: "Tamga Network-y gurýan topar: düzgünler, salgylanma hyzmatlary we guramalar bilen gatnaşyklar.",
-    viewProfile: "Profili gör",
+    viewProfile: "Profile seret",
     back: "Toparymyz",
     about: "Barada",
-    focus: "Iş ugurlary",
+    focus: "Gyzyklanmalary",
+    expertise: "Hünär ugurlary",
     education: "Bilim",
     experience: "Tejribe",
     writings: "Ýazgylar",
@@ -206,7 +212,8 @@ const UI: Record<Locale, Ui> = {
     viewProfile: "Profilə bax",
     back: "Komandamız",
     about: "Haqqında",
-    focus: "Fəaliyyət sahələri",
+    focus: "Maraq sahələri",
+    expertise: "İxtisas sahələri",
     education: "Təhsil",
     experience: "Təcrübə",
     writings: "Yazılar",

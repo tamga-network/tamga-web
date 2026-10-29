@@ -59,9 +59,21 @@ Adresi (`url`) boş olan yazı gösterilmez.
 ```ts
 education: [
   { period: "2016 – 2020", title: { en: "BSc, Computer Engineering", tr: "Bilgisayar Mühendisliği, Lisans" }, place: "Üniversite adı" },
+  // place dile göre de yazılabilir: place: { en: "Istanbul Bilgi University", tr: "İstanbul Bilgi Üniversitesi" }
 ],
 experience: [
   { period: "2024 – bugün", title: { en: "…", tr: "…" }, place: "Kurum adı" },
+],
+```
+
+## İlgi ve uzmanlık alanları
+
+`focus` üst bölümde etiket olarak çıkar ("İlgi alanları"). `expertise` profilde "Uzmanlık alanları" bölümüdür: başlıklı etiket
+grupları. Teknik adlar (eIDAS 2.0, SD-JWT VC, Python …) çevrilmez, yalnız `en` yazılır.
+
+```ts
+expertise: [
+  { group: { en: "Digital identity", tr: "Dijital kimlik" }, items: [{ en: "eIDAS 2.0" }, { en: "SD-JWT VC" }] },
 ],
 ```
 

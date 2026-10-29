@@ -14,12 +14,14 @@ export function MemberPhoto({
   className = "",
   priority = false,
   sizes = "(min-width: 1024px) 360px, 100vw",
+  initialsClassName = "text-[clamp(3rem,9vw,5.5rem)]",
 }: {
   member: TeamMember;
   locale: string;
   className?: string;
   priority?: boolean;
   sizes?: string;
+  initialsClassName?: string;
 }) {
   const p = member.photo;
   if (!p) {
@@ -41,7 +43,7 @@ export function MemberPhoto({
         />
         <span
           aria-hidden="true"
-          className="relative font-serif text-[clamp(3rem,9vw,5.5rem)] font-semibold tracking-tight text-ink-band-fg"
+          className={`relative font-serif font-semibold tracking-tight text-ink-band-fg ${initialsClassName}`}
         >
           {initials(member.name)}
         </span>
@@ -65,6 +67,43 @@ export function MemberPhoto({
         className="h-full w-full object-cover"
       />
     </picture>
+  );
+}
+
+/**
+ * Yuvarlak profil resmi + dönen marka halkası (globals.css `.team-avatar`). Kartta halka üstüne gelince/odakta döner;
+ * `live` profil sayfasında sürekli ve yavaş döner. Boyut `--team-size` ile (ör. `[--team-size:13rem]`).
+ */
+export function MemberAvatar({
+  member,
+  locale,
+  className = "",
+  live = false,
+  priority = false,
+  sizes = "160px",
+  initialsClassName = "text-5xl",
+}: {
+  member: TeamMember;
+  locale: string;
+  className?: string;
+  live?: boolean;
+  priority?: boolean;
+  sizes?: string;
+  initialsClassName?: string;
+}) {
+  return (
+    <span className={`team-avatar ${live ? "team-avatar--live" : ""} ${className}`}>
+      <span className="team-avatar-frame">
+        <MemberPhoto
+          member={member}
+          locale={locale}
+          priority={priority}
+          sizes={sizes}
+          initialsClassName={initialsClassName}
+          className="h-full w-full rounded-full"
+        />
+      </span>
+    </span>
   );
 }
 

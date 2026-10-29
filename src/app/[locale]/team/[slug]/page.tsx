@@ -17,11 +17,12 @@ import {
   teamSlugs,
   teamUi,
   tx,
+  txs,
   writingsOf,
   type TeamMember,
 } from "@/content/team";
 import type { TimelineItem } from "@/content/team/types";
-import { MemberLinkIcons, MemberPhoto, memberLinks } from "@/components/team/member-parts";
+import { MemberAvatar, MemberLinkIcons, memberLinks } from "@/components/team/member-parts";
 
 /*
  * Ekip üyesi profili: fotoğraf, rol, tanıtım, eğitim / geçmiş, yazılar, yayınlar (PDF) ve bağlantılar.
@@ -85,7 +86,7 @@ function Timeline({ items, locale }: { items: TimelineItem[]; locale: string }) 
           />
           <p className="mono-label">{it.period}</p>
           <p className="mt-1 font-medium text-foreground">{tx(it.title, locale)}</p>
-          {it.place && <p className="text-sm text-foreground-muted">{it.place}</p>}
+          {it.place && <p className="text-sm text-foreground-muted">{txs(it.place, locale)}</p>}
           {it.note && <p className="mt-1.5 text-sm leading-relaxed text-foreground-muted">{tx(it.note, locale)}</p>}
         </li>
       ))}
@@ -95,6 +96,13 @@ function Timeline({ items, locale }: { items: TimelineItem[]; locale: string }) 
 
 function personLd(m: TeamMember, locale: string) {
   const url = `${SITE_URL}/${locale}/team/${m.slug}`;
+  const knowsAbout = [
+    ...(m.focus ?? []).map((f) => tx(f, "en")),
+    ...(m.expertise ?? []).flatMap((g) => g.items.map((x) => tx(x, "en"))),
+  ];
+  const alumniOf = m.education
+    .filter((e) => e.place)
+    .map((e) => ({ "@type": "EducationalOrganization", name: txs(e.place!, locale) }));
   const sameAs = memberLinks(m)
     .map((l) => l.url)
     .filter((u) => u.startsWith("http"));
@@ -111,7 +119,8 @@ function personLd(m: TeamMember, locale: string) {
       url,
       ...(m.photo ? { image: `${SITE_URL}/team/${m.photo.base}.jpg` } : {}),
       ...(m.bio ? { description: bioOf(m, locale)[0] } : {}),
-      ...(m.focus?.length ? { knowsAbout: m.focus.map((f) => tx(f, "en")) } : {}),
+      ...(knowsAbout.length ? { knowsAbout } : {}),
+      ...(alumniOf.length ? { alumniOf } : {}),
       ...(sameAs.length ? { sameAs } : {}),
       memberOf: { "@id": ORGANIZATION["@id"], "@type": "Organization", name: ORGANIZATION.name },
     },
@@ -128,8 +137,10 @@ export default async function TeamMemberPage({ params }: Params) {
   const writings = writingsOf(m);
   const pubs = publicationsOf(m);
   const links = memberLinks(m);
+  const expertise = m.expertise ?? [];
   const sections = [
     bio.length > 0 && ["about", ui.about],
+    expertise.length > 0 && ["expertise", ui.expertise],
     m.education.length > 0 && ["education", ui.education],
     m.experience.length > 0 && ["experience", ui.experience],
     writings.length > 0 && ["writings", ui.writings],
@@ -137,7 +148,7 @@ export default async function TeamMemberPage({ params }: Params) {
   ].filter((x): x is [string, string] => Boolean(x));
   const showAside = sections.length > 1 || links.length > 0;
   const hasMain =
-    bio.length > 0 || m.education.length > 0 || m.experience.length > 0 || writings.length > 0 || pubs.length > 0;
+    bio.length > 0 || expertise.length > 0 || m.education.length > 0 || m.experience.length > 0 || writings.length > 0 || pubs.length > 0;
 
   return (
     <>
@@ -154,22 +165,24 @@ export default async function TeamMemberPage({ params }: Params) {
             {ui.back}
           </Link>
 
-          <div className="mt-8 grid items-center gap-8 md:grid-cols-[minmax(0,260px)_1fr] md:gap-12">
-            <MemberPhoto
+          <div className="mt-8 grid items-center justify-items-center gap-8 text-center md:grid-cols-[auto_1fr] md:justify-items-start md:gap-14 md:text-left">
+            <MemberAvatar
               member={m}
               locale={locale}
+              live
               priority
-              sizes="(min-width: 768px) 260px, 70vw"
-              className="aspect-square w-full max-w-[260px] rounded-2xl border border-border shadow-soft"
+              sizes="(min-width: 768px) 224px, 192px"
+              initialsClassName="text-6xl sm:text-7xl"
+              className="[--team-size:12rem] md:[--team-size:14rem]"
             />
-            <div>
+            <div className="flex flex-col items-center md:items-start">
               <p className="eyebrow mb-3">{tx(m.role, locale)}</p>
               <h1 className="text-balance text-4xl font-semibold sm:text-5xl">{m.name}</h1>
               {m.headline && (
                 <p className="mt-4 max-w-2xl text-lg leading-relaxed text-foreground-muted">{tx(m.headline, locale)}</p>
               )}
               {m.focus && m.focus.length > 0 && (
-                <ul aria-label={ui.focus} className="mt-6 flex flex-wrap gap-2">
+                <ul aria-label={ui.focus} className="mt-6 flex flex-wrap justify-center gap-2 md:justify-start">
                   {m.focus.map((f) => (
                     <li
                       key={f.en}
@@ -180,7 +193,7 @@ export default async function TeamMemberPage({ params }: Params) {
                   ))}
                 </ul>
               )}
-              <MemberLinkIcons member={m} withLabels size={15} className="mt-6" />
+              <MemberLinkIcons member={m} withLabels size={15} className="mt-6 justify-center md:justify-start" />
             </div>
           </div>
         </div>
@@ -202,6 +215,31 @@ export default async function TeamMemberPage({ params }: Params) {
                       <p key={i}>{p}</p>
                     ))}
                   </div>
+                </section>
+              )}
+
+              {expertise.length > 0 && (
+                <section aria-labelledby="expertise">
+                  <SectionTitle id="expertise">{ui.expertise}</SectionTitle>
+                  <dl className="mt-6 grid gap-x-8 gap-y-6 sm:grid-cols-2">
+                    {expertise.map((g) => (
+                      <div key={g.group.en}>
+                        <dt className="mono-label text-primary">{tx(g.group, locale)}</dt>
+                        <dd className="mt-2.5">
+                          <ul className="flex flex-wrap gap-2">
+                            {g.items.map((x) => (
+                              <li
+                                key={x.en}
+                                className="rounded-md border border-border bg-surface/60 px-2.5 py-1 text-sm text-foreground"
+                              >
+                                {tx(x, locale)}
+                              </li>
+                            ))}
+                          </ul>
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
                 </section>
               )}
 

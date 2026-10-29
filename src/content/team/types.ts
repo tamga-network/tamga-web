@@ -14,8 +14,8 @@ export type TimelineItem = {
   period: string;
   /** Bölüm / derece / görev, ör. "Bilgisayar Mühendisliği, Lisans" */
   title: LText;
-  /** Kurum adı (özel ad; çevrilmez) */
-  place?: string;
+  /** Kurum adı: tek metin ya da dile göre resmî ad (ör. "Istanbul Bilgi University" / "İstanbul Bilgi Üniversitesi") */
+  place?: string | LText;
   note?: LText;
 };
 
@@ -79,8 +79,10 @@ export type TeamMember = {
   photo?: { base: string; width: number; height: number; alt: LText };
   /** Paragraflar, dil başına */
   bio?: Partial<Record<Locale, string[]>> & { en: string[] };
-  /** Uzmanlık alanları (etiket) */
+  /** İlgi alanları (üst bölümde etiket) */
   focus?: LText[];
+  /** Uzmanlık alanları: başlıklı etiket grupları (teknik adlar çevrilmez: yalnız `en`) */
+  expertise?: { group: LText; items: LText[] }[];
   education: TimelineItem[];
   experience: TimelineItem[];
   writings: Writing[];
