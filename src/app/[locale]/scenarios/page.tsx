@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { pageMeta } from "@/lib/seo";
-import { Noto_Sans_Old_Turkic } from "next/font/google";
+import localFont from "next/font/local";
 import { setRequestLocale } from "next-intl/server";
 import { Reveal } from "@/components/reveal";
 import { WalletMock, FlowStrip } from "@/components/scenario-visuals";
@@ -15,7 +15,13 @@ import {
 import type { Locale } from "@/i18n/routing";
 
 // Old Turkic (Orkhon) runiform script — used as the glitch backdrop on the hero.
-const orkhon = Noto_Sans_Old_Turkic({ weight: "400", display: "swap", preload: false });
+// Orhun yazısı: kendi kopyamız (src/fonts, OFL 1.1), yalnız Old Turkic blok (U+10C00–10C4F).
+const orkhon = localFont({
+  src: "../../../fonts/noto-sans-old-turkic-400.woff2",
+  weight: "400",
+  display: "swap",
+  preload: false,
+});
 const ORKHON_CHARS = Array.from({ length: 0x10c49 - 0x10c00 }, (_, i) =>
   String.fromCodePoint(0x10c00 + i),
 ).join("");

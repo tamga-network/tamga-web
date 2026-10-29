@@ -56,3 +56,6 @@ tamga.network with the network's 1.0 documentation set, in English, Turkish and 
 - 2026-10-27 (evening): packages at npm 0.7.3 everywhere a version is shown (SDK page, home, roadmap, blog notes); release note
   for 0.7.3 (verifier self-test fixes, canonical display locales); the self-test post no longer says that some fixes are not on npm;
   whitepaper says the nine packages are on npm as 0.7.3 (PDFs rebuilt; version 1.0, edition date unchanged).
+- 2026-10-29: fonts come from the site's own files (`src/fonts/`, `next/font/local`; Onest, IBM Plex Sans, IBM Plex Mono and
+  Noto Sans Old Turkic, SIL OFL 1.1 licence files alongside) instead of `next/font/google`: the build no longer fetches from
+  Google Fonts (visitors were already served the fonts from tamga.network).

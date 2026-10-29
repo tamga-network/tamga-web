@@ -3,7 +3,7 @@ import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { setRequestLocale, getTranslations } from "next-intl/server";
-import { IBM_Plex_Sans, IBM_Plex_Mono, Onest } from "next/font/google";
+import localFont from "next/font/local";
 import "../globals.css";
 import { routing } from "@/i18n/routing";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -14,25 +14,31 @@ import { TranslationNote } from "@/components/translation-note";
 import { JsonLd, siteGraph } from "@/components/json-ld";
 import { pageMeta } from "@/lib/seo";
 
-const plexSans = IBM_Plex_Sans({
+// Yazı tipleri kendi kopyamız (src/fonts, OFL 1.1 — lisanslar aynı klasörde): üçüncü taraf yazı tipi sunucusu yok, derleme de
+// dış ağa çıkmaz. Latin, Latin-ext (Türkçe, Azerbaycanca, Türkmence) ve Kiril (Kazakça, Kırgızca); değişken ağırlık.
+const plexSans = localFont({
+  src: "../../fonts/ibm-plex-sans-var.woff2",
   variable: "--font-plex-sans",
-  subsets: ["latin", "latin-ext", "cyrillic"],
-  weight: ["400", "500", "600", "700"],
+  weight: "400 700",
+  style: "normal",
   display: "swap",
 });
 
 // Başlıklar — Onest (Türkçe, Türkmence, Azerbaycanca ve Kiril: Kazakça, Kırgızca).
-const onest = Onest({
+const onest = localFont({
+  src: "../../fonts/onest-var.woff2",
   variable: "--font-onest",
-  subsets: ["latin", "latin-ext", "cyrillic"],
-  weight: ["500", "600", "700"],
+  weight: "400 700",
+  style: "normal",
   display: "swap",
 });
 
-const plexMono = IBM_Plex_Mono({
+const plexMono = localFont({
+  src: [
+    { path: "../../fonts/ibm-plex-mono-400.woff2", weight: "400", style: "normal" },
+    { path: "../../fonts/ibm-plex-mono-500.woff2", weight: "500", style: "normal" },
+  ],
   variable: "--font-plex-mono",
-  subsets: ["latin", "latin-ext", "cyrillic"],
-  weight: ["400", "500"],
   display: "swap",
 });
 
