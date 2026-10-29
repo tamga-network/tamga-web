@@ -9,7 +9,7 @@ draft: false
 related: learn:what-is-tamga-network, a-pdf-is-not-a-document, why-no-blockchain-yet, how-trust-lists-work, page:/manifesto
 ---
 
-<!-- Sources: same as the English article (site home; live list of lists at trust.tamga.network: TR ACTIVE with provisional operator, AZ/KZ/KG/UZ reserved as TDT members, HU/TM reserved as observers, TAMGA-WP-1 ACTIVE since 2026-10-14; brand page; manifesto v1.0 revised edition 2026-10-27; CHANGELOG 1.0.0; npm 0.7.3; OpenID self-test article; ADR-0009, ADR-0042, ADR-0051; Regulation (EU) 2024/1183 Art. 5a). -->
+<!-- Sources: same as the English article (site home; live list of lists at trust.tamga.network: TR ACTIVE with provisional operator, AZ/KZ/KG/UZ reserved as TDT members, HU/TM reserved as observers, TAMGA-WP-1 ACTIVE since 2026-10-14; brand page; manifesto v1.0 revised edition 2026-10-27; CHANGELOG 1.0.0; npm 0.7.4 (2026-10-29); OpenID self-test article; ADR-0009, ADR-0042, ADR-0051; Regulation (EU) 2024/1183 Art. 5a). -->
 
 Tamga Network bir guramanyň beren sanly resminamasynyň başga bir guramada, hatda başga ýurtda birnäçe sekundyň içinde barlanmagyna mümkinçilik berýän umumy düzgünlerden we gol çekilen sanawlardan ybarat. Barlaýjy resminamany beren gurama ýüz tutmaýar, resminamanyň eýesi bolsa diňe soralan maglumaty paýlaşýar. Tory türki dünýäsi üçin, Ýewropanyň sanly şahsyýet ulgamy bilen şol bir standartlary ulanyp gurýarys. Bu ýazgyda näme üçin başlandygymyzy, toruň nähili işleýändigini, adymyzyň nireden gelýändigini, haýsy ýörelgelere daýanýandygymyzy we şu gün näme taýýar, näme entek taýýar däldigini düşündirýäris.
 
@@ -82,7 +82,7 @@ Täze modeli daşardan alyp ýa-da şol bir açyk standartlar bilen öz infrastr
 | Iňlis we türk dillerinde işläp düzüjiler üçin resminamalar (docs.tamga.network) | Sanawdaky gapjyklaryň hiç biri entek programma dükanlarynda ýok |
 | Gol çekilen ynam sanawlary (trust.tamga.network); ilkinji gapjyk üpjün edijisi hem sanawda | Önümçilikde umumy kitap ýok; onuň kody ýazyldy we synagdan geçdi, ýöne azyndan iki garaşsyz operator ony işledýänçä öçük durar |
 | Tamga Verify: barlag koduny özi işletmek islemeýänler üçin barlag hyzmaty | Hiç bir döwletiň ýa-da Ýewropa Bileleşiginiň ykrarnamasy ýok |
-| Oýlanyp tapylan adamlar bilen başdan-ahyr synag geçirilýän synag tory we npm-de açyk bukjalar (@tamga-network, 0.7.3 wersiýasy) | Daşky howpsuzlyk barlagy entek geçirilmedi |
+| Oýlanyp tapylan adamlar bilen başdan-ahyr synag geçirilýän synag tory we npm-de açyk bukjalar (@tamga-network, 0.7.4 wersiýasy) | Daşky howpsuzlyk barlagy entek geçirilmedi |
 | OpenID Foundation-yň laýyklyk synag guraly bilen geçirilen we şowsuz modulsyz tamamlanan öz-özüňi barlamak | |
 
 Bu çäkleri açyk ýazýarys, sebäbi çäklerini gizleýän ynam infrastrukturasy ynama mynasyp däl. Umumy kitabyň näme üçin entek ýokdugyny [Näme üçin blokçeýnsiz başlaýarys](/blog/why-no-blockchain-yet) ýazgysynda düşündirdik: azyndan iki garaşsyz operator bolmasa, kitap diňe has haýal maglumatlar binýadydyr. Laýyklyk synaglarynyň jikme-jikligi [OpenID laýyklyk synaglaryndan öwrenenlerimiz](/blog/openid-conformance-self-test) ýazgysynda.

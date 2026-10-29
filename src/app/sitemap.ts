@@ -3,6 +3,7 @@ import { routing } from "@/i18n/routing";
 import { getPathname } from "@/i18n/navigation";
 import { learnSlugs } from "@/content/learn";
 import { PUBLISHED, blogPath } from "@/lib/blog";
+import { teamSlugs } from "@/content/team";
 
 const BASE = "https://tamga.network";
 
@@ -21,6 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/join",
     "/network",
     "/partners",
+    "/team",
     "/events",
     "/roadmap",
     "/changelog",
@@ -32,7 +34,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     pathname: "/learn/[slug]",
     params: { slug },
   }));
-  const hrefs: SHref[] = [...staticHrefs, ...learnRoutes];
+  // Ekip üyelerinin profilleri
+  const teamRoutes: SHref[] = teamSlugs().map((slug) => ({
+    pathname: "/team/[slug]",
+    params: { slug },
+  }));
+  const hrefs: SHref[] = [...staticHrefs, ...learnRoutes, ...teamRoutes];
 
   const entries: MetadataRoute.Sitemap = [];
 

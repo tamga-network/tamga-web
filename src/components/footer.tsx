@@ -35,7 +35,7 @@ const FOOTER: { menu: string; items: string[] }[] = [
     menu: "dev",
     items: ["Docs", "Get started", "Sandbox", "Packages", "API reference", "GitHub"],
   },
-  { menu: "about", items: ["About", "Partners", "Events", "Blog", "Contact"] },
+  { menu: "about", items: ["About", "Team", "Partners", "Events", "Blog", "Contact"] },
 ];
 
 function footerColumns(): { title: Menu["label"]; items: NavItem[] }[] {

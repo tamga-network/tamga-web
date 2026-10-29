@@ -108,6 +108,98 @@ export const CHANGELOG_PAGE: Record<
 
 export const RELEASES: Release[] = [
   {
+    id: "v1.0.0-2026-10-29-packages-0-7-4",
+    version: "v1.0.0",
+    date: "2026-10-29",
+    kind: "security",
+    title: {
+      en: "Protection against forged declines, registration-certificate status, gate groups, packages 0.7.4",
+      tr: "Sahte ret koruması, kayıt sertifikası durumu, kapı grupları, paketler 0.7.4",
+      tk: "Ýasama retden gorag, hasaba alyş sertifikatynyň ýagdaýy, gapy toparlary, paketler 0.7.4",
+      az: "Saxta imtinadan qoruma, qeydiyyat sertifikatının statusu, keçid qrupları, paketlər 0.7.4",
+    },
+    sections: {
+      security: {
+        en: [
+          "Every fetch of a presentation request now gets its own request with a fresh state, nonce and encryption key, and a decline closes only its own branch. Someone who sees the QR code can no longer cancel the real person's presentation with a forged decline.",
+          "Every Tamga Verify page runs under a strict Content Security Policy with no inline script or style, and the docs site, the ARF site and Tamga Verify serve their fonts from our own servers, so no visitor's address goes to a third-party font host.",
+          "New property and fuzz tests led to three hardening fixes in the packages: a payload key named __proto__ is rejected, status lists with 4 and 8 bits per entry are read correctly, and a malformed request query is rejected cleanly.",
+        ],
+        tr: [
+          "Bir sunum isteğinin her çekimi artık yeni bir state, nonce ve şifreleme anahtarıyla kendi isteğini alıyor ve bir ret yalnız kendi dalını kapatıyor. QR kodu gören biri, gerçek kişinin sunumunu sahte bir retle artık iptal edemiyor.",
+          "Tamga Verify'ın bütün sayfaları satır içi betik ve stil içermeyen sıkı bir içerik güvenliği politikasıyla (CSP) çalışıyor; docs sitesi, ARF sitesi ve Tamga Verify yazı tiplerini kendi sunucularımızdan veriyor, ziyaretçinin adresi üçüncü taraf bir yazı tipi sunucusuna gitmiyor.",
+          "Yeni özellik ve fuzz testleri paketlerde üç sağlamlaştırma getirdi: __proto__ adlı bir yük anahtarı reddediliyor, girdi başına 4 ve 8 bitlik durum listeleri doğru okunuyor, bozuk bir istek sorgusu düzgün biçimde reddediliyor.",
+        ],
+        tk: [
+          "Görkeziş haýyşynyň her alnyşy indi täze state, nonce we şifrlemek açary bilen öz haýyşyny alýar, ret bolsa diňe öz şahasyny ýapýar. QR kody gören biri hakyky adamyň görkezişini ýasama ret bilen indi ýatyryp bilmeýär.",
+          "Tamga Verify-yň ähli sahypalary içerki skript we stil bolmadyk berk mazmun howpsuzlyk syýasaty (CSP) bilen işleýär; docs saýty, ARF saýty we Tamga Verify şriftlerini öz serwerlerimizden berýär, şonuň üçin myhmanyň salgysy üçünji tarapyň şrift serwerine gitmeýär.",
+          "Täze häsiýet we fuzz synaglary paketlerde üç berkitme düzedişine getirdi: __proto__ atly ýük açary ret edilýär, ýazgy başyna 4 we 8 bitli ýagdaý sanawlary dogry okalýar, nädogry haýyş soragy arassa ret edilýär.",
+        ],
+        az: [
+          "Təqdimat sorğusunun hər çəkilişi indi yeni state, nonce və şifrələmə açarı ilə öz sorğusunu alır, imtina isə yalnız öz qolunu bağlayır. QR kodu görən biri əsl şəxsin təqdimatını saxta imtina ilə artıq ləğv edə bilmir.",
+          "Tamga Verify-ın bütün səhifələri daxili skript və üslub olmayan sərt məzmun təhlükəsizliyi siyasəti (CSP) ilə işləyir; docs saytı, ARF saytı və Tamga Verify şriftləri öz serverlərimizdən verir, ziyarətçinin ünvanı üçüncü tərəfin şrift serverinə getmir.",
+          "Yeni xassə və fuzz testləri paketlərdə üç möhkəmləndirmə düzəlişinə gətirdi: __proto__ adlı yük açarı rədd edilir, qeyd başına 4 və 8 bitlik status siyahıları düzgün oxunur, səhv sorğu sualı səliqəli şəkildə rədd edilir.",
+        ],
+      },
+      added: {
+        en: [
+          "Registration certificates on the real network and in the sandbox now name their policy (a Tamga identifier and the registration certificate policy page on arf.tamga.network) and point to a one-bit status list that is re-signed every hour. A wallet refuses a revoked certificate and warns the person when the status cannot be checked.",
+          "Gate groups are published in the trust list: each group names the institution that runs the gates and the pass types they may accept. An institution manages the terminal keys of its own gates in the Institution Console, and a gate is refused when its group leaves the list or the list is out of date.",
+          "The sandbox publishes its Türkiye list also in the ETSI TS 119 612 XML format, signed and with the same version as the signed list (trust.sandbox.tamga.network/tl-tr.xml). The real network's XML list follows once the foundation that will operate the list exists.",
+        ],
+        tr: [
+          "Gerçek ağda ve sandbox'ta kayıt sertifikaları artık kendi politikalarını adlandırıyor (Tamga'nın tanımlayıcısı ve arf.tamga.network'teki kayıt sertifikası politikası sayfası) ve saatte bir yeniden imzalanan bir bitlik bir durum listesine işaret ediyor. Cüzdan iptal edilmiş bir sertifikayı reddediyor, durum denetlenemiyorsa kişiyi uyarıyor.",
+          "Kapı grupları güven listesinde yayımlanıyor: her grup, kapıları işleten kurumu ve kapıların kabul edebileceği geçiş türlerini söylüyor. Kurum kendi kapılarının terminal anahtarlarını Kurum Konsolu'ndan yönetiyor; grubu listeden çıkan ya da listesi güncel olmayan kapı reddediliyor.",
+          "Sandbox Türkiye listesini ETSI TS 119 612 XML biçiminde de, imzalı ve imzalı listeyle aynı sürümle yayımlıyor (trust.sandbox.tamga.network/tl-tr.xml). Gerçek ağın XML listesi, listeyi işletecek vakıf kurulunca gelecek.",
+        ],
+        tk: [
+          "Hakyky torda we sandbox-da hasaba alyş sertifikatlary indi öz syýasatyny atlandyrýar (Tamga-nyň belgisi we arf.tamga.network-däki hasaba alyş sertifikatynyň syýasaty sahypasy) we her sagatda täzeden gol çekilýän bir bitlik ýagdaý sanawyna salgylanýar. Gapjyk ýatyrylan sertifikaty ret edýär, ýagdaýy barlap bolmasa adamy duýdurýar.",
+          "Gapy toparlary ynam sanawynda çap edilýär: her topar gapylary işledýän guramany we gapylaryň kabul edip biljek geçiş görnüşlerini görkezýär. Gurama öz gapylarynyň terminal açarlaryny Gurama Konsolynda dolandyrýar; topary sanawdan çykan ýa-da sanawy köne bolan gapy ret edilýär.",
+          "Sandbox Türkiýäniň sanawyny ETSI TS 119 612 XML görnüşinde hem, gol çekilen we gol çekilen sanaw bilen şol bir wersiýada çap edýär (trust.sandbox.tamga.network/tl-tr.xml). Hakyky toruň XML sanawy sanawy işletjek gazna döredilenden soň geler.",
+        ],
+        az: [
+          "Real şəbəkədə və sandbox-da qeydiyyat sertifikatları artıq öz siyasətini adlandırır (Tamga-nın identifikatoru və arf.tamga.network-dəki qeydiyyat sertifikatı siyasəti səhifəsi) və saatda bir yenidən imzalanan bir bitlik status siyahısına istinad edir. Cüzdan ləğv edilmiş sertifikatı rədd edir, status yoxlana bilmirsə şəxsi xəbərdar edir.",
+          "Keçid qrupları etibar siyahısında dərc olunur: hər qrup keçidləri idarə edən qurumu və keçidlərin qəbul edə biləcəyi keçid növlərini göstərir. Qurum öz keçidlərinin terminal açarlarını Qurum Konsolunda idarə edir; qrupu siyahıdan çıxan və ya siyahısı köhnə olan keçid rədd edilir.",
+          "Sandbox Türkiyə siyahısını ETSI TS 119 612 XML formatında da, imzalı və imzalı siyahı ilə eyni versiyada dərc edir (trust.sandbox.tamga.network/tl-tr.xml). Real şəbəkənin XML siyahısı siyahını idarə edəcək fond yaradıldıqdan sonra gələcək.",
+        ],
+      },
+      fixed: {
+        en: [
+          "An independent test with an open-source EU test wallet in strict mode found five defects, all fixed the same day: registration certificates now state the format of each use, the browser path no longer requires a state value, a proof shared from a web page is bound to the page's origin, list signatures carry their signing time in the standard field, and a wrapped registration certificate is read.",
+        ],
+        tr: [
+          "Açık kaynak bir AB test cüzdanıyla sıkı kipte yapılan bağımsız test beş hata buldu, hepsi aynı gün düzeltildi: kayıt sertifikaları artık her kullanımın biçimini söylüyor, tarayıcı yolu artık state değeri istemiyor, bir web sayfasından paylaşılan kanıt sayfanın kökenine bağlanıyor, liste imzaları imza zamanını standart alanda taşıyor ve sarmalanmış bir kayıt sertifikası okunuyor.",
+        ],
+        tk: [
+          "Açyk çeşmeli ÝB synag gapjygy bilen berk tertipde geçirilen garaşsyz synag bäş ýalňyşlyk tapdy, hemmesi şol gün düzedildi: hasaba alyş sertifikatlary indi her ulanylyşyň görnüşini görkezýär, brauzer ýoly indi state bahasyny talap etmeýär, web sahypasyndan paýlaşylan subutnama sahypanyň gelip çykyşyna baglanýar, sanaw gollary gol wagtyny standart meýdanda göterýär we örtülen hasaba alyş sertifikaty okalýar.",
+        ],
+        az: [
+          "Açıq mənbəli Aİ test cüzdanı ilə sərt rejimdə aparılan müstəqil test beş xəta tapdı, hamısı həmin gün düzəldildi: qeydiyyat sertifikatları artıq hər istifadənin formatını göstərir, brauzer yolu artıq state dəyəri tələb etmir, veb səhifədən paylaşılan sübut səhifənin mənşəyinə bağlanır, siyahı imzaları imza vaxtını standart sahədə daşıyır və bükülmüş qeydiyyat sertifikatı oxunur.",
+        ],
+      },
+      changed: {
+        en: [
+          "The @tamga-network/* packages are on npm as the 0.7.4 test release; the stable 1.0.0 comes when everything is ready.",
+        ],
+        tr: [
+          "@tamga-network/* paketleri npm'de 0.7.4 deneme sürümünde; kararlı 1.0.0 her şey hazır olunca gelir.",
+        ],
+        tk: [
+          "@tamga-network/* paketleri npm-de 0.7.4 synag wersiýasynda; durnukly 1.0.0 hemme zat taýýar bolanda geler.",
+        ],
+        az: [
+          "@tamga-network/* paketləri npm-də 0.7.4 sınaq buraxılışı kimi mövcuddur; sabit 1.0.0 hər şey hazır olduqda çıxacaq.",
+        ],
+      },
+    },
+    note: {
+      en: "0.7.4 has breaking changes for developers. The most important: a proof shared over the browser's Digital Credentials API is now bound to the page's origin, so wallets and verifiers that use that path move to 0.7.4 together; registered uses for mdoc and zero-knowledge requests must name their format; the ETSI XML list signer has its own field in the list of lists (xml_signing_keys). Every change and its migration step are in the package changelog, under “Breaking / behaviour changes in 0.7.4”.",
+      tr: "0.7.4 geliştiriciler için geriye uyumlu olmayan değişiklikler içeriyor. En önemlileri: tarayıcının Digital Credentials API'si üzerinden paylaşılan kanıt artık sayfanın kökenine bağlı, bu yolu kullanan cüzdan ve doğrulayıcılar 0.7.4'e birlikte geçer; mdoc ve sıfır bilgi istekleri için kayıtlı kullanımlar biçimlerini belirtmeli; ETSI XML liste imzacısının listelerin listesinde kendi alanı var (xml_signing_keys). Bütün değişiklikler ve geçiş adımları paket değişiklik kaydında, “Breaking / behaviour changes in 0.7.4” başlığı altında.",
+      tk: "0.7.4 işläp düzüjiler üçin yza gabat gelmeýän üýtgeşmeleri öz içine alýar. Iň möhümleri: brauzeriň Digital Credentials API-si arkaly paýlaşylan subutnama indi sahypanyň gelip çykyşyna bagly, şol ýoly ulanýan gapjyklar we barlaýjylar 0.7.4-e bilelikde geçýär; mdoc we nol bilim haýyşlary üçin hasaba alnan ulanylyşlar öz görnüşini görkezmeli; ETSI XML sanaw gol çekijisiniň sanawlaryň sanawynda öz meýdany bar (xml_signing_keys). Ähli üýtgeşmeler we geçiş ädimleri paket üýtgeşme ýazgysynda, “Breaking / behaviour changes in 0.7.4” bölüminde.",
+      az: "0.7.4 tərtibatçılar üçün geriyə uyğun olmayan dəyişikliklər ehtiva edir. Ən vacibləri: brauzerin Digital Credentials API-si ilə paylaşılan sübut artıq səhifənin mənşəyinə bağlıdır, bu yoldan istifadə edən cüzdanlar və doğrulayıcılar 0.7.4-ə birlikdə keçir; mdoc və sıfır bilik sorğuları üçün qeydiyyatdakı istifadələr öz formatını göstərməlidir; ETSI XML siyahı imzalayanının siyahılar siyahısında öz sahəsi var (xml_signing_keys). Bütün dəyişikliklər və keçid addımları paket dəyişiklik qeydində, “Breaking / behaviour changes in 0.7.4” başlığı altındadır.",
+    },
+  },
+  {
     id: "v1.0.0-2026-10-27-packages-0-7-3",
     version: "v1.0.0",
     date: "2026-10-27",

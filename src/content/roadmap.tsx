@@ -85,7 +85,7 @@ const en: RoadmapContent = {
         {
           icon: "list",
           title: "Signed trust lists",
-          desc: "institutions, verifiers and a public anchor log",
+          desc: "institutions, verifiers, gate groups and a public anchor log; an ETSI XML view in the sandbox",
         },
         {
           icon: "ticket",
@@ -110,7 +110,7 @@ const en: RoadmapContent = {
         {
           icon: "package",
           title: "Open-source packages",
-          desc: "@tamga-network: 0.7.3 test release on npm; the stable 1.0.0 when everything is ready",
+          desc: "@tamga-network: 0.7.4 test release on npm; the stable 1.0.0 when everything is ready",
         },
         {
           icon: "user",
@@ -274,7 +274,7 @@ const tr: RoadmapContent = {
         {
           icon: "list",
           title: "İmzalı güven listeleri",
-          desc: "kurumlar, doğrulayıcılar ve herkese açık çapa günlüğü",
+          desc: "kurumlar, doğrulayıcılar, kapı grupları ve herkese açık çapa günlüğü; sandbox'ta ETSI XML görünümü",
         },
         {
           icon: "ticket",
@@ -299,7 +299,7 @@ const tr: RoadmapContent = {
         {
           icon: "package",
           title: "Açık kaynak paketler",
-          desc: "@tamga-network: npm'de 0.7.3 deneme sürümü; kararlı 1.0.0 hazır olunca",
+          desc: "@tamga-network: npm'de 0.7.4 deneme sürümü; kararlı 1.0.0 hazır olunca",
         },
         {
           icon: "user",
@@ -463,7 +463,7 @@ const tk: RoadmapContent = {
         {
           icon: "list",
           title: "Gol çekilen ynam sanawlary",
-          desc: "guramalar, barlaýjylar we açyk labyr žurnaly",
+          desc: "guramalar, barlaýjylar, gapy toparlary we açyk labyr žurnaly; sandbox-da ETSI XML görnüşi",
         },
         {
           icon: "ticket",
@@ -488,7 +488,7 @@ const tk: RoadmapContent = {
         {
           icon: "package",
           title: "Açyk çeşmeli paketler",
-          desc: "@tamga-network: npm-de 0.7.3 synag wersiýasy; durnukly 1.0.0 taýýar bolanda",
+          desc: "@tamga-network: npm-de 0.7.4 synag wersiýasy; durnukly 1.0.0 taýýar bolanda",
         },
         {
           icon: "user",
@@ -652,7 +652,7 @@ const az: RoadmapContent = {
         {
           icon: "list",
           title: "İmzalı etibar siyahıları",
-          desc: "qurumlar, yoxlayan tərəflər və açıq lövbər jurnalı",
+          desc: "qurumlar, yoxlayan tərəflər, keçid qrupları və açıq lövbər jurnalı; sandbox-da ETSI XML görünüşü",
         },
         {
           icon: "ticket",
@@ -677,7 +677,7 @@ const az: RoadmapContent = {
         {
           icon: "package",
           title: "Açıq mənbəli paketlər",
-          desc: "@tamga-network: npm-də 0.7.3 test buraxılışı; sabit 1.0.0 hər şey hazır olduqda",
+          desc: "@tamga-network: npm-də 0.7.4 test buraxılışı; sabit 1.0.0 hər şey hazır olduqda",
         },
         {
           icon: "user",

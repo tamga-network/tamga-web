@@ -59,3 +59,12 @@ tamga.network with the network's 1.0 documentation set, in English, Turkish and 
 - 2026-10-29: fonts come from the site's own files (`src/fonts/`, `next/font/local`; Onest, IBM Plex Sans, IBM Plex Mono and
   Noto Sans Old Turkic, SIL OFL 1.1 licence files alongside) instead of `next/font/google`: the build no longer fetches from
   Google Fonts (visitors were already served the fonts from tamga.network).
+- 2026-10-29: currency check after the 0.7.4 package release. Packages at npm 0.7.4 everywhere a version is shown (SDK page,
+  home, roadmap, blog notes); release note for 0.7.4 (en/tr/tk/az: protection against forged declines, registration-certificate
+  policy and status list, gate groups in the trust list, ETSI XML view in the sandbox, strict CSP and self-hosted fonts, EU test
+  wallet fixes; a note on the breaking changes points to the package changelog). Roadmap "Signed trust lists" card names gate
+  groups and the sandbox ETSI XML view. Blog: the trust-lists post says registration certificates carry their policy and a
+  status list; the OpenID self-test post says the verifier results predate the 29 October request-branch change and the plan
+  has not been run again. Whitepaper revised in place (version 1.0, edition 2026-10-29): forged-decline protection and
+  registration-certificate status in the presentation flow, ETSI XML view (sandbox; real network once the foundation exists),
+  gate groups, 0.7.4, the verifier self-test caveat; four PDFs rebuilt. The manifesto needed no change.

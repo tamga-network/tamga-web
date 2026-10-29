@@ -30,6 +30,7 @@ import {
   SquareTerminal,
   Ticket,
   Users,
+  UsersRound,
   Waypoints,
   type LucideIcon,
 } from "lucide-react";
@@ -668,6 +669,18 @@ const ABOUT_MENU: Menu = {
           icon: Info,
           tone: "primary",
           href: "/about",
+        },
+        {
+          title: { en: "Team", tr: "Ekibimiz", tk: "Toparymyz", az: "Komandamız" },
+          desc: {
+            en: "The people building the network.",
+            tr: "Ağı kuran ekip.",
+            tk: "Tory gurýan topar.",
+            az: "Şəbəkəni quran komanda.",
+          },
+          icon: UsersRound,
+          tone: "accent",
+          href: "/team",
         },
         {
           title: { en: "Partners", tr: "Partnerler", tk: "Hyzmatdaşlar", az: "Tərəfdaşlar" },

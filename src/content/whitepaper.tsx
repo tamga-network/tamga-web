@@ -4,7 +4,7 @@ import { ExternalLink } from "@/components/external-link";
 import type { Locale } from "@/i18n/routing";
 
 /*
- * Whitepaper v1.0, revised edition 2026-10-27 (first edition 2026-10-03). Aynı içerik whitepaper/tamga-whitepaper-<dil>.typ (PDF) ile
+ * Whitepaper v1.0, revised edition 2026-10-29 (first edition 2026-10-03). Aynı içerik whitepaper/tamga-whitepaper-<dil>.typ (PDF) ile
  * birebir; ikisi de whitepaper/source/content.py dosyasından üretilir (generate.py) — elle düzenleme. Kaynaklar: tamga-network
  * DECISIONS §0, ADR-0009…0014, ADR-0031, ADR-0032, ADR-0035…0038, ADR-0042, ADR-0044, ADR-0048, ADR-0051…0065, Tamga ARF 1.0,
  * SPEC-TRUST-0001, SPEC-API-0001, SPEC-PROTO-0001/0002.
@@ -90,9 +90,9 @@ const en: WhitepaperContent = {
   meta: {
     title: "Whitepaper",
     description:
-      "Tamga Network Whitepaper, version 1.0 (revised 27 October 2026): a digital trust infrastructure for Türkiye and the Turkic world on the EUDI profiles. Signed trust lists, SD-JWT VC and ISO mdoc, OpenID4VCI and OpenID4VP, a five-step verification pipeline, privacy by design, the OpenID self-test, the path to a ledger, and what works today.",
+      "Tamga Network Whitepaper, version 1.0 (revised 29 October 2026): a digital trust infrastructure for Türkiye and the Turkic world on the EUDI profiles. Signed trust lists, SD-JWT VC and ISO mdoc, OpenID4VCI and OpenID4VP, a five-step verification pipeline, privacy by design, the OpenID self-test, the path to a ledger, and what works today.",
   },
-  masthead: "Whitepaper · v1.0 · revised 2026-10-27",
+  masthead: "Whitepaper · v1.0 · revised 2026-10-29",
   eyebrow: "Digital Trust Infrastructure",
   title: "A Digital Trust Infrastructure for Türkiye and the Turkic World",
   subtitle:
@@ -126,8 +126,9 @@ const en: WhitepaperContent = {
         services run end to end with real cryptography, the open packages are on
         npm as test releases, and in October 2026 the issuer and the verifier
         ran the OpenID Foundation’s conformance test plans as a self-test and
-        finished with no failed module. This document says what works, what is
-        planned and what is still research.
+        finished with no failed module; the verifier has changed since, and its
+        plan is to be run again. This document says what works, what is planned
+        and what is still research.
       </p>
     </>
   ),
@@ -359,8 +360,11 @@ const en: WhitepaperContent = {
             The first external format read is ETSI TS 119 602, so a Tamga
             verifier can also recognise the EU identity credential (PID) and the
             mobile driving licence (mDL). No external list is in the list of
-            lists today; each one is added with an approval on the record. See{" "}
-            <Link href="/learn/federation">federation</Link>.
+            lists today; each one is added with an approval on the record. The
+            sandbox also publishes its Türkiye list as an ETSI TS 119 612 XML
+            view, signed and with the same version as the signed list; the real
+            network’s XML list follows once the foundation that will operate the
+            list exists. See <Link href="/learn/federation">federation</Link>.
           </p>
         </>
       ),
@@ -449,7 +453,13 @@ const en: WhitepaperContent = {
               credential missing a requested field is never sent, and the wallet
               tells the person why a request cannot be met. The answer is
               encrypted and carries only the approved fields and a proof that
-              the key is on this phone.
+              the key is on this phone. Every fetch of the request gets its own
+              request object with fresh values and a decline closes only that
+              one, so someone who sees the QR code cannot cancel the person’s
+              presentation with a forged decline. The registration certificate
+              names its policy and points to a status list; the wallet refuses a
+              revoked certificate and warns the person when the status cannot be
+              checked.
             </li>
             <li>
               <strong>From the browser.</strong> A website can ask for a
@@ -531,12 +541,14 @@ const en: WhitepaperContent = {
             Foundation’s conformance test plans on the sandbox: OpenID4VCI with
             HAIP and FAPI 2.0 (63 modules) and OpenID4VP with HAIP (14 modules).
             The last issuer run ended with no failed module and the last
-            verifier run with no failed module and no warning. About twenty
-            changes came out of it, each tied to a clause in a specification,
-            and four of them changed earlier decisions through recorded ADRs.
-            This was a self-test with the Foundation’s own tool; certification
-            is a separate process. What a first run teaches is published as the
-            open-source{" "}
+            verifier run with no failed module and no warning. That verifier run
+            predates 29 October, when the request handling changed (each fetch
+            now gets its own request); the plan has not been run again since.
+            About twenty changes came out of it, each tied to a clause in a
+            specification, and four of them changed earlier decisions through
+            recorded ADRs. This was a self-test with the Foundation’s own tool;
+            certification is a separate process. What a first run teaches is
+            published as the open-source{" "}
             <ExternalLink href="https://github.com/tamga-network/oidf-conformance-kit">
               oidf-conformance-kit
             </ExternalLink>
@@ -651,7 +663,10 @@ const en: WhitepaperContent = {
             Since October 2026 each gate identifies itself to the verification
             service with a terminal key issued by the operator, so someone who
             photographs a QR code cannot spend the ticket before its owner
-            reaches the gate. For a person-to-person check the roles are
+            reaches the gate. Gates belong to groups published in the trust
+            list, each naming the institution that runs them and the passes they
+            may accept; a gate whose group leaves the list, or whose list is out
+            of date, is refused. For a person-to-person check the roles are
             reversed: the wallet shows a short-lived request address and the
             checker’s app starts a standard OpenID4VP request. Both are
             versioned bridges. The target is ISO 18013-5 over Bluetooth and NFC;
@@ -762,10 +777,12 @@ const en: WhitepaperContent = {
             the verifier side; a hosted issuing service in which the
             institution’s signing key stays at the institution and the service
             sends it only a hash to sign (Cloud Signature Consortium API). Nine
-            open-source packages are on npm as the 0.7.3 test release, which
-            carries the verifier fixes from the self-test. The real network’s
-            Türkiye list is live with the identity service as its only active
-            issuer; the first real institution, a university, is being prepared.
+            open-source packages are on npm as the 0.7.4 test release, which
+            adds the protection against forged declines,
+            registration-certificate status, gate groups in the trust list and
+            the ETSI XML list view. The real network’s Türkiye list is live with
+            the identity service as its only active issuer; the first real
+            institution, a university, is being prepared.
           </p>
           <KV
             label="Phases"
@@ -862,7 +879,9 @@ const en: WhitepaperContent = {
             <li>
               The OpenID conformance run was a self-test on the sandbox, for one
               variant of each plan. Certification is a separate process, and the
-              wallet plans need a device build, so they have not been run.
+              wallet plans need a device build, so they have not been run. The
+              verifier plan ran before the request handling changed on 29
+              October and has to be run again.
             </li>
             <li>
               The hosted issuing service’s remote-signing path is implemented
@@ -910,7 +929,7 @@ const en: WhitepaperContent = {
           <p className="text-sm text-foreground-subtle">
             This is a living document. It stays at version 1.0 until the public
             announcement and is revised in place as decisions mature; this
-            edition is dated 27 October 2026, and the first was published on 3
+            edition is dated 29 October 2026, and the first was published on 3
             October 2026. The trust model is what stays.
           </p>
         </>
@@ -924,9 +943,9 @@ const tr: WhitepaperContent = {
   meta: {
     title: "Whitepaper",
     description:
-      "Tamga Network Whitepaper, sürüm 1.0 (gözden geçirilmiş baskı, 27 Ekim 2026): EUDI profilleri üzerinde Türkiye ve Türk dünyası için dijital güven altyapısı. İmzalı güven listeleri, SD-JWT VC ve ISO mdoc, OpenID4VCI ve OpenID4VP, beş adımlı doğrulama hattı, tasarımdan gelen mahremiyet, OpenID öz-testi, deftere giden yol ve bugün ne çalışıyor.",
+      "Tamga Network Whitepaper, sürüm 1.0 (gözden geçirilmiş baskı, 29 Ekim 2026): EUDI profilleri üzerinde Türkiye ve Türk dünyası için dijital güven altyapısı. İmzalı güven listeleri, SD-JWT VC ve ISO mdoc, OpenID4VCI ve OpenID4VP, beş adımlı doğrulama hattı, tasarımdan gelen mahremiyet, OpenID öz-testi, deftere giden yol ve bugün ne çalışıyor.",
   },
-  masthead: "Whitepaper · v1.0 · gözden geçirilmiş 2026-10-27",
+  masthead: "Whitepaper · v1.0 · gözden geçirilmiş 2026-10-29",
   eyebrow: "Dijital Güven Altyapısı",
   title: "Türkiye ve Türk Dünyası için Dijital Güven Altyapısı",
   subtitle:
@@ -960,8 +979,9 @@ const tr: WhitepaperContent = {
         yazılmaz, özeti bile yazılmaz. Servisler gerçek kriptografiyle uçtan uca
         çalışıyor, açık paketler npm’de deneme sürümü olarak yayında ve belge
         veren ile doğrulayıcı Ekim 2026’da OpenID Foundation’ın uyum test
-        planlarını öz-test olarak çalıştırıp başarısız modül kalmadan tamamladı.
-        Bu belge neyin çalıştığını, neyin planlandığını ve neyin hâlâ araştırma
+        planlarını öz-test olarak çalıştırıp başarısız modül kalmadan tamamladı;
+        doğrulayıcı o günden beri değişti ve planı yeniden çalıştırılacak. Bu
+        belge neyin çalıştığını, neyin planlandığını ve neyin hâlâ araştırma
         olduğunu söyler.
       </p>
     </>
@@ -1193,7 +1213,10 @@ const tr: WhitepaperContent = {
             ve imzacı değişir. İlk okunan dış biçim ETSI TS 119 602’dir; böylece
             bir Tamga doğrulayıcısı AB kimlik belgesini (PID) ve mobil ehliyeti
             (mDL) de tanıyabilir. Bugün listeler listesinde dış liste yoktur;
-            her biri kayda geçen bir onayla eklenir. Bkz.{" "}
+            her biri kayda geçen bir onayla eklenir. Sandbox, Türkiye listesini
+            imzalı ve imzalı listeyle aynı sürümde bir ETSI TS 119 612 XML
+            görünümü olarak da yayımlıyor; gerçek ağın XML listesi, listeyi
+            işletecek vakıf kurulunca gelecek. Bkz.{" "}
             <Link href="/learn/federation">federasyon</Link>.
           </p>
         </>
@@ -1281,7 +1304,13 @@ const tr: WhitepaperContent = {
               bunları seçenek olarak gösterir. İstenen bir alanı taşımayan belge
               asla gönderilmez; cüzdan isteğin neden karşılanamadığını kişiye
               söyler. Cevap şifrelidir ve yalnızca onaylanan alanları ile
-              anahtarın bu telefonda olduğunun kanıtını taşır.
+              anahtarın bu telefonda olduğunun kanıtını taşır. İsteğin her
+              çekimi yeni değerlerle kendi istek nesnesini alır ve bir ret
+              yalnız onu kapatır; böylece QR kodu gören biri sahte bir retle
+              kişinin sunumunu iptal edemez. Kayıt sertifikası kendi
+              politikasını adlandırır ve bir durum listesine işaret eder; cüzdan
+              iptal edilmiş sertifikayı reddeder, durum denetlenemiyorsa kişiyi
+              uyarır.
             </li>
             <li>
               <strong>Tarayıcıdan.</strong> Bir web sitesi belgeyi QR kodu
@@ -1356,11 +1385,13 @@ const tr: WhitepaperContent = {
             ile OpenID4VCI (63 modül) ve HAIP ile OpenID4VP (14 modül). Belge
             veren planının son çalıştırmasında başarısız modül kalmadı;
             doğrulayıcı planının son turunda ne başarısız modül ne uyarı vardı.
-            Bu çalışmadan yirmiye yakın değişiklik çıktı, her biri bir şartname
-            maddesine dayanıyor ve dördü önceki kararları kayıtlı ADR’lerle
-            değiştirdi. Bu, Foundation’ın kendi aracıyla yapılan bir öz-testti;
-            sertifika ayrı bir süreçtir. İlk tam çalıştırmanın öğrettikleri açık
-            kaynak{" "}
+            Bu doğrulayıcı çalıştırması, istek işleyişinin değiştiği 29 Ekim’den
+            öncedir (her çekim artık kendi isteğini alıyor); plan o günden beri
+            yeniden çalıştırılmadı. Bu çalışmadan yirmiye yakın değişiklik
+            çıktı, her biri bir şartname maddesine dayanıyor ve dördü önceki
+            kararları kayıtlı ADR’lerle değiştirdi. Bu, Foundation’ın kendi
+            aracıyla yapılan bir öz-testti; sertifika ayrı bir süreçtir. İlk tam
+            çalıştırmanın öğrettikleri açık kaynak{" "}
             <ExternalLink href="https://github.com/tamga-network/oidf-conformance-kit">
               oidf-conformance-kit
             </ExternalLink>{" "}
@@ -1475,9 +1506,12 @@ const tr: WhitepaperContent = {
             olabilir. Ekim 2026’dan beri her kapı kendini doğrulama servisine
             işletmecinin verdiği bir terminal anahtarıyla tanıtır; böylece QR
             kodun fotoğrafını çeken biri bileti sahibi kapıya varmadan
-            harcayamaz. Kişiden kişiye kontrolde roller tersine döner: cüzdan
-            kısa ömürlü bir istek adresi gösterir, kontrol edenin uygulaması
-            standart bir OpenID4VP isteği başlatır. İkisi de sürümlü
+            harcayamaz. Kapılar güven listesinde yayımlanan gruplara bağlıdır;
+            her grup kapıları işleten kurumu ve kabul edebilecekleri geçiş
+            kartlarını söyler. Grubu listeden çıkan ya da listesi güncel olmayan
+            kapı reddedilir. Kişiden kişiye kontrolde roller tersine döner:
+            cüzdan kısa ömürlü bir istek adresi gösterir, kontrol edenin
+            uygulaması standart bir OpenID4VP isteği başlatır. İkisi de sürümlü
             köprülerdir. Hedef Bluetooth ve NFC üzerinden ISO 18013-5’tir;
             Bluetooth yolu cüzdanda kodlandı ve cihaz testlerini bekliyor.
           </p>
@@ -1580,10 +1614,11 @@ const tr: WhitepaperContent = {
             bilgi ispatıyla yaş kontrolü; kurumun imza anahtarının kurumda
             kaldığı ve servisin imzalamak için kuruma yalnızca bir özet
             gönderdiği barındırılan belge verme servisi (Cloud Signature
-            Consortium API). Dokuz açık kaynak paket npm’de 0.7.3 deneme
-            sürümünde ve bu sürüm öz-testten çıkan doğrulayıcı düzeltmelerini
-            taşıyor. Gerçek ağın Türkiye listesi yayında ve tek etkin belge
-            vereni kimlik servisi; ilk gerçek kurum, bir üniversite,
+            Consortium API). Dokuz açık kaynak paket npm’de 0.7.4 deneme
+            sürümünde; bu sürüm sahte ret korumasını, kayıt sertifikası
+            durumunu, güven listesindeki kapı gruplarını ve ETSI XML liste
+            görünümünü getiriyor. Gerçek ağın Türkiye listesi yayında ve tek
+            etkin belge vereni kimlik servisi; ilk gerçek kurum, bir üniversite,
             hazırlanıyor.
           </p>
           <KV
@@ -1680,6 +1715,8 @@ const tr: WhitepaperContent = {
               OpenID uyum çalıştırması sandbox üzerinde, her planın tek bir
               çeşidiyle yapılan bir öz-testti. Sertifika ayrı bir süreçtir;
               cüzdan planları cihaz derlemesi gerektirdiği için çalıştırılmadı.
+              Doğrulayıcı planı, istek işleyişinin 29 Ekim’de değişmesinden önce
+              çalıştı ve yeniden çalıştırılması gerekiyor.
             </li>
             <li>
               Barındırılan belge verme servisinin uzaktan imza yolu yazıldı ve
@@ -1729,7 +1766,7 @@ const tr: WhitepaperContent = {
           </p>
           <p className="text-sm text-foreground-subtle">
             Bu yaşayan bir belgedir. Duyuruya kadar sürüm 1.0’da kalır ve
-            kararlar olgunlaştıkça yerinde güncellenir; bu baskı 27 Ekim 2026
+            kararlar olgunlaştıkça yerinde güncellenir; bu baskı 29 Ekim 2026
             tarihlidir, ilk baskı 3 Ekim 2026’da yayımlandı. Kalıcı olan güven
             modelidir.
           </p>
@@ -1744,9 +1781,9 @@ const tk: WhitepaperContent = {
   meta: {
     title: "Whitepaper",
     description:
-      "Tamga Network Whitepaper, 1.0 wersiýa (gaýtadan seredilen neşir, 2026-njy ýylyň 27-nji oktýabry): EUDI profillerine esaslanýan Türkiýe we türki dünýäsi üçin sanly ynam infrastrukturasy. Gol çekilen ynam sanawlary, SD-JWT VC we ISO mdoc, OpenID4VCI we OpenID4VP, bäş ädimli barlag hatary, dizaýndan gelýän gizlinlik, OpenID öz-synagy, kitaba barýan ýol we häzir nämäniň işleýändigi.",
+      "Tamga Network Whitepaper, 1.0 wersiýa (gaýtadan seredilen neşir, 2026-njy ýylyň 29-njy oktýabry): EUDI profillerine esaslanýan Türkiýe we türki dünýäsi üçin sanly ynam infrastrukturasy. Gol çekilen ynam sanawlary, SD-JWT VC we ISO mdoc, OpenID4VCI we OpenID4VP, bäş ädimli barlag hatary, dizaýndan gelýän gizlinlik, OpenID öz-synagy, kitaba barýan ýol we häzir nämäniň işleýändigi.",
   },
-  masthead: "Whitepaper · v1.0 · gaýtadan seredilen 2026-10-27",
+  masthead: "Whitepaper · v1.0 · gaýtadan seredilen 2026-10-29",
   eyebrow: "Sanly Ynam Infrastrukturasy",
   title: "Türkiýe we Türki Dünýäsi üçin Sanly Ynam Infrastrukturasy",
   subtitle:
@@ -1781,7 +1818,8 @@ const tk: WhitepaperContent = {
         başdan-aýak işleýär, açyk paketler npm-de synag wersiýasy hökmünde çap
         edildi, resminama beriji we barlaýjy bolsa 2026-njy ýylyň oktýabrynda
         OpenID Foundation-yň laýyklyk synag meýilnamalaryny öz-synag hökmünde
-        geçirip, şowsuz modulsyz tamamlady. Bu resminama nämäniň işleýändigini,
+        geçirip, şowsuz modulsyz tamamlady; barlaýjy şondan bäri üýtgedi we onuň
+        meýilnamasy täzeden geçiriler. Bu resminama nämäniň işleýändigini,
         nämäniň meýilleşdirilendigini we nämäniň heniz gözlegdigini aýdýar.
       </p>
     </>
@@ -2019,7 +2057,11 @@ const tk: WhitepaperContent = {
             şeýlelikde Tamga barlaýjysy ÝB şahsyýet resminamasyny (PID) we mobil
             sürüjilik şahadatnamasyny (mDL) hem tanap biler. Häzir sanawlar
             sanawynda daşky sanaw ýok; her biri ýazga alnan razylyk bilen
-            goşulýar. Serediň: <Link href="/learn/federation">federasiýa</Link>.
+            goşulýar. Sandbox Türkiýäniň sanawyny gol çekilen we gol çekilen
+            sanaw bilen şol bir wersiýadaky ETSI TS 119 612 XML görnüşi hökmünde
+            hem çap edýär; hakyky toruň XML sanawy sanawy işletjek gazna
+            döredilenden soň geler. Serediň:{" "}
+            <Link href="/learn/federation">federasiýa</Link>.
           </p>
         </>
       ),
@@ -2108,7 +2150,13 @@ const tk: WhitepaperContent = {
               Soralan meýdany götermeýän resminama asla iberilmeýär; gapjyk
               haýyşyň näme üçin ýerine ýetirilip bilinmeýändigini adama aýdýar.
               Jogap şifrlenen we diňe tassyklanan meýdanlary hem açaryň şu
-              telefondadygynyň subutnamasyny göterýär.
+              telefondadygynyň subutnamasyny göterýär. Haýyşyň her alnyşy täze
+              bahalar bilen öz haýyş obýektini alýar we ret diňe ony ýapýar;
+              şeýlelikde QR kody gören biri ýasama ret bilen adamyň
+              hödürlemesini ýatyryp bilmeýär. Hasaba alyş sertifikaty öz
+              syýasatyny atlandyrýar we ýagdaý sanawyna salgylanýar; gapjyk
+              ýatyrylan sertifikaty ret edýär, ýagdaýy barlap bolmasa adamy
+              duýdurýar.
             </li>
             <li>
               <strong>Brauzerden.</strong> Web saýt resminamany QR kodunyň
@@ -2192,11 +2240,14 @@ const tk: WhitepaperContent = {
             HAIP we FAPI 2.0 bilen OpenID4VCI (63 modul) we HAIP bilen OpenID4VP
             (14 modul). Resminama beriji meýilnamasynyň soňky geçirilişinde
             şowsuz modul galmady; barlaýjy meýilnamasynyň soňky tapgyrynda
-            şowsuz modul-da, duýduryş-da ýokdy. Bu işden ýigrimiye golaý
-            üýtgeşme çykdy, her biri şertnamanyň bir maddasyna esaslanýar we
-            dördüsi öňki kararlary ýazga alnan ADR-ler bilen üýtgetdi. Bu
-            Foundation-yň öz guraly bilen edilen öz-synagdy; sertifikat aýratyn
-            prosesdir. Ilkinji doly geçirilişiň öwredenleri açyk çeşmeli{" "}
+            şowsuz modul-da, duýduryş-da ýokdy. Bu barlaýjy geçirilişi haýyşyň
+            işlenişi üýtgän 29-njy oktýabrdan öň boldy (her alnyş indi öz
+            haýyşyny alýar); meýilnama şondan bäri täzeden geçirilmedi. Bu işden
+            ýigrimiye golaý üýtgeşme çykdy, her biri şertnamanyň bir maddasyna
+            esaslanýar we dördüsi öňki kararlary ýazga alnan ADR-ler bilen
+            üýtgetdi. Bu Foundation-yň öz guraly bilen edilen öz-synagdy;
+            sertifikat aýratyn prosesdir. Ilkinji doly geçirilişiň öwredenleri
+            açyk çeşmeli{" "}
             <ExternalLink href="https://github.com/tamga-network/oidf-conformance-kit">
               oidf-conformance-kit
             </ExternalLink>{" "}
@@ -2313,12 +2364,15 @@ const tk: WhitepaperContent = {
             gezeklik bolup biler. 2026-njy ýylyň oktýabryndan bäri her gapy
             özüni barlag hyzmatyna operatoryň beren terminal açary bilen
             tanadýar; şeýlelikde QR kodunyň suratyny alan adam bileti eýesi
-            gapyya ýetmezden sarp edip bilmeýär. Adamdan adama barlagda rollar
-            tersine öwrülýär: gapjyk gysga ömürli haýyş salgysyny görkezýär,
-            barlaýanyň programmasy standart OpenID4VP haýyşyny başladýar. Ikisi
-            hem wersiýaly köprülerdir. Maksat Bluetooth we NFC arkaly ISO
-            18013-5; Bluetooth ýoly gapjykda kodlandy we enjam synaglaryna
-            garaşýar.
+            gapyya ýetmezden sarp edip bilmeýär. Gapylar ynam sanawynda çap
+            edilen toparlara degişli; her topar gapylary işledýän guramany we
+            kabul edip biljek geçiş kartalaryny görkezýär. Topary sanawdan çykan
+            ýa-da sanawy köne bolan gapy ret edilýär. Adamdan adama barlagda
+            rollar tersine öwrülýär: gapjyk gysga ömürli haýyş salgysyny
+            görkezýär, barlaýanyň programmasy standart OpenID4VP haýyşyny
+            başladýar. Ikisi hem wersiýaly köprülerdir. Maksat Bluetooth we NFC
+            arkaly ISO 18013-5; Bluetooth ýoly gapjykda kodlandy we enjam
+            synaglaryna garaşýar.
           </p>
         </>
       ),
@@ -2427,10 +2481,11 @@ const tk: WhitepaperContent = {
             ýaş barlagy; guramanyň gol açarynyň guramada galýan we hyzmatyň gol
             çekmek üçin guramaga diňe heş iberýän ýerleşdirilen resminama beriş
             hyzmaty (Cloud Signature Consortium API). Dokuz açyk çeşmeli paket
-            npm-de 0.7.3 synag wersiýasynda we bu wersiýa öz-synagdan çykan
-            barlaýjy düzedişlerini göterýär. Hakyky toruň Türkiýe sanawy işleýär
-            we ýeke-täk işjeň resminama berijisi şahsyýet hyzmaty; ilkinji
-            hakyky gurama, uniwersitet, taýýarlanýar.
+            npm-de 0.7.4 synag wersiýasynda; bu wersiýa ýasama retden goragy,
+            hasaba alyş sertifikatynyň ýagdaýyny, ynam sanawyndaky gapy
+            toparlaryny we ETSI XML sanaw görnüşini getirýär. Hakyky toruň
+            Türkiýe sanawy işleýär we ýeke-täk işjeň resminama berijisi şahsyýet
+            hyzmaty; ilkinji hakyky gurama, uniwersitet, taýýarlanýar.
           </p>
           <KV
             label="Tapgyrlar"
@@ -2528,7 +2583,8 @@ const tk: WhitepaperContent = {
               OpenID laýyklyk geçirilişi sandbox-da, her meýilnamanyň ýeke-täk
               görnüşi bilen edilen öz-synagdy. Sertifikat aýratyn prosesdir;
               gapjyk meýilnamalary enjam ýygnamasyny talap edýändigi üçin
-              geçirilmedi.
+              geçirilmedi. Barlaýjy meýilnamasy haýyşyň işlenişi 29-njy
+              oktýabrda üýtgemezden öň geçirildi we täzeden geçirilmeli.
             </li>
             <li>
               Ýerleşdirilen resminama beriş hyzmatynyň uzakdan gol ýoly ýazyldy
@@ -2580,7 +2636,7 @@ const tk: WhitepaperContent = {
           <p className="text-sm text-foreground-subtle">
             Bu ýaşaýan resminamadyr. Yglan edilýänçä 1.0 wersiýada galýar we
             kararlar kämilleşdigiçe ýerinde täzelenýär; bu neşir 2026-njy ýylyň
-            27-nji oktýabry bilen senelenen, ilkinji neşir 2026-njy ýylyň 3-nji
+            29-njy oktýabry bilen senelenen, ilkinji neşir 2026-njy ýylyň 3-nji
             oktýabrynda çap edildi. Hemişelik galýan ynam modelidir.
           </p>
         </>
@@ -2594,9 +2650,9 @@ const az: WhitepaperContent = {
   meta: {
     title: "Whitepaper",
     description:
-      "Tamga Network Whitepaper, versiya 1.0 (yenidən baxılmış nəşr, 27 oktyabr 2026): EUDI profilləri əsasında Türkiyə və türk dünyası üçün rəqəmsal etibar infrastrukturu. İmzalı etibar siyahıları, SD-JWT VC və ISO mdoc, OpenID4VCI və OpenID4VP, beş addımlı yoxlama xətti, dizayndan gələn məxfilik, OpenID öz-sınağı, reyestrə gedən yol və bu gün nəyin işlədiyi.",
+      "Tamga Network Whitepaper, versiya 1.0 (yenidən baxılmış nəşr, 29 oktyabr 2026): EUDI profilləri əsasında Türkiyə və türk dünyası üçün rəqəmsal etibar infrastrukturu. İmzalı etibar siyahıları, SD-JWT VC və ISO mdoc, OpenID4VCI və OpenID4VP, beş addımlı yoxlama xətti, dizayndan gələn məxfilik, OpenID öz-sınağı, reyestrə gedən yol və bu gün nəyin işlədiyi.",
   },
-  masthead: "Whitepaper · v1.0 · yenidən baxılmış 2026-10-27",
+  masthead: "Whitepaper · v1.0 · yenidən baxılmış 2026-10-29",
   eyebrow: "Rəqəmsal Etibar İnfrastrukturu",
   title: "Türkiyə və Türk Dünyası üçün Rəqəmsal Etibar İnfrastrukturu",
   subtitle:
@@ -2631,7 +2687,8 @@ const az: WhitepaperContent = {
         real kriptoqrafiya ilə başdan sona işləyir, açıq paketlər npm-də sınaq
         buraxılışı kimi dərc olunub, sənəd verən və yoxlayan tərəf isə 2026-cı
         ilin oktyabrında OpenID Foundation-ın uyğunluq test planlarını öz-sınaq
-        kimi icra edib uğursuz modul qalmadan tamamladı. Bu sənəd nəyin
+        kimi icra edib uğursuz modul qalmadan tamamladı; yoxlayan tərəf o
+        vaxtdan dəyişib və onun planı yenidən icra ediləcək. Bu sənəd nəyin
         işlədiyini, nəyin planlaşdırıldığını və nəyin hələ tədqiqat olduğunu
         bildirir.
       </p>
@@ -2874,7 +2931,11 @@ const az: WhitepaperContent = {
             beləliklə Tamga yoxlayıcısı Aİ şəxsiyyət sənədini (PID) və mobil
             sürücülük vəsiqəsini (mDL) də tanıya bilər. Bu gün siyahıların
             siyahısında xarici siyahı yoxdur; hər biri qeydə alınan razılıqla
-            əlavə olunur. Bax: <Link href="/learn/federation">federasiya</Link>.
+            əlavə olunur. Sandbox Türkiyə siyahısını imzalı və imzalı siyahı ilə
+            eyni versiyada ETSI TS 119 612 XML görünüşü kimi də dərc edir; real
+            şəbəkənin XML siyahısı siyahını idarə edəcək fond yaradıldıqdan
+            sonra gələcək. Bax: <Link href="/learn/federation">federasiya</Link>
+            .
           </p>
         </>
       ),
@@ -2962,7 +3023,12 @@ const az: WhitepaperContent = {
               heç vaxt göndərilmir; cüzdan sorğunun niyə yerinə yetirilə
               bilmədiyini şəxsə bildirir. Cavab şifrələnir və yalnız
               təsdiqlənmiş sahələri və açarın bu telefonda olduğunun sübutunu
-              daşıyır.
+              daşıyır. Sorğunun hər çəkilişi yeni dəyərlərlə öz sorğu obyektini
+              alır və imtina yalnız onu bağlayır; beləliklə QR kodu görən biri
+              saxta imtina ilə şəxsin təqdimatını ləğv edə bilmir. Qeydiyyat
+              sertifikatı öz siyasətini adlandırır və status siyahısına istinad
+              edir; cüzdan ləğv edilmiş sertifikatı rədd edir, status yoxlana
+              bilmirsə şəxsi xəbərdar edir.
             </li>
             <li>
               <strong>Brauzerdən.</strong> Vebsayt sənədi QR kod əvəzinə
@@ -3046,11 +3112,13 @@ const az: WhitepaperContent = {
             FAPI 2.0 ilə OpenID4VCI (63 modul) və HAIP ilə OpenID4VP (14 modul).
             Sənəd verən planının son icrasında uğursuz modul qalmadı; yoxlayan
             tərəf planının son turunda nə uğursuz modul, nə də xəbərdarlıq var
-            idi. Bu işdən iyirmiyə yaxın dəyişiklik çıxdı, hər biri
-            spesifikasiyanın bir maddəsinə əsaslanır və dördü əvvəlki qərarları
-            qeydə alınmış ADR-lərlə dəyişdirdi. Bu Foundation-ın öz aləti ilə
-            aparılan öz-sınaq idi; sertifikatlaşdırma ayrıca prosesdir. İlk tam
-            icranın öyrətdikləri açıq mənbəli{" "}
+            idi. Bu yoxlama icrası sorğunun işlənməsinin dəyişdiyi 29 oktyabrdan
+            əvvəl olub (hər çəkiliş indi öz sorğusunu alır); plan o vaxtdan
+            yenidən icra edilməyib. Bu işdən iyirmiyə yaxın dəyişiklik çıxdı,
+            hər biri spesifikasiyanın bir maddəsinə əsaslanır və dördü əvvəlki
+            qərarları qeydə alınmış ADR-lərlə dəyişdirdi. Bu Foundation-ın öz
+            aləti ilə aparılan öz-sınaq idi; sertifikatlaşdırma ayrıca
+            prosesdir. İlk tam icranın öyrətdikləri açıq mənbəli{" "}
             <ExternalLink href="https://github.com/tamga-network/oidf-conformance-kit">
               oidf-conformance-kit
             </ExternalLink>{" "}
@@ -3167,11 +3235,14 @@ const az: WhitepaperContent = {
             birdəfəlik ola bilər. 2026-cı ilin oktyabrından bəri hər qapı özünü
             yoxlama xidmətinə operatorun verdiyi terminal açarı ilə təqdim edir;
             beləliklə QR kodun şəklini çəkən şəxs bileti sahibi qapıya çatmazdan
-            əvvəl xərcləyə bilməz. Şəxsdən şəxsə yoxlamada rollar tərsinə dönür:
-            cüzdan qısamüddətli sorğu ünvanı göstərir, yoxlayanın tətbiqi
-            standart OpenID4VP sorğusu başladır. Hər ikisi versiyalı körpüdür.
-            Hədəf Bluetooth və NFC üzərindən ISO 18013-5-dir; Bluetooth yolu
-            cüzdanda kodlaşdırılıb və cihaz testlərini gözləyir.
+            əvvəl xərcləyə bilməz. Qapılar etibar siyahısında dərc olunan
+            qruplara aiddir; hər qrup qapıları idarə edən qurumu və qəbul edə
+            biləcəkləri keçid kartlarını göstərir. Qrupu siyahıdan çıxan və ya
+            siyahısı köhnə olan qapı rədd edilir. Şəxsdən şəxsə yoxlamada rollar
+            tərsinə dönür: cüzdan qısamüddətli sorğu ünvanı göstərir, yoxlayanın
+            tətbiqi standart OpenID4VP sorğusu başladır. Hər ikisi versiyalı
+            körpüdür. Hədəf Bluetooth və NFC üzərindən ISO 18013-5-dir;
+            Bluetooth yolu cüzdanda kodlaşdırılıb və cihaz testlərini gözləyir.
           </p>
         </>
       ),
@@ -3277,11 +3348,12 @@ const az: WhitepaperContent = {
             yoxlayan tərəfdə sıfır bilik sübutu ilə yaş yoxlaması; qurumun imza
             açarının qurumda qaldığı və xidmətin imzalamaq üçün quruma yalnız
             hash göndərdiyi hostinqli sənəd vermə xidməti (Cloud Signature
-            Consortium API). Doqquz açıq mənbəli paket npm-də 0.7.3 sınaq
-            buraxılışındadır və bu versiya öz-sınaqdan çıxan yoxlayıcı
-            düzəlişlərini daşıyır. Real şəbəkənin Türkiyə siyahısı işləyir və
-            yeganə aktiv sənəd verəni şəxsiyyət xidmətidir; ilk real qurum, bir
-            universitet, hazırlanır.
+            Consortium API). Doqquz açıq mənbəli paket npm-də 0.7.4 sınaq
+            buraxılışındadır; bu versiya saxta imtinadan qorumanı, qeydiyyat
+            sertifikatının statusunu, etibar siyahısındakı keçid qruplarını və
+            ETSI XML siyahı görünüşünü gətirir. Real şəbəkənin Türkiyə siyahısı
+            işləyir və yeganə aktiv sənəd verəni şəxsiyyət xidmətidir; ilk real
+            qurum, bir universitet, hazırlanır.
           </p>
           <KV
             label="Mərhələlər"
@@ -3380,7 +3452,9 @@ const az: WhitepaperContent = {
             <li>
               OpenID uyğunluq icrası sandbox-da, hər planın tək bir variantı ilə
               aparılan öz-sınaq idi. Sertifikatlaşdırma ayrıca prosesdir; cüzdan
-              planları cihaz qurulumu tələb etdiyi üçün icra edilməyib.
+              planları cihaz qurulumu tələb etdiyi üçün icra edilməyib. Yoxlayan
+              tərəf planı sorğunun işlənməsi 29 oktyabrda dəyişməzdən əvvəl icra
+              edilib və yenidən icra edilməlidir.
             </li>
             <li>
               Hostinqli sənəd vermə xidmətinin uzaqdan imza yolu yazılıb və test
@@ -3430,7 +3504,7 @@ const az: WhitepaperContent = {
           </p>
           <p className="text-sm text-foreground-subtle">
             Bu canlı sənəddir. Elana qədər versiya 1.0-da qalır və qərarlar
-            yetişdikcə yerində yenilənir; bu nəşr 27 oktyabr 2026 tarixlidir,
+            yetişdikcə yerində yenilənir; bu nəşr 29 oktyabr 2026 tarixlidir,
             ilk nəşr 3 oktyabr 2026-da dərc edilib. Daimi olan etibar modelidir.
           </p>
         </>

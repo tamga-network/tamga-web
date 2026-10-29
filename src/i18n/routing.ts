@@ -19,6 +19,8 @@ export const routing = defineRouting({
     "/join": "/join",
     "/network": "/network",
     "/partners": "/partners",
+    "/team": "/team",
+    "/team/[slug]": "/team/[slug]",
     "/events": "/events",
     "/roadmap": "/roadmap",
     "/changelog": "/changelog",

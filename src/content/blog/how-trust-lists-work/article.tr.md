@@ -72,7 +72,7 @@ Kayıtta bulunmayan bilgiler de bilinçli olarak dışarıda bırakıldı. Kayı
 
 Kurum, kayıt bilgilerini ve bir sertifika imzalama isteğini göndererek başvurur. Kayıt makamı başvuruyu inceler ve eksik alanların hepsini tek seferde bildirir. Ardından kök sertifika makamı kurumun sertifikasını imzalar, kurum listeye eklenir ve liste yeniden imzalanır. Değişiklik 24 saat içinde yayına girer. Bu adımları kurumun gözünden [Bir kurum Tamga Network'e nasıl katılır?](/blog/join-as-an-institution) yazısında anlattık.
 
-Yayıncı her yayında, her doğrulayıcı kullanımı ve her kurum için bir kayıt sertifikası (ETSI TS 119 475) da üretir ve bunları `trust.tamga.network/wrprc/` altına koyar. Bu sertifikaların içeriği yalnız imzalı listeden geldiği için cüzdan bir doğrulayıcının kaydını bu sertifikayla da denetleyebilir.
+Yayıncı her yayında, her doğrulayıcı kullanımı ve her kurum için bir kayıt sertifikası (ETSI TS 119 475) da üretir ve bunları `trust.tamga.network/wrprc/` altına koyar. Bu sertifikaların içeriği yalnız imzalı listeden geldiği için cüzdan bir doğrulayıcının kaydını bu sertifikayla da denetleyebilir. 29 Ekim 2026'dan beri her sertifika kendi politikasını da adlandırır (kendi tanımlayıcısıyla [kayıt sertifikası politikası](https://arf.tamga.network/tr/policies/registration-certificate)) ve saatte bir yeniden imzalanan, bir bitlik bir durum listesine işaret eder: `trust.tamga.network/status/wrprc/1`. Cüzdan iptal edilmiş bir sertifikayı reddeder, durum denetlenemiyorsa kişiyi uyarır.
 
 ## Liste nasıl imzalanır ve yayımlanır?
 

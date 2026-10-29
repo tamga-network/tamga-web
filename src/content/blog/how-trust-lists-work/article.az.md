@@ -72,7 +72,7 @@ Qeyddə olmayan məlumatlar da bilərəkdən kənarda saxlanılıb. Qeyddə təl
 
 Qurum qeydiyyat məlumatlarını və sertifikat imzalama sorğusunu göndərərək müraciət edir. Qeydiyyat orqanı müraciəti yoxlayır və çatışmayan bütün sahələri bir dəfəyə bildirir. Sonra kök sertifikat orqanı qurumun sertifikatını imzalayır, qurum siyahıya əlavə edilir və siyahı yenidən imzalanır. Dəyişiklik 24 saat ərzində qüvvəyə minir. Bu addımları qurumun baxış bucağından [Qurum Tamga Network-a necə qoşulur](/blog/join-as-an-institution) yazısında izah etmişik.
 
-Nəşriyyatçı hər dərcdə hər yoxlayan tərəf istifadəsi və hər qurum üçün qeydiyyat sertifikatı (ETSI TS 119 475) da yaradır və onları `trust.tamga.network/wrprc/` altında yerləşdirir. Bu sertifikatların məzmunu yalnız imzalanmış siyahıdan gəldiyi üçün cüzdan yoxlayan tərəfin qeydiyyatını bu sertifikatla da yoxlaya bilər.
+Nəşriyyatçı hər dərcdə hər yoxlayan tərəf istifadəsi və hər qurum üçün qeydiyyat sertifikatı (ETSI TS 119 475) da yaradır və onları `trust.tamga.network/wrprc/` altında yerləşdirir. Bu sertifikatların məzmunu yalnız imzalanmış siyahıdan gəldiyi üçün cüzdan yoxlayan tərəfin qeydiyyatını bu sertifikatla da yoxlaya bilər. 29 oktyabr 2026-cı ildən hər sertifikat öz siyasətini də adlandırır (öz identifikatoru ilə [qeydiyyat sertifikatı siyasəti](https://arf.tamga.network/az/policies/registration-certificate)) və saatda bir yenidən imzalanan bir bitlik status siyahısına istinad edir: `trust.tamga.network/status/wrprc/1`. Cüzdan ləğv edilmiş sertifikatı rədd edir, status yoxlana bilmirsə şəxsi xəbərdar edir.
 
 ## Siyahı necə imzalanır və dərc olunur?
 

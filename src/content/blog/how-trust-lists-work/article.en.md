@@ -72,7 +72,7 @@ What the entry leaves out is just as deliberate. It holds no student names, no c
 
 An institution applies with its registration data and a certificate signing request. The registrar checks the application and reports every missing field at once. The root certificate authority then signs the institution's certificate, the institution is added and the list is re-signed. The change is live within 24 hours. The steps from the institution's side are in [How an institution joins Tamga Network](/blog/join-as-an-institution).
 
-At every publication the publisher also generates a registration certificate (ETSI TS 119 475) for each verifier use and each issuer, under `trust.tamga.network/wrprc/`. Its content comes only from the signed list, so a wallet can also use it to check a verifier's registration.
+At every publication the publisher also generates a registration certificate (ETSI TS 119 475) for each verifier use and each issuer, under `trust.tamga.network/wrprc/`. Its content comes only from the signed list, so a wallet can also use it to check a verifier's registration. Since 29 October 2026 each certificate also names its policy, the [registration certificate policy](https://arf.tamga.network/policies/registration-certificate) with its own identifier, and points to a one-bit status list at `trust.tamga.network/status/wrprc/1` that is re-signed every hour. A wallet refuses a revoked certificate and warns the person when the status cannot be checked.
 
 ## How is a list signed and published?
 

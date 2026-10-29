@@ -9,7 +9,7 @@ draft: false
 related: learn:what-is-tamga-network, a-pdf-is-not-a-document, why-no-blockchain-yet, how-trust-lists-work, page:/manifesto
 ---
 
-<!-- Kaynaklar: İngilizce yazının kaynak notuyla aynı (ana sayfa metinleri; trust.tamga.network canlı listelerin listesi: TR ACTIVE geçici işletmeciyle, AZ/KZ/KG/UZ TDT üyesi olarak ayrılmış, HU/TM gözlemci olarak ayrılmış, TAMGA-WP-1 2026-10-14'ten beri ACTIVE; marka sayfası; manifesto v1.0 gözden geçirilmiş baskı 2026-10-27; CHANGELOG 1.0.0; npm 0.7.3; OpenID öz-testi yazısı; ADR-0009, ADR-0042, ADR-0051; Tüzük (AB) 2024/1183 Md. 5a). -->
+<!-- Kaynaklar: İngilizce yazının kaynak notuyla aynı (ana sayfa metinleri; trust.tamga.network canlı listelerin listesi: TR ACTIVE geçici işletmeciyle, AZ/KZ/KG/UZ TDT üyesi olarak ayrılmış, HU/TM gözlemci olarak ayrılmış, TAMGA-WP-1 2026-10-14'ten beri ACTIVE; marka sayfası; manifesto v1.0 gözden geçirilmiş baskı 2026-10-27; CHANGELOG 1.0.0; npm 0.7.4 (2026-10-29); OpenID öz-testi yazısı; ADR-0009, ADR-0042, ADR-0051; Tüzük (AB) 2024/1183 Md. 5a). -->
 
 Tamga Network, bir kurumun verdiği dijital belgenin başka bir kurumda, hatta başka bir ülkede saniyeler içinde doğrulanmasını sağlayan ortak kurallar ve imzalı listelerden oluşur. Doğrulayan taraf belgeyi veren kuruma sormaz, belgenin sahibi de yalnız istenen bilgiyi paylaşır. Ağı Türk dünyası için, Avrupa'nın dijital kimlik düzeniyle aynı standartları kullanarak kuruyoruz. Bu yazıda neden başladığımızı, ağın nasıl çalıştığını, adımızın nereden geldiğini, hangi ilkelere dayandığımızı ve bugün neyin hazır olup neyin olmadığını anlatıyoruz.
 
@@ -82,7 +82,7 @@ Yeni modeli dışarıdan alabilir ya da aynı açık standartlarla kendi altyap�
 | İngilizce ve Türkçe geliştirici belgeleri (docs.tamga.network) | Listedeki cüzdanların hiçbiri henüz uygulama mağazalarında değil |
 | İmzalı güven listeleri (trust.tamga.network); ilk cüzdan sağlayıcı da listede | Üretimde ortak defter yok; kodu yazıldı ve test edildi, ama en az iki bağımsız işletmeci çalıştırana kadar kapalı kalacak |
 | Tamga Verify: doğrulama kodunu kendisi çalıştırmak istemeyenler için doğrulama hizmeti | Hiçbir devletin ya da Avrupa Birliği'nin tanıması yok |
-| Uydurma kişilerle uçtan uca deneme yapılan test ağı ve npm'de açık paketler (@tamga-network, sürüm 0.7.3) | Dış güvenlik denetimi henüz yapılmadı |
+| Uydurma kişilerle uçtan uca deneme yapılan test ağı ve npm'de açık paketler (@tamga-network, sürüm 0.7.4) | Dış güvenlik denetimi henüz yapılmadı |
 | OpenID Foundation'ın uyum test aracıyla yapılan ve başarısız modül kalmadan biten öz-test | |
 
 Bu sınırları açıkça yazıyoruz, çünkü sınırlarını saklayan bir güven altyapısı güveni hak etmez. Ortak defterin neden henüz olmadığını [Neden zincirsiz başlıyoruz](/blog/why-no-blockchain-yet) yazısında anlattık: en az iki bağımsız işletmeci olmadan defter, yalnızca daha yavaş bir veritabanıdır. Uyum testlerinin ayrıntısı [OpenID uyum testlerinden öğrendiklerimiz](/blog/openid-conformance-self-test) yazısında.

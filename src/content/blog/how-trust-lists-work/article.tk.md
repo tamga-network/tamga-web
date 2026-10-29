@@ -72,7 +72,7 @@ Bu ýazgyda esasy işi birnäçe meýdan ýerine ýetirýär:
 
 Gurama hasaba alyş maglumatlaryny we sertifikata gol çekmek haýyşyny iberip ýüz tutýar. Hasaba alyş edarasy arzany barlaýar we ýetmeýän meýdanlaryň hemmesini bir gezekde habar berýär. Soňra kök sertifikat edarasy guramanyň sertifikatyna gol çekýär, gurama sanawa goşulýar we sanawa täzeden gol çekilýär. Üýtgeşme 24 sagadyň içinde güýje girýär. Bu ädimleri guramanyň nukdaýnazaryndan [Gurama Tamga Network-a nähili goşulýar](/blog/join-as-an-institution) ýazgysynda düşündirdik.
 
-Çap ediji her çap edilişde her barlaýjy ulanylyşy we her gurama üçin hasaba alyş sertifikatyny (ETSI TS 119 475) hem döredýär we olary `trust.tamga.network/wrprc/` bölüminde ýerleşdirýär. Bu sertifikatlaryň mazmuny diňe gol çekilen sanawdan gelýändigi üçin gapjyk barlaýjynyň hasaba alnyşyny şu sertifikat bilen hem barlap bilýär.
+Çap ediji her çap edilişde her barlaýjy ulanylyşy we her gurama üçin hasaba alyş sertifikatyny (ETSI TS 119 475) hem döredýär we olary `trust.tamga.network/wrprc/` bölüminde ýerleşdirýär. Bu sertifikatlaryň mazmuny diňe gol çekilen sanawdan gelýändigi üçin gapjyk barlaýjynyň hasaba alnyşyny şu sertifikat bilen hem barlap bilýär. 2026-njy ýylyň 29-njy oktýabryndan bäri her sertifikat öz syýasatyny hem atlandyrýar (öz belgisi bilen [hasaba alyş sertifikatynyň syýasaty](https://arf.tamga.network/policies/registration-certificate)) we her sagatda täzeden gol çekilýän bir bitlik ýagdaý sanawyna salgylanýar: `trust.tamga.network/status/wrprc/1`. Gapjyk ýatyrylan sertifikaty ret edýär, ýagdaýy barlap bolmasa adamy duýdurýar.
 
 ## Sanawa nähili gol çekilýär we ol nähili çap edilýär?
 

@@ -9,7 +9,7 @@ draft: false
 related: learn:what-is-tamga-network, a-pdf-is-not-a-document, why-no-blockchain-yet, how-trust-lists-work, page:/manifesto
 ---
 
-<!-- Sources: same as the English article (site home; live list of lists at trust.tamga.network: TR ACTIVE with provisional operator, AZ/KZ/KG/UZ reserved as TDT members, HU/TM reserved as observers, TAMGA-WP-1 ACTIVE since 2026-10-14; brand page; manifesto v1.0 revised edition 2026-10-27; CHANGELOG 1.0.0; npm 0.7.3; OpenID self-test article; ADR-0009, ADR-0042, ADR-0051; Regulation (EU) 2024/1183 Art. 5a). -->
+<!-- Sources: same as the English article (site home; live list of lists at trust.tamga.network: TR ACTIVE with provisional operator, AZ/KZ/KG/UZ reserved as TDT members, HU/TM reserved as observers, TAMGA-WP-1 ACTIVE since 2026-10-14; brand page; manifesto v1.0 revised edition 2026-10-27; CHANGELOG 1.0.0; npm 0.7.4 (2026-10-29); OpenID self-test article; ADR-0009, ADR-0042, ADR-0051; Regulation (EU) 2024/1183 Art. 5a). -->
 
 Tamga Network bir qurumun verdiyi rəqəmsal sənədin başqa bir qurumda, hətta başqa ölkədə bir neçə saniyə ərzində yoxlanılmasına imkan verən ortaq qaydalar və imzalı siyahılardan ibarətdir. Yoxlayan tərəf sənədi verən quruma müraciət etmir, sənədin sahibi isə yalnız soruşulan məlumatı paylaşır. Şəbəkəni türk dünyası üçün, Avropanın rəqəmsal şəxsiyyət sistemi ilə eyni standartlardan istifadə edərək qururuq. Bu yazıda niyə başladığımızı, şəbəkənin necə işlədiyini, adımızın haradan gəldiyini, hansı prinsiplərə söykəndiyimizi və bu gün nəyin hazır olub-olmadığını izah edirik.
 
@@ -82,7 +82,7 @@ Yeni modeli kənardan ala və ya eyni açıq standartlarla öz infrastrukturumuz
 | İngilis və türk dillərində tərtibatçı sənədləri (docs.tamga.network) | Siyahıdakı cüzdanların heç biri hələ tətbiq mağazalarında deyil |
 | İmzalı etibar siyahıları (trust.tamga.network); ilk cüzdan provayderi də siyahıdadır | İstehsalda ortaq reyestr yoxdur; kodu yazılıb və sınaqdan keçib, amma ən azı iki müstəqil operator onu işlədənə qədər bağlı qalacaq |
 | Tamga Verify: yoxlama kodunu özü işlətmək istəməyənlər üçün yoxlama xidməti | Heç bir dövlətin və ya Avropa İttifaqının tanınması yoxdur |
-| Uydurma şəxslərlə başdan-sona sınaq aparılan test şəbəkəsi və npm-də açıq paketlər (@tamga-network, versiya 0.7.3) | Xarici təhlükəsizlik auditi hələ aparılmayıb |
+| Uydurma şəxslərlə başdan-sona sınaq aparılan test şəbəkəsi və npm-də açıq paketlər (@tamga-network, versiya 0.7.4) | Xarici təhlükəsizlik auditi hələ aparılmayıb |
 | OpenID Foundation-ın uyğunluq test aləti ilə aparılan və uğursuz modul qalmadan bitən özünü yoxlama | |
 
 Bu məhdudiyyətləri açıq yazırıq, çünki məhdudiyyətlərini gizlədən etibar infrastrukturu etibara layiq deyil. Ortaq reyestrin niyə hələ olmadığını [Niyə blokçeyn olmadan başlayırıq](/blog/why-no-blockchain-yet) yazısında izah etdik: ən azı iki müstəqil operator olmadan reyestr sadəcə daha yavaş verilənlər bazasıdır. Uyğunluq testlərinin təfərrüatı [OpenID uyğunluq testlərindən öyrəndiklərimiz](/blog/openid-conformance-self-test) yazısındadır.
