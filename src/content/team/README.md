@@ -93,7 +93,8 @@ links: {
 
 Kare, yüz ortada, en az 640×640. Üç biçim birlikte konur: `public/team/<slug>.avif`, `.webp`, `.jpg` (640×640; toplam
 150 KB altı; konum/EXIF bilgisi silinmiş). Kişinin dosyasında `photo: { base: "<slug>", width: 640, height: 640, alt: {…} }`.
-Fotoğraf yoksa kartta baş harfler görünür.
+Fotoğraf yoksa kartta baş harfler görünür. Sitede fotoğraflar siyah-beyaz gösterilir, üstüne gelince renklenir (dosya renkli
+kalır; dokunmatik ekranda hep renkli). Arka planda başka kurumun adı ya da tabelası görünmesin (gerekirse kırp, bulanıklaştır).
 
 ## Yeni kişi
 

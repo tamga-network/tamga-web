@@ -8,6 +8,7 @@ export const berkeKaratas: TeamMember = {
   slug: "berke-karatas",
   name: "Berke Karataş",
   order: 1,
+  // Vakıf kurulunca: "Kurucu · Yönetim Kurulu Üyesi / Founder · Board Member" (henüz yönetim kurulu yok).
   role: { en: "Founder", tr: "Kurucu", tk: "Esaslandyryjy", az: "Təsisçi" },
   headline: {
     en: "Defines the network's rules, principles and roadmap.",
@@ -114,8 +115,16 @@ export const berkeKaratas: TeamMember = {
         az: "İstanbul Bilgi Universiteti",
       },
     },
-    // Lise: kişi verince buraya (liste yeniden eskiye):
-    // { period: "20XX – 2018", title: { en: "High school", tr: "Lise", tk: "Orta mekdep", az: "Orta məktəb" }, place: "Okulun adı" },
+    {
+      period: "2011 – 2015",
+      title: { en: "High school", tr: "Lise", tk: "Orta mekdep", az: "Orta məktəb" },
+      place: {
+        en: "Kağıthane Anatolian High School",
+        tr: "Kağıthane Anadolu Lisesi",
+        tk: "Kağıthane Anadolu Lisesi",
+        az: "Kağıthane Anadolu Lisesi",
+      },
+    },
   ],
   // İş geçmişi bilinçli olarak yazılmıyor (profil özgeçmiş değil).
   experience: [],
@@ -125,6 +134,6 @@ export const berkeKaratas: TeamMember = {
   publications: [],
   links: {
     linkedin: "https://www.linkedin.com/in/uberke-karatas",
-    github: "https://github.com/bekowashere",
+    github: "https://github.com/ubk8",
   },
 };

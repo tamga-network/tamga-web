@@ -169,7 +169,6 @@ export default async function TeamMemberPage({ params }: Params) {
             <MemberAvatar
               member={m}
               locale={locale}
-              live
               priority
               sizes="(min-width: 768px) 224px, 192px"
               initialsClassName="text-6xl sm:text-7xl"

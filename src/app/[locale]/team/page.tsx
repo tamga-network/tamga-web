@@ -27,10 +27,10 @@ export default async function TeamPage({ params }: { params: Promise<{ locale: s
       <PageHeader eyebrow={ui.eyebrow} title={ui.title} description={ui.lead} />
 
       <section className="shell py-16 sm:py-20">
-        {/* Ortalanmış kartlar: yuvarlak resim (dönen halka) · rol · ad · kısa tanıtım · bağlantılar · "Profili gör".
-            Resim ve düğme ayrı bağlantılar (iç içe etkileşimli öğe yok); resim bağlantısı klavye sırasından çıkarıldı,
-            aynı hedef düğmede. Animasyon ve vurgu: globals.css `.team-*`. */}
-        <ul className="team-grid flex flex-wrap justify-center gap-6">
+        {/* Ortalanmış kartlar: yuvarlak resim (siyah-beyaz, üstüne gelince renkli) · rol · ad · kısa tanıtım · bağlantılar ·
+            "Profili gör". Resim ve düğme ayrı bağlantılar (iç içe etkileşimli öğe yok); resim bağlantısı klavye sırasından
+            çıkarıldı, aynı hedef düğmede. Stil: globals.css `.team-*`. */}
+        <ul className="flex flex-wrap justify-center gap-6">
           {TEAM.map((m, i) => {
             const href = { pathname: "/team/[slug]" as const, params: { slug: m.slug } };
             return (
@@ -56,7 +56,7 @@ export default async function TeamPage({ params }: { params: Promise<{ locale: s
                   <div className="mt-auto pt-7">
                     <Link
                       href={href}
-                      className="team-cta inline-flex items-center gap-2 rounded-full border border-primary/40 bg-background/60 px-5 py-2 text-sm font-medium text-primary transition-colors hover:border-primary hover:bg-primary hover:text-primary-contrast focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                      className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-background/60 px-5 py-2 text-sm font-medium text-primary transition-colors hover:border-primary hover:bg-primary hover:text-primary-contrast focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                     >
                       {ui.viewProfile}
                       <span className="sr-only">: {m.name}</span>

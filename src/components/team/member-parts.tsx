@@ -71,14 +71,13 @@ export function MemberPhoto({
 }
 
 /**
- * Yuvarlak profil resmi + dönen marka halkası (globals.css `.team-avatar`). Kartta halka üstüne gelince/odakta döner;
- * `live` profil sayfasında sürekli ve yavaş döner. Boyut `--team-size` ile (ör. `[--team-size:13rem]`).
+ * Yuvarlak profil resmi, ince durağan çerçeve (globals.css `.team-avatar`): fotoğraf siyah-beyaz, kartın üstüne gelince ya da
+ * klavye odağında renklenir. Boyut `--team-size` ile (ör. `[--team-size:13rem]`).
  */
 export function MemberAvatar({
   member,
   locale,
   className = "",
-  live = false,
   priority = false,
   sizes = "160px",
   initialsClassName = "text-5xl",
@@ -86,13 +85,12 @@ export function MemberAvatar({
   member: TeamMember;
   locale: string;
   className?: string;
-  live?: boolean;
   priority?: boolean;
   sizes?: string;
   initialsClassName?: string;
 }) {
   return (
-    <span className={`team-avatar ${live ? "team-avatar--live" : ""} ${className}`}>
+    <span className={`team-avatar ${className}`}>
       <span className="team-avatar-frame">
         <MemberPhoto
           member={member}
