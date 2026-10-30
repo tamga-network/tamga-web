@@ -57,6 +57,18 @@ export type Publication = {
   sizeKb?: number;
 };
 
+/** Üyelik (dernek, meslek kuruluşu …). Adres yalnız kurumun resmî sitesi doğrulanınca yazılır. */
+export type Membership = {
+  /** Kurumun adı: özel ad korunur (ör. "Teknokratlar Derneği" / "Teknokratlar Association") */
+  name: string | LText;
+  /** Görev, ör. "Üye"; boşsa "Üye" yazılmaz, yalnız kurum adı görünür */
+  role?: LText;
+  /** Kurumun resmî sitesi (https://…) */
+  url?: string;
+  /** "2020 –" gibi; serbest metin */
+  period?: string;
+};
+
 export type MemberLinks = {
   linkedin?: string;
   github?: string;
@@ -85,6 +97,8 @@ export type TeamMember = {
   expertise?: { group: LText; items: LText[] }[];
   education: TimelineItem[];
   experience: TimelineItem[];
+  /** Üyelikler (dernek, meslek kuruluşu); boşsa bölüm görünmez */
+  memberships?: Membership[];
   writings: Writing[];
   publications: Publication[];
   links: MemberLinks;

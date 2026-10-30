@@ -3,7 +3,7 @@ import { berkeKaratas } from "./berke-karatas";
 import { turgayGultekin } from "./turgay-gultekin";
 import type { LText, Publication, TeamMember, Writing } from "./types";
 
-export type { LText, Publication, TeamMember, Writing } from "./types";
+export type { LText, Membership, Publication, TeamMember, Writing } from "./types";
 
 /** Ekip: yeni kişi = yeni dosya + bu listeye bir satır (README.md). */
 export const TEAM: TeamMember[] = [berkeKaratas, turgayGultekin].sort((a, b) => a.order - b.order);
@@ -56,6 +56,7 @@ type Ui = {
   expertise: string;
   education: string;
   experience: string;
+  memberships: string;
   writings: string;
   publications: string;
   publicationsLead: string;
@@ -87,6 +88,7 @@ const UI: Record<Locale, Ui> = {
     expertise: "Areas of expertise",
     education: "Education",
     experience: "Background",
+    memberships: "Memberships",
     writings: "Writings",
     publications: "Publications and documents",
     publicationsLead: "Papers, reports and slides. PDFs open in your browser's viewer.",
@@ -130,6 +132,7 @@ const UI: Record<Locale, Ui> = {
     expertise: "Uzmanlık alanları",
     education: "Eğitim",
     experience: "Geçmiş",
+    memberships: "Üyelikler",
     writings: "Yazılar",
     publications: "Yayınlar ve belgeler",
     publicationsLead: "Makaleler, raporlar ve sunumlar. PDF'ler tarayıcınızın görüntüleyicisinde açılır.",
@@ -173,6 +176,7 @@ const UI: Record<Locale, Ui> = {
     expertise: "Hünär ugurlary",
     education: "Bilim",
     experience: "Tejribe",
+    memberships: "Agzalyklar",
     writings: "Ýazgylar",
     publications: "Neşirler we resminamalar",
     publicationsLead: "Makalalar, hasabatlar we prezentasiýalar. PDF faýllary brauzeriňiziň görkezijisinde açylýar.",
@@ -216,6 +220,7 @@ const UI: Record<Locale, Ui> = {
     expertise: "İxtisas sahələri",
     education: "Təhsil",
     experience: "Təcrübə",
+    memberships: "Üzvlüklər",
     writings: "Yazılar",
     publications: "Nəşrlər və sənədlər",
     publicationsLead: "Məqalələr, hesabatlar və təqdimatlar. PDF-lər brauzerinizin baxış pəncərəsində açılır.",

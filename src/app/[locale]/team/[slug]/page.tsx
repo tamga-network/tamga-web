@@ -103,6 +103,7 @@ function personLd(m: TeamMember, locale: string) {
   const alumniOf = m.education
     .filter((e) => e.place)
     .map((e) => ({ "@type": "EducationalOrganization", name: txs(e.place!, locale) }));
+  const memberships = m.memberships ?? [];
   const sameAs = memberLinks(m)
     .map((l) => l.url)
     .filter((u) => u.startsWith("http"));
@@ -122,7 +123,14 @@ function personLd(m: TeamMember, locale: string) {
       ...(knowsAbout.length ? { knowsAbout } : {}),
       ...(alumniOf.length ? { alumniOf } : {}),
       ...(sameAs.length ? { sameAs } : {}),
-      memberOf: { "@id": ORGANIZATION["@id"], "@type": "Organization", name: ORGANIZATION.name },
+      memberOf: [
+        { "@id": ORGANIZATION["@id"], "@type": "Organization", name: ORGANIZATION.name },
+        ...memberships.map((x) => ({
+          "@type": "Organization",
+          name: txs(x.name, locale),
+          ...(x.url ? { url: x.url } : {}),
+        })),
+      ],
     },
   };
 }
@@ -138,17 +146,22 @@ export default async function TeamMemberPage({ params }: Params) {
   const pubs = publicationsOf(m);
   const links = memberLinks(m);
   const expertise = m.expertise ?? [];
+  const memberships = m.memberships ?? [];
   const sections = [
     bio.length > 0 && ["about", ui.about],
     expertise.length > 0 && ["expertise", ui.expertise],
     m.education.length > 0 && ["education", ui.education],
     m.experience.length > 0 && ["experience", ui.experience],
+    memberships.length > 0 && ["memberships", ui.memberships],
     writings.length > 0 && ["writings", ui.writings],
     pubs.length > 0 && ["publications", ui.publications],
   ].filter((x): x is [string, string] => Boolean(x));
   const showAside = sections.length > 1 || links.length > 0;
   const hasMain =
-    bio.length > 0 || expertise.length > 0 || m.education.length > 0 || m.experience.length > 0 || writings.length > 0 || pubs.length > 0;
+    bio.length > 0 || expertise.length > 0 || m.education.length > 0 || m.experience.length > 0 ||
+    memberships.length > 0 ||
+    writings.length > 0 ||
+    pubs.length > 0;
 
   return (
     <>
@@ -253,6 +266,35 @@ export default async function TeamMemberPage({ params }: Params) {
                 <section aria-labelledby="experience">
                   <SectionTitle id="experience">{ui.experience}</SectionTitle>
                   <Timeline items={m.experience} locale={locale} />
+                </section>
+              )}
+
+              {memberships.length > 0 && (
+                <section aria-labelledby="memberships">
+                  <SectionTitle id="memberships">{ui.memberships}</SectionTitle>
+                  <ul className="mt-6 space-y-4">
+                    {memberships.map((x) => (
+                      <li key={txs(x.name, "en")}>
+                        {(x.role || x.period) && (
+                          <p className="mono-label">{[x.role && tx(x.role, locale), x.period].filter(Boolean).join(" · ")}</p>
+                        )}
+                        <p className="mt-1 font-medium text-foreground">
+                          {x.url ? (
+                            <a
+                              href={x.url}
+                              {...EXTERNAL_ATTRS}
+                              className="underline decoration-border underline-offset-4 transition-colors hover:decoration-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                            >
+                              {txs(x.name, locale)}
+                              <span className="sr-only"> ({ui.opensNewTab})</span>
+                            </a>
+                          ) : (
+                            txs(x.name, locale)
+                          )}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
                 </section>
               )}
 

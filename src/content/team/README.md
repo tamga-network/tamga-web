@@ -96,6 +96,18 @@ Kare, yüz ortada, en az 640×640. Üç biçim birlikte konur: `public/team/<slu
 Fotoğraf yoksa kartta baş harfler görünür. Sitede fotoğraflar siyah-beyaz gösterilir, üstüne gelince renklenir (dosya renkli
 kalır; dokunmatik ekranda hep renkli). Arka planda başka kurumun adı ya da tabelası görünmesin (gerekirse kırp, bulanıklaştır).
 
+## Üyelik
+
+Dernek ya da meslek kuruluşu üyeliği `memberships` listesine (boşsa bölüm görünmez):
+
+```ts
+memberships: [
+  { name: { en: "Teknokratlar Association", tr: "Teknokratlar Derneği" }, role: { en: "Member", tr: "Üye" }, url: "https://…" },
+],
+```
+
+`url` yalnız kurumun resmî sitesi doğrulanınca yazılır; özel ad korunur.
+
 ## Yeni kişi
 
 1. `src/content/team/<slug>.ts` (var olan bir dosyayı kopyala).
