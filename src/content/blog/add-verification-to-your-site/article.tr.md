@@ -96,20 +96,32 @@ Bir sunumun sonucunu yalnız o sunumu açan site okuyabilir, başka biri denedi�
 Bunun için `@tamga-network/verifier` ve `@tamga-network/trust` paketlerini kullanırsınız. İlk istekten önce güven listelerini `TrustSource` üzerinden yükleyin ([listeler nasıl denetlenir](/blog/how-trust-lists-work)) ve iptal listelerini bir zamanlayıcıyla önceden indirmeye başlayın. Kontrol anında hiçbir şeyin indirilmemesi gerekir. Ardından isteği kurar, yanıtı çözer ve sunumu doğrularsınız:
 
 ```ts title="Kendi sunucunuz: istek, çözme, doğrulama"
-import { dcqlFromPolicy, createPresentationRequest, decryptResponse, verifyPresentation,
-         pemRpSigner, PrefetchStatusCache, type Policy } from "@tamga-network/verifier";
+import { BranchRegistry, BranchSet, createPresentationRequest, dcqlFromPolicy, openPresentationResponse,
+         pemRpSigner, PrefetchStatusCache, responseKidOf, verifyPresentation, type Policy } from "@tamga-network/verifier";
 
 const signer = await pemRpSigner(RP_KEY_PEM, RP_CERT_PEM); // client_id sertifikadan gelir
-const req = await createPresentationRequest({ signer, dcql: dcqlFromPolicy(policy),
-  responseUri: "https://magaza.example.com/vp/response", requestUriBase: "https://magaza.example.com/vp/req",
-  registrationCert: WRPRC_JWT }); // kayıt sertifikanız (trust.tamga.network/wrprc/); 0.7.0'dan beri cüzdanlar onsuz isteği reddeder
-// req.qrPayload → QR kod ya da bağlantı; kişisel veri taşımaz
+const registry = new BranchRegistry(); // süreç başına bir: state araması + dal bellek bütçesi
+const content = { signer, dcql: dcqlFromPolicy(policy), responseUri: "https://magaza.example.com/vp/response",
+  registrationCert: WRPRC_JWT }; // kayıt sertifikanız (trust.tamga.network/wrprc/); 0.7.0'dan beri cüzdanlar onsuz isteği reddeder
+const req = await createPresentationRequest({ ...content, requestUriBase: "https://magaza.example.com/vp/req" });
+const branches = new BranchSet({ registry, presentationId: req.presentationId, expiresAt: req.expiresAt, content });
+// req.qrPayload → QR kod ya da bağlantı; kişisel veri taşımaz (0.8'den beri paylaşılan istek nesnesi yok)
 
-// cüzdan şifreli yanıtı responseUri adresine POST eder
-const answer = await decryptResponse(jweBody, req.encPrivateKey);
-const { result, claims } = await verifyPresentation({ presentation: answer.vp_token["student"][0],
-  aud: signer.clientId, nonce: req.nonce, policy, policyCredentialId: "student",
-  trust, statusCache, rootCertsDer, rp: trust.relyingParty(signer.clientId) });
+// GET|POST /vp/req/:id — request_uri'nin her çekimi kendi istek nesnesini alır (taze state, nonce, şifreleme anahtarı)
+const f = await branches.fetch(walletNonce); // f.ok → f.requestJwt
+
+// cüzdan şifreli yanıtı responseUri adresine POST eder: çözmeden ÖNCE kilitle, sonra yeniden bak
+const branch = branches.get(responseKidOf(jweBody)!.branchId!)!;
+if (branches.begin(branch) !== "ok") return reject(400);
+try {
+  const opened = await openPresentationResponse(jweBody, req, content.responseUri, (id) => (id === branch.branchId ? branch : undefined));
+  if (opened.kind !== "response" || !branches.isOpen(branch) || !branches.stateMatches(branch, opened.response.state)) return reject(400);
+  const { result, claims } = await verifyPresentation({ presentation: opened.response.vp_token["student"][0],
+    aud: signer.clientId, nonce: branch.nonce, policy, policyCredentialId: "student",
+    trust, statusCache, rootCertsDer, rp: trust.relyingParty(signer.clientId) });
+  // yalnız sahiplik kanıtı (A6) geçince tüket; yoksa bu dalda başarısız deneme sayılır
+  if (result.checks_performed.includes("A6")) branches.consume(); else branches.failedAttempt(branch);
+} finally { branches.end(branch); }
 ```
 
 `verifyPresentation` her seferinde aynı sırayla, numaralı adımlarla çalışır. Önce biçimi ve imzayı (A), sonra belge türünü (B), güveni (C) ve iptal durumunu (D) denetler, en son da sizin politikanızı (E) uygular. Adımların hepsi [doğrulama API'sinde](https://docs.tamga.network/tr/specifications/verification-api) yazılı. Bu kodun test edilmiş ve çalışan bir sürümünü [kod örnekleri](https://docs.tamga.network/tr/guides/code-examples) arasında, ayrıntılı anlatımını da [Kendi sunucunuzda doğrulama](https://docs.tamga.network/tr/guides/verify-on-server) rehberinde bulabilirsiniz.

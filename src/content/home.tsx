@@ -1181,14 +1181,30 @@ export function getHomeContent(locale: string): HomeContent {
 export function devCode(locale: string): string {
   const c =
     locale === "tr"
-      ? ["// 1. Güven listelerini yükle (kök parmak izi: tamga.network/trust-anchor)", "// 2. İmzalı istek oluştur, QR olarak göster"]
+      ? [
+          "// 1. Güven listelerini yükle (kök parmak izi: tamga.network/trust-anchor)",
+          "// 2. Sunumu aç, QR olarak göster (paylaşılan istek nesnesi yok)",
+          "// 3. request_uri'nin her çekimi yeni bir dal: taze state, nonce ve anahtar",
+        ]
       : locale === "tk"
-        ? ["// 1. Ynam sanawlaryny ýükle (kök barmak yzy: tamga.network/trust-anchor)", "// 2. Gol çekilen haýyş döret, QR hökmünde görkez"]
+        ? [
+            "// 1. Ynam sanawlaryny ýükle (kök barmak yzy: tamga.network/trust-anchor)",
+            "// 2. Görkezişi aç, QR hökmünde görkez (umumy haýyş obýekti ýok)",
+            "// 3. request_uri-niň her çekilişi täze şaha: täze state, nonce we açar",
+          ]
         : locale === "az"
-          ? ["// 1. Etibar siyahılarını yükləyin (kök barmaq izi: tamga.network/trust-anchor)", "// 2. İmzalı sorğu yaradın, QR kod kimi göstərin"]
-        : ["// 1. Load the trust lists (root fingerprint: tamga.network/trust-anchor)", "// 2. Create a signed request, show it as a QR code"];
+          ? [
+              "// 1. Etibar siyahılarını yükləyin (kök barmaq izi: tamga.network/trust-anchor)",
+              "// 2. Təqdimatı açın, QR kod kimi göstərin (paylaşılan sorğu obyekti yoxdur)",
+              "// 3. request_uri-nin hər çəkilişi yeni qol: təzə state, nonce və açar",
+            ]
+          : [
+              "// 1. Load the trust lists (root fingerprint: tamga.network/trust-anchor)",
+              "// 2. Open the presentation, show it as a QR code (no shared request object)",
+              "// 3. Every fetch of request_uri is a new branch: fresh state, nonce and key",
+            ];
   return `import { fetchListTrustSource, verifyJws } from "@tamga-network/trust";
-import { createPresentationRequest, dcqlFromPolicy } from "@tamga-network/verifier";
+import { BranchRegistry, BranchSet, createPresentationRequest, dcqlFromPolicy } from "@tamga-network/verifier";
 
 ${c[0]}
 const { source: trust } = await fetchListTrustSource("https://trust.tamga.network", http, {
@@ -1197,13 +1213,17 @@ const { source: trust } = await fetchListTrustSource("https://trust.tamga.networ
 });
 
 ${c[1]}
-const req = await createPresentationRequest({
-  signer,
-  dcql: dcqlFromPolicy(AGE_OVER_18_POLICY),
-  responseUri,
-  requestUriBase,
-});
-show(req.qrPayload);`;
+const registry = new BranchRegistry();
+const content = { signer, dcql: dcqlFromPolicy(AGE_OVER_18_POLICY), responseUri };
+const req = await createPresentationRequest({ ...content, requestUriBase });
+const branches = new BranchSet({ registry, presentationId: req.presentationId, expiresAt: req.expiresAt, content });
+show(req.qrPayload);
+
+${c[2]}
+app.get("/vp/req/:id", async (_, res) => {
+  const f = await branches.fetch();
+  if (f.ok) res.type("application/oauth-authz-req+jwt").send(f.requestJwt);
+});`;
 }
 
 export const INSTALL_CMD = "npm install @tamga-network/verifier @tamga-network/trust";

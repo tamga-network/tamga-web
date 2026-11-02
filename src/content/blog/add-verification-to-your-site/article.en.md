@@ -96,20 +96,32 @@ Only the site that opened a presentation can read its result, and anyone else ge
 You use the `@tamga-network/verifier` and `@tamga-network/trust` packages. Before the first request, load the trust lists through `TrustSource` ([how the lists are checked](/blog/how-trust-lists-work)) and start prefetching revocation lists on a timer, because nothing should be downloaded at the moment of a check. Then you build the request, decrypt the answer and verify the presentation:
 
 ```ts title="Your own server: request, decrypt, verify"
-import { dcqlFromPolicy, createPresentationRequest, decryptResponse, verifyPresentation,
-         pemRpSigner, PrefetchStatusCache, type Policy } from "@tamga-network/verifier";
+import { BranchRegistry, BranchSet, createPresentationRequest, dcqlFromPolicy, openPresentationResponse,
+         pemRpSigner, PrefetchStatusCache, responseKidOf, verifyPresentation, type Policy } from "@tamga-network/verifier";
 
 const signer = await pemRpSigner(RP_KEY_PEM, RP_CERT_PEM); // client_id comes from the certificate
-const req = await createPresentationRequest({ signer, dcql: dcqlFromPolicy(policy),
-  responseUri: "https://shop.example.com/vp/response", requestUriBase: "https://shop.example.com/vp/req",
-  registrationCert: WRPRC_JWT }); // your registration certificate (trust.tamga.network/wrprc/); since 0.7.0 wallets refuse requests without one
-// req.qrPayload → QR code or deep link; it carries no personal data
+const registry = new BranchRegistry(); // one per process: state lookup + branch memory budget
+const content = { signer, dcql: dcqlFromPolicy(policy), responseUri: "https://shop.example.com/vp/response",
+  registrationCert: WRPRC_JWT }; // your registration certificate (trust.tamga.network/wrprc/); since 0.7.0 wallets refuse requests without one
+const req = await createPresentationRequest({ ...content, requestUriBase: "https://shop.example.com/vp/req" });
+const branches = new BranchSet({ registry, presentationId: req.presentationId, expiresAt: req.expiresAt, content });
+// req.qrPayload → QR code or deep link; it carries no personal data (no shared request object since 0.8)
 
-// the wallet POSTs an encrypted answer to responseUri
-const answer = await decryptResponse(jweBody, req.encPrivateKey);
-const { result, claims } = await verifyPresentation({ presentation: answer.vp_token["student"][0],
-  aud: signer.clientId, nonce: req.nonce, policy, policyCredentialId: "student",
-  trust, statusCache, rootCertsDer, rp: trust.relyingParty(signer.clientId) });
+// GET|POST /vp/req/:id — every fetch of request_uri gets its own request object (fresh state, nonce, encryption key)
+const f = await branches.fetch(walletNonce); // f.ok → f.requestJwt
+
+// the wallet POSTs an encrypted answer to responseUri: lock BEFORE decrypting, check again after
+const branch = branches.get(responseKidOf(jweBody)!.branchId!)!;
+if (branches.begin(branch) !== "ok") return reject(400);
+try {
+  const opened = await openPresentationResponse(jweBody, req, content.responseUri, (id) => (id === branch.branchId ? branch : undefined));
+  if (opened.kind !== "response" || !branches.isOpen(branch) || !branches.stateMatches(branch, opened.response.state)) return reject(400);
+  const { result, claims } = await verifyPresentation({ presentation: opened.response.vp_token["student"][0],
+    aud: signer.clientId, nonce: branch.nonce, policy, policyCredentialId: "student",
+    trust, statusCache, rootCertsDer, rp: trust.relyingParty(signer.clientId) });
+  // consume only once holder binding (A6) passed; otherwise it counts as a failed attempt on this branch
+  if (result.checks_performed.includes("A6")) branches.consume(); else branches.failedAttempt(branch);
+} finally { branches.end(branch); }
 ```
 
 `verifyPresentation` always runs the same numbered steps in the same order. It checks format and signature (A), credential type (B), trust (C) and revocation (D), and then applies your own policy (E). The steps are listed in the [verification API](https://docs.tamga.network/specifications/verification-api). A tested, runnable version of this code is among the [code examples](https://docs.tamga.network/guides/code-examples), and the full walk-through is in [Verify on your server](https://docs.tamga.network/guides/verify-on-server).

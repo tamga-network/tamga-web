@@ -19,7 +19,7 @@ export const turgayGultekin: TeamMember = {
       en: "Portrait of Turgay Gültekin",
       tr: "Turgay Gültekin'in portresi",
       tk: "Turgay Gültekiniň portreti",
-      az: "Turgay Gültəkinin portreti",
+      az: "Turgay Gültekin'in portreti",
     },
   },
   education: [

@@ -96,20 +96,32 @@ Görkezişiň netijesini diňe ony açan saýt okap bilýär, başga biri synany
 Munuň üçin `@tamga-network/verifier` we `@tamga-network/trust` paketlerini ulanýarsyňyz. Ilkinji haýyşdan öň ynam sanawlaryny `TrustSource` arkaly ýükläň ([sanawlar nähili barlanýar](/blog/how-trust-lists-work)) we ýatyrylyş sanawlaryny taýmer bilen öňünden ýüklemäge başlaň, sebäbi barlag pursatynda hiç zat ýüklenmeli däl. Soňra haýyşy gurýarsyňyz, jogaby açýarsyňyz we görkezişi barlaýarsyňyz:
 
 ```ts title="Öz serweriňiz: haýyş et, şifri aç, barla"
-import { dcqlFromPolicy, createPresentationRequest, decryptResponse, verifyPresentation,
-         pemRpSigner, PrefetchStatusCache, type Policy } from "@tamga-network/verifier";
+import { BranchRegistry, BranchSet, createPresentationRequest, dcqlFromPolicy, openPresentationResponse,
+         pemRpSigner, PrefetchStatusCache, responseKidOf, verifyPresentation, type Policy } from "@tamga-network/verifier";
 
 const signer = await pemRpSigner(RP_KEY_PEM, RP_CERT_PEM); // client_id sertifikatdan gelýär
-const req = await createPresentationRequest({ signer, dcql: dcqlFromPolicy(policy),
-  responseUri: "https://shop.example.com/vp/response", requestUriBase: "https://shop.example.com/vp/req",
-  registrationCert: WRPRC_JWT }); // hasaba alyş sertifikatyňyz (trust.tamga.network/wrprc/); 0.7.0-dan bäri gapjyklar onsuz haýyşlary ret edýär
-// req.qrPayload → QR kody ýa-da deep link; onda şahsy maglumat ýok
+const registry = new BranchRegistry(); // her proses üçin bir: state gözlegi + şaha ýat býujeti
+const content = { signer, dcql: dcqlFromPolicy(policy), responseUri: "https://shop.example.com/vp/response",
+  registrationCert: WRPRC_JWT }; // hasaba alyş sertifikatyňyz (trust.tamga.network/wrprc/); 0.7.0-dan bäri gapjyklar onsuz haýyşlary ret edýär
+const req = await createPresentationRequest({ ...content, requestUriBase: "https://shop.example.com/vp/req" });
+const branches = new BranchSet({ registry, presentationId: req.presentationId, expiresAt: req.expiresAt, content });
+// req.qrPayload → QR kody ýa-da deep link; onda şahsy maglumat ýok (0.8-den bäri umumy haýyş obýekti ýok)
 
-// gapjyk şifrlenen jogaby responseUri-a POST edýär
-const answer = await decryptResponse(jweBody, req.encPrivateKey);
-const { result, claims } = await verifyPresentation({ presentation: answer.vp_token["student"][0],
-  aud: signer.clientId, nonce: req.nonce, policy, policyCredentialId: "student",
-  trust, statusCache, rootCertsDer, rp: trust.relyingParty(signer.clientId) });
+// GET|POST /vp/req/:id — request_uri-niň her çekilişi öz haýyş obýektini alýar (täze state, nonce, şifrleme açary)
+const f = await branches.fetch(walletNonce); // f.ok → f.requestJwt
+
+// gapjyk şifrlenen jogaby responseUri-a POST edýär: açmazdan ÖŇ gulpla, soň täzeden barla
+const branch = branches.get(responseKidOf(jweBody)!.branchId!)!;
+if (branches.begin(branch) !== "ok") return reject(400);
+try {
+  const opened = await openPresentationResponse(jweBody, req, content.responseUri, (id) => (id === branch.branchId ? branch : undefined));
+  if (opened.kind !== "response" || !branches.isOpen(branch) || !branches.stateMatches(branch, opened.response.state)) return reject(400);
+  const { result, claims } = await verifyPresentation({ presentation: opened.response.vp_token["student"][0],
+    aud: signer.clientId, nonce: branch.nonce, policy, policyCredentialId: "student",
+    trust, statusCache, rootCertsDer, rp: trust.relyingParty(signer.clientId) });
+  // diňe eýelik subutnamasy (A6) geçende sarp et; ýogsa bu şahada şowsuz synanyşyk hasaplanýar
+  if (result.checks_performed.includes("A6")) branches.consume(); else branches.failedAttempt(branch);
+} finally { branches.end(branch); }
 ```
 
 `verifyPresentation` her gezek şol bir belgili ädimleri şol bir tertipde işledýär. Ilki formaty we goly (A), soňra resminama görnüşini (B), ynamy (C) we ýatyrylyş ýagdaýyny (D) barlaýar, iň soňunda bolsa siziň syýasatyňyzy (E) ulanýar. Ädimleriň hemmesi [verification API](https://docs.tamga.network/specifications/verification-api) sahypasynda ýazylan. Bu koduň synagdan geçen, işleýän görnüşi [kod mysallarynyň](https://docs.tamga.network/guides/code-examples) arasynda, giňişleýin düşündirişi bolsa [Serweriňizde barlaň](https://docs.tamga.network/guides/verify-on-server) gollanmasynda.

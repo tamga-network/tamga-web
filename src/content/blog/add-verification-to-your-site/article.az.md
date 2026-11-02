@@ -96,20 +96,32 @@ Təqdimatın nəticəsini yalnız onu açan sayt oxuya bilər, başqası cəhd e
 Bunun üçün `@tamga-network/verifier` və `@tamga-network/trust` paketlərindən istifadə edirsiniz. İlk sorğudan əvvəl etibar siyahılarını `TrustSource` vasitəsilə yükləyin ([siyahılar necə yoxlanılır](/blog/how-trust-lists-work)) və ləğv siyahılarını taymerlə əvvəlcədən endirməyə başlayın, çünki yoxlama anında heç nə endirilməməlidir. Sonra sorğunu qurur, cavabı açır və təqdimatı yoxlayırsınız:
 
 ```ts title="Your own server: request, decrypt, verify"
-import { dcqlFromPolicy, createPresentationRequest, decryptResponse, verifyPresentation,
-         pemRpSigner, PrefetchStatusCache, type Policy } from "@tamga-network/verifier";
+import { BranchRegistry, BranchSet, createPresentationRequest, dcqlFromPolicy, openPresentationResponse,
+         pemRpSigner, PrefetchStatusCache, responseKidOf, verifyPresentation, type Policy } from "@tamga-network/verifier";
 
-const signer = await pemRpSigner(RP_KEY_PEM, RP_CERT_PEM); // client_id comes from the certificate
-const req = await createPresentationRequest({ signer, dcql: dcqlFromPolicy(policy),
-  responseUri: "https://shop.example.com/vp/response", requestUriBase: "https://shop.example.com/vp/req",
-  registrationCert: WRPRC_JWT }); // qeydiyyat sertifikatınız (trust.tamga.network/wrprc/); 0.7.0-dan bəri rəqəmsal cüzdanlar onsuz sorğunu rədd edir
-// req.qrPayload → QR code or deep link; it carries no personal data
+const signer = await pemRpSigner(RP_KEY_PEM, RP_CERT_PEM); // client_id sertifikatdan gəlir
+const registry = new BranchRegistry(); // proses başına bir: state axtarışı + qol yaddaş büdcəsi
+const content = { signer, dcql: dcqlFromPolicy(policy), responseUri: "https://shop.example.com/vp/response",
+  registrationCert: WRPRC_JWT }; // qeydiyyat sertifikatınız (trust.tamga.network/wrprc/); 0.7.0-dan bəri rəqəmsal cüzdanlar onsuz sorğunu rədd edir
+const req = await createPresentationRequest({ ...content, requestUriBase: "https://shop.example.com/vp/req" });
+const branches = new BranchSet({ registry, presentationId: req.presentationId, expiresAt: req.expiresAt, content });
+// req.qrPayload → QR kod və ya keçid; şəxsi məlumat daşımır (0.8-dən paylaşılan sorğu obyekti yoxdur)
 
-// the wallet POSTs an encrypted answer to responseUri
-const answer = await decryptResponse(jweBody, req.encPrivateKey);
-const { result, claims } = await verifyPresentation({ presentation: answer.vp_token["student"][0],
-  aud: signer.clientId, nonce: req.nonce, policy, policyCredentialId: "student",
-  trust, statusCache, rootCertsDer, rp: trust.relyingParty(signer.clientId) });
+// GET|POST /vp/req/:id — request_uri-nin hər çəkilişi öz sorğu obyektini alır (təzə state, nonce, şifrələmə açarı)
+const f = await branches.fetch(walletNonce); // f.ok → f.requestJwt
+
+// cüzdan şifrəli cavabı responseUri ünvanına POST edir: açmadan ƏVVƏL kilidlə, sonra yenidən bax
+const branch = branches.get(responseKidOf(jweBody)!.branchId!)!;
+if (branches.begin(branch) !== "ok") return reject(400);
+try {
+  const opened = await openPresentationResponse(jweBody, req, content.responseUri, (id) => (id === branch.branchId ? branch : undefined));
+  if (opened.kind !== "response" || !branches.isOpen(branch) || !branches.stateMatches(branch, opened.response.state)) return reject(400);
+  const { result, claims } = await verifyPresentation({ presentation: opened.response.vp_token["student"][0],
+    aud: signer.clientId, nonce: branch.nonce, policy, policyCredentialId: "student",
+    trust, statusCache, rootCertsDer, rp: trust.relyingParty(signer.clientId) });
+  // yalnız sahiblik sübutu (A6) keçəndə istehlak et; yoxsa bu qolda uğursuz cəhd sayılır
+  if (result.checks_performed.includes("A6")) branches.consume(); else branches.failedAttempt(branch);
+} finally { branches.end(branch); }
 ```
 
 `verifyPresentation` hər dəfə eyni nömrəli addımları eyni ardıcıllıqla işlədir. Əvvəlcə formatı və imzanı (A), sonra sənəd növünü (B), etibarı (C) və ləğv vəziyyətini (D) yoxlayır, sonda isə sizin siyasətinizi (E) tətbiq edir. Addımların hamısı [yoxlama API-si](https://docs.tamga.network/specifications/verification-api) sənədində yazılıb. Bu kodun sınaqdan keçmiş, işlək versiyası [kod nümunələri](https://docs.tamga.network/guides/code-examples) arasındadır, ətraflı izahı isə [Serverinizdə yoxlayın](https://docs.tamga.network/guides/verify-on-server) bələdçisindədir.
