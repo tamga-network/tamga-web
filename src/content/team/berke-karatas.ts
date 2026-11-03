@@ -130,8 +130,7 @@ export const berkeKaratas: TeamMember = {
   experience: [],
   // Yazılar: adresleri eklendikçe görünür (README.md, "Yazı ekleme").
   writings: [],
-  // Yayınlar (PDF): dosya public/files/team/berke-karatas/ altına, kayıt buraya (README.md, "PDF ekleme"). Boşken bölüm görünmez.
-  publications: [],
+  // Yayınlar (PDF) burada değil: src/content/publications/ kataloğu (yazar slug'ı ile bağlanır; README.md, "PDF ekleme").
   links: {
     linkedin: "https://www.linkedin.com/in/uberke-karatas",
     github: "https://github.com/ubk8",

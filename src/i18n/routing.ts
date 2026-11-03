@@ -21,6 +21,8 @@ export const routing = defineRouting({
     "/partners": "/partners",
     "/team": "/team",
     "/team/[slug]": "/team/[slug]",
+    // Akademik çalışmalar (PDF kataloğu: src/content/publications/)
+    "/publications": "/publications",
     "/events": "/events",
     "/roadmap": "/roadmap",
     "/changelog": "/changelog",

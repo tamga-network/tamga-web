@@ -23,6 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/network",
     "/partners",
     "/team",
+    "/publications",
     "/events",
     "/roadmap",
     "/changelog",

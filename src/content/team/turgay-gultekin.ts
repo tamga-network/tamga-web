@@ -64,6 +64,5 @@ export const turgayGultekin: TeamMember = {
     },
   ],
   writings: [],
-  publications: [],
   links: {},
 };

@@ -31,32 +31,6 @@ export type Writing = {
   lang: string;
 };
 
-/** Yayın ya da belge (PDF). Dosya: public/files/team/<slug>/<dosya>.pdf */
-export type Publication = {
-  /** Benzersiz kısa kimlik (dosya adıyla aynı olabilir) */
-  id: string;
-  /** Asıl dilindeki başlık (çevrilmez) */
-  title: string;
-  /** Yazarlar, ör. ["Berke Karataş", "Ad Soyad"]; boşsa yalnız kişinin adı */
-  authors?: string[];
-  /** YYYY-AA-GG ya da YYYY-AA */
-  date: string;
-  kind: "article" | "paper" | "report" | "thesis" | "slides" | "whitepaper" | "other";
-  /** Belgenin dili (en, tr, az, tk, ru …) */
-  lang: string;
-  /** Kısa özet (abstract); her dilde olmak zorunda değil */
-  abstract?: LText;
-  /** Yayın yeri, ör. "Konferans adı 2026" ya da "Ön baskı" */
-  venue?: string;
-  /** Site içi PDF yolu: "/files/team/<slug>/<dosya>.pdf" */
-  file?: string;
-  /** Dış adres (DOI, arXiv, dergi sayfası) */
-  url?: string;
-  /** Sayfa sayısı ve boyut (gösterim için, isteğe bağlı) */
-  pages?: number;
-  sizeKb?: number;
-};
-
 /** Üyelik (dernek, meslek kuruluşu …). Adres yalnız kurumun resmî sitesi doğrulanınca yazılır. */
 export type Membership = {
   /** Kurumun adı: özel ad korunur (ör. "Teknokratlar Derneği" / "Teknokratlar Association") */
@@ -100,6 +74,5 @@ export type TeamMember = {
   /** Üyelikler (dernek, meslek kuruluşu); boşsa bölüm görünmez */
   memberships?: Membership[];
   writings: Writing[];
-  publications: Publication[];
   links: MemberLinks;
 };

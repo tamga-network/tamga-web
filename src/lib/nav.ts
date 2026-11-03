@@ -15,6 +15,7 @@ import {
   History,
   Info,
   Landmark,
+  Library,
   Link2,
   ListChecks,
   Mail,
@@ -681,6 +682,18 @@ const ABOUT_MENU: Menu = {
           icon: UsersRound,
           tone: "accent",
           href: "/team",
+        },
+        {
+          title: { en: "Publications", tr: "Akademik Çalışmalar", tk: "Ylmy işler", az: "Elmi işlər" },
+          desc: {
+            en: "Papers and reports by the team, as PDFs.",
+            tr: "Ekibin makaleleri ve raporları (PDF).",
+            tk: "Toparyň makalalary we hasabatlary (PDF).",
+            az: "Komandanın məqalələri və hesabatları (PDF).",
+          },
+          icon: Library,
+          tone: "primary",
+          href: "/publications",
         },
         {
           title: { en: "Partners", tr: "Partnerler", tk: "Hyzmatdaşlar", az: "Tərəfdaşlar" },

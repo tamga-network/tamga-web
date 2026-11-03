@@ -2,18 +2,16 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
-import { ArrowLeft, ArrowUpRight, Download, FileText } from "lucide-react";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { pageMeta, SITE_URL } from "@/lib/seo";
-import { formatDate } from "@/lib/blog-format";
 import { JsonLd, ORGANIZATION } from "@/components/json-ld";
 import { EXTERNAL_ATTRS } from "@/components/external-link";
 import {
   bioOf,
   langName,
   memberBySlug,
-  publicationsOf,
   teamSlugs,
   teamUi,
   tx,
@@ -23,6 +21,8 @@ import {
 } from "@/content/team";
 import type { TimelineItem } from "@/content/team/types";
 import { MemberAvatar, MemberLinkIcons, memberLinks } from "@/components/team/member-parts";
+import { publicationsBy } from "@/content/publications";
+import { fmtPubDate as fmtDate, PublicationCard } from "@/components/publications/publication-card";
 
 /*
  * Ekip üyesi profili: fotoğraf, rol, tanıtım, eğitim / geçmiş, yazılar, yayınlar (PDF) ve bağlantılar.
@@ -36,20 +36,6 @@ export const dynamicParams = false;
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) => teamSlugs().map((slug) => ({ locale, slug })));
 }
-
-/** "2026-10" ya da "2026-10-29" → okunur tarih */
-const fmtDate = (d: string, locale: string) => {
-  if (/^\d{4}-\d{2}-\d{2}$/.test(d)) return formatDate(d, locale);
-  if (/^\d{4}-\d{2}$/.test(d)) {
-    const [y, m] = d.split("-").map(Number);
-    return new Intl.DateTimeFormat(locale === "tk" ? "tk" : locale, {
-      month: "long",
-      year: "numeric",
-      timeZone: "UTC",
-    }).format(new Date(Date.UTC(y, m - 1, 1)));
-  }
-  return d;
-};
 
 const isSitePath = (u: string) => u.startsWith("/");
 
@@ -143,7 +129,7 @@ export default async function TeamMemberPage({ params }: Params) {
   const ui = teamUi(locale);
   const bio = bioOf(m, locale);
   const writings = writingsOf(m);
-  const pubs = publicationsOf(m);
+  const pubs = publicationsBy(m.slug);
   const links = memberLinks(m);
   const expertise = m.expertise ?? [];
   const memberships = m.memberships ?? [];
@@ -344,85 +330,18 @@ export default async function TeamMemberPage({ params }: Params) {
               {pubs.length > 0 && (
                 <section aria-labelledby="publications">
                   <SectionTitle id="publications">{ui.publications}</SectionTitle>
-                  <p className="mt-2 text-sm text-foreground-muted">{ui.publicationsLead}</p>
+                  <p className="mt-2 text-sm text-foreground-muted">
+                    {ui.publicationsLead}{" "}
+                    <Link href="/publications" className="link-underline text-primary">
+                      {ui.allPublications}
+                    </Link>
+                  </p>
                   <ol className="mt-6 space-y-5">
-                    {pubs.map((p) => {
-                      const authors = p.authors?.length ? p.authors : [m.name];
-                      const meta = [
-                        fmtDate(p.date, locale),
-                        langName(p.lang, locale),
-                        p.pages ? ui.pages(p.pages) : null,
-                        p.sizeKb
-                          ? `PDF · ${p.sizeKb >= 1024 ? `${(p.sizeKb / 1024).toFixed(1)} MB` : `${p.sizeKb} KB`}`
-                          : null,
-                      ].filter(Boolean);
-                      return (
-                        <li key={p.id}>
-                          <article className="rounded-xl border border-border bg-surface/50 p-6 transition-colors hover:border-border-strong">
-                            <div className="flex flex-wrap items-center gap-2">
-                              <span className="rounded-md bg-primary/10 px-2 py-0.5 font-mono text-[11px] font-medium uppercase tracking-wider text-primary">
-                                {ui.kind[p.kind]}
-                              </span>
-                              <span className="mono-label">{meta.join(" · ")}</span>
-                            </div>
-                            <h3 className="mt-3 font-serif text-xl font-semibold leading-snug text-foreground">
-                              {p.title}
-                            </h3>
-                            <p className="mt-1.5 text-sm text-foreground-muted">
-                              {authors.join(", ")}
-                              {p.venue ? (
-                                <>
-                                  {" "}
-                                  · <em>{p.venue}</em>
-                                </>
-                              ) : null}
-                            </p>
-                            {p.abstract && (
-                              <div className="mt-4 border-l-2 border-gold/70 pl-4">
-                                <p className="mono-label mb-1">{ui.abstract}</p>
-                                <p className="text-sm leading-relaxed text-foreground-muted">
-                                  {tx(p.abstract, locale)}
-                                </p>
-                              </div>
-                            )}
-                            <div className="mt-5 flex flex-wrap gap-2.5">
-                              {p.file && (
-                                <>
-                                  <a
-                                    href={p.file}
-                                    {...EXTERNAL_ATTRS}
-                                    className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-contrast shadow-sm transition-colors hover:bg-primary-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-                                  >
-                                    <FileText size={15} aria-hidden="true" />
-                                    {ui.open}
-                                    <span className="sr-only"> ({ui.opensNewTab})</span>
-                                  </a>
-                                  <a
-                                    href={p.file}
-                                    download
-                                    className="inline-flex items-center gap-2 rounded-md border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-border-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-                                  >
-                                    <Download size={15} aria-hidden="true" />
-                                    {ui.download}
-                                  </a>
-                                </>
-                              )}
-                              {p.url && (
-                                <a
-                                  href={p.url}
-                                  {...EXTERNAL_ATTRS}
-                                  className="inline-flex items-center gap-2 rounded-md border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-border-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-                                >
-                                  <ArrowUpRight size={15} aria-hidden="true" />
-                                  {ui.external}
-                                  <span className="sr-only"> ({ui.opensNewTab})</span>
-                                </a>
-                              )}
-                            </div>
-                          </article>
-                        </li>
-                      );
-                    })}
+                    {pubs.map((p) => (
+                      <li key={p.id}>
+                        <PublicationCard p={p} locale={locale} />
+                      </li>
+                    ))}
                   </ol>
                 </section>
               )}

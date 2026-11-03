@@ -6,37 +6,45 @@ Her kişi bu klasörde bir dosyadır: `berke-karatas.ts`, `turgay-gultekin.ts`. 
 **Kural:** yalnız kişinin kendisinin verdiği ve yayımlanmasına izin verdiği bilgi yazılır. Boş bırakılan alan
 (eğitim, yazılar, yayınlar, bağlantılar) sayfada hiç görünmez; uydurma ya da tahmini bilgi yazılmaz.
 
-## PDF (yayın / belge) ekleme
+## PDF (yayın / akademik çalışma) ekleme
 
-1. PDF'i şu klasöre koy: `public/files/team/<slug>/` (ör. `public/files/team/berke-karatas/`).
-   - Dosya adı küçük harf, Türkçe karakter ve boşluk yok: `ab-uyumlu-guven-listeleri-2026.pdf`.
+Yayınlar kişi dosyasında değil, ortak katalogdadır: `src/content/publications/` (tipler `types.ts`). Her yayın hem
+`/publications` (Akademik Çalışmalar) sayfasında hem de yazarlarının ekip profilinde görünür; bağlantı yazarın slug'ıdır.
+
+1. PDF'i şu klasöre koy: `public/files/publications/<id>-<dil>.pdf` (ör. `evolution-of-digital-identity-tr.pdf`).
+   - `<id>` küçük harf, İngilizce, tireli; Türkçe karakter ve boşluk yok. Her dil sürümü ayrı dosya.
    - PDF'in özelliklerinde (Dosya → Özellikler) kişisel bilgi, iç not ya da başka belge yolu kalmasın.
-2. Kişinin dosyasında `publications: []` listesine bir kayıt ekle:
+2. `src/content/publications/<id>.ts` dosyası aç ve `index.ts`'teki `PUBLICATIONS` listesine ekle:
 
 ```ts
-publications: [
-  {
-    id: "ab-uyumlu-guven-listeleri-2026",
-    title: "AB uyumlu güven listeleri: Türk dünyası için bir model", // belgenin kendi dilindeki başlığı
-    authors: ["Berke Karataş"],          // birden çok yazar varsa hepsi
-    date: "2026-11-15",                  // ya da "2026-11"
-    kind: "paper",                       // article · paper · report · thesis · slides · whitepaper · other
-    lang: "tr",                          // belgenin dili
-    venue: "Konferans adı 2026",         // isteğe bağlı
-    abstract: {                          // isteğe bağlı; en az "en", diğer diller eklenebilir
-      en: "Short abstract in English.",
-      tr: "Türkçe kısa özet.",
+import type { Publication } from "./types";
+
+export const evolutionOfDigitalIdentity: Publication = {
+  id: "evolution-of-digital-identity",
+  authors: ["berke-karatas"],            // ekip üyesinin slug'ı (profile bağlanır); ekip dışı yazar: düz ad
+  date: "2026-11-03",                    // ya da "2026-11"
+  kind: "article",                       // article · paper · report · thesis · slides · whitepaper · other
+  venue: { en: "Tamga Network Publications", tr: "Tamga Network Akademik Çalışmalar" }, // isteğe bağlı
+  license: "CC BY 4.0",                  // isteğe bağlı
+  versions: [                            // ilki asıl dil; her dil bir satır
+    {
+      lang: "tr",
+      title: "Dijital Kimliğin Evrimi: …",  // o dildeki başlık
+      file: "/files/publications/evolution-of-digital-identity-tr.pdf",
+      abstract: "Türkçe kısa özet.",       // o dildeki özet (isteğe bağlı)
+      pages: 28,                           // isteğe bağlı
+      sizeKb: 840,                         // isteğe bağlı
+      // url: "https://doi.org/…",         // dergi/DOI sayfası varsa
     },
-    file: "/files/team/berke-karatas/ab-uyumlu-guven-listeleri-2026.pdf",
-    pages: 12,                           // isteğe bağlı
-    sizeKb: 840,                         // isteğe bağlı
-    // url: "https://doi.org/…",         // dergi/DOI sayfası varsa
-  },
-],
+    // { lang: "en", title: "The Evolution of Digital Identity: …", file: "/files/publications/evolution-of-digital-identity-en.pdf" },
+  ],
+};
 ```
 
-Sayfada "PDF'i aç" (tarayıcının kendi görüntüleyicisinde, yeni sekmede) ve "İndir" düğmeleri çıkar. Liste tarihe göre yeniden
-eskiye sıralanır.
+Gösterim: başlık sayfanın dilindeki sürümden gelir (o dilde sürüm yoksa ilk sürümden); diğer dil sürümleri başlığın
+yanında parantez içinde altı çizili bağlantı olur: "Dijital Kimliğin Evrimi (EN - TK - RU)". Kartta "PDF'i aç"
+(tarayıcının kendi görüntüleyicisinde, yeni sekmede) ve "İndir" düğmeleri çıkar. Liste tarihe göre yeniden eskiye;
+`/publications` sayfasında yıla göre gruplu. Dosyası ya da adresi olmayan yayın gösterilmez.
 
 ## Yazı ekleme (LinkedIn makalesi, blog yazısı …)
 
