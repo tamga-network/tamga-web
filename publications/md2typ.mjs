@@ -30,7 +30,7 @@ for (const l of fmMatch[1].split("\n")) {
   if (!m) continue;
   let v = m[2].trim();
   if (v.startsWith("[")) v = v.slice(1, -1).split(",").map((s) => s.trim().replace(/^"|"$/g, ""));
-  else v = v.replace(/^"|"$/g, "");
+  else v = v.replace(/^"|"$/g, "").replace(/\\"/g, '"');
   fm[m[1]] = v;
 }
 md = md.slice(fmMatch[0].length);
@@ -68,8 +68,9 @@ function blocks(lines, ctx = {}) {
   const out = [];
   let i = 0;
   let pendingCaption = null;
+  // Paragrafı yalnız "- " ya da "1. " ile başlayan liste böler (CommonMark): sarılmış bir satırın "433. " ile başlaması liste değildir.
   const isBlockStart = (l) =>
-    /^#{2,3} /.test(l) || /^```/.test(l) || /^> /.test(l) || /^>$/.test(l) || /^\|/.test(l) || /^(- |\d+\. )/.test(l) || /^---\s*$/.test(l);
+    /^#{2,3} /.test(l) || /^```/.test(l) || /^> /.test(l) || /^>$/.test(l) || /^\|/.test(l) || /^(- |1\. )/.test(l) || /^---\s*$/.test(l);
 
   while (i < lines.length) {
     const l = lines[i];
@@ -82,8 +83,9 @@ function blocks(lines, ctx = {}) {
     if (h) {
       const level = h[1].length - 1;
       const raw = h[2].trim();
-      const num = raw.match(/^\d+(\.\d+)*\.?\s+/);
-      const title = inline(raw.replace(/^\d+(\.\d+)*\.?\s+/, ""));
+      // Numaralı başlık: "## 3. …" (bölüm) ya da "### 3.2 …" (alt bölüm). Ekteki "### 1. adım" numaralı sayılmaz.
+      const num = level === 1 ? raw.match(/^\d+\.?\s+/) : raw.match(/^\d+\.\d+\.?\s+/);
+      const title = inline(num ? raw.slice(num[0].length) : raw);
       out.push(num ? `${"=".repeat(level)} ${title}` : `#heading(level: ${level}, numbering: none)[${title}]`);
       if (raw.startsWith("Kaynaklar")) ctx.refs = true;
       else if (level === 1) ctx.refs = false;

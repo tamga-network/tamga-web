@@ -409,7 +409,7 @@ eIDAS’ın elektronik kimlik ayağı ise beklenen etkiyi yaratmadı. Bildirilen
 
 eIDAS’ın sınırları ve SSI hareketinin fikirleri, 2021’de Avrupa Komisyonu’nun yeni bir öneri sunmasına yol açtı. Uzun müzakerelerin ardından #{strong[Tüzük (AB) 2024\/1183]}, yaygın adıyla #{strong[eIDAS 2.0]}, 11 Nisan 2024’te kabul edildi ve 20 Mayıs 2024’te yürürlüğe girdi \[15\]. Tüzük, eski eIDAS’ı yürürlükten kaldırmadı; onu değiştirerek genişletti. Ama getirdiği değişikliğin özü, Avrupa’nın dijital kimlik modelini #{strong[federasyondan üçgen modele]} taşımasıydı.
 
-Tüzüğün merkezinde #{strong[Avrupa Dijital Kimlik Cüzdanı]} (#{emph[European Digital Identity Wallet]}, kısaca EUDI cüzdanı) vardır. Tüzüğe göre her üye devlet, vatandaşlarına ve yerleşiklerine en az bir cüzdan sunmak zorundadır; bu cüzdan, uygulama düzenlemelerinin yürürlüğe girmesinden itibaren yirmi dört ay içinde, yani 2026’nın sonuna doğru, kullanıma hazır olmalıdır. Cüzdanı devlet kendisi geliştirebilir ya da devletin yetkilendirdiği ya da tanıdığı bir kuruluş sağlayabilir.
+Tüzüğün merkezinde #{strong[Avrupa Dijital Kimlik Cüzdanı]} (#{emph[European Digital Identity Wallet]}, kısaca EUDI cüzdanı) vardır. Tüzüğe göre her üye devlet, vatandaşlarına ve yerleşiklerine en az bir cüzdan sunmak zorundadır; bu cüzdan, uygulama düzenlemelerinin yürürlüğe girmesinden itibaren yirmi dört ay içinde, yani 24 Aralık 2026’ya kadar, kullanıma hazır olmalıdır. Cüzdanı devlet kendisi geliştirebilir ya da devletin yetkilendirdiği ya da tanıdığı bir kuruluş sağlayabilir.
 
 Tüzüğün getirdiği temel ilkeleri şöyle özetleyebiliriz:
 
@@ -579,7 +579,7 @@ Bu yazı dizisinin sonraki bölümlerinde, burada genel hatlarıyla tanıttığ�
 
 #kaynak("16")[Avrupa Komisyonu ve eIDAS Uzman Grubu. #{emph[European Digital Identity Wallet — Architecture and Reference Framework (ARF).]} github.com\/eu-digital-identity-wallet (yaşayan belge; okunan sürüm yazının yayın tarihindeki son sürümdür).]
 
-#kaynak("17")[Fett, D., Yasuda, K. ve Campbell, B. (2025). #{emph[Selective Disclosure for JWTs (SD-JWT).]} IETF RFC 9901, Kasım 2025. Ayrıca: #{emph[SD-JWT-based Verifiable Credentials (SD-JWT VC)]}, IETF OAuth Çalışma Grubu taslağı.]
+#kaynak("17")[Fett, D., Yasuda, K. ve Campbell, B. (2025). #{emph[Selective Disclosure for JSON Web Tokens.]} IETF RFC 9901, Kasım 2025. Ayrıca: #{emph[SD-JWT-based Verifiable Credentials (SD-JWT VC)]}, IETF OAuth Çalışma Grubu taslağı.]
 
 #kaynak("18")[ISO\/IEC (2021). #{emph[ISO\/IEC 18013-5:2021 Personal identification — ISO-compliant driving licence — Part 5: Mobile driving licence (mDL) application.]}]
 

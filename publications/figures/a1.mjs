@@ -7,7 +7,12 @@ import { C, svg, text, box, arrow, line, circle, person, phone, key, lock, db } 
 const out = join(dirname(fileURLToPath(import.meta.url)), "a1");
 mkdirSync(out, { recursive: true });
 const save = (n, s) => writeFileSync(join(out, `sekil-${n}.svg`), s);
-const halo = (s) => s.replace(/<text /g, '<text stroke="#FFFFFF" stroke-width="5" paint-order="stroke" stroke-linejoin="round" ');
+// Etiketin arkasına beyaz zemin (çizgi yazının altından geçsin). paint-order Typst'in PDF çıktısında desteklenmiyor; dikdörtgen kullanılır.
+const label = (x, y, str, o) => {
+  const w = str.length * o.size * 0.52 + 10;
+  return `<rect x="${(x - w / 2).toFixed(1)}" y="${(y - o.size * 0.75).toFixed(1)}" width="${w.toFixed(1)}" height="${(o.size * 1.5).toFixed(1)}" fill="#FFFFFF"/>
+` + text(x, y, str, o);
+};
 
 // ---------- Şekil 1: zaman çizelgesi ----------
 {
@@ -163,14 +168,14 @@ const halo = (s) => s.replace(/<text /g, '<text stroke="#FFFFFF" stroke-width="5
   b += box(S - 110, 20, 220, 50, ["Dil kursu sitesi", "(güvenen taraf)"], { size: 12.5 });
   b += box(G - 110, 20, 220, 50, ["Google", "(kimlik sağlayıcı)"], { size: 12.5 });
   [A, S, G].forEach((x) => (b += line(x, 70, x, 590, { stroke: C.rule, sw: 1.4, dash: true })));
-  const msg = (y, x1, x2, label, kind = "") => {
+  const msg = (y, x1, x2, lbl, kind = "") => {
     let s = arrow(x1, y, x2 + (x2 > x1 ? -2 : 2), y, { kind });
-    s += halo(text((x1 + x2) / 2, y - 12, label, { size: 11.5, fill: kind === "r" ? C.red : C.ink }));
+    s += label((x1 + x2) / 2, y - 12, lbl, { size: 11.5, fill: kind === "r" ? C.red : C.ink });
     return s;
   };
   b += msg(110, A, S, "1. “Google ile giriş yap” düğmesine tıklar");
   b += msg(165, S, A, "2. Tarayıcıyı Google'a yönlendirir");
-  b += text((A + S) / 2, 182, "(site numarası, istenen bilgiler, tek kullanımlık değerler)", { size: 10.5, fill: C.muted });
+  b += label((A + S) / 2, 182, "(site numarası, istenen bilgiler, tek kullanımlık değerler)", { size: 10.5, fill: C.muted });
   b += msg(225, A, G, "3. Google'a giriş yapar (parola ya da geçiş anahtarı)");
   b += msg(280, G, A, "4. İzin ekranı: “Site adınızı ve e-postanızı görmek istiyor” — Aynur onaylar");
   b += msg(335, G, A, "5a. Tek kullanımlık yetkilendirme koduyla geri yönlendirir");

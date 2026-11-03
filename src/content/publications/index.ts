@@ -4,7 +4,10 @@ import type { Publication, PublicationVersion } from "./types";
 
 export type { Publication, PublicationVersion } from "./types";
 
-/** Katalog: yeni yayın = yeni dosya + bu listeye bir satır (src/content/team/README.md). Yeniden eskiye sıralı. */
+/**
+ * Yayımlanmış çalışmalar. Yeni yazılar önceden hazırlanır (dosyası bu klasörde, PDF'i public/files/publications/), ama yalnız
+ * proje yönetimi "yayınla" deyince buraya bir satır eklenir ve commit'e girer (src/content/team/README.md, "PDF ekleme").
+ */
 export const PUBLICATIONS: Publication[] = [evolutionOfDigitalIdentity]
   .filter((p) => p.versions.some((v) => v.file || v.url))
   .sort((a, b) => (a.date < b.date ? 1 : -1));

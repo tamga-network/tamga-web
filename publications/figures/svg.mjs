@@ -103,3 +103,17 @@ export function db(cx, cy, color = C.gok, s = 1) {
   return `<path d="M${cx - w / 2},${cy - h / 2} v${h} a${w / 2},${e} 0 0 0 ${w},0 v${-h}" fill="${C.gok50}" stroke="${color}" stroke-width="1.5"/>
 <ellipse cx="${cx}" cy="${cy - h / 2}" rx="${w / 2}" ry="${e}" fill="${C.gok100}" stroke="${color}" stroke-width="1.5"/>`;
 }
+
+/**
+ * Etiketin arkasına beyaz zemin: çizgiler yazının altından geçer. `text()` çıktısını alır, her satırın arkasına dikdörtgen koyar.
+ * (paint-order="stroke" ile beyaz kenar Typst'in PDF çıktısında harfleri bozuyor; kullanılmaz.)
+ */
+export function halo(markup) {
+  return markup.replace(/<text x="([\d.-]+)" y="([\d.-]+)" font-size="([\d.]+)"[^>]*text-anchor="(\w+)"[^>]*>([^<]*)<\/text>/g, (m, x, y, fs, anchor, t) => {
+    const size = +fs;
+    const plain = t.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"');
+    const w = plain.length * size * 0.53 + 8;
+    const x0 = anchor === "start" ? +x - 4 : anchor === "end" ? +x - w + 4 : +x - w / 2;
+    return `<rect x="${x0.toFixed(1)}" y="${(+y - size * 0.72).toFixed(1)}" width="${w.toFixed(1)}" height="${(size * 1.44).toFixed(1)}" fill="#FFFFFF"/>\n${m}`;
+  });
+}

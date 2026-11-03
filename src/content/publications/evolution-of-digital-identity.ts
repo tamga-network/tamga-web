@@ -18,7 +18,7 @@ export const evolutionOfDigitalIdentity: Publication = {
       title: "Dijital Kimliğin Evrimi: Kullanıcı Adından Kimlik Cüzdanına",
       file: "/files/publications/evolution-of-digital-identity-tr.pdf",
       pages: 30,
-      sizeKb: 569,
+      sizeKb: 529,
       abstract:
         "İnternet, insanların birbirini yüz yüze, bir mühre ya da devletin verdiği bir belgeye bakarak tanıdığı düzeni bozdu. " +
         "Son altmış yılda bu soruna verilen cevaplar dört dönemde toplanabilir: her sistemin kendi parolasını tuttuğu ada dönemi, " +
