@@ -68,3 +68,9 @@ tamga.network with the network's 1.0 documentation set, in English, Turkish and 
   has not been run again. Whitepaper revised in place (version 1.0, edition 2026-10-29): forged-decline protection and
   registration-certificate status in the presentation flow, ETSI XML view (sandbox; real network once the foundation exists),
   gate groups, 0.7.4, the verifier self-test caveat; four PDFs rebuilt. The manifesto needed no change.
+- 2026-11-03: currency check after the 0.8.0 package release. Packages at npm 0.8.0 everywhere a version is shown (SDK page,
+  home, roadmap, blog notes); release note for 0.8.0 (en/tr/tk/az: a fresh request for every fetch by default, wallet-unit status
+  read strictly, gate groups follow their institution, real-network gate keys only from the trust list, per-branch answer limit,
+  status cache never rolls back; a note on the one breaking change for developers points to the package changelog). Whitepaper
+  version sentence says 0.8.0 (0.7.4 added the forged-decline protection and the rest; 0.8.0 makes the safe mode the default);
+  version 1.0, edition date unchanged; four PDFs rebuilt.

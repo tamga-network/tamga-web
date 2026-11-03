@@ -777,11 +777,12 @@ const en: WhitepaperContent = {
             the verifier side; a hosted issuing service in which the
             institution’s signing key stays at the institution and the service
             sends it only a hash to sign (Cloud Signature Consortium API). Nine
-            open-source packages are on npm as the 0.7.4 test release, which
-            adds the protection against forged declines,
+            open-source packages are on npm as the 0.8.0 test release: 0.7.4
+            added the protection against forged declines,
             registration-certificate status, gate groups in the trust list and
-            the ETSI XML list view. The real network’s Türkiye list is live with
-            the identity service as its only active issuer; the first real
+            the ETSI XML list view, and 0.8.0 makes a fresh request for every
+            fetch the default. The real network’s Türkiye list is live with the
+            identity service as its only active issuer; the first real
             institution, a university, is being prepared.
           </p>
           <KV
@@ -1614,12 +1615,12 @@ const tr: WhitepaperContent = {
             bilgi ispatıyla yaş kontrolü; kurumun imza anahtarının kurumda
             kaldığı ve servisin imzalamak için kuruma yalnızca bir özet
             gönderdiği barındırılan belge verme servisi (Cloud Signature
-            Consortium API). Dokuz açık kaynak paket npm’de 0.7.4 deneme
-            sürümünde; bu sürüm sahte ret korumasını, kayıt sertifikası
-            durumunu, güven listesindeki kapı gruplarını ve ETSI XML liste
-            görünümünü getiriyor. Gerçek ağın Türkiye listesi yayında ve tek
-            etkin belge vereni kimlik servisi; ilk gerçek kurum, bir üniversite,
-            hazırlanıyor.
+            Consortium API). Dokuz açık kaynak paket npm’de 0.8.0 deneme
+            sürümünde: 0.7.4 sahte ret korumasını, kayıt sertifikası durumunu,
+            güven listesindeki kapı gruplarını ve ETSI XML liste görünümünü
+            getirdi, 0.8.0 her çekime yeni istek vermeyi varsayılan yaptı.
+            Gerçek ağın Türkiye listesi yayında ve tek etkin belge vereni kimlik
+            servisi; ilk gerçek kurum, bir üniversite, hazırlanıyor.
           </p>
           <KV
             label="Aşamalar"
@@ -2481,11 +2482,12 @@ const tk: WhitepaperContent = {
             ýaş barlagy; guramanyň gol açarynyň guramada galýan we hyzmatyň gol
             çekmek üçin guramaga diňe heş iberýän ýerleşdirilen resminama beriş
             hyzmaty (Cloud Signature Consortium API). Dokuz açyk çeşmeli paket
-            npm-de 0.7.4 synag wersiýasynda; bu wersiýa ýasama retden goragy,
-            hasaba alyş sertifikatynyň ýagdaýyny, ynam sanawyndaky gapy
-            toparlaryny we ETSI XML sanaw görnüşini getirýär. Hakyky toruň
-            Türkiýe sanawy işleýär we ýeke-täk işjeň resminama berijisi şahsyýet
-            hyzmaty; ilkinji hakyky gurama, uniwersitet, taýýarlanýar.
+            npm-de 0.8.0 synag wersiýasynda: 0.7.4 ýasama retden goragy, hasaba
+            alyş sertifikatynyň ýagdaýyny, ynam sanawyndaky gapy toparlaryny we
+            ETSI XML sanaw görnüşini getirdi, 0.8.0 bolsa her alnyşa täze haýyş
+            bermegi deslapky ýagdaý etdi. Hakyky toruň Türkiýe sanawy işleýär we
+            ýeke-täk işjeň resminama berijisi şahsyýet hyzmaty; ilkinji hakyky
+            gurama, uniwersitet, taýýarlanýar.
           </p>
           <KV
             label="Tapgyrlar"
@@ -3348,12 +3350,13 @@ const az: WhitepaperContent = {
             yoxlayan tərəfdə sıfır bilik sübutu ilə yaş yoxlaması; qurumun imza
             açarının qurumda qaldığı və xidmətin imzalamaq üçün quruma yalnız
             hash göndərdiyi hostinqli sənəd vermə xidməti (Cloud Signature
-            Consortium API). Doqquz açıq mənbəli paket npm-də 0.7.4 sınaq
-            buraxılışındadır; bu versiya saxta imtinadan qorumanı, qeydiyyat
+            Consortium API). Doqquz açıq mənbəli paket npm-də 0.8.0 sınaq
+            buraxılışındadır: 0.7.4 saxta imtinadan qorumanı, qeydiyyat
             sertifikatının statusunu, etibar siyahısındakı keçid qruplarını və
-            ETSI XML siyahı görünüşünü gətirir. Real şəbəkənin Türkiyə siyahısı
-            işləyir və yeganə aktiv sənəd verəni şəxsiyyət xidmətidir; ilk real
-            qurum, bir universitet, hazırlanır.
+            ETSI XML siyahı görünüşünü gətirdi, 0.8.0 isə hər çəkilişə yeni
+            sorğu verməyi standart etdi. Real şəbəkənin Türkiyə siyahısı işləyir
+            və yeganə aktiv sənəd verəni şəxsiyyət xidmətidir; ilk real qurum,
+            bir universitet, hazırlanır.
           </p>
           <KV
             label="Mərhələlər"

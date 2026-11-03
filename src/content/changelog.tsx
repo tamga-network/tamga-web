@@ -108,6 +108,92 @@ export const CHANGELOG_PAGE: Record<
 
 export const RELEASES: Release[] = [
   {
+    id: "v1.0.0-2026-11-03-packages-0-8-0",
+    version: "v1.0.0",
+    date: "2026-11-03",
+    kind: "security",
+    title: {
+      en: "Safer defaults: a fresh request for every fetch, status checks that fail closed, packages 0.8.0",
+      tr: "Daha güvenli varsayılanlar: her çekime yeni istek, kapalı kalan durum denetimleri, paketler 0.8.0",
+      tk: "Has howpsuz deslapky sazlamalar: her alnyşa täze haýyş, ýapyk galýan ýagdaý barlaglary, paketler 0.8.0",
+      az: "Daha təhlükəsiz standartlar: hər çəkilişə yeni sorğu, bağlı qalan status yoxlamaları, paketlər 0.8.0",
+    },
+    sections: {
+      security: {
+        en: [
+          "A site that verifies documents with our packages now gets the safe mode without asking for it: every time a wallet fetches the presentation request, it receives its own fresh request. The old single shared request is produced only when a developer asks for it explicitly, and it will be removed in a later release.",
+          "A wallet reads the status of its own wallet unit strictly: only a clear “valid” lets it use the unit; a suspended unit is not used but is not deleted either, because suspension is temporary; a revoked unit, or a value the wallet does not recognise, counts as revoked.",
+          "A gate group is active only while the institution behind it is active. When that institution is suspended, revoked or leaves the trust list, its gates close together with the list.",
+          "On the real network, Tamga Verify takes the keys of gate terminals only from the signed trust list; a key set in the server's environment stops the service from starting. The sandbox is unchanged.",
+        ],
+        tr: [
+          "Paketlerimizle belge doğrulayan bir site artık güvenli kipi istemeden alıyor: cüzdan sunum isteğini her çektiğinde kendine ait yeni bir istek alıyor. Eski, herkesin paylaştığı tek istek yalnız geliştirici açıkça isterse üretiliyor ve ileriki bir sürümde kaldırılacak.",
+          "Cüzdan kendi cüzdan biriminin durumunu sıkı okuyor: birimi yalnız açık bir “geçerli” durumunda kullanıyor; askıya alınmış birim kullanılmıyor ama silinmiyor da, çünkü askı geçicidir; iptal edilmiş birim ya da cüzdanın tanımadığı bir değer iptal sayılıyor.",
+          "Bir kapı grubu, arkasındaki kurum etkin olduğu sürece etkin. O kurum askıya alınır, iptal edilir ya da güven listesinden çıkarsa kapıları listeyle birlikte kapanıyor.",
+          "Gerçek ağda Tamga Verify kapı terminallerinin anahtarlarını yalnız imzalı güven listesinden alıyor; sunucu ortamına yazılmış bir anahtar varsa servis başlamıyor. Sandbox'ta değişiklik yok.",
+        ],
+        tk: [
+          "Paketlerimiz bilen resminama barlaýan saýt indi howpsuz tertibi soramazdan alýar: gapjyk görkeziş haýyşyny her gezek alanda özüne degişli täze haýyş alýar. Köne, hemmeler üçin umumy ýeke haýyş diňe işläp düzüji aç-açan sorasa döredilýär we geljekki wersiýada aýrylar.",
+          "Gapjyk öz gapjyk biriminiň ýagdaýyny berk okaýar: birimi diňe aýdyň “dogry” ýagdaýynda ulanýar; togtadylan birim ulanylmaýar, emma pozulmaýar hem, sebäbi togtatma wagtlaýyndyr; ýatyrylan birim ýa-da gapjygyň tanamaýan bahasy ýatyrylan hasaplanýar.",
+          "Gapy topary onuň aňyrsyndaky gurama işjeň bolsa işjeňdir. Şol gurama togtadylsa, ýatyrylsa ýa-da ynam sanawyndan çyksa, onuň gapylary sanaw bilen bilelikde ýapylýar.",
+          "Hakyky torda Tamga Verify gapy terminallarynyň açarlaryny diňe gol çekilen ynam sanawyndan alýar; serweriň gurşawyna ýazylan açar bar bolsa hyzmat başlamaýar. Sandbox-da üýtgeşme ýok.",
+        ],
+        az: [
+          "Paketlərimizlə sənəd yoxlayan sayt artıq təhlükəsiz rejimi istəmədən alır: cüzdan təqdimat sorğusunu hər dəfə çəkəndə özünə məxsus yeni sorğu alır. Köhnə, hamının paylaşdığı tək sorğu yalnız tərtibatçı açıq şəkildə istədikdə yaradılır və sonrakı buraxılışda çıxarılacaq.",
+          "Cüzdan öz cüzdan vahidinin statusunu sərt oxuyur: vahidi yalnız aydın “etibarlı” statusunda istifadə edir; dayandırılmış vahid istifadə olunmur, amma silinmir də, çünki dayandırma müvəqqətidir; ləğv edilmiş vahid və ya cüzdanın tanımadığı dəyər ləğv edilmiş sayılır.",
+          "Keçid qrupu arxasındakı qurum aktiv olduğu müddətdə aktivdir. Həmin qurum dayandırılarsa, ləğv edilərsə və ya etibar siyahısından çıxarsa, onun keçidləri siyahı ilə birlikdə bağlanır.",
+          "Real şəbəkədə Tamga Verify keçid terminallarının açarlarını yalnız imzalı etibar siyahısından götürür; server mühitində açar yazılıbsa xidmət başlamır. Sandbox-da dəyişiklik yoxdur.",
+        ],
+      },
+      fixed: {
+        en: [
+          "The limit on how often a wallet may answer now applies to each request separately, so someone flooding their own copy of a request can no longer slow down the real person's answer.",
+          "A request copy is replaced only after the new one has been signed, and several fetches at the same moment can no longer go past the limit.",
+          "The wallet never swaps a registration-certificate status list for an older one, so a revocation, once seen, cannot disappear.",
+          "When a registrar moves its status list to a new address, the entries of the old list keep being followed and are closed with the publication.",
+        ],
+        tr: [
+          "Cüzdanın ne sıklıkla yanıt verebileceğine dair sınır artık her isteğe ayrı uygulanıyor; kendi istek kopyasını yanıtla dolduran biri gerçek kişinin yanıtını artık yavaşlatamıyor.",
+          "Bir istek kopyası ancak yenisi imzalandıktan sonra değiştiriliyor; aynı anda gelen birden çok çekim artık sınırı aşamıyor.",
+          "Cüzdan bir kayıt sertifikası durum listesini asla daha eskisiyle değiştirmiyor; bir kez görülen iptal kaybolamıyor.",
+          "Bir kayıt kuruluşu durum listesini yeni bir adrese taşıdığında eski listedeki girdiler izlenmeye devam ediyor ve yayınla birlikte kapatılıyor.",
+        ],
+        tk: [
+          "Gapjygyň näçe gezek jogap berip biljekdigine degişli çäk indi her haýyşa aýratyn ulanylýar; öz haýyş nusgasyny jogaplar bilen dolduran biri hakyky adamyň jogabyny indi haýalladyp bilmeýär.",
+          "Haýyş nusgasy diňe täzesine gol çekilenden soň çalşylýar; bir wagtda gelen birnäçe alnyş indi çäkden geçip bilmeýär.",
+          "Gapjyk hasaba alyş sertifikatynyň ýagdaý sanawyny hiç haçan köneräk sanaw bilen çalyşmaýar; bir gezek görlen ýatyrylyş ýitip bilmeýär.",
+          "Hasaba alyş guramasy ýagdaý sanawyny täze salga geçirende köne sanawdaky ýazgylar yzarlanmagyny dowam edýär we çap etmek bilen ýapylýar.",
+        ],
+        az: [
+          "Cüzdanın nə qədər tez-tez cavab verə biləcəyinə dair hədd artıq hər sorğuya ayrıca tətbiq olunur; öz sorğu nüsxəsini cavablarla dolduran biri əsl şəxsin cavabını artıq ləngidə bilmir.",
+          "Sorğu nüsxəsi yalnız yenisi imzalandıqdan sonra dəyişdirilir; eyni anda gələn bir neçə çəkiliş artıq həddi keçə bilmir.",
+          "Cüzdan qeydiyyat sertifikatının status siyahısını heç vaxt daha köhnəsi ilə əvəz etmir; bir dəfə görülən ləğv itə bilmir.",
+          "Qeydiyyat qurumu status siyahısını yeni ünvana köçürəndə köhnə siyahıdakı qeydlər izlənməyə davam edir və dərc ilə birlikdə bağlanır.",
+        ],
+      },
+      changed: {
+        en: [
+          "The @tamga-network/* packages are on npm as the 0.8.0 test release; the stable 1.0.0 comes when everything is ready.",
+        ],
+        tr: [
+          "@tamga-network/* paketleri npm'de 0.8.0 deneme sürümünde; kararlı 1.0.0 her şey hazır olunca gelir.",
+        ],
+        tk: [
+          "@tamga-network/* paketleri npm-de 0.8.0 synag wersiýasynda; durnukly 1.0.0 hemme zat taýýar bolanda geler.",
+        ],
+        az: [
+          "@tamga-network/* paketləri npm-də 0.8.0 sınaq buraxılışı kimi mövcuddur; sabit 1.0.0 hər şey hazır olduqda çıxacaq.",
+        ],
+      },
+    },
+    note: {
+      en: "0.8.0 has one breaking change for developers who verify on their own server: createPresentationRequest no longer returns one shared request object by default, so requestJwt is empty. Instead, give each presentation a BranchSet and let it serve a fresh request on every fetch; passing initialRequestObject: true keeps the old shape for one more release. Wallet developers should use a wallet unit only when its status is valid and delete it only when it is revoked. Every change and its migration step are in the package changelog, under “Breaking / behaviour changes in 0.8.0”.",
+      tr: "0.8.0, kendi sunucusunda doğrulama yapan geliştiriciler için geriye uyumlu olmayan bir değişiklik içeriyor: createPresentationRequest artık varsayılan olarak herkesin paylaştığı tek bir istek nesnesi döndürmüyor, bu yüzden requestJwt boş geliyor. Bunun yerine her sunuma bir BranchSet verin ve her çekimde yeni bir istek sunmasını sağlayın; initialRequestObject: true vermek eski biçimi bir sürüm daha korur. Cüzdan geliştiricileri bir cüzdan birimini yalnız durumu geçerliyse kullanmalı, yalnız iptal edildiyse silmeli. Bütün değişiklikler ve geçiş adımları paket değişiklik kaydında, “Breaking / behaviour changes in 0.8.0” başlığı altında.",
+      tk: "0.8.0 öz serwerinde barlag geçirýän işläp düzüjiler üçin yza gabat gelmeýän bir üýtgeşmäni öz içine alýar: createPresentationRequest indi deslapky ýagdaýda hemmeler üçin umumy ýeke haýyş obýektini gaýtarmaýar, şonuň üçin requestJwt boş gelýär. Onuň ýerine her görkezişe BranchSet beriň we her alnyşda täze haýyş bermegini üpjün ediň; initialRequestObject: true bermek köne görnüşi ýene bir wersiýa saklaýar. Gapjyk işläp düzüjileri gapjyk birimini diňe ýagdaýy dogry bolsa ulanmaly we diňe ýatyrylan bolsa pozmaly. Ähli üýtgeşmeler we geçiş ädimleri paket üýtgeşme ýazgysynda, “Breaking / behaviour changes in 0.8.0” bölüminde.",
+      az: "0.8.0 öz serverində yoxlama aparan tərtibatçılar üçün geriyə uyğun olmayan bir dəyişiklik ehtiva edir: createPresentationRequest artıq standart olaraq hamının paylaşdığı tək sorğu obyektini qaytarmır, buna görə requestJwt boş gəlir. Bunun əvəzinə hər təqdimata BranchSet verin və hər çəkilişdə yeni sorğu təqdim etməsini təmin edin; initialRequestObject: true vermək köhnə formanı daha bir buraxılış saxlayır. Cüzdan tərtibatçıları cüzdan vahidini yalnız statusu etibarlıdırsa istifadə etməli, yalnız ləğv edilibsə silməlidir. Bütün dəyişikliklər və keçid addımları paket dəyişiklik qeydində, “Breaking / behaviour changes in 0.8.0” başlığı altındadır.",
+    },
+  },
+  {
     id: "v1.0.0-2026-10-29-packages-0-7-4",
     version: "v1.0.0",
     date: "2026-10-29",
