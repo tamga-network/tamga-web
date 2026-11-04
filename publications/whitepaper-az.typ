@@ -916,7 +916,7 @@ Cüzdanın başlatdığı yolda avtorizasiya kodu axını OAuth-un təhlükəsiz
   ("Cüzdan → Sənəd verən", [#{strong[Təqdimat.]} Standart təqdimat axınını işlədir; sənəd verən təqdimatı tam yoxlama xəttindən keçirir.], $"vp_token" -> "T0 + A…E"$),
   ("Sənəd verən", [#{strong[Uyğunlaşdırma.]} Şəxsiyyət nömrəsini və doğum tarixini təklifdəki hash ilə və ya qurumun mənbəyindəki qeydlə uyğunlaşdırır; uyğun gəlmirsə, #{raw("access_denied")}.], $"HMAC"_k ("şəxsiyyət no", "doğum t.") attach(=, t: ?) "təklif hash-i"$),
   ("Cüzdan → Sənəd verən", [#{strong[Token.]} Avtorizasiya kodunu PKCE sirri ilə tokenə çevirir; kod birdəfəlikdir və ən çoxu 60 saniyəlikdir.], $"access_token" <- ("code", v)$),
-  ("Cüzdan → Sənəd verən", [#{strong[Sənəd.]} Nonce, açar sübutları və sənəd sorğusu; addımlar qurumun başlatdığı axınla eynidir (Bölmə 9.4).], $"proofs" -> "credential"$),
+  ("Cüzdan → Sənəd verən", [#{strong[Sənəd.]} Nonce, açar sübutları (#{raw("proof")}) və sənəd sorğusu; addımlar qurumun başlatdığı axınla eynidir (Bölmə 9.4).], $"proofs" -> "credential"$),
 ))
 
 İstifadə edilmiş avtorizasiya kodu ikinci dəfə gələrsə, sənəd verən həmin koddan verilmiş tokenləri əvvəlcə geri alır. Bu, kodun sızdığı şübhəsi olduqda şəxsin sessiyasını bağlamağı hücumçunun koddan istifadəsinin qarşısını almaqdan önə qoyan şüurlu seçimdir (RFC 9700 \[23\] §4.5; SPEC-PROTO-0001 §11.2).
@@ -934,7 +934,7 @@ Sənəd vermə axınında üç ayrı mexanizm üç ayrı suala cavab verir. Biri
 
 İkincisi aktuallıqla bağlıdır: cüzdanın sübutu indicə yaradılıb, yoxsa başqa yerdən köçürülüb? Sənəd verənin #{strong[nonce nöqtəsi]} 5 dəqiqə etibarlı, birdəfəlik dəyər (#{raw("c_nonce")}) verir və dəyər #{strong[atomik]} şəkildə istifadə olunur; "əvvəlcə yoxla, sonra sil" deyə iki addımda aparılan istifadə eyni sübutun iki dəfə istifadəsinə yol açan yarış vəziyyəti yaradardı (PR4). OpenID4VCI 1.0-da bu dəyər yalnız nonce nöqtəsindən gəlir.
 
-Üçüncüsü açarla bağlıdır: sənədin bağlanacağı açar həqiqətən cüzdandadırmı? Cüzdan bu açarla kiçik JWT imzalayır (#{raw("openid4vci-proof+jwt")}); içində sübutun hansı sənəd verən üçün olduğu (#{raw("aud")}), yaradılma anı (#{raw("iat")}) və indicə alınmış #{raw("nonce")} olur. Sübutun başlığındakı açıq açar sənədin #{raw("cnf")} sahəsinə daxil olacaq açardır. Sübutda yalnız ES256 qəbul edilir (PR5).
+Üçüncüsü açarla bağlıdır: sənədin bağlanacağı açar həqiqətən cüzdandadırmı? Cüzdan bu açarla kiçik JWT imzalayır: #{strong[açar sübutu]} (#{raw("proof")}, növü #{raw("openid4vci-proof+jwt")}); içində sübutun hansı sənəd verən üçün olduğu (#{raw("aud")}), yaradılma anı (#{raw("iat")}) və indicə alınmış #{raw("nonce")} olur. Sübutun başlığındakı açıq açar sənədin #{raw("cnf")} sahəsinə daxil olacaq açardır; KA da bu başlıqda daşınır. Sübutda yalnız ES256 qəbul edilir (PR5).
 
 #kutu("teknik", [DPoP bağı və qurumun başlatdığı vermənin addımları])[
 DPoP bağında token sübutdakı açıq açarın RFC 7638 \[24\] barmaq izinə bağlanır. Barmaq izi açarın məcburi sahələrinin əlifba sırası ilə və boşluqsuz yazılmış JSON-unun SHA-256 hash-idir. Sənəd nöqtəsində hər sorğu həmçinin tokenin hash-ini (#{raw("ath")}) daşıyır:
@@ -950,8 +950,8 @@ Spesifikasiyadakı nümunə P-256 açarı (#{raw("x = f83OJ3D2…VEU")}, #{raw("
   ("Cüzdan → Sənəd verən", [#{strong[Təklif və təqdimat.]} Təklifi və imzalı təqdimat sənədini yükləyir; imzalayanı siyahıdakı qurum sertifikatı ilə uyğunlaşdırır.], $"metadata" -> "siyahı"$),
   ("Cüzdan → Sənəd verən", [#{strong[Token.]} Əvvəlcədən səlahiyyətləndirilmiş kodu və əməliyyat kodunu DPoP sübutu və cüzdan nüsxəsi attestasiyası ilə göndərir.], $"access_token" <- ("code", "tx_code", "DPoP", "WIA")$),
   ("Cüzdan → Sənəd verən", [#{strong[Nonce.]} Nonce nöqtəsindən təzə dəyər alır.], $"c_nonce" <- "nonce nöqtəsi"$),
-  ("Cüzdan", [#{strong[Açarlar.]} On nüsxə üçün on ayrı açar yaradır; provayderdən açar attestasiyası alır və sübutu imzalayır.], $k_1 dots.c k_(10) quad pi = "imza"("aud", "iat", "c_nonce")$),
-  ("Cüzdan → Sənəd verən", [#{strong[Sənəd sorğusu.]} #{raw("Authorization: DPoP")} başlığı, eyni açarla yeni DPoP sübutu (#{raw("ath")} daxil) və açar attestasiyası.], $"POST /credential"$),
+  ("Cüzdan", [#{strong[Açarlar.]} On nüsxə üçün on ayrı açar yaradır; provayderdən açar attestasiyası (KA) alır və açar sübutunu imzalayır.], $k_1 dots.c k_(10) quad pi = "imza"("aud", "iat", "c_nonce")$),
+  ("Cüzdan → Sənəd verən", [#{strong[Sənəd sorğusu.]} #{raw("Authorization: DPoP")} başlığı, eyni açarla yeni DPoP sübutu (#{raw("ath")} daxil) və başlığında KA daşıyan açar sübutu.], $"POST /credential"$),
   ("Sənəd verən", [#{strong[Yoxlamalar.]} Token və əhatə; sübutun imzası, #{raw("aud")}, #{raw("iat")}; nonce-u atomik istifadə et; açarların fərqliliyi; növ səlahiyyəti hələ də qüvvədədirmi.], $"nonce" in "təzə toplu" => "sil"$),
   ("Sənəd verən", [#{strong[İmza.]} Məlumatı səlahiyyətli mənbədən oxuyur, hər nüsxəni ayrı açara bağlayır, hər nüsxəyə ləğv siyahısında təsadüfi yer ayırır və qurumun açarı ilə imzalayır.], $"cnf"_i = k_i quad "idx"_i <- "təsadüfi"$),
   ("Sənəd verən → Cüzdan", [#{strong[Cavab.]} Nüsxələri qaytarır; hər biri SD-JWT VC sətridir və son tilda ilə bitir.], $"credentials"[1 dots.c 10]$),
@@ -1514,7 +1514,7 @@ Bu addımın bir zəif tərəfi açıq deyilməlidir: canlılıq və üz uyğunl
   ("Şəxsiyyət xidməti → Provayder", [#{strong[Sessiya.]} Qeyri-şəffaf şəxs istinadı ilə sessiya açılır; şəxs sənədini skan edir, canlılıq və üz uyğunlaşdırması aparılır.], $"vendor_data" = "subject_ref"$),
   ("Şəxsiyyət xidməti", [#{strong[Qərar.]} Bildiriş gəlsə də, qərar provayderin qərar ucundan alınır; üç yoxlamadan keçibsə, səviyyə T2 olur.], $"T2" <== "sənəd" ∧ "canlılıq" ∧ "yüz"$),
   ("Şəxsiyyət xidməti → Cüzdan", [#{strong[Avtorizasiya kodu və token.]} Birdəfəlik kod PKCE yoxlaması və WIA ilə giriş tokeninə çevrilir; token DPoP açarına bağlıdır.], $"jkt" = "SHA-256"("JWK"_"dpop")$),
-  ("Cüzdan → Şəxsiyyət xidməti", [#{strong[Sənəd sorğusu.]} Hər nüsxə üçün ayrı cihaz açarı ilə açar sübutu və açar anbarı attestasiyası (KA) göndərilir.], $"cnf"_i != "cnf"_j quad (i != j)$),
+  ("Cüzdan → Şəxsiyyət xidməti", [#{strong[Sənəd sorğusu.]} Hər nüsxə üçün ayrı cihaz açarı ilə açar sübutu və açar attestasiyası (KA) göndərilir.], $"cnf"_i != "cnf"_j quad (i != j)$),
   ("Şəxsiyyət xidməti → Cüzdan", [#{strong[Vermə.]} SD-JWT VC və mdoc formatında 10 nüsxə; istənibsə, qısaömürlü ZK nüsxələri; ardından eyni tokenlə ayrıca sorğuda psevdonim toxumu.], []),
   ("Şəxsiyyət xidməti", [#{strong[Təmizləmə.]} Şəxs sahələri yaddaşdan silinir; daimi qeyddə yalnız qeyri-şəffaf istinad, sənəd nömrəsinin açarlı hash-i, müddət və ləğv siyahısı mövqeləri qalır.], $"document_number_hash" = "HMAC-SHA256"(k_"doc", "ölkə" ‖ "növ" ‖ "no")$),
 ))
@@ -2442,6 +2442,7 @@ Terminlər əlifba sırası ilə verilir. Orijinal termin mötərizədə göstə
 
 #tablo([#{strong[Cədvəl 50.]} Lüğət.], (24fr, 48fr), ([Termin], [Tərif],), (
   ([Açar attestasiyası (#{emph[key attestation]}, KA)], [Cüzdan provayderinin sənədin bağlanacağı açarların cihazın təhlükəsiz aparat təminatında yaradıldığını və qorunduğunu bəyan edən imzalı sənədi.],),
+  ([Açar sübutu (#{emph[proof of possession]}, #{raw("proof")})], [Cüzdanın sənəd sorğusuna əlavə etdiyi, sənədin bağlanacağı açarla imzalanmış qısa sübut (OpenID4VCI JWT proof); açarın cüzdanda olduğunu və sorğunun təzə olduğunu (#{raw("aud")}, #{raw("iat")}, #{raw("nonce")}) göstərir. Açar attestasiyası (KA) ilə qarışdırılmamalıdır: KA-nı cüzdan provayderi, sübutu isə cüzdan imzalayır.],),
   ([Ayrıca kanallı etibar lövbəri], [Siyahıların siyahısını imzalayan sertifikatın siyahılardan ayrı kanallarla dərc edilən barmaq izi.],),
   ([Cihaz bağlılığı (#{emph[key binding, holder binding]})], [Sənədin cihazın təhlükəsiz aparat təminatında yaradılmış açara bağlanması; göstərilmədə həmin açarla imza tələb olunur.],),
   ([Cihaz sübutu], [Əməliyyat sisteminin açarın təhlükəsiz zonada yaradıldığını və tətbiqin dəyişdirilmədiyini təsdiq edən imzalı bəyanı.],),

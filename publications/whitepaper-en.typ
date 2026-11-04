@@ -916,7 +916,7 @@ On the wallet-initiated path the authorisation code flow works together with OAu
   ("Wallet → Issuer", [#{strong[Presentation.]} Runs the standard presentation flow; the issuer passes the submission through the full verification pipeline.], $"vp_token" -> "T0 + A…E"$),
   ("Issuer", [#{strong[Matching.]} Matches the identity number and date of birth against the hash in the offer or against the record in the institution’s source; if they do not match, #{raw("access_denied")}.], $"HMAC"_k ("id no", "birth d.") attach(=, t: ?) "offer hash"$),
   ("Wallet → Issuer", [#{strong[Token.]} Exchanges the authorisation code for a token with the PKCE secret; the code is single-use and valid for at most 60 seconds.], $"access_token" <- ("code", v)$),
-  ("Wallet → Issuer", [#{strong[Credential.]} Nonce, key proofs and the credential request; the steps are the same as in the institution-initiated flow (Chapter 9.4).], $"proofs" -> "credential"$),
+  ("Wallet → Issuer", [#{strong[Credential.]} Nonce, key proofs (#{raw("proof")}) and the credential request; the steps are the same as in the institution-initiated flow (Chapter 9.4).], $"proofs" -> "credential"$),
 ))
 
 If a used authorisation code arrives a second time, the issuer first revokes the tokens issued from that code. This is a deliberate choice that, when the code is suspected of having leaked, puts closing the person’s session ahead of preventing the attacker from using the code (RFC 9700 \[23\] §4.5; SPEC-PROTO-0001 §11.2).
@@ -934,7 +934,7 @@ In the issuance flow three separate mechanisms answer three separate questions. 
 
 The second concerns freshness: was the wallet’s proof produced just now, or copied from somewhere else? The issuer’s #{strong[nonce endpoint]} gives out a single-use value (#{raw("c_nonce")}) valid for 5 minutes, and the value is consumed #{strong[atomically]}; consumption done in two steps, "check first, then delete", would leave a race that allowed the same proof to be used twice (PR4). In OpenID4VCI 1.0 this value comes only from the nonce endpoint.
 
-The third concerns the key: is the key the credential will be bound to really in the wallet? The wallet signs a small JWT with this key (#{raw("openid4vci-proof+jwt")}); it contains which issuer the proof is for (#{raw("aud")}), the moment of production (#{raw("iat")}) and the #{raw("nonce")} just obtained. The public key in the proof’s header is the key that will go into the credential’s #{raw("cnf")} field. Only ES256 is accepted in the proof (PR5).
+The third concerns the key: is the key the credential will be bound to really in the wallet? The wallet signs a small JWT with this key, the #{strong[key proof]} (#{raw("proof")}, a proof of possession of type #{raw("openid4vci-proof+jwt")}); it contains which issuer the proof is for (#{raw("aud")}), the moment of production (#{raw("iat")}) and the #{raw("nonce")} just obtained. The public key in the proof’s header is the key that will go into the credential’s #{raw("cnf")} field; the KA also travels in this header. Only ES256 is accepted in the proof (PR5).
 
 #kutu("teknik", [The DPoP binding and the steps of institution-initiated issuance])[
 In the DPoP binding the token is bound to the RFC 7638 \[24\] fingerprint of the public key in the proof. The fingerprint is the SHA-256 hash of the JSON of the key’s required fields, written in lexicographic order and without whitespace. At the credential endpoint every request also carries the hash of the token (#{raw("ath")}):
@@ -950,8 +950,8 @@ For the sample P-256 key in the specification (#{raw("x = f83OJ3D2…VEU")}, #{r
   ("Wallet → Issuer", [#{strong[Offer and description.]} Fetches the offer and the signed description document; matches the signer with the institution certificate in the list.], $"metadata" -> "list"$),
   ("Wallet → Issuer", [#{strong[Token.]} Sends the pre-authorised code and the transaction code, with a DPoP proof and the wallet instance attestation.], $"access_token" <- ("code", "tx_code", "DPoP", "WIA")$),
   ("Wallet → Issuer", [#{strong[Nonce.]} Obtains a fresh value from the nonce endpoint.], $"c_nonce" <- "nonce endpoint"$),
-  ("Wallet", [#{strong[Keys.]} Generates ten separate keys for ten copies; obtains a key attestation from the provider and signs the proof.], $k_1 dots.c k_(10) quad pi = "sign"("aud", "iat", "c_nonce")$),
-  ("Wallet → Issuer", [#{strong[Credential request.]} #{raw("Authorization: DPoP")} header, a new DPoP proof with the same key (including #{raw("ath")}) and the key attestation.], $"POST /credential"$),
+  ("Wallet", [#{strong[Keys.]} Generates ten separate keys for ten copies; obtains a key attestation (KA) from the provider and signs the key proof.], $k_1 dots.c k_(10) quad pi = "sign"("aud", "iat", "c_nonce")$),
+  ("Wallet → Issuer", [#{strong[Credential request.]} #{raw("Authorization: DPoP")} header, a new DPoP proof with the same key (including #{raw("ath")}) and the key proof, which carries the KA in its header.], $"POST /credential"$),
   ("Issuer", [#{strong[Checks.]} Token and scope; proof signature, #{raw("aud")}, #{raw("iat")}; consume the nonce atomically; keys distinct; is the type authorisation still valid.], $"nonce" in "fresh set" => "delete"$),
   ("Issuer", [#{strong[Signature.]} Reads the information from the authentic source, binds each copy to a separate key, reserves a random position in the status list for each copy and signs with the institution’s key.], $"cnf"_i = k_i quad "idx"_i <- "random"$),
   ("Issuer → Wallet", [#{strong[Response.]} Returns the copies; each is an SD-JWT VC string ending with the final tilde.], $"credentials"[1 dots.c 10]$),
@@ -1514,7 +1514,7 @@ The identity credential is started by the wallet, not by an institution; the flo
   ("Identity service → Provider", [#{strong[Session.]} A session is opened with an opaque person reference; the person scans their document, and liveness and face matching are performed.], $"vendor_data" = "subject_ref"$),
   ("Identity service", [#{strong[Decision.]} Even if a notification arrives, the decision is fetched from the provider’s decision endpoint; if all three checks pass, the level is T2.], $"T2" <== "document" ∧ "liveness" ∧ "face"$),
   ("Identity service → Wallet", [#{strong[Authorization code and token.]} The single-use code is exchanged for an access token with PKCE verification and the WIA; the token is bound to the DPoP key.], $"jkt" = "SHA-256"("JWK"_"dpop")$),
-  ("Wallet → Identity service", [#{strong[Credential request.]} For each copy, a key proof with a separate device key and the key store attestation (KA) are sent.], $"cnf"_i != "cnf"_j quad (i != j)$),
+  ("Wallet → Identity service", [#{strong[Credential request.]} For each copy, a key proof with a separate device key and the key attestation (KA) are sent.], $"cnf"_i != "cnf"_j quad (i != j)$),
   ("Identity service → Wallet", [#{strong[Issuance.]} 10 copies in SD-JWT VC and mdoc format; short-lived ZK copies if requested; then, in a separate request with the same token, the pseudonym seed.], []),
   ("Identity service", [#{strong[Clean-up.]} The person’s attributes are dropped from memory; the persistent record keeps only the opaque reference, a keyed hash of the document number, the validity period and the revocation list positions.], $"document_number_hash" = "HMAC-SHA256"(k_"doc", "country" ‖ "type" ‖ "no")$),
 ))
@@ -2464,6 +2464,7 @@ The terms are in alphabetical order. Technical terms are not translated. The def
   ([Intermediary], [A service that requests and verifies credentials from the wallet on behalf of a verifier; the wallet shows the name of the actual verifier. In Tamga, Tamga Verify.],),
   ([Issuer (#{emph[attestation provider]})], [The institution that issues the credential: a university, a professional body, a ticket seller and so on.],),
   ([Key attestation (KA)], [A signed document in which the wallet provider declares that the keys to which the credential will be bound were generated and are protected in the device’s secure hardware.],),
+  ([Key proof (#{emph[proof of possession]}, #{raw("proof")})], [A short proof that the wallet attaches to its credential request, signed with the key to which the credential will be bound (the OpenID4VCI JWT proof); it shows that the key is in the wallet and that the request is fresh (#{raw("aud")}, #{raw("iat")}, #{raw("nonce")}). Not to be confused with the key attestation (KA): the wallet provider signs the KA, the wallet signs the key proof.],),
   ([Ledger], [A ledger (chain) in which the digests of trust entries are kept by multiple independent operators; it does not exist today.],),
   ([Ledger stage], [The stage in which list digests are also written to a shared ledger kept by multiple independent operators.],),
   ([List of Trusted Lists (LoTL)], [A signed list showing the addresses, signers and recognition status of the country lists.],),

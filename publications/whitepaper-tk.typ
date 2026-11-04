@@ -916,7 +916,7 @@ Gapjygyň başladýan ýolunda ygtyýarlandyryş kody akymy OAuth-yň howpsuzlyk
   ("Gapjyk → Resminama beriji", [#{strong[Hödürleme.]} Standart hödürleme akymyny işledýär; resminama beriji hödürlemäni doly barlag hataryndan geçirýär.], $"vp_token" -> "T0 + A…E"$),
   ("Resminama beriji", [#{strong[Deňeşdirme.]} Şahsyýet belgisini we doglan senesini teklipdäki heş ýa-da guramanyň çeşmesindäki ýazgy bilen deňeşdirýär; gabat gelmese #{raw("access_denied")}.], $"HMAC"_k ("şahsyýet belgisi", "doglan s.") attach(=, t: ?) "teklip heşi"$),
   ("Gapjyk → Resminama beriji", [#{strong[Bellik.]} Ygtyýarlandyryş koduny PKCE syry bilen bellige çalyşýar; kod bir gezeklik we iň köp 60 sekuntlyk.], $"access_token" <- ("code", v)$),
-  ("Gapjyk → Resminama beriji", [#{strong[Resminama.]} Nonce, açar subutnamalary we resminama haýyşy; ädimler guramanyň başladýan akymy bilen birmeňzeş (9.4-nji bölüm).], $"proofs" -> "credential"$),
+  ("Gapjyk → Resminama beriji", [#{strong[Resminama.]} Nonce, açar subutnamalary (#{raw("proof")}) we resminama haýyşy; ädimler guramanyň başladýan akymy bilen birmeňzeş (9.4-nji bölüm).], $"proofs" -> "credential"$),
 ))
 
 Ulanylan ygtyýarlandyryş kody ikinji gezek gelse, resminama beriji ilki şol koddan berlen bellikleri yzyna alýar. Bu kodyň syzandygyndan şübhelenilende adamyň sessiýasyny ýapmagy hüjümçiniň kody ulanmagynyň öňüni almakdan öňe goýýan bilkastlaýyn saýlawdyr (RFC 9700 \[23\] §4.5; SPEC-PROTO-0001 §11.2).
@@ -934,7 +934,7 @@ Resminama beriş akymynda üç aýry mehanizm üç aýry soraga jogap berýär. 
 
 Ikinjisi täzelik bilen bagly: gapjygyň subutnamasy ýaňy döredildimi ýa-da başga ýerden göçürildimi? Resminama berijiniň #{strong[nonce nokady]} 5 minut güýjünde bolan, bir gezeklik bahany (#{raw("c_nonce")}) berýär we baha #{strong[atomlaýyn]} sarp edilýär; "ilki barla, soňra poz" diýip iki ädimde edilýän sarp ediş şol bir subutnamanyň iki gezek ulanylmagyna getirýän ýaryşy galdyrardy (PR4). OpenID4VCI 1.0-da bu baha diňe nonce nokadyndan gelýär.
 
-Üçünjisi açar bilen bagly: resminamanyň baglanjak açary hakykatdanam gapjykdamy? Gapjyk şu açar bilen kiçijik JWT-ä gol çekýär (#{raw("openid4vci-proof+jwt")}); onuň içinde subutnamanyň haýsy resminama beriji üçindigi (#{raw("aud")}), döredilen pursaty (#{raw("iat")}) we ýaňy alnan #{raw("nonce")} bar. Subutnamanyň sözbaşysyndaky açyk açar resminamanyň #{raw("cnf")} meýdanyna girjek açardyr. Subutnamada diňe ES256 kabul edilýär (PR5).
+Üçünjisi açar bilen bagly: resminamanyň baglanjak açary hakykatdanam gapjykdamy? Gapjyk şu açar bilen kiçijik JWT-ä gol çekýär: #{strong[açar subutnamasy]} (#{raw("proof")}, görnüşi #{raw("openid4vci-proof+jwt")}); onuň içinde subutnamanyň haýsy resminama beriji üçindigi (#{raw("aud")}), döredilen pursaty (#{raw("iat")}) we ýaňy alnan #{raw("nonce")} bar. Subutnamanyň sözbaşysyndaky açyk açar resminamanyň #{raw("cnf")} meýdanyna girjek açardyr; KA hem şu sözbaşyda göterilýär. Subutnamada diňe ES256 kabul edilýär (PR5).
 
 #kutu("teknik", [DPoP baglanyşygy we guramanyň başladýan bermesiniň ädimleri])[
 DPoP baglanyşygynda bellik subutnamadaky açyk açaryň RFC 7638 \[24\] barmak yzyna baglanýar. Barmak yzy açaryň hökmany meýdanlarynyň sözlük tertibinde we boşluksyz ýazylan JSON-ynyň SHA-256 heşidir. Resminama nokadynda her haýyş mundan başga-da belligiň heşini (#{raw("ath")}) göterýär:
@@ -950,8 +950,8 @@ Spesifikasiýadaky mysal P-256 açary (#{raw("x = f83OJ3D2…VEU")}, #{raw("y = 
   ("Gapjyk → Resminama beriji", [#{strong[Teklip we tanyşdyryş.]} Teklibi we gol çekilen tanyşdyryş resminamasyny alýar; gol çekijini sanawdaky gurama sertifikaty bilen deňeşdirýär.], $"metadata" -> "sanaw"$),
   ("Gapjyk → Resminama beriji", [#{strong[Bellik.]} Öňünden ygtyýarlandyrylan kody we amal koduny DPoP subutnamasy hem gapjyk nusgasy tassyklamasy bilen iberýär.], $"access_token" <- ("code", "tx_code", "DPoP", "WIA")$),
   ("Gapjyk → Resminama beriji", [#{strong[Nonce.]} Nonce nokadyndan täze baha alýar.], $"c_nonce" <- "nonce nokady"$),
-  ("Gapjyk", [#{strong[Açarlar.]} On nusga üçin on aýry açar döredýär; üpjün edijiden açar tassyklamasyny alýar we subutnama gol çekýär.], $k_1 dots.c k_(10) quad pi = "gol"("aud", "iat", "c_nonce")$),
-  ("Gapjyk → Resminama beriji", [#{strong[Resminama haýyşy.]} #{raw("Authorization: DPoP")} sözbaşysy, şol bir açar bilen täze DPoP subutnamasy (#{raw("ath")} bilen) we açar tassyklamasy.], $"POST /credential"$),
+  ("Gapjyk", [#{strong[Açarlar.]} On nusga üçin on aýry açar döredýär; üpjün edijiden açar tassyklamasyny (KA) alýar we açar subutnamasyna gol çekýär.], $k_1 dots.c k_(10) quad pi = "gol"("aud", "iat", "c_nonce")$),
+  ("Gapjyk → Resminama beriji", [#{strong[Resminama haýyşy.]} #{raw("Authorization: DPoP")} sözbaşysy, şol bir açar bilen täze DPoP subutnamasy (#{raw("ath")} bilen) we sözbaşysynda KA göterýän açar subutnamasy.], $"POST /credential"$),
   ("Resminama beriji", [#{strong[Barlaglar.]} Bellik we çäk; subutnamanyň goly, #{raw("aud")}, #{raw("iat")}; nonce-y atomlaýyn sarp et; açarlaryň tapawutlylygy; görnüş ygtyýary henizem güýjündemi.], $"nonce" in "täze toplum" => "poz"$),
   ("Resminama beriji", [#{strong[Gol.]} Maglumaty ygtyýarly çeşmeden okaýar, her nusgany aýry açara baglaýar, her nusga üçin ýatyrylyş sanawynda tötänleýin orun goýýar we guramanyň açary bilen gol çekýär.], $"cnf"_i = k_i quad "idx"_i <- "tötänleýin"$),
   ("Resminama beriji → Gapjyk", [#{strong[Jogap.]} Nusgalary gaýtarýar; olaryň her biri SD-JWT VC setiridir we soňky tilda bilen gutarýar.], $"credentials"[1 dots.c 10]$),
@@ -1514,7 +1514,7 @@ Bu ädimiň bir gowşak tarapyny aç-açan aýtmak gerek: janlylyk we ýüz deň
   ("Şahsyýet hyzmaty → Üpjün ediji", [#{strong[Sessiýa.]} Opak adam salgylanmasy bilen sessiýa açylýar; adam resminamasyny skanirleýär, janlylyk we ýüz deňeşdirmesi edilýär.], $"vendor_data" = "subject_ref"$),
   ("Şahsyýet hyzmaty", [#{strong[Karar.]} Habarnama gelse-de, karar üpjün edijiniň karar nokadyndan alynýar; üç barlag geçilen bolsa dereje T2 bolýar.], $"T2" <== "resminama" ∧ "janlylyk" ∧ "ýüz"$),
   ("Şahsyýet hyzmaty → Gapjyk", [#{strong[Ygtyýarlandyryş kody we bellik.]} Bir gezeklik kod PKCE barlagy we WIA bilen giriş belligine öwrülýär; bellik DPoP açaryna bagly.], $"jkt" = "SHA-256"("JWK"_"dpop")$),
-  ("Gapjyk → Şahsyýet hyzmaty", [#{strong[Resminama haýyşy.]} Her nusga üçin aýry enjam açary bilen açar subutnamasy we açar ammarynyň tassyklamasy (KA) iberilýär.], $"cnf"_i != "cnf"_j quad (i != j)$),
+  ("Gapjyk → Şahsyýet hyzmaty", [#{strong[Resminama haýyşy.]} Her nusga üçin aýry enjam açary bilen açar subutnamasy we açar tassyklamasy (KA) iberilýär.], $"cnf"_i != "cnf"_j quad (i != j)$),
   ("Şahsyýet hyzmaty → Gapjyk", [#{strong[Bermek.]} SD-JWT VC we mdoc görnüşinde 10 nusga; soralan bolsa gysga ömürli ZK nusgalary; soňra şol bir bellik bilen aýry haýyşda lakam tohumy.], []),
   ("Şahsyýet hyzmaty", [#{strong[Arassalamak.]} Adamyň meýdanlary ýatdan aýrylýar; hemişelik ýazgyda diňe opak salgylanma, resminama belgisiniň açarly heşi, möhlet we ýatyrylyş sanawyndaky orunlar galýar.], $"document_number_hash" = "HMAC-SHA256"(k_"doc", "ýurt" ‖ "görnüş" ‖ "no")$),
 ))
@@ -2441,6 +2441,7 @@ Resminamanyň dowamynda üç saýlaw gaýta-gaýta öňümizden çykdy. Tehniki 
 Adalgalar elipbiý tertibinde. Asyl adalga ýaýyň içinde berilýär; tehniki adalgalar terjime edilmeýär. Kesgitlemeler toruň sözlügi (FW-DEF-0001) we tapgyryň makalalary bilen ylalaşykly (Tablisa 50).
 
 #tablo([#{strong[Tablisa 50.]} Sözlük.], (24fr, 48fr), ([Adalga], [Kesgitleme],), (
+  ([Açar subutnamasy (#{emph[proof of possession]}, #{raw("proof")})], [Gapjygyň resminama haýyşyna goşýan, resminamanyň baglanjak açary bilen gol çekilen gysga subutnamasy (OpenID4VCI JWT proof); açaryň gapjykdadygyny we haýyşyň täzedigini (#{raw("aud")}, #{raw("iat")}, #{raw("nonce")}) görkezýär. Açar tassyklamasy (KA) bilen garyşdyrmaly däl: KA-a gapjyk üpjün edijisi, subutnama bolsa gapjyk gol çekýär.],),
   ([Açar tassyklamasy (#{emph[key attestation]}, KA)], [Gapjyk üpjün edijisiniň resminamanyň baglanjak açarlarynyň enjamyň howpsuz enjamynda döredilendigini we goralýandygyny beýan edýän gol çekilen resminamasy.],),
   ([Alnyş şahasy], [Gol çekilen haýyş obýektiniň her alnyşynda açylýan, öz #{raw("state")}, #{raw("nonce")} we şifrleme açary bolan aýry sessiýa; ret diňe öz şahasyny ýapýar.],),
   ([Araçy barlaýjy (#{emph[intermediary]})], [Barlaýjynyň adyndan gapjykdan resminama soraýan we ony barlaýan hyzmat; gapjyk esasy barlaýjynyň adyny görkezýär. Tamga-da Tamga Verify.],),

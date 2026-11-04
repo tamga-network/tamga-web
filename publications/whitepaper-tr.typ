@@ -916,7 +916,7 @@ Cüzdanın başlattığı yolda yetki kodu akışı, OAuth’un güvenlik eklent
   ("Cüzdan → Belge veren", [#{strong[Gösterim.]} Standart gösterim akışını çalıştırır; belge veren sunumu tam doğrulama hattından geçirir.], $"vp_token" -> "T0 + A…E"$),
   ("Belge veren", [#{strong[Eşleme.]} Kimlik numarası ve doğum tarihini teklifteki özetle ya da kurumun kaynağındaki kayıtla eşler; eşleşmezse #{raw("access_denied")}.], $"HMAC"_k ("kimlik no", "doğum t.") attach(=, t: ?) "teklif özeti"$),
   ("Cüzdan → Belge veren", [#{strong[Belirteç.]} Yetki kodunu PKCE sırrıyla belirtece çevirir; kod tek kullanımlık ve en çok 60 saniyelik.], $"access_token" <- ("code", v)$),
-  ("Cüzdan → Belge veren", [#{strong[Belge.]} Nonce, anahtar kanıtları ve belge isteği; adımlar kurumun başlattığı akışla aynıdır (Bölüm 9.4).], $"proofs" -> "credential"$),
+  ("Cüzdan → Belge veren", [#{strong[Belge.]} Nonce, anahtar sahipliği ispatları (#{raw("proof")}) ve belge isteği; adımlar kurumun başlattığı akışla aynıdır (Bölüm 9.4).], $"proofs" -> "credential"$),
 ))
 
 Kullanılmış bir yetki kodu ikinci kez gelirse belge veren o koddan verilmiş belirteçleri önce geri alır. Bu, kodun sızdığı şüphesinde kişinin oturumunu kapatmayı saldırganın kodu kullanmasını engellemekten önce getiren bilinçli bir tercihtir (RFC 9700 \[23\] §4.5; SPEC-PROTO-0001 §11.2).
@@ -928,13 +928,13 @@ Belge veren karşısındakinin listede tanınan bir cüzdan mı, sahte bir istem
 
 Belge veren WIA’nın imzasını, imzacının listedeki bir cüzdan sağlayıcısına ait olduğunu, süresini, sahiplik kanıtını ve iptal durumunu denetler; KA’nın imzasını, iptal durumunu ve depo seviyesinin kurumun alt sınırını karşıladığını denetler. Listede olmayan bir sağlayıcının cüzdanına belge verilmez; iptal edilmiş bir kanıtla da verilmez (PR11, PR19). Kurumlar alt sınırı kendi politikalarıyla yükseltebilir. Gerçek ağda kimlik servisi yalnız anahtar kanıtlı isteği kabul eder ve güvenli bölge seviyesini alt sınır olarak uygular; sandbox ve yerel geliştirme yazılım seviyesini kabul etmeyi sürdürür (SPEC-PROTO-0001 §11.1.1). Eski model, 30 gün geçerli ve her kuruma aynı gösterilen tek bir cüzdan kanıtıydı; bağlanabilir ve iptal edilemez olduğu için bırakıldı (ADR-0025). Ayrıntı Bölüm 13’tedir.
 
-== DPoP, nonce ve anahtar kanıtı
+== DPoP, nonce ve anahtar sahipliği ispatı
 
 Belge verme akışında üç ayrı mekanizma, üç ayrı soruyu cevaplar. Birincisi belirteçle ilgilidir: erişim belirteci çalınırsa ne olur? Tamga’da erişim belirteci #{strong[DPoP]} \[20\] ile göndericisine bağlıdır (RFC 9449). Cüzdan geçici bir P-256 anahtarıyla imzalı bir kanıt gönderir ve belge veren belirteci bu anahtarın parmak izine bağlar; belirteci çalan, anahtar onda olmadığı için onu kullanamaz. Kanıt tek kullanımlıktır ve ±5 dakikalık bir pencereye sahiptir; belirtecin ömrü 5 dakikadır (PR9, PR17).
 
-İkincisi tazelikle ilgilidir: cüzdanın kanıtı az önce mi üretildi, yoksa başka bir yerden mi kopyalandı? Belge verenin #{strong[nonce ucu]} 5 dakika geçerli, tek kullanımlık bir değer (#{raw("c_nonce")}) verir ve değer #{strong[atomik]} olarak tüketilir; "önce kontrol et, sonra sil" diye iki adımda yapılan tüketim aynı kanıtın iki kez kullanılmasına yol açan bir yarış bırakırdı (PR4). OpenID4VCI 1.0’da bu değer yalnız nonce ucundan gelir.
+İkincisi tazelikle ilgilidir: cüzdanın kanıtı az önce mi üretildi, yoksa başka bir yerden mi kopyalandı? Belge verenin #{strong[nonce ucu]} 5 dakika geçerli, tek kullanımlık bir değer (#{raw("c_nonce")}) verir ve değer #{strong[atomik]} olarak tüketilir; "önce kontrol et, sonra sil" diye iki adımda yapılan tüketim aynı ispatın iki kez kullanılmasına yol açan bir yarış bırakırdı (PR4). OpenID4VCI 1.0’da bu değer yalnız nonce ucundan gelir.
 
-Üçüncüsü anahtarla ilgilidir: belgenin bağlanacağı anahtar gerçekten cüzdanda mı? Cüzdan bu anahtarla küçük bir JWT imzalar (#{raw("openid4vci-proof+jwt")}); içinde kanıtın hangi belge veren için olduğu (#{raw("aud")}), üretim anı (#{raw("iat")}) ve az önce alınan #{raw("nonce")} bulunur. Kanıtın başlığındaki açık anahtar, belgenin #{raw("cnf")} alanına girecek anahtardır. Kanıtta yalnız ES256 kabul edilir (PR5).
+Üçüncüsü anahtarla ilgilidir: belgenin bağlanacağı anahtar gerçekten cüzdanda mı? Cüzdan bu anahtarla küçük bir JWT imzalar: #{strong[anahtar sahipliği ispatı]} (#{raw("proof")}, türü #{raw("openid4vci-proof+jwt")}); içinde ispatın hangi belge veren için olduğu (#{raw("aud")}), üretim anı (#{raw("iat")}) ve az önce alınan #{raw("nonce")} bulunur. İspatın başlığındaki açık anahtar, belgenin #{raw("cnf")} alanına girecek anahtardır; KA da bu başlıkta taşınır. İspatta yalnız ES256 kabul edilir (PR5).
 
 #kutu("teknik", [DPoP bağı ve kurumun başlattığı vermenin adımları])[
 DPoP bağında belirteç, kanıttaki açık anahtarın RFC 7638 \[24\] parmak izine bağlanır. Parmak izi, anahtarın zorunlu alanlarının sözlük sırasıyla ve boşluksuz yazılmış JSON’unun SHA-256 özetidir. Belge ucunda her istek ayrıca belirtecin özetini (#{raw("ath")}) taşır:
@@ -950,9 +950,9 @@ DPoP bağında belirteç, kanıttaki açık anahtarın RFC 7638 \[24\] parmak iz
   ("Cüzdan → Belge veren", [#{strong[Teklif ve tanıtım.]} Teklifi ve imzalı tanıtım belgesini çeker; imzacıyı listedeki kurum sertifikasıyla eşler.], $"metadata" -> "liste"$),
   ("Cüzdan → Belge veren", [#{strong[Belirteç.]} Ön yetkili kodu ve işlem kodunu, DPoP kanıtı ve cüzdan örneği kanıtıyla gönderir.], $"access_token" <- ("code", "tx_code", "DPoP", "WIA")$),
   ("Cüzdan → Belge veren", [#{strong[Nonce.]} Nonce ucundan taze değer alır.], $"c_nonce" <- "nonce ucu"$),
-  ("Cüzdan", [#{strong[Anahtarlar.]} On kopya için on ayrı anahtar üretir; sağlayıcıdan anahtar kanıtı alır ve kanıtı imzalar.], $k_1 dots.c k_(10) quad pi = "imza"("aud", "iat", "c_nonce")$),
-  ("Cüzdan → Belge veren", [#{strong[Belge isteği.]} #{raw("Authorization: DPoP")} başlığı, aynı anahtarla yeni DPoP kanıtı (#{raw("ath")} dahil) ve anahtar kanıtı.], $"POST /credential"$),
-  ("Belge veren", [#{strong[Denetimler.]} Belirteç ve kapsam; kanıt imzası, #{raw("aud")}, #{raw("iat")}; nonce’u atomik tüket; anahtarların farklılığı; tür yetkisi hâlâ geçerli mi.], $"nonce" in "taze küme" => "sil"$),
+  ("Cüzdan", [#{strong[Anahtarlar.]} On kopya için on ayrı anahtar üretir; sağlayıcıdan anahtar kanıtı (KA) alır ve anahtar sahipliği ispatını imzalar.], $k_1 dots.c k_(10) quad pi = "imza"("aud", "iat", "c_nonce")$),
+  ("Cüzdan → Belge veren", [#{strong[Belge isteği.]} #{raw("Authorization: DPoP")} başlığı, aynı anahtarla yeni DPoP kanıtı (#{raw("ath")} dahil) ve başlığında KA taşıyan anahtar sahipliği ispatı.], $"POST /credential"$),
+  ("Belge veren", [#{strong[Denetimler.]} Belirteç ve kapsam; ispatın imzası, #{raw("aud")}, #{raw("iat")}; nonce’u atomik tüket; anahtarların farklılığı; tür yetkisi hâlâ geçerli mi.], $"nonce" in "taze küme" => "sil"$),
   ("Belge veren", [#{strong[İmza.]} Bilgiyi yetkili kaynaktan okur, her kopyayı ayrı anahtara bağlar, her kopyaya iptal listesinde rastgele yer ayırır ve kurumun anahtarıyla imzalar.], $"cnf"_i = k_i quad "idx"_i <- "rastgele"$),
   ("Belge veren → Cüzdan", [#{strong[Yanıt.]} Kopyaları döner; her biri SD-JWT VC dizesidir ve son tilde ile biter.], $"credentials"[1 dots.c 10]$),
 ))
@@ -1514,7 +1514,7 @@ Kimlik belgesini kurum değil cüzdan başlatır; akış OpenID4VCI’nin \[30\]
   ("Kimlik servisi → Sağlayıcı", [#{strong[Oturum.]} Opak bir kişi referansıyla oturum açılır; kişi belgesini tarar, canlılık ve yüz eşleştirmesi yapılır.], $"vendor_data" = "subject_ref"$),
   ("Kimlik servisi", [#{strong[Karar.]} Bildirim gelse de karar sağlayıcının karar ucundan çekilir; üç denetim geçmişse seviye T2 olur.], $"T2" <== "belge" ∧ "canlılık" ∧ "yüz"$),
   ("Kimlik servisi → Cüzdan", [#{strong[Yetki kodu ve belirteç.]} Tek kullanımlık kod, PKCE doğrulaması ve WIA ile erişim belirtecine çevrilir; belirteç DPoP anahtarına bağlıdır.], $"jkt" = "SHA-256"("JWK"_"dpop")$),
-  ("Cüzdan → Kimlik servisi", [#{strong[Belge isteği.]} Her kopya için ayrı cihaz anahtarıyla anahtar kanıtı ve anahtar deposu kanıtı (KA) gönderilir.], $"cnf"_i != "cnf"_j quad (i != j)$),
+  ("Cüzdan → Kimlik servisi", [#{strong[Belge isteği.]} Her kopya için ayrı cihaz anahtarıyla anahtar sahipliği ispatı ve anahtar kanıtı (KA) gönderilir.], $"cnf"_i != "cnf"_j quad (i != j)$),
   ("Kimlik servisi → Cüzdan", [#{strong[Verme.]} SD-JWT VC ve mdoc biçiminde 10 kopya; istenmişse kısa ömürlü ZK kopyaları; ardından aynı belirteçle ayrı bir istekte takma ad tohumu.], []),
   ("Kimlik servisi", [#{strong[Temizlik.]} Kişi alanları bellekten atılır; kalıcı kayıtta yalnız opak referans, belge numarasının anahtarlı özeti, süre ve iptal listesi konumları kalır.], $"document_number_hash" = "HMAC-SHA256"(k_"doc", "ülke" ‖ "tür" ‖ "no")$),
 ))
@@ -2442,6 +2442,7 @@ Terimler alfabetik sıradadır. Özgün terim parantezde verilir; teknik terimle
 
 #tablo([#{strong[Tablo 50.]} Sözlük.], (22fr, 48fr), ([Terim], [Tanım],), (
   ([Anahtar kanıtı (#{emph[key attestation]}, KA)], [Cüzdan sağlayıcısının, belgenin bağlanacağı anahtarların cihazın güvenli donanımında üretildiğini ve korunduğunu beyan eden imzalı belge.],),
+  ([Anahtar sahipliği ispatı (#{emph[proof of possession]}, #{raw("proof")})], [Cüzdanın belge isteğine eklediği, belgenin bağlanacağı anahtarla imzalanmış kısa kanıt (OpenID4VCI JWT proof); anahtarın cüzdanda olduğunu ve isteğin taze olduğunu (#{raw("aud")}, #{raw("iat")}, #{raw("nonce")}) gösterir. Anahtar kanıtıyla (KA) karıştırılmamalıdır: KA’yı cüzdan sağlayıcısı imzalar, ispatı cüzdan.],),
   ([Aracı doğrulayıcı (#{emph[intermediary]})], [Bir doğrulayıcı adına cüzdandan belge isteyen ve doğrulayan hizmet; cüzdan asıl doğrulayıcının adını gösterir. Tamga’da Tamga Verify.],),
   ([Askı (#{emph[suspension]})], [Bir belgenin geçici olarak geçersiz sayılması; yalnız şeması izin veren kurum belgelerinde vardır, kimlik türlerinde yoktur.],),
   ([Bağlanamazlık (#{emph[unlinkability]})], [Farklı doğrulayıcıların aynı kişinin gösterimlerini birbiriyle eşleştirememesi.],),

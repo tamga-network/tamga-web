@@ -1644,10 +1644,10 @@ export const CHAPTER_7: LearnPage[] = [
         az: "Testlərdən keçən provayderin imza açarı etibar siyahılarının siyahısına əlavə olunur; Tamga Wallet da eyni yolu keçir.",
       },
       {
-        tr: "Denemeler ayrı bir test ağında (sandbox) yapılır: uydurma kişiler, ayrı güven kökü ve gerçekçi olsun diye gerçek adlı örnek kurumlar (İstanbul Bilgi Üniversitesi, Bubilet, Paribu Cineverse; İstanbul Bilgi Üniversitesi pilot ortağımızdır, diğer ikisiyle bir ilişki ya da anlaşma yoktur); oradaki belge test anahtarıyla imzalıdır, hiçbir yerde geçmez.",
-        en: "Testing happens on a separate test network (the sandbox): made-up people, its own trust root and, to keep it realistic, example institutions under real names (İstanbul Bilgi Üniversitesi, Bubilet, Paribu Cineverse; İstanbul Bilgi Üniversitesi is our pilot partner, and there is no relationship or agreement with the other two); a credential from there is signed with a test key and is not valid anywhere.",
-        tk: "Synaglar aýry synag ulgamynda (sandbox) geçirilýär: oýlanyp tapylan adamlar, aýry ynam köki we hakyky bolar ýaly hakyky atly nusga guramalar (İstanbul Bilgi Üniversitesi, Bubilet, Paribu Cineverse; İstanbul Bilgi Üniversitesi biziň pilot hyzmatdaşymyz, beýleki ikisi bilen hiç hili gatnaşyk ýa-da ylalaşyk ýok); ondaky resminama synag açary bilen gol çekilen, hiç ýerde geçmeýär.",
-        az: "Sınaqlar ayrıca test şəbəkəsində (sandbox) aparılır: uydurma şəxslər, öz etibar kökü və real görünməsi üçün həqiqi adlarla nümunə qurumlar (İstanbul Bilgi Üniversitesi, Bubilet, Paribu Cineverse; İstanbul Bilgi Üniversitesi pilot tərəfdaşımızdır, digər ikisi ilə heç bir əlaqə və ya razılaşma yoxdur); oradan verilən rəqəmsal sənəd test açarı ilə imzalanır və heç bir yerdə etibarlı deyil.",
+        tr: "Denemeler ayrı bir test ağında (sandbox) yapılır: uydurma kişiler, ayrı güven kökü ve kurgusal örnek kurumlar (Örnek Üniversitesi, Örnek Etkinlik, Örnek Sinema); oradaki belge test anahtarıyla imzalıdır, hiçbir yerde geçmez.",
+        en: "Testing happens on a separate test network (the sandbox): made-up people, its own trust root and fictional example institutions (Example University, Example Events, Example Cinema); a credential from there is signed with a test key and is not valid anywhere.",
+        tk: "Synaglar aýry synag ulgamynda (sandbox) geçirilýär: oýlanyp tapylan adamlar, aýry ynam köki we oýlanyp tapylan nusga guramalar (Örnek Üniversitesi, Örnek Etkinlik, Örnek Sinema); ondaky resminama synag açary bilen gol çekilen, hiç ýerde geçmeýär.",
+        az: "Sınaqlar ayrıca test şəbəkəsində (sandbox) aparılır: uydurma şəxslər, öz etibar kökü və uydurma nümunə qurumlar (Örnek Üniversitesi, Örnek Etkinlik, Örnek Sinema); oradan verilən rəqəmsal sənəd test açarı ilə imzalanır və heç bir yerdə etibarlı deyil.",
       },
     ],
     deeper: [
