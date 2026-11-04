@@ -1,13 +1,17 @@
+import { headers } from "next/headers";
 import { SITE_NAME, SITE_URL } from "@/lib/seo";
 
 /**
  * Arama motorları için yapılandırılmış veri (schema.org, JSON-LD). Çalıştırılan betik değil, veri bloğudur; CSP'nin
- * betik kuralı onu engellemez. `<` kaçışı, içerikteki metnin bloğu kapatmasını önler.
+ * betik kuralı onu engellemez. Yine de isteğin nonce'unu taşır (src/proxy.ts → `x-nonce`): bütün satır içi <script>
+ * etiketleri nonce'lu olsun, denetimde istisna kalmasın. `<` kaçışı, içerikteki metnin bloğu kapatmasını önler.
  */
-export function JsonLd({ data }: { data: Record<string, unknown> | Record<string, unknown>[] }) {
+export async function JsonLd({ data }: { data: Record<string, unknown> | Record<string, unknown>[] }) {
+  const nonce = (await headers()).get("x-nonce") ?? undefined;
   return (
     <script
       type="application/ld+json"
+      nonce={nonce}
       dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, "\\u003c") }}
     />
   );
