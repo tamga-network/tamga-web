@@ -4,9 +4,11 @@ import type { WalletMockData, FlowNode } from "@/components/scenario-visuals";
 /* Senaryolar (2026-10-06 yeniden yazım, proje yönetimi onayı): eğitim ana senaryo (öğrenci yolculuğu, adım adım durum);
    bugün çalışanlar ARF 1.0 §2.8 "Yayında" listesinden (bilet + tek kullanımlık kapı, siteye giriş + takma ad, yaş kontrolü,
    Tamga Verify); sağlık ADR-0028 (Proposed) → "karar aşamasında"; iş ve kamu → vizyon; lojistik ve ödeme → araştırma
-   (whitepaper §13 değer katmanı). Eğitim kaynakları: Education Rulebook, WP §8 (veriliş tarihi kuralı), §9 (iptal birkaç dakikada; 2026-10-09: aralık 2 dk),
-   §11 (60 sn geçiş), ADR-0023, partners.ts (pilot ortak). Bugün "çalışıyor" = ağda ve sandbox'ta uçtan uca; gerçek ağda ilk
-   kurum pilotla. */
+   (whitepaper Bölüm 19.9 değer katmanı). Eğitim kaynakları: Education Rulebook, WP Bölüm 11.3 (veriliş tarihi kuralı), 12.5 (iptal
+   birkaç dakikada; aralık 2 dk), 10.9 (60 sn geçiş), 8.5 ve 20.2 (ELM / Europass alan anlamı), ADR-0023. Bugün "çalışıyor" = ağda ve
+   sandbox'ta uçtan uca; gerçek ağda kurum belgeleri ilk kurumlar katıldıkça (WP 22.1–22.2, "Hazırlık" aşaması). 2026-11-04: kamuya
+   açık metinde kurum/pilot ortak adı yok; "pilot" ifadeleri whitepaper'ın koşullu yol haritasına çevrildi. Durum anahtarı "pilot"
+   = "Hazırlık aşamasında". */
 
 export type StepStatus = "today" | "pilot" | "later";
 export type Scenario = { title: string; body: string; status?: StepStatus };
@@ -23,7 +25,7 @@ export type Vertical = {
   /** Başlığın yanındaki durum etiketi (sayfaya çapayla gelen de görsün). */
   badge: string;
   tone: VerticalTone;
-  /** İsteğe bağlı bilgi kutusu (ör. pilot ortak). */
+  /** İsteğe bağlı bilgi kutusu (ör. ilk sektör notu). */
   callout?: { title: string; body: string };
 };
 export type ScenariosContent = {
@@ -50,8 +52,8 @@ const en: ScenariosContent = {
   title: "Scenarios: education first, one trust layer",
   intro:
     "Education is the network's first and main scenario: a student's documents from enrolment to the first job application. Tickets, website sign-in and age checks run on the same layer today. Health is at the decision stage; work, public services, logistics and payments show where the layer can go. Every scenario carries its status.",
-  note: "The screens are illustrative mockups of a wallet on the network and use example values only. “Works today” means the scenario runs end to end in the sandbox on the network's live software. The first real institution joins with the pilot.",
-  statusLabels: { today: "Works today", pilot: "With the pilot", later: "Later" },
+  note: "The screens are illustrative mockups of a wallet on the network and use example values only. “Works today” means the scenario runs end to end in the sandbox on the network's live software. Institution credentials reach the real network as the first institutions join.",
+  statusLabels: { today: "Works today", pilot: "In preparation", later: "Later" },
   verticals: [
     {
       id: "education",
@@ -96,12 +98,12 @@ const en: ScenariosContent = {
         {
           status: "later",
           title: "A master's degree abroad",
-          body: "The diploma follows the EU's learning standards (ELM). Europass alignment and recognition through other Turkic states' own lists are planned steps after the pilot.",
+          body: "The meaning of the diploma's fields follows the EU's learning model (ELM / Europass). Recognition through other Turkic states' own lists is a later step that depends on those states joining.",
         },
       ],
       callout: {
-        title: "Pilot partner: İstanbul Bilgi Üniversitesi",
-        body: "We will pilot education with İstanbul Bilgi Üniversitesi. Until the pilot starts, every step above can be tried in the sandbox, where the university appears as a test institution.",
+        title: "Education is the first sector",
+        body: "Until the first institutions join the real network, every step above can be tried in the sandbox, where an example university appears as a test institution.",
       },
       wallet: {
         app: "Wallet",
@@ -448,8 +450,8 @@ const tr: ScenariosContent = {
   title: "Senaryolar: önce eğitim, tek güven katmanı",
   intro:
     "Ağın ilk ve ana senaryosu eğitim: bir öğrencinin belgeleri, kayıttan ilk iş başvurusuna kadar. Bilet, sitelere giriş ve yaş kontrolü bugün aynı katman üzerinde çalışıyor. Sağlık karar aşamasında; iş, kamu hizmetleri, lojistik ve ödeme katmanın nereye uzanabileceğini gösteriyor. Her senaryonun yanında durumu yazıyor.",
-  note: "Ekranlar ağdaki bir cüzdan için hazırlanmış temsilî tasarımlardır ve değerler örnektir. “Bugün çalışıyor” ifadesi, senaryonun sandbox'ta ve ağın canlıdaki yazılımıyla uçtan uca çalıştığını anlatır. Gerçek ağa katılacak ilk kurum pilotla gelecek.",
-  statusLabels: { today: "Bugün çalışıyor", pilot: "Pilotla", later: "Sonra" },
+  note: "Ekranlar ağdaki bir cüzdan için hazırlanmış temsilî tasarımlardır ve değerler örnektir. “Bugün çalışıyor” ifadesi, senaryonun sandbox'ta ve ağın canlıdaki yazılımıyla uçtan uca çalıştığını anlatır. Kurum belgeleri gerçek ağa ilk kurumlar katıldıkça gelecek.",
+  statusLabels: { today: "Bugün çalışıyor", pilot: "Hazırlık aşamasında", later: "Sonra" },
   verticals: [
     {
       id: "education",
@@ -494,12 +496,12 @@ const tr: ScenariosContent = {
         {
           status: "later",
           title: "Yurt dışında yüksek lisans",
-          body: "Diploma AB'nin öğrenme standartlarına (ELM) uygundur. Europass uyumu ve diğer Türk devletlerinin kendi listeleriyle tanınma, pilottan sonraki planlı adımlardır.",
+          body: "Diploma alanlarının anlamı AB'nin öğrenme modeline (ELM / Europass) dayanır. Diğer Türk devletlerinin kendi listeleriyle tanınma, o devletlerin katılımına bağlı sonraki bir adımdır.",
         },
       ],
       callout: {
-        title: "Pilot ortağımız: İstanbul Bilgi Üniversitesi",
-        body: "Eğitim pilotunu İstanbul Bilgi Üniversitesi ile yapacağız. Pilot başlayana kadar yukarıdaki her adım, üniversitenin test kurumu olarak yer aldığı sandbox'ta denenebilir.",
+        title: "İlk sektör eğitim",
+        body: "İlk kurumlar gerçek ağa katılana kadar yukarıdaki her adım, örnek bir üniversitenin test kurumu olarak yer aldığı sandbox'ta denenebilir.",
       },
       wallet: {
         app: "Cüzdan",
@@ -846,8 +848,8 @@ const tk: ScenariosContent = {
   title: "Ssenariýalar: ilki bilim, bir ynam gatlagy",
   intro:
     "Toruň ilkinji we esasy ssenariýasy bilim: talybyň resminamalary, hasaba alnyşdan ilkinji işe ýüz tutmaga çenli. Bilet, saýtlara giriş we ýaş barlagy şu gün şol bir gatlakda işleýär. Saglyk karar tapgyrynda; iş, döwlet hyzmatlary, logistika we töleg gatlagyň nirä ýetip biljekdigini görkezýär. Her ssenariýanyň ýanynda ýagdaýy ýazylýar.",
-  note: "Ekranlar tordaky bir gapjyk üçin taýýarlanan şertli dizaýnlardyr we bahalar mysaldyr. “Şu gün işleýär” diýmek, ssenariniň sandbox-da we toruň işleýän programma üpjünçiliginde başdan-aýak işleýändigini aňladýar. Hakyky tora goşuljak ilkinji gurama pilot bilen geler.",
-  statusLabels: { today: "Şu gün işleýär", pilot: "Pilot bilen", later: "Soňra" },
+  note: "Ekranlar tordaky bir gapjyk üçin taýýarlanan şertli dizaýnlardyr we bahalar mysaldyr. “Şu gün işleýär” diýmek, ssenariniň sandbox-da we toruň işleýän programma üpjünçiliginde başdan-aýak işleýändigini aňladýar. Gurama resminamalary hakyky tora ilkinji guramalar goşuldygyça geler.",
+  statusLabels: { today: "Şu gün işleýär", pilot: "Taýýarlyk tapgyrynda", later: "Soňra" },
   verticals: [
     {
       id: "education",
@@ -892,12 +894,12 @@ const tk: ScenariosContent = {
         {
           status: "later",
           title: "Daşary ýurtda magistratura",
-          body: "Diplom ÝB-niň okuw standartlaryna (ELM) laýyk. Europass bilen ylalaşyk we beýleki türki döwletleriň öz sanawlary arkaly ykrar edilmek pilotdan soňky meýilleşdirilen ädimlerdir.",
+          body: "Diplomyň meýdanlarynyň manysy ÝB-niň okuw modeline (ELM / Europass) esaslanýar. Beýleki türki döwletleriň öz sanawlary arkaly ykrar edilmek şol döwletleriň goşulmagyna bagly soňky ädimdir.",
         },
       ],
       callout: {
-        title: "Pilot hyzmatdaşymyz: İstanbul Bilgi Üniversitesi",
-        body: "Bilim pilotyny İstanbul Bilgi Üniversitesi bilen geçireris. Pilot başlaýança ýokardaky her ädimi uniwersitetiň synag guramasy hökmünde ýer alýan sandbox-da synap bolýar.",
+        title: "Ilkinji pudak bilim",
+        body: "Ilkinji guramalar hakyky tora goşulýança ýokardaky her ädimi mysal uniwersitetiň synag guramasy hökmünde ýer alýan sandbox-da synap bolýar.",
       },
       wallet: {
         app: "Gapjyk",
@@ -1244,8 +1246,8 @@ const az: ScenariosContent = {
   title: "Ssenarilər: əvvəlcə təhsil, vahid etibar qatı",
   intro:
     "Təhsil şəbəkənin ilk və əsas ssenarisidir: tələbənin qeydiyyatdan ilk iş müraciətinə qədər sənədləri. Biletlər, saytlara giriş və yaş yoxlaması bu gün eyni qat üzərində işləyir. Səhiyyə qərar mərhələsindədir; iş, dövlət xidmətləri, logistika və ödənişlər qatın hara qədər genişlənə biləcəyini göstərir. Hər ssenarinin yanında onun statusu qeyd olunur.",
-  note: "Ekranlar şəbəkədəki bir rəqəmsal cüzdan üçün hazırlanmış təsviri maketlərdir və dəyərlər yalnız nümunədir. “Bu gün işləyir” ifadəsi ssenarinin sandbox-da və şəbəkənin canlı proqram təminatı ilə əvvəldən sona qədər işlədiyini bildirir. Real şəbəkəyə qoşulacaq ilk qurum pilotla gələcək.",
-  statusLabels: { today: "Bu gün işləyir", pilot: "Pilotla", later: "Sonra" },
+  note: "Ekranlar şəbəkədəki bir rəqəmsal cüzdan üçün hazırlanmış təsviri maketlərdir və dəyərlər yalnız nümunədir. “Bu gün işləyir” ifadəsi ssenarinin sandbox-da və şəbəkənin canlı proqram təminatı ilə əvvəldən sona qədər işlədiyini bildirir. Qurum sənədləri real şəbəkəyə ilk qurumlar qoşulduqca gələcək.",
+  statusLabels: { today: "Bu gün işləyir", pilot: "Hazırlıq mərhələsində", later: "Sonra" },
   verticals: [
     {
       id: "education",
@@ -1290,12 +1292,12 @@ const az: ScenariosContent = {
         {
           status: "later",
           title: "Xaricdə magistratura",
-          body: "Diplom Aİ-nin (Avropa İttifaqı) təlim standartlarına (ELM) uyğundur. Europass ilə uyğunlaşma və digər türk dövlətlərinin öz siyahıları vasitəsilə tanınma pilotdan sonra planlaşdırılan addımlardır.",
+          body: "Diplom sahələrinin mənası Aİ-nin (Avropa İttifaqı) təlim modelinə (ELM / Europass) əsaslanır. Digər türk dövlətlərinin öz siyahıları vasitəsilə tanınma həmin dövlətlərin qoşulmasından asılı olan sonrakı addımdır.",
         },
       ],
       callout: {
-        title: "Pilot tərəfdaş: İstanbul Bilgi Üniversitesi",
-        body: "Təhsil pilotunu İstanbul Bilgi Üniversitesi ilə həyata keçirəcəyik. Pilot başlayana qədər yuxarıdakı hər addımı universitetin test qurumu kimi göründüyü sandbox-da sınaqdan keçirmək olar.",
+        title: "İlk sektor təhsildir",
+        body: "İlk qurumlar real şəbəkəyə qoşulana qədər yuxarıdakı hər addımı nümunə universitetin test qurumu kimi göründüyü sandbox-da sınaqdan keçirmək olar.",
       },
       wallet: {
         app: "Cüzdan",

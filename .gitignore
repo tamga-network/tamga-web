@@ -66,3 +66,7 @@ DIFFERENTIAL_REVIEW*.md
 
 # API anahtarları depoya girmez (anahtarlar depo dışında tutulur)
 *.key
+
+# Whitepaper ve manifesto PDF kopyaları (asılları public/whitepaper-*.pdf, public/manifesto-*.pdf)
+public/files/publications/whitepaper-*.pdf
+public/files/publications/manifesto-*.pdf

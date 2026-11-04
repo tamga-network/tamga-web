@@ -1,6 +1,8 @@
 // A1 — Dijital Kimliğin Evrimi. ÜRETİLMİŞ DOSYA: Markdown kaynağından md2typ.mjs ile üretilir; elle düzenleme.
 // Derleme: powershell -File publications/build.ps1
-#import "template.typ": conf, sekil, tablo, kutu, kod, kaynak
+#import "template.typ": conf, sekil, tablo, kutu, kod, kaynak, formul, adimlar
+#let kutu = kutu.with(dil: "tr")
+#let sekil = sekil.with(dil: "tr")
 
 #show: conf.with(
   lang: "tr",
@@ -14,6 +16,9 @@
   lisans: "© 2026 Berke Karataş. Bu eser Creative Commons Atıf 4.0 Uluslararası Lisansı (CC BY 4.0) ile yayımlanmıştır: kaynak gösterilerek paylaşılabilir ve uyarlanabilir. https://creativecommons.org/licenses/by/4.0/deed.tr",
   anahtar: ("dijital kimlik", "kimlik doğrulama", "federasyon", "OpenID Connect", "kendi kendine egemen kimlik", "doğrulanabilir belge", "eIDAS 2.0", "EUDI cüzdanı", "kimlik güvencesi düzeyi",),
   atif: "Karataş, B. (2026). Dijital Kimliğin Evrimi: Kullanıcı Adından Kimlik Cüzdanına: Dört Dönem, Dört Güven Modeli. Tamga Network Akademik Çalışmalar, A1. https://tamga.network/files/publications/evolution-of-digital-identity-tr.pdf",
+  ozet-sayfasi: true,
+  kisa-baslik: none,
+  icindekiler: true,
   ozet: [
 İnsanlar binlerce yıl boyunca birbirlerini yüz yüze, bir mühre, bir mektuba ya da bir devletin verdiği kâğıda bakarak tanıdı. İnternet bu düzeni bozdu: karşımızdaki kişiyi görmüyoruz, gönderdiği her şey sınırsız kopyalanabiliyor ve aynı anda milyonlarca kişiyle işlem yapıyoruz. Son altmış yılda bu soruna verilen cevaplar dört büyük dönemde toplanabilir. İlk dönemde her sistem kendi kullanıcı adını ve parolasını tuttu. İkinci dönemde büyük kimlik sağlayıcıları ortaya çıktı ve "Google ile giriş yap" düğmesi hayatımıza girdi. Üçüncü dönemde, kimliği kişinin kendi elinde tutmayı amaçlayan kendi kendine egemen kimlik hareketi doğdu. Dördüncü dönemde ise devletler bu fikirlerin bir kısmını alıp hukuki güvenceyle birleştirdi; Avrupa Birliği’nin 2024’te kabul ettiği eIDAS 2.0 tüzüğü ve Avrupa Dijital Kimlik Cüzdanı bu dönemin en kapsamlı örneğidir.
 
@@ -84,7 +89,7 @@ Tanımlayıcıların önemli bir özelliği #{strong[kapsamıdır]}. Bir öğren
 
 Kimlik doğrulama geleneksel olarak üç tür kanıta dayanır; bunlara #{strong[doğrulama faktörü]} denir:
 
-#tablo([#{strong[Tablo 1.]} Kimlik doğrulama faktörleri.], (20fr, 38fr, 39fr, 48fr), ([Faktör], [Anlamı], [Örnekler], [Zayıf yanı],), (
+#tablo([#{strong[Tablo 1.]} Kimlik doğrulama faktörleri.], (14fr, 27fr, 24fr, 36fr), ([Faktör], [Anlamı], [Örnekler], [Zayıf yanı],), (
   ([Bilinen bir şey], [Yalnızca kişinin bildiği bir sır], [parola, PIN, güvenlik sorusu], [unutulur, tahmin edilir, çalınır, başka sitelerde de kullanılır],),
   ([Sahip olunan bir şey], [Yalnızca kişinin elinde olan bir nesne], [telefon, akıllı kart, güvenlik anahtarı], [kaybolur, çalınır],),
   ([Olunan bir şey], [Kişinin bedenine ait bir özellik], [parmak izi, yüz, iris], [değiştirilemez; bir kez sızarsa sonsuza dek sızmış olur],),
@@ -139,7 +144,7 @@ Fiziksel dünyada güven üç şeye dayanır: belgeyi taklit etmenin zorluğu, i
 
 Bugün en yaygın özet fonksiyonlarından biri SHA-256’dır. Örneğin "password" kelimesinin SHA-256 özeti şudur:
 
-#kod("text", "password  →  5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8")
+#kod("text", "password  →  5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", baslik: "Örnek: “password” kelimesinin SHA-256 özeti")
 
 Bu 64 karakterlik dizi, "password" kelimesinin bir tür parmak izidir. Aynı girdi her zaman aynı parmak izini verir; ama parmak izinden kelimeyi geri hesaplamanın bir yolu yoktur.
 ]
@@ -237,7 +242,7 @@ JWT üç parçadan oluşur ve parçalar noktayla ayrılır: #{strong[başlık.i�
   \"email\": \"aynur@example.com\",
   \"email_verified\": true,
   \"name\": \"Aynur …\"
-}")
+}", baslik: "Örnek: kimlik belirtecinin (JWT) çözülmüş içerik kısmı")
 
 - #{raw("iss")} (#{emph[issuer]}): belirteci kim verdi — Google.
 - #{raw("sub")} (#{emph[subject]}): Google’ın bu kullanıcıya verdiği kalıcı tanımlayıcı.
@@ -278,7 +283,7 @@ Federasyon kimlik doğrulamayı kolaylaştırdı ve parolaları daha güvenli h�
 
 Federasyonun yükseldiği yıllarda, bu modelin sınırlarını en açık biçimde dile getirenlerden biri bir Microsoft mühendisiydi. Kim Cameron, 2005’te yayımladığı #{strong["Kimliğin Yasaları"]} (#{emph[The Laws of Identity]}) adlı yazısında, kalıcı ve yaygın bir internet kimlik sisteminin uyması gereken yedi ilkeyi sıraladı \[10\]. Bu ilkeler bugün okunduğunda şaşırtıcı derecede güncel görünür; çünkü sonraki yirmi yılda tartışılan neredeyse bütün konuları önceden işaret eder:
 
-#tablo([#{strong[Tablo 2.]} Kim Cameron’ın yedi yasası (2005) ve bugünkü karşılıkları.], (4fr, 44fr, 48fr, 43fr), ([\#], [Yasa], [Anlamı], [Bugün nerede karşımıza çıkıyor],), (
+#tablo([#{strong[Tablo 2.]} Kim Cameron’ın yedi yasası (2005) ve bugünkü karşılıkları.], (5fr, 25fr, 48fr, 35fr), ([\#], [Yasa], [Anlamı], [Bugün nerede karşımıza çıkıyor],), (
   ([1], [Kullanıcı kontrolü ve onayı], [Kişi, bilgisinin paylaşılmasına bilerek izin vermeli], [cüzdanlarda her paylaşım öncesi onay ekranı],),
   ([2], [Kısıtlı kullanım için asgari açıklama], [Bir iş için gerekenden fazla bilgi açılmamalı], [seçici açıklama (dizinin 3. yazısı)],),
   ([3], [Haklı taraflar], [Bilgi yalnızca işlemde meşru yeri olan taraflara gitmeli], ["eve telefon etme" sorununun reddi],),
@@ -340,7 +345,7 @@ SSI hareketi bu fikirleri standartlaştırmak için iki temel yapı geliştirdi.
 
 #{strong[Merkeziyetsiz tanımlayıcı]} (#{emph[Decentralized Identifier, DID]}) \[12\], bir kişinin ya da kurumun, herhangi bir merkezî kayıt kurumuna (örneğin bir alan adı kayıt şirketine ya da bir devlet dairesine) bağlı olmadan kendi başına oluşturabildiği bir tanımlayıcıdır. Bir DID şuna benzer:
 
-#kod("text", "did:example:123456789abcdefghi")
+#kod("text", "did:example:123456789abcdefghi", baslik: "Örnek: bir merkeziyetsiz tanımlayıcı (DID)")
 
 İlk kısım (#{raw("did")}) bunun bir DID olduğunu, ikinci kısım (#{raw("example")}) hangi #{strong[yöntemle]} çözüleceğini, üçüncü kısım ise o yöntem içindeki benzersiz tanımlayıcıyı gösterir. Bir DID "çözüldüğünde", yani sorgulandığında, ortaya bir #{strong[DID belgesi]} çıkar. Bu belgenin en önemli içeriği, o tanımlayıcının sahibine ait #{strong[açık anahtarlardır]}. Yani DID, Bölüm 6.3’teki "açık anahtar nereden geliyor?" sorusuna SSI’ın verdiği cevaptır: Verenin DID’ini çöz, açık anahtarını oradan al, imzayı onunla doğrula. Farklı DID yöntemleri bu belgeyi farklı yerlerde tutar: bir blokzincirde, bir web sunucusunda ya da yalnızca tanımlayıcının kendisinin içinde.
 
@@ -359,7 +364,7 @@ SSI hareketi bu fikirleri standartlaştırmak için iki temel yapı geliştirdi.
     \"mezuniyetTarihi\": \"2026-06-30\"
   },
   \"proof\": { \"…\": \"verenin dijital imzası\" }
-}")
+}", baslik: "Örnek: basitleştirilmiş bir W3C doğrulanabilir belge (diploma)")
 
 Bu yapıda #{raw("issuer")} belgeyi kimin verdiğini, #{raw("credentialSubject")} belgenin kim hakkında olduğunu ve ne söylediğini, #{raw("proof")} ise verenin imzasını gösterir. #{raw("credentialSubject")} içindeki #{raw("id")} alanı önemlidir: Belgeyi Aynur’un cüzdanındaki bir anahtara #{strong[bağlar]}. Aynur belgeyi gösterirken bu anahtarla da bir imza atar ve böylece belgenin yalnızca doğru olmadığını, aynı zamanda #{strong[onun]} olduğunu da kanıtlar. Bölüm 3’te yüz yüzeliğin dijital karşılığı olarak söz ettiğimiz "belgenin kişiye bağlanması" budur.
 
@@ -443,7 +448,7 @@ Tüzük ilkeleri ve rolleri belirler; ama bir Fransız cüzdanının bir Alman b
 
 ARF, tek bir teknolojiye bağlanmak yerine, olgunlaşmış uluslararası standartlardan oluşan bir set seçmiştir. Bunların ayrıntıları dizinin ilerleyen yazılarının konusudur; burada yalnızca genel bir harita vermekle yetiniyoruz:
 
-#tablo([#{strong[Tablo 3.]} EUDI cüzdanının dayandığı başlıca standartlar.], (17fr, 48fr, 48fr, 16fr), ([Katman], [Standart], [Ne işe yarar], [Dizide ayrıntısı],), (
+#tablo([#{strong[Tablo 3.]} EUDI cüzdanının dayandığı başlıca standartlar.], (10fr, 28fr, 48fr, 11fr), ([Katman], [Standart], [Ne işe yarar], [Dizide ayrıntısı],), (
   ([Belge biçimi], [#{strong[SD-JWT VC]} (IETF) — seçici açıklamalı JSON Web Token \[17\]], [Bölüm 5.3’teki JWT’nin, alanların tek tek gizlenebildiği bir türü], [2\. ve 3. yazı],),
   ([Belge biçimi], [#{strong[mdoc]} — ISO\/IEC 18013-5 \[18\]], [Mobil ehliyet için geliştirilmiş, yüz yüze kullanıma uygun, ikili (CBOR) biçim], [2\. ve 9. yazı],),
   ([Belge verme], [#{strong[OpenID4VCI]} (OpenID Vakfı)], [Bir kurumun cüzdana belge vermesi için protokol], [8\. yazı],),
@@ -473,7 +478,7 @@ Dört dönemi karşılaştırmadan önce, dijital kimlik sistemlerini değerlend
 
 Bu farkı sistematik biçimde ifade etmek için #{strong[kimlik güvencesi düzeyleri]} (#{emph[levels of assurance]}, LoA) kullanılır. eIDAS, elektronik kimlik sistemleri için üç düzey tanımlar \[14, 19\]:
 
-#tablo([#{strong[Tablo 4.]} eIDAS’ta kimlik güvencesi düzeyleri.], (26fr, 48fr, 48fr, 48fr), ([Düzey], [Amacı], [Kimlik nasıl doğrulanmış olmalı], [Örnek kullanım],), (
+#tablo([#{strong[Tablo 4.]} eIDAS’ta kimlik güvencesi düzeyleri.], (16fr, 34fr, 48fr, 37fr), ([Düzey], [Amacı], [Kimlik nasıl doğrulanmış olmalı], [Örnek kullanım],), (
   ([#{strong[Düşük]} (#{emph[low]})], [Kimlik iddiasına sınırlı güven], [kişinin beyanı ya da basit bir doğrulama], [bir hizmete üyelik, düşük riskli işlemler],),
   ([#{strong[Önemli]} (#{emph[substantial]})], [Kimlik iddiasına önemli düzeyde güven], [resmî bir belgeyle doğrulama; en az iki faktörlü giriş], [çoğu kamu hizmeti, birçok bankacılık işlemi],),
   ([#{strong[Yüksek]} (#{emph[high]})], [Kimlik iddiasına en yüksek güven; sahteciliği önlemeye yönelik], [yüz yüze ya da eşdeğer güvenlikte doğrulama; kopyalanamaz donanımla korunan anahtarlar], [nitelikli imza, PID, yüksek riskli kamu işlemleri],),
@@ -487,7 +492,7 @@ Güvence düzeyleri, dört dönemi karşılaştırmak için de kullanışlı bir
 
 Artık dört dönemi yan yana koyabiliriz. Tablo 5, yazının başında sorduğumuz üç soruyu ve birkaç ek ölçütü bir araya getiriyor.
 
-#tablo([#{strong[Tablo 5.]} Dört dijital kimlik modelinin karşılaştırması.], (35fr, 46fr, 31fr, 34fr, 48fr), ([Ölçüt], [Ada (silo)], [Federasyon], [Kendi kendine egemen kimlik], [Devlet destekli cüzdan (EUDI)],), (
+#tablo([#{strong[Tablo 5.]} Dört dijital kimlik modelinin karşılaştırması.], (19fr, 14fr, 16fr, 16fr, 28fr), ([Ölçüt], [Ada (silo)], [Federasyon], [Kendi kendine egemen kimlik], [Devlet destekli cüzdan (EUDI)],), (
   ([Kimliği kim veriyor?], [her hizmet kendisi (çoğu zaman kişinin beyanı)], [kimlik sağlayıcı], [herhangi bir veren], [yetkilendirilmiş, listelenmiş verenler],),
   ([Kimliği kim saklıyor?], [her hizmet ayrı ayrı], [kimlik sağlayıcı], [kişi, cüzdanında], [kişi, cüzdanında],),
   ([Doğrulamada veren haberdar olur mu?], [— (veren yok)], [#{strong[evet]}, her girişte], [hayır], [hayır (hukuki yükümlülük)],),
@@ -601,7 +606,7 @@ Konuya yeni başlayan bir okur için, bu yazıdan sonra okunabilecek beş kaynak
 
 Bu yazıda geçen terimler, yazıdaki anlamlarıyla. Teknik terimlerin İngilizce karşılıkları, başka kaynaklarda aranabilmeleri için parantez içinde verilmiştir.
 
-#tablo([#{strong[Tablo A.1.]} Terimler sözlüğü.], (27fr, 48fr, 48fr), ([Terim], [İngilizce], [Anlamı],), (
+#tablo([#{strong[Tablo A.1.]} Terimler sözlüğü.], (18fr, 18fr, 48fr), ([Terim], [İngilizce], [Anlamı],), (
   ([Açık anahtar], [public key], [Bir anahtar çiftinin herkesle paylaşılan yarısı; imzaları doğrulamaya yarar],),
   ([Açık anahtarlı kriptografi], [public-key cryptography], [Gizli ve açık anahtardan oluşan çiftlerle imza ve şifreleme yapan yöntem],),
   ([Ada (silo) modeli], [siloed identity], [Her hizmetin kendi kullanıcı kaydını tuttuğu model],),

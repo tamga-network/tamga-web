@@ -17,10 +17,23 @@
 #let head = ("Onest", "IBM Plex Sans", "New Computer Modern")
 #let mono = ("IBM Plex Mono", "DejaVu Sans Mono")
 
+// ---- Dil etiketleri (tr · en · tk · az) ----
+#let L = (
+  tr: (sekil: "Şekil", teknik: "TEKNİK AYRINTI", ornek: "ÖRNEK", tarihce: "TARİHÇE", onemli: "ÖNEMLİ",
+       ozet: "Özet", anahtar: "Anahtar kelimeler", icindekiler: "İçindekiler", surum: "Sürüm", atif: "ATIF"),
+  en: (sekil: "Figure", teknik: "TECHNICAL DETAIL", ornek: "EXAMPLE", tarihce: "HISTORY", onemli: "KEY POINT",
+       ozet: "Abstract", anahtar: "Keywords", icindekiler: "Contents", surum: "Version", atif: "CITATION"),
+  tk: (sekil: "Surat", teknik: "TEHNIKI JIKME-JIKLIK", ornek: "MYSAL", tarihce: "TARYH", onemli: "MÖHÜM",
+       ozet: "Gysgaça mazmuny", anahtar: "Açar sözler", icindekiler: "Mazmuny", surum: "Wersiýa", atif: "SALGYLANMA"),
+  az: (sekil: "Şəkil", teknik: "TEXNİKİ DETAL", ornek: "NÜMUNƏ", tarihce: "TARİXÇƏ", onemli: "VACİB",
+       ozet: "Xülasə", anahtar: "Açar sözlər", icindekiler: "Mündəricat", surum: "Versiya", atif: "İSTİNAD"),
+)
+#let lbl(dil, k) = L.at(dil, default: L.tr).at(k)
+
 // ---- Şekil ----
-#let sekil(no, baslik, dosya, yarim: false) = figure(
+#let sekil(no, baslik, dosya, yarim: false, dil: "tr") = figure(
   kind: image,
-  supplement: [Şekil],
+  supplement: [#lbl(dil, "sekil")],
   numbering: _ => str(no),
   caption: figure.caption(position: bottom)[#baslik],
   block(width: if yarim { 72% } else { 100% }, image(dosya, width: 100%)),
@@ -50,37 +63,72 @@
 }
 
 // ---- Kutular ----
-#let kutu(tur, baslik, govde) = {
-  let (etiket, zemin, kenar) = if tur == "teknik" {
-    ("TEKNİK AYRINTI", paper, muted)
+#let kutu(tur, baslik, govde, dil: "tr") = {
+  let (zemin, kenar) = if tur == "teknik" {
+    (paper, muted)
   } else if tur == "ornek" {
-    ("ÖRNEK", gok-50, gok)
+    (gok-50, gok)
   } else if tur == "tarihce" {
-    ("TARİHÇE", gold-50, gold)
+    (gold-50, gold)
   } else {
-    ("ÖNEMLİ", white, gok-700)
+    (white, gok-700)
   }
+  let etiket = lbl(dil, tur)
   block(
     width: 100%, above: 14pt, below: 14pt, breakable: tur == "teknik" or tur == "tarihce",
     fill: zemin,
     stroke: if tur == "onemli" { (left: 3pt + kenar, rest: 0.8pt + kenar) } else { (left: 2.4pt + kenar) },
     inset: (x: 12pt, y: 10pt), radius: 2pt,
   )[
-    #text(font: mono, size: 7pt, weight: 600, tracking: 0.8pt, fill: kenar)[#etiket]
-    #if baslik != "" { linebreak(); text(font: head, size: 10.5pt, weight: 600, fill: ink)[#baslik] }
-    #v(2pt)
+    // Etiket ve başlık, kutunun ilk satırlarıyla aynı sayfada kalır (sayfa sonunda tek başına başlık olmaz)
+    #block(sticky: true, below: 6pt)[
+      #text(font: mono, size: 7pt, weight: 600, tracking: 0.8pt, fill: kenar)[#etiket]
+      #if baslik != "" { linebreak(); text(font: head, size: 10.5pt, weight: 600, fill: ink)[#baslik] }
+    ]
     #set text(size: 9.4pt)
     #govde
   ]
 }
 
 // ---- Kod ----
-#let kod(dil, icerik) = block(
-  width: 100%, above: 10pt, below: 10pt, breakable: false,
-  fill: paper, stroke: (left: 1.6pt + gok, rest: 0.4pt + rule), inset: (x: 10pt, y: 8pt), radius: 2pt,
-)[
+#let kod(dil, icerik, baslik: "") = block(width: 100%, above: 10pt, below: 10pt, breakable: false)[
+  #if baslik != "" {
+    block(below: 0pt, fill: gok-50, stroke: (left: 1.6pt + gok, top: 0.4pt + rule, right: 0.4pt + rule), inset: (x: 10pt, y: 5pt), width: 100%, radius: (top: 2pt))[
+      #set par(justify: false)
+      #text(font: mono, size: 7pt, weight: 600, tracking: 0.4pt, fill: gok-700)[#upper(dil)] #h(6pt) #text(size: 8.4pt, fill: ink)[#baslik]
+    ]
+  }
+  #block(width: 100%, above: 0pt, fill: paper, stroke: (left: 1.6pt + gok, rest: 0.4pt + rule), inset: (x: 10pt, y: 8pt), radius: if baslik != "" { (bottom: 2pt) } else { 2pt })[
+    #set par(justify: false, leading: 0.5em)
+    #text(font: mono, size: 7.8pt, fill: ink)[#raw(block: true, lang: dil, icerik)]
+  ]
+]
+
+// ---- Formül bloğu (Typst matematik) ----
+#let formul(body) = block(width: 100%, above: 10pt, below: 10pt, breakable: false, inset: (y: 4pt))[
+  #set align(center)
+  #set text(size: 10.5pt)
+  #body
+]
+
+// ---- Protokol adımları: numara · kim · ne yapar · hesap ----
+#let adimlar(rows) = block(width: 100%, above: 10pt, below: 12pt, breakable: true)[
   #set par(justify: false, leading: 0.5em)
-  #text(font: mono, size: 7.8pt, fill: ink)[#raw(block: true, lang: dil, icerik)]
+  #table(
+    columns: (auto, auto, 1.5fr, 1fr),
+    align: (center + horizon, left + horizon, left + horizon, left + horizon),
+    inset: (x: 7pt, y: 7pt),
+    stroke: (x, y) => (top: if y == 0 { 0.9pt + gok } else { 0.4pt + rule }, bottom: if y == rows.len() - 1 { 0.9pt + gok } else { none }),
+    ..rows.enumerate().map(((i, r)) => {
+      let (kim, ne, hesap) = r
+      (
+        box(width: 1.5em, height: 1.5em, radius: 50%, fill: gok, align(center + horizon, text(size: 8pt, weight: 600, fill: white)[#(i + 1)])),
+        text(font: mono, size: 7.6pt, weight: 600, fill: gok-700)[#kim],
+        text(size: 9.2pt)[#ne],
+        text(size: 10pt)[#hesap],
+      )
+    }).flatten(),
+  )
 ]
 
 // ---- Kaynak ----
@@ -101,19 +149,29 @@
   lisans: "",
   anahtar: (),
   ozet: [],
-  anahtar-etiket: "Anahtar kelimeler",
-  ozet-etiket: "Özet",
-  icindekiler-etiket: "İçindekiler",
-  surum-etiket: "Sürüm",
+  anahtar-etiket: none,
+  ozet-etiket: none,
+  icindekiler-etiket: none,
+  surum-etiket: none,
   atif: "",
+  // Kısa metinler (manifesto) için: özet sayfası ve içindekiler isteğe bağlı
+  ozet-sayfasi: true,
+  kisa-baslik: none,
+  icindekiler: true,
   body,
 ) = {
+  let kisa-baslik = if kisa-baslik == none { baslik } else { kisa-baslik }
+  let anahtar-etiket = if anahtar-etiket == none { lbl(lang, "anahtar") } else { anahtar-etiket }
+  let ozet-etiket = if ozet-etiket == none { lbl(lang, "ozet") } else { ozet-etiket }
+  let icindekiler-etiket = if icindekiler-etiket == none { lbl(lang, "icindekiler") } else { icindekiler-etiket }
+  let surum-etiket = if surum-etiket == none { lbl(lang, "surum") } else { surum-etiket }
   set document(title: baslik, author: yazar, keywords: anahtar)
   set text(font: sans, size: 10.2pt, fill: ink, lang: lang)
   set par(justify: true, leading: 0.72em, spacing: 1.05em)
   show link: it => text(fill: gok, it)
   show raw.where(block: false): it => box(fill: paper, inset: (x: 2pt), outset: (y: 2pt), radius: 1.5pt, text(font: mono, size: 8.6pt, it))
   show strong: set text(weight: 600)
+  show math.equation: set text(font: "New Computer Modern Math")
   show figure: set block(above: 16pt, below: 16pt, breakable: false)
   show figure.caption: it => block(width: 92%)[
     #set par(justify: false)
@@ -142,7 +200,7 @@
   )
   align(center)[
     #v(1.2cm)
-    #image("../whitepaper/logo.svg", width: 1.9cm)
+    #image("logo.svg", width: 1.9cm)
     #v(10pt)
     #text(font: head, size: 9.5pt, weight: 600, tracking: 3pt, fill: gok)[TAMGA NETWORK]
     #v(4pt)
@@ -161,8 +219,10 @@
     ]
     #v(34pt)
     #text(size: 13pt, weight: 600)[#yazar]
-    #v(2pt)
-    #text(size: 10pt, fill: muted)[#kurum]
+    #if kurum != yazar {
+      v(2pt)
+      text(size: 10pt, fill: muted)[#kurum]
+    }
   ]
   v(1fr)
   align(center)[
@@ -182,8 +242,9 @@
     #line(length: 100%, stroke: 0.4pt + rule)
     #v(2pt)
     #grid(
-      columns: (1fr, auto, 1fr),
-      align(left)[#yazar · #baslik],
+      // Sol: kısa başlık (yazar kurumsa yazar adı tekrar edilmez); sayfa numarasıyla çakışmasın diye orta sütun sabit
+      columns: (1fr, 3em, 1fr),
+      align(left)[#box(width: 100%, clip: true, height: 1.2em)[#if yazar != "Tamga Network" [#yazar · ]#kisa-baslik]],
       align(center)[#counter(page).display()],
       align(right)[Tamga Network],
     )
@@ -191,25 +252,31 @@
   pagebreak()
   counter(page).update(1)
 
-  block(below: 10pt)[#text(font: head, size: 15pt, weight: 600, fill: gok)[#ozet-etiket]]
-  ozet
-  v(6pt)
-  block[
-    #set par(justify: false)
-    #text(weight: 600)[#anahtar-etiket:] #anahtar.join(" · ")
-  ]
-  if atif != "" {
-    v(14pt)
-    block(width: 100%, fill: paper, stroke: (left: 1.6pt + gold), inset: (x: 10pt, y: 8pt))[
-      #set par(justify: false)
-      #set text(size: 8.4pt, fill: muted)
-      #text(font: mono, size: 7pt, weight: 600, tracking: 0.8pt, fill: gold)[ATIF] \
-      #atif
-    ]
+  if ozet-sayfasi {
+    block(below: 10pt)[#text(font: head, size: 15pt, weight: 600, fill: gok)[#ozet-etiket]]
+    ozet
+    v(6pt)
+    if anahtar.len() > 0 {
+      block[
+        #set par(justify: false)
+        #text(weight: 600)[#anahtar-etiket:] #anahtar.join(" · ")
+      ]
+    }
+    if atif != "" {
+      v(14pt)
+      block(width: 100%, fill: paper, stroke: (left: 1.6pt + gold), inset: (x: 10pt, y: 8pt))[
+        #set par(justify: false)
+        #set text(size: 8.4pt, fill: muted)
+        #text(font: mono, size: 7pt, weight: 600, tracking: 0.8pt, fill: gold)[#lbl(lang, "atif")] \
+        #atif
+      ]
+    }
+    pagebreak()
   }
-  pagebreak()
-  outline(title: text(font: head, size: 15pt, weight: 600, fill: gok)[#icindekiler-etiket], indent: 1.4em, depth: 2)
-  pagebreak()
+  if icindekiler {
+    outline(title: text(font: head, size: 15pt, weight: 600, fill: gok)[#icindekiler-etiket], indent: 1.4em, depth: 2)
+    pagebreak()
+  }
 
   body
 }

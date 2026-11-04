@@ -57,7 +57,8 @@ export default async function ManifestoPage({
         <h1 className="text-balance text-4xl font-semibold leading-tight sm:text-5xl">
           {c.title}
         </h1>
-        <p className="mt-6 text-xl leading-relaxed text-foreground-muted">
+        <p className="mt-4 text-lg leading-relaxed text-foreground-muted">{c.subtitle}</p>
+        <p className="mt-8 text-xl leading-relaxed text-foreground-muted">
           {c.lead}
         </p>
       </header>
@@ -79,10 +80,12 @@ export default async function ManifestoPage({
       </div>
 
       <footer className="mt-16 border-t border-border pt-8">
-        <p className="text-lg leading-relaxed text-foreground">{c.closing}</p>
+        <h2 className="font-serif text-2xl font-semibold text-foreground">{c.closingTitle}</h2>
+        <p className="mt-3 text-lg leading-relaxed text-foreground">{c.closing}</p>
         <p className="mt-4 font-serif text-xl italic text-primary" lang="en">
           {c.slogan}
         </p>
+        <p className="mono-label mt-4">{c.edition}</p>
 
         <div className="no-print mt-10 flex flex-wrap gap-3 text-sm">
           <Link

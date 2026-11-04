@@ -109,7 +109,7 @@ export default async function RoadmapPage({
 
       {/* Aşama özeti */}
       <section className="shell pt-12">
-        <ol className="grid gap-3 sm:grid-cols-5">
+        <ol className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-7">
           {c.phases.map((p) => {
             const S = STATE[p.state];
             return (
@@ -119,7 +119,7 @@ export default async function RoadmapPage({
                   className={`flex h-full flex-col gap-1 rounded-lg border p-3 transition-colors hover:bg-surface ${S.ring}`}
                 >
                   <span className="font-mono text-[0.7rem] uppercase tracking-wider text-foreground-subtle">
-                    {c.phaseLabel} {p.n}
+                    {p.state === "research" ? c.labels.research : `${c.phaseLabel} ${p.n}`}
                   </span>
                   <span className="text-sm font-medium text-foreground">
                     {p.title}
@@ -144,7 +144,7 @@ export default async function RoadmapPage({
               <div className="flex flex-wrap items-end justify-between gap-4 border-b border-border pb-4">
                 <div>
                   <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary">
-                    {c.phaseLabel} {p.n}
+                    {p.state === "research" ? c.labels.research : `${c.phaseLabel} ${p.n}`}
                   </p>
                   <h2 className="mt-1 text-2xl font-semibold text-foreground sm:text-3xl">
                     {p.title}

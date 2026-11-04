@@ -108,6 +108,52 @@ export const CHANGELOG_PAGE: Record<
 
 export const RELEASES: Release[] = [
   {
+    id: "v1.0.0-2026-11-04-whitepaper",
+    version: "v1.0.0",
+    date: "2026-11-04",
+    kind: "feature",
+    title: {
+      en: "Expanded whitepaper in four languages, revised manifesto, roadmap by conditions",
+      tr: "Dört dilde genişletilmiş whitepaper, gözden geçirilmiş manifesto, koşullara göre yol haritası",
+      tk: "Dört dilde giňeldilen whitepaper, gaýtadan seredilen manifest, şertlere görä ýol kartasy",
+      az: "Dörd dildə genişləndirilmiş whitepaper, yenidən baxılmış manifest, şərtlərə görə yol xəritəsi",
+    },
+    sections: {
+      added: {
+        en: [
+          "The whitepaper's expanded edition (still version 1.0, November 2026) in English, Turkish, Turkmen and Azerbaijani: twenty-four chapters on how the network works, why each major choice was made and where it is going, with every decision, the declared residual risks and the open questions in one place. The PDFs are on the whitepaper page.",
+        ],
+        tr: [
+          "Whitepaper'ın genişletilmiş baskısı (sürüm 1.0 kaldı, Kasım 2026) İngilizce, Türkçe, Türkmence ve Azerbaycan Türkçesiyle: ağın nasıl çalıştığını, her önemli seçimin neden yapıldığını ve nereye gittiğini yirmi dört bölümde anlatıyor; bütün kararlar, beyan edilen artık riskler ve açık sorular bir arada. PDF'ler whitepaper sayfasında.",
+        ],
+        tk: [
+          "Whitepaper-iň giňeldilen neşiri (1.0 wersiýa galdy, 2026-njy ýylyň noýabry) iňlis, türk, türkmen we azerbaýjan dillerinde: toruň nähili işleýändigini, her möhüm saýlawyň näme üçin edilendigini we nirä barýandygyny ýigrimi dört bölümde düşündirýär; ähli kararlar, yglan edilen galyndy töwekgelçilikler we açyk soraglar bir ýerde. PDF-ler whitepaper sahypasynda.",
+        ],
+        az: [
+          "Whitepaper-in genişləndirilmiş nəşri (versiya 1.0 qaldı, noyabr 2026) ingilis, türk, türkmən və Azərbaycan dillərində: şəbəkənin necə işlədiyini, hər mühüm seçimin niyə edildiyini və hara getdiyini iyirmi dörd fəsildə izah edir; bütün qərarlar, bəyan edilmiş qalıq risklər və açıq suallar bir yerdə. PDF-lər whitepaper səhifəsindədir.",
+        ],
+      },
+      changed: {
+        en: [
+          "The manifesto was revised in all four languages and its PDFs were rebuilt.",
+          "The roadmap now follows the whitepaper: stages tied to conditions rather than dates (list stage, preparation, foundation, ledger, state participation, institutional expansion) plus research directions. The scenarios page says the same: institution credentials reach the real network as the first institutions join.",
+        ],
+        tr: [
+          "Manifesto dört dilde gözden geçirildi ve PDF'leri yeniden basıldı.",
+          "Yol haritası artık whitepaper'ı izliyor: tarihlere değil koşullara bağlı aşamalar (liste aşaması, hazırlık, vakıf, defter, devlet katılımı, kurumsal genişleme) ve araştırma yönleri. Senaryolar sayfası da aynısını söylüyor: kurum belgeleri gerçek ağa ilk kurumlar katıldıkça gelecek.",
+        ],
+        tk: [
+          "Manifest dört dilde gaýtadan seredildi we PDF-leri täzeden guruldy.",
+          "Ýol kartasy indi whitepaper-e eýerýär: senelere däl, şertlere bagly tapgyrlar (sanaw tapgyry, taýýarlyk, gazna, kitap, döwletiň goşulmagy, institusional giňelme) we gözleg ugurlary. Ssenariler sahypasy hem şony aýdýar: gurama resminamalary hakyky tora ilkinji guramalar goşuldygyça geler.",
+        ],
+        az: [
+          "Manifest dörd dildə yenidən baxıldı və PDF-ləri yenidən quruldu.",
+          "Yol xəritəsi artıq whitepaper-i izləyir: tarixlərə deyil, şərtlərə bağlı mərhələlər (siyahı mərhələsi, hazırlıq, fond, reyestr, dövlətin qoşulması, institusional genişlənmə) və tədqiqat istiqamətləri. Ssenarilər səhifəsi də eyni şeyi deyir: qurum sənədləri real şəbəkəyə ilk qurumlar qoşulduqca gələcək.",
+        ],
+      },
+    },
+  },
+  {
     id: "v1.0.0-2026-11-03-packages-0-8-0",
     version: "v1.0.0",
     date: "2026-11-03",

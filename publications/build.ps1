@@ -19,5 +19,9 @@ if ($Name) { $files = $files | Where-Object { $Name -contains $_.BaseName } }
 foreach ($f in $files) {
   $pdf = Join-Path $out ($f.BaseName + '.pdf')
   & $typst compile --root $web @fontArgs $f.FullName $pdf
-  if ($?) { Write-Output "built $($f.BaseName).pdf" }
+  if ($?) {
+    Write-Output "built $($f.BaseName).pdf"
+    # Whitepaper ve manifesto sitenin kök adresinden de sunulur (/whitepaper-<dil>.pdf, /manifesto-<dil>.pdf)
+    if ($f.BaseName -match '^(whitepaper|manifesto)-') { Copy-Item $pdf (Join-Path $web ('public/' + $f.BaseName + '.pdf')) -Force }
+  }
 }

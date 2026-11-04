@@ -1196,8 +1196,9 @@ export const CHAPTER_6: LearnPage[] = [
           <h2>Bugün: geçici işletmeci</h2>
           <p>
             Bugün ağı Tamga geçici işletmeci olarak işletir. Türkiye listesini devlet adına yayınlar ve bu durumu açıkça adlandırır:
-            listelerde işletmecinin “geçici” olduğu ve kimin adına çalıştığı yazar. Her liste sürümü imzalıdır ve herkese açık bir
-            günlüğe işlenir; böylece listenin sessizce değiştirilmediği herkes tarafından denetlenebilir.
+            listelerde işletmecinin “geçici” olduğu ve kimin adına çalıştığı yazar. Her liste sürümü imzalıdır ve önceki sürüme özetle bağlıdır;
+            iptal listesi yayınları ayrıca herkese açık bir günlüğe yazılır. Böylece listenin sessizce değiştirilmediği herkes
+            tarafından denetlenebilir.
           </p>
           <h2>Devletler katılınca: konsey ya da vakıf</h2>
           <p>
@@ -1236,7 +1237,8 @@ export const CHAPTER_6: LearnPage[] = [
           <p>
             Today Tamga runs the network as a provisional operator. It publishes Türkiye’s list on behalf of the state and names this
             openly: the lists say that the operator is “provisional” and on whose behalf it acts. Every list version is signed and
-            recorded in a public log, so anyone can check that a list was not changed silently.
+            chained to the previous one by its hash, and status list publications are also written to a public log, so anyone can
+            check that a list was not changed silently.
           </p>
           <h2>Once states join: a council or foundation</h2>
           <p>
@@ -1268,7 +1270,7 @@ export const CHAPTER_6: LearnPage[] = [
         <>
           <p>Tora ynanmak ony kimiň dolandyrýandygyny bilmekden başlaýar. Dolandyryş tapgyrlaýyn gurulýar.</p>
           <h2>Häzir: wagtlaýyn operator</h2>
-          <p>Häzir tory Tamga wagtlaýyn operator hökmünde işledýär we muny açyk aýdýar. Her sanaw wersiýasy gol çekilýär we açyk ýazga girizilýär.</p>
+          <p>Häzir tory Tamga wagtlaýyn operator hökmünde işledýär we muny açyk aýdýar. Her sanaw wersiýasy gol çekilýär we öňki wersiýa heş bilen baglanýar; ýatyrma sanawlarynyň neşirleri açyk žurnala ýazylýar.</p>
           <h2>Döwletler goşulanda: geňeş ýa-da gaznaçylyk</h2>
           <p>Bir-iki döwlet goşulmaga taýýar bolanda dolandyryş edarasy döredilýär; sanawlar eýelerine geçýär, umumy kararlar agza döwletleriň bilelikdäki karary bilen kabul edilýär.</p>
           <Callout kind="turkic" locale="tk">
@@ -1291,7 +1293,8 @@ export const CHAPTER_6: LearnPage[] = [
           <p>
             Hazırda şəbəkəni Tamga müvəqqəti operator kimi idarə edir. O, Türkiyənin siyahısını dövlət adından dərc edir və bunu
             açıq şəkildə bildirir: siyahılarda operatorun “müvəqqəti” olduğu və kimin adından çıxış etdiyi yazılır. Siyahının hər
-            versiyası imzalanır və açıq jurnala qeyd olunur, beləliklə hər kəs siyahının xəbərsiz dəyişdirilmədiyini yoxlaya bilər.
+            versiyası imzalanır və əvvəlki versiyaya hash ilə bağlanır; ləğv siyahılarının dərcləri isə açıq jurnala yazılır.
+            Beləliklə hər kəs siyahının xəbərsiz dəyişdirilmədiyini yoxlaya bilər.
           </p>
           <h2>Dövlətlər qoşulduqda: şura və ya fond</h2>
           <p>
@@ -1322,10 +1325,10 @@ export const CHAPTER_6: LearnPage[] = [
     },
     keyPoints: [
       {
-        tr: "Bugün Tamga geçici işletmecidir ve bunu listelerde açıkça yazar; her liste sürümü herkese açık bir günlüğe işlenir.",
-        en: "Today Tamga is the provisional operator and says so in the lists; every list version is recorded in a public log.",
+        tr: "Bugün Tamga geçici işletmecidir ve bunu listelerde açıkça yazar; her liste sürümü öncekine özetle bağlıdır.",
+        en: "Today Tamga is the provisional operator and says so in the lists; every list version is chained to the previous one by its hash.",
         tk: "Häzir Tamga wagtlaýyn operator we muny sanawlarda açyk ýazýar.",
-        az: "Hazırda Tamga müvəqqəti operatordur və bunu siyahılarda bildirir; siyahının hər versiyası açıq jurnala qeyd olunur.",
+        az: "Hazırda Tamga müvəqqəti operatordur və bunu siyahılarda bildirir; siyahının hər versiyası əvvəlkinə hash ilə bağlanır.",
       },
       {
         tr: "Devletler katılınca konsey ve vakıf kurulur; her devlet yine kendi listesinin tek sahibidir.",
