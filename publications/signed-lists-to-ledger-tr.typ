@@ -268,17 +268,7 @@ Bir özeti deftere tek bir yazıcının (anchorer) göndermesi yetmez. Liste yay
 
 Yazıcılar farklı özetler gönderirse ne olur? İlk tasarımda sürümü ilk açan yazıcı verinin ne olacağını belirliyor, farklı veri gönderen reddediliyordu. Bir güvenlik incelemesi bunun iki zayıflığını gösterdi: tek bir yazıcı bir sürümü yanlış veriyle açıp dürüst yazıcıları kalıcı olarak engelleyebiliyordu ve ret zincirde iz bırakmadığı için bu kilit görünmüyordu. ADR-0053 kuralı değiştirdi: aynı sürüm için her farklı veri ayrı bir #{strong[aday]} olarak kaydedilir, ikinci ve sonraki her farklı aday herkesin görebileceği bir çelişki olayı (#{raw("AnchorConflict")}) yayar ve eşiği ilk dolduran aday kazanır \[7\].
 
-#kutu("teknik", [Eşikli onayın kuralı])[
-$W$ yetkili yazıcılar kümesi, $k$ onay eşiği, $D(v, a)$ de $v$ sürümü için $a$ adayını destekleyen ve hâlâ yetkili olan yazıcılar olsun (ADR-0051 CH3; ADR-0053 AC1–AC4) \[5, 7\]:
-
-#formul[$ "onaylı"(v, a) &<==> abs(D(v, a)) >= k \
-2 &<= k <= abs(W) quad "(üretimde)" \
-D(v, a) inter D(v, b) &= emptyset quad "her" a != b "için" $]
-
-Üçüncü satır bir yazıcının aynı sürüm için iki adayı destekleyemeyeceğini söyler. Aksi hâlde tek bir işletmeci iki farklı özete destek verip çift konuşmayı kendi içinde gizleyebilirdi. Kümeden çıkarılan yazıcının desteği sayılmaz; böylece anahtarını değiştiren bir işletmeci aynı sürüme eski ve yeni anahtarıyla iki kez oy veremez. Eşik de yazıcı sayısını aşacak biçimde ayarlanamaz; aksi hâlde hiçbir çapa onaylanamazdı.
-]
-
-Aynı akış adım adım şöyle işler:
+Aynı akış adım adım şöyle işler ($D$ bir adayı destekleyen yazıcılar, $k$ onay eşiği; kesin kural aşağıdaki kutuda):
 
 #adimlar((
   ("Liste yayıncısı", [#{strong[Yayın.]} Yeni sürümü imzalar; önceki sürümün özetini içine yazar.], $"prev"_n = "SHA-256"(L_(n-1))$),
@@ -288,6 +278,16 @@ Aynı akış adım adım şöyle işler:
   ("Defter", [#{strong[Onay.]} Eşik dolunca sürüm kapanır; kayıt artık değişmez.], $"onaylı"(n, h_n)$),
   ("Doğrulayıcı", [#{strong[İsteğe bağlı denetim.]} Elindeki listenin özetini onaylı çapayla karşılaştırır.], $h attach(=, t: ?) h_n$),
 ))
+
+#kutu("teknik", [Eşikli onayın kuralı])[
+$W$ yetkili yazıcılar kümesi, $k$ onay eşiği, $D(v, a)$ de $v$ sürümü için $a$ adayını destekleyen ve hâlâ yetkili olan yazıcılar olsun (ADR-0051 CH3; ADR-0053 AC1–AC4) \[5, 7\]:
+
+#formul[$ "onaylı"(v, a) &<==> abs(D(v, a)) >= k \
+2 &<= k <= abs(W) quad "(üretimde)" \
+D(v, a) inter D(v, b) &= emptyset quad "her" a != b "için" $]
+
+Üçüncü satır bir yazıcının aynı sürüm için iki adayı destekleyemeyeceğini söyler. Aksi hâlde tek bir işletmeci iki farklı özete destek verip çift konuşmayı kendi içinde gizleyebilirdi. Kümeden çıkarılan yazıcının desteği sayılmaz; böylece anahtarını değiştiren bir işletmeci aynı sürüme eski ve yeni anahtarıyla iki kez oy veremez. Eşik de yazıcı sayısını aşacak biçimde ayarlanamaz; aksi hâlde hiçbir çapa onaylanamazdı.
+]
 
 == Doğrulayıcının üç cevabı
 

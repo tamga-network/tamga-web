@@ -21,12 +21,14 @@ export type PublicationVersion = {
   sizeKb?: number;
   /** Bu dildeki kısa özet */
   abstract?: string;
+  /** Bu dildeki anahtar kelimeler (kaynaktaki sırayla; sayfada JSON-LD'ye yazılır) */
+  keywords?: string[];
 };
 
 export type Publication = {
   /** Benzersiz kısa kimlik; dosya adlarının başı */
   id: string;
-  /** Yazarlar: ekip üyesinin slug'ı (profile bağlanır) ya da ekip dışı yazarın adı */
+  /** Yazarlar: ekip üyesinin slug'ı (profile bağlanır), ekip dışı yazarın adı ya da kurum yazısında "Tamga Network" */
   authors: string[];
   /** YYYY-AA-GG ya da YYYY-AA */
   date: string;

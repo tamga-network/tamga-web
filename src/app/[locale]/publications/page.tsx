@@ -26,13 +26,15 @@ function articleLd(p: Publication, locale: string) {
     inLanguage: main.lang,
     datePublished: p.date,
     ...(main.abstract ? { abstract: main.abstract } : {}),
+    ...(main.keywords?.length ? { keywords: main.keywords.join(", ") } : {}),
     ...(main.file ? { url: `${SITE_URL}${main.file}`, encodingFormat: "application/pdf" } : main.url ? { url: main.url } : {}),
     ...(p.license === "CC BY 4.0" ? { license: "https://creativecommons.org/licenses/by/4.0/" } : {}),
     author: p.authors.map((a) => {
       const m = memberBySlug(a);
-      return m
-        ? { "@type": "Person", "@id": `${SITE_URL}/team/${m.slug}#person`, name: m.name }
-        : { "@type": "Person", name: a };
+      if (m) return { "@type": "Person", "@id": `${SITE_URL}/team/${m.slug}#person`, name: m.name };
+      // Kurum yazısı: yazar kurumun kendisi
+      if (a === ORGANIZATION.name) return { "@id": ORGANIZATION["@id"], "@type": "Organization", name: ORGANIZATION.name };
+      return { "@type": "Person", name: a };
     }),
     publisher: { "@id": ORGANIZATION["@id"], "@type": "Organization", name: ORGANIZATION.name },
   };

@@ -74,12 +74,7 @@
     (white, gok-700)
   }
   let etiket = lbl(dil, tur)
-  block(
-    width: 100%, above: 14pt, below: 14pt, breakable: tur == "teknik" or tur == "tarihce",
-    fill: zemin,
-    stroke: if tur == "onemli" { (left: 3pt + kenar, rest: 0.8pt + kenar) } else { (left: 2.4pt + kenar) },
-    inset: (x: 12pt, y: 10pt), radius: 2pt,
-  )[
+  let ic = [
     // Etiket ve başlık, kutunun ilk satırlarıyla aynı sayfada kalır (sayfa sonunda tek başına başlık olmaz)
     #block(sticky: true, below: 6pt)[
       #text(font: mono, size: 7pt, weight: 600, tracking: 0.8pt, fill: kenar)[#etiket]
@@ -88,6 +83,21 @@
     #set text(size: 9.4pt)
     #govde
   ]
+  let kutu-blok(kirilir) = block(
+    width: 100%, above: 14pt, below: 14pt, breakable: kirilir,
+    fill: zemin,
+    stroke: if tur == "onemli" { (left: 3pt + kenar, rest: 0.8pt + kenar) } else { (left: 2.4pt + kenar) },
+    inset: (x: 12pt, y: 10pt), radius: 2pt,
+  )[#ic]
+  if tur == "teknik" or tur == "tarihce" {
+    // Kutu bir sayfada bölünmemeye çalışılır (DIZGI §5): yalnız uzun kutular (metin alanının üçte birinden yüksek) bölünebilir.
+    context {
+      let h = measure(block(width: page.width - 5cm, inset: (x: 12pt, y: 10pt))[#ic]).height
+      kutu-blok(h > 8cm)
+    }
+  } else {
+    kutu-blok(false)
+  }
 }
 
 // ---- Kod ----
