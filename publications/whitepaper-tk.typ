@@ -55,7 +55,7 @@ Resminamadaky her tassyklama üç ýagdaýyň birine degişli we tekst muny hemm
 
 Kararlar karar ýazgylary (ADR, #{emph[Architecture Decision Record]}), tehniki düzgünler spesifikasiýalar (SPEC), çarçuwa düzgünleri bolsa Tamga Arhitektura we Salgylanma Çarçuwasynyň resminamalary (FW) bilen agzalýar. Tekstde "ADR-0042" görýän ýeriňizde kararyň doly teksti #{raw("docs.tamga.network/tr/adr/")} salgysynda, "SPEC-TRUST-0001 §5" görýän ýeriňizde spesifikasiýanyň degişli bölümi #{raw("docs.tamga.network/tr/specifications/")} salgysynda, "FW-ARF-0001 §6.1" görýän ýeriňizde çarçuwa resminamasy #{raw("arf.tamga.network/tr/")} salgysynda ýerleşýär. Belgileriň salgylara gabat gelşi E goşmaçada berilýär \[63, 64, 65\]. Belgiler hemişelikdir: resminamanyň ady ýa-da ýeri üýtgese-de, belgisi şol bir galýar.
 
-Bu neşir taýýarlanan wagty Tamga-nyň açyk paketleri npm-de 0.8.1 synag wersiýasy bilen çap edildi; çarçuwa resminamalary 1.0 wersiýada. Wersiýa bagly her sözlem şu sene boýunça ýazyldy.
+Bu neşir taýýarlanan wagty Tamga-nyň açyk paketleri npm-de 0.8.2 synag wersiýasy bilen çap edildi; çarçuwa resminamalary 1.0 wersiýada. Wersiýa bagly her sözlem şu sene boýunça ýazyldy.
 
 = Giriş: Nusgadan Subutnama
 
@@ -1210,7 +1210,7 @@ Netije obýektinde iki zat asla ýok. Açylan meýdanlaryň #{strong[bahalary]} 
   \"failed_step\": null,
   \"indeterminate_reason\": null,
   \"spec_version\": \"SPEC-API-0001@1.0.0\",
-  \"sdk_version\": \"@tamga-network/verifier@0.8.1\",
+  \"sdk_version\": \"@tamga-network/verifier@0.8.2\",
   \"checks_performed\": [\"T0\", \"A1\", \"A2\", \"A3\", \"A3b\", \"…\", \"D6\", \"E1\", \"E2\", \"E3\", \"E4\"],
   \"checks_skipped\": [],
   \"issuer\": { \"issuer_id\": \"0x7f3a…\", \"state_code\": \"TR\", \"category\": \"EDUCATION\", \"assurance\": \"I2\" },
@@ -1778,7 +1778,7 @@ Guramalar sandbox-da öz synag guramalaryny hem açyp bilýär (ADR-0041). Elif 
 
 == Dokuz paket
 
-Toruň düzgünleri diňe resminamalarda durmaýar; olar kod görnüşinde hem ýaýradylýar. #{raw("@tamga-network/*")} ady bilen dokuz açyk çeşmeli paket bar. Koduň ygtyýarnamasy Apache-2.0, resminamalaryňky CC BY 4.0. Paketler npm-de 0.8.1 synag wersiýasy bilen çap edildi; durnukly 1.0.0 wersiýasyna çenli interfeýsler üýtgäp biler (README) (Tablisa 29).
+Toruň düzgünleri diňe resminamalarda durmaýar; olar kod görnüşinde hem ýaýradylýar. #{raw("@tamga-network/*")} ady bilen dokuz açyk çeşmeli paket bar. Koduň ygtyýarnamasy Apache-2.0, resminamalaryňky CC BY 4.0. Paketler npm-de 0.8.2 synag wersiýasy bilen çap edildi; durnukly 1.0.0 wersiýasyna çenli interfeýsler üýtgäp biler (README) (Tablisa 29).
 
 #tablo([#{strong[Tablisa 29.]} Açyk paketler.], (48fr, 48fr, 29fr), ([Paket​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​], [Wezipesi], [Platforma belligi],), (
   ([#{raw("@tamga-network/core")}], [heşler, belgiler, sertifikat kömekçileri, ÝB PID atlar tablisasy], [React Native üçin aýry goşmaça ýollar],),
@@ -1809,7 +1809,7 @@ const { result, claims } = await verifyPresentation({
   rp: trust.relyingParty(clientId),   // kayıt zorunlu; bilerek atlamak için \"none\"
   audit: (entry) => log(entry),       // denetim kaydı
 });
-// result.outcome: \"ACCEPTED\", \"REJECTED\" ya da \"INDETERMINATE\"", baslik: "Mysal: hödürlemäni öz serweriňizde barlamak (gysgaldylan, 0.8.1 synag wersiýasy)")
+// result.outcome: \"ACCEPTED\", \"REJECTED\" ya da \"INDETERMINATE\"", baslik: "Mysal: hödürlemäni öz serweriňizde barlamak (gysgaldylan, 0.8.2 synag wersiýasy)")
 
 Mysal gysgaldyldy we bahalar mysal üçin; haýyşyň her alnyşy üçin aýry şaha açýan doly akym üznüksiz integrasiýada hakyky paketlere garşy işleýän nusga taslamalarda (#{raw("examples/02-verify-own-server")}). Öz barlaýjysyny ýazmak islemeýän adam ýerleşdirilen Tamga Verify-ny ulanyp biler.
 
@@ -2318,7 +2318,7 @@ Tablisa 46 funksiýalary üç ýagdaý belligi boýunça tertipleşdirýär. Bel
   ([Gapjyk üpjün edijisiniň ýazgysy], [Işleýär], [sanawa giren ilkinji gapjyk, hakyky tor we sandbox], [5\.4],),
   ([Nol bilimli subutnama, barlaýjy tarapy], [Işleýär], [], [15\.4],),
   ([Sandbox], [Işleýär], [hemmä açyk; şahsyýet barlagy ýokarky çäkli], [17\.1],),
-  ([Açyk paketler], [Işleýär], [npm-de 0.8.1 synag wersiýasy, Apache-2.0], [17\.2],),
+  ([Açyk paketler], [Işleýär], [npm-de 0.8.2 synag wersiýasy, Apache-2.0], [17\.2],),
   ([ETSI TS 119 612 XML görnüşi], [Sandbox-da işleýär], [hakyky torda meýilleşdirilen], [6\.8],),
   ([ETSI TS 119 602 görnüşleriniň çap edilmegi], [Meýilleşdirilen], [döredijisi taýýar], [6\.8],),
   ([Ikinji sanaw gol sertifikaty we enjam açar ammary], [Meýilleşdirilen], [spesifikasiýada açyk iş], [6\.3],),
@@ -2839,7 +2839,7 @@ Tamga-nyň çarçuwa resminamalary #{raw("arf.tamga.network/tr/")}, spesifikasi�
 
 #kaynak("65")[Tamga Network (2026). #{emph[Mimari karar kayıtları]} \[Arhitektura karar ýazgylary\] ADR-0001…ADR-0072. https:\/\/docs.tamga.network\/tr\/adr\/ (görkezijisi B goşmaçasynda).]
 
-#kaynak("66")[Tamga Network (2026). #{emph[tamga-network]} ammary: README, SECURITY.md, CHANGELOG (0.8.1, 5 noýabr 2026) we #{raw("@tamga-network/*")} paketleri, Apache-2.0. https:\/\/github.com\/tamga-network\/tamga-network]
+#kaynak("66")[Tamga Network (2026). #{emph[tamga-network]} ammary: README, SECURITY.md, CHANGELOG (0.8.2, 5 noýabr 2026) we #{raw("@tamga-network/*")} paketleri, Apache-2.0. https:\/\/github.com\/tamga-network\/tamga-network]
 
 #kaynak("67")[Tamga Network Akademik Çalışmalar A1 (2026). #{emph[Dijital Kimliğin Evrimi: Kullanıcı Adından Kimlik Cüzdanına]} \[Sanly şahsyýetiň ewolýusiýasy: ulanyjy adyndan şahsyýet gapjygyna\]. https:\/\/tamga.network\/files\/publications\/evolution-of-digital-identity-tr.pdf]
 

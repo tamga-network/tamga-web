@@ -55,7 +55,7 @@ Sənəddəki hər iddia üç vəziyyətdən birinə aiddir və mətn bunu hər y
 
 Qərarlar qərar qeydləri (ADR, #{emph[Architecture Decision Record]}), texniki qaydalar spesifikasiyalar (SPEC), çərçivə qaydaları isə Tamga Arxitektura və İstinad Çərçivəsinin sənədləri (FW) ilə istinad olunur. Mətndə "ADR-0042" gördüyünüz yerdə qərarın tam mətni #{raw("docs.tamga.network/tr/adr/")} altında, "SPEC-TRUST-0001 §5" gördüyünüz yerdə spesifikasiyanın müvafiq bölməsi #{raw("docs.tamga.network/tr/specifications/")} altında, "FW-ARF-0001 §6.1" gördüyünüz yerdə çərçivə sənədi #{raw("arf.tamga.network/tr/")} altındadır. İdentifikatorların ünvan uyğunluğu Əlavə E-dədir \[63, 64, 65\]. İdentifikatorlar daimidir: sənədin başlığı və ya yeri dəyişsə də, identifikatoru eyni qalır.
 
-Bu nəşrin hazırlandığı tarixdə Tamga-nın açıq paketləri npm-də 0.8.1 sınaq versiyası ilə dərc olunub; çərçivə sənədləri 1.0 versiyasındadır. Versiyaya bağlı hər cümlə bu tarixə görə yazılıb.
+Bu nəşrin hazırlandığı tarixdə Tamga-nın açıq paketləri npm-də 0.8.2 sınaq versiyası ilə dərc olunub; çərçivə sənədləri 1.0 versiyasındadır. Versiyaya bağlı hər cümlə bu tarixə görə yazılıb.
 
 = Giriş: Surətdən Sübuta
 
@@ -1210,7 +1210,7 @@ Nəticə obyektində iki şey heç vaxt olmur. Açıqlanan sahələrin #{strong[
   \"failed_step\": null,
   \"indeterminate_reason\": null,
   \"spec_version\": \"SPEC-API-0001@1.0.0\",
-  \"sdk_version\": \"@tamga-network/verifier@0.8.1\",
+  \"sdk_version\": \"@tamga-network/verifier@0.8.2\",
   \"checks_performed\": [\"T0\", \"A1\", \"A2\", \"A3\", \"A3b\", \"…\", \"D6\", \"E1\", \"E2\", \"E3\", \"E4\"],
   \"checks_skipped\": [],
   \"issuer\": { \"issuer_id\": \"0x7f3a…\", \"state_code\": \"TR\", \"category\": \"EDUCATION\", \"assurance\": \"I2\" },
@@ -1778,7 +1778,7 @@ Qurumlar sandbox-da öz test qurumlarını da aça bilər (ADR-0041). Elif uydur
 
 == Doqquz paket
 
-Şəbəkənin qaydaları yalnız sənədlərdə durmur; kod kimi də paylanır. #{raw("@tamga-network/*")} adı ilə doqquz açıq mənbəli paket var. Kodun lisenziyası Apache-2.0, sənədlərin lisenziyası CC BY 4.0-dır. Paketlər npm-də 0.8.1 sınaq versiyası ilə dərc edilib; sabit 1.0.0 versiyasına qədər interfeyslər dəyişə bilər (README) (Cədvəl 29).
+Şəbəkənin qaydaları yalnız sənədlərdə durmur; kod kimi də paylanır. #{raw("@tamga-network/*")} adı ilə doqquz açıq mənbəli paket var. Kodun lisenziyası Apache-2.0, sənədlərin lisenziyası CC BY 4.0-dır. Paketlər npm-də 0.8.2 sınaq versiyası ilə dərc edilib; sabit 1.0.0 versiyasına qədər interfeyslər dəyişə bilər (README) (Cədvəl 29).
 
 #tablo([#{strong[Cədvəl 29.]} Açıq paketlər.], (48fr, 48fr, 26fr), ([Paket​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​], [Vəzifə], [Platforma qeydi],), (
   ([#{raw("@tamga-network/core")}], [hash-lər, identifikatorlar, sertifikat köməkçiləri, Aİ PID adları cədvəli], [React Native üçün ayrıca alt yollar],),
@@ -1809,7 +1809,7 @@ const { result, claims } = await verifyPresentation({
   rp: trust.relyingParty(clientId),   // kayıt zorunlu; bilerek atlamak için \"none\"
   audit: (entry) => log(entry),       // denetim kaydı
 });
-// result.outcome: \"ACCEPTED\", \"REJECTED\" ya da \"INDETERMINATE\"", baslik: "Nümunə: təqdimatı öz serverinizdə yoxlamaq (qısaldılmış, 0.8.1 sınaq versiyası)")
+// result.outcome: \"ACCEPTED\", \"REJECTED\" ya da \"INDETERMINATE\"", baslik: "Nümunə: təqdimatı öz serverinizdə yoxlamaq (qısaldılmış, 0.8.2 sınaq versiyası)")
 
 Nümunə qısaldılıb və dəyərlər nümunədir; sorğunun hər çəkilişinə ayrıca qol açan tam axın davamlı inteqrasiyada real paketlərə qarşı işləyən nümunə layihələrdədir (#{raw("examples/02-verify-own-server")}). Öz yoxlayıcısını yazmaq istəməyən host edilən Tamga Verify-dan istifadə edə bilər.
 
@@ -2318,7 +2318,7 @@ Cədvəl 46 funksiyaları üç status etiketinə görə sıralayır. Etiketləri
   ([Cüzdan provayderinin qeydi], [İşləyir], [siyahıya daxil olan ilk cüzdan, real şəbəkə və sandbox], [5\.4],),
   ([Sıfır bilik sübutu, yoxlayan tərəf hissəsi], [İşləyir], [], [15\.4],),
   ([Sandbox], [İşləyir], [hamıya açıq; şəxsiyyət yoxlaması limitlidir], [17\.1],),
-  ([Açıq paketlər], [İşləyir], [npm-də 0.8.1 sınaq versiyası, Apache-2.0], [17\.2],),
+  ([Açıq paketlər], [İşləyir], [npm-də 0.8.2 sınaq versiyası, Apache-2.0], [17\.2],),
   ([ETSI TS 119 612 XML görünüşü], [Sandbox-da işləyir], [real şəbəkədə planlaşdırılıb], [6\.8],),
   ([ETSI TS 119 602 görünüşlərinin dərci], [Planlaşdırılıb], [generator hazırdır], [6\.8],),
   ([İkinci siyahı imza sertifikatı və aparat açar anbarı], [Planlaşdırılıb], [spesifikasiyada açıq iş], [6\.3],),
@@ -2839,7 +2839,7 @@ Tamga-nın çərçivə sənədləri #{raw("arf.tamga.network/tr/")}, spesifikasi
 
 #kaynak("65")[Tamga Network (2026). #{emph[Mimari karar kayıtları]} \[Arxitektura qərarlarının qeydləri\] ADR-0001…ADR-0072. https:\/\/docs.tamga.network\/tr\/adr\/ (göstərici B Əlavəsindədir).]
 
-#kaynak("66")[Tamga Network (2026). #{emph[tamga-network]} deposu: README, SECURITY.md, CHANGELOG (0.8.1, 5 noyabr 2026) və #{raw("@tamga-network/*")} paketləri, Apache-2.0. https:\/\/github.com\/tamga-network\/tamga-network]
+#kaynak("66")[Tamga Network (2026). #{emph[tamga-network]} deposu: README, SECURITY.md, CHANGELOG (0.8.2, 5 noyabr 2026) və #{raw("@tamga-network/*")} paketləri, Apache-2.0. https:\/\/github.com\/tamga-network\/tamga-network]
 
 #kaynak("67")[Tamga Network Akademik Çalışmalar A1 (2026). #{emph[Dijital Kimliğin Evrimi: Kullanıcı Adından Kimlik Cüzdanına]} \[Rəqəmsal şəxsiyyətin təkamülü: istifadəçi adından şəxsiyyət cüzdanına\]. https:\/\/tamga.network\/files\/publications\/evolution-of-digital-identity-tr.pdf]
 

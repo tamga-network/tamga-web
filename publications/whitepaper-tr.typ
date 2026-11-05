@@ -55,7 +55,7 @@ Belgedeki her iddia üç durumdan birine aittir ve metin bunu her yerde açıkç
 
 Kararlar karar kayıtlarıyla (ADR, #{emph[Architecture Decision Record]}), teknik kurallar şartnamelerle (SPEC) ve çerçeve kuralları Tamga Mimari ve Referans Çerçevesi’nin belgeleriyle (FW) anılır. Metinde "ADR-0042" gördüğünüz yerde kararın tam metni #{raw("docs.tamga.network/tr/adr/")} altında, "SPEC-TRUST-0001 §5" gördüğünüz yerde şartnamenin ilgili bölümü #{raw("docs.tamga.network/tr/specifications/")} altında, "FW-ARF-0001 §6.1" gördüğünüz yerde çerçeve belgesi #{raw("arf.tamga.network/tr/")} altındadır. Kimliklerin adres eşlemesi Ek E’dedir \[63, 64, 65\]. Kimlikler kalıcıdır: bir belgenin başlığı ya da yeri değişse de kimliği aynı kalır.
 
-Bu baskının hazırlandığı tarihte Tamga’nın açık paketleri npm’de 0.8.1 deneme sürümüyle yayımlanmıştır; çerçeve belgeleri sürüm 1.0’dadır. Sürüme bağlı her cümle bu tarihe göre yazılmıştır.
+Bu baskının hazırlandığı tarihte Tamga’nın açık paketleri npm’de 0.8.2 deneme sürümüyle yayımlanmıştır; çerçeve belgeleri sürüm 1.0’dadır. Sürüme bağlı her cümle bu tarihe göre yazılmıştır.
 
 = Giriş: Kopyadan Kanıta
 
@@ -1210,7 +1210,7 @@ Sonuç nesnesinde iki şey hiç bulunmaz. Açıklanan alanların #{strong[değer
   \"failed_step\": null,
   \"indeterminate_reason\": null,
   \"spec_version\": \"SPEC-API-0001@1.0.0\",
-  \"sdk_version\": \"@tamga-network/verifier@0.8.1\",
+  \"sdk_version\": \"@tamga-network/verifier@0.8.2\",
   \"checks_performed\": [\"T0\", \"A1\", \"A2\", \"A3\", \"A3b\", \"…\", \"D6\", \"E1\", \"E2\", \"E3\", \"E4\"],
   \"checks_skipped\": [],
   \"issuer\": { \"issuer_id\": \"0x7f3a…\", \"state_code\": \"TR\", \"category\": \"EDUCATION\", \"assurance\": \"I2\" },
@@ -1778,7 +1778,7 @@ Kurumlar sandbox’ta kendi test kurumlarını da açabilir (ADR-0041). Elif uyd
 
 == Dokuz paket
 
-Ağın kuralları yalnız belgelerde durmaz; kod olarak da dağıtılır. #{raw("@tamga-network/*")} adıyla dokuz açık kaynak paket vardır. Kodun lisansı Apache-2.0, belgelerin lisansı CC BY 4.0’dır. Paketler npm’de 0.8.1 deneme sürümüyle yayımlanmıştır; kararlı 1.0.0 sürümüne kadar arayüzler değişebilir (README) (Tablo 29).
+Ağın kuralları yalnız belgelerde durmaz; kod olarak da dağıtılır. #{raw("@tamga-network/*")} adıyla dokuz açık kaynak paket vardır. Kodun lisansı Apache-2.0, belgelerin lisansı CC BY 4.0’dır. Paketler npm’de 0.8.2 deneme sürümüyle yayımlanmıştır; kararlı 1.0.0 sürümüne kadar arayüzler değişebilir (README) (Tablo 29).
 
 #tablo([#{strong[Tablo 29.]} Açık paketler.], (48fr, 48fr, 25fr), ([Paket​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​], [Görev], [Platform notu],), (
   ([#{raw("@tamga-network/core")}], [özetler, tanımlayıcılar, sertifika yardımcıları, AB PID ad tablosu], [React Native için ayrı alt yollar],),
@@ -1809,7 +1809,7 @@ const { result, claims } = await verifyPresentation({
   rp: trust.relyingParty(clientId),   // kayıt zorunlu; bilerek atlamak için \"none\"
   audit: (entry) => log(entry),       // denetim kaydı
 });
-// result.outcome: \"ACCEPTED\", \"REJECTED\" ya da \"INDETERMINATE\"", baslik: "Örnek: bir sunumu kendi sunucunuzda doğrulamak (kısaltılmış, 0.8.1 deneme sürümü)")
+// result.outcome: \"ACCEPTED\", \"REJECTED\" ya da \"INDETERMINATE\"", baslik: "Örnek: bir sunumu kendi sunucunuzda doğrulamak (kısaltılmış, 0.8.2 deneme sürümü)")
 
 Örnek kısaltılmıştır ve değerler örnektir; isteğin her çekimine ayrı dal açan tam akış, sürekli entegrasyonda gerçek paketlere karşı çalışan örnek projelerdedir (#{raw("examples/02-verify-own-server")}). Kendi doğrulayıcısını yazmak istemeyen biri barındırılan Tamga Verify’ı kullanabilir.
 
@@ -2318,7 +2318,7 @@ Tablo 46 işlevleri üç durum etiketine göre sıralar. Etiketlerin anlamı oku
   ([Cüzdan sağlayıcısı kaydı], [Çalışıyor], [ilk listeli cüzdan, gerçek ağ ve sandbox], [5\.4],),
   ([Sıfır bilgi ispatı, doğrulayıcı tarafı], [Çalışıyor], [], [15\.4],),
   ([Sandbox], [Çalışıyor], [herkese açık; kimlik doğrulaması tavanlı], [17\.1],),
-  ([Açık paketler], [Çalışıyor], [npm’de 0.8.1 deneme sürümü, Apache-2.0], [17\.2],),
+  ([Açık paketler], [Çalışıyor], [npm’de 0.8.2 deneme sürümü, Apache-2.0], [17\.2],),
   ([ETSI TS 119 612 XML görünümü], [Sandbox’ta çalışıyor], [gerçek ağda planlanan], [6\.8],),
   ([ETSI TS 119 602 görünümlerinin yayını], [Planlanan], [üretici hazır], [6\.8],),
   ([İkinci liste imza sertifikası ve donanım anahtar deposu], [Planlanan], [şartnamede açık iş], [6\.3],),
@@ -2839,7 +2839,7 @@ Tamga’nın çerçeve belgeleri #{raw("arf.tamga.network/tr/")}, şartnameleri 
 
 #kaynak("65")[Tamga Network (2026). #{emph[Mimari karar kayıtları]} ADR-0001…ADR-0072. https:\/\/docs.tamga.network\/tr\/adr\/ (dizin Ek B’de).]
 
-#kaynak("66")[Tamga Network (2026). #{emph[tamga-network]} deposu: README, SECURITY.md, CHANGELOG (0.8.1, 5 Kasım 2026) ve #{raw("@tamga-network/*")} paketleri, Apache-2.0. https:\/\/github.com\/tamga-network\/tamga-network]
+#kaynak("66")[Tamga Network (2026). #{emph[tamga-network]} deposu: README, SECURITY.md, CHANGELOG (0.8.2, 5 Kasım 2026) ve #{raw("@tamga-network/*")} paketleri, Apache-2.0. https:\/\/github.com\/tamga-network\/tamga-network]
 
 #kaynak("67")[Tamga Network Akademik Çalışmalar A1 (2026). #{emph[Dijital Kimliğin Evrimi: Kullanıcı Adından Kimlik Cüzdanına.]} https:\/\/tamga.network\/files\/publications\/evolution-of-digital-identity-tr.pdf]
 

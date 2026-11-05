@@ -108,6 +108,72 @@ export const CHANGELOG_PAGE: Record<
 
 export const RELEASES: Release[] = [
   {
+    id: "v1.0.0-2026-11-05-packages-0-8-2",
+    version: "v1.0.0",
+    date: "2026-11-05",
+    kind: "feature",
+    title: {
+      en: "The joining tool is on npm, the wallet core refuses ambiguous verifiers, packages 0.8.2",
+      tr: "Katılım aracı npm'de, cüzdan çekirdeği belirsiz doğrulayıcıyı kabul etmiyor, paketler 0.8.2",
+      tk: "Goşulyş guraly npm-de, gapjyk ýadrosy düşnüksiz barlaýjyny kabul etmeýär, paketler 0.8.2",
+      az: "Qoşulma aləti npm-də, cüzdan nüvəsi qeyri-müəyyən yoxlayıcını qəbul etmir, paketlər 0.8.2",
+    },
+    sections: {
+      added: {
+        en: [
+          "The joining tool @tamga-network/onboard is on npm for the first time. An institution's IT team uses it to prepare the registration application and check it against the registration rules, to create the institution's keys on its own computer, to check its own setup and, after joining, to check how the institution appears in the signed trust list. It writes nothing to the network or to the list and asks for no personal data.",
+          "The same tool works as a local MCP server, so the institution's own AI assistant can run the steps. It also has the steps for a state or an operator that will run a node of the shared ledger: creating the node key on its own machine, the declaration sent to the operator and a read-only check of the running node.",
+        ],
+        tr: [
+          "Katılım aracı @tamga-network/onboard ilk kez npm'de. Kurumun bilgi işlem ekibi bu araçla başvuru dosyasını hazırlıyor ve kayıt kurallarına göre denetliyor, kurumun anahtarlarını kendi bilgisayarında üretiyor, kendi kurulumunu denetliyor ve katıldıktan sonra kurumun imzalı güven listesinde nasıl göründüğüne bakıyor. Araç ağa ve listeye hiçbir şey yazmıyor, kişisel veri istemiyor.",
+          "Aynı araç yerel bir MCP sunucusu olarak da çalışıyor; kurumun kendi yapay zekâ asistanı adımları yürütebiliyor. Ortak defterde düğüm çalıştıracak bir devlet ya da işletmeci için de adımları var: düğüm anahtarını kendi makinesinde üretmek, işletmeciye gidecek bildirimi yazmak ve çalışan düğümü yalnız okuyarak denetlemek.",
+        ],
+        tk: [
+          "Goşulyş guraly @tamga-network/onboard ilkinji gezek npm-de. Guramanyň IT topary bu gural bilen hasaba alyş arzasyny taýýarlaýar we ony hasaba alyş düzgünlerine görä barlaýar, guramanyň açarlaryny öz kompýuterinde döredýär, öz gurnamasyny barlaýar we goşulandan soň guramanyň gol çekilen ynam sanawynda nähili görünýändigine seredýär. Gural tora we sanawa hiç zat ýazmaýar, şahsy maglumat soramaýar.",
+          "Şol bir gural ýerli MCP serweri hökmünde hem işleýär; guramanyň öz emeli aň kömekçisi ädimleri ýerine ýetirip bilýär. Umumy sanaw kitabynda düwün işletjek döwlet ýa-da operator üçin hem ädimleri bar: düwün açaryny öz maşynynda döretmek, operatora iberiljek beýannamany ýazmak we işleýän düwüni diňe okap barlamak.",
+        ],
+        az: [
+          "Qoşulma aləti @tamga-network/onboard ilk dəfə npm-dədir. Qurumun İT komandası bu alətlə qeydiyyat müraciətini hazırlayır və onu qeydiyyat qaydalarına görə yoxlayır, qurumun açarlarını öz kompüterində yaradır, öz quraşdırmasını yoxlayır və qoşulduqdan sonra qurumun imzalanmış etibar siyahısında necə göründüyünə baxır. Alət şəbəkəyə və siyahıya heç nə yazmır, şəxsi məlumat istəmir.",
+          "Eyni alət lokal MCP serveri kimi də işləyir; qurumun öz süni intellekt köməkçisi addımları icra edə bilir. Ortaq reyestrdə qovşaq işlədəcək dövlət və ya operator üçün də addımları var: qovşaq açarını öz maşınında yaratmaq, operatora göndəriləcək bəyannaməni yazmaq və işləyən qovşağı yalnız oxuyaraq yoxlamaq.",
+        ],
+      },
+      security: {
+        en: [
+          "In the wallet core, a verifier whose name appears in more than one country's list without a recorded move is now treated as unregistered on every lookup path, also when the request names the verifier by its certificate. The person sees the “not found in the trust list” warning, and a request that needs a registration is refused.",
+        ],
+        tr: [
+          "Cüzdan çekirdeğinde, adı birden çok ülkenin listesinde görünen ve taşınması kayıtlı olmayan bir doğrulayıcı artık her arama yolunda kayıtsız sayılıyor; istek doğrulayıcıyı sertifikasıyla andığında da. Kişi “güven listesinde bulunamadı” uyarısını görüyor; kayıt gerektiren istek reddediliyor.",
+        ],
+        tk: [
+          "Gapjyk ýadrosynda ady birnäçe ýurduň sanawynda görünýän we geçişi ýazga geçirilmedik barlaýjy indi her gözleg ýolunda hasaba alynmadyk hasaplanýar; haýyş barlaýjyny sertifikaty bilen görkezende hem. Adam “ynam sanawynda tapylmady” duýduryşyny görýär; hasaba alyşy talap edýän haýyş ret edilýär.",
+        ],
+        az: [
+          "Cüzdan nüvəsində adı birdən çox ölkənin siyahısında görünən və keçidi qeydə alınmamış yoxlayıcı artıq hər axtarış yolunda qeydiyyatsız sayılır; sorğu yoxlayıcını sertifikatı ilə göstərdikdə də. Şəxs “etibar siyahısında tapılmadı” xəbərdarlığını görür; qeydiyyat tələb edən sorğu rədd edilir.",
+        ],
+      },
+      changed: {
+        en: [
+          "The @tamga-network/* packages are on npm as the 0.8.2 test release, now ten packages; the stable 1.0.0 comes when everything is ready.",
+        ],
+        tr: [
+          "@tamga-network/* paketleri npm'de 0.8.2 deneme sürümünde, artık on paket; kararlı 1.0.0 her şey hazır olunca gelir.",
+        ],
+        tk: [
+          "@tamga-network/* paketleri npm-de 0.8.2 synag wersiýasynda, indi on paket; durnukly 1.0.0 hemme zat taýýar bolanda geler.",
+        ],
+        az: [
+          "@tamga-network/* paketləri npm-də 0.8.2 sınaq buraxılışı kimi mövcuddur, artıq on paket; sabit 1.0.0 hər şey hazır olduqda çıxacaq.",
+        ],
+      },
+    },
+    note: {
+      en: "Install the joining tool with npm install -g @tamga-network/onboard. Its first release was published by hand without provenance; later releases come from the automated release workflow. No other package changed its API; details in the package CHANGELOG under “Behaviour changes in 0.8.2”.",
+      tr: "Katılım aracını npm install -g @tamga-network/onboard ile kurabilirsiniz. İlk sürümü elle ve kaynak kanıtı (provenance) olmadan yayımlandı; sonraki sürümler otomatik yayın akışından gelecek. Başka hiçbir paketin arayüzü değişmedi; ayrıntılar paket CHANGELOG'unda “Behaviour changes in 0.8.2” başlığında.",
+      tk: "Goşulyş guralyny npm install -g @tamga-network/onboard bilen gurnap bilersiňiz. Onuň ilkinji wersiýasy el bilen we gelip çykyş subutnamasy (provenance) bolmazdan çap edildi; indiki wersiýalar awtomatik çap ediş akymyndan geler. Başga hiç bir paketiň interfeýsi üýtgemedi; jikme-jiklikler paketiň CHANGELOG-ynda “Behaviour changes in 0.8.2” bölüminde.",
+      az: "Qoşulma alətini npm install -g @tamga-network/onboard ilə quraşdıra bilərsiniz. İlk versiyası əl ilə və mənşə sübutu (provenance) olmadan dərc olundu; sonrakı versiyalar avtomatik dərc axınından gələcək. Başqa heç bir paketin interfeysi dəyişmədi; təfərrüatlar paketin CHANGELOG-unda “Behaviour changes in 0.8.2” başlığındadır.",
+    },
+  },
+  {
     id: "v1.0.0-2026-11-05-packages-0-8-1",
     version: "v1.0.0",
     date: "2026-11-05",

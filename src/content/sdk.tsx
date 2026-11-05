@@ -11,12 +11,14 @@ type L = Record<Locale, string>;
 export const npmUrl = (name: string) => `https://www.npmjs.com/package/${name}`;
 /* docs.tamga.network'te sayfası olmayan paketler (zk) depo README'sine gider. */
 const DOCS_OVERRIDE: Record<string, string> = {
-  "@tamga-network/zk": "https://github.com/tamga-network/tamga-network/tree/main/packages/zk#readme",
+  "@tamga-network/zk":
+    "https://github.com/tamga-network/tamga-network/tree/main/packages/zk#readme",
 };
 export const pkgDocsUrl = (name: string) =>
-  DOCS_OVERRIDE[name] ?? `https://docs.tamga.network/packages/${name.replace("@tamga-network/", "")}`;
+  DOCS_OVERRIDE[name] ??
+  `https://docs.tamga.network/packages/${name.replace("@tamga-network/", "")}`;
 
-/* soon: npm'de henüz olmayan paket için; bugün dokuz paketin hepsi npm'de (0.8.1). */
+/* soon: npm'de henüz olmayan paket için; bugün on paketin hepsi npm'de (0.8.2; onboard ilk kez 0.8.2'de). */
 export const PACKAGES: { name: string; what: L; soon?: L }[] = [
   {
     name: "@tamga-network/core",
@@ -97,6 +99,15 @@ export const PACKAGES: { name: string; what: L; soon?: L }[] = [
       tr: "cüzdan tarafı sıfır bilgi ispatçısı (ISO mdoc, ilk kullanım: 18 yaş üstü): Android yerel ispatçı hazır, iOS bekliyor",
       tk: "gapjyk tarapynda nol bilimli subutnama düzüji (ISO mdoc, ilkinji ulanylyşy: 18 ýaşdan uly): Android ýerli düzüji taýýar, iOS garaşylýar",
       az: "cüzdan tərəfində sıfır bilikli sübut generatoru (ISO mdoc, ilk istifadə: 18 yaşdan yuxarı): Android yerli generatoru hazırdır, iOS gözlənilir",
+    },
+  },
+  {
+    name: "@tamga-network/onboard",
+    what: {
+      en: "joining tool for an institution's IT team (command tamga-onboard): application, keys, setup and listing checks; node steps for a state or operator; local MCP server",
+      tr: "kurumun bilgi işlem ekibi için katılım aracı (komut tamga-onboard): başvuru, anahtarlar, kurulum ve listede görünme denetimi; devlet ya da işletmeci için düğüm adımları; yerel MCP sunucusu",
+      tk: "guramanyň IT topary üçin goşulyş guraly (buýruk tamga-onboard): arza, açarlar, gurnama we sanawda görünmegi barlamak; döwlet ýa-da operator üçin düwün ädimleri; ýerli MCP serweri",
+      az: "qurumun İT komandası üçün qoşulma aləti (əmr tamga-onboard): müraciət, açarlar, quraşdırmanın və siyahıda görünmənin yoxlanılması; dövlət və ya operator üçün qovşaq addımları; lokal MCP serveri",
     },
   },
 ];

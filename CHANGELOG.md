@@ -83,3 +83,11 @@ tamga.network with the network's 1.0 documentation set, in English, Turkish and 
   (the old `consume()` pattern throws since 0.8.1); code examples re-synced. Whitepaper: current-version sentences 0.8.1 (four
   languages; the "0.8.0 made the safe mode the default" sentence stays), version 1.0, edition date unchanged; four PDFs rebuilt
   (page counts and sizes unchanged).
+- 2026-11-05: currency check after the 0.8.2 package release. Packages at npm 0.8.2 everywhere a version is shown (SDK page,
+  home, roadmap — "ten packages including the joining tool" —, blog notes; source notes "0.8.2 since 2026-11-05"); the SDK
+  page lists `@tamga-network/onboard` (joining tool, node steps, local MCP server). Release note for 0.8.2 (en/tr/tk/az, kind
+  Feature: the joining tool on npm for the first time; Security: the wallet core treats a verifier whose name is ambiguous
+  between countries as unregistered on every lookup path; a note on installing and the first release without provenance).
+  Whitepaper: current-version sentences 0.8.2 (four languages × 6 places), four PDFs rebuilt; page counts on the whitepaper
+  page follow the rebuilt PDFs (en 138, az 132 — the reflow comes from the build environment: the previous `.typ` also builds
+  to these counts now).
