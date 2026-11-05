@@ -112,7 +112,7 @@ const en: RoadmapContent = {
         {
           icon: "package",
           title: "Open-source packages",
-          desc: "@tamga-network: 0.8.2 test release on npm, ten packages including the joining tool; the stable 1.0.0 when everything is ready",
+          desc: "@tamga-network: 0.8.2 test release on npm, ten packages including the onboarding tool; the stable 1.0.0 when everything is ready",
         },
         {
           icon: "user",

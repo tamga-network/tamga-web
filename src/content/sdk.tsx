@@ -104,7 +104,7 @@ export const PACKAGES: { name: string; what: L; soon?: L }[] = [
   {
     name: "@tamga-network/onboard",
     what: {
-      en: "joining tool for an institution's IT team (command tamga-onboard): application, keys, setup and listing checks; node steps for a state or operator; local MCP server",
+      en: "onboarding tool for an institution's IT team (command tamga-onboard): application, keys, setup and listing checks; node steps for a state or operator; local MCP server",
       tr: "kurumun bilgi işlem ekibi için katılım aracı (komut tamga-onboard): başvuru, anahtarlar, kurulum ve listede görünme denetimi; devlet ya da işletmeci için düğüm adımları; yerel MCP sunucusu",
       tk: "guramanyň IT topary üçin goşulyş guraly (buýruk tamga-onboard): arza, açarlar, gurnama we sanawda görünmegi barlamak; döwlet ýa-da operator üçin düwün ädimleri; ýerli MCP serweri",
       az: "qurumun İT komandası üçün qoşulma aləti (əmr tamga-onboard): müraciət, açarlar, quraşdırmanın və siyahıda görünmənin yoxlanılması; dövlət və ya operator üçün qovşaq addımları; lokal MCP serveri",

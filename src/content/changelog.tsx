@@ -113,7 +113,7 @@ export const RELEASES: Release[] = [
     date: "2026-11-05",
     kind: "feature",
     title: {
-      en: "The joining tool is on npm, the wallet core refuses ambiguous verifiers, packages 0.8.2",
+      en: "The onboarding tool is on npm, the wallet core refuses ambiguous verifiers, packages 0.8.2",
       tr: "Katılım aracı npm'de, cüzdan çekirdeği belirsiz doğrulayıcıyı kabul etmiyor, paketler 0.8.2",
       tk: "Goşulyş guraly npm-de, gapjyk ýadrosy düşnüksiz barlaýjyny kabul etmeýär, paketler 0.8.2",
       az: "Qoşulma aləti npm-də, cüzdan nüvəsi qeyri-müəyyən yoxlayıcını qəbul etmir, paketlər 0.8.2",
@@ -121,7 +121,7 @@ export const RELEASES: Release[] = [
     sections: {
       added: {
         en: [
-          "The joining tool @tamga-network/onboard is on npm for the first time. An institution's IT team uses it to prepare the registration application and check it against the registration rules, to create the institution's keys on its own computer, to check its own setup and, after joining, to check how the institution appears in the signed trust list. It writes nothing to the network or to the list and asks for no personal data.",
+          "The onboarding tool @tamga-network/onboard is on npm for the first time. An institution's IT team uses it to prepare the registration application and check it against the registration rules, to create the institution's keys on its own computer, to check its own setup and, after joining, to check how the institution appears in the signed trust list. It writes nothing to the network or to the list and asks for no personal data.",
           "The same tool works as a local MCP server, so the institution's own AI assistant can run the steps. It also has the steps for a state or an operator that will run a node of the shared ledger: creating the node key on its own machine, the declaration sent to the operator and a read-only check of the running node.",
         ],
         tr: [
@@ -167,7 +167,7 @@ export const RELEASES: Release[] = [
       },
     },
     note: {
-      en: "Install the joining tool with npm install -g @tamga-network/onboard. Its first release was published by hand without provenance; later releases come from the automated release workflow. No other package changed its API; details in the package CHANGELOG under “Behaviour changes in 0.8.2”.",
+      en: "Install the onboarding tool with npm install -g @tamga-network/onboard. Its first release was published by hand without provenance; later releases come from the automated release workflow. No other package changed its API; details in the package CHANGELOG under “Behaviour changes in 0.8.2”.",
       tr: "Katılım aracını npm install -g @tamga-network/onboard ile kurabilirsiniz. İlk sürümü elle ve kaynak kanıtı (provenance) olmadan yayımlandı; sonraki sürümler otomatik yayın akışından gelecek. Başka hiçbir paketin arayüzü değişmedi; ayrıntılar paket CHANGELOG'unda “Behaviour changes in 0.8.2” başlığında.",
       tk: "Goşulyş guralyny npm install -g @tamga-network/onboard bilen gurnap bilersiňiz. Onuň ilkinji wersiýasy el bilen we gelip çykyş subutnamasy (provenance) bolmazdan çap edildi; indiki wersiýalar awtomatik çap ediş akymyndan geler. Başga hiç bir paketiň interfeýsi üýtgemedi; jikme-jiklikler paketiň CHANGELOG-ynda “Behaviour changes in 0.8.2” bölüminde.",
       az: "Qoşulma alətini npm install -g @tamga-network/onboard ilə quraşdıra bilərsiniz. İlk versiyası əl ilə və mənşə sübutu (provenance) olmadan dərc olundu; sonrakı versiyalar avtomatik dərc axınından gələcək. Başqa heç bir paketin interfeysi dəyişmədi; təfərrüatlar paketin CHANGELOG-unda “Behaviour changes in 0.8.2” başlığındadır.",
