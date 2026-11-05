@@ -55,7 +55,7 @@ Every claim in the document belongs to one of three statuses, and the text says 
 
 Decisions are cited by their decision records (ADR, #{emph[Architecture Decision Record]}), technical rules by specifications (SPEC) and framework rules by the documents of the Tamga Architecture and Reference Framework (FW). Wherever you see "ADR-0042" in the text, the full text of the decision is under #{raw("docs.tamga.network/tr/adr/")}; wherever you see "SPEC-TRUST-0001 §5", the relevant section of the specification is under #{raw("docs.tamga.network/tr/specifications/")}; and wherever you see "FW-ARF-0001 §6.1", the framework document is under #{raw("arf.tamga.network/tr/")}. The mapping of identifiers to addresses is in Appendix E \[63, 64, 65\]. Identifiers are permanent: even if a document’s title or location changes, its identifier stays the same.
 
-At the time this edition was prepared, Tamga’s open packages had been published on npm as the 0.8.0 test release; the framework documents are at version 1.0. Every version-dependent sentence is written as of that date.
+At the time this edition was prepared, Tamga’s open packages had been published on npm as the 0.8.1 test release; the framework documents are at version 1.0. Every version-dependent sentence is written as of that date.
 
 = Introduction: From Copy to Proof
 
@@ -1210,7 +1210,7 @@ Two things never appear in the result object. The #{strong[values]} of the discl
   \"failed_step\": null,
   \"indeterminate_reason\": null,
   \"spec_version\": \"SPEC-API-0001@1.0.0\",
-  \"sdk_version\": \"@tamga-network/verifier@0.8.0\",
+  \"sdk_version\": \"@tamga-network/verifier@0.8.1\",
   \"checks_performed\": [\"T0\", \"A1\", \"A2\", \"A3\", \"A3b\", \"…\", \"D6\", \"E1\", \"E2\", \"E3\", \"E4\"],
   \"checks_skipped\": [],
   \"issuer\": { \"issuer_id\": \"0x7f3a…\", \"state_code\": \"TR\", \"category\": \"EDUCATION\", \"assurance\": \"I2\" },
@@ -1778,7 +1778,7 @@ Institutions can also open their own test institutions in the sandbox (ADR-0041)
 
 == Nine packages
 
-The network’s rules do not live only in documents; they are also distributed as code. There are nine open source packages under the name #{raw("@tamga-network/*")}. The code is licensed under Apache-2.0 and the documents under CC BY 4.0. The packages are published on npm as the 0.8.0 pre-release; until the stable 1.0.0 release the interfaces may change (README) (Table 29).
+The network’s rules do not live only in documents; they are also distributed as code. There are nine open source packages under the name #{raw("@tamga-network/*")}. The code is licensed under Apache-2.0 and the documents under CC BY 4.0. The packages are published on npm as the 0.8.1 pre-release; until the stable 1.0.0 release the interfaces may change (README) (Table 29).
 
 #tablo([#{strong[Table 29.]} The open packages.], (48fr, 48fr, 27fr), ([Package​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​], [Role], [Platform note],), (
   ([#{raw("@tamga-network/core")}], [hashes, identifiers, certificate helpers, EU PID name table], [separate subpaths for React Native],),
@@ -1809,7 +1809,7 @@ const { result, claims } = await verifyPresentation({
   rp: trust.relyingParty(clientId),   // registration mandatory; \"none\" to skip on purpose
   audit: (entry) => log(entry),       // audit log
 });
-// result.outcome: \"ACCEPTED\", \"REJECTED\" or \"INDETERMINATE\"", baslik: "Example: verifying a presentation on your own server (abridged, 0.8.0 pre-release)")
+// result.outcome: \"ACCEPTED\", \"REJECTED\" or \"INDETERMINATE\"", baslik: "Example: verifying a presentation on your own server (abridged, 0.8.1 pre-release)")
 
 The example is abridged and the values are examples; the full flow, which opens a separate branch for every fetch of the request, is in the example projects that run against the real packages in continuous integration (#{raw("examples/02-verify-own-server")}). Someone who does not want to write their own verifier can use the hosted Tamga Verify.
 
@@ -2318,7 +2318,7 @@ Table 46 lists the functions under three status labels. The labels mean what the
   ([Wallet provider registration], [Live], [first listed wallet, real network and sandbox], [5\.4],),
   ([Zero-knowledge proof, verifier side], [Live], [], [15\.4],),
   ([Sandbox], [Live], [open to everyone; identity verification capped], [17\.1],),
-  ([Open packages], [Live], [0\.8.0 pre-release on npm, Apache-2.0], [17\.2],),
+  ([Open packages], [Live], [0\.8.1 pre-release on npm, Apache-2.0], [17\.2],),
   ([ETSI TS 119 612 XML view], [Live in the sandbox], [planned in the real network], [6\.8],),
   ([Publication of the ETSI TS 119 602 views], [Planned], [generator ready], [6\.8],),
   ([Second list signing certificate and hardware key store], [Planned], [open item in the specification], [6\.3],),
@@ -2839,7 +2839,7 @@ Tamga’s framework documents are at #{raw("arf.tamga.network/")}, and its speci
 
 #kaynak("65")[Tamga Network (2026). #{emph[Architecture decision records]} ADR-0001…ADR-0072. https:\/\/docs.tamga.network\/adr\/ (index in Appendix B).]
 
-#kaynak("66")[Tamga Network (2026). #{emph[tamga-network]} repository: README, SECURITY.md, CHANGELOG (0.8.0, 3 November 2026) and the #{raw("@tamga-network/*")} packages, Apache-2.0. https:\/\/github.com\/tamga-network\/tamga-network]
+#kaynak("66")[Tamga Network (2026). #{emph[tamga-network]} repository: README, SECURITY.md, CHANGELOG (0.8.1, 5 November 2026) and the #{raw("@tamga-network/*")} packages, Apache-2.0. https:\/\/github.com\/tamga-network\/tamga-network]
 
 #kaynak("67")[Tamga Network Academic Papers A1 (2026). #{emph[Dijital Kimliğin Evrimi: Kullanıcı Adından Kimlik Cüzdanına]} \[The Evolution of Digital Identity: From Username to Identity Wallet\]. https:\/\/tamga.network\/files\/publications\/evolution-of-digital-identity-tr.pdf]
 

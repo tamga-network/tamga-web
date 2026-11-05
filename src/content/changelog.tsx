@@ -108,6 +108,84 @@ export const CHANGELOG_PAGE: Record<
 
 export const RELEASES: Release[] = [
   {
+    id: "v1.0.0-2026-11-05-packages-0-8-1",
+    version: "v1.0.0",
+    date: "2026-11-05",
+    kind: "security",
+    title: {
+      en: "A fake answer cannot block the real wallet, ambiguous identities fail closed, packages 0.8.1",
+      tr: "Sahte yanıt gerçek cüzdanı engelleyemez, belirsiz kimlikler kapalı kalır, paketler 0.8.1",
+      tk: "Ýasama jogap hakyky gapjygy päsgel berip bilmeýär, düşnüksiz kimlikler ýapyk galýar, paketler 0.8.1",
+      az: "Saxta cavab əsl cüzdanı əngəlləyə bilmir, qeyri-müəyyən kimliklər bağlı qalır, paketlər 0.8.1",
+    },
+    sections: {
+      security: {
+        en: [
+          "A site that verifies on its own server now locks each copy of a presentation request separately and accepts an answer in one single step. A slow or fake answer on one copy can no longer hold up the real wallet's answer, and when two answers arrive at the same moment only one of them is accepted.",
+          "When a presentation comes through the browser (the Digital Credentials API), the intended audience is taken from the page's own address. An answer meant for another site is refused at the very first step, with a clear message.",
+          "When a wallet receives a document, the package now tells it if the issuing institution's registration status could not be checked, so the wallet can warn the person instead of staying silent.",
+          "For mdoc documents, what an institution is registered to ask for is checked together with its namespace: a field with the same name in another namespace no longer counts as allowed.",
+          "When the same identity (a verifier's name or a gate group) appears in more than one country's list, it is treated as unknown and closed. A move from one country to another is accepted only when the old country's signed list records the move in a structured form.",
+        ],
+        tr: [
+          "Kendi sunucusunda doğrulama yapan bir site artık sunum isteğinin her kopyasını ayrı kilitliyor ve bir yanıtı tek adımda kabul ediyor. Bir kopyadaki yavaş ya da sahte yanıt gerçek cüzdanın yanıtını artık bekletemiyor; aynı anda iki yanıt gelirse yalnız biri kabul ediliyor.",
+          "Sunum tarayıcı üzerinden (Digital Credentials API) geldiğinde hedef kitle sayfanın kendi adresinden alınıyor. Başka bir site için hazırlanmış yanıt daha ilk adımda, açık bir mesajla reddediliyor.",
+          "Cüzdan bir belge alırken, belgeyi veren kurumun kayıt durumu denetlenemezse paket bunu cüzdana bildiriyor; cüzdan sessiz kalmak yerine kişiyi uyarabiliyor.",
+          "mdoc belgelerde bir kurumun isteyebileceği alanlar ad alanıyla birlikte denetleniyor: başka bir ad alanındaki aynı adlı alan artık izinli sayılmıyor.",
+          "Aynı kimlik (bir doğrulayıcının adı ya da bir kapı grubu) birden çok ülkenin listesinde görünürse bilinmiyor sayılıyor ve kapalı kalıyor. Bir ülkeden ötekine taşınma ancak eski ülkenin imzalı listesi bu taşınmayı yapılı biçimde kaydettiyse kabul ediliyor.",
+        ],
+        tk: [
+          "Öz serwerinde barlag geçirýän saýt indi görkeziş haýyşynyň her nusgasyny aýratyn gulplaýar we jogaby bir ädimde kabul edýär. Bir nusgadaky haýal ýa-da ýasama jogap hakyky gapjygyň jogabyny indi saklap bilmeýär; bir wagtda iki jogap gelse diňe biri kabul edilýär.",
+          "Görkeziş brauzer arkaly (Digital Credentials API) gelende niýetlenen alyjy sahypanyň öz salgysyndan alynýar. Başga saýt üçin taýýarlanan jogap ilkinji ädimde, aýdyň habar bilen ret edilýär.",
+          "Gapjyk resminama alanda, resminamany berýän guramanyň hasaba alyş ýagdaýyny barlap bolmasa, paket muny gapjyga habar berýär; gapjyk dymmagyň ýerine adamy duýduryp bilýär.",
+          "mdoc resminamalarynda guramanyň sorap biljek meýdançalary at giňişligi bilen bilelikde barlanýar: başga at giňişligindäki şol bir atly meýdança indi rugsat berlen hasaplanmaýar.",
+          "Şol bir kimlik (barlaýjynyň ady ýa-da gapy topary) birnäçe ýurduň sanawynda görünse, ol näbelli hasaplanýar we ýapyk galýar. Bir ýurtdan beýlekisine geçiş diňe köne ýurduň gol çekilen sanawy bu geçişi düzümleýin görnüşde ýazga geçiren bolsa kabul edilýär.",
+        ],
+        az: [
+          "Öz serverində yoxlama aparan sayt artıq təqdimat sorğusunun hər nüsxəsini ayrıca kilidləyir və cavabı tək addımda qəbul edir. Bir nüsxədəki yavaş və ya saxta cavab əsl cüzdanın cavabını artıq gözlədə bilmir; eyni anda iki cavab gəlsə, yalnız biri qəbul olunur.",
+          "Təqdimat brauzer vasitəsilə (Digital Credentials API) gəldikdə nəzərdə tutulan alıcı səhifənin öz ünvanından götürülür. Başqa sayt üçün hazırlanmış cavab elə ilk addımda, aydın mesajla rədd edilir.",
+          "Cüzdan sənəd alarkən sənədi verən qurumun qeydiyyat statusu yoxlana bilmirsə, paket bunu cüzdana bildirir; cüzdan susmaq əvəzinə şəxsi xəbərdar edə bilir.",
+          "mdoc sənədlərində qurumun istəyə biləcəyi sahələr ad sahəsi ilə birlikdə yoxlanılır: başqa ad sahəsindəki eyni adlı sahə artıq icazəli sayılmır.",
+          "Eyni kimlik (yoxlayıcının adı və ya keçid qrupu) birdən çox ölkənin siyahısında görünərsə, naməlum sayılır və bağlı qalır. Bir ölkədən digərinə keçid yalnız köhnə ölkənin imzalı siyahısı bu keçidi strukturlaşdırılmış formada qeyd edibsə qəbul olunur.",
+        ],
+      },
+      added: {
+        en: [
+          "The trust lists' anchor log knows new kinds of lines, in preparation for a later mirror of the lists on a ledger. The ledger itself stays switched off.",
+        ],
+        tr: [
+          "Güven listelerinin çapa günlüğü yeni satır türlerini tanıyor; bu, listelerin ileride bir defterde yansıtılmasına hazırlık. Defterin kendisi kapalı kalıyor.",
+        ],
+        tk: [
+          "Ynam sanawlarynyň labyr žurnaly setirleriň täze görnüşlerini tanaýar; bu sanawlaryň geljekde bir sanaw kitabynda şekillendirilmegine taýýarlyk. Kitabyň özi öçük galýar.",
+        ],
+        az: [
+          "Etibar siyahılarının lövbər jurnalı yeni sətir növlərini tanıyır; bu, siyahıların gələcəkdə bir reyestrdə əks olunmasına hazırlıqdır. Reyestrin özü bağlı qalır.",
+        ],
+      },
+      changed: {
+        en: [
+          "The @tamga-network/* packages are on npm as the 0.8.1 test release; the stable 1.0.0 comes when everything is ready.",
+        ],
+        tr: [
+          "@tamga-network/* paketleri npm'de 0.8.1 deneme sürümünde; kararlı 1.0.0 her şey hazır olunca gelir.",
+        ],
+        tk: [
+          "@tamga-network/* paketleri npm-de 0.8.1 synag wersiýasynda; durnukly 1.0.0 hemme zat taýýar bolanda geler.",
+        ],
+        az: [
+          "@tamga-network/* paketləri npm-də 0.8.1 sınaq buraxılışı kimi mövcuddur; sabit 1.0.0 hər şey hazır olduqda çıxacaq.",
+        ],
+      },
+    },
+    note: {
+      en: "Some behaviours changed in the safer direction. Developers who verify on their own server should accept an answer with tryConsume(): the old pattern that ended with consume() now throws PresentationAlreadyConsumedError instead of accepting a second answer. On the browser path, pass the page origin and leave aud out. Every change and its migration step are in the package changelog, under “Behaviour changes in 0.8.1”.",
+      tr: "Bazı davranışlar daha güvenli yönde değişti. Kendi sunucusunda doğrulama yapan geliştiriciler bir yanıtı tryConsume() ile kabul etmeli: consume() ile biten eski kalıp artık ikinci bir yanıtı kabul etmek yerine PresentationAlreadyConsumedError hatası veriyor. Tarayıcı yolunda sayfanın kökenini verin, aud vermeyin. Bütün değişiklikler ve geçiş adımları paket değişiklik kaydında, “Behaviour changes in 0.8.1” başlığı altında.",
+      tk: "Käbir hereketler has howpsuz tarapa üýtgedi. Öz serwerinde barlag geçirýän işläp düzüjiler jogaby tryConsume() bilen kabul etmeli: consume() bilen gutarýan köne nusga indi ikinji jogaby kabul etmegiň ýerine PresentationAlreadyConsumedError ýalňyşlygyny berýär. Brauzer ýolunda sahypanyň gelip çykyşyny beriň, aud bermäň. Ähli üýtgeşmeler we geçiş ädimleri paket üýtgeşme ýazgysynda, “Behaviour changes in 0.8.1” bölüminde.",
+      az: "Bəzi davranışlar daha təhlükəsiz istiqamətdə dəyişdi. Öz serverində yoxlama aparan tərtibatçılar cavabı tryConsume() ilə qəbul etməlidir: consume() ilə bitən köhnə nümunə artıq ikinci cavabı qəbul etmək əvəzinə PresentationAlreadyConsumedError xətası verir. Brauzer yolunda səhifənin mənşəyini verin, aud verməyin. Bütün dəyişikliklər və keçid addımları paket dəyişiklik qeydində, “Behaviour changes in 0.8.1” başlığı altındadır.",
+    },
+  },
+  {
     id: "v1.0.0-2026-11-04-whitepaper",
     version: "v1.0.0",
     date: "2026-11-04",

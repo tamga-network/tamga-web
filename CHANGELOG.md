@@ -74,3 +74,12 @@ tamga.network with the network's 1.0 documentation set, in English, Turkish and 
   status cache never rolls back; a note on the one breaking change for developers points to the package changelog). Whitepaper
   version sentence says 0.8.0 (0.7.4 added the forged-decline protection and the rest; 0.8.0 makes the safe mode the default);
   version 1.0, edition date unchanged; four PDFs rebuilt.
+- 2026-11-05: currency check after the 0.8.1 package release. Packages at npm 0.8.1 everywhere a version is shown (SDK page,
+  home, roadmap, blog notes; source notes "0.8.1 since 2026-11-05"); release note for 0.8.1 (en/tr/tk/az: per-copy lock and
+  one-step acceptance, so a fake answer cannot hold up the real wallet; browser-path audience from the page origin; warning when
+  an issuer's registration status cannot be checked; mdoc scope by namespace; ambiguous identities across countries fail
+  closed, a move only with the old list's structured record; new anchor line kinds with the ledger still off; a note on the
+  behaviour changes points to the package changelog). The "add verification to your site" code accepts with `tryConsume()`
+  (the old `consume()` pattern throws since 0.8.1); code examples re-synced. Whitepaper: current-version sentences 0.8.1 (four
+  languages; the "0.8.0 made the safe mode the default" sentence stays), version 1.0, edition date unchanged; four PDFs rebuilt
+  (page counts and sizes unchanged).
