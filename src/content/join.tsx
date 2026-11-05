@@ -37,6 +37,8 @@ export type JoinContent = {
     docs: string;
     docsLabel: string;
     guide: string;
+    /** Katılım aracı (@tamga-network/onboard, GUIDE-0014) bağlantı metni. */
+    tool: string;
   };
 };
 
@@ -192,6 +194,7 @@ const en: JoinContent = {
     docs: "https://docs.tamga.network",
     docsLabel: "Developer docs and API references",
     guide: "Step-by-step guide: Joining as an institution (developer docs)",
+    tool: "For your IT team: the onboarding tool tamga-onboard prepares and checks the application, keys and setup; it never writes to the list (developer docs)",
   },
 };
 
@@ -341,6 +344,7 @@ const tr: JoinContent = {
     docs: "https://docs.tamga.network",
     docsLabel: "Geliştirici belgeleri ve API başvuruları",
     guide: "Adım adım rehber: Kurum olarak katılım (geliştirici belgeleri)",
+    tool: "Bilgi işlem ekibiniz için: katılım aracı tamga-onboard başvuruyu, anahtarları ve kurulumu hazırlar ve denetler; listeye yazmaz (geliştirici belgeleri)",
   },
 };
 
@@ -493,6 +497,7 @@ const tk: JoinContent = {
     docs: "https://docs.tamga.network",
     docsLabel: "Işläp düzüji resminamalary we API salgylanmalary",
     guide: "Ädimme-ädim gollanma: Gurama hökmünde goşulmak (işläp düzüjiler üçin resminamalar)",
+    tool: "IT toparyňyz üçin: goşulyş guraly tamga-onboard arzany, açarlary we gurnamany taýýarlaýar we barlaýar; sanawa ýazmaýar (işläp düzüjiler üçin resminamalar)",
   },
 };
 
@@ -648,6 +653,7 @@ const az: JoinContent = {
     docs: "https://docs.tamga.network",
     docsLabel: "Tərtibatçı sənədləri və API arayışları",
     guide: "Addım-addım bələdçi: Qurum kimi qoşulma (tərtibatçı sənədləri)",
+    tool: "İT komandanız üçün: qoşulma aləti tamga-onboard müraciəti, açarları və quraşdırmanı hazırlayır və yoxlayır; siyahıya yazmır (tərtibatçı sənədləri)",
   },
 };
 

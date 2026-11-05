@@ -1746,7 +1746,7 @@ Kitabxananın təhlükəsizliyi ondan istifadə edən tərtibatçı ən asan yol
 
 2026-cı ilin oktyabrında şəxsiyyət xidməti və Tamga Verify OpenID Foundation-ın uyğunluq test planları \[33\] ilə sandbox üzərində öz-sınaqdan keçirildi; əhatəsi və nəticələri Bölmə 20.5-dədir. Bu öz-sınaq idi, sertifikatlaşdırma ayrıca prosesdir. Bu işdən iyirmiyə yaxın dəyişiklik çıxdı və onlardan dördü əvvəlki qərarları qeydə alınmış ADR-lərlə dəyişdirdi (məsələn, ADR-0061 və ADR-0062).
 
-Şəbəkə indiyə qədər öz təhlükəsizlik yoxlamalarını apardı; qapı boşluğu 2026-cı ilin oktyabrındakı təhlükəsizlik turunda bu yolla tapıldı və bağlandı. SECURITY.md-də göstərildiyi kimi, şəbəkə hələ müstəqil xarici auditdən keçməyib; xarici yoxlama üçün əhatəni, təhdid modelini, məlumat axınlarını, invariantlar kataloqunu və test nəticələrini ehtiva edən paket depoda hazır saxlanılır. Paketlərdə quraşdırmadan sonrakı skript yoxdur; doqquz paketdən səkkizi yalnız davamlı inteqrasiyadan, mənşə sübutu ilə dərc edilir, sübut generatoru paketi isə telefon kitabxanaları hələ orada kompilyasiya edilə bilmədiyi üçün əl ilə dərc edilir.
+Şəbəkə indiyə qədər öz təhlükəsizlik yoxlamalarını apardı; qapı boşluğu 2026-cı ilin oktyabrındakı təhlükəsizlik turunda bu yolla tapıldı və bağlandı. SECURITY.md-də göstərildiyi kimi, şəbəkə hələ müstəqil xarici auditdən keçməyib; xarici yoxlama üçün əhatəni, təhdid modelini, məlumat axınlarını, invariantlar kataloqunu və test nəticələrini ehtiva edən paket depoda hazır saxlanılır. Paketlərdə quraşdırmadan sonrakı skript yoxdur; on paketdən səkkizi yalnız davamlı inteqrasiyadan, mənşə sübutu ilə dərc edilir. Sübut generatoru paketi telefon kitabxanaları hələ orada kompilyasiya edilə bilmədiyi üçün əl ilə dərc edilir; qoşulma alətinin ilk versiyası da əl ilə dərc edildi, çünki npm-in etibarlı dərc mexanizmi yalnız artıq mövcud olan paket üçün qurula bilər; alətin sonrakı versiyaları isə davamlı inteqrasiyadan, mənşə sübutu ilə çıxır.
 
 == İnsidentlərə cavab və məsuliyyətli bildiriş
 
@@ -1776,11 +1776,11 @@ Qurumlar sandbox-da öz test qurumlarını da aça bilər (ADR-0041). Elif uydur
   ([Qarşılıqlı etibar], [sandbox-a etibar etmir], [real şəbəkəyə qarışmır],),
 ))
 
-== Doqquz paket
+== On paket
 
-Şəbəkənin qaydaları yalnız sənədlərdə durmur; kod kimi də paylanır. #{raw("@tamga-network/*")} adı ilə doqquz açıq mənbəli paket var. Kodun lisenziyası Apache-2.0, sənədlərin lisenziyası CC BY 4.0-dır. Paketlər npm-də 0.8.2 sınaq versiyası ilə dərc edilib; sabit 1.0.0 versiyasına qədər interfeyslər dəyişə bilər (README) (Cədvəl 29).
+Şəbəkənin qaydaları yalnız sənədlərdə durmur; kod kimi də paylanır. #{raw("@tamga-network/*")} adı ilə on açıq mənbəli paket var. Kodun lisenziyası Apache-2.0, sənədlərin lisenziyası CC BY 4.0-dır. Paketlər npm-də 0.8.2 sınaq versiyası ilə dərc edilib; sabit 1.0.0 versiyasına qədər interfeyslər dəyişə bilər (README) (Cədvəl 29).
 
-#tablo([#{strong[Cədvəl 29.]} Açıq paketlər.], (48fr, 48fr, 26fr), ([Paket​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​], [Vəzifə], [Platforma qeydi],), (
+#tablo([#{strong[Cədvəl 29.]} Açıq paketlər.], (48fr, 48fr, 27fr), ([Paket​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​], [Vəzifə], [Platforma qeydi],), (
   ([#{raw("@tamga-network/core")}], [hash-lər, identifikatorlar, sertifikat köməkçiləri, Aİ PID adları cədvəli], [React Native üçün ayrıca alt yollar],),
   ([#{raw("@tamga-network/trust")}], [imzalı siyahıları yükləyir və yoxlayır; tək oxuma interfeysi #{raw("TrustSource")}], [#{raw("/core")} platformadan asılı deyil, React Native daxil],),
   ([#{raw("@tamga-network/schemas")}], [sənəd növləri kataloqu: Type Metadata, JSON Schema, bütövlük hash-ləri], [hər yerdə, React Native daxil],),
@@ -1790,6 +1790,7 @@ Qurumlar sandbox-da öz test qurumlarını da aça bilər (ADR-0041). Elif uydur
   ([#{raw("@tamga-network/verifier")}], [yoxlama xətti və OpenID4VP; səhifə dəsti; ZK yoxlaması], [server; #{raw("/web")} səhifə dəsti],),
   ([#{raw("@tamga-network/wallet-core")}], [cüzdan nüvəsi: açarlar, sənəd alma, yerli yoxlamalar, göstərmə], [Node və React Native],),
   ([#{raw("@tamga-network/zk")}], [mdoc üçün cüzdan tərəfində sıfır bilik sübutu generatoru], [nüvə hər yerdə; telefonda yerli generator],),
+  ([#{raw("@tamga-network/onboard")}], [qurumlar üçün qoşulma aləti: müraciət faylı, açarlar və CSR, quraşdırmanın və etibar siyahısının yoxlanması; qovşaq addımları; yerli MCP serveri], [əmr sətri (#{raw("tamga-onboard")}), Node.js 22+],),
 ))
 
 Paketlərin ən vacib dizayn qərarı vahid etibar interfeysidir (ADR-0015). Cüzdan daxil hər müştəri etibar suallarını eyni interfeysdən soruşur; beləliklə eyni qayda iki dəfə, iki fərqli formada yazılmır. İnterfeysin arxasında bu gün imzalı siyahılar durur; ortaq reyestr gəldikdə interfeys dəyişmədən onun arxasına keçir (Bölmə 6.6 və 19.8). Cüzdan React Native üzərində işlədiyi üçün yoxlama nüvəsi fayl sisteminə və platformaya xas kitabxanalara bağlı olmayan alt yola ayrılıb.
@@ -1933,6 +1934,8 @@ Sənəd verənlər üçün dörd qapı var (FW-TF-0001 §3.2). #{strong[I1 (qeyd
   ([Yoxlayan tərəf], [Sonradan audit], [Əhatənin pozulması və ya həddindən artıq tələb barədə şikayət üzrə],),
 ))
 
+Qurumun informasiya texnologiyaları komandası qapıya hazırlığı şəbəkənin açıq qoşulma aləti (#{raw("@tamga-network/onboard")}, əmr #{raw("tamga-onboard")}) ilə hazırlayır və sınaqdan keçirir. Alət müraciət faylını qeydiyyat qaydaları (ADR-0024) ilə yoxlayır, qurumun iki imza açarını qurumun öz kompüterində yaradır və qeydiyyat qurumuna göndəriləcək sertifikat sorğularını (CSR) yazır (istehsalda açarın aparat təhlükəsizlik modulunda və ya məsafədən imza xidmətində yaradılmasına üstünlük verilir; bu halda alət yalnız sorğunu yoxlayır), domen adını, DNS təsdiqini, https ünvanlarını, metaməlumatları və sorğu nöqtəsini sınaqdan keçirir; qeydiyyatdan sonra qurumun imzalı etibar siyahısındakı görünüşünü alətə daxil edilmiş kök barmaq izlərinə qarşı təsdiqləyərək yoxlayır. Eyni addımlar yerli MCP serveri kimi də təqdim olunur; beləliklə, qurumun öz süni intellekt köməkçisi addımları icra edə bilər. Alət heç vaxt şəbəkəyə və siyahıya yazmır, şəxsi məlumat soruşmur və gizli açar kompüterdən çıxmır; qeydiyyat qərarı və siyahıya yazma qeydiyyat qurumunda, bu gün müvəqqəti operatorda qalır (GUIDE-0014). Bu addımlar bugünkü siyahı quruluşunda işləyir.
+
 Qayda pozularsa, beş pilləli sanksiya pilləkəni işə düşür: otuz günlük aradan qaldırma müddəti ilə xəbərdarlıq, növ səlahiyyətinin daraldılması, dayandırma, varis təyin edilməklə çıxarılma və müqavilənin ləğvi (FW-TF-0001 §4.5). Pilləkənin ən vacib qaydası yenə sənədləri qoruyur: çıxarılma köhnə sənədləri etibarsız etmir, çünki etibarlılıq sənədin verildiyi tarixə görə qiymətləndirilir (Bölmə 11.3). Pul cəriməsi yoxdur; şura qurularsa, öz qərarı ilə tətbiq edə bilər. Mübahisə əvvəlcə sxem sahibi qarşısında, sonra müqavilədəki məhkəmədə həll edilir; qurumun yerləşdiyi dövlətin hüququ əsasdır, dövlətlər arasında şura səlahiyyətlidir və ondan yuxarıda instansiya yoxdur (FW-TF-0001 §4.7, §5.8). Çərçivə pilotdan əvvəl Türkiyənin fərdi məlumatlar və elektron imza qanunvericiliyi baxımından hüquqi araşdırmadan keçiriləcək (FW-TF-0001 §1.4); bu sənəd hüquqi rəy deyil.
 
 == Maliyyələşmə prinsipi
@@ -2048,6 +2051,8 @@ Səsə qoyulanın oxuna bilən qalması da qaydadır. Yeniləmə ilə yalnız pa
 == İcazələndirmə və istismar
 
 Reyestr icazəlidir: yalnız təsdiqlənmiş qovşaqlar qoşulur, yalnız təsdiqlənmiş hesablar əməliyyat göndərir. İlk sənədlər bunu Besu-nun zəncirüstü icazə mexanizmi ilə nəzərdə tuturdu; Besu bu mexanizmi 24.12-də köhnəlmiş elan etdi və 25.6.0-da çıxardı. ADR-0052 qalan yolu, hər qovşaqdakı yerli icazə faylını seçdi və bir qayda əlavə etdi: fayl əl ilə yazılmır, reyestrin öz idarəetmə qeydindən yaradılır; hər operator onu özü yaradır, bütün validatorlar eyni siyahını daşıyır və fərq istismar hadisəsi kimi hesabata salınır. İcazə siyahısı ikinci müdafiə xəttidir; yazma səlahiyyətinin əsas nəzarəti reyestrin qaydalarındadır və siyahıdakı xəta həmin səlahiyyəti genişləndirmir. Qovşaqların məsafədən çağırış interfeysi internetə açılmır; xarici çıxış yalnız qarşılıqlı TLS yoxlayan əks proksinin arxasından, müəyyən edilmiş müştərilərə verilir (ADR-0052 LP4, LP5).
+
+Reyestr açıldığı gün üçün qoşulma alətində dövlətin və ya operatorun qovşaq addımları da var (#{raw("tamga-onboard node")}): alət qovşaq açarını qovşağın öz maşınında yaradır, icazəli rejimdə konfiqurasiya şablonunu və operatorlara göndəriləcək qovşaq bəyannaməsini yazır və işləyən qovşağı yalnız oxuyaraq yoxlayır; reyestrə və icazə siyahısına yazmır, səslər və icazə siyahısı dəyişiklikləri operatorlarda qalır.
 
 == Keçid
 
@@ -2704,6 +2709,7 @@ Tamga-nın çərçivə sənədləri #{raw("arf.tamga.network/tr/")}, spesifikasi
   ([SPEC-WALLET-0001], [Cüzdan qaydaları], [#{raw("docs.tamga.network/tr/specifications/wallet")}],),
   ([GUIDE-0009], [Uyğunluq testləri], [#{raw("docs.tamga.network/tr/guides/conformance")}],),
   ([GUIDE-0013], [Sandbox: test şəbəkəsi], [#{raw("docs.tamga.network/tr/guides/sandbox")}],),
+  ([GUIDE-0014], [Qoşulma aləti: İT komandası üçün], [#{raw("docs.tamga.network/tr/guides/onboarding-tool")}],),
   ([ADR-0001 … ADR-0072], [Qərar qeydləri (B Əlavəsi)], [#{raw("docs.tamga.network/tr/adr/")}],),
 ))
 

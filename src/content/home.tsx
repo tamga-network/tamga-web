@@ -288,7 +288,7 @@ const tr: HomeContent = {
     eyebrow: "Katılım",
     title: "Ağa üç kapıdan girilir.",
     items: [
-      { kicker: "Kurumlar", title: "Belge verin, belge doğrulayın.", body: "Kaydınızı yapın, anahtarınızı listeye ekletin, ilk belgenizi verin.", cta: "Kurum olarak katıl", href: "/join" },
+      { kicker: "Kurumlar", title: "Belge verin, belge doğrulayın.", body: "Kaydınızı yapın, anahtarınızı listeye ekletin, ilk belgenizi verin. Bilgi işlem ekibiniz hazırlığı katılım aracı tamga-onboard ile yapar.", cta: "Kurum olarak katıl", href: "/join" },
       { kicker: "Cüzdan sağlayıcılar", title: "Cüzdanınızı ağa tanıtın.", body: "Ağ cüzdan seçmez, kurallara uyan cüzdanları tanır. Kurallara uyan ve uyum testlerini geçen her cüzdan listeye girer. Cüzdanınızı önce sandbox'ta deneyebilirsiniz.", cta: "Uyum testlerine başla", href: "/join" },
       { kicker: "Devletler", title: "Listenizi kendiniz yayınlayın.", body: "Kendi güven listenizi yayınladığınızda ağ o listeyi gösterir. Cüzdanlar için değişen tek şey adres olur.", cta: "Federasyonu incele", href: "/learn/trust-lists" },
     ],
@@ -563,7 +563,7 @@ const en: HomeContent = {
     eyebrow: "Join",
     title: "Three doors into the network.",
     items: [
-      { kicker: "Institutions", title: "Issue and verify credentials.", body: "Register, get your key on the list, issue your first credential.", cta: "Join as an institution", href: "/join" },
+      { kicker: "Institutions", title: "Issue and verify credentials.", body: "Register, get your key on the list, issue your first credential. Your IT team prepares with the onboarding tool tamga-onboard.", cta: "Join as an institution", href: "/join" },
       { kicker: "Wallet providers", title: "Get your wallet recognised.", body: "The network doesn't pick wallets, it recognises the ones that follow the rules. Every wallet that follows the rules and passes the conformance tests is listed. You can test your wallet in the sandbox first.", cta: "Start conformance tests", href: "/join" },
       { kicker: "States", title: "Publish your own list.", body: "When you publish your own trust list, the network points to it. For wallets, only the address changes.", cta: "Explore the federation", href: "/learn/trust-lists" },
     ],
@@ -838,7 +838,7 @@ const tk: HomeContent = {
     eyebrow: "Goşulyş",
     title: "Tora üç gapydan girilýär.",
     items: [
-      { kicker: "Guramalar", title: "Resminama beriň we barlaň.", body: "Hasaba duruň, açaryňyzy sanawa goşduryň, ilkinji resminamaňyzy beriň.", cta: "Gurama hökmünde goşul", href: "/join" },
+      { kicker: "Guramalar", title: "Resminama beriň we barlaň.", body: "Hasaba duruň, açaryňyzy sanawa goşduryň, ilkinji resminamaňyzy beriň. IT toparyňyz taýýarlygy goşulyş guraly tamga-onboard bilen görýär.", cta: "Gurama hökmünde goşul", href: "/join" },
       { kicker: "Gapjyk üpjün edijiler", title: "Gapjygyňyzy tora tanadyň.", body: "Tor gapjyk saýlamaýar, düzgünlere eýerýän gapjyklary ykrar edýär. Düzgünlere eýerýän we laýyklyk synaglaryndan geçen her gapjyk sanawa girýär. Gapjygyňyzy ilki sandbox-da synap bilersiňiz.", cta: "Laýyklyk synaglaryna başla", href: "/join" },
       { kicker: "Döwletler", title: "Sanawyňyzy özüňiz çap ediň.", body: "Öz ynam sanawyňyzy çap edeniňizde tor şol sanawy görkezýär. Gapjyklar üçin diňe salgy üýtgeýär.", cta: "Federasiýany öwren", href: "/learn/trust-lists" },
     ],
@@ -1113,7 +1113,7 @@ const az: HomeContent = {
     eyebrow: "Qoşulma",
     title: "Şəbəkəyə üç qapıdan daxil olunur.",
     items: [
-      { kicker: "Qurumlar", title: "Rəqəmsal sənəd verin və yoxlayın.", body: "Qeydiyyatdan keçin, açarınızı siyahıya əlavə etdirin, ilk rəqəmsal sənədinizi verin.", cta: "Qurum kimi qoşulun", href: "/join" },
+      { kicker: "Qurumlar", title: "Rəqəmsal sənəd verin və yoxlayın.", body: "Qeydiyyatdan keçin, açarınızı siyahıya əlavə etdirin, ilk rəqəmsal sənədinizi verin. İT komandanız hazırlığı qoşulma aləti tamga-onboard ilə görür.", cta: "Qurum kimi qoşulun", href: "/join" },
       { kicker: "Cüzdan provayderləri", title: "Rəqəmsal cüzdanınızı tanıdın.", body: "Şəbəkə rəqəmsal cüzdan seçmir, qaydalara əməl edən cüzdanları tanıyır. Qaydalara əməl edən və uyğunluq testlərindən keçən hər rəqəmsal cüzdan siyahıya daxil edilir. Rəqəmsal cüzdanınızı əvvəlcə sandbox-da sınaya bilərsiniz.", cta: "Uyğunluq testlərinə başlayın", href: "/join" },
       { kicker: "Dövlətlər", title: "Öz siyahınızı dərc edin.", body: "Öz etibar siyahınızı dərc edəndə şəbəkə həmin siyahını göstərir. Rəqəmsal cüzdanlar üçün yalnız ünvan dəyişir.", cta: "Federasiya ilə tanış olun", href: "/learn/trust-lists" },
     ],

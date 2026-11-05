@@ -1746,7 +1746,7 @@ Ağın bugünkü uyum rejimi "hafif uygunluk"tur (FW-TF-0001 §2.4, §4.3). Herk
 
 Ekim 2026’da kimlik servisi ve Tamga Verify, OpenID Foundation’ın uyum test planlarıyla \[33\] sandbox üzerinde öz-test edildi; kapsamı ve sonuçları Bölüm 20.5’tedir. Bu bir öz-testti, sertifika ayrı bir süreçtir. Çalışmadan yirmiye yakın değişiklik çıktı ve dördü önceki kararları kayıtlı ADR’lerle değiştirdi (örneğin ADR-0061 ve ADR-0062).
 
-Ağ bugüne kadar kendi güvenlik incelemelerini yaptı; kapı açığı Ekim 2026’daki güvenlik turunda bu yolla bulundu ve kapatıldı. SECURITY.md’nin belirttiği gibi ağ henüz bağımsız bir dış denetimden geçmedi; dış inceleme için kapsamı, tehdit modelini, veri akışlarını, değişmezler kataloğunu ve test sonuçlarını içeren bir paket depoda hazır tutulur. Paketlerde kurulum sonrası betik yoktur; dokuz paketten sekizi yalnız sürekli entegrasyondan, kaynak kanıtıyla yayımlanır, ispatçı paketi ise telefon kütüphaneleri henüz orada derlenemediği için elle yayımlanır.
+Ağ bugüne kadar kendi güvenlik incelemelerini yaptı; kapı açığı Ekim 2026’daki güvenlik turunda bu yolla bulundu ve kapatıldı. SECURITY.md’nin belirttiği gibi ağ henüz bağımsız bir dış denetimden geçmedi; dış inceleme için kapsamı, tehdit modelini, veri akışlarını, değişmezler kataloğunu ve test sonuçlarını içeren bir paket depoda hazır tutulur. Paketlerde kurulum sonrası betik yoktur; on paketten sekizi yalnız sürekli entegrasyondan, kaynak kanıtıyla yayımlanır. İspatçı paketi telefon kütüphaneleri henüz orada derlenemediği için elle yayımlanır; katılım aracının ilk sürümü de elle yayımlandı, çünkü npm’in güvenilir yayımı yalnız var olan bir pakete kurulabilir; aracın sonraki sürümleri sürekli entegrasyondan, kaynak kanıtıyla çıkar.
 
 == Olay müdahalesi ve sorumlu bildirim
 
@@ -1776,11 +1776,11 @@ Kurumlar sandbox’ta kendi test kurumlarını da açabilir (ADR-0041). Elif uyd
   ([Karşılıklı güven], [sandbox’a güvenmez], [gerçek ağa karışmaz],),
 ))
 
-== Dokuz paket
+== On paket
 
-Ağın kuralları yalnız belgelerde durmaz; kod olarak da dağıtılır. #{raw("@tamga-network/*")} adıyla dokuz açık kaynak paket vardır. Kodun lisansı Apache-2.0, belgelerin lisansı CC BY 4.0’dır. Paketler npm’de 0.8.2 deneme sürümüyle yayımlanmıştır; kararlı 1.0.0 sürümüne kadar arayüzler değişebilir (README) (Tablo 29).
+Ağın kuralları yalnız belgelerde durmaz; kod olarak da dağıtılır. #{raw("@tamga-network/*")} adıyla on açık kaynak paket vardır. Kodun lisansı Apache-2.0, belgelerin lisansı CC BY 4.0’dır. Paketler npm’de 0.8.2 deneme sürümüyle yayımlanmıştır; kararlı 1.0.0 sürümüne kadar arayüzler değişebilir (README) (Tablo 29).
 
-#tablo([#{strong[Tablo 29.]} Açık paketler.], (48fr, 48fr, 25fr), ([Paket​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​], [Görev], [Platform notu],), (
+#tablo([#{strong[Tablo 29.]} Açık paketler.], (48fr, 48fr, 26fr), ([Paket​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​], [Görev], [Platform notu],), (
   ([#{raw("@tamga-network/core")}], [özetler, tanımlayıcılar, sertifika yardımcıları, AB PID ad tablosu], [React Native için ayrı alt yollar],),
   ([#{raw("@tamga-network/trust")}], [imzalı listeleri yükler ve doğrular; tek okuma arayüzü #{raw("TrustSource")}], [#{raw("/core")} platformdan bağımsız, React Native dahil],),
   ([#{raw("@tamga-network/schemas")}], [belge türü kataloğu: Type Metadata, JSON Schema, bütünlük özetleri], [her yerde, React Native dahil],),
@@ -1790,6 +1790,7 @@ Ağın kuralları yalnız belgelerde durmaz; kod olarak da dağıtılır. #{raw(
   ([#{raw("@tamga-network/verifier")}], [doğrulama hattı ve OpenID4VP; sayfa kiti; ZK doğrulaması], [sunucu; #{raw("/web")} sayfa kiti],),
   ([#{raw("@tamga-network/wallet-core")}], [cüzdan çekirdeği: anahtarlar, belge alma, yerel denetimler, gösterme], [Node ve React Native],),
   ([#{raw("@tamga-network/zk")}], [mdoc için cüzdan tarafı sıfır bilgi ispatçısı], [çekirdek her yerde; telefonda yerel ispatçı],),
+  ([#{raw("@tamga-network/onboard")}], [kurumlar için katılım aracı: başvuru dosyası, anahtar ve CSR, kurulum ve güven listesi denetimi; düğüm adımları; yerel MCP sunucusu], [komut satırı (#{raw("tamga-onboard")}), Node.js 22+],),
 ))
 
 Paketlerin en önemli tasarım kararı tek güven arayüzüdür (ADR-0015). Cüzdan dahil her istemci güven sorularını aynı arayüzden sorar; böylece aynı kural iki kez, iki farklı biçimde yazılmaz. Arayüzün arkasında bugün imzalı listeler durur; ortak defter geldiğinde arayüz değişmeden onun arkasına girer (Bölüm 6.6 ve 19.8). Cüzdan React Native üzerinde çalıştığı için doğrulama çekirdeği dosya sistemine ve platforma özgü kütüphanelere bağımlı olmayan bir alt yola ayrılmıştır.
@@ -1933,6 +1934,8 @@ Belge verenler için dört kapı vardır (FW-TF-0001 §3.2). #{strong[I1 (kayıt
   ([Doğrulayıcı], [Sonradan denetim], [Kapsam ihlali ya da aşırı talep şikâyeti üzerine],),
 ))
 
+Kurumun bilgi işlem ekibi kapıya hazırlığını ağın açık katılım aracıyla (#{raw("@tamga-network/onboard")}, komut #{raw("tamga-onboard")}) yapar ve sınar. Araç başvuru dosyasını kayıt kurallarıyla (ADR-0024) denetler, kurumun iki imza anahtarını kurumun kendi bilgisayarında üretip kayıt kurumuna gidecek sertifika isteklerini (CSR) yazar (üretimde anahtarın donanım güvenlik modülünde ya da uzaktan imza hizmetinde üretilmesi yeğlenir; o zaman araç yalnız isteği denetler), alan adını, DNS teyidini, https adreslerini, meta veriyi ve sorgu ucunu sınar; kayıttan sonra kurumun imzalı güven listesindeki görünümünü araca gömülü kök parmak izlerine karşı doğrulayarak denetler. Aynı adımlar yerel bir MCP sunucusu olarak da sunulur; böylece kurumun kendi yapay zekâ asistanı adımları yürütebilir. Araç ağa ve listeye hiçbir zaman yazmaz, kişi bilgisi sormaz ve özel anahtar bilgisayardan çıkmaz; kayıt kararı ve listeye yazma kayıt kurumunda, bugün geçici işletmecide kalır (GUIDE-0014). Bu adımlar bugünkü liste düzeninde çalışır.
+
 Kural çiğnenirse beş basamaklı bir yaptırım merdiveni işler: otuz gün giderme süreli uyarı, tür yetkisinin daraltılması, askı, halef atanarak çıkarma ve sözleşmenin feshi (FW-TF-0001 §4.5). Merdivenin en önemli kuralı yine belgeleri korur: çıkarma eski belgeleri geçersiz kılmaz, çünkü geçerlilik belgenin verildiği tarihe göre değerlendirilir (Bölüm 11.3). Para cezası yoktur; konsey kurulursa kendi kararıyla getirebilir. Uyuşmazlık önce şema sahibi nezdinde, sonra sözleşmedeki yargı yerinde çözülür; kurumun bulunduğu devletin hukuku esastır, devletler arasında konsey yetkilidir ve onun üstünde bir merci yoktur (FW-TF-0001 §4.7, §5.8). Çerçeve pilottan önce Türk kişisel veri ve elektronik imza mevzuatı açısından hukuki incelemeden geçirilecektir (FW-TF-0001 §1.4); bu belge hukuki görüş değildir.
 
 == Finansman ilkesi
@@ -2048,6 +2051,8 @@ Oylananın okunabilir kalması da kuraldır. Yükseltmeyle yalnız parametresiz 
 == İzinlendirme ve işletim
 
 Defter izinlidir: yalnız onaylı düğümler bağlanır, yalnız onaylı hesaplar işlem gönderir. İlk belgeler bunu Besu’nun zincir üstü izin mekanizmasıyla öngörüyordu; Besu bu mekanizmayı 24.12’de kullanımdan kaldırdı ve 25.6.0’da çıkardı. ADR-0052 kalan yolu, her düğümdeki yerel izin dosyasını seçti ve bir kural ekledi: dosya elle yazılmaz, defterin kendi yönetişim kaydından üretilir; her işletmeci onu kendisi üretir, bütün onaylayıcılar aynı listeyi taşır ve fark bir işletme olayı olarak raporlanır. İzin listesi ikinci savunma hattıdır; yazma yetkisinin asıl denetimi defterin kurallarındadır ve listedeki bir hata o yetkiyi genişletmez. Düğümlerin uzaktan çağrı arayüzü internete açılmaz; dış erişim yalnız karşılıklı TLS doğrulayan bir ters vekil arkasından, tanımlı istemcilere verilir (ADR-0052 LP4, LP5).
+
+Defter açıldığı gün için katılım aracında bir devletin ya da işletmecinin düğüm adımları da vardır (#{raw("tamga-onboard node")}): araç düğüm anahtarını düğümün kendi makinesinde üretir, izinli kipte bir yapılandırma şablonu ile işletmecilere gidecek düğüm bildirimini yazar ve çalışan düğümü yalnız okuyarak denetler; deftere ve izin listesine yazmaz, oylar ve izin listesi değişiklikleri işletmecilerde kalır.
 
 == Geçiş
 
@@ -2704,6 +2709,7 @@ Tamga’nın çerçeve belgeleri #{raw("arf.tamga.network/tr/")}, şartnameleri 
   ([SPEC-WALLET-0001], [Cüzdan kuralları], [#{raw("docs.tamga.network/tr/specifications/wallet")}],),
   ([GUIDE-0009], [Uyum testleri], [#{raw("docs.tamga.network/tr/guides/conformance")}],),
   ([GUIDE-0013], [Sandbox: test ağı], [#{raw("docs.tamga.network/tr/guides/sandbox")}],),
+  ([GUIDE-0014], [Katılım aracı: bilgi işlem ekibi için], [#{raw("docs.tamga.network/tr/guides/onboarding-tool")}],),
   ([ADR-0001 … ADR-0072], [Karar kayıtları (Ek B)], [#{raw("docs.tamga.network/tr/adr/")}],),
 ))
 

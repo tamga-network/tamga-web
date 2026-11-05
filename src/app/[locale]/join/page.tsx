@@ -174,6 +174,14 @@ export default async function JoinPage({
           >
             {c.apply.guide} →
           </a>
+          <a
+            href={docsUrl(locale, "/guides/onboarding-tool")}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-2 block text-sm text-foreground-subtle underline underline-offset-4 hover:text-foreground"
+          >
+            {c.apply.tool} →
+          </a>
         </div>
       </section>
     </>

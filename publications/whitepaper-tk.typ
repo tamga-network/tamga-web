@@ -1746,7 +1746,7 @@ Toruň häzirki laýyklyk tertibi "ýeňil laýyklykdyr" (FW-TF-0001 §2.4, §4.
 
 2026-njy ýylyň oktýabrynda şahsyýet hyzmaty we Tamga Verify OpenID Foundation-yň laýyklyk synag meýilnamalary \[33\] bilen sandbox-da öz-synagdan geçirildi; onuň gerimi we netijeleri Bölüm 20.5-de. Bu öz-synagdy, sertifikat aýratyn prosesdir. Bu işden ýigrimiye golaý üýtgeşme çykdy we dördüsi öňki kararlary ýazga alnan ADR-ler bilen üýtgetdi (meselem, ADR-0061 we ADR-0062).
 
-Tor şu wagta çenli öz howpsuzlyk derňewlerini geçirdi; gapy boşlugy 2026-njy ýylyň oktýabryndaky howpsuzlyk tapgyrynda şu ýol bilen tapyldy we ýapyldy. SECURITY.md-de görkezilişi ýaly, tor heniz garaşsyz daşky barlagdan geçmedi; daşky derňew üçin geriminiň, howp modeliniň, maglumat akymlarynyň, üýtgewsiz düzgünler katalogynyň we synag netijeleriniň girýän bukjasy ammarda taýýar saklanýar. Paketlerde gurnamadan soňky skript ýok; dokuz paketiň sekizisi diňe üznüksiz integrasiýadan, gelip çykyş subutnamasy bilen çap edilýär, subutnama düzüji paket bolsa telefon kitaphanalary heniz şol ýerde kompilirlenip bilinmeýändigi üçin el bilen çap edilýär.
+Tor şu wagta çenli öz howpsuzlyk derňewlerini geçirdi; gapy boşlugy 2026-njy ýylyň oktýabryndaky howpsuzlyk tapgyrynda şu ýol bilen tapyldy we ýapyldy. SECURITY.md-de görkezilişi ýaly, tor heniz garaşsyz daşky barlagdan geçmedi; daşky derňew üçin geriminiň, howp modeliniň, maglumat akymlarynyň, üýtgewsiz düzgünler katalogynyň we synag netijeleriniň girýän bukjasy ammarda taýýar saklanýar. Paketlerde gurnamadan soňky skript ýok; on paketiň sekizisi diňe üznüksiz integrasiýadan, gelip çykyş subutnamasy bilen çap edilýär. Subutnama düzüji paket telefon kitaphanalary heniz şol ýerde kompilirlenip bilinmeýändigi üçin el bilen çap edilýär; goşulyş guralynyň ilkinji wersiýasy hem el bilen çap edildi, sebäbi npm-iň ynamly çap etmesi diňe eýýäm bar bolan paket üçin sazlanyp bilinýär, guralyň soňky wersiýalary bolsa üznüksiz integrasiýadan, gelip çykyş subutnamasy bilen çykýar.
 
 == Waka jogap bermek we jogapkärli habar bermek
 
@@ -1776,11 +1776,11 @@ Guramalar sandbox-da öz synag guramalaryny hem açyp bilýär (ADR-0041). Elif 
   ([Özara ynam], [sandbox-a ynanmaýar], [hakyky tora garyşmaýar],),
 ))
 
-== Dokuz paket
+== On paket
 
-Toruň düzgünleri diňe resminamalarda durmaýar; olar kod görnüşinde hem ýaýradylýar. #{raw("@tamga-network/*")} ady bilen dokuz açyk çeşmeli paket bar. Koduň ygtyýarnamasy Apache-2.0, resminamalaryňky CC BY 4.0. Paketler npm-de 0.8.2 synag wersiýasy bilen çap edildi; durnukly 1.0.0 wersiýasyna çenli interfeýsler üýtgäp biler (README) (Tablisa 29).
+Toruň düzgünleri diňe resminamalarda durmaýar; olar kod görnüşinde hem ýaýradylýar. #{raw("@tamga-network/*")} ady bilen on açyk çeşmeli paket bar. Koduň ygtyýarnamasy Apache-2.0, resminamalaryňky CC BY 4.0. Paketler npm-de 0.8.2 synag wersiýasy bilen çap edildi; durnukly 1.0.0 wersiýasyna çenli interfeýsler üýtgäp biler (README) (Tablisa 29).
 
-#tablo([#{strong[Tablisa 29.]} Açyk paketler.], (48fr, 48fr, 29fr), ([Paket​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​], [Wezipesi], [Platforma belligi],), (
+#tablo([#{strong[Tablisa 29.]} Açyk paketler.], (48fr, 48fr, 30fr), ([Paket​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​], [Wezipesi], [Platforma belligi],), (
   ([#{raw("@tamga-network/core")}], [heşler, belgiler, sertifikat kömekçileri, ÝB PID atlar tablisasy], [React Native üçin aýry goşmaça ýollar],),
   ([#{raw("@tamga-network/trust")}], [gol çekilen sanawlary ýükleýär we barlaýar; ýeke-täk okaýyş interfeýsi #{raw("TrustSource")}], [#{raw("/core")} platforma bagly däl, React Native hem goşulyp],),
   ([#{raw("@tamga-network/schemas")}], [resminama görnüşleriniň katalogy: Type Metadata, JSON Schema, bitewilik heşleri], [her ýerde, React Native hem goşulyp],),
@@ -1790,6 +1790,7 @@ Toruň düzgünleri diňe resminamalarda durmaýar; olar kod görnüşinde hem �
   ([#{raw("@tamga-network/verifier")}], [barlag hatary we OpenID4VP; sahypa toplumy; ZK barlagy], [serwer; #{raw("/web")} sahypa toplumy],),
   ([#{raw("@tamga-network/wallet-core")}], [gapjyk ýadrosy: açarlar, resminama almak, ýerli barlaglar, görkezmek], [Node we React Native],),
   ([#{raw("@tamga-network/zk")}], [mdoc üçin gapjyk tarapyndaky nol bilimli subutnama düzüji], [ýadro her ýerde; telefonda ýerli subutnama düzüji],),
+  ([#{raw("@tamga-network/onboard")}], [goşulyş guraly: arza, açarlar we CSR, gurnamany we sanawy barlamak; düwün ädimleri; MCP serweri], [buýruk setiri (#{raw("tamga-onboard")}), Node.js 22+],),
 ))
 
 Paketleriň iň möhüm dizaýn karary ýeke-täk ynam interfeýsidir (ADR-0015). Gapjyk hem goşulyp, her müşderi ynam soraglaryny şol bir interfeýsden soraýar; şeýlelikde şol bir düzgün iki gezek, iki dürli görnüşde ýazylmaýar. Interfeýsiň aňyrsynda häzir gol çekilen sanawlar dur; umumy kitap gelende ol interfeýs üýtgemezden onuň aňyrsyna girýär (Bölüm 6.6 we 19.8). Gapjyk React Native-de işleýändigi üçin barlag ýadrosy faýl ulgamyna we platforma mahsus kitaphanalara bagly bolmadyk goşmaça ýola bölündi.
@@ -1933,6 +1934,8 @@ Resminama berijiler üçin dört derweze bar (FW-TF-0001 §3.2). #{strong[I1 (ha
   ([Barlaýjy], [Soňundan barlag], [Çägiň bozulmagy ýa-da artykmaç talap barada arz boýunça],),
 ))
 
+Guramanyň maglumat tehnologiýalary topary derwezä taýýarlygy toruň açyk goşulyş guraly (#{raw("@tamga-network/onboard")}, buýruk #{raw("tamga-onboard")}) bilen taýýarlaýar we synaýar. Gural arza faýlyny hasaba alyş düzgünleri (ADR-0024) bilen barlaýar, guramanyň iki gol açaryny guramanyň öz kompýuterinde döredýär we hasaba alyş edarasyna iberiljek sertifikat haýyşlaryny (CSR) ýazýar (önümçilikde açaryň enjam howpsuzlyk modulynda ýa-da uzakdan gol hyzmatynda döredilmegi ileri tutulýar; şonda gural diňe haýyşy barlaýar), domen adyny, DNS tassyklamasyny, https salgylaryny, meta maglumatlary we sorag nokadyny synaýar; hasaba alnandan soň guramanyň gol çekilen ynam sanawyndaky görnüşini gurala ornaşdyrylan kök barmak yzlaryna garşy tassyklap barlaýar. Şol ädimler ýerli MCP serweri hökmünde hem hödürlenýär; şeýlelikde guramanyň öz emeli aň kömekçisi ädimleri ýerine ýetirip biler. Gural tora we sanawa hiç haçan ýazmaýar, şahsy maglumat soramaýar we gizlin açar kompýuterden çykmaýar; hasaba alyş karary we sanawa ýazmak hasaba alyş edarasynda, häzirki wagtda wagtlaýyn operatorda galýar (GUIDE-0014). Bu ädimler häzirki sanaw tertibinde işleýär.
+
 Düzgün bozulsa, bäş basgançakly temmi basgançaklary işleýär: otuz günlük düzediş möhletli duýduryş, görnüş ygtyýarynyň daraldylmagy, togtatma, mirasdüşer bellenip çykarmak we şertnamany ýatyrmak (FW-TF-0001 §4.5). Basgançaklaryň iň möhüm düzgüni ýene-de resminamalary goraýar: çykarmak köne resminamalary güýjünden düşürmeýär, sebäbi güýjünde bolmak resminamanyň berlen senesine görä bahalandyrylýar (Bölüm 11.3). Pul jerimesi ýok; maslahat döredilse, öz karary bilen girizip biler. Jedeller ilki shemanyň eýesiniň ýanynda, soňra şertnamadaky kazyýet ýerinde çözülýär; guramanyň ýerleşýän döwletiniň hukugy esasdyr, döwletleriň arasynda maslahat ygtyýarly we onuň üstünde başga edara ýok (FW-TF-0001 §4.7, §5.8). Çarçuwa pilotdan öň Türkiýäniň şahsy maglumat we elektron gol kanunçylygy boýunça hukuk derňewinden geçiriler (FW-TF-0001 §1.4); bu resminama hukuk pikiri däl.
 
 == Maliýeleşdirmek ýörelgesi
@@ -2048,6 +2051,8 @@ Ses berlen zadyň okalyp bilinýän bolup galmagy hem düzgündir. Ýokarlandyrm
 == Rugsat bermek we işletmek
 
 Kitap rugsatly: diňe tassyklanan düwünler birikýär, diňe tassyklanan hasaplar amal iberýär. Ilkinji resminamalar muny Besu-nyň zynjyryň üstündäki rugsat mehanizmi bilen göz öňünde tutýardy; Besu bu mehanizmi 24.12-de ulanyşdan aýyrdy we 25.6.0-da doly aýyrdy. ADR-0052 galan ýoly, her düwündäki ýerli rugsat faýlyny saýlady we bir düzgün goşdy: faýl el bilen ýazylmaýar, kitabyň öz dolandyryş ýazgysyndan döredilýär; her operator ony özi döredýär, ähli tassyklaýjylar şol bir sanawy göterýär we tapawut işleýiş wakasy hökmünde habar berilýär. Rugsat sanawy ikinji gorag hatarydyr; ýazmak ygtyýarynyň esasy barlagy kitabyň düzgünlerinde we sanawdaky säwlik şol ygtyýary giňeltmeýär. Düwünleriň uzakdan çagyryş interfeýsi internete açylmaýar; daşky giriş diňe özara TLS barlaýan ters proksiniň aňyrsyndan, kesgitlenen müşderilere berilýär (ADR-0052 LP4, LP5).
+
+Kitap açylan gün üçin goşulyş guralynda döwletiň ýa-da operatoryň düwün ädimleri hem bar (#{raw("tamga-onboard node")}): gural düwün açaryny düwüniň öz maşynynda döredýär, rugsatly tertipde konfigurasiýa şablonyny we operatorlara iberiljek düwün beýannamasyny ýazýar we işleýän düwüni diňe okap barlaýar; kitaba we rugsat sanawyna ýazmaýar, sesler we rugsat sanawynyň üýtgeşmeleri operatorlarda galýar.
 
 == Geçiş
 
@@ -2704,6 +2709,7 @@ Tamga-nyň çarçuwa resminamalary #{raw("arf.tamga.network/tr/")}, spesifikasi�
   ([SPEC-WALLET-0001], [Gapjyk düzgünleri], [#{raw("docs.tamga.network/tr/specifications/wallet")}],),
   ([GUIDE-0009], [Laýyklyk synaglary], [#{raw("docs.tamga.network/tr/guides/conformance")}],),
   ([GUIDE-0013], [Sandbox: synag tory], [#{raw("docs.tamga.network/tr/guides/sandbox")}],),
+  ([GUIDE-0014], [Goşulyş guraly: IT topary üçin], [#{raw("docs.tamga.network/tr/guides/onboarding-tool")}],),
   ([ADR-0001 … ADR-0072], [Karar ýazgylary (B goşmaça)], [#{raw("docs.tamga.network/tr/adr/")}],),
 ))
 

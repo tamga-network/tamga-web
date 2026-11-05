@@ -13,10 +13,10 @@ export const WHITEPAPER_LOCALES = ["en", "tr", "tk", "az"] as const;
 
 /** PDF sayfa sayısı ve boyutu (KB). */
 export const WHITEPAPER_PDF: Record<Locale, { pages: number; sizeKb: number }> = {
-  en: { pages: 138, sizeKb: 2477 },
-  tr: { pages: 127, sizeKb: 2438 },
-  tk: { pages: 136, sizeKb: 2551 },
-  az: { pages: 132, sizeKb: 2495 },
+  en: { pages: 138, sizeKb: 2484 },
+  tr: { pages: 128, sizeKb: 2444 },
+  tk: { pages: 137, sizeKb: 2559 },
+  az: { pages: 133, sizeKb: 2502 },
 };
 
 export const whitepaperPdf = (lang: string) => `/whitepaper-${lang}.pdf`;

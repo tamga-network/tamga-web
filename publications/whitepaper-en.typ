@@ -1746,7 +1746,7 @@ The network’s current conformance regime is "light conformance" (FW-TF-0001 §
 
 In October 2026 the identity service and Tamga Verify were self-tested on the sandbox with the OpenID Foundation’s conformance test plans \[33\]; the scope and results are in Section 20.5. This was a self-test; certification is a separate process. Close to twenty changes came out of the work, and four of them changed earlier decisions through recorded ADRs (for example ADR-0061 and ADR-0062).
 
-So far the network has carried out its own security reviews; the gate vulnerability was found this way, in the October 2026 security round, and closed. As SECURITY.md states, the network has not yet undergone an independent external audit; a package for external review, containing the scope, the threat model, the data flows, the catalogue of invariants and the test results, is kept ready in the repository. The packages have no post-install scripts; eight of the nine packages are published only from continuous integration, with provenance, while the prover package is published by hand because its phone libraries cannot yet be built there.
+So far the network has carried out its own security reviews; the gate vulnerability was found this way, in the October 2026 security round, and closed. As SECURITY.md states, the network has not yet undergone an independent external audit; a package for external review, containing the scope, the threat model, the data flows, the catalogue of invariants and the test results, is kept ready in the repository. The packages have no post-install scripts; eight of the ten packages are published only from continuous integration, with provenance. The prover package is published by hand because its phone libraries cannot yet be built there; the first release of the joining tool was also published by hand, because npm’s trusted publishing can only be set up for a package that already exists, and the tool’s later releases come from continuous integration with provenance.
 
 == Incident response and responsible disclosure
 
@@ -1776,11 +1776,11 @@ Institutions can also open their own test institutions in the sandbox (ADR-0041)
   ([Mutual trust], [does not trust the sandbox], [does not mix with the real network],),
 ))
 
-== Nine packages
+== Ten packages
 
-The network’s rules do not live only in documents; they are also distributed as code. There are nine open source packages under the name #{raw("@tamga-network/*")}. The code is licensed under Apache-2.0 and the documents under CC BY 4.0. The packages are published on npm as the 0.8.2 pre-release; until the stable 1.0.0 release the interfaces may change (README) (Table 29).
+The network’s rules do not live only in documents; they are also distributed as code. There are ten open source packages under the name #{raw("@tamga-network/*")}. The code is licensed under Apache-2.0 and the documents under CC BY 4.0. The packages are published on npm as the 0.8.2 pre-release; until the stable 1.0.0 release the interfaces may change (README) (Table 29).
 
-#tablo([#{strong[Table 29.]} The open packages.], (48fr, 48fr, 27fr), ([Package​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​], [Role], [Platform note],), (
+#tablo([#{strong[Table 29.]} The open packages.], (48fr, 48fr, 28fr), ([Package​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​], [Role], [Platform note],), (
   ([#{raw("@tamga-network/core")}], [hashes, identifiers, certificate helpers, EU PID name table], [separate subpaths for React Native],),
   ([#{raw("@tamga-network/trust")}], [loads and verifies signed lists; single read interface #{raw("TrustSource")}], [#{raw("/core")} platform-independent, including React Native],),
   ([#{raw("@tamga-network/schemas")}], [credential type catalogue: Type Metadata, JSON Schema, integrity hashes], [everywhere, including React Native],),
@@ -1790,6 +1790,7 @@ The network’s rules do not live only in documents; they are also distributed a
   ([#{raw("@tamga-network/verifier")}], [verification pipeline and OpenID4VP; page kit; ZK verification], [server; #{raw("/web")} page kit],),
   ([#{raw("@tamga-network/wallet-core")}], [wallet core: keys, credential retrieval, local checks, presentation], [Node and React Native],),
   ([#{raw("@tamga-network/zk")}], [wallet-side zero-knowledge prover for mdoc], [the core everywhere; a native prover on the phone],),
+  ([#{raw("@tamga-network/onboard")}], [joining tool for institutions: application files, keys and CSRs, setup and trust list checks; node steps; local MCP server], [command line (#{raw("tamga-onboard")}), Node.js 22+],),
 ))
 
 The most important design decision in the packages is the single trust interface (ADR-0015). Every client, including the wallet, asks trust questions through the same interface; so the same rule is not written twice in two different forms. Behind the interface today stand the signed lists; when the shared ledger arrives, it moves in behind the interface without the interface changing (Sections 6.6 and 19.8). Since the wallet runs on React Native, the verification core has been split into a subpath that does not depend on the file system or on platform-specific libraries.
@@ -1933,6 +1934,8 @@ There are four gates for issuers (FW-TF-0001 §3.2). #{strong[I1 (registered)]} 
   ([Verifier], [Subsequent supervision], [On a complaint of scope violation or excessive requests],),
 ))
 
+An institution’s IT team prepares and tests its readiness for a gate with the network’s open joining tool (#{raw("@tamga-network/onboard")}, command #{raw("tamga-onboard")}). The tool checks the application files against the registration rules (ADR-0024), generates the institution’s two signing keys on the institution’s own computer and writes the certificate signing requests (CSRs) for the registrar (in production, generating the keys in a hardware security module or a remote signing service is preferred; the tool then only checks the request), and tests the domain, the DNS confirmation, the https addresses, the metadata and the lookup endpoint; after registration it checks how the institution appears in the signed trust list, verified against the root fingerprints embedded in the tool. The same steps are offered as a local MCP server, so the institution’s own AI assistant can run them. The tool never writes to the network or the trust list, asks for no personal data, and private keys never leave the computer; the registration decision and the write to the list stay with the registrar, today the provisional operator (GUIDE-0014). These steps work in today’s list-based setup.
+
 If a rule is broken, a five-step sanctions ladder applies: a warning with thirty days to fix, narrowing of type authorisation, suspension, removal with a successor appointed, and termination of the agreement (FW-TF-0001 §4.5). The most important rule of the ladder again protects credentials: removal does not invalidate earlier credentials, because validity is assessed by the date on which the credential was issued (Section 11.3). There are no fines; if the council is formed, it may introduce them by its own decision. Disputes are settled first before the scheme owner and then at the place of jurisdiction in the agreement; the law of the state where the institution is located applies, between states the council is competent, and there is no authority above it (FW-TF-0001 §4.7, §5.8). Before the pilot the framework will undergo legal review with respect to Turkish personal data and electronic signature legislation (FW-TF-0001 §1.4); this document is not a legal opinion.
 
 == Funding principle
@@ -2048,6 +2051,8 @@ It is also a rule that what is voted on stays readable. With an upgrade, only an
 == Permissioning and operation
 
 The ledger is permissioned: only approved nodes connect and only approved accounts send transactions. The early documents envisaged this with Besu’s on-chain permissioning mechanism; Besu deprecated this mechanism in 24.12 and removed it in 25.6.0. ADR-0052 chose the remaining path, the local permissions file on each node, and added a rule: the file is not written by hand but generated from the ledger’s own governance registry; each operator generates it itself, all validators carry the same list, and any difference is reported as an operational incident. The permissions list is the second line of defence; the real control of write authority lies in the ledger’s rules, and an error in the list does not extend that authority. The nodes’ remote call interface is not exposed to the internet; external access is given only to defined clients, from behind a reverse proxy that verifies mutual TLS (ADR-0052 LP4, LP5).
+
+For the day the ledger opens, the joining tool also has node steps for a state or an operator (#{raw("tamga-onboard node")}): it generates the node key on the node’s own machine, writes a permissioned configuration template and the node declaration sent to the operators, and checks the running node read-only; it writes nothing to the ledger or the allowlist, and votes and allowlist changes stay with the operators.
 
 == Transition
 
@@ -2704,6 +2709,7 @@ Tamga’s framework documents are at #{raw("arf.tamga.network/")}, and its speci
   ([SPEC-WALLET-0001], [Wallet rules], [#{raw("docs.tamga.network/specifications/wallet")}],),
   ([GUIDE-0009], [Conformance tests], [#{raw("docs.tamga.network/guides/conformance")}],),
   ([GUIDE-0013], [Sandbox: the test network], [#{raw("docs.tamga.network/guides/sandbox")}],),
+  ([GUIDE-0014], [Onboarding tool: for the IT team], [#{raw("docs.tamga.network/guides/onboarding-tool")}],),
   ([ADR-0001 … ADR-0072], [Decision records (Appendix B)], [#{raw("docs.tamga.network/adr/")}],),
 ))
 

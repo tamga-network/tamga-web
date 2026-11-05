@@ -129,6 +129,24 @@ export const CHAPTER_7: LearnPage[] = [
             sözleşme ve testler.
           </p>
 
+          <Callout kind="info" title="Katılım aracı" locale="tr">
+            <p>
+              Kurumun bilgi işlem ekibi kendi tarafındaki işi açık katılım
+              aracıyla yapar: komut satırında <code>tamga-onboard</code>
+              başvuru dosyasını yazar ve kayıt kurallarıyla denetler,
+              anahtarları ve sertifika isteklerini kurumun kendi
+              bilgisayarında üretir, alan adı ve kurulumu sınar; kayıttan
+              sonra kurumun güven listesindeki görünümünü denetler. Aynı
+              adımlar kurumun kendi yapay zekâ asistanı için yerel bir MCP
+              sunucusu olarak da çalışır.
+            </p>
+            <p>
+              Araç ağa ve listeye hiçbir zaman yazmaz, kişi bilgisi sormaz;
+              gizli anahtar kurumdan çıkmaz. Kayıt kararı ve listeye yazma
+              kayıt kurumundadır.
+            </p>
+          </Callout>
+
           <h2>Güvence seviyeleri</h2>
           <p>
             Her kurum aynı derinlikte denetlenmez. Doğrulayıcı, belgenin hangi
@@ -291,6 +309,26 @@ export const CHAPTER_7: LearnPage[] = [
             source, the agreement and the tests.
           </p>
 
+          <Callout kind="info" title="The onboarding tool" locale="en">
+            <p>
+              The institution&apos;s IT team does its side of the work with
+              the open onboarding tool: on the command line,
+              <code>tamga-onboard</code> writes the application file and
+              checks it against the registration rules, generates the keys and
+              certificate requests on the institution&apos;s own computer, and
+              tests the domain and the setup; after registration it checks how
+              the institution appears in the trust list. The same steps also
+              run as a local MCP server for the institution&apos;s own AI
+              assistant.
+            </p>
+            <p>
+              The tool never writes to the network or the list and asks for no
+              personal data; the private key never leaves the institution. The
+              registration decision and the write to the list stay with the
+              registrar.
+            </p>
+          </Callout>
+
           <h2>Assurance levels</h2>
           <p>
             Not every institution is checked to the same depth. The verifier
@@ -422,6 +460,24 @@ export const CHAPTER_7: LearnPage[] = [
           </ol>
           <p>Näçe wagt alýar? Guramanyň taýýarlygyna bagly.</p>
 
+          <Callout kind="info" title="Goşulyş guraly" locale="tk">
+            <p>
+              Guramanyň IT topary öz tarapyndaky işi açyk goşulyş guraly bilen
+              ýerine ýetirýär: buýruk setirinde <code>tamga-onboard</code>
+              arza faýlyny ýazýar we ony hasaba alyş düzgünlerine görä
+              barlaýar, açarlary we sertifikat haýyşlaryny guramanyň öz
+              kompýuterinde döredýär, domeni we gurnamany synaýar; hasaba
+              alnandan soň guramanyň ynam sanawyndaky görnüşini barlaýar. Şol
+              ädimler guramanyň öz emeli aň kömekçisi üçin ýerli MCP serweri
+              hökmünde hem işleýär.
+            </p>
+            <p>
+              Gural tora we sanawa hiç haçan ýazmaýar we şahsy maglumat
+              soramaýar; gizlin açar guramadan çykmaýar. Hasaba alyş karary we
+              sanawa ýazmak hasaba alyş edarasynda galýar.
+            </p>
+          </Callout>
+
           <Callout kind="turkic" locale="tk">
             <p>
               Her ýurduň guramalary öz ýurdunyň sanawyna girýär. Häzir çap
@@ -546,6 +602,24 @@ export const CHAPTER_7: LearnPage[] = [
             mənbəyi, müqavilə və testlər.
           </p>
 
+          <Callout kind="info" title="Qoşulma aləti" locale="az">
+            <p>
+              Qurumun İT komandası öz tərəfindəki işi açıq qoşulma aləti ilə
+              görür: əmr sətrində <code>tamga-onboard</code> müraciət faylını
+              yazır və onu qeydiyyat qaydalarına görə yoxlayır, açarları və
+              sertifikat sorğularını qurumun öz kompüterində yaradır, domeni
+              və quraşdırmanı sınaqdan keçirir; qeydiyyatdan sonra qurumun
+              etibar siyahısındakı görünüşünü yoxlayır. Eyni addımlar qurumun
+              öz süni intellekt köməkçisi üçün lokal MCP serveri kimi də
+              işləyir.
+            </p>
+            <p>
+              Alət heç vaxt şəbəkəyə və siyahıya yazmır və şəxsi məlumat
+              soruşmur; gizli açar qurumdan çıxmır. Qeydiyyat qərarı və
+              siyahıya yazma qeydiyyat qurumunda qalır.
+            </p>
+          </Callout>
+
           <h2>Təminat səviyyələri</h2>
           <p>
             Hər qurum eyni dərinlikdə yoxlanılmır. Yoxlayan tərəf rəqəmsal
@@ -630,6 +704,16 @@ export const CHAPTER_7: LearnPage[] = [
           az: "Qurum olaraq qoşulmaq (bələdçi)",
         },
         href: "/guides/join-as-institution",
+        kind: "docs",
+      },
+      {
+        label: {
+          tr: "Katılım aracı (rehber)",
+          en: "The onboarding tool (guide)",
+          tk: "Goşulyş guraly (gollanma)",
+          az: "Qoşulma aləti (bələdçi)",
+        },
+        href: "/guides/onboarding-tool",
         kind: "docs",
       },
       {
@@ -1140,6 +1224,16 @@ export const CHAPTER_7: LearnPage[] = [
           az: "Yoxlayan tərəfin qeydiyyatı (bələdçi)",
         },
         href: "/guides/register-verifier",
+        kind: "docs",
+      },
+      {
+        label: {
+          tr: "Katılım aracı (rehber)",
+          en: "The onboarding tool (guide)",
+          tk: "Goşulyş guraly (gollanma)",
+          az: "Qoşulma aləti (bələdçi)",
+        },
+        href: "/guides/onboarding-tool",
         kind: "docs",
       },
       {
