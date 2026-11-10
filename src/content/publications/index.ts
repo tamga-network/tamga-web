@@ -1,6 +1,7 @@
 import type { Locale } from "@/i18n/routing";
 import { evolutionOfDigitalIdentity } from "./evolution-of-digital-identity";
 import { signedListsToLedger } from "./signed-lists-to-ledger";
+import { verifiableCredentials } from "./verifiable-credentials";
 import type { Publication, PublicationVersion } from "./types";
 
 export type { Publication, PublicationVersion } from "./types";
@@ -9,7 +10,7 @@ export type { Publication, PublicationVersion } from "./types";
  * Yayımlanmış çalışmalar. Yeni yazılar önceden hazırlanır (dosyası bu klasörde, PDF'i public/files/publications/), ama yalnız
  * proje yönetimi "yayınla" deyince buraya bir satır eklenir ve commit'e girer (src/content/team/README.md, "PDF ekleme").
  */
-export const PUBLICATIONS: Publication[] = [evolutionOfDigitalIdentity, signedListsToLedger]
+export const PUBLICATIONS: Publication[] = [evolutionOfDigitalIdentity, signedListsToLedger, verifiableCredentials]
   .filter((p) => p.versions.some((v) => v.file || v.url))
   .sort((a, b) => (a.date < b.date ? 1 : -1));
 
