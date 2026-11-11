@@ -236,7 +236,7 @@ ARF tek bir teknolojiye bağlanmak yerine, farklı standart kuruluşlarının ya
   ([Kimlik doğrulama], [ETSI TS 119 461], [ETSI], [Uzaktan kimlik doğrulamanın politika ve güvenlik şartları], [Bölüm 14],),
 ))
 
-Tablodaki "taslak" ifadesi standardın olgunluk aşamasını gösterir. SD-JWT’nin kendisi 2025’te RFC 9901 \[15\] olarak yayımlandı; onun üzerine kurulan SD-JWT VC \[16\] ve Token Status List \[17\] ise IETF’te son aşamadadır. AB, uygulama tüzüklerinde bu taslakların belirli sürümlerine atıf yapar; Tamga da bu sürümleri izler. OpenID4VP 1.0 \[31\] Temmuz 2025’te, OpenID4VCI 1.0 \[30\] Eylül 2025’te, HAIP 1.0 \[32\] Aralık 2025’te son sürüm olarak yayımlandı.
+Tablodaki "taslak" ifadesi standardın olgunluk aşamasını gösterir. SD-JWT’nin kendisi 2025’te RFC 9901 \[15\] olarak yayımlandı; onun üzerine kurulan SD-JWT VC \[16\] ve Token Status List \[17\] ise IETF’te son aşamadadır. AB, uygulama tüzüklerinde ve bunların başvurduğu ETSI standartlarında bu taslakların belirli sürümlerine atıf yapar. Tamga, Token Status List’te AB’nin atıf yaptığı sürümü (draft-20) izler; SD-JWT VC’yi draft-19’a göre uygular. OpenID4VP 1.0 \[31\] Temmuz 2025’te, OpenID4VCI 1.0 \[30\] Eylül 2025’te, HAIP 1.0 \[32\] Aralık 2025’te son sürüm olarak yayımlandı.
 
 #kutu("teknik", [Bir standardın "profili" ne demektir?])[
 Genel amaçlı bir standart, farklı kullanım durumlarına hizmet etmek için çoğu yerde seçenek bırakır: birden çok imza algoritması, birden çok istemci kimliği biçimi, birden çok anahtar bağlama yolu. Seçenek bolluğu esneklik sağlar ama birlikte çalışmayı zorlaştırır. A cüzdanı bir seçeneği, B doğrulayıcısı başka bir seçeneği uygularsa ikisi de standarda uyar, ama birbirini anlamaz. #{strong[Profil]}, bu seçeneklerden bir alt küme seçip onu zorunlu kılan belgedir. HAIP 1.0, OpenID4VCI ve OpenID4VP’nin yüksek güvence gerektiren kullanımlar için profilidir. Tamga’nın bu profile uyumunu karara bağlayan kayıt (ADR-0034) iki örnek verir: doğrulayıcı imzalı istekte istemci kimliği olarak yalnızca kendi erişim sertifikasının özetini (#{raw("x509_hash")}) kullanır ve cüzdan yalnız onu kabul eder; cüzdanın sağlayıcısından aldığı kanıttaki #{raw("sub")} değeri de aynı cüzdan çözümünü kullanan bütün kurulumlarda ortaktır. İkinci kuralın gerekçesi HAIP’in açık hükmüdür, ama kural bir gizlilik sonucu da doğurur: kanıtın "kim" alanı tek bir telefona özgü bir değer taşımaz, yalnızca cüzdan çözümünün adını taşır.
@@ -1516,8 +1516,12 @@ Kimlik belgesini kurum değil cüzdan başlatır; akış OpenID4VCI’nin \[30\]
   ("Kimlik servisi → Cüzdan", [#{strong[Yetki kodu ve belirteç.]} Tek kullanımlık kod, PKCE doğrulaması ve WIA ile erişim belirtecine çevrilir; belirteç DPoP anahtarına bağlıdır.], $"jkt" = "SHA-256"("JWK"_"dpop")$),
   ("Cüzdan → Kimlik servisi", [#{strong[Belge isteği.]} Her kopya için ayrı cihaz anahtarıyla anahtar sahipliği ispatı ve anahtar kanıtı (KA) gönderilir.], $"cnf"_i != "cnf"_j quad (i != j)$),
   ("Kimlik servisi → Cüzdan", [#{strong[Verme.]} SD-JWT VC ve mdoc biçiminde 10 kopya; istenmişse kısa ömürlü ZK kopyaları; ardından aynı belirteçle ayrı bir istekte takma ad tohumu.], []),
-  ("Kimlik servisi", [#{strong[Temizlik.]} Kişi alanları bellekten atılır; kalıcı kayıtta yalnız opak referans, belge numarasının anahtarlı özeti, süre ve iptal listesi konumları kalır.], $"document_number_hash" = "HMAC-SHA256"(k_"doc", "ülke" ‖ "tür" ‖ "no")$),
+  ("Kimlik servisi", [#{strong[Temizlik.]} Kişi alanları bellekten atılır; kalıcı kayıtta yalnız opak referans, belge numarasının anahtarlı özeti, süre ve iptal listesi konumları kalır.], []),
 ))
+
+Temizlik adımında kalan anahtarlı özet şöyle hesaplanır:
+
+#formul[$ "document_number_hash" &= "HMAC-SHA256"(k_"doc", "ülke" ‖ "tür" ‖ "no") $]
 
 Tohumun ayrı bir istekte verilmesi bir standart uyumu kararıdır: OpenID4VCI 1.0 belge yanıtına ek alan koymaya izin vermez, bu yüzden tohum ayrı bir belge yapılandırması olarak ilan edilir ve kimlik belgesini veren belirteçle yalnız bir kez istenebilir (ADR-0061).
 ]
@@ -2610,7 +2614,7 @@ Tablo 52 belgede anılan dış standartları ve düzenlemeleri, sürümleri ve T
   ([AB], [EUDI teknik şartnameleri (TS3 \[12\], TS10, TS13 …)], [yaşayan belgeler], [WIA ve KA, dışa aktarım, ZK], [13, 15],),
   ([AB], [Attestation Rulebook \[13\] şablonu], [1\.5], [Tamga Rulebook’un dalları], [18\.8],),
   ([IETF], [RFC 9901 \[15\] SD-JWT], [Kasım 2025], [belge biçimi], [8],),
-  ([IETF], [SD-JWT VC \[16\]], [İnternet taslağı; 2026\/1731’in sabitlediği sürüm], [belge biçimi], [8],),
+  ([IETF], [SD-JWT VC \[16\]], [İnternet taslağı, çalışma sürüyor; uygulama draft-19’a göre (son taslak: -26)], [belge biçimi], [8],),
   ([IETF], [Token Status List \[17\]], [draft-20 (AB’nin başvurduğu), draft-21], [iptal listeleri], [12],),
   ([IETF], [OAuth 2.0 Attestation-Based Client Authentication \[18\]], [taslak], [WIA ile istemci doğrulaması], [9, 13],),
   ([IETF], [RFC 9449 DPoP \[20\] · RFC 9126 PAR \[21\] · RFC 7636 PKCE \[22\] · RFC 9700 \[23\]], [yayımlanmış], [belge verme profili], [9],),
@@ -2753,7 +2757,7 @@ Tamga’nın çerçeve belgeleri #{raw("arf.tamga.network/tr/")}, şartnameleri 
 
 #kaynak("15")[Fett, D., Yasuda, K. ve Campbell, B. (2025). #{emph[Selective Disclosure for JSON Web Tokens (SD-JWT).]} IETF RFC 9901, Kasım 2025.]
 
-#kaynak("16")[Terbu, O., Fett, D. ve Campbell, B. #{emph[SD-JWT-based Verifiable Digital Credentials (SD-JWT VC).]} IETF OAuth Çalışma Grubu İnternet taslağı draft-ietf-oauth-sd-jwt-vc; AB’nin 2026\/1731 sayılı Uygulama Tüzüğü ile sabitlediği sürüm esas alınır. https:\/\/datatracker.ietf.org\/doc\/draft-ietf-oauth-sd-jwt-vc\/ (erişim 11 Kasım 2026).]
+#kaynak("16")[Terbu, O., Fett, D. ve Campbell, B. #{emph[SD-JWT-based Verifiable Digital Credentials (SD-JWT VC).]} IETF OAuth Çalışma Grubu İnternet taslağı draft-ietf-oauth-sd-jwt-vc (çalışma sürüyor; erişim tarihindeki son taslak: -26). https:\/\/datatracker.ietf.org\/doc\/draft-ietf-oauth-sd-jwt-vc\/ (erişim 11 Kasım 2026).]
 
 #kaynak("17")[Looker, T., Bastian, P. ve Bormann, C. #{emph[Token Status List.]} IETF OAuth Çalışma Grubu İnternet taslağı draft-ietf-oauth-status-list-20 (20 Nisan 2026; AB’nin 2026\/1731 ile başvurduğu sürüm) ve draft-21 (21 Haziran 2026). https:\/\/datatracker.ietf.org\/doc\/draft-ietf-oauth-status-list\/]
 

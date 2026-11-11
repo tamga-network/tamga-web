@@ -236,7 +236,7 @@ Instead of tying itself to a single technology, the ARF selects a set of mature 
   ([Identity proofing], [ETSI TS 119 461], [ETSI], [Policy and security requirements for remote identity proofing], [Chapter 14],),
 ))
 
-The word "draft" in the table indicates the maturity stage of the standard. SD-JWT itself was published in 2025 as RFC 9901 \[15\]; SD-JWT VC \[16\] and Token Status List \[17\], which build on it, are at the final stage in the IETF. In its implementing regulations the EU refers to specific versions of these drafts, and Tamga follows those versions. OpenID4VP 1.0 \[31\] was published as a final version in July 2025, OpenID4VCI 1.0 \[30\] in September 2025 and HAIP 1.0 \[32\] in December 2025.
+The word "draft" in the table indicates the maturity stage of the standard. SD-JWT itself was published in 2025 as RFC 9901 \[15\]; SD-JWT VC \[16\] and Token Status List \[17\], which build on it, are at the final stage in the IETF. In its implementing regulations and the ETSI standards they reference, the EU refers to specific versions of these drafts. For Token Status List, Tamga follows the version the EU refers to (draft-20); SD-JWT VC is implemented against draft-19. OpenID4VP 1.0 \[31\] was published as a final version in July 2025, OpenID4VCI 1.0 \[30\] in September 2025 and HAIP 1.0 \[32\] in December 2025.
 
 #kutu("teknik", [What does a "profile" of a standard mean?])[
 A general-purpose standard leaves options open in many places to serve different use cases: several signature algorithms, several client identifier formats, several ways of binding keys. An abundance of options gives flexibility but makes interoperability harder. If wallet A implements one option and verifier B another, both conform to the standard, yet they do not understand each other. A #{strong[profile]} is a document that selects a subset of these options and makes it mandatory. HAIP 1.0 is the profile of OpenID4VCI and OpenID4VP for uses that require high assurance. The record that settles Tamga’s conformance to this profile (ADR-0034) gives two examples: in a signed request the verifier uses as its client identifier only the hash of its own access certificate (#{raw("x509_hash")}), and the wallet accepts only that; and the #{raw("sub")} value in the attestation the wallet receives from its provider is shared by all installations that use the same wallet solution. The rationale for the second rule is an explicit provision of HAIP, but the rule also has a privacy consequence: the "who" field of the attestation does not carry a value specific to a single phone, only the name of the wallet solution.
@@ -1516,8 +1516,12 @@ The identity credential is started by the wallet, not by an institution; the flo
   ("Identity service → Wallet", [#{strong[Authorization code and token.]} The single-use code is exchanged for an access token with PKCE verification and the WIA; the token is bound to the DPoP key.], $"jkt" = "SHA-256"("JWK"_"dpop")$),
   ("Wallet → Identity service", [#{strong[Credential request.]} For each copy, a key proof with a separate device key and the key attestation (KA) are sent.], $"cnf"_i != "cnf"_j quad (i != j)$),
   ("Identity service → Wallet", [#{strong[Issuance.]} 10 copies in SD-JWT VC and mdoc format; short-lived ZK copies if requested; then, in a separate request with the same token, the pseudonym seed.], []),
-  ("Identity service", [#{strong[Clean-up.]} The person’s attributes are dropped from memory; the persistent record keeps only the opaque reference, a keyed hash of the document number, the validity period and the revocation list positions.], $"document_number_hash" = "HMAC-SHA256"(k_"doc", "country" ‖ "type" ‖ "no")$),
+  ("Identity service", [#{strong[Clean-up.]} The person’s attributes are dropped from memory; the persistent record keeps only the opaque reference, a keyed hash of the document number, the validity period and the revocation list positions.], []),
 ))
+
+The keyed hash that remains after the clean-up step is computed as follows:
+
+#formul[$ "document_number_hash" &= "HMAC-SHA256"(k_"doc", "country" ‖ "type" ‖ "no") $]
 
 Issuing the seed in a separate request is a standards conformance decision: OpenID4VCI 1.0 does not allow extra fields in the credential response, so the seed is announced as a separate credential configuration and can be requested only once with the token that issued the identity credential (ADR-0061).
 ]
@@ -2610,7 +2614,7 @@ Table 52 gives the external standards and regulations cited in the document, the
   ([EU], [EUDI technical specifications (TS3 \[12\], TS10, TS13 …)], [living documents], [WIA and KA, export, ZK], [13, 15],),
   ([EU], [Attestation Rulebook \[13\] template], [1\.5], [branches of the Tamga Rulebook], [18\.8],),
   ([IETF], [RFC 9901 \[15\] SD-JWT], [November 2025], [credential format], [8],),
-  ([IETF], [SD-JWT VC \[16\]], [Internet-Draft; the version pinned by 2026\/1731], [credential format], [8],),
+  ([IETF], [SD-JWT VC \[16\]], [Internet-Draft, work in progress; implemented against draft-19 (latest draft: -26)], [credential format], [8],),
   ([IETF], [Token Status List \[17\]], [draft-20 (referenced by the EU), draft-21], [status lists], [12],),
   ([IETF], [OAuth 2.0 Attestation-Based Client Authentication \[18\]], [draft], [client authentication with the WIA], [9, 13],),
   ([IETF], [RFC 9449 DPoP \[20\] · RFC 9126 PAR \[21\] · RFC 7636 PKCE \[22\] · RFC 9700 \[23\]], [published], [issuance profile], [9],),
@@ -2753,7 +2757,7 @@ Tamga’s framework documents are at #{raw("arf.tamga.network/")}, and its speci
 
 #kaynak("15")[Fett, D., Yasuda, K. and Campbell, B. (2025). #{emph[Selective Disclosure for JSON Web Tokens (SD-JWT).]} IETF RFC 9901, November 2025.]
 
-#kaynak("16")[Terbu, O., Fett, D. and Campbell, B. #{emph[SD-JWT-based Verifiable Digital Credentials (SD-JWT VC).]} IETF OAuth Working Group Internet-Draft draft-ietf-oauth-sd-jwt-vc; the version pinned by the EU’s Implementing Regulation 2026\/1731 is followed. https:\/\/datatracker.ietf.org\/doc\/draft-ietf-oauth-sd-jwt-vc\/ (accessed 11 November 2026).]
+#kaynak("16")[Terbu, O., Fett, D. and Campbell, B. #{emph[SD-JWT-based Verifiable Digital Credentials (SD-JWT VC).]} IETF OAuth Working Group Internet-Draft draft-ietf-oauth-sd-jwt-vc (work in progress; latest draft at the access date: -26). https:\/\/datatracker.ietf.org\/doc\/draft-ietf-oauth-sd-jwt-vc\/ (accessed 11 November 2026).]
 
 #kaynak("17")[Looker, T., Bastian, P. and Bormann, C. #{emph[Token Status List.]} IETF OAuth Working Group Internet-Draft draft-ietf-oauth-status-list-20 (20 April 2026; the version referenced by the EU in 2026\/1731) and draft-21 (21 June 2026). https:\/\/datatracker.ietf.org\/doc\/draft-ietf-oauth-status-list\/]
 

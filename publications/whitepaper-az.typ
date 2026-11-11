@@ -236,7 +236,7 @@ ARF tək bir texnologiyaya bağlanmaq əvəzinə müxtəlif standartlaşdırma t
   ([Şəxsiyyətin təsdiqi], [ETSI TS 119 461], [ETSI], [Məsafədən şəxsiyyət təsdiqinin siyasət və təhlükəsizlik tələbləri], [Bölmə 14],),
 ))
 
-Cədvəldəki "layihə" ifadəsi standartın yetkinlik mərhələsini göstərir. SD-JWT-nin özü 2025-ci ildə RFC 9901 \[15\] kimi dərc edildi; onun üzərində qurulan SD-JWT VC \[16\] və Token Status List \[17\] isə IETF-də son mərhələdədir. Aİ İcra Reqlamentlərində bu layihələrin müəyyən versiyalarına istinad edir; Tamga da bu versiyaları izləyir. OpenID4VP 1.0 \[31\] 2025-ci ilin iyulunda, OpenID4VCI 1.0 \[30\] 2025-ci ilin sentyabrında, HAIP 1.0 \[32\] isə 2025-ci ilin dekabrında son versiya kimi dərc edildi.
+Cədvəldəki "layihə" ifadəsi standartın yetkinlik mərhələsini göstərir. SD-JWT-nin özü 2025-ci ildə RFC 9901 \[15\] kimi dərc edildi; onun üzərində qurulan SD-JWT VC \[16\] və Token Status List \[17\] isə IETF-də son mərhələdədir. Aİ İcra Reqlamentlərində və onların istinad etdiyi ETSI standartlarında bu layihələrin müəyyən versiyalarına istinad edir. Tamga Token Status List-də Aİ-nin istinad etdiyi versiyanı (draft-20) izləyir; SD-JWT VC-ni draft-19 əsasında tətbiq edir. OpenID4VP 1.0 \[31\] 2025-ci ilin iyulunda, OpenID4VCI 1.0 \[30\] 2025-ci ilin sentyabrında, HAIP 1.0 \[32\] isə 2025-ci ilin dekabrında son versiya kimi dərc edildi.
 
 #kutu("teknik", [Standartın "profili" nə deməkdir?])[
 Ümumi təyinatlı standart müxtəlif istifadə hallarına xidmət etmək üçün bir çox yerdə variant saxlayır: bir neçə imza alqoritmi, bir neçə müştəri identifikatoru formatı, açarı bağlamağın bir neçə yolu. Variantların bolluğu çeviklik verir, lakin birgə işləməni çətinləşdirir. A cüzdanı bir variantı, B yoxlayıcısı başqa variantı tətbiq edərsə, hər ikisi standarta uyğun olur, amma bir-birini anlamır. #{strong[Profil]} bu variantlardan bir alt toplu seçib onu məcburi edən sənəddir. HAIP 1.0 OpenID4VCI və OpenID4VP-nin yüksək təminat tələb edən istifadələr üçün profilidir. Tamga-nın bu profilə uyğunluğunu qərara bağlayan qeyd (ADR-0034) iki nümunə verir: yoxlayan tərəf imzalı sorğuda müştəri identifikatoru kimi yalnız öz giriş sertifikatının hash-ini (#{raw("x509_hash")}) istifadə edir və cüzdan yalnız onu qəbul edir; cüzdanın provayderindən aldığı sübutdakı #{raw("sub")} dəyəri də eyni cüzdan həllindən istifadə edən bütün quraşdırmalarda ortaqdır. İkinci qaydanın əsası HAIP-in açıq müddəasıdır, lakin qayda məxfilik nəticəsi də doğurur: sübutun "kim" sahəsi tək bir telefona xas dəyər daşımır, yalnız cüzdan həllinin adını daşıyır.
@@ -1516,8 +1516,12 @@ Bu addımın bir zəif tərəfi açıq deyilməlidir: canlılıq və üz uyğunl
   ("Şəxsiyyət xidməti → Cüzdan", [#{strong[Avtorizasiya kodu və token.]} Birdəfəlik kod PKCE yoxlaması və WIA ilə giriş tokeninə çevrilir; token DPoP açarına bağlıdır.], $"jkt" = "SHA-256"("JWK"_"dpop")$),
   ("Cüzdan → Şəxsiyyət xidməti", [#{strong[Sənəd sorğusu.]} Hər nüsxə üçün ayrı cihaz açarı ilə açar sübutu və açar attestasiyası (KA) göndərilir.], $"cnf"_i != "cnf"_j quad (i != j)$),
   ("Şəxsiyyət xidməti → Cüzdan", [#{strong[Vermə.]} SD-JWT VC və mdoc formatında 10 nüsxə; istənibsə, qısaömürlü ZK nüsxələri; ardından eyni tokenlə ayrıca sorğuda psevdonim toxumu.], []),
-  ("Şəxsiyyət xidməti", [#{strong[Təmizləmə.]} Şəxs sahələri yaddaşdan silinir; daimi qeyddə yalnız qeyri-şəffaf istinad, sənəd nömrəsinin açarlı hash-i, müddət və ləğv siyahısı mövqeləri qalır.], $"document_number_hash" = "HMAC-SHA256"(k_"doc", "ölkə" ‖ "növ" ‖ "no")$),
+  ("Şəxsiyyət xidməti", [#{strong[Təmizləmə.]} Şəxs sahələri yaddaşdan silinir; daimi qeyddə yalnız qeyri-şəffaf istinad, sənəd nömrəsinin açarlı hash-i, müddət və ləğv siyahısı mövqeləri qalır.], []),
 ))
+
+Təmizləmə addımından sonra qalan açarlı hash belə hesablanır:
+
+#formul[$ "document_number_hash" &= "HMAC-SHA256"(k_"doc", "ölkə" ‖ "növ" ‖ "no") $]
 
 Toxumun ayrıca sorğuda verilməsi standarta uyğunluq qərarıdır: OpenID4VCI 1.0 sənəd cavabına əlavə sahə qoymağa icazə vermir, buna görə toxum ayrıca sənəd konfiqurasiyası kimi elan edilir və şəxsiyyət sənədini verən tokenlə yalnız bir dəfə istənilə bilər (ADR-0061).
 ]
@@ -2610,7 +2614,7 @@ Cədvəl 52 sənəddə çəkilən xarici standartları və normativ aktları, on
   ([Aİ], [EUDI texniki spesifikasiyaları (TS3 \[12\], TS10, TS13 …)], [canlı sənədlər], [WIA və KA, ixrac, ZK], [13, 15],),
   ([Aİ], [Attestation Rulebook \[13\] şablonu], [1\.5], [Tamga Rulebook-un qolları], [18\.8],),
   ([IETF], [RFC 9901 \[15\] SD-JWT], [noyabr 2025], [sənəd formatı], [8],),
-  ([IETF], [SD-JWT VC \[16\]], [internet layihəsi; 2026\/1731-in təsbit etdiyi versiya], [sənəd formatı], [8],),
+  ([IETF], [SD-JWT VC \[16\]], [internet layihəsi, iş davam edir; tətbiq draft-19 əsasındadır (son layihə: -26)], [sənəd formatı], [8],),
   ([IETF], [Token Status List \[17\]], [draft-20 (Aİ-nin istinad etdiyi), draft-21], [ləğv siyahıları], [12],),
   ([IETF], [OAuth 2.0 Attestation-Based Client Authentication \[18\]], [layihə], [WIA ilə müştərinin autentifikasiyası], [9, 13],),
   ([IETF], [RFC 9449 DPoP \[20\] · RFC 9126 PAR \[21\] · RFC 7636 PKCE \[22\] · RFC 9700 \[23\]], [dərc edilib], [sənəd vermə profili], [9],),
@@ -2753,7 +2757,7 @@ Tamga-nın çərçivə sənədləri #{raw("arf.tamga.network/tr/")}, spesifikasi
 
 #kaynak("15")[Fett, D., Yasuda, K. və Campbell, B. (2025). #{emph[Selective Disclosure for JSON Web Tokens (SD-JWT).]} IETF RFC 9901, noyabr 2025.]
 
-#kaynak("16")[Terbu, O., Fett, D. və Campbell, B. #{emph[SD-JWT-based Verifiable Digital Credentials (SD-JWT VC).]} IETF OAuth İşçi Qrupunun internet layihəsi draft-ietf-oauth-sd-jwt-vc; Aİ-nin 2026\/1731 saylı İcra Reqlamenti ilə təsbit etdiyi versiya əsas götürülür. https:\/\/datatracker.ietf.org\/doc\/draft-ietf-oauth-sd-jwt-vc\/ (müraciət: 11 noyabr 2026).]
+#kaynak("16")[Terbu, O., Fett, D. və Campbell, B. #{emph[SD-JWT-based Verifiable Digital Credentials (SD-JWT VC).]} IETF OAuth İşçi Qrupunun internet layihəsi draft-ietf-oauth-sd-jwt-vc (iş davam edir; müraciət tarixində son layihə: -26). https:\/\/datatracker.ietf.org\/doc\/draft-ietf-oauth-sd-jwt-vc\/ (müraciət: 11 noyabr 2026).]
 
 #kaynak("17")[Looker, T., Bastian, P. və Bormann, C. #{emph[Token Status List.]} IETF OAuth İşçi Qrupunun internet layihəsi draft-ietf-oauth-status-list-20 (20 aprel 2026; Aİ-nin 2026\/1731 ilə istinad etdiyi versiya) və draft-21 (21 iyun 2026). https:\/\/datatracker.ietf.org\/doc\/draft-ietf-oauth-status-list\/]
 

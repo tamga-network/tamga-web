@@ -236,7 +236,7 @@ ARF ýeke tehnologiýa baglanmagyň ýerine dürli standart guramalarynyň ýaza
   ([Şahsyýet barlagy], [ETSI TS 119 461], [ETSI], [Uzakdan şahsyýet barlagynyň syýasat we howpsuzlyk şertleri], [14-nji bölüm],),
 ))
 
-Tablisadaky "taslama" sözi standartyň kämillik tapgyryny görkezýär. SD-JWT-niň özi 2025-nji ýylda RFC 9901 \[15\] hökmünde çap edildi; onuň üstünde gurlan SD-JWT VC \[16\] we Token Status List \[17\] bolsa IETF-de soňky tapgyrda. ÝB ýerine ýetiriş düzgünnamalarynda bu taslamalaryň belli wersiýalaryna salgylanýar; Tamga hem şol wersiýalary yzarlaýar. OpenID4VP 1.0 \[31\] 2025-nji ýylyň iýulynda, OpenID4VCI 1.0 \[30\] 2025-nji ýylyň sentýabrynda, HAIP 1.0 \[32\] 2025-nji ýylyň dekabrynda soňky wersiýa hökmünde çap edildi.
+Tablisadaky "taslama" sözi standartyň kämillik tapgyryny görkezýär. SD-JWT-niň özi 2025-nji ýylda RFC 9901 \[15\] hökmünde çap edildi; onuň üstünde gurlan SD-JWT VC \[16\] we Token Status List \[17\] bolsa IETF-de soňky tapgyrda. ÝB ýerine ýetiriş düzgünnamalarynda we olaryň salgylanýan ETSI standartlarynda bu taslamalaryň belli wersiýalaryna salgylanýar. Tamga Token Status List-de ÝB-niň salgylanýan wersiýasyna (draft-20) eýerýär; SD-JWT VC-de draft-19-a eýerýär. OpenID4VP 1.0 \[31\] 2025-nji ýylyň iýulynda, OpenID4VCI 1.0 \[30\] 2025-nji ýylyň sentýabrynda, HAIP 1.0 \[32\] 2025-nji ýylyň dekabrynda soňky wersiýa hökmünde çap edildi.
 
 #kutu("teknik", [Standartyň "profili" näme diýmek?])[
 Umumy maksatly standart dürli ulanyş ýagdaýlaryna hyzmat etmek üçin köp ýerde saýlaw goýýar: birnäçe gol algoritmi, birnäçe müşderi belgisi görnüşi, açary baglamagyň birnäçe ýoly. Wariantlaryň köplügi çeýeligi üpjün edýär, ýöne bilelikde işlemegi kynlaşdyrýar. A gapjygy bir warianty, B barlaýjysy başga warianty ulansa, ikisi hem standarda laýyk gelýär, ýöne biri-birine düşünmeýär. #{strong[Profil]} şu wariantlardan bir bölek toplumy saýlap, ony hökmany edýän resminamadyr. HAIP 1.0 OpenID4VCI we OpenID4VP-niň ýokary kepillik talap edýän ulanyşlar üçin profilidir. Tamga-nyň bu profile laýyklygyny karara baglaýan ýazgy (ADR-0034) iki mysal berýär: barlaýjy gol çekilen haýyşda müşderi belgisi hökmünde diňe öz giriş sertifikatynyň heşini (#{raw("x509_hash")}) ulanýar we gapjyk diňe ony kabul edýär; gapjygyň öz üpjün edijisinden alan subutnamasyndaky #{raw("sub")} bahasy hem şol bir gapjyk çözgüdini ulanýan ähli gurnamalarda umumydyr. Ikinji düzgüniň esasy HAIP-iň aç-açan talabydyr, ýöne düzgün gizlinlik netijesini hem döredýär: subutnamanyň "kim" meýdany ýeke telefona mahsus bahany götermeýär, diňe gapjyk çözgüdiniň adyny göterýär.
@@ -1516,8 +1516,12 @@ Bu ädimiň bir gowşak tarapyny aç-açan aýtmak gerek: janlylyk we ýüz deň
   ("Şahsyýet hyzmaty → Gapjyk", [#{strong[Ygtyýarlandyryş kody we bellik.]} Bir gezeklik kod PKCE barlagy we WIA bilen giriş belligine öwrülýär; bellik DPoP açaryna bagly.], $"jkt" = "SHA-256"("JWK"_"dpop")$),
   ("Gapjyk → Şahsyýet hyzmaty", [#{strong[Resminama haýyşy.]} Her nusga üçin aýry enjam açary bilen açar subutnamasy we açar tassyklamasy (KA) iberilýär.], $"cnf"_i != "cnf"_j quad (i != j)$),
   ("Şahsyýet hyzmaty → Gapjyk", [#{strong[Bermek.]} SD-JWT VC we mdoc görnüşinde 10 nusga; soralan bolsa gysga ömürli ZK nusgalary; soňra şol bir bellik bilen aýry haýyşda lakam tohumy.], []),
-  ("Şahsyýet hyzmaty", [#{strong[Arassalamak.]} Adamyň meýdanlary ýatdan aýrylýar; hemişelik ýazgyda diňe opak salgylanma, resminama belgisiniň açarly heşi, möhlet we ýatyrylyş sanawyndaky orunlar galýar.], $"document_number_hash" = "HMAC-SHA256"(k_"doc", "ýurt" ‖ "görnüş" ‖ "no")$),
+  ("Şahsyýet hyzmaty", [#{strong[Arassalamak.]} Adamyň meýdanlary ýatdan aýrylýar; hemişelik ýazgyda diňe opak salgylanma, resminama belgisiniň açarly heşi, möhlet we ýatyrylyş sanawyndaky orunlar galýar.], []),
 ))
+
+Arassalamak ädiminden soň galýan açarly heş şeýle hasaplanýar:
+
+#formul[$ "document_number_hash" &= "HMAC-SHA256"(k_"doc", "ýurt" ‖ "görnüş" ‖ "no") $]
 
 Tohumyň aýry haýyşda berilmegi standarta laýyklyk kararydyr: OpenID4VCI 1.0 resminama jogabyna goşmaça meýdan goşmaga rugsat bermeýär, şonuň üçin tohum aýry resminama konfigurasiýasy hökmünde yglan edilýär we şahsyýet resminamasyny beren bellik bilen diňe bir gezek soralyp bilner (ADR-0061).
 ]
@@ -2610,7 +2614,7 @@ Tablisa 52 resminamada agzalan daşky standartlary we kadalaşdyryjy namalary, o
   ([ÝB], [EUDI tehniki spesifikasiýalary (TS3 \[12\], TS10, TS13 …)], [ýaşaýan resminamalar], [WIA we KA, eksport, ZK], [13, 15],),
   ([ÝB], [Attestation Rulebook \[13\] şablony], [1\.5], [Tamga Rulebook-yň şahalary], [18\.8],),
   ([IETF], [RFC 9901 \[15\] SD-JWT], [Noýabr 2025], [resminama formaty], [8],),
-  ([IETF], [SD-JWT VC \[16\]], [Internet taslamasy; 2026\/1731-iň berkiden wersiýasy], [resminama formaty], [8],),
+  ([IETF], [SD-JWT VC \[16\]], [Internet taslamasy, iş dowam edýär; draft-19-a eýerilýär (iň soňky taslama: -26)], [resminama formaty], [8],),
   ([IETF], [Token Status List \[17\]], [draft-20 (ÝB-niň salgylanýany), draft-21], [ýatyrylyş sanawlary], [12],),
   ([IETF], [OAuth 2.0 Attestation-Based Client Authentication \[18\]], [taslama], [WIA bilen müşderini barlamak], [9, 13],),
   ([IETF], [RFC 9449 DPoP \[20\] · RFC 9126 PAR \[21\] · RFC 7636 PKCE \[22\] · RFC 9700 \[23\]], [çap edilen], [resminama beriş profili], [9],),
@@ -2753,7 +2757,7 @@ Tamga-nyň çarçuwa resminamalary #{raw("arf.tamga.network/tr/")}, spesifikasi�
 
 #kaynak("15")[Fett, D., Yasuda, K. we Campbell, B. (2025). #{emph[Selective Disclosure for JSON Web Tokens (SD-JWT).]} IETF RFC 9901, noýabr 2025.]
 
-#kaynak("16")[Terbu, O., Fett, D. we Campbell, B. #{emph[SD-JWT-based Verifiable Digital Credentials (SD-JWT VC).]} IETF OAuth iş toparynyň Internet taslamasy draft-ietf-oauth-sd-jwt-vc; ÝB-niň 2026\/1731 belgili Ýerine ýetiriş düzgünnamasy bilen berkiden wersiýasy esas alynýar. https:\/\/datatracker.ietf.org\/doc\/draft-ietf-oauth-sd-jwt-vc\/ (girilen wagty: 11 noýabr 2026).]
+#kaynak("16")[Terbu, O., Fett, D. we Campbell, B. #{emph[SD-JWT-based Verifiable Digital Credentials (SD-JWT VC).]} IETF OAuth iş toparynyň Internet taslamasy draft-ietf-oauth-sd-jwt-vc (iş dowam edýär; girilen senedäki iň soňky taslama: -26). https:\/\/datatracker.ietf.org\/doc\/draft-ietf-oauth-sd-jwt-vc\/ (girilen wagty: 11 noýabr 2026).]
 
 #kaynak("17")[Looker, T., Bastian, P. we Bormann, C. #{emph[Token Status List.]} IETF OAuth iş toparynyň Internet taslamasy draft-ietf-oauth-status-list-20 (20 aprel 2026; ÝB-niň 2026\/1731 bilen salgylanýan wersiýasy) we draft-21 (21 iýun 2026). https:\/\/datatracker.ietf.org\/doc\/draft-ietf-oauth-status-list\/]
 

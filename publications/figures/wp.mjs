@@ -965,7 +965,7 @@ cur = 30;
   let b = "";
   const S = [
     ["Liste aşaması (bugün)", "imzalı listeler + çapa günlüğü", "geçici işletmeci", true],
-    ["Defter aşaması", "ortak defter (listelerin özeti)", "ilk işletmeciler", false],
+    ["Defter aşaması", "ortak defter (liste kayıtlarının özetleri)", "ilk işletmeciler", false],
     ["Devlet katılımı", "ortak defter", "konsey (üçte iki)", false],
     ["Kurumsal genişleme", "ortak defter", "konsey", false],
   ];
@@ -991,7 +991,7 @@ cur = 31;
   let b = "";
   b += B(20, 30, 260, 150, ["listelerin listesi, sürüm n", "tl-tr, sürüm n", "günlüğün son satırı"], { title: "Kaynak: imzalı listeler + çapa günlüğü", size: 10.5, fill: C.gok50, stroke: C.gok, sw: 2.4 });
   b += B(330, 66, 230, 80, "önce kendi çıktısını doğrular, sonra yalnız özetleri gönderir", { title: "Liste yayıncısı", size: 10, fill: C.paper, stroke: C.ink });
-  b += B(610, 30, 270, 150, ["sürüm, içerik özeti,", "önceki özet, zaman"], { title: "Türev: ortak defter (bugün yok, kapalı)", size: 10.5, fill: "#FFFFFF", stroke: C.muted, dash: true });
+  b += B(610, 30, 270, 150, ["sürüm, içerik özeti,", "önceki özet, zaman", "kayıt özetleri, parmak izleri"], { title: "Türev: ortak defter (bugün yok, kapalı)", size: 10.5, fill: "#FFFFFF", stroke: C.muted, dash: true });
   b += arrow(282, 106, 326, 106, { sw: 3 });
   b += arrow(562, 106, 606, 106, { sw: 3 });
   b += T(584, 128, ["yalnız", "özetler"], { size: 10, weight: 600, fill: C.gok700 });

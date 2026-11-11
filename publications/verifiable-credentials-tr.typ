@@ -267,7 +267,7 @@ Ama JWT’nin belge olarak kullanılmasının önünde bir engel vardı. Bir JWT
 
 IETF’in OAuth çalışma grubu bu sorunu çözmek için #{strong[SD-JWT]} (#{emph[Selective Disclosure for JWTs]}, seçici açıklamalı JWT) adlı bir yöntem geliştirdi. Fikir şudur: Veren, gizlenebilecek her alan için yalnızca o alanın #{strong[tuzlanmış bir özetini]} imzalar. Alanların kendileri imzanın dışında, ayrı parçalar olarak kişiye verilir. Kişi bir doğrulayana yalnızca göstermek istediği alanların parçalarını verir; doğrulayan bu parçaların özetini hesaplar ve imzalı listede bulur. Yöntemin bütün ayrıntısı, adım adım hesaplarıyla birlikte, dizinin üçüncü yazısının konusu. SD-JWT, Kasım 2025’te IETF’in RFC 9901 numaralı standardı olarak yayımlandı \[3\].
 
-SD-JWT genel bir yöntemdir: Herhangi bir JWT’yi seçici açıklamalı hâle getirir. #{strong[SD-JWT VC]} ise bu yöntemi doğrulanabilir belgeler için kullanmanın kurallarını koyan ayrı bir IETF belgesidir \[4\]: Belgenin türü nasıl belirtilir, veren nasıl tanımlanır, sahibin anahtarı nereye yazılır, hangi alanlar her zaman açık kalmak zorundadır. Bu yazının yazıldığı Kasım 2026 itibarıyla SD-JWT VC, IETF’te yayın öncesi son inceleme aşamasındadır (31 Ekim 2026 tarihli 23. taslak).
+SD-JWT genel bir yöntemdir: Herhangi bir JWT’yi seçici açıklamalı hâle getirir. #{strong[SD-JWT VC]} ise bu yöntemi doğrulanabilir belgeler için kullanmanın kurallarını koyan ayrı bir IETF belgesidir \[4\]: Belgenin türü nasıl belirtilir, veren nasıl tanımlanır, sahibin anahtarı nereye yazılır, hangi alanlar her zaman açık kalmak zorundadır. Bu yazının yazıldığı Kasım 2026 itibarıyla SD-JWT VC, IETF’te yayın öncesi son inceleme aşamasındadır (6 Kasım 2026 tarihli 26. taslak).
 
 == Yapı
 
@@ -533,7 +533,7 @@ Dizinin bir sonraki yazısında, bu yazıda birkaç kez ertelediğimiz bir soruy
 
 #kaynak("3")[Fett, D., Yasuda, K. ve Campbell, B. (2025). #{emph[Selective Disclosure for JSON Web Tokens.]} IETF RFC 9901, Kasım 2025.]
 
-#kaynak("4")[Terbu, O., Fett, D. ve Campbell, B. (2026). #{emph[SD-JWT-based Verifiable Digital Credentials (SD-JWT VC).]} IETF Internet-Draft draft-ietf-oauth-sd-jwt-vc; AB’nin 2026\/1731 sayılı Uygulama Tüzüğü ile sabitlediği sürüm esas alınır (erişim 11 Kasım 2026).]
+#kaynak("4")[Terbu, O., Fett, D. ve Campbell, B. (2026). #{emph[SD-JWT-based Verifiable Digital Credentials (SD-JWT VC).]} IETF Internet-Draft draft-ietf-oauth-sd-jwt-vc (çalışma sürüyor; erişim tarihindeki son taslak: -26; erişim 11 Kasım 2026).]
 
 #kaynak("5")[ISO\/IEC (2021). #{emph[ISO\/IEC 18013-5:2021 Personal identification — ISO-compliant driving licence — Part 5: Mobile driving licence (mDL) application.]} Eylül 2021.]
 
