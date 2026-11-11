@@ -451,9 +451,9 @@ Anahtar bağlamanın yanında iki yöntem daha anılmaya değer. #{strong[Biyome
 
 Üç biçimi tanıdıktan sonra onları yan yana koyabiliriz (Şekil 6 ve Tablo 2). Karşılaştırmayı okurken bir noktayı akılda tutmak gerekir: Bu biçimler farklı ihtiyaçlar için ortaya çıktı ve aynı cüzdan çoğu zaman birden fazlasını birlikte destekler.
 
-#tablo([#{strong[Tablo 2.]} Üç doğrulanabilir belge biçiminin karşılaştırması.], (13fr, 28fr, 20fr, 28fr), ([Ölçüt], [W3C VC 2.0], [SD-JWT VC], [ISO mdoc (18013-5)],), (
+#tablo([#{strong[Tablo 2.]} Üç doğrulanabilir belge biçiminin karşılaştırması.], (13fr, 28fr, 20fr, 31fr), ([Ölçüt], [W3C VC 2.0], [SD-JWT VC], [ISO mdoc (18013-5)],), (
   ([Yayımlayan], [W3C], [IETF], [ISO\/IEC],),
-  ([Durum (Kasım 2026)], [W3C önerisi (Mayıs 2025)], [RFC 9901 + SD-JWT VC son taslak aşamasında], [uluslararası standart (2021); uzaktan gösterim TS 18013-7 (2024)],),
+  ([Durum (Kasım 2026)], [W3C önerisi (Mayıs 2025)], [RFC 9901 + SD-JWT VC son taslak aşamasında], [uluslararası standart (2021); uzaktan gösterim TS 18013-7 (ilk baskı 2024, ikinci baskı 2025)],),
   ([Kodlama], [JSON-LD (JSON)], [JSON], [CBOR (ikili)],),
   ([İmza], [gömülü (Data Integrity) ya da zarflayan (JOSE\/COSE)], [zarflayan (JWS)], [zarflayan (COSE\_Sign1)],),
   ([Anlamın tanımı], [internetteki ortak sözlükler (#{raw("@context")})], [tür tanımlayıcısı (#{raw("vct")}) ve tür bilgisi], [belge türü (#{raw("docType")}) ve ad alanları],),
@@ -533,11 +533,11 @@ Dizinin bir sonraki yazısında, bu yazıda birkaç kez ertelediğimiz bir soruy
 
 #kaynak("3")[Fett, D., Yasuda, K. ve Campbell, B. (2025). #{emph[Selective Disclosure for JSON Web Tokens.]} IETF RFC 9901, Kasım 2025.]
 
-#kaynak("4")[Terbu, O., Fett, D. ve Campbell, B. (2026). #{emph[SD-JWT-based Verifiable Digital Credentials (SD-JWT VC).]} IETF Internet-Draft draft-ietf-oauth-sd-jwt-vc-23, 31 Ekim 2026.]
+#kaynak("4")[Terbu, O., Fett, D. ve Campbell, B. (2026). #{emph[SD-JWT-based Verifiable Digital Credentials (SD-JWT VC).]} IETF Internet-Draft draft-ietf-oauth-sd-jwt-vc; AB’nin 2026\/1731 sayılı Uygulama Tüzüğü ile sabitlediği sürüm esas alınır (erişim 11 Kasım 2026).]
 
 #kaynak("5")[ISO\/IEC (2021). #{emph[ISO\/IEC 18013-5:2021 Personal identification — ISO-compliant driving licence — Part 5: Mobile driving licence (mDL) application.]} Eylül 2021.]
 
-#kaynak("6")[ISO\/IEC (2024). #{emph[ISO\/IEC TS 18013-7:2024 Personal identification — ISO-compliant driving licence — Part 7: Mobile driving licence (mDL) add-on functions.]} Ekim 2024.]
+#kaynak("6")[ISO\/IEC (2025). #{emph[ISO\/IEC TS 18013-7:2025 Personal identification — ISO-compliant driving licence — Part 7: Mobile driving licence (mDL) add-on functions.]} İkinci baskı, Mayıs 2025 (ilk baskı Ekim 2024).]
 
 #kaynak("7")[Jones, M., Bradley, J. ve Sakimura, N. (2015). #{emph[JSON Web Token (JWT).]} IETF RFC 7519, Mayıs 2015.]
 

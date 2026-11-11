@@ -40,7 +40,7 @@ A document’s authenticity should rest on mathematics rather than on how convin
 
 #heading(level: 1, numbering: none)[Blockchain is a tool, and only a tool]
 
-There is no blockchain in the network today, and trust does not need one. It rests on signed, public trust lists that anyone can download and check. A shared ledger adds something only when independent parties run it together, and even then it carries nothing but a digest of these lists. The code for it is written and tested, and it stays switched off until a second independent operator joins. #{strong[Personal data is never written to either.]} The person never sees any of this and simply uses their identity.
+There is no blockchain in the network today, and trust does not need one. It rests on signed, public trust lists that anyone can download and check. A shared ledger adds something only when independent parties run it together, and even then it carries only digests and fingerprints of list records, never personal data. The code for it is written and tested, and it stays switched off until a second independent operator joins. #{strong[Personal data is never written to either.]} The person never sees any of this and simply uses their identity.
 
 #heading(level: 1, numbering: none)[Open standards, no lock-in]
 

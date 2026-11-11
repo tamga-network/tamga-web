@@ -40,7 +40,7 @@ Resminamanyň hakykydygyna matematika karar bermeli; nusganyň näderejede ynand
 
 #heading(level: 1, numbering: none)[Blokçeýn serişdedir, diňe serişde]
 
-Häzir torda blokçeýn ýok we ynamyň oňa zerurlygy hem ýok. Ynam her kimiň ýükläp we barlap bilýän gol çekilen, açyk ynam sanawlaryna daýanýar. Umumy kitap diňe garaşsyz taraplar ony bilelikde dolandyranda bir zat goşýar we şonda-da diňe şu sanawlaryň gysgaça nusgasyny (hash) saklaýar. Kitabyň kody ýazyldy we synagdan geçdi; ikinji garaşsyz operator goşulýança ýapyk durýar. #{strong[Şahsy maglumat hiç birine asla ýazylmaýar.]} Adam bularyň hiç birini görmeýär; diňe şahsyýetini ulanýar.
+Häzir torda blokçeýn ýok we ynamyň oňa zerurlygy hem ýok. Ynam her kimiň ýükläp we barlap bilýän gol çekilen, açyk ynam sanawlaryna daýanýar. Umumy kitap diňe garaşsyz taraplar ony bilelikde dolandyranda bir zat goşýar we şonda-da diňe sanaw ýazgylarynyň gysgaça nusgalaryny (hash) we barmak yzlaryny saklaýar, şahsy maglumaty bolsa hiç haçan. Kitabyň kody ýazyldy we synagdan geçdi; ikinji garaşsyz operator goşulýança ýapyk durýar. #{strong[Şahsy maglumat hiç birine asla ýazylmaýar.]} Adam bularyň hiç birini görmeýär; diňe şahsyýetini ulanýar.
 
 #heading(level: 1, numbering: none)[Açyk standartlar, baglanyşyk ýok]
 

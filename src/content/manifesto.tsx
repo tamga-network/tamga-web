@@ -91,7 +91,7 @@ const en: ManifestoContent = {
         <>
           There is no blockchain in the network today, and trust does not need one. It rests on signed, public
           trust lists that anyone can download and check. A shared ledger adds something only when independent
-          parties run it together, and even then it carries nothing but a digest of these lists. The code for
+          parties run it together, and even then it carries only digests and fingerprints of list records, never personal data. The code for
           it is written and tested, and it stays switched off until a second independent operator joins.{" "}
           <strong>Personal data is never written to either.</strong> The person never sees any of this and
           simply uses their identity.
@@ -229,7 +229,7 @@ const tr: ManifestoContent = {
         <>
           Bugün ağda bir blockchain yok ve güvenin ona ihtiyacı da yok. Güven, herkesin indirip
           denetleyebildiği imzalı, açık güven listelerine dayanır. Ortak bir defter ancak bağımsız taraflar
-          onu birlikte işlettiğinde bir şey katar ve o zaman da yalnız bu listelerin özetini taşır. Defterin
+          onu birlikte işlettiğinde bir şey katar ve o zaman da yalnız liste kayıtlarının özetlerini ve parmak izlerini taşır, kişisel veriyi asla. Defterin
           kodu yazıldı ve test edildi; ikinci bağımsız işletmeci katılana kadar kapalı kalır. <strong>Kişisel
           veri ikisine de asla yazılmaz.</strong> Kişi bunların hiçbirini görmez; yalnızca kimliğini kullanır.
         </>
@@ -367,7 +367,7 @@ const tk: ManifestoContent = {
         <>
           Häzir torda blokçeýn ýok we ynamyň oňa zerurlygy hem ýok. Ynam her kimiň ýükläp we barlap bilýän gol
           çekilen, açyk ynam sanawlaryna daýanýar. Umumy kitap diňe garaşsyz taraplar ony bilelikde
-          dolandyranda bir zat goşýar we şonda-da diňe şu sanawlaryň gysgaça nusgasyny (hash) saklaýar.
+          dolandyranda bir zat goşýar we şonda-da diňe sanaw ýazgylarynyň gysgaça nusgalaryny (hash) we barmak yzlaryny saklaýar, şahsy maglumaty bolsa hiç haçan.
           Kitabyň kody ýazyldy we synagdan geçdi; ikinji garaşsyz operator goşulýança ýapyk durýar.{" "}
           <strong>Şahsy maglumat hiç birine asla ýazylmaýar.</strong> Adam bularyň hiç birini görmeýär; diňe
           şahsyýetini ulanýar.
@@ -505,7 +505,7 @@ const az: ManifestoContent = {
         <>
           Bu gün şəbəkədə blockchain yoxdur və etibarın ona ehtiyacı da yoxdur. Etibar hər kəsin yükləyib
           yoxlaya bildiyi imzalı, açıq etibar siyahılarına əsaslanır. Ortaq reyestr yalnız müstəqil tərəflər
-          onu birlikdə idarə etdikdə nəsə qatır və o zaman da yalnız bu siyahıların xülasəsini (hash) daşıyır.
+          onu birlikdə idarə etdikdə nəsə qatır və o zaman da yalnız siyahı qeydlərinin xülasələrini (hash) və barmaq izlərini daşıyır, fərdi məlumatı isə heç vaxt.
           Reyestrin kodu yazılıb və test edilib; ikinci müstəqil operator qoşulana qədər söndürülmüş qalır.{" "}
           <strong>Fərdi məlumat heç birinə heç vaxt yazılmır.</strong> Şəxs bunların heç birini görmür; yalnız
           öz şəxsiyyətindən istifadə edir.

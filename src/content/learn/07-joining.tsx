@@ -1738,10 +1738,10 @@ export const CHAPTER_7: LearnPage[] = [
         az: "Testlərdən keçən provayderin imza açarı etibar siyahılarının siyahısına əlavə olunur; Tamga Wallet da eyni yolu keçir.",
       },
       {
-        tr: "Denemeler ayrı bir test ağında (sandbox) yapılır: uydurma kişiler, ayrı güven kökü ve kurgusal örnek kurumlar (Örnek Üniversitesi, Örnek Etkinlik, Örnek Sinema); oradaki belge test anahtarıyla imzalıdır, hiçbir yerde geçmez.",
+        tr: "Denemeler ayrı bir test ağında (sandbox) yapılır: uydurma kişiler, ayrı güven kökü ve kurgusal örnek kurumlar (Example University, Örnek Etkinlik, Örnek Sinema); oradaki belge test anahtarıyla imzalıdır, hiçbir yerde geçmez.",
         en: "Testing happens on a separate test network (the sandbox): made-up people, its own trust root and fictional example institutions (Example University, Example Events, Example Cinema); a credential from there is signed with a test key and is not valid anywhere.",
-        tk: "Synaglar aýry synag ulgamynda (sandbox) geçirilýär: oýlanyp tapylan adamlar, aýry ynam köki we oýlanyp tapylan nusga guramalar (Örnek Üniversitesi, Örnek Etkinlik, Örnek Sinema); ondaky resminama synag açary bilen gol çekilen, hiç ýerde geçmeýär.",
-        az: "Sınaqlar ayrıca test şəbəkəsində (sandbox) aparılır: uydurma şəxslər, öz etibar kökü və uydurma nümunə qurumlar (Örnek Üniversitesi, Örnek Etkinlik, Örnek Sinema); oradan verilən rəqəmsal sənəd test açarı ilə imzalanır və heç bir yerdə etibarlı deyil.",
+        tk: "Synaglar aýry synag ulgamynda (sandbox) geçirilýär: oýlanyp tapylan adamlar, aýry ynam köki we oýlanyp tapylan nusga guramalar (Example University, Örnek Etkinlik, Örnek Sinema); ondaky resminama synag açary bilen gol çekilen, hiç ýerde geçmeýär.",
+        az: "Sınaqlar ayrıca test şəbəkəsində (sandbox) aparılır: uydurma şəxslər, öz etibar kökü və uydurma nümunə qurumlar (Example University, Örnek Etkinlik, Örnek Sinema); oradan verilən rəqəmsal sənəd test açarı ilə imzalanır və heç bir yerdə etibarlı deyil.",
       },
     ],
     deeper: [

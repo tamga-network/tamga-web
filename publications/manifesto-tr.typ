@@ -40,7 +40,7 @@ Bir belgenin gerçek olduğuna matematik karar vermeli; fotokopinin ne kadar ikn
 
 #heading(level: 1, numbering: none)[Blockchain araçtır, yalnızca araç]
 
-Bugün ağda bir blockchain yok ve güvenin ona ihtiyacı da yok. Güven, herkesin indirip denetleyebildiği imzalı, açık güven listelerine dayanır. Ortak bir defter ancak bağımsız taraflar onu birlikte işlettiğinde bir şey katar ve o zaman da yalnız bu listelerin özetini taşır. Defterin kodu yazıldı ve test edildi; ikinci bağımsız işletmeci katılana kadar kapalı kalır. #{strong[Kişisel veri ikisine de asla yazılmaz.]} Kişi bunların hiçbirini görmez; yalnızca kimliğini kullanır.
+Bugün ağda bir blockchain yok ve güvenin ona ihtiyacı da yok. Güven, herkesin indirip denetleyebildiği imzalı, açık güven listelerine dayanır. Ortak bir defter ancak bağımsız taraflar onu birlikte işlettiğinde bir şey katar ve o zaman da yalnız liste kayıtlarının özetlerini ve parmak izlerini taşır, kişisel veriyi asla. Defterin kodu yazıldı ve test edildi; ikinci bağımsız işletmeci katılana kadar kapalı kalır. #{strong[Kişisel veri ikisine de asla yazılmaz.]} Kişi bunların hiçbirini görmez; yalnızca kimliğini kullanır.
 
 #heading(level: 1, numbering: none)[Açık standartlar, kilitlenme yok]
 

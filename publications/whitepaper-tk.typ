@@ -98,7 +98,7 @@ Bu sahnanyň dizaýny beýan edýändigini aç-açan aýtmak gerek. Tamga Networ
 
 == Bu resminamanyň goşandy we meýilnamasy
 
-Tamga Network-i öň gysga whitepaper bilen \[62\] beýan edipdik; bu giňeldilen neşir onuň ornuny tutýar. Manifest we işläp düzüjiler üçin resminamalar onuň ýanynda durýar. Bu neşir üç soraga bilelikde we jikme-jik jogap bermek üçin ýazyldy.
+Tamga Network-i öň gysga whitepaper bilen beýan edipdik; bu giňeldilen neşir onuň ornuny tutýar. Manifest \[62\] we işläp düzüjiler üçin resminamalar onuň ýanynda durýar. Bu neşir üç soraga bilelikde we jikme-jik jogap bermek üçin ýazyldy.
 
 Birinji sorag #{strong[nähili işleýändigi]}. Resminamanyň berilmeginden barlagyna, ýatyrylyşyndan gapjykdaky ömrüne çenli her ädimi hiç hili deslapky bilim çaklamazdan düşündirýäris. Tehniki jikme-jiklikleri taşlamaýarys, ýöne olary aýratyn gutulara salýarys; gutulary geçýän okyjy hem teksti yzarlap biler. Ikinji sorag #{strong[näme üçin şeýle saýlanandygy]}. Toruň her möhüm karary karar ýazgysyna esaslanýar we bu ýazgylar nämäniň saýlanandygy bilen bilelikde haýsy wariantlaryň näme üçin taşlanandygyny hem ýazýar. Resminamanyň dowamynda bir saýlawy düşündirenimizde onuň karar ýazgysyny we alternatiwalaryny bilelikde berýäris. Üçünji sorag #{strong[nirä barýandygy]}. Häzir nämäniň işleýändigini, nämäniň karar edilip, heniz işjeň däldigini we nämäniň henizem gözlegdigini aýyrýarys; senenamanyň ýerine şert berýäris.
 
@@ -173,7 +173,7 @@ Tablisanyň bir aýratynlygyna ünsi çekmek isleýäris. Talaplaryň bir böleg
 
 = Arka Plan: eIDAS 2.0, EUDI ARF we Açyk Standartlar
 
-Tamga Network boşlukda taslanmady. Onuň tehniki gatlagy Ýewropa Bileleşiginiň soňky on ýylda guran sanly şahsyýet tertibiniň üstünde oturýar. Bu bölüm şol tertibi Tamga-ny düşünmek üçin ýeterlik derejede beýan edýär. ÝB hukugyny ähli jikme-jikligi bilen bilmek isleýän okyjy üçin tapgyryň eIDAS 2.0 \[2\] makalasy aýratyn çeşmedir.
+Tamga Network boşlukda taslanmady. Onuň tehniki gatlagy Ýewropa Bileleşiginiň soňky on ýylda guran sanly şahsyýet tertibiniň üstünde oturýar. Bu bölüm şol tertibi Tamga-ny düşünmek üçin ýeterlik derejede beýan edýär. ÝB hukugyny ähli jikme-jikligi bilen bilmek isleýän okyjy üçin tapgyryň eIDAS 2.0 makalasy \[76\] aýratyn çeşmedir.
 
 == eIDAS-dan eIDAS 2.0-a
 
@@ -189,7 +189,7 @@ Düzgünnamanyň özi ýörelgeleri, rollary we borçlary kesgitleýär; ýöne 
 
 eIDAS 2.0 gapjykda göterilýän resminamalary iki uly topara bölýär. Birinji topar #{strong[adamyň şahsyýet maglumatlarydyr]} (#{emph[Person Identification Data]}, #{strong[PID]}): ady, familiýasy, doglan senesi, raýatlygy ýaly adamyň şahsyýetini kesgitleýän maglumat. PID-i diňe döwlet ýa-da döwletiň ygtyýarlandyran guramasy berip bilýär we ol gapjygyň esasyny düzýär. Ikinji topar #{strong[elektron atribut tassyklamalarydyr]} (#{emph[Electronic Attestation of Attributes]}, #{strong[EAA]}): diplom, talyp resminamasy, hünär resminamasy, agzalyk karty, bilet; gysgaça aýdylanda, PID-den başga her resminama.
 
-Düzgünnama EAA-lary hem kimiň berýändigine we haýsy kepilligi göterýändigine görä üçe bölýär. Kwalifisirlenen ynam hyzmaty üpjün edijisiniň berýän #{strong[kwalifisirlenen atribut tassyklamasy]} (QEAA) kagyz ýüzündäki deňi bilen birmeňzeş hukuk täsirine eýe. Ygtyýarly çeşme üçin jogapkär döwlet edarasynyň ýa-da onuň adyndan bellenen guramanyň berýän #{strong[döwlet edarasynyň tassyklamasy]} (PuB-EAA) aýratyn synpdyr. Olardan daşarda galýan her kim, meselem uniwersitet, bilet satyjy ýa-da sport kluby, #{strong[kwalifisirlenmedik atribut tassyklamasyny]} berip biler. Bölünişik hukuk täsirini kesgitleýär; tehniki görnüş bolsa köplenç birmeňzeş.
+Düzgünnama EAA-lary hem kimiň berýändigine we haýsy kepilligi göterýändigine görä üçe bölýär. Kwalifisirlenen ynam hyzmaty üpjün edijisiniň berýän #{strong[kwalifisirlenen atribut tassyklamasy]} (QEAA) kagyz ýüzündäki deňi bilen birmeňzeş hukuk täsirine eýe. Ygtyýarly çeşme üçin jogapkär döwlet edarasynyň ýa-da onuň adyndan bellenen guramanyň berýän #{strong[döwlet edarasynyň tassyklamasy]} (PuB-EAA) aýratyn synpdyr we ol hem kagyz ýüzündäki deňi bilen birmeňzeş hukuk täsirine eýe (45b(2) madda). Olardan daşarda galýan her kim, meselem uniwersitet, bilet satyjy ýa-da sport kluby, #{strong[kwalifisirlenmedik atribut tassyklamasyny]} berip biler. Bölünişik hukuk täsirini kesgitleýär; tehniki görnüş bolsa köplenç birmeňzeş.
 
 Tamga-nyň bu düşünjeler bilen gatnaşygynda ilkinji düzgün toruň #{strong[PID bermezligidir]}. Esasy çarçuwa resminamasy PID bermegi çägiň daşynda hasaplaýar we bu roly döwlete goýýar (FW-ARF-0001 §1.7). Ynam sanawynda PID üpjün edijileri üçin orun bar, ýöne bu orun häzir boş. Adamyň şahsyýetini tassyklaýan resminama barybir gerek bolandygy sebäpli tor döwletiň PID üpjün edijisi bellenýänçä #{strong[wagtlaýyn şahsyýet resminamasy üpjün edijisini]} işledýär; bu hyzmatyň berýän resminamasy PID däl, kwalifisirlenmedik EAA-dyr we döwletiň PID-i gelende onuň ýerini boşadýar (ADR-0011, ADR-0022; 14-nji bölüm). Tablisa 4 dört düşünjäni we olaryň Tamga-daky deňlerini ýanaşyk goýýar.
 
@@ -213,7 +213,7 @@ ARF-iň iň dowamly goşantlarynyň biri #{strong[rollar toplumydyr]}. Her rolu�
 - #{strong[Giriş sertifikaty edarasy]} (#{emph[Access Certificate Authority]}) ynanýan taraplara gapjyga özlerini tanatjak sertifikatlaryny berýär; #{strong[hasaba alyş sertifikaty üpjün edijisi]} bolsa hasaba alyşdaky çägi göterýän gol çekilen resminamany döredýär.
 - #{strong[Ynam sanawy üpjün edijisi]} bu rollary kimleriň ýerine ýetirýändigini gol çekilen sanawlarda çap edýär.
 
-Bu rollaryň hemmesiniň üstünde eIDAS-yň 2014-nji ýyldan bäri işleýän ynam sanawy arhitekturasy durýar. Her agza döwlet öz #{strong[milli ynam sanawyna]} gol çekip, ony çap edýär; Komissiýa hem bu sanawlaryň salgylaryny we gol çekijilerini görkezýän #{strong[sanawlaryň sanawyny]} (#{emph[List of Trusted Lists]}, LOTL) çap edýär. eIDAS 2.0 bilen bu arhitektura gapjyk ekoulgamynyň täze rollaryna giňeýär: haýsy guramalaryň gapjyk üpjün edijisi, PID üpjün edijisi ýa-da giriş sertifikaty edarasy bolýandygy hem şuňa meňzeş sanawlar bilen habar berilýär.
+Bu rollaryň hemmesiniň üstünde ilkinji eIDAS düzgünnamasyndan bäri işleýän ynam sanawy arhitekturasy durýar. Her agza döwlet öz #{strong[milli ynam sanawyna]} gol çekip, ony çap edýär; Komissiýa hem bu sanawlaryň salgylaryny we gol çekijilerini görkezýän #{strong[sanawlaryň sanawyny]} (#{emph[List of Trusted Lists]}, LOTL) çap edýär. eIDAS 2.0 bilen bu arhitektura gapjyk ekoulgamynyň täze rollaryna giňeýär: haýsy guramalaryň gapjyk üpjün edijisi, PID üpjün edijisi ýa-da giriş sertifikaty edarasy bolýandygy hem şuňa meňzeş sanawlar bilen habar berilýär.
 
 Bu tertibiň bir netijesi barlagyň #{strong[iki taraplaýyn]} bolmagydyr. Barlaýjy resminamany barlanda gapjyk hem barlaýjyny barlaýar: haýyşa gol çeken gurama hakykatdanam hasaba alnanmy, soraýan meýdanlary hasaba alyşynyň çäginde barmy? 1.2-nji bölümdäki sahnada Aýnuryň gapjygynyň Timuryň kompaniýasyny barlamagy şu ýörelgäniň ulanylyşydyr. Surat 3 rollary ÝB-niň adalgalary bilen görkezýär.
 
@@ -264,7 +264,7 @@ Arhitekturany düşünmegiň gysga ýoly ony guranlaryň nämäni hiç haçan et
 
 #{strong[P4. Hiç bir belgi, rol ýa-da gurluş ýeke operator çaklamasyny götermeýär.]} Toruň häzir wagtlaýyn öz üstüne alan her döwlet roly tabşyrylyp bilinjek görnüşde taslanýar. Näme üçin? Sebäbi gurluş ýeke operatora görä gurlan bolsa, tabşyryş güni hemme zady täzeden ýazmak gerek bolýar: gurama belgileri üýtgeýär, resminamalar güýjüni ýitirýär, gapjyklar täzelenýär. Tamga-da tabşyryş diňe sanawyň operator meýdanyny we gol çekijisini üýtgedýär; guramalaryň belgileri, resminama görnüşleri we berlen resminamalar şol bir galýar (6.7, 18.4-nji bölümler).
 
-#{strong[P5. Umumy kitap saklaýyş saýlawy däl, gol çekijileriň saýlawydyr.]} Häzir ynam gol çekilen sanawlardan gelýär. Azyndan iki garaşsyz operator bolanda umumy kitap gurulýar. Näme üçin? Sebäbi ýeke operatoryň işledýän dört düwünli zynjyry şol operatoryň gol çeken sanawyndan köp ynam döretmeýär (ADR-0009). Kitaby gymmatly edýän zat ýazgylaryň biri-birinden garaşsyz taraplaryň umumy goly bilen saklanmagydyr. Şonuň üçin Tamga-da zynjyryň kody ýazyldy we synagdan geçirildi, ýöne ol önümçilikde ýok we ýapyk; ikinji garaşsyz operator bolmasa açylmaýar we açylanda-da diňe gol çekilen sanawlaryň heşini göterýär (ADR-0051; 19-njy bölüm).
+#{strong[P5. Umumy kitap saklaýyş saýlawy däl, gol çekijileriň saýlawydyr.]} Häzir ynam gol çekilen sanawlardan gelýär. Azyndan iki garaşsyz operator bolanda umumy kitap gurulýar. Näme üçin? Sebäbi ýeke operatoryň işledýän dört düwünli zynjyry şol operatoryň gol çeken sanawyndan köp ynam döretmeýär (ADR-0009). Kitaby gymmatly edýän zat ýazgylaryň biri-birinden garaşsyz taraplaryň umumy goly bilen saklanmagydyr. Şonuň üçin Tamga-da zynjyryň kody ýazyldy we synagdan geçirildi, ýöne ol önümçilikde ýok we ýapyk; ikinji garaşsyz operator bolmasa açylmaýar we açylanda-da diňe gol çekilen sanawlardaky ýazgylaryň heşlerini we barmak yzlaryny göterýär (ADR-0051, ADR-0074; 19-njy bölüm).
 
 #{strong[P6. Her resminama enjamyň howpsuz zolagyndaky açara baglanýar.]} Resminamany göçürip ýa-da başga birine geçirip bolmaýar. Baglanyşygy bolmadyk resminamany ony ele geçiren islendik adam görkezip biler; diplomyň faýlyny alan adam özüni onuň eýesi ýaly görkezip biler. Enjam baglanyşygy bolmasa, sanly resminama kagyz nusganyň gowşaklygyny götermegini dowam etdirýär (ADR-0006; 8.2-nji bölüm).
 
@@ -486,7 +486,7 @@ Häzir diňe Türkiýäniň orny işjeň. Türki Döwletleriň Guramasynyň agza
   \"assurance\": \"I2\",
   \"class\": \"EAA\",
   \"cert_fingerprint_sha256\": \"fb58ea8de393d34d2b73ce7672a08c3e2908028edbd5fce9a4c10fb4ad2577ce\",
-  \"issuer_url\": \"https://issuer.tamga.network/example-university\",
+  \"issuer_url\": \"https://issuer.sandbox.tamga.network/example-university\",
   \"status\": \"ACTIVE\",
   \"valid_from\": \"2026-09-01T00:00:00Z\",
   \"status_history\": [
@@ -545,7 +545,7 @@ Aşakdaky setir guramanyň ýatyrylyş sanawynyň çap edilmeginiň žurnala nä
   \"kind\": \"status_list\",
   \"list_id\": \"0x…4101234c731b7165\",
   \"issuer_id\": \"0xe41abbb0…e8db1b60\",
-  \"list_uri\": \"https://status.tamga.network/4101234c731b7165\",
+  \"list_uri\": \"https://status.sandbox.tamga.network/4101234c731b7165\",
   \"content_hash\": \"sha256:f037c5749daa…e9f4851d50\",
   \"list_version\": 15294
 }", baslik: "Mysal: labyr žurnalynda ýatyrylyş sanawynyň çap edilmegi (JWS ýüki, açylan)")
@@ -731,12 +731,12 @@ Barlaýjy açar baglanyşygynyň goluny resminamadaky #{raw("cnf")} açary bilen
 Aşakdaky mysal Aýnuryň diplomynyň guramanyň gol çeken esasy bölegini açyşlar açylan görnüşde görkezýär. Hödürlemede bu meýdanlaryň diňe bir bölegi açylýar (Surat 12).
 
 #kod("json", "{
-  \"iss\": \"https://issuer.tamga.network/example-university\",
+  \"iss\": \"https://issuer.sandbox.tamga.network/example-university\",
   \"vct\": \"urn:tamga:edu:DiplomaCredential:1\",
   \"vct#integrity\": \"sha256-7Dcy7bWeg5CURNEE+veGmjOE3HWb95ZGJBWX/ZrZgtI=\",
   \"iat\": 1782896400,
   \"cnf\": { \"jwk\": { \"kty\": \"EC\", \"crv\": \"P-256\", \"x\": \"…\", \"y\": \"…\" } },
-  \"status\": { \"status_list\": { \"idx\": 48213, \"uri\": \"https://status.tamga.network/…\" } },
+  \"status\": { \"status_list\": { \"idx\": 48213, \"uri\": \"https://status.sandbox.tamga.network/…\" } },
   \"given_name\": \"Aynur\",
   \"family_name\": \"Məmmədova\",
   \"qualification_title\": { \"tr-TR\": \"Bilgisayar Mühendisliği Yüksek Lisans Diploması\",
@@ -886,13 +886,13 @@ Amal kody (#{raw("tx_code")}) ekrany egniň üstünden görýän ýa-da QR kodun
 Şahsyýete baglanan teklip standartyň ygtyýarlandyryş kody akymyny ulanýar; teklipde öňünden ygtyýarlandyrylan kod ýok, diňe teklibiň belgisini göterýän #{raw("issuer_state")} bahasy bar. Gapjyk bu bahany ygtyýarlandyryş haýyşyna goýýar we resminama beriji teklibiň güýjündedigini, ulanylmandygyny we şol bir resminama görnüşi üçindigini barlaýar (SPEC-PROTO-0001 §3.4). Bahalar mysaldyr.
 
 #kod("json", "{
-  \"credential_issuer\": \"https://issuer.tamga.network/example-university\",
+  \"credential_issuer\": \"https://issuer.sandbox.tamga.network/example-university\",
   \"credential_configuration_ids\": [\"urn:tamga:edu:DiplomaCredential:1\"],
   \"grants\": { \"authorization_code\": { \"issuer_state\": \"b3f1c2…\" } }
 }", baslik: "Mysal: Aýnuryň diplomy üçin şahsyýete baglanan teklip")
 
 #kod("text", "openid-credential-offer://?credential_offer_uri=
-  https%3A%2F%2Fissuer.tamga.network%2Fexample-university%2Foffers%2F8a3f9c21", baslik: "Mysal: QR kodunyň göterýän salgysy")
+  https%3A%2F%2Fissuer.sandbox.tamga.network%2Fexample-university%2Foffers%2F8a3f9c21", baslik: "Mysal: QR kodunyň göterýän salgysy")
 
 Tanyşdyryş resminamasynda her resminama konfigurasiýasynyň belgisi we çägi (#{raw("scope")}) görnüşiň URN-idir; format hemişe #{raw("dc+sd-jwt")}, gol we subutnama algoritmi diňe ES256, toptan bermegiň möçberi 10. Gijikdirilen beriş nokady we habarnama nokady häzir yglan edilmeýär (§2.1, §9, §10).
 ]
@@ -1951,7 +1951,7 @@ Bu resminamalar karar döretmeýär. Hökmanylyk tertibi karar ýazgylary, spesi
 = Umumy Kitap: Näme üçin Häzir Däl, Nähili Geler
 
 #kutu("onemli", [Bu bölümiň ýagdaýy: meýilleşdirilen])[
-Häzir işleýän zynjyr ýok. Rugsatly umumy kitabyň kody ýazyldy we synagdan geçdi; önümçilikde ýok we ýapyk. Ikinji garaşsyz operator bolmazdan açylmaýar (ADR-0009, ADR-0051). Aşakdakylar kitap açylsa güýjünde boljak düzgünlerdir. Häzir ynam Bölüm 6-daky gol çekilen sanawlara we labyr žurnalyna daýanýar we barlagyň hiç bir ädimi zynjyra bagly däl.
+Häzir hakyky torda-da, sandbox-da-da işleýän zynjyr ýok. Rugsatly umumy kitabyň kody ýazyldy we synagdan geçdi; ol diňe işläp düzüjileriň kompýuterlerinde we açyk ammardaky dört tassyklaýjyly synag torunda işleýär, önümçilikde ýok we ýapyk. Ikinji garaşsyz operator bolmazdan açylmaýar (ADR-0009, ADR-0051). Aşakdakylar kitap açylsa güýjünde boljak düzgünlerdir; olaryň gerimini we geçişi ADR-0073, ADR-0074 we ADR-0075 kesgitleýär. Häzir ynam Bölüm 6-daky gol çekilen sanawlara we labyr žurnalyna daýanýar we barlagyň hiç bir ädimi zynjyra bagly däl.
 ]
 
 "Blokçeýn nirede?" diýen sorag Tamga-a iň köp berilýän soraglaryň biridir, sebäbi toruň ilkinji dizaýny zynjyr bilen başlanýardy. Häzirki jogap şeýle: zynjyr häzirki wagtda hiç zat goşmaýar we hiç zat goşmaýan döwründe gurulmagy ynamy bolşundan uly görkezýär. Bu bölüm munuň esaslaryny, kitabyň haýsy düzgünler bilen geljekdigini we geçişiň nähili ediljekdigini düşündirýär. Zynjyryň şahsyýet ulgamynda haçan peýdaly bolýandygyny umumy görnüşde tapgyryň on ikinji makalasy \[77\] ara alyp maslahatlaşýar.
@@ -1979,18 +1979,19 @@ ADR-0001-iň ilkinji esaslarynyň arasynda kitabyň geljekde gymmat geçirişini
 
 == Proýeksiýa ýörelgesi
 
-Kitap gelse, sanawlaryň ýerini tutarmy? ADR-0051 iň dar we iň howpsuz jogaby berýär: #{strong[zynjyr gol çekilen sanawlaryň proýeksiýasydyr.]} Çeşme hemişe gol çekilen sanawlar we labyr žurnalydyr; zynjyr diňe "bu sanaw wersiýasy şu heş bilen çap edildi" diýip şaýatlyk edýän ikinji ýazgydyr (Surat 31).
+Kitap gelse, sanawlaryň ýerini tutarmy? ADR-0051 iň dar we iň howpsuz jogaby berýär: #{strong[zynjyr gol çekilen sanawlaryň proýeksiýasydyr.]} Çeşme hemişe gol çekilen sanawlar we labyr žurnalydyr; zynjyr sanawlaryň aýdýanyny heşler bilen gaýtalaýan ikinji ýazgydyr (Surat 31).
 
-Zynjyra iki görnüşli ýazgy ýazylýar: her sanaw wersiýasynyň heşi (haýsy sanaw, näçenji wersiýa, mazmunyň SHA-256 heşi, öňki wersiýanyň heşi, çap wagty) we labyr žurnalynyň soňky setiriniň heşi. Žurnalyň setirleri biri-birine heş zynjyry bilen baglanandygy üçin soňky setir bütin žurnaly baglaýar. Sanawyň mazmuny, ýazgylar, resminamalar, resminama heşleri we şahsy maglumat zynjyra ýazylmaýar; ýazgy meýdanlary diňe hemişelik ululykly heşler we bitin sanlardyr, erkin tekst meýdany ýok (ADR-0051 K2, CH2; Tablisa 36).
+Kitaba näme ýazyljakdygyny iki karar kesgitleýär. ADR-0051 ilkinji ädimi ätdi: her sanaw wersiýasynyň heşi (haýsy sanaw, näçenji wersiýa, mazmunyň SHA-256 heşi, öňki wersiýanyň heşi, çap wagty) we labyr žurnalynyň soňky setiriniň heşi ýazylýar. Žurnalyň setirleri biri-birine heş zynjyry bilen baglanandygy üçin soňky setir bütin žurnaly baglaýar. ADR-0074 gerimi giňeltdi: gol çekilen sanawlarda ynam kararyna täsir edýän her ýazgynyň kitapda bir garşylygy bolýar. Kök sertifikatlar, resminama berijiler, barlaýjylar we gapy toparlary, shemalar, gapjyk üpjün edijileri we olaryň gol açarlary, nol bilim zynjyrlary (ZK circuits), daşarky sanawlar, sanaw gol çekijileri we sanaw operatory muňa girýär. Kitaba ýazgylaryň özi ýazylmaýar; olaryň heşleri we barmak yzlary ýazylýar. Bular belgileriň heşleri, açar we sertifikat barmak yzlary, ýapyk toplum bahalary, seneler, döwlet kodlary we hasap salgylarydyr. At, düşündiriş we aragatnaşyk maglumaty ýaly erkin tekstler diňe gol çekilen sanawda durýar; kitapda olaryň kanoniki görnüşinden alnan ýeke heş bolýar. Resminamalar, resminama heşleri, ýatyrylyş bitleri we şahsy maglumat kitaba hiç haçan ýazylmaýar (ADR-0051 CH2; ADR-0074 PJ1, PJ2; Tablisa 36). Sandbox sanawlary hem önümçilik kitabyna ýazylmaýar (ADR-0074 PJ4).
 
 #sekil(31, [Proýeksiýa: çeşme sanaw, önüm kitap], "figures/wp-tk/sekil-31.svg", yarim: false)
 
 Proýeksiýanyň iň möhüm düzgüni ugurdyr. Barlag hatary we müşderileriň ynam soraglaryny berýän ýeke-täk interfeýsi (#{raw("TrustSource")}, Bölüm 6.6) diňe sanawlardan okaýar; zynjyr hiç bir ädimde gerek däl we gerek hem bolmaz. Barlaýjy isläp, öz sanawynyň heşini zynjyrdaky tassyklanan heş bilen deňeşdirip biler we üç jogabyň birini alýar. #{strong[Hawa]}: tassyklanan heş şol bir. #{strong[Ýok]}: şol bir wersiýa üçin başga tassyklanan heş bar; bu iki barlaýja iki dürli sanawyň görkezilendiginiň alamatydyr, barlag netijesini üýtgetmeýär, ýöne operatora duýduryş berýär we açyklyk hasabatyna girýär. #{strong[Näbelli]}: aýratynlyk ýapyk ýa-da zynjyra girip bolmaýar; netije erbetleşmeýär. Gapma-garşylykda sanaw güýjünde; zynjyr ýazgysy düzedilmeýär, onuň ýanyna täze wersiýa goşulýar (ADR-0051 K1, K5, CH1).
 
-#tablo([#{strong[Tablisa 36.]} Kitapda näme bar, näme ýok (ADR-0051 CH2; ADR-0063 BL2; FW-ARF-0001 §1.6 P2).], (48fr, 41fr), ([Kitapda bar], [Kitapda ýok],), (
-  ([Sanaw wersiýasynyň belgisi, mazmun heşi, öňki heş, çap wagty], [Sanawyň mazmuny; gurama, barlaýjy we shema ýazgylary],),
+#tablo([#{strong[Tablisa 36.]} Kitapda näme bar, näme ýok (ADR-0051 CH2; ADR-0063 BL2; ADR-0074 PJ2; FW-ARF-0001 §1.6 P2).], (48fr, 47fr), ([Kitapda bar], [Kitapda ýok],), (
+  ([Sanaw wersiýasynyň belgisi, mazmun heşi, öňki heş, çap wagty], [Sanawyň teksti; ýazgylardaky atlar, düşündirişler we aragatnaşyk maglumatlary],),
   ([Labyr žurnalynyň soňky setiriniň tertibi, heşi, wagty], [Resminamalar we resminama heşleri],),
-  ([Ýazyjylaryň haýsy dalaşgäri goldaýandygy, gapma-garşylyk wakalary], [Şahsy maglumat, şahsyýet belgisi, meýdan bahalary],),
+  ([Gurama, barlaýjy, shema, gapjyk üpjün edijisi we sanaw gol çekijisi ýazgylarynyň belgi heşleri, barmak yzlary, ýagdaýlary we seneleri], [Şahsy maglumat, şahsyýet belgisi, meýdan bahalary],),
+  ([Ýazyjylaryň haýsy dalaşgäri goldaýandygy, gapma-garşylyk wakalary], [Gapjyk nusgasynyň, enjamyň ýa-da lakamyň belgisi],),
   ([Ýatyrylyş sanawynyň salgysy, heşi, wersiýasy, ululygy, bit sany], [Ýatyrylyş bitleri, sanawdaky orunlar, resminama görnüşiniň ady],),
 ))
 
@@ -2057,6 +2058,8 @@ Kitap açylan gün üçin goşulyş guralynda döwletiň ýa-da operatoryň düw
 == Geçiş
 
 Sanawlardan kitaba geçiş täzeden ýazmak bolmaz. Geçiş sanaw wersiýalarynyň arhiwiniň kitaba #{strong[gaýtadan oýnalmagydyr]}: her wersiýa yzygiderlilikde işlenýär we ýazgylaryň ýagdaý taryhyndaky wagtlar saklanýar (ADR-0009 K7). Maksat şeýle: ýapylan guramanyň köne diplomy berlen senesinde gurama işjeň bolandygy üçin güýjünde (Bölüm 11.3) we geçişden soň hem şol bir jogaby almaly. Kabul ediş ölçegi şoňa görä ýazyldy: pilotyň dowamynda ýazga alnan her ynam soragynda sanawa daýanýan ynam çeşmesi bilen kitaba daýanýan ynam çeşmesi şol bir jogaby bermeli; ýeke soragda kabul bilen ret tapawutlansa, geçiş tamamlanmadyk hasaplanýar. Berlen resminamalar täzeden berilmeýär; gapjyk we resminama beriş hyzmaty üýtgemeýär; müşderiler diňe #{raw("TrustSource")} interfeýsiniň aňyrsyndaky amala aşyrylyşy çalyşýar (ADR-0015; FW-ARF-0001 §8.2). Geçişden yzyna hem gaýdyp bolýar we sanawlar kitap tapgyrynda-da çap edilmegini dowam etdirýär (ADR-0009 3-nji esas).
+
+Gaýtadan oýnamagyň nähili ediljekdigini ADR-0073 kesgitleýär. Her ýazgy şertnamasynda dolandyryş sesi bilen diňe bir gezek açylýan #{strong[göçüriş penjiresi]} bar. Penjire iň köp 30 gün dowam edýär, möhleti dolanda öz-özünden ýapylýar we gaýtadan açylyp bilinmeýär. Açyk wagty geçmiş seneli ýazgy ýazylyp bilner, ýöne hiç bir sene şol pursatdaky blok wagtyndan giç bolup bilmeýär. Sanawyň we kitabyň ynam soraglaryna berýän jogaplarynyň arasynda kabul bilen ret tapawudy galýança geçiş tamamlanan hasaplanmaýar. Şol bir karar #{strong[berk ýatyrylyşy]} hem kesgitleýär: guramanyň açary ele salnan bolsa, ýatyrylyş ýazgysy başlangyç senesini göterýär we şol seneden soň berlen resminamalar kabul edilmeýär. Togtadylan guramanyň togtadylmazdan öň beren resminamalary bolsa güýjünde galýar. Barlaýjynyň kitapdaky belgisi domen adynyň heşidir we sertifikaty täzelenende üýtgemeýär. Bu belginiň başga döwlete geçirilmegi ýa-da ýatyrylandan soň gaýtadan hasaba alynmagy diňe üçden iki ses bilen edilýär we öňki döwrüň taryhy pozulmaýar (ADR-0075).
 
 == Gymmat gatlagy: togtadyldy
 
@@ -2164,7 +2167,7 @@ Tamga-da hökmany saýlaw ýazmaça karar ýazgysy bilen başlaýar. Düzgün gy
 
 Ýazgy üç ýagdaýdan geçýär. #{strong[Teklip]} (#{emph[Proposed]}) tapgyrynda karar ýazyldy, ýöne hökmany däl. Taslama dolandyryşy karary kabul edende ýazgy #{strong[işjeň]} (#{emph[Active]}) bolýar we kabul edilen senesi ýazga alynýar; täsir eden spesifikasiýalar we çarçuwa resminamalary şol bir işde täzelenýär. Ýapylan karar diňe täze karar ýazgysy bilen üýtgeýär. Üýtgän ýazgy pozulmaýar; ol #{strong[ýerini başgasyna berdi]} (#{emph[Superseded]}) diýlip bellenýär ýa-da täze ýazgy köne ýazgynyň haýsy bendini üýtgedendigini aç-açan ýazýar. Şeýlelikde kararyň häzirki görnüşi bilen bir hatarda onuň bu görnüşe nähili gelendigini hem okap bolýar.
 
-Bu neşiriň taýýarlanan senesinde 72 karar ýazgysy bar: 70-si işjeň, biri teklip ýagdaýynda (ADR-0028) we biri ýerini başga karara beren (ADR-0003). Ähli ýazgylaryň belgisi, ady, ýagdaýy we kabul edilen senesi B goşmaçasynda.
+Bu neşiriň taýýarlanan senesinde 75 karar ýazgysy bar: 73-si işjeň, biri teklip ýagdaýynda (ADR-0028) we biri ýerini başga karara beren (ADR-0003). Ähli ýazgylaryň belgisi, ady, ýagdaýy we kabul edilen senesi B goşmaçasynda.
 
 == On uly karar
 
@@ -2265,7 +2268,7 @@ Aşakdaky ýedi tablisa ähli işjeň kararlary mowzuklary boýunça tertipleşd
   ([#{strong[ADR-0061.]} Lakam tohumy aýry resminama konfigurasiýasy], [Standarta laýyklyk], [Standartdan daşary jogap meýdany],),
 ))
 
-#tablo([#{strong[Tablisa 45.]} Dolandyryş, ýerleşiş we kitap kararlary.], (48fr, 35fr, 35fr), ([Karar], [Esas], [Galdyrylan wariant],), (
+#tablo([#{strong[Tablisa 45.]} Dolandyryş, ýerleşiş we kitap kararlary.], (48fr, 41fr, 38fr), ([Karar], [Esas], [Galdyrylan wariant],), (
   ([#{strong[ADR-0001.]} Kitap gelse Hyperledger Besu we QBFT], [Rugsatly, deň ses, derrew gutarnyklylyk; ÝB mysaly], [Cosmos SDK; noldan ylalaşyk; hemmä açyk zynjyr],),
   ([#{strong[ADR-0002.]} Özygtyýarlylygy ileri tutýan üç gatlakly dolandyryş], [Her döwlet öz ýazgysynyň ýeke-täk ýazyjysy; çykmak hukugy], [Esaslandyryjy konsorsium we umumy ses bermek],),
   ([#{strong[ADR-0009.]} Zynjyrsyz başlangyç; zynjyr azyndan iki garaşsyz operator bilen], [Ýeke operatoryň zynjyry ynam döretmeýär], [Zynjyra garaşmak; ýeke operatorly işläp düzmek zynjyry],),
@@ -2287,6 +2290,9 @@ Aşakdaky ýedi tablisa ähli işjeň kararlary mowzuklary boýunça tertipleşd
   ([#{strong[ADR-0070.]} Gazna döredilýänçä wagtlaýyn operator; sanawda at "Tamga Network"], [Toruň ýuridik şahsy ýok; tabşyrmak bir nokatdan], [Sanawda operator kompaniýanyň ady; ýuridik şahs talap edýän işlere garaşmak],),
   ([#{strong[ADR-0071.]} Wagtlaýyn döwürde gatnaşyjydan töleg alynmaýar], [Bitaraplyk; maliýe goşandy ýazga täsir etmeýär], [Guramadan ýyllyk töleg],),
   ([#{strong[ADR-0072.]} Gymmat gatlagy togtadyldy, gözleg ugry], [Tor token we töleg işlemeýär; zynjyr diňe proýeksiýa], [ADR-0003-iň ilgeklerini hökmany saklamak],),
+  ([#{strong[ADR-0073.]} Kitaba geçişde bir gezeklik göçüriş penjiresi (iň köp 30 gün), berk ýatyrylyş, shema wersiýa heşleri diňe goşulýar], [Sanaw taryhy kitaba bolşy ýaly geçirilip bilinsin; iki çeşme şol bir jogaby bersin], [Taryhy geçirmezlik; hemişe açyk göçüriş ygtyýary],),
+  ([#{strong[ADR-0074.]} Sanawlardaky ähli ynam ýazgylary kitapda, diňe heş we barmak yzy görnüşinde], [Ýazgy derejesinde sorag we deňgüýçlilik; şahsy maglumat we erkin tekst kitapdan pozulyp bilinmeýär], [Diňe sanaw heşleri; jikme-jik tekstleri açyk ýazmak],),
+  ([#{strong[ADR-0075.]} Barlaýjy belgisiniň başga döwlete geçirilmegi we ýatyrylandan soň gaýtadan hasaba alynmagy diňe üçden iki ses bilen], [Ilkinji hasaba alan döwlet belgini eýelemesin; ýatyrylyş hemişelik gulp bolmasyn], [Domen ady subutnamasyny ýeke özi ýeterlik hasaplamak; hiç zat etmezlik],),
 ))
 
 == Üýtgän kararlar
@@ -2307,7 +2313,7 @@ Ynam toruň haýsy funksiýany häzir hödürleýändigini, haýsysyny diňe kar
 
 Tablisa 46 funksiýalary üç ýagdaý belligi boýunça tertipleşdirýär. Bellikleriň manysy okamak gollanmasyndaky ýalydyr: #{strong[işleýär]} hakyky torda ýa-da sandbox-da janly diýmekdir, #{strong[meýilleşdirilen]} karara bagly, ýöne janly däl, #{strong[gözleg]} bolsa karary bolmadyk ýa-da togtadylan funksiýadyr. Tablisa bu neşiriň taýýarlanan senesine görä we esasy çarçuwa resminamasynyň funksiýa ýagdaýy tablisasy bilen bilelikde täzelenýär (FW-ARF-0001 §2.8).
 
-#tablo([#{strong[Tablisa 46.]} Funksiýalaryň ýagdaýy.], (38fr, 19fr, 22fr, 15fr), ([Funksiýa], [Ýagdaý], [Bellik], [Bölüm​​​​​​​],), (
+#tablo([#{strong[Tablisa 46.]} Funksiýalaryň ýagdaýy.], (38fr, 19fr, 23fr, 15fr), ([Funksiýa], [Ýagdaý], [Bellik], [Bölüm​​​​​​​],), (
   ([Gol çekilen ynam sanawlary, sanawlaryň sanawy, labyr žurnaly, arhiw], [Işleýär], [hakyky tor we sandbox], [6],),
   ([Resminama görnüşleriniň katalogy], [Işleýär], [üýtgemeýän faýllar, bitewilik heşi], [8\.4],),
   ([Gurama we gapjyk tarapyndan başladylýan resminama bermek], [Işleýär], [ýerleşdirilen hyzmatda iki ýol], [9],),
@@ -2339,7 +2345,7 @@ Tablisa 46 funksiýalary üç ýagdaý belligi boýunça tertipleşdirýär. Bel
   ([Giriş sertifikatynda syýasat belgisi], [Meýilleşdirilen], [sertifikat ulanyş beýany çap edilende], [7\.4],),
   ([Sertifikatly we onlaýn däl gapy şahsyýeti], [Meýilleşdirilen], [meýdan we okaýjy taýýar], [10\.9],),
   ([OpenID barlaýjy meýilnamasynyň täzeden geçirilmegi; gapjyk meýilnamalary], [Meýilleşdirilen], [], [20\.5],),
-  ([Umumy kitap], [Meýilleşdirilen], [kod taýýar, önümçilikde ýok we ýapyk], [19],),
+  ([Umumy kitap], [Meýilleşdirilen], [kod taýýar; ýerli torda we açyk synag torunda işleýär, hakyky torda we sandbox-da ýapyk], [19],),
   ([Gazna, maslahat we sanawlaryň tabşyrylmagy], [Meýilleşdirilen], [], [18\.4],),
   ([ÝB-niň bilelikde işlemek çärelerine gatnaşmak], [Meýilleşdirilen], [], [20\.5],),
   ([Nol bilimli subutnama bilen lakam almak], [Gözleg], [], [15\.3],),
@@ -2354,11 +2360,11 @@ Tablisanyň okalyşy barada bir bellik goşalyň. "Işleýär" belligi funksiýa
 
 Ýol kartasy alty ädimden ybarat. Her ädim bir şerte bagly we hiç bir ädim öňki ädimde döredilen belgileri üýtgetmeýär (Tablisa 47). Ilkinji dört ädimiň dolandyryş tarapy Bölüm 18.3-de, kitap tarapy Bölüm 19.8-de düşündirildi; Surat 30 şol bir ýoly dolandyryş tapgyrlary hökmünde görkezýär.
 
-#tablo([#{strong[Tablisa 47.]} Ýol kartasynyň ädimleri: şert, näme üýtgeýär, näme üýtgemeýär.], (16fr, 32fr, 48fr, 38fr), ([Ädim], [Şert], [Näme üýtgeýär], [Näme üýtgemeýär],), (
+#tablo([#{strong[Tablisa 47.]} Ýol kartasynyň ädimleri: şert, näme üýtgeýär, näme üýtgemeýär.], (16fr, 32fr, 48fr, 43fr), ([Ädim], [Şert], [Näme üýtgeýär], [Näme üýtgemeýär],), (
   ([1\. Sanaw tapgyry (häzir)], [], [gol çekilen sanawlar we labyr žurnaly; sandbox; paketler synag wersiýasynda; OpenID öz-synagy], [],),
   ([2\. Taýýarlyk], [sanawdaky gapjyklaryň dükan wersiýalary we enjam synaglary], [enjam tassyklamasy, Bluetooth we brauzer ýollary janly bolýar; ilkinji guramalar hakyky tora goşulýar], [resminama görnüşleri, kök we gurama belgileri],),
   ([3\. Gazna], [gaznanyň ýuridik şahs bolmagy], [operatorlyk gaznaga geçýär; hakyky torda XML sanaw; şahsyýet hyzmatynyň sertifikaty täzelenýär], [sanaw operatorynyň ady, kök belgisi, resminama görnüşleri, berlen resminamalar],),
-  ([4\. Kitap], [azyndan iki garaşsyz operatoryň ýazmaça razylygy we deňgüýçlilik synaglary], [sanawlaryň heşi kitaba-da ýazylýar], [gol çekilen sanawlar çeşme bolup galýar; barlag hatary],),
+  ([4\. Kitap], [azyndan iki garaşsyz operatoryň ýazmaça razylygy we deňgüýçlilik synaglary], [sanawlardaky ynam ýazgylary heş we barmak yzy görnüşinde kitaba-da ýazylýar; taryh bir gezeklik göçüriş penjiresinde geçirilýär], [gol çekilen sanawlar çeşme bolup galýar; barlag hatary; kitaba şahsy maglumat ýazylmaýar],),
   ([5\. Döwletiň goşulmagy], [döwletiň öz sanawyny çap etmegi], [maslahat döredilýär; PID orny dolýar; wagtlaýyn rollar tabşyrylýar], [gurama belgileri, resminama görnüşleri, berlen resminamalar],),
   ([6\. Institusional giňelme], [maslahatyň kesgitlän çäkleri], [täze pudak shemalary öz kararlary bilen goşulýar], [toruň ýörelgeleri],),
 ))
@@ -2381,7 +2387,6 @@ Karar ýazgylarynyň we spesifikasiýalaryň "açyk meseleler" bölümleri heniz
   ([Ikinji şahsyýet barlagy üpjün edijisi], [Ýeke üpjün edijä baglylygyň öňüni almak], [SPEC-ID-0003],),
   ([Ýatyrylyş sanawyny jemlemek hökmanymy; köp ýagdaý üpjün edijisi], [Häzir "maslahat berilýär"; aç-açan ýazylmagy gerek bolup biler], [SPEC-CRED-0003],),
   ([Barlaýjy çäginiň resminama görnüşi belgilerine baglanmagy], [Her täze görnüşde her barlaýjynyň täzelenmegi meselesi], [SPEC-PROTO-0002],),
-  ([Gapjyk üpjün edijisi ýazgylarynyň kitapdaky gabatlygy], [Kitap tapgyrynda haýsy şertnamada saklanjakdygy], [SPEC-TRUST-0001],),
   ([ÝB ZK üçin başga ýatyrylyş usulyny saýlasa], [Gysga ömürli nusga karary täzeden seredilýär], [ADR-0044],),
   ([Kök sertifikat süýşürilende üstüne düşmek möhleti; aralyk sertifikat edarasy], [Teklip 12 aý; döwletleriň saýlawyna bagly], [SPEC-ID-0002],),
   ([Çägiň daşyndaky funksiýalar: PID bermek, töleg, gurama gapjygy, W3C VCDM görnüşi, kwalifisirlenen elektron gol], [Olaryň her biri diňe aýry karar bilen açylýar], [FW-ARF-0001 §1.7],),
@@ -2437,7 +2442,7 @@ Biz Aýnuryň arzasy bilen başlapdyk. Bakuda alan diplomyny Stambuldaky iş ber
 
 Bu ýoluň Aýnur üçin häzir näderejede açykdygyny hem dogruçyl aýtmak gerek. Türkiýäniň sanawy işjeň we akymyň tutuşlygy işleýär; ýöne Azerbaýjan üçin sanawlarda diňe orun goýuldy. Bu ylalaşyk ýa-da gepleşik barada habarnama däldir; döwlet goşulanda öz sanawyny çap edip biljek boş ýerdir. Aýnuryň Bakudaky uniwersitetiniň bu ýol bilen resminama berip bilmegi şol ornuň dolmagyna bagly. Gurluş muňa garaşar ýaly gurlan: orun dolanda täze meýdan goşulmaýar, bar bolan orun dolýar.
 
-Resminamanyň dowamynda üç saýlaw gaýta-gaýta öňümizden çykdy. Tehniki gatlak ÝB-ňki bilen birmeňzeş, sebäbi bilelikde işlemegiň gymmaty hiç kimiň aýratyn uýgunlaşdyrma ýazmaga mejbur bolmazlygyndan gelýär. Ynam häzir gol çekilen sanawlardan gelýär, sebäbi ýeke operatoryň zynjyry gol çekilen sanawdan artyk ynam döretmeýär; umumy kitap diňe garaşsyz taraplar ony bilelikde işledende gelýär we şonda-da sanawlaryň heşini göterýär. Her döwlet öz ýazgysynyň ýeke-täk ýazyjysydyr we häzir döwletiň adyndan alnyp barylýan her rol hiç bir resminamany we belgini üýtgetmezden tabşyrylyp bilner ýaly dizaýn edildi.
+Resminamanyň dowamynda üç saýlaw gaýta-gaýta öňümizden çykdy. Tehniki gatlak ÝB-ňki bilen birmeňzeş, sebäbi bilelikde işlemegiň gymmaty hiç kimiň aýratyn uýgunlaşdyrma ýazmaga mejbur bolmazlygyndan gelýär. Ynam häzir gol çekilen sanawlardan gelýär, sebäbi ýeke operatoryň zynjyry gol çekilen sanawdan artyk ynam döretmeýär; umumy kitap diňe garaşsyz taraplar ony bilelikde işledende gelýär we şonda-da sanawlardaky ýazgylaryň diňe heşlerini we barmak yzlaryny göterýär. Her döwlet öz ýazgysynyň ýeke-täk ýazyjysydyr we häzir döwletiň adyndan alnyp barylýan her rol hiç bir resminamany we belgini üýtgetmezden tabşyrylyp bilner ýaly dizaýn edildi.
 
 Ýol uzyn we şertleri toruň elinde bolmadyk ädimleri öz içine alýar: garaşsyz operatorlar, guramalar, döwletler. Şonuň üçin ýol kartasy sene bermeýär, şert berýär. Operatorlar üýtgäp biler, domen atlary tabşyrylyp bilner, kitap gelip ýa-da gijikip biler. Hemişelik galýan zat ynam modelidir: her kesiň barlap bilýän gol çekilen ýazgylary, çeşmeden soramazdan barlag we adamy tanamaýan umumy ýazgylar.
 
@@ -2471,7 +2476,7 @@ Adalgalar elipbiý tertibinde. Asyl adalga ýaýyň içinde berilýär; tehniki 
   ([HKDF], [Bir açardan başga açarlary alýan, HMAC esasly açar alyş funksiýasy.],),
   ([HMAC], [Gizlin açar bilen hasaplanýan, açary bilmeýän adamyň döredip bilmejek heşi.],),
   ([Içine gurlan açyş syýasaty], [Resminama berijiniň öz resminamasynyň haýsy barlaýjylara görkezilip bilinjekdigini gol çekilen tanyşdyryş resminamasynda ýazýan düzgüni; soňky karar adamda.],),
-  ([Kitap tapgyry], [Sanaw heşleriniň birnäçe garaşsyz operatoryň saklaýan umumy kitabyna hem ýazylýan tapgyry.],),
+  ([Kitap tapgyry], [Sanawlardaky ynam ýazgylarynyň heş we barmak yzy görnüşinde birnäçe garaşsyz operatoryň saklaýan umumy kitabyna hem ýazylýan tapgyry.],),
   ([Kwalifisirlenmedik atribut tassyklamasy (EAA)], [Kwalifisirlenen ynam hyzmaty üpjün edijisi bolmadyk islendik guramanyň berýän resminamasy.],),
   ([Labyr žurnaly (#{emph[anchor log]})], [Ýatyrylyş sanawlarynyň çap edilişlerini we resminama görnüşleriniň heşlerini sagatlaýyn gol çekilen setirler bilen saklaýan hemmä açyk žurnal.],),
   ([Lakam (#{emph[pseudonym]})], [Gapjygyň her saýt üçin aýratyn döredýän, durnukly, ýöne saýtlaryň arasynda gabat getirip bolmaýan hasap belgisi.],),
@@ -2483,7 +2488,7 @@ Adalgalar elipbiý tertibinde. Asyl adalga ýaýyň içinde berilýär; tehniki 
   ([PAR], [Ygtyýarlandyryş haýyşynyň ilki göni serwere iberilýän we brauzerde diňe salgylanma salgysynyň göterilýän OAuth giňeltmesi.],),
   ([PID], [Şahsy şahsyýet maglumatlary; döwletiň ýa-da döwletiň ygtyýarlandyran guramasynyň berýän şahsyýet resminamasy. Tamga PID bermeýär.],),
   ([PKCE], [Ygtyýarlandyryş kodunyň ele salynmagyna garşy müşderiniň bir gezeklik barlag bahasyny ulanýan OAuth giňeltmesi.],),
-  ([Proýeksiýa], [Umumy kitabyň gol çekilen sanawlaryň diňe heşlerini götermegi; çeşme sanawlardyr, gapma-garşylykda sanaw güýjünde.],),
+  ([Proýeksiýa], [Umumy kitabyň gol çekilen sanawlardaky ýazgylaryň diňe heşlerini we barmak yzlaryny götermegi; çeşme sanawlardyr, gapma-garşylykda sanaw güýjünde.],),
   ([Resminama (#{emph[credential, attestation]})], [Resminama berijiniň adam barada gol çeken we adamyň gapjygynda göterilýän elektron resminamasy.],),
   ([Resminama beriji (#{emph[issuer, attestation provider]})], [Resminamany berýän gurama: uniwersitet, hünär guramasy, bilet satyjy ýaly.],),
   ([Resminama eýesi (#{emph[holder]})], [Resminamany gapjygynda göterýän we ony kime görkezjekdigini karar edýän adam.],),
@@ -2514,7 +2519,7 @@ Adalgalar elipbiý tertibinde. Asyl adalga ýaýyň içinde berilýär; tehniki 
 
 Tablisa 51 ähli karar ýazgylaryny belgi tertibinde berýär. Sene ýazgynyň döredilen senesidir; işjeň ýazgylarda kabul edilen senesi köplenç şol bir, bolmasa ýazgy kabul edilen senesini aýratyn ýazýar. "Bölüm" sütüni ýazgynyň bu resminamada agzalýan esasy bölümlerini görkezýär. Ýazgylaryň doly teksti #{raw("docs.tamga.network/tr/adr/")} bölüminde.
 
-#tablo([#{strong[Tablisa 51.]} Karar ýazgylary.], (10fr, 40fr, 11fr, 13fr, 6fr), ([ADR​​​​​], [Ady], [Ýagdaý], [Sene], [Bölüm],), (
+#tablo([#{strong[Tablisa 51.]} Karar ýazgylary.], (10fr, 42fr, 11fr, 13fr, 6fr), ([ADR​​​​​], [Ady], [Ýagdaý], [Sene], [Bölüm],), (
   ([0001], [Besu QBFT kitaby], [Işjeň], [2026-07-29], [19],),
   ([0002], [Özygtyýarlylygy ileri tutýan dolandyryş], [Işjeň], [2026-08-05], [2, 4, 18],),
   ([0003], [Gymmat gatlagynyň ilgekleri], [Ýerini başgasyna berdi], [2026-08-06], [19],),
@@ -2587,6 +2592,9 @@ Tablisa 51 ähli karar ýazgylaryny belgi tertibinde berýär. Sene ýazgynyň d
   ([0070], [Wagtlaýyn operator zynjyry], [Işjeň], [2026-10-30], [4, 18],),
   ([0071], [Wagtlaýyn döwürde toruň maliýeleşdirilişi: hyzmat tölegi ýok; gazna grantlary we döwlet\/agza goşandy bilen], [Işjeň], [2026-10-30], [4, 18],),
   ([0072], [Gymmat gatlagy togtadyldy: ADR-0003 ilgekleri gözleg ugry], [Işjeň], [2026-10-30], [4, 19, 23],),
+  ([0073], [Zynjyr–sanaw deňgüýçliliginiň amala aşyrylyp bilinmegi: göçüriş tertibi, berk ýatyrylyş, shema wersiýalary, barlaýjy belgisi, ýagdaý gabatlygy], [Işjeň], [2026-11-04], [19],),
+  ([0074], [Proýeksiýanyň gerimi 0.8: gol çekilen sanawlardaky ähli ynam ýazgylary zynjyrda], [Işjeň], [2026-11-04], [4, 19],),
+  ([0075], [Barlaýjynyň domen ady belgisiniň eýeçiligi we ýatyrylandan soň gaýtadan hasaba alyş], [Işjeň], [2026-11-04], [19],),
 ))
 
 #heading(level: 1, numbering: none)[Goşmaça C — Standartlaryň görkezijisi]
@@ -2602,7 +2610,7 @@ Tablisa 52 resminamada agzalan daşky standartlary we kadalaşdyryjy namalary, o
   ([ÝB], [EUDI tehniki spesifikasiýalary (TS3 \[12\], TS10, TS13 …)], [ýaşaýan resminamalar], [WIA we KA, eksport, ZK], [13, 15],),
   ([ÝB], [Attestation Rulebook \[13\] şablony], [1\.5], [Tamga Rulebook-yň şahalary], [18\.8],),
   ([IETF], [RFC 9901 \[15\] SD-JWT], [Noýabr 2025], [resminama formaty], [8],),
-  ([IETF], [SD-JWT VC \[16\]], [draft-19], [resminama formaty], [8],),
+  ([IETF], [SD-JWT VC \[16\]], [Internet taslamasy; 2026\/1731-iň berkiden wersiýasy], [resminama formaty], [8],),
   ([IETF], [Token Status List \[17\]], [draft-20 (ÝB-niň salgylanýany), draft-21], [ýatyrylyş sanawlary], [12],),
   ([IETF], [OAuth 2.0 Attestation-Based Client Authentication \[18\]], [taslama], [WIA bilen müşderini barlamak], [9, 13],),
   ([IETF], [RFC 9449 DPoP \[20\] · RFC 9126 PAR \[21\] · RFC 7636 PKCE \[22\] · RFC 9700 \[23\]], [çap edilen], [resminama beriş profili], [9],),
@@ -2710,7 +2718,7 @@ Tamga-nyň çarçuwa resminamalary #{raw("arf.tamga.network/tr/")}, spesifikasi�
   ([GUIDE-0009], [Laýyklyk synaglary], [#{raw("docs.tamga.network/tr/guides/conformance")}],),
   ([GUIDE-0013], [Sandbox: synag tory], [#{raw("docs.tamga.network/tr/guides/sandbox")}],),
   ([GUIDE-0014], [Goşulyş guraly: IT topary üçin], [#{raw("docs.tamga.network/tr/guides/onboarding-tool")}],),
-  ([ADR-0001 … ADR-0072], [Karar ýazgylary (B goşmaça)], [#{raw("docs.tamga.network/tr/adr/")}],),
+  ([ADR-0001 … ADR-0075], [Karar ýazgylary (B goşmaça)], [#{raw("docs.tamga.network/tr/adr/")}],),
 ))
 
 #heading(level: 1, numbering: none)[Çeşmeler]
@@ -2745,7 +2753,7 @@ Tamga-nyň çarçuwa resminamalary #{raw("arf.tamga.network/tr/")}, spesifikasi�
 
 #kaynak("15")[Fett, D., Yasuda, K. we Campbell, B. (2025). #{emph[Selective Disclosure for JSON Web Tokens (SD-JWT).]} IETF RFC 9901, noýabr 2025.]
 
-#kaynak("16")[Terbu, O., Fett, D. we Campbell, B. #{emph[SD-JWT-based Verifiable Digital Credentials (SD-JWT VC).]} IETF OAuth iş toparynyň Internet taslamasy draft-ietf-oauth-sd-jwt-vc-19, 2026. https:\/\/datatracker.ietf.org\/doc\/draft-ietf-oauth-sd-jwt-vc\/]
+#kaynak("16")[Terbu, O., Fett, D. we Campbell, B. #{emph[SD-JWT-based Verifiable Digital Credentials (SD-JWT VC).]} IETF OAuth iş toparynyň Internet taslamasy draft-ietf-oauth-sd-jwt-vc; ÝB-niň 2026\/1731 belgili Ýerine ýetiriş düzgünnamasy bilen berkiden wersiýasy esas alynýar. https:\/\/datatracker.ietf.org\/doc\/draft-ietf-oauth-sd-jwt-vc\/ (girilen wagty: 11 noýabr 2026).]
 
 #kaynak("17")[Looker, T., Bastian, P. we Bormann, C. #{emph[Token Status List.]} IETF OAuth iş toparynyň Internet taslamasy draft-ietf-oauth-status-list-20 (20 aprel 2026; ÝB-niň 2026\/1731 bilen salgylanýan wersiýasy) we draft-21 (21 iýun 2026). https:\/\/datatracker.ietf.org\/doc\/draft-ietf-oauth-status-list\/]
 
@@ -2783,7 +2791,7 @@ Tamga-nyň çarçuwa resminamalary #{raw("arf.tamga.network/tr/")}, spesifikasi�
 
 #kaynak("34")[ISO\/IEC (2021). #{emph[ISO\/IEC 18013-5:2021 Personal identification: ISO-compliant driving licence, Part 5: Mobile driving licence (mDL) application.]} ISO\/IEC JTC 1\/SC 17. https:\/\/www.iso.org\/standard\/69084.html]
 
-#kaynak("35")[ISO\/IEC (2025). #{emph[ISO\/IEC TS 18013-7:2025 Personal identification: ISO-compliant driving licence, Part 7: Mobile driving licence (mDL) add-on functions.]} Ikinji neşir, maý 2025.]
+#kaynak("35")[ISO\/IEC (2025). #{emph[ISO\/IEC TS 18013-7:2025 Personal identification: ISO-compliant driving licence, Part 7: Mobile driving licence (mDL) add-on functions.]} Ikinji neşir, maý 2025 (ilkinji neşir oktýabr 2024).]
 
 #kaynak("36")[Caceres, M., Cappalli, T. we Yosef, M. A. (Ed.) (2026). #{emph[Digital Credentials.]} W3C Working Draft, Federated Identity Working Group, 29 oktýabr 2026. https:\/\/www.w3.org\/TR\/digital-credentials\/]
 
@@ -2837,38 +2845,38 @@ Tamga-nyň çarçuwa resminamalary #{raw("arf.tamga.network/tr/")}, spesifikasi�
 
 #kaynak("61")[Ýewropa Komissiýasy. #{emph[Europass we European Learning Model (ELM)]}, wersiýa 3. https:\/\/europa.eu\/europass\/]
 
-#kaynak("62")[Tamga Network (2026). #{emph[Kadim mührün çağdaş karşılığını inşa ediyoruz]} \[Gadymy möhrüň häzirki zaman gabatlygyny gurýarys\] (manifest), wersiýa 1.0, noýabr 2026. https:\/\/tamga.network\/manifesto-tr.pdf]
+#kaynak("62")[Tamga Network (2026). #{emph[Gadymy möhüriň häzirki zaman garşylygyny gurýarys]} (manifest), wersiýa 1.0, noýabr 2026. https:\/\/tamga.network\/manifesto-tk.pdf]
 
 #kaynak("63")[Tamga Network (2026). #{emph[Mimari ve Referans Çerçevesi]} \[Arhitektura we salgylanma çarçuwasy\] (FW-ARF-0001) we onuň goşundylary: Trust Framework, Tamga Rulebook we resminama görnüşleriniň rulebook-lary, Kesgitlemeler, Çeşmeler, Rollar, Gatnaşmak, Ýatyrylyş, Gapjyk tassyklamasy we Hasaba alyş sertifikaty syýasatlary; wersiýa 1.0.0. https:\/\/arf.tamga.network\/tr\/ (belgiler E goşmaçasynda).]
 
 #kaynak("64")[Tamga Network (2026). #{emph[Şartnameler]} \[Spesifikasiýalar\] (SPEC-TRUST-0001, SPEC-ID-0002\/0003, SPEC-CRED-0001\/0002\/0003, SPEC-SCHEMA-0001\/0002\/0003, SPEC-PROTO-0001\/0002, SPEC-API-0001, SPEC-WALLET-0001), wersiýa 1.0.0; gollanmalar we düşünje sahypalary. https:\/\/docs.tamga.network\/tr\/]
 
-#kaynak("65")[Tamga Network (2026). #{emph[Mimari karar kayıtları]} \[Arhitektura karar ýazgylary\] ADR-0001…ADR-0072. https:\/\/docs.tamga.network\/tr\/adr\/ (görkezijisi B goşmaçasynda).]
+#kaynak("65")[Tamga Network (2026). #{emph[Mimari karar kayıtları]} \[Arhitektura karar ýazgylary\] ADR-0001…ADR-0075. https:\/\/docs.tamga.network\/tr\/adr\/ (görkezijisi B goşmaçasynda).]
 
 #kaynak("66")[Tamga Network (2026). #{emph[tamga-network]} ammary: README, SECURITY.md, CHANGELOG (0.8.2, 5 noýabr 2026) we #{raw("@tamga-network/*")} paketleri, Apache-2.0. https:\/\/github.com\/tamga-network\/tamga-network]
 
 #kaynak("67")[Tamga Network Akademik Çalışmalar A1 (2026). #{emph[Dijital Kimliğin Evrimi: Kullanıcı Adından Kimlik Cüzdanına]} \[Sanly şahsyýetiň ewolýusiýasy: ulanyjy adyndan şahsyýet gapjygyna\]. https:\/\/tamga.network\/files\/publications\/evolution-of-digital-identity-tr.pdf]
 
-#kaynak("68")[Tamga Network Akademik Çalışmalar A3 (2026). #{emph[Seçici Açıklama: Gerekeni Göster, Gerisi Sende Kalsın]} \[Saýlap açmak: gerekli zady görkez, galany sende galsyn\]. https:\/\/tamga.network\/files\/publications\/selective-disclosure-tr.pdf]
+#kaynak("68")[Tamga Network Akademik Çalışmalar A3. #{emph[Seçici Açıklama: Gerekeni Göster, Gerisi Sende Kalsın]} \[Saýlap açmak: gerekli zady görkez, galany sende galsyn\]. Çap ediler.]
 
-#kaynak("69")[Tamga Network Akademik Çalışmalar A4 (2026). #{emph[Sıfır Bilgi İspatları ve Kimlik]} \[Nol bilimli subutnamalar we şahsyýet\]. https:\/\/tamga.network\/files\/publications\/zero-knowledge-proofs-tr.pdf]
+#kaynak("69")[Tamga Network Akademik Çalışmalar A4. #{emph[Sıfır Bilgi İspatları ve Kimlik]} \[Nol bilimli subutnamalar we şahsyýet\]. Çap ediler.]
 
-#kaynak("70")[Tamga Network Akademik Çalışmalar A5 (2026). #{emph[Bağlanamazlık: Doğrulayıcılar Seni Birbirine Anlatmasın]} \[Baglanyşyksyzlyk: barlaýjylar seni biri-birine gürrüň bermesin\]. https:\/\/tamga.network\/files\/publications\/unlinkability-tr.pdf]
+#kaynak("70")[Tamga Network Akademik Çalışmalar A5. #{emph[Bağlanamazlık: Doğrulayıcılar Seni Birbirine Anlatmasın]} \[Baglanyşyksyzlyk: barlaýjylar seni biri-birine gürrüň bermesin\]. Çap ediler.]
 
-#kaynak("71")[Tamga Network Akademik Çalışmalar A6 (2026). #{emph[Kime Güveniyoruz? Güven Listeleri ve Dijital Güven Altyapısı]} \[Kime ynanýarys? Ynam sanawlary we sanly ynam infrastrukturasy\]. https:\/\/tamga.network\/files\/publications\/trust-lists-tr.pdf]
+#kaynak("71")[Tamga Network Akademik Çalışmalar A6. #{emph[Kime Güveniyoruz? Güven Listeleri ve Dijital Güven Altyapısı]} \[Kime ynanýarys? Ynam sanawlary we sanly ynam infrastrukturasy\]. Çap ediler.]
 
-#kaynak("72")[Tamga Network Akademik Çalışmalar A7 (2026). #{emph[İptal: Bir Belgeyi Geri Almak, Kimseyi İzlemeden]} \[Ýatyrylyş: resminamany yzyna almak, hiç kimi yzarlamazdan\]. https:\/\/tamga.network\/files\/publications\/revocation-tr.pdf]
+#kaynak("72")[Tamga Network Akademik Çalışmalar A7. #{emph[İptal: Bir Belgeyi Geri Almak, Kimseyi İzlemeden]} \[Ýatyrylyş: resminamany yzyna almak, hiç kimi yzarlamazdan\]. Çap ediler.]
 
-#kaynak("73")[Tamga Network Akademik Çalışmalar A8 (2026). #{emph[Belge Nasıl Verilir, Nasıl Gösterilir]} \[Resminama nähili berilýär, nähili görkezilýär\]. https:\/\/tamga.network\/files\/publications\/issuing-and-presenting-tr.pdf]
+#kaynak("73")[Tamga Network Akademik Çalışmalar A8. #{emph[Belge Nasıl Verilir, Nasıl Gösterilir]} \[Resminama nähili berilýär, nähili görkezilýär\]. Çap ediler.]
 
-#kaynak("74")[Tamga Network Akademik Çalışmalar A9 (2026). #{emph[Yüz Yüze Doğrulama: NFC, Bluetooth ve Mobil Ehliyet]} \[Ýüzbe-ýüz barlag: NFC, Bluetooth we mobil sürüjilik şahadatnamasy\]. https:\/\/tamga.network\/files\/publications\/in-person-verification-tr.pdf]
+#kaynak("74")[Tamga Network Akademik Çalışmalar A9. #{emph[Yüz Yüze Doğrulama: NFC, Bluetooth ve Mobil Ehliyet]} \[Ýüzbe-ýüz barlag: NFC, Bluetooth we mobil sürüjilik şahadatnamasy\]. Çap ediler.]
 
-#kaynak("75")[Tamga Network Akademik Çalışmalar A10 (2027, neşir meýilnamasyna görä). #{emph[Cüzdan Güvenliği: Anahtar Nerede Saklanır, Telefon Gerçek mi?]} \[Gapjyk howpsuzlygy: açar nirede saklanýar, telefon hakykymy?\] https:\/\/tamga.network\/files\/publications\/wallet-security-tr.pdf]
+#kaynak("75")[Tamga Network Akademik Çalışmalar A10. #{emph[Cüzdan Güvenliği: Anahtar Nerede Saklanır, Telefon Gerçek mi?]} \[Gapjyk howpsuzlygy: açar nirede saklanýar, telefon hakykymy?\]. Çap ediler.]
 
-#kaynak("76")[Tamga Network Akademik Çalışmalar A11 (2027, neşir meýilnamasyna görä). #{emph[eIDAS 2.0’a Hukuk Dışından Bakış]} \[eIDAS 2.0-a hukukdan daşarda bir garaýyş\]. https:\/\/tamga.network\/files\/publications\/eidas-2-explained-tr.pdf]
+#kaynak("76")[Tamga Network Akademik Çalışmalar A11. #{emph[eIDAS 2.0’a Hukuk Dışından Bakış]} \[eIDAS 2.0-a hukukdan daşarda bir garaýyş\]. Çap ediler.]
 
-#kaynak("77")[Tamga Network Akademik Çalışmalar A12 (2027, neşir meýilnamasyna görä). #{emph[Blokzincir ve Dijital Kimlik]} \[Blokçeýn we sanly şahsyýet\]. https:\/\/tamga.network\/files\/publications\/blockchain-and-identity-tr.pdf]
+#kaynak("77")[Tamga Network Akademik Çalışmalar A12. #{emph[Blokzincir ve Dijital Kimlik]} \[Blokçeýn we sanly şahsyýet\]. Çap ediler.]
 
-#kaynak("78")[Tamga Network Akademik Çalışmalar A14 (2027, neşir meýilnamasyna görä). #{emph[Deepfake Çağında Kimlik Doğrulama]} \[Deepfake döwründe şahsyýet barlagy\]. https:\/\/tamga.network\/files\/publications\/deepfakes-and-identity-verification-tr.pdf]
+#kaynak("78")[Tamga Network Akademik Çalışmalar A14. #{emph[Deepfake Çağında Kimlik Doğrulama]} \[Deepfake döwründe şahsyýet barlagy\]. Çap ediler.]
 
-#kaynak("79")[Tamga Network Akademik Çalışmalar A15 (2027, neşir meýilnamasyna görä). #{emph[Kuantum Sonrası Dönemde Dijital Kimlik]} \[Kwantdan soňky döwürde sanly şahsyýet\]. https:\/\/tamga.network\/files\/publications\/post-quantum-identity-tr.pdf]
+#kaynak("79")[Tamga Network Akademik Çalışmalar A15. #{emph[Kuantum Sonrası Dönemde Dijital Kimlik]} \[Kwantdan soňky döwürde sanly şahsyýet\]. Çap ediler.]

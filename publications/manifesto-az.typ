@@ -40,7 +40,7 @@ Sənədin həqiqi olduğuna riyaziyyat qərar verməlidir; surətin nə qədər 
 
 #heading(level: 1, numbering: none)[Blockchain vasitədir, yalnız vasitə]
 
-Bu gün şəbəkədə blockchain yoxdur və etibarın ona ehtiyacı da yoxdur. Etibar hər kəsin yükləyib yoxlaya bildiyi imzalı, açıq etibar siyahılarına əsaslanır. Ortaq reyestr yalnız müstəqil tərəflər onu birlikdə idarə etdikdə nəsə qatır və o zaman da yalnız bu siyahıların xülasəsini (hash) daşıyır. Reyestrin kodu yazılıb və test edilib; ikinci müstəqil operator qoşulana qədər söndürülmüş qalır. #{strong[Fərdi məlumat heç birinə heç vaxt yazılmır.]} Şəxs bunların heç birini görmür; yalnız öz şəxsiyyətindən istifadə edir.
+Bu gün şəbəkədə blockchain yoxdur və etibarın ona ehtiyacı da yoxdur. Etibar hər kəsin yükləyib yoxlaya bildiyi imzalı, açıq etibar siyahılarına əsaslanır. Ortaq reyestr yalnız müstəqil tərəflər onu birlikdə idarə etdikdə nəsə qatır və o zaman da yalnız siyahı qeydlərinin xülasələrini (hash) və barmaq izlərini daşıyır, fərdi məlumatı isə heç vaxt. Reyestrin kodu yazılıb və test edilib; ikinci müstəqil operator qoşulana qədər söndürülmüş qalır. #{strong[Fərdi məlumat heç birinə heç vaxt yazılmır.]} Şəxs bunların heç birini görmür; yalnız öz şəxsiyyətindən istifadə edir.
 
 #heading(level: 1, numbering: none)[Açıq standartlar, asılılıq yoxdur]
 

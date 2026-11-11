@@ -98,7 +98,7 @@ Bu səhnənin bir dizaynı təsvir etdiyini açıq demək lazımdır. Tamga Netw
 
 == Bu sənədin töhfəsi və planı
 
-Tamga Network-ü əvvəllər qısa whitepaper ilə \[62\] təqdim etmişdik; bu genişləndirilmiş nəşr onu əvəz edir. Manifest və tərtibatçı sənədləri onun yanında qalır. Bu nəşr üç suala birlikdə və ətraflı cavab vermək üçün yazılıb.
+Tamga Network-ü əvvəllər qısa whitepaper ilə təqdim etmişdik; bu genişləndirilmiş nəşr onu əvəz edir. Manifest \[62\] və tərtibatçı sənədləri onun yanında qalır. Bu nəşr üç suala birlikdə və ətraflı cavab vermək üçün yazılıb.
 
 Birinci sual #{strong[necə işlədiyidir]}. Sənədin verilməsindən yoxlanmasına, ləğvindən cüzdandakı həyatına qədər hər addımı heç bir ilkin bilik fərz etmədən izah edirik. Texniki təfərrüatı buraxmırıq, lakin onu ayrıca qutulara yerləşdiririk; qutuları ötürən oxucu da mətni izləyə bilər. İkinci sual #{strong[niyə belə seçildiyidir]}. Şəbəkənin hər mühüm qərarı bir qərar qeydinə bağlıdır və bu qeydlər nəyin seçildiyi ilə yanaşı hansı variantların niyə kənara qoyulduğunu da yazır. Sənəd boyu bir seçimi izah edərkən onun qərar qeydini və alternativlərini birlikdə veririk. Üçüncü sual #{strong[hara getdiyidir]}. Bu gün nəyin işlədiyini, nəyin qərara alınıb hələ canlı olmadığını və nəyin hələ də tədqiqat olduğunu ayırırıq; təqvim əvəzinə şərt veririk.
 
@@ -173,7 +173,7 @@ Cədvəlin bir xüsusiyyətinə diqqət çəkmək istəyirik. Tələblərin bir 
 
 = Arxa Plan: eIDAS 2.0, EUDI ARF və Açıq Standartlar
 
-Tamga Network boşluqda layihələndirilməyib. Onun texniki qatı Avropa İttifaqının son on ildə qurduğu rəqəmsal şəxsiyyət sisteminin üzərində dayanır. Bu bölmə həmin sistemi Tamga-nı anlamaq üçün kifayət edəcək qədər izah edir. Aİ hüququnu bütün təfərrüatı ilə öyrənmək istəyən oxucu üçün silsilənin eIDAS 2.0 \[2\] yazısı ayrıca mənbədir.
+Tamga Network boşluqda layihələndirilməyib. Onun texniki qatı Avropa İttifaqının son on ildə qurduğu rəqəmsal şəxsiyyət sisteminin üzərində dayanır. Bu bölmə həmin sistemi Tamga-nı anlamaq üçün kifayət edəcək qədər izah edir. Aİ hüququnu bütün təfərrüatı ilə öyrənmək istəyən oxucu üçün silsilənin eIDAS 2.0 yazısı \[76\] ayrıca mənbədir.
 
 == eIDAS-dan eIDAS 2.0-a
 
@@ -189,7 +189,7 @@ Reqlamentin özü prinsipləri, rolları və öhdəlikləri müəyyən edir; lak
 
 eIDAS 2.0 cüzdanda daşınan sənədləri iki böyük qrupa ayırır. Birinci qrup #{strong[şəxsiyyət məlumatlarıdır]} (#{emph[Person Identification Data]}, #{strong[PID]}): ad, soyad, doğum tarixi, vətəndaşlıq kimi şəxsin kimliyini müəyyən edən məlumat. PID-i yalnız dövlət və ya dövlətin səlahiyyət verdiyi təşkilat verə bilər və o, cüzdanın əsasını təşkil edir. İkinci qrup #{strong[atributların elektron attestasiyalarıdır]} (#{emph[Electronic Attestation of Attributes]}, #{strong[EAA]}): diplom, tələbə arayışı, peşə sənədi, üzvlük kartı, bilet; qısası, PID-dən başqa hər sənəd.
 
-Reqlament EAA-ları da kimin verdiyinə və hansı təminatı daşıdığına görə üçə bölür. Kvalifikasiyalı etibar xidməti provayderinin verdiyi #{strong[kvalifikasiyalı atribut attestasiyası]} (QEAA) kağız üzərindəki qarşılığı ilə eyni hüquqi təsirə malikdir. Səlahiyyətli mənbəyə cavabdeh dövlət qurumunun və ya onun adından təyin edilmiş qurumun verdiyi #{strong[dövlət qurumu attestasiyası]} (PuB-EAA) ayrıca sinifdir. Bunlardan kənarda qalan hər kəs, məsələn universitet, bilet satıcısı və ya idman klubu, #{strong[kvalifikasiyalı olmayan atribut attestasiyası]} verə bilər. Bu bölgü hüquqi təsiri müəyyən edir; texniki format isə çox vaxt eynidir.
+Reqlament EAA-ları da kimin verdiyinə və hansı təminatı daşıdığına görə üçə bölür. Kvalifikasiyalı etibar xidməti provayderinin verdiyi #{strong[kvalifikasiyalı atribut attestasiyası]} (QEAA) kağız üzərindəki qarşılığı ilə eyni hüquqi təsirə malikdir. Səlahiyyətli mənbəyə cavabdeh dövlət qurumunun və ya onun adından təyin edilmiş qurumun verdiyi #{strong[dövlət qurumu attestasiyası]} (PuB-EAA) ayrıca sinifdir və o da kağız üzərindəki qarşılığı ilə eyni hüquqi təsirə malikdir (Maddə 45b(2)). Bunlardan kənarda qalan hər kəs, məsələn universitet, bilet satıcısı və ya idman klubu, #{strong[kvalifikasiyalı olmayan atribut attestasiyası]} verə bilər. Bu bölgü hüquqi təsiri müəyyən edir; texniki format isə çox vaxt eynidir.
 
 Tamga-nın bu anlayışlarla münasibətində ilk qayda şəbəkənin #{strong[PID verməməsidir]}. Əsas çərçivə sənədi PID verilməsini əhatədən kənar sayır və bu rolu dövlətə ayırır (FW-ARF-0001 §1.7). Etibar siyahısında PID provayderləri üçün yer var, lakin bu yer bu gün boşdur. Şəxsin kimliyini təsdiqləyən sənədə yenə də ehtiyac olduğu üçün şəbəkə dövlətin PID provayderi təyin edilənə qədər #{strong[müvəqqəti şəxsiyyət sənədi provayderi]} idarə edir; bu xidmətin verdiyi sənəd PID deyil, kvalifikasiyalı olmayan EAA-dır və dövlətin PID-i gəldikdə yerini ona verir (ADR-0011, ADR-0022; Bölmə 14). Cədvəl 4 dörd anlayışı və onların Tamga-dakı qarşılıqlarını yan-yana qoyur.
 
@@ -213,7 +213,7 @@ ARF-in ən davamlı töhfələrindən biri #{strong[rollar toplusudur]}. Hər ro
 - #{strong[Giriş sertifikatı orqanı]} (#{emph[Access Certificate Authority]}) relying party-lərə özlərini cüzdana təqdim edəcəkləri sertifikatları verir; #{strong[qeydiyyat sertifikatı provayderi]} isə qeydiyyatdakı əhatə dairəsini daşıyan imzalı sənədi yaradır.
 - #{strong[Etibar siyahısı provayderi]} bu rolları kimlərin öz üzərinə götürdüyünü imzalı siyahılarda dərc edir.
 
-Bu rolların hamısının üstündə eIDAS-ın 2014-cü ildən bəri işləyən etibar siyahısı arxitekturası dayanır. Hər üzv dövlət öz #{strong[milli etibar siyahısını]} imzalayıb dərc edir; Komissiya da bu siyahıların ünvanlarını və imzalayanlarını göstərən #{strong[siyahıların siyahısını]} (#{emph[List of Trusted Lists]}, LOTL) dərc edir. eIDAS 2.0 ilə bu arxitektura cüzdan ekosisteminin yeni rollarına genişlənir: hansı təşkilatların cüzdan provayderi, PID provayderi və ya giriş sertifikatı orqanı olduğu da oxşar siyahılarla bildirilir.
+Bu rolların hamısının üstündə ilk eIDAS reqlamentindən bəri işləyən etibar siyahısı arxitekturası dayanır. Hər üzv dövlət öz #{strong[milli etibar siyahısını]} imzalayıb dərc edir; Komissiya da bu siyahıların ünvanlarını və imzalayanlarını göstərən #{strong[siyahıların siyahısını]} (#{emph[List of Trusted Lists]}, LOTL) dərc edir. eIDAS 2.0 ilə bu arxitektura cüzdan ekosisteminin yeni rollarına genişlənir: hansı təşkilatların cüzdan provayderi, PID provayderi və ya giriş sertifikatı orqanı olduğu da oxşar siyahılarla bildirilir.
 
 Bu qaydanın bir nəticəsi yoxlamanın #{strong[ikitərəfli]} olmasıdır. Yoxlayan tərəf sənədi yoxlayarkən cüzdan da yoxlayan tərəfi yoxlayır: sorğunu imzalayan təşkilat həqiqətən qeydiyyatdadırmı, istədiyi sahələr qeydiyyatının əhatə dairəsindədirmi? Bölmə 1.2-dəki səhnədə Aynurun cüzdanının Timurun şirkətini yoxlaması bu prinsipin tətbiqidir. Şəkil 3 rolları Aİ-nin terminləri ilə göstərir.
 
@@ -264,7 +264,7 @@ Arxitekturanı anlamağın qısa yolu onu quranların heç vaxt nə etməyəcək
 
 #{strong[P4. Heç bir identifikator, rol və ya struktur tək operator fərziyyəsi daşımır.]} Şəbəkənin bu gün müvəqqəti olaraq öz üzərinə götürdüyü hər dövlət rolu təhvil verilə bilən şəkildə layihələndirilir. Niyə? Çünki struktur tək operatora görə qurularsa, təhvil günü hər şeyi yenidən yazmaq lazım gəlir: qurum identifikatorları dəyişir, sənədlər etibarsızlaşır, cüzdanlar yenilənir. Tamga-da təhvil yalnız siyahının operator sahəsini və imzalayanını dəyişir; qurumların identifikatorları, sənəd növləri və verilmiş sənədlər eyni qalır (Bölmə 6.7, 18.4).
 
-#{strong[P5. Ortaq reyestr saxlama seçimi deyil, imzalayanların seçimidir.]} Bu gün etibar imzalı siyahılardan gəlir. Ən azı iki müstəqil operator olduqda ortaq reyestr qurulur. Niyə? Çünki tək operatorun idarə etdiyi dörd qovşaqlı zəncir eyni operatorun imzaladığı siyahıdan artıq etibar yaratmır (ADR-0009). Reyestri dəyərli edən qeydlərin bir-birindən asılı olmayan tərəflərin ortaq imzası ilə saxlanmasıdır. Buna görə Tamga-da zəncirin kodu yazılıb və test edilib, lakin istehsalatda yoxdur və söndürülüb; ikinci müstəqil operator olmadan işə salınmır və işə salındıqda da yalnız imzalı siyahıların hash-ini daşıyır (ADR-0051; Bölmə 19).
+#{strong[P5. Ortaq reyestr saxlama seçimi deyil, imzalayanların seçimidir.]} Bu gün etibar imzalı siyahılardan gəlir. Ən azı iki müstəqil operator olduqda ortaq reyestr qurulur. Niyə? Çünki tək operatorun idarə etdiyi dörd qovşaqlı zəncir eyni operatorun imzaladığı siyahıdan artıq etibar yaratmır (ADR-0009). Reyestri dəyərli edən qeydlərin bir-birindən asılı olmayan tərəflərin ortaq imzası ilə saxlanmasıdır. Buna görə Tamga-da zəncirin kodu yazılıb və test edilib, lakin istehsalatda yoxdur və söndürülüb; ikinci müstəqil operator olmadan işə salınmır və işə salındıqda da yalnız imzalı siyahılardakı qeydlərin hash-lərini və barmaq izlərini daşıyır (ADR-0051, ADR-0074; Bölmə 19).
 
 #{strong[P6. Hər sənəd cihazın təhlükəsiz zonasındakı bir açara bağlıdır.]} Sənəd köçürülə və başqasına verilə bilməz. Bağı olmayan sənədi onu ələ keçirən hər kəs təqdim edə bilər; diplomun faylını götürən biri sahibi kimi davrana bilər. Cihaz bağı olmadan rəqəmsal sənəd kağız surətin zəifliyini daşımağa davam edir (ADR-0006; Bölmə 8.2).
 
@@ -486,7 +486,7 @@ Bu gün yalnız Türkiyə üçün yer aktivdir. Türk Dövlətləri Təşkilatı
   \"assurance\": \"I2\",
   \"class\": \"EAA\",
   \"cert_fingerprint_sha256\": \"fb58ea8de393d34d2b73ce7672a08c3e2908028edbd5fce9a4c10fb4ad2577ce\",
-  \"issuer_url\": \"https://issuer.tamga.network/example-university\",
+  \"issuer_url\": \"https://issuer.sandbox.tamga.network/example-university\",
   \"status\": \"ACTIVE\",
   \"valid_from\": \"2026-09-01T00:00:00Z\",
   \"status_history\": [
@@ -545,7 +545,7 @@ Aşağıdakı sətir qurumun ləğv siyahısı dərcinin jurnala necə yazıldı
   \"kind\": \"status_list\",
   \"list_id\": \"0x…4101234c731b7165\",
   \"issuer_id\": \"0xe41abbb0…e8db1b60\",
-  \"list_uri\": \"https://status.tamga.network/4101234c731b7165\",
+  \"list_uri\": \"https://status.sandbox.tamga.network/4101234c731b7165\",
   \"content_hash\": \"sha256:f037c5749daa…e9f4851d50\",
   \"list_version\": 15294
 }", baslik: "Nümunə: lövbər jurnalında ləğv siyahısının dərci (JWS yükü, açılmış)")
@@ -731,12 +731,12 @@ Yoxlayan tərəf açar bağının imzasını sənəddəki #{raw("cnf")} açarı 
 Aşağıdakı nümunə Aynurun diplomunun qurumun imzaladığı gövdəsini disclosure-lar açılmış halda göstərir. Təqdimatda bu sahələrin yalnız bir hissəsi açılır (Şəkil 12).
 
 #kod("json", "{
-  \"iss\": \"https://issuer.tamga.network/example-university\",
+  \"iss\": \"https://issuer.sandbox.tamga.network/example-university\",
   \"vct\": \"urn:tamga:edu:DiplomaCredential:1\",
   \"vct#integrity\": \"sha256-7Dcy7bWeg5CURNEE+veGmjOE3HWb95ZGJBWX/ZrZgtI=\",
   \"iat\": 1782896400,
   \"cnf\": { \"jwk\": { \"kty\": \"EC\", \"crv\": \"P-256\", \"x\": \"…\", \"y\": \"…\" } },
-  \"status\": { \"status_list\": { \"idx\": 48213, \"uri\": \"https://status.tamga.network/…\" } },
+  \"status\": { \"status_list\": { \"idx\": 48213, \"uri\": \"https://status.sandbox.tamga.network/…\" } },
   \"given_name\": \"Aynur\",
   \"family_name\": \"Məmmədova\",
   \"qualification_title\": { \"tr-TR\": \"Bilgisayar Mühendisliği Yüksek Lisans Diploması\",
@@ -886,13 +886,13 @@ Təklif QR kodun içinə yerləşdirilmir; QR kod yalnız təklifin ünvanını 
 Kimliyə bağlı təklif standartın avtorizasiya kodu axınından istifadə edir; təklifdə əvvəlcədən səlahiyyətləndirilmiş kod yoxdur, yalnız təklifin identifikatorunu daşıyan #{raw("issuer_state")} dəyəri var. Cüzdan bu dəyəri avtorizasiya sorğusuna qoyur və sənəd verən təklifin etibarlı, istifadə edilməmiş və eyni sənəd növü üçün olduğunu yoxlayır (SPEC-PROTO-0001 §3.4). Dəyərlər nümunədir.
 
 #kod("json", "{
-  \"credential_issuer\": \"https://issuer.tamga.network/example-university\",
+  \"credential_issuer\": \"https://issuer.sandbox.tamga.network/example-university\",
   \"credential_configuration_ids\": [\"urn:tamga:edu:DiplomaCredential:1\"],
   \"grants\": { \"authorization_code\": { \"issuer_state\": \"b3f1c2…\" } }
 }", baslik: "Nümunə: Aynurun diplomu üçün kimliyə bağlı təklif")
 
 #kod("text", "openid-credential-offer://?credential_offer_uri=
-  https%3A%2F%2Fissuer.tamga.network%2Fexample-university%2Foffers%2F8a3f9c21", baslik: "Nümunə: QR kodun daşıdığı ünvan")
+  https%3A%2F%2Fissuer.sandbox.tamga.network%2Fexample-university%2Foffers%2F8a3f9c21", baslik: "Nümunə: QR kodun daşıdığı ünvan")
 
 Təqdimat sənədində hər sənəd konfiqurasiyasının identifikatoru və əhatəsi (#{raw("scope")}) növün URN-idir; format həmişə #{raw("dc+sd-jwt")}, imza və sübut alqoritmi yalnız ES256, toplu vermə həcmi isə 10-dur. Təxirə salınmış vermə nöqtəsi və bildiriş nöqtəsi bu gün elan edilmir (§2.1, §9, §10).
 ]
@@ -1951,7 +1951,7 @@ Bu sənədlər qərar yaratmır. Məcburilik ardıcıllığı belədir: qərar q
 = Ortaq Reyestr: Niyə İndi Yox, Necə Gələcək
 
 #kutu("onemli", [Bu bölmənin statusu: planlaşdırılıb])[
-Bu gün işləyən zəncir yoxdur. İcazəli ortaq reyestrin kodu yazılıb və test edilib; istehsalatda yoxdur və söndürülüb. İkinci müstəqil operator olmadan işə salınmır (ADR-0009, ADR-0051). Aşağıdakılar reyestr işə salınarsa, qüvvədə olacaq qaydalardır. Bu gün etibar Bölmə 6-dakı imzalı siyahılara və lövbər jurnalına əsaslanır və yoxlamanın heç bir addımı zəncirdən asılı deyil.
+Bu gün nə real şəbəkədə, nə də sandbox-da işləyən zəncir var. İcazəli ortaq reyestrin kodu yazılıb və test edilib; o yalnız tərtibatçıların kompüterlərində və açıq repozitoriyadakı dörd validatorlu test şəbəkəsində işləyir, istehsalatda yoxdur və söndürülüb. İkinci müstəqil operator olmadan işə salınmır (ADR-0009, ADR-0051). Aşağıdakılar reyestr işə salınarsa, qüvvədə olacaq qaydalardır; onların əhatəsini və keçidi ADR-0073, ADR-0074 və ADR-0075 müəyyən edir. Bu gün etibar Bölmə 6-dakı imzalı siyahılara və lövbər jurnalına əsaslanır və yoxlamanın heç bir addımı zəncirdən asılı deyil.
 ]
 
 "Blokçeyn haradadır?" sualı Tamga-ya ən çox verilən suallardan biridir, çünki şəbəkənin ilk dizaynı zəncirlə başlayırdı. Bugünkü cavab belədir: zəncir hazırda heç nə qatmır və heç nə qatmadığı dövrdə qurulması etibarı olduğundan böyük göstərir. Bu bölmə bunun əsaslandırmasını, reyestrin hansı qaydalarla gələcəyini və keçidin necə ediləcəyini izah edir. Zəncirin şəxsiyyət sahəsində nə vaxt faydalı olduğunu ümumi şəkildə seriyanın on ikinci yazısı \[77\] müzakirə edir.
@@ -1979,18 +1979,19 @@ ADR-0001-in ilk əsaslandırmaları arasında reyestrin gələcəkdə dəyər k�
 
 == Proyeksiya prinsipi
 
-Reyestr gəlsə, siyahıların yerini tutacaqmı? ADR-0051 ən dar və ən təhlükəsiz cavabı verir: #{strong[zəncir imzalı siyahıların proyeksiyasıdır.]} Mənbə həmişə imzalı siyahılar və lövbər jurnalıdır; zəncir yalnız "bu siyahı versiyası bu hash ilə dərc edildi" deyə şahidlik edən ikinci qeyddir (Şəkil 31).
+Reyestr gəlsə, siyahıların yerini tutacaqmı? ADR-0051 ən dar və ən təhlükəsiz cavabı verir: #{strong[zəncir imzalı siyahıların proyeksiyasıdır.]} Mənbə həmişə imzalı siyahılar və lövbər jurnalıdır; zəncir siyahıların dediyini hash-lərlə təkrarlayan ikinci qeyddir (Şəkil 31).
 
-Zəncirə iki növ qeyd yazılır: hər siyahı versiyasının hash-i (hansı siyahı, neçənci versiya, məzmunun SHA-256 hash-i, əvvəlki versiyanın hash-i, dərc vaxtı) və lövbər jurnalının son sətrinin hash-i. Jurnalın sətirləri bir-birinə hash zənciri ilə bağlı olduğundan son sətir bütün jurnalı bağlayır. Siyahı məzmunu, qeydlər, sənədlər, sənəd hash-ləri və fərdi məlumat zəncirə yazılmır; qeyd sahələri yalnız sabit ölçülü hash-lər və tam ədədlərdir, sərbəst mətn sahəsi yoxdur (ADR-0051 K2, CH2; Cədvəl 36).
+Reyestrə nəyin yazılacağını iki qərar müəyyən edir. ADR-0051 ilk addımı atdı: hər siyahı versiyasının hash-i (hansı siyahı, neçənci versiya, məzmunun SHA-256 hash-i, əvvəlki versiyanın hash-i, dərc vaxtı) və lövbər jurnalının son sətrinin hash-i yazılır. Jurnalın sətirləri bir-birinə hash zənciri ilə bağlı olduğundan son sətir bütün jurnalı bağlayır. ADR-0074 əhatəni genişləndirdi: imzalı siyahılarda etibar qərarına təsir edən hər qeydin reyestrdə bir qarşılığı olur. Kök sertifikatlar, sənəd verənlər, yoxlayan tərəflər və qapı qrupları, sxemlər, cüzdan provayderləri və onların imza açarları, sıfır bilik dövrələri (ZK circuits), xarici siyahılar, siyahı imzalayanları və siyahı operatoru buraya daxildir. Reyestrə qeydlərin özü yazılmır; onların hash-ləri və barmaq izləri yazılır. Bunlar identifikator hash-ləri, açar və sertifikat barmaq izləri, qapalı çoxluq dəyərləri, tarixlər, dövlət kodları və hesab ünvanlarıdır. Ad, təsvir və əlaqə məlumatı kimi sərbəst mətnlər yalnız imzalı siyahıda qalır; reyestrdə onların kanonik formasından alınmış tək bir hash olur. Sənədlər, sənəd hash-ləri, ləğv bitləri və fərdi məlumat reyestrə heç vaxt yazılmır (ADR-0051 CH2; ADR-0074 PJ1, PJ2; Cədvəl 36). Sandbox siyahıları da istehsalat reyestrinə yazılmır (ADR-0074 PJ4).
 
 #sekil(31, [Proyeksiya: mənbə siyahı, törəmə reyestr], "figures/wp-az/sekil-31.svg", yarim: false)
 
 Proyeksiyanın ən vacib qaydası istiqamətdir. Yoxlama xətti və müştərilərin etibar suallarını verdiyi vahid interfeys (#{raw("TrustSource")}, Bölmə 6.6) yalnız siyahılardan oxuyur; zəncir heç bir addımda lazım deyil və olmayacaq. Yoxlayan tərəf istəsə, öz siyahısının hash-ini zəncirdəki təsdiqlənmiş hash ilə müqayisə edə bilər və üç cavabdan birini alır. #{strong[Bəli]}: təsdiqlənmiş hash eynidir. #{strong[Xeyr]}: eyni versiya üçün təsdiqlənmiş fərqli hash var; bu, iki yoxlayan tərəfə iki fərqli siyahı göstərildiyinin əlamətidir, yoxlama nəticəsini dəyişmir, lakin operatora siqnal verir və şəffaflıq hesabatına düşür. #{strong[Naməlum]}: funksiya söndürülüb və ya zəncirə çatmaq mümkün deyil; nəticə pisləşmir. Ziddiyyətdə siyahı qüvvədədir; zəncir qeydi düzəldilmir, yanına yeni versiya əlavə edilir (ADR-0051 K1, K5, CH1).
 
-#tablo([#{strong[Cədvəl 36.]} Reyestrdə nə var, nə yoxdur (ADR-0051 CH2; ADR-0063 BL2; FW-ARF-0001 §1.6 P2).], (48fr, 40fr), ([Reyestrdə var], [Reyestrdə yoxdur],), (
-  ([Siyahı versiyasının nömrəsi, məzmun hash-i, əvvəlki hash, dərc vaxtı], [Siyahının məzmunu; qurum, yoxlayan tərəf və sxem qeydləri],),
+#tablo([#{strong[Cədvəl 36.]} Reyestrdə nə var, nə yoxdur (ADR-0051 CH2; ADR-0063 BL2; ADR-0074 PJ2; FW-ARF-0001 §1.6 P2).], (48fr, 45fr), ([Reyestrdə var], [Reyestrdə yoxdur],), (
+  ([Siyahı versiyasının nömrəsi, məzmun hash-i, əvvəlki hash, dərc vaxtı], [Siyahının mətni; qeydlərdəki adlar, təsvirlər və əlaqə məlumatları],),
   ([Lövbər jurnalının son sətrinin sırası, hash-i, vaxtı], [Sənədlər və sənəd hash-ləri],),
-  ([Yazıcıların hansı namizədi dəstəklədiyi, ziddiyyət hadisələri], [Fərdi məlumat, şəxsiyyət nömrəsi, sahə dəyərləri],),
+  ([Qurum, yoxlayan tərəf, sxem, cüzdan provayderi və siyahı imzalayanı qeydlərinin identifikator hash-ləri, barmaq izləri, statusları və tarixləri], [Fərdi məlumat, şəxsiyyət nömrəsi, sahə dəyərləri],),
+  ([Yazıcıların hansı namizədi dəstəklədiyi, ziddiyyət hadisələri], [Cüzdan nüsxəsinin, cihazın və ya təxəllüsün identifikatoru],),
   ([Ləğv siyahısının ünvanı, hash-i, versiyası, ölçüsü, bit sayı], [Ləğv bitləri, siyahıdakı mövqelər, sənəd növünün adı],),
 ))
 
@@ -2057,6 +2058,8 @@ Reyestr açıldığı gün üçün qoşulma alətində dövlətin və ya operato
 == Keçid
 
 Siyahılardan reyestrə keçid yenidən yazma olmayacaq. Keçid siyahı versiyaları arxivinin reyestrə #{strong[yenidən oynadılmasıdır]}: hər versiya ardıcıllıqla işlənir və qeydlərin status tarixçəsindəki vaxtlar qorunur (ADR-0009 K7). Məqsəd budur: bağlanmış qurumun köhnə diplomu verildiyi tarixdə qurum aktiv olduğu üçün etibarlıdır (Bölmə 11.3) və keçiddən sonra da eyni cavabı almalıdır. Qəbul meyarı buna görə yazılıb: pilot boyu qeydə alınan hər etibar sualında siyahıya əsaslanan etibar mənbəyi ilə reyestrə əsaslanan etibar mənbəyi eyni cavabı verməlidir; tək bir sorğuda qəbul ilə rədd ayrılarsa, keçid tamamlanmamış sayılır. Verilmiş sənədlər yenidən verilmir; cüzdan və sənəd vermə xidməti dəyişmir; müştərilər yalnız #{raw("TrustSource")} interfeysinin arxasındakı tətbiqi dəyişir (ADR-0015; FW-ARF-0001 §8.2). Keçiddən geri də dönmək mümkündür və siyahılar reyestr mərhələsində də dərc edilməyə davam edir (ADR-0009 Əsaslandırma 3).
+
+Yenidən oynatmanın necə aparılacağını ADR-0073 müəyyən edir. Hər qeyd müqaviləsində idarəetmə səsverməsi ilə yalnız bir dəfə açılan #{strong[köçürmə pəncərəsi]} var. Pəncərə ən çox 30 gün davam edir, müddəti bitəndə özü bağlanır və bir daha açıla bilmir. Açıq olduğu müddətdə keçmiş tarixli qeyd yazıla bilər, lakin heç bir tarix həmin andakı blok vaxtından gec ola bilməz. Siyahının və reyestrin etibar suallarına verdiyi cavablar arasında qəbul ilə rədd fərqi qaldıqca keçid tamamlanmış sayılmır. Eyni qərar #{strong[sərt ləğvi]} də müəyyən edir: qurumun açarı ələ keçirilibsə, ləğv qeydi başlanğıc tarixi daşıyır və həmin tarixdən sonra verilmiş sənədlər qəbul edilmir. Fəaliyyəti dayandırılmış qurumun dayandırılmadan əvvəl verdiyi sənədlər isə etibarlı qalır. Yoxlayan tərəfin reyestrdəki identifikatoru domen adının hash-idir və sertifikatı yenilənəndə dəyişmir. Bu identifikatorun başqa dövlətə keçirilməsi və ya ləğvdən sonra yenidən qeydiyyatı yalnız üçdə iki səslə aparılır və əvvəlki dövrün tarixçəsi silinmir (ADR-0075).
 
 == Dəyər qatı: dayandırılıb
 
@@ -2164,7 +2167,7 @@ Tamga-da məcburi seçim yazılı qərar qeydi ilə başlayır. Qayda qısadır 
 
 Qeyd üç statusdan keçir. #{strong[Təklif]} (#{emph[Proposed]}) mərhələsində qərar yazılıb, lakin məcburi deyil. Layihə rəhbərliyi qərarı qəbul etdikdə qeyd #{strong[qüvvəyə minir]} (#{emph[Active]}) və qəbul tarixi qeydə alınır; təsirə məruz qalan spesifikasiyalar və çərçivə sənədləri eyni iş çərçivəsində yenilənir. Bağlanmış qərar yalnız yeni qərar qeydi ilə dəyişir. Dəyişən qeyd silinmir; #{strong[əvəz olundu]} (#{emph[Superseded]}) kimi işarələnir və ya yeni qeyd köhnə qeydin hansı bəndini dəyişdiyini açıq yazır. Beləliklə qərarın bugünkü forması qədər onun bu formaya necə gəldiyi də oxuna bilir.
 
-Bu nəşrin hazırlandığı tarixdə 72 qərar qeydi var: 70-i qüvvədədir, biri təklif statusundadır (ADR-0028), biri isə yerini başqa qərara verib (ADR-0003). Bütün qeydlərin nömrəsi, başlığı, statusu və qəbul tarixi B Əlavəsindədir.
+Bu nəşrin hazırlandığı tarixdə 75 qərar qeydi var: 73-ü qüvvədədir, biri təklif statusundadır (ADR-0028), biri isə yerini başqa qərara verib (ADR-0003). Bütün qeydlərin nömrəsi, başlığı, statusu və qəbul tarixi B Əlavəsindədir.
 
 == On böyük qərar
 
@@ -2265,7 +2268,7 @@ Aşağıdakı yeddi cədvəl qüvvədə olan bütün qərarları mövzularına g
   ([#{strong[ADR-0061.]} Psevdonim toxumu ayrıca sənəd konfiqurasiyası kimi], [Standarta uyğunluq], [Standartdan kənar cavab sahəsi],),
 ))
 
-#tablo([#{strong[Cədvəl 45.]} İdarəetmə, mövqeləndirmə və reyestr qərarları.], (48fr, 36fr, 34fr), ([Qərar], [Əsaslandırma], [Kənarda qoyulan variant],), (
+#tablo([#{strong[Cədvəl 45.]} İdarəetmə, mövqeləndirmə və reyestr qərarları.], (48fr, 43fr, 37fr), ([Qərar], [Əsaslandırma], [Kənarda qoyulan variant],), (
   ([#{strong[ADR-0001.]} Reyestr gələrsə, Hyperledger Besu və QBFT], [İcazəli, bərabər səs, dərhal yekunluq; Aİ presedenti], [Cosmos SDK; sıfırdan konsensus; açıq zəncir],),
   ([#{strong[ADR-0002.]} Suverenlik prioritetli üç qatlı idarəetmə], [Hər dövlət öz qeydiyyatının yeganə müəllifidir; çıxış hüququ], [Təsisçi konsorsium və ortaq səsvermə],),
   ([#{strong[ADR-0009.]} Zəncirsiz başlanğıc; zəncir ən azı iki müstəqil operatorla], [Tək operatorun zənciri etibar yaratmır], [Zənciri gözləmək; tək operatorlu inkişaf zənciri],),
@@ -2287,6 +2290,9 @@ Aşağıdakı yeddi cədvəl qüvvədə olan bütün qərarları mövzularına g
   ([#{strong[ADR-0070.]} Fond qurulana qədər müvəqqəti operator; siyahıda ad "Tamga Network"], [Şəbəkənin hüquqi şəxsiyyəti yoxdur; təhvil bir nöqtədən], [Siyahıda operator şirkətin adı; hüquqi şəxs tələb edən işləri gözləmək],),
   ([#{strong[ADR-0071.]} Müvəqqəti dövrdə iştirakçıdan haqq alınmır], [Neytrallıq; maliyyə töhfəsi qeydiyyata təsir etmir], [Qurumdan illik haqq],),
   ([#{strong[ADR-0072.]} Dəyər qatı dayandırılıb, tədqiqat istiqamətidir], [Şəbəkə token və ödəniş emal etmir; zəncir yalnız proyeksiyadır], [ADR-0003 qarmaqlarını məcburi saxlamaq],),
+  ([#{strong[ADR-0073.]} Reyestrə keçiddə birdəfəlik köçürmə pəncərəsi (ən çox 30 gün), sərt ləğv, sxem versiya hash-ləri yalnız əlavə olunur], [Siyahı tarixçəsi reyestrə olduğu kimi köçürülə bilsin; iki mənbə eyni cavabı versin], [Tarixçəni köçürməmək; həmişə açıq köçürmə səlahiyyəti],),
+  ([#{strong[ADR-0074.]} Siyahılardakı bütün etibar qeydləri reyestrdə, yalnız hash və barmaq izi kimi], [Qeyd səviyyəsində sorğu və ekvivalentlik; fərdi məlumat və sərbəst mətn reyestrdən silinə bilmir], [Yalnız siyahı hash-ləri; təfərrüat mətnlərini açıq yazmaq],),
+  ([#{strong[ADR-0075.]} Yoxlayan tərəf identifikatorunun başqa dövlətə keçirilməsi və ləğvdən sonra yenidən qeydiyyatı yalnız üçdə iki səslə], [İlk qeydiyyatdan keçirən dövlət identifikatoru ələ keçirməsin; ləğv daimi kilid olmasın], [Domen adı sübutunu təkbaşına yetərli saymaq; heç nə etməmək],),
 ))
 
 == Dəyişən qərarlar
@@ -2307,7 +2313,7 @@ Etibar şəbəkəsinin hansı funksiyanı bu gün təqdim etdiyini, hansını is
 
 Cədvəl 46 funksiyaları üç status etiketinə görə sıralayır. Etiketlərin mənası oxuma bələdçisindəki kimidir: #{strong[işləyir]} real şəbəkədə və ya sandbox-da canlı deməkdir, #{strong[planlaşdırılıb]} qərara bağlı, lakin canlı olmayan, #{strong[tədqiqat]} isə qərarı olmayan və ya dayandırılmış funksiyadır. Cədvəl bu nəşrin hazırlandığı tarixə görədir və əsas çərçivə sənədinin funksiya statusu cədvəli ilə birlikdə yenilənir (FW-ARF-0001 §2.8).
 
-#tablo([#{strong[Cədvəl 46.]} Funksiyaların statusu.], (36fr, 18fr, 24fr, 15fr), ([Funksiya], [Status], [Qeyd], [Bölmə​​​​​​​],), (
+#tablo([#{strong[Cədvəl 46.]} Funksiyaların statusu.], (36fr, 18fr, 25fr, 15fr), ([Funksiya], [Status], [Qeyd], [Bölmə​​​​​​​],), (
   ([İmzalı etibar siyahıları, siyahıların siyahısı, lövbər jurnalı, arxiv], [İşləyir], [real şəbəkə və sandbox], [6],),
   ([Sənəd növləri kataloqu], [İşləyir], [dəyişməz fayllar, bütövlük hash-i], [8\.4],),
   ([Qurumun və cüzdanın başlatdığı sənəd vermə], [İşləyir], [host edilən xidmətdə iki yol], [9],),
@@ -2339,7 +2345,7 @@ Cədvəl 46 funksiyaları üç status etiketinə görə sıralayır. Etiketləri
   ([Giriş sertifikatında siyasət identifikatoru], [Planlaşdırılıb], [sertifikat tətbiqi bəyannaməsi dərc edildikdə], [7\.4],),
   ([Sertifikatlı və oflayn qapı identifikasiyası], [Planlaşdırılıb], [sahə və oxuyucu hazırdır], [10\.9],),
   ([OpenID yoxlayan tərəf planının yenidən icrası; cüzdan planları], [Planlaşdırılıb], [], [20\.5],),
-  ([Ortaq reyestr], [Planlaşdırılıb], [kod hazırdır, istehsalatda yoxdur və söndürülüb], [19],),
+  ([Ortaq reyestr], [Planlaşdırılıb], [kod hazırdır; yerli şəbəkədə və açıq test şəbəkəsində işləyir, real şəbəkədə və sandbox-da söndürülüb], [19],),
   ([Fond, şura və siyahıların təhvili], [Planlaşdırılıb], [], [18\.4],),
   ([Aİ birgə işləmə tədbirlərində iştirak], [Planlaşdırılıb], [], [20\.5],),
   ([Sıfır bilik sübutu ilə psevdonim törətmə], [Tədqiqat], [], [15\.3],),
@@ -2354,11 +2360,11 @@ Cədvəlin oxunması ilə bağlı bir qeyd əlavə edək. "İşləyir" etiketi f
 
 Yol xəritəsi altı addımdan ibarətdir. Hər addım bir şərtə bağlıdır və heç bir addım əvvəlki addımda qurulan identifikatorları dəyişmir (Cədvəl 47). İlk dörd addımın idarəetmə tərəfi Bölmə 18.3-də, reyestr tərəfi Bölmə 19.8-də izah edildi; Şəkil 30 eyni yolu idarəetmə mərhələləri kimi göstərir.
 
-#tablo([#{strong[Cədvəl 47.]} Yol xəritəsinin addımları: şərt, nə dəyişir, nə dəyişmir.], (16fr, 34fr, 48fr, 38fr), ([Addım], [Şərt], [Nə dəyişir], [Nə dəyişmir],), (
+#tablo([#{strong[Cədvəl 47.]} Yol xəritəsinin addımları: şərt, nə dəyişir, nə dəyişmir.], (16fr, 34fr, 48fr, 42fr), ([Addım], [Şərt], [Nə dəyişir], [Nə dəyişmir],), (
   ([1\. Siyahı mərhələsi (bu gün)], [], [imzalı siyahılar və lövbər jurnalı; sandbox; paketlər sınaq versiyasında; OpenID öz-sınağı], [],),
   ([2\. Hazırlıq], [siyahıdakı cüzdanların mağaza versiyaları və cihaz testləri], [cihaz sübutu, Bluetooth və brauzer yolları canlıya keçir; ilk qurumlar real şəbəkəyə qoşulur], [sənəd növləri, kök və qurum identifikatorları],),
   ([3\. Fond], [fondun hüquqi şəxs statusu qazanması], [operatorluq fonda keçir; real şəbəkədə XML siyahı; şəxsiyyət xidmətinin sertifikatı yenilənir], [siyahı operatorunun adı, kökün identifikatoru, sənəd növləri, verilmiş sənədlər],),
-  ([4\. Reyestr], [ən azı iki müstəqil operatorun yazılı razılığı və ekvivalentlik testləri], [siyahıların hash-i reyestrə də yazılır], [imzalı siyahılar mənbə olaraq qalır; yoxlama xətti],),
+  ([4\. Reyestr], [ən azı iki müstəqil operatorun yazılı razılığı və ekvivalentlik testləri], [siyahılardakı etibar qeydləri hash və barmaq izi kimi reyestrə də yazılır; tarixçə birdəfəlik köçürmə pəncərəsində köçürülür], [imzalı siyahılar mənbə olaraq qalır; yoxlama xətti; reyestrə fərdi məlumat yazılmır],),
   ([5\. Dövlətin qoşulması], [dövlətin öz siyahısını dərc etməsi], [şura qurulur; PID yeri dolur; müvəqqəti rollar təhvil verilir], [qurum identifikatorları, sənəd növləri, verilmiş sənədlər],),
   ([6\. İnstitusional genişlənmə], [şuranın müəyyən etdiyi həddlər], [yeni sektor sxemləri öz qərarları ilə əlavə edilir], [şəbəkənin prinsipləri],),
 ))
@@ -2381,7 +2387,6 @@ Qərar qeydlərinin və spesifikasiyaların "açıq məsələlər" bölmələri 
   ([İkinci şəxsiyyət yoxlaması provayderi], [Tək provayderdən asılılığın qarşısının alınması], [SPEC-ID-0003],),
   ([Ləğv siyahılarının toplanması məcburidirmi; çoxlu status provayderi], [Bu gün "tövsiyə olunur"; açıq yazılması lazım ola bilər], [SPEC-CRED-0003],),
   ([Yoxlayan tərəfin əhatəsinin sənəd növü identifikatorlarına bağlanması], [Hər yeni növdə hər yoxlayan tərəfin yenilənməsi problemi], [SPEC-PROTO-0002],),
-  ([Cüzdan provayderi qeydlərinin reyestrdəki qarşılığı], [Reyestr mərhələsində hansı müqavilədə saxlanacağı], [SPEC-TRUST-0001],),
   ([Aİ ZK üçün başqa ləğv üsulu seçərsə], [Qısaömürlü nüsxə qərarı yenidən qiymətləndirilir], [ADR-0044],),
   ([Kök sertifikatın növbəli dəyişdirilməsində üst-üstə düşmə müddəti; aralıq sertifikat orqanı], [Təklif 12 aydır; dövlətlərin seçimindən asılıdır], [SPEC-ID-0002],),
   ([Əhatədən kənar funksiyalar: PID buraxılması, ödəniş, qurum cüzdanı, W3C VCDM təsviri, kvalifikasiyalı elektron imza], [Hər biri yalnız ayrıca qərarla açılır], [FW-ARF-0001 §1.7],),
@@ -2437,7 +2442,7 @@ Aynurun müraciəti ilə başlamışdıq. Bakıda aldığı diplomu İstanbuldak
 
 Bu yolun Aynur üçün bu gün nə qədər açıq olduğunu da dürüstcə demək lazımdır. Türkiyə siyahısı aktivdir və axının tamamı işləyir; lakin Azərbaycan üçün siyahılarda yalnız yer ayrılıb. Bu, saziş və ya danışıq barədə bildiriş deyil; dövlət qoşulduqda öz siyahısını dərc edə biləcəyi boş yuvadır. Aynurun Bakıdakı universitetinin bu yolla sənəd verə bilməsi həmin yuvanın dolmasından asılıdır. Struktur bunu gözləyəcək şəkildə qurulub: yuva dolduqda yeni sahə əlavə edilmir, mövcud yer dolur.
 
-Sənəd boyu üç seçim dəfələrlə qarşımıza çıxdı. Texniki qat Aİ-ninki ilə eynidir, çünki birgə işləmənin dəyəri heç kimin xüsusi uyğunlaşdırma yazmaq məcburiyyətində qalmamasından gəlir. Etibar bu gün imzalı siyahılardan gəlir, çünki tək operatorun zənciri imzalı siyahıdan artıq etibar yaratmır; ortaq reyestr yalnız müstəqil tərəflər onu birlikdə idarə etdikdə gəlir və o zaman da siyahıların hash-ini daşıyır. Hər dövlət öz qeydiyyatının yeganə müəllifidir və bu gün dövlət adından yerinə yetirilən hər rol heç bir sənədi və identifikatoru dəyişmədən təhvil verilə biləcək şəkildə dizayn edilib.
+Sənəd boyu üç seçim dəfələrlə qarşımıza çıxdı. Texniki qat Aİ-ninki ilə eynidir, çünki birgə işləmənin dəyəri heç kimin xüsusi uyğunlaşdırma yazmaq məcburiyyətində qalmamasından gəlir. Etibar bu gün imzalı siyahılardan gəlir, çünki tək operatorun zənciri imzalı siyahıdan artıq etibar yaratmır; ortaq reyestr yalnız müstəqil tərəflər onu birlikdə idarə etdikdə gəlir və o zaman da siyahılardakı qeydlərin yalnız hash-lərini və barmaq izlərini daşıyır. Hər dövlət öz qeydiyyatının yeganə müəllifidir və bu gün dövlət adından yerinə yetirilən hər rol heç bir sənədi və identifikatoru dəyişmədən təhvil verilə biləcək şəkildə dizayn edilib.
 
 Yol uzundur və şərtləri şəbəkənin əlində olmayan addımlar ehtiva edir: müstəqil operatorlar, qurumlar, dövlətlər. Buna görə yol xəritəsi tarix deyil, şərt verir. Operatorlar dəyişə bilər, domen adları təhvil verilə bilər, reyestr gələ və ya gecikə bilər. Daimi olan etibar modelidir: hər kəsin yoxlaya bildiyi imzalı qeydlər, mənbəyə müraciət etmədən yoxlama və şəxsi tanımayan ortaq qeydlər.
 
@@ -2486,10 +2491,10 @@ Terminlər əlifba sırası ilə verilir. Orijinal termin mötərizədə göstə
   ([PAR], [Avtorizasiya sorğusunun əvvəlcə birbaşa serverə göndərildiyi və brauzerdə yalnız istinad ünvanının daşındığı OAuth genişlənməsi.],),
   ([PID], [Şəxsiyyət məlumatı; dövlətin və ya dövlətin səlahiyyət verdiyi təşkilatın verdiyi şəxsiyyət sənədi. Tamga PID vermir.],),
   ([PKCE], [Avtorizasiya kodunun ələ keçirilməsinə qarşı müştərinin birdəfəlik yoxlama dəyərindən istifadə etdiyi OAuth genişlənməsi.],),
-  ([Proyeksiya], [Ortaq reyestrin imzalı siyahıların yalnız hash-lərini daşıması; mənbə siyahılardır, ziddiyyətdə siyahı qüvvədədir.],),
+  ([Proyeksiya], [Ortaq reyestrin imzalı siyahılardakı qeydlərin yalnız hash-lərini və barmaq izlərini daşıması; mənbə siyahılardır, ziddiyyətdə siyahı qüvvədədir.],),
   ([Psevdonim toxumu], [Şəxsiyyət xidmətinin şəxsin şəxsiyyətindən saxlamadan törətdiyi və yalnız cüzdanda qalan gizli dəyər.],),
   ([Psevdonim (#{emph[pseudonym]})], [Cüzdanın hər sayt üçün ayrıca yaratdığı, sabit, lakin saytlar arasında uyğunlaşdırıla bilməyən hesab identifikatoru.],),
-  ([Reyestr mərhələsi], [Siyahı hash-lərinin bir neçə müstəqil operatorun saxladığı ortaq reyestrə də yazıldığı mərhələ.],),
+  ([Reyestr mərhələsi], [Siyahılardakı etibar qeydlərinin hash və barmaq izi kimi bir neçə müstəqil operatorun saxladığı ortaq reyestrə də yazıldığı mərhələ.],),
   ([Sandbox], [Real şəbəkədən ayrı köklə işləyən, hamıya açıq test şəbəkəsi.],),
   ([SD-JWT VC], [Sahələri ayrı-ayrılıqda gizlədilə bilən imzalı JSON sənəd formatı.],),
   ([Seçici paylaşım (#{emph[selective disclosure]})], [Şəxsin sənəddən yalnız istənilən sahələri göstərməsi.],),
@@ -2514,7 +2519,7 @@ Terminlər əlifba sırası ilə verilir. Orijinal termin mötərizədə göstə
 
 Cədvəl 51 bütün qərar qeydlərini nömrə ardıcıllığı ilə verir. Tarix qeydin yaradıldığı tarixdir; qüvvədə olan qeydlərdə qəbul tarixi əksər hallarda eynidir, eyni deyilsə, qeyd qəbul tarixini ayrıca yazır. "Bölmə" sütunu qeydin bu sənəddə çəkildiyi əsas bölmələri göstərir. Qeydlərin tam mətni #{raw("docs.tamga.network/tr/adr/")} ünvanındadır.
 
-#tablo([#{strong[Cədvəl 51.]} Qərar qeydləri.], (10fr, 40fr, 12fr, 13fr, 6fr), ([ADR​​​​​], [Başlıq], [Status], [Tarix], [Bölmə],), (
+#tablo([#{strong[Cədvəl 51.]} Qərar qeydləri.], (10fr, 43fr, 12fr, 13fr, 6fr), ([ADR​​​​​], [Başlıq], [Status], [Tarix], [Bölmə],), (
   ([0001], [Besu QBFT reyestri], [Qəbul edildi], [2026-07-29], [19],),
   ([0002], [Suverenlik prioritetli idarəetmə], [Qəbul edildi], [2026-08-05], [2, 4, 18],),
   ([0003], [Dəyər qatı qarmaqları], [Əvəz olundu], [2026-08-06], [19],),
@@ -2587,6 +2592,9 @@ Cədvəl 51 bütün qərar qeydlərini nömrə ardıcıllığı ilə verir. Tari
   ([0070], [Müvəqqəti operator zənciri], [Qəbul edildi], [2026-10-30], [4, 18],),
   ([0071], [Müvəqqəti dövrdə şəbəkənin maliyyələşməsi: xidmət haqqı yoxdur; fond qrantlar və dövlət\/üzv töhfələri ilə], [Qəbul edildi], [2026-10-30], [4, 18],),
   ([0072], [Dəyər qatı dayandırılıb: ADR-0003 qarmaqları tədqiqat istiqamətidir], [Qəbul edildi], [2026-10-30], [4, 19, 23],),
+  ([0073], [Zəncir–siyahı ekvivalentliyinin həyata keçirilə bilməsi: köçürmə rejimi, sərt ləğv, sxem versiyaları, yoxlayan tərəf identifikatoru, status uyğunluğu], [Qəbul edildi], [2026-11-04], [19],),
+  ([0074], [Proyeksiyanın əhatəsi 0.8: imzalı siyahılardakı bütün etibar qeydləri zəncirdə], [Qəbul edildi], [2026-11-04], [4, 19],),
+  ([0075], [Yoxlayan tərəfin domen adı identifikatorunun sahibliyi və ləğvdən sonra yenidən qeydiyyat], [Qəbul edildi], [2026-11-04], [19],),
 ))
 
 #heading(level: 1, numbering: none)[Əlavə C — Standartlar göstəricisi]
@@ -2602,7 +2610,7 @@ Cədvəl 52 sənəddə çəkilən xarici standartları və normativ aktları, on
   ([Aİ], [EUDI texniki spesifikasiyaları (TS3 \[12\], TS10, TS13 …)], [canlı sənədlər], [WIA və KA, ixrac, ZK], [13, 15],),
   ([Aİ], [Attestation Rulebook \[13\] şablonu], [1\.5], [Tamga Rulebook-un qolları], [18\.8],),
   ([IETF], [RFC 9901 \[15\] SD-JWT], [noyabr 2025], [sənəd formatı], [8],),
-  ([IETF], [SD-JWT VC \[16\]], [draft-19], [sənəd formatı], [8],),
+  ([IETF], [SD-JWT VC \[16\]], [internet layihəsi; 2026\/1731-in təsbit etdiyi versiya], [sənəd formatı], [8],),
   ([IETF], [Token Status List \[17\]], [draft-20 (Aİ-nin istinad etdiyi), draft-21], [ləğv siyahıları], [12],),
   ([IETF], [OAuth 2.0 Attestation-Based Client Authentication \[18\]], [layihə], [WIA ilə müştərinin autentifikasiyası], [9, 13],),
   ([IETF], [RFC 9449 DPoP \[20\] · RFC 9126 PAR \[21\] · RFC 7636 PKCE \[22\] · RFC 9700 \[23\]], [dərc edilib], [sənəd vermə profili], [9],),
@@ -2710,7 +2718,7 @@ Tamga-nın çərçivə sənədləri #{raw("arf.tamga.network/tr/")}, spesifikasi
   ([GUIDE-0009], [Uyğunluq testləri], [#{raw("docs.tamga.network/tr/guides/conformance")}],),
   ([GUIDE-0013], [Sandbox: test şəbəkəsi], [#{raw("docs.tamga.network/tr/guides/sandbox")}],),
   ([GUIDE-0014], [Qoşulma aləti: İT komandası üçün], [#{raw("docs.tamga.network/tr/guides/onboarding-tool")}],),
-  ([ADR-0001 … ADR-0072], [Qərar qeydləri (B Əlavəsi)], [#{raw("docs.tamga.network/tr/adr/")}],),
+  ([ADR-0001 … ADR-0075], [Qərar qeydləri (B Əlavəsi)], [#{raw("docs.tamga.network/tr/adr/")}],),
 ))
 
 #heading(level: 1, numbering: none)[Mənbələr]
@@ -2745,7 +2753,7 @@ Tamga-nın çərçivə sənədləri #{raw("arf.tamga.network/tr/")}, spesifikasi
 
 #kaynak("15")[Fett, D., Yasuda, K. və Campbell, B. (2025). #{emph[Selective Disclosure for JSON Web Tokens (SD-JWT).]} IETF RFC 9901, noyabr 2025.]
 
-#kaynak("16")[Terbu, O., Fett, D. və Campbell, B. #{emph[SD-JWT-based Verifiable Digital Credentials (SD-JWT VC).]} IETF OAuth İşçi Qrupunun internet layihəsi draft-ietf-oauth-sd-jwt-vc-19, 2026. https:\/\/datatracker.ietf.org\/doc\/draft-ietf-oauth-sd-jwt-vc\/]
+#kaynak("16")[Terbu, O., Fett, D. və Campbell, B. #{emph[SD-JWT-based Verifiable Digital Credentials (SD-JWT VC).]} IETF OAuth İşçi Qrupunun internet layihəsi draft-ietf-oauth-sd-jwt-vc; Aİ-nin 2026\/1731 saylı İcra Reqlamenti ilə təsbit etdiyi versiya əsas götürülür. https:\/\/datatracker.ietf.org\/doc\/draft-ietf-oauth-sd-jwt-vc\/ (müraciət: 11 noyabr 2026).]
 
 #kaynak("17")[Looker, T., Bastian, P. və Bormann, C. #{emph[Token Status List.]} IETF OAuth İşçi Qrupunun internet layihəsi draft-ietf-oauth-status-list-20 (20 aprel 2026; Aİ-nin 2026\/1731 ilə istinad etdiyi versiya) və draft-21 (21 iyun 2026). https:\/\/datatracker.ietf.org\/doc\/draft-ietf-oauth-status-list\/]
 
@@ -2783,7 +2791,7 @@ Tamga-nın çərçivə sənədləri #{raw("arf.tamga.network/tr/")}, spesifikasi
 
 #kaynak("34")[ISO\/IEC (2021). #{emph[ISO\/IEC 18013-5:2021 Personal identification: ISO-compliant driving licence, Part 5: Mobile driving licence (mDL) application.]} ISO\/IEC JTC 1\/SC 17. https:\/\/www.iso.org\/standard\/69084.html]
 
-#kaynak("35")[ISO\/IEC (2025). #{emph[ISO\/IEC TS 18013-7:2025 Personal identification: ISO-compliant driving licence, Part 7: Mobile driving licence (mDL) add-on functions.]} İkinci nəşr, may 2025.]
+#kaynak("35")[ISO\/IEC (2025). #{emph[ISO\/IEC TS 18013-7:2025 Personal identification: ISO-compliant driving licence, Part 7: Mobile driving licence (mDL) add-on functions.]} İkinci nəşr, may 2025 (ilk nəşr oktyabr 2024).]
 
 #kaynak("36")[Caceres, M., Cappalli, T. və Yosef, M. A. (Red.) (2026). #{emph[Digital Credentials.]} W3C Working Draft, Federated Identity Working Group, 29 oktyabr 2026. https:\/\/www.w3.org\/TR\/digital-credentials\/]
 
@@ -2837,38 +2845,38 @@ Tamga-nın çərçivə sənədləri #{raw("arf.tamga.network/tr/")}, spesifikasi
 
 #kaynak("61")[Avropa Komissiyası. #{emph[Europass və European Learning Model (ELM)]}, versiya 3. https:\/\/europa.eu\/europass\/]
 
-#kaynak("62")[Tamga Network (2026). #{emph[Kadim mührün çağdaş karşılığını inşa ediyoruz]} \[Qədim möhürün müasir qarşılığını qururuq\] (manifest), versiya 1.0, noyabr 2026. https:\/\/tamga.network\/manifesto-tr.pdf]
+#kaynak("62")[Tamga Network (2026). #{emph[Biz qədim möhürün müasir qarşılığını qururuq]} (manifest), versiya 1.0, noyabr 2026. https:\/\/tamga.network\/manifesto-az.pdf]
 
 #kaynak("63")[Tamga Network (2026). #{emph[Mimari ve Referans Çerçevesi]} \[Arxitektura və İstinad Çərçivəsi\] (FW-ARF-0001) və əlavələri: Trust Framework, Tamga Rulebook və sənəd növü rulebook-ları, Təriflər, Mənbələr, Rollar, Qoşulma, Ləğv, Cüzdan Attestasiyası və Qeydiyyat Sertifikatı siyasətləri; versiya 1.0.0. https:\/\/arf.tamga.network\/tr\/ (identifikatorlar E Əlavəsindədir).]
 
 #kaynak("64")[Tamga Network (2026). #{emph[Şartnameler]} \[Spesifikasiyalar\] (SPEC-TRUST-0001, SPEC-ID-0002\/0003, SPEC-CRED-0001\/0002\/0003, SPEC-SCHEMA-0001\/0002\/0003, SPEC-PROTO-0001\/0002, SPEC-API-0001, SPEC-WALLET-0001), versiya 1.0.0; bələdçilər və anlayış səhifələri. https:\/\/docs.tamga.network\/tr\/]
 
-#kaynak("65")[Tamga Network (2026). #{emph[Mimari karar kayıtları]} \[Arxitektura qərarlarının qeydləri\] ADR-0001…ADR-0072. https:\/\/docs.tamga.network\/tr\/adr\/ (göstərici B Əlavəsindədir).]
+#kaynak("65")[Tamga Network (2026). #{emph[Mimari karar kayıtları]} \[Arxitektura qərarlarının qeydləri\] ADR-0001…ADR-0075. https:\/\/docs.tamga.network\/tr\/adr\/ (göstərici B Əlavəsindədir).]
 
 #kaynak("66")[Tamga Network (2026). #{emph[tamga-network]} deposu: README, SECURITY.md, CHANGELOG (0.8.2, 5 noyabr 2026) və #{raw("@tamga-network/*")} paketləri, Apache-2.0. https:\/\/github.com\/tamga-network\/tamga-network]
 
 #kaynak("67")[Tamga Network Akademik Çalışmalar A1 (2026). #{emph[Dijital Kimliğin Evrimi: Kullanıcı Adından Kimlik Cüzdanına]} \[Rəqəmsal şəxsiyyətin təkamülü: istifadəçi adından şəxsiyyət cüzdanına\]. https:\/\/tamga.network\/files\/publications\/evolution-of-digital-identity-tr.pdf]
 
-#kaynak("68")[Tamga Network Akademik Çalışmalar A3 (2026). #{emph[Seçici Açıklama: Gerekeni Göster, Gerisi Sende Kalsın]} \[Seçici paylaşım: lazım olanı göstər, qalanı səndə qalsın\]. https:\/\/tamga.network\/files\/publications\/selective-disclosure-tr.pdf]
+#kaynak("68")[Tamga Network Akademik Çalışmalar A3. #{emph[Seçici Açıklama: Gerekeni Göster, Gerisi Sende Kalsın]} \[Seçici paylaşım: lazım olanı göstər, qalanı səndə qalsın\]. Dərc ediləcək.]
 
-#kaynak("69")[Tamga Network Akademik Çalışmalar A4 (2026). #{emph[Sıfır Bilgi İspatları ve Kimlik]} \[Sıfır bilik sübutları və şəxsiyyət\]. https:\/\/tamga.network\/files\/publications\/zero-knowledge-proofs-tr.pdf]
+#kaynak("69")[Tamga Network Akademik Çalışmalar A4. #{emph[Sıfır Bilgi İspatları ve Kimlik]} \[Sıfır bilik sübutları və şəxsiyyət\]. Dərc ediləcək.]
 
-#kaynak("70")[Tamga Network Akademik Çalışmalar A5 (2026). #{emph[Bağlanamazlık: Doğrulayıcılar Seni Birbirine Anlatmasın]} \[Əlaqələndirilməzlik: yoxlayan tərəflər səni bir-birinə danışmasın\]. https:\/\/tamga.network\/files\/publications\/unlinkability-tr.pdf]
+#kaynak("70")[Tamga Network Akademik Çalışmalar A5. #{emph[Bağlanamazlık: Doğrulayıcılar Seni Birbirine Anlatmasın]} \[Əlaqələndirilməzlik: yoxlayan tərəflər səni bir-birinə danışmasın\]. Dərc ediləcək.]
 
-#kaynak("71")[Tamga Network Akademik Çalışmalar A6 (2026). #{emph[Kime Güveniyoruz? Güven Listeleri ve Dijital Güven Altyapısı]} \[Kimə etibar edirik? Etibar siyahıları və rəqəmsal etibar infrastrukturu\]. https:\/\/tamga.network\/files\/publications\/trust-lists-tr.pdf]
+#kaynak("71")[Tamga Network Akademik Çalışmalar A6. #{emph[Kime Güveniyoruz? Güven Listeleri ve Dijital Güven Altyapısı]} \[Kimə etibar edirik? Etibar siyahıları və rəqəmsal etibar infrastrukturu\]. Dərc ediləcək.]
 
-#kaynak("72")[Tamga Network Akademik Çalışmalar A7 (2026). #{emph[İptal: Bir Belgeyi Geri Almak, Kimseyi İzlemeden]} \[Ləğv: sənədi geri almaq, heç kimi izləmədən\]. https:\/\/tamga.network\/files\/publications\/revocation-tr.pdf]
+#kaynak("72")[Tamga Network Akademik Çalışmalar A7. #{emph[İptal: Bir Belgeyi Geri Almak, Kimseyi İzlemeden]} \[Ləğv: sənədi geri almaq, heç kimi izləmədən\]. Dərc ediləcək.]
 
-#kaynak("73")[Tamga Network Akademik Çalışmalar A8 (2026). #{emph[Belge Nasıl Verilir, Nasıl Gösterilir]} \[Sənəd necə verilir, necə göstərilir\]. https:\/\/tamga.network\/files\/publications\/issuing-and-presenting-tr.pdf]
+#kaynak("73")[Tamga Network Akademik Çalışmalar A8. #{emph[Belge Nasıl Verilir, Nasıl Gösterilir]} \[Sənəd necə verilir, necə göstərilir\]. Dərc ediləcək.]
 
-#kaynak("74")[Tamga Network Akademik Çalışmalar A9 (2026). #{emph[Yüz Yüze Doğrulama: NFC, Bluetooth ve Mobil Ehliyet]} \[Üzbəüz yoxlama: NFC, Bluetooth və mobil sürücülük vəsiqəsi\]. https:\/\/tamga.network\/files\/publications\/in-person-verification-tr.pdf]
+#kaynak("74")[Tamga Network Akademik Çalışmalar A9. #{emph[Yüz Yüze Doğrulama: NFC, Bluetooth ve Mobil Ehliyet]} \[Üzbəüz yoxlama: NFC, Bluetooth və mobil sürücülük vəsiqəsi\]. Dərc ediləcək.]
 
-#kaynak("75")[Tamga Network Akademik Çalışmalar A10 (2027, dərc təqviminə görə). #{emph[Cüzdan Güvenliği: Anahtar Nerede Saklanır, Telefon Gerçek mi?]} \[Cüzdan təhlükəsizliyi: açar harada saxlanılır, telefon həqiqidirmi?\] https:\/\/tamga.network\/files\/publications\/wallet-security-tr.pdf]
+#kaynak("75")[Tamga Network Akademik Çalışmalar A10. #{emph[Cüzdan Güvenliği: Anahtar Nerede Saklanır, Telefon Gerçek mi?]} \[Cüzdan təhlükəsizliyi: açar harada saxlanılır, telefon həqiqidirmi?\]. Dərc ediləcək.]
 
-#kaynak("76")[Tamga Network Akademik Çalışmalar A11 (2027, dərc təqviminə görə). #{emph[eIDAS 2.0’a Hukuk Dışından Bakış]} \[eIDAS 2.0-a hüquqdan kənardan baxış\]. https:\/\/tamga.network\/files\/publications\/eidas-2-explained-tr.pdf]
+#kaynak("76")[Tamga Network Akademik Çalışmalar A11. #{emph[eIDAS 2.0’a Hukuk Dışından Bakış]} \[eIDAS 2.0-a hüquqdan kənardan baxış\]. Dərc ediləcək.]
 
-#kaynak("77")[Tamga Network Akademik Çalışmalar A12 (2027, dərc təqviminə görə). #{emph[Blokzincir ve Dijital Kimlik]} \[Blokçeyn və rəqəmsal şəxsiyyət\]. https:\/\/tamga.network\/files\/publications\/blockchain-and-identity-tr.pdf]
+#kaynak("77")[Tamga Network Akademik Çalışmalar A12. #{emph[Blokzincir ve Dijital Kimlik]} \[Blokçeyn və rəqəmsal şəxsiyyət\]. Dərc ediləcək.]
 
-#kaynak("78")[Tamga Network Akademik Çalışmalar A14 (2027, dərc təqviminə görə). #{emph[Deepfake Çağında Kimlik Doğrulama]} \[Deepfake dövründə şəxsiyyətin yoxlanılması\]. https:\/\/tamga.network\/files\/publications\/deepfakes-and-identity-verification-tr.pdf]
+#kaynak("78")[Tamga Network Akademik Çalışmalar A14. #{emph[Deepfake Çağında Kimlik Doğrulama]} \[Deepfake dövründə şəxsiyyətin yoxlanılması\]. Dərc ediləcək.]
 
-#kaynak("79")[Tamga Network Akademik Çalışmalar A15 (2027, dərc təqviminə görə). #{emph[Kuantum Sonrası Dönemde Dijital Kimlik]} \[Kvantdan sonrakı dövrdə rəqəmsal şəxsiyyət\]. https:\/\/tamga.network\/files\/publications\/post-quantum-identity-tr.pdf]
+#kaynak("79")[Tamga Network Akademik Çalışmalar A15. #{emph[Kuantum Sonrası Dönemde Dijital Kimlik]} \[Kvantdan sonrakı dövrdə rəqəmsal şəxsiyyət\]. Dərc ediləcək.]

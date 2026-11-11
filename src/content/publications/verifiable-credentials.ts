@@ -18,7 +18,7 @@ export const verifiableCredentials: Publication = {
       title: "Doğrulanabilir Belgeler: Veren, Taşıyan, Doğrulayan",
       file: "/files/publications/verifiable-credentials-tr.pdf",
       pages: 26,
-      sizeKb: 510,
+      sizeKb: 511,
       abstract:
         "Telefondaki bir belgenin fotoğrafı ya da taranmış PDF'i doğrulanamaz ve doğrulamak için belgeyi veren kuruma sormak gerekir; " +
         "doğrulanabilir belgede ise kurum makinenin okuyabileceği iddiaları imzalar, kişi de belgeyi kendi cüzdanında taşır. " +

@@ -53,7 +53,7 @@ Every claim in the document belongs to one of three statuses, and the text says 
   ([#{strong[Research]}], [No decision exists, or the decision is suspended], [pseudonym derivation with zero-knowledge proofs, value layer],),
 ))
 
-Decisions are cited by their decision records (ADR, #{emph[Architecture Decision Record]}), technical rules by specifications (SPEC) and framework rules by the documents of the Tamga Architecture and Reference Framework (FW). Wherever you see "ADR-0042" in the text, the full text of the decision is under #{raw("docs.tamga.network/tr/adr/")}; wherever you see "SPEC-TRUST-0001 §5", the relevant section of the specification is under #{raw("docs.tamga.network/tr/specifications/")}; and wherever you see "FW-ARF-0001 §6.1", the framework document is under #{raw("arf.tamga.network/tr/")}. The mapping of identifiers to addresses is in Appendix E \[63, 64, 65\]. Identifiers are permanent: even if a document’s title or location changes, its identifier stays the same.
+Decisions are cited by their decision records (ADR, #{emph[Architecture Decision Record]}), technical rules by specifications (SPEC) and framework rules by the documents of the Tamga Architecture and Reference Framework (FW). Wherever you see "ADR-0042" in the text, the full text of the decision is under #{raw("docs.tamga.network/adr/")}; wherever you see "SPEC-TRUST-0001 §5", the relevant section of the specification is under #{raw("docs.tamga.network/specifications/")}; and wherever you see "FW-ARF-0001 §6.1", the framework document is under #{raw("arf.tamga.network/")}. The mapping of identifiers to addresses is in Appendix E \[63, 64, 65\]. Identifiers are permanent: even if a document’s title or location changes, its identifier stays the same.
 
 At the time this edition was prepared, Tamga’s open packages had been published on npm as the 0.8.2 test release; the framework documents are at version 1.0. Every version-dependent sentence is written as of that date.
 
@@ -98,7 +98,7 @@ It should be said plainly that this scene describes a design. Tamga Network’s 
 
 == Contribution and plan of this document
 
-We described Tamga Network earlier in a short whitepaper \[62\]; this extended edition replaces it. The manifesto and the developer documentation stand alongside it. This edition was written to answer three questions together and in detail.
+We described Tamga Network earlier in a short whitepaper; this extended edition replaces it. The manifesto \[62\] and the developer documentation stand alongside it. This edition was written to answer three questions together and in detail.
 
 The first question is #{strong[how it works]}. We describe every step, from the issuance of a credential to its verification, from its revocation to its life in the wallet, without assuming any prior knowledge. We do not skip technical detail, but we place it in separate boxes; a reader who skips the boxes can still follow the text. The second question is #{strong[why it was chosen this way]}. Every important decision of the network is bound to a decision record, and these records state not only what was chosen but also which options were set aside and why. Throughout the document, when we describe a choice we give its decision record and its alternatives together. The third question is #{strong[where it is going]}. We separate what works today, what has been decided but is not yet live, and what is still research; we give conditions instead of a timetable.
 
@@ -173,7 +173,7 @@ We want to draw attention to one feature of the table. Some of the requirements 
 
 = Background: eIDAS 2.0, the EUDI ARF and Open Standards
 
-Tamga Network was not designed in a vacuum. Its technical layer rests on the digital identity framework the European Union has built over the last decade. This chapter describes that framework as far as is needed to understand Tamga. For readers who want EU law in full detail, the series’ article on eIDAS 2.0 \[2\] is a separate resource.
+Tamga Network was not designed in a vacuum. Its technical layer rests on the digital identity framework the European Union has built over the last decade. This chapter describes that framework as far as is needed to understand Tamga. For readers who want EU law in full detail, the series’ article on eIDAS 2.0 \[76\] is a separate resource.
 
 == From eIDAS to eIDAS 2.0
 
@@ -189,7 +189,7 @@ The regulation itself sets out principles, roles and obligations; but it does no
 
 eIDAS 2.0 divides the credentials carried in the wallet into two broad groups. The first group is #{strong[person identification data]} (#{emph[Person Identification Data]}, #{strong[PID]}): data such as first name, family name, date of birth and nationality that establish a person’s identity. Only the state, or a body the state has authorised, can issue PID, and it forms the foundation of the wallet. The second group is #{strong[electronic attestations of attributes]} (#{emph[Electronic Attestation of Attributes]}, #{strong[EAA]}): a diploma, a student certificate, a professional licence, a membership card, a ticket; in short, every credential other than PID.
 
-The regulation further divides EAAs into three according to who issues them and what assurance they carry. A #{strong[qualified electronic attestation of attributes]} (QEAA), issued by a qualified trust service provider, has the same legal effect as its paper counterpart. An #{strong[attestation issued by a public body]} (PuB-EAA), issued by a public body responsible for an authentic source or by a body designated on its behalf, is a separate class. Anyone outside these, such as a university, a ticket seller or a sports club, can issue a #{strong[non-qualified attestation of attributes]}. The distinction determines the legal effect; the technical format is usually the same.
+The regulation further divides EAAs into three according to who issues them and what assurance they carry. A #{strong[qualified electronic attestation of attributes]} (QEAA), issued by a qualified trust service provider, has the same legal effect as its paper counterpart. An #{strong[attestation issued by a public body]} (PuB-EAA), issued by a public body responsible for an authentic source or by a body designated on its behalf, is a separate class, and it too has the same legal effect as its paper counterpart (Article 45b(2)). Anyone outside these, such as a university, a ticket seller or a sports club, can issue a #{strong[non-qualified attestation of attributes]}. The distinction determines the legal effect; the technical format is usually the same.
 
 The first rule in Tamga’s relationship with these concepts is that the network #{strong[does not issue PID]}. The main framework document treats PID issuance as out of scope and reserves this role for the state (FW-ARF-0001 §1.7). The trust list has a place for PID providers, but today that place is empty. Because a credential that verifies a person’s identity is still needed, the network runs a #{strong[provisional identity credential provider]} until the state’s PID provider is designated; the credential this service issues is not PID but a non-qualified EAA, and it gives way to the state’s PID when that arrives (ADR-0011, ADR-0022; Chapter 14). Table 4 places the four concepts and their Tamga counterparts side by side.
 
@@ -213,7 +213,7 @@ One of the ARF’s most lasting contributions is a #{strong[set of roles]}. What
 - The #{strong[Access Certificate Authority]} issues relying parties the certificates with which they identify themselves to the wallet; the #{strong[registration certificate provider]} produces the signed document that carries the registered scope.
 - The #{strong[trust list provider]} publishes in signed lists who has taken on these roles.
 
-Above all these roles stands the trust list architecture that has been in operation under eIDAS since 2014. Each member state signs and publishes its own #{strong[national trust list]}; the Commission publishes a #{strong[list of lists]} (#{emph[List of Trusted Lists]}, LOTL) showing the addresses and signers of these lists. With eIDAS 2.0 this architecture extends to the new roles of the wallet ecosystem: which bodies are wallet providers, PID providers or access certificate authorities is also notified through similar lists.
+Above all these roles stands the trust list architecture that has been in operation since the first eIDAS regulation. Each member state signs and publishes its own #{strong[national trust list]}; the Commission publishes a #{strong[list of lists]} (#{emph[List of Trusted Lists]}, LOTL) showing the addresses and signers of these lists. With eIDAS 2.0 this architecture extends to the new roles of the wallet ecosystem: which bodies are wallet providers, PID providers or access certificate authorities is also notified through similar lists.
 
 One consequence of this arrangement is that verification is #{strong[two-way]}. While the verifier checks the credential, the wallet also checks the verifier: is the body that signed the request really registered, and are the fields it asks for within the scope of its registration? In the scene in Chapter 1.2, Aynur’s wallet checking Timur’s company is an application of this principle. Figure 3 shows the roles in the EU’s terms.
 
@@ -264,7 +264,7 @@ A short way to understand an architecture is to look at the place where its buil
 
 #{strong[P4. No identifier, role or structure assumes a single operator.]} Every state role the network takes on provisionally today is designed to be transferable. Why? Because if a structure is built around a single operator, everything has to be rewritten on the day of handover: institution identities change, credentials become invalid, wallets are updated. In Tamga a handover changes only a list’s operator field and its signer; the identities of institutions, the credential types and the credentials already issued stay the same (Chapters 6.7, 18.4).
 
-#{strong[P5. A shared ledger is a choice of signers, not a choice of storage.]} Today trust comes from signed lists. A shared ledger is set up when there are at least two independent operators. Why? Because a four-node chain run by a single operator produces no more trust than a list signed by the same operator (ADR-0009). What makes a ledger valuable is that its records are kept under the joint signature of parties independent of one another. That is why in Tamga the code for the chain has been written and tested but is not in production and is switched off; it will not be switched on without a second independent operator, and when it is, it will carry only the hashes of the signed lists (ADR-0051; Chapter 19).
+#{strong[P5. A shared ledger is a choice of signers, not a choice of storage.]} Today trust comes from signed lists. A shared ledger is set up when there are at least two independent operators. Why? Because a four-node chain run by a single operator produces no more trust than a list signed by the same operator (ADR-0009). What makes a ledger valuable is that its records are kept under the joint signature of parties independent of one another. That is why in Tamga the code for the chain has been written and tested but is not in production and is switched off; it will not be switched on without a second independent operator, and when it is, it will carry only digests and fingerprints of the records in the signed lists (ADR-0051, ADR-0074; Chapter 19).
 
 #{strong[P6. Every credential is bound to a key in the device’s secure area.]} A credential cannot be copied or transferred. A credential without such a binding can be shown by anyone who gets hold of it; someone who takes a diploma’s file can act as if they were its owner. Without device binding, a digital credential continues to carry the weakness of a paper copy (ADR-0006; Chapter 8.2).
 
@@ -486,7 +486,7 @@ Every issuer entry in a country list carries a set of fixed fields: the institut
   \"assurance\": \"I2\",
   \"class\": \"EAA\",
   \"cert_fingerprint_sha256\": \"fb58ea8de393d34d2b73ce7672a08c3e2908028edbd5fce9a4c10fb4ad2577ce\",
-  \"issuer_url\": \"https://issuer.tamga.network/example-university\",
+  \"issuer_url\": \"https://issuer.sandbox.tamga.network/example-university\",
   \"status\": \"ACTIVE\",
   \"valid_from\": \"2026-09-01T00:00:00Z\",
   \"status_history\": [
@@ -545,7 +545,7 @@ The line below shows how an institution’s status list publication is written t
   \"kind\": \"status_list\",
   \"list_id\": \"0x…4101234c731b7165\",
   \"issuer_id\": \"0xe41abbb0…e8db1b60\",
-  \"list_uri\": \"https://status.tamga.network/4101234c731b7165\",
+  \"list_uri\": \"https://status.sandbox.tamga.network/4101234c731b7165\",
   \"content_hash\": \"sha256:f037c5749daa…e9f4851d50\",
   \"list_version\": 15294
 }", baslik: "Example: a status list publication in the anchor log (JWS payload, decoded)")
@@ -731,12 +731,12 @@ The verifier verifies the signature of the key binding with the #{raw("cnf")} ke
 The example below shows the institution-signed body of Aynur’s diploma, with the disclosures decoded. In a presentation only some of these fields are opened (Figure 12).
 
 #kod("json", "{
-  \"iss\": \"https://issuer.tamga.network/example-university\",
+  \"iss\": \"https://issuer.sandbox.tamga.network/example-university\",
   \"vct\": \"urn:tamga:edu:DiplomaCredential:1\",
   \"vct#integrity\": \"sha256-7Dcy7bWeg5CURNEE+veGmjOE3HWb95ZGJBWX/ZrZgtI=\",
   \"iat\": 1782896400,
   \"cnf\": { \"jwk\": { \"kty\": \"EC\", \"crv\": \"P-256\", \"x\": \"…\", \"y\": \"…\" } },
-  \"status\": { \"status_list\": { \"idx\": 48213, \"uri\": \"https://status.tamga.network/…\" } },
+  \"status\": { \"status_list\": { \"idx\": 48213, \"uri\": \"https://status.sandbox.tamga.network/…\" } },
   \"given_name\": \"Aynur\",
   \"family_name\": \"Məmmədova\",
   \"qualification_title\": { \"tr-TR\": \"Bilgisayar Mühendisliği Yüksek Lisans Diploması\",
@@ -886,13 +886,13 @@ The transaction code (#{raw("tx_code")}) is a second factor against someone look
 The identity-bound offer uses the standard’s authorisation code flow; the offer contains no pre-authorised code, only an #{raw("issuer_state")} value that carries the identity of the offer. The wallet puts this value into the authorisation request, and the issuer checks that the offer is valid, unused and for the same credential type (SPEC-PROTO-0001 §3.4). The values are illustrative.
 
 #kod("json", "{
-  \"credential_issuer\": \"https://issuer.tamga.network/example-university\",
+  \"credential_issuer\": \"https://issuer.sandbox.tamga.network/example-university\",
   \"credential_configuration_ids\": [\"urn:tamga:edu:DiplomaCredential:1\"],
   \"grants\": { \"authorization_code\": { \"issuer_state\": \"b3f1c2…\" } }
 }", baslik: "Example: an identity-bound offer for Aynur's diploma")
 
 #kod("text", "openid-credential-offer://?credential_offer_uri=
-  https%3A%2F%2Fissuer.tamga.network%2Fexample-university%2Foffers%2F8a3f9c21", baslik: "Example: the address carried by the QR code")
+  https%3A%2F%2Fissuer.sandbox.tamga.network%2Fexample-university%2Foffers%2F8a3f9c21", baslik: "Example: the address carried by the QR code")
 
 In the description document, the identifier and the scope (#{raw("scope")}) of every credential configuration is the type’s URN; the format is always #{raw("dc+sd-jwt")}, the signature and proof algorithm ES256 only, and the batch issuance size 10. The deferred issuance endpoint and the notification endpoint are not advertised today (§2.1, §9, §10).
 ]
@@ -1951,7 +1951,7 @@ These documents do not produce decisions. The order of precedence is decision re
 = The Shared Ledger: Why Not Now, and How It Will Come
 
 #kutu("onemli", [Status of this section: planned])[
-There is no running chain today. The code of a permissioned shared ledger has been written and tested; it is not in production and is switched off. It will not be switched on without a second independent operator (ADR-0009, ADR-0051). What follows are the rules that will apply if the ledger is switched on. Today trust rests on the signed lists and the anchor log in Section 6, and no step of verification depends on a chain.
+There is no running chain today, neither on the real network nor in the sandbox. The code of a permissioned shared ledger has been written and tested; it runs only on developers’ machines and on the four-validator test network in the public repository, and it is not in production and is switched off. It will not be switched on without a second independent operator (ADR-0009, ADR-0051). What follows are the rules that will apply if the ledger is switched on; their scope and the transition are set by ADR-0073, ADR-0074 and ADR-0075. Today trust rests on the signed lists and the anchor log in Section 6, and no step of verification depends on a chain.
 ]
 
 "Where is the blockchain?" is one of the questions Tamga is asked most often, because the network’s first design began with a chain. Today’s answer is this: a chain adds nothing at the moment, and setting one up during a period when it adds nothing makes trust look greater than it is. This section explains the reasoning behind this, the rules under which the ledger will come, and how the transition will be made. The question of when a chain is useful for identity is discussed in general terms in the twelfth paper of the series \[77\].
@@ -1979,18 +1979,19 @@ Among the original reasons in ADR-0001 was that the ledger could later carry val
 
 == The projection principle
 
-If the ledger comes, does it replace the lists? ADR-0051 gives the narrowest and safest answer: #{strong[the chain is a projection of the signed lists.]} The source is always the signed lists and the anchor log; the chain is only a second record that bears witness that "this list version was published with this digest" (Figure 31).
+If the ledger comes, does it replace the lists? ADR-0051 gives the narrowest and safest answer: #{strong[the chain is a projection of the signed lists.]} The source is always the signed lists and the anchor log; the chain is a second record that repeats in digests what the lists say (Figure 31).
 
-Two kinds of entries are written to the chain: the digest of each list version (which list, which version number, the SHA-256 digest of the content, the digest of the previous version, publication time) and the digest of the last line of the anchor log. Since the lines of the log are linked to one another by a hash chain, the last line binds the whole log. List content, entries, credentials, credential hashes and personal data are not written to the chain; the entry fields are only fixed-size digests and integers, and there is no free-text field (ADR-0051 K2, CH2; Table 36).
+Two decisions set what is written to the ledger. ADR-0051 took the first step: the digest of each list version (which list, which version number, the SHA-256 digest of the content, the digest of the previous version, publication time) and the digest of the last line of the anchor log are written. Since the lines of the log are linked to one another by a hash chain, the last line binds the whole log. ADR-0074 widened the scope: every entry in the signed lists that affects a trust decision has a counterpart in the ledger. This includes root certificates, issuers, verifiers and terminal groups, schemas, wallet providers and their signing keys, zero-knowledge circuits, external lists, list signers and the list operator. The entries themselves are not written to the ledger; their digests and fingerprints are. These are digests of identifiers, key and certificate fingerprints, closed-set values, dates, state codes and account addresses. Free text such as names, descriptions and contact details stays only in the signed list; the ledger holds a single digest taken from its canonical form. Credentials, credential hashes, status bits and personal data are never written to the ledger (ADR-0051 CH2; ADR-0074 PJ1, PJ2; Table 36). Sandbox lists are not written to the production ledger either (ADR-0074 PJ4).
 
 #sekil(31, [Projection: the list is the source, the ledger is derived], "figures/wp-en/sekil-31.svg", yarim: false)
 
 The most important rule of the projection is its direction. The verification pipeline and the single interface through which clients ask trust questions (#{raw("TrustSource")}, Section 6.6) read only from the lists; the chain is not required at any step and will not be. A verifier may, if it wishes, compare the digest of its list with the confirmed digest on the chain and receive one of three answers. #{strong[Yes]}: the confirmed digest is the same. #{strong[No]}: there is a different confirmed digest for the same version; this is a sign that two verifiers have been shown two different lists; it does not change the verification result, but it raises an alarm for the operator and goes into the transparency report. #{strong[Unknown]}: the feature is switched off or the chain cannot be reached; the result does not get worse. In a conflict the list prevails; the chain entry is not corrected, a new version is added next to it (ADR-0051 K1, K5, CH1).
 
-#tablo([#{strong[Table 36.]} What is in the ledger and what is not (ADR-0051 CH2; ADR-0063 BL2; FW-ARF-0001 §1.6 P2).], (48fr, 43fr), ([In the ledger], [Not in the ledger],), (
-  ([The list version number, content digest, previous digest, publication time], [The content of the list; institution, verifier and schema entries],),
+#tablo([#{strong[Table 36.]} What is in the ledger and what is not (ADR-0051 CH2; ADR-0063 BL2; ADR-0074 PJ2; FW-ARF-0001 §1.6 P2).], (48fr, 46fr), ([In the ledger], [Not in the ledger],), (
+  ([The list version number, content digest, previous digest, publication time], [The text of the list; names, descriptions and contact details in the entries],),
   ([The sequence number, digest and time of the last line of the anchor log], [Credentials and credential hashes],),
-  ([Which candidate the anchorers support, conflict events], [Personal data, identity numbers, field values],),
+  ([Digests of identifiers, fingerprints, statuses and dates of institution, verifier, schema, wallet provider and list signer entries], [Personal data, identity numbers, field values],),
+  ([Which candidate the anchorers support, conflict events], [Wallet instance, device or pseudonym identifiers],),
   ([The address, digest, version, size and bit size of a status list], [Status bits, positions in the list, credential type name],),
 ))
 
@@ -2057,6 +2058,8 @@ For the day the ledger opens, the onboarding tool also has node steps for a stat
 == Transition
 
 The transition from lists to the ledger will not be a rewrite. The transition is a #{strong[replay]} of the list version archive onto the ledger: each version is processed in order and the times in the entries’ status history are preserved (ADR-0009 K7). The aim is this: an old diploma from an institution that has closed is valid because the institution was active on the date it was issued (Section 11.3), and it must get the same answer after the transition. The acceptance criterion is written accordingly: for every trust question recorded during the pilot, the trust source based on the lists and the trust source based on the ledger must give the same answer; if acceptance and rejection diverge in a single query, the transition is not complete. Credentials already issued are not reissued; the wallet and the issuance service do not change; clients change only the implementation behind the #{raw("TrustSource")} interface (ADR-0015; FW-ARF-0001 §8.2). The transition can also be reversed, and the lists continue to be published in the ledger stage as well (ADR-0009 Rationale 3).
+
+ADR-0073 sets how the replay is done. Each registry contract has a #{strong[migration window]} that a governance vote opens only once. The window lasts at most 30 days, closes by itself when the time is up and cannot be opened again. While it is open, entries with past dates can be written, but no date can be later than the block time at that moment. The transition does not count as complete as long as any acceptance-versus-rejection difference remains between the answers the lists and the ledger give to trust questions. The same decision also defines #{strong[hard revocation]}: if an institution’s key has been compromised, the revocation entry carries a start date and credentials issued after that date are not accepted. Credentials that a suspended institution issued before the suspension, on the other hand, remain valid. A verifier’s identifier in the ledger is the digest of its domain name and does not change when its certificate is renewed. Reassigning that identifier to another state, or registering it again after revocation, takes a two-thirds vote, and the history of the earlier period is not deleted (ADR-0075).
 
 == The value layer: suspended
 
@@ -2164,7 +2167,7 @@ In Tamga a binding choice begins with a written decision record. The rule is sho
 
 A record passes through three states. In the #{strong[Proposed]} stage the decision has been written but is not binding. When project management accepts the decision, the record becomes #{strong[Active]} and the date of acceptance is recorded; the affected specifications and framework documents are updated in the same piece of work. A closed decision changes only through a new decision record. The record that changes is not deleted; it is marked #{strong[Superseded]}, or the new record states explicitly which clause of the old record it changes. This way one can read not only the current form of a decision but also how it came to be that way.
 
-At the time this edition was prepared there are 72 decision records: 70 active, one in the proposed state (ADR-0028) and one superseded by another decision (ADR-0003). The number, title, status and date of acceptance of every record are in Appendix B.
+At the time this edition was prepared there are 75 decision records: 73 active, one in the proposed state (ADR-0028) and one superseded by another decision (ADR-0003). The number, title, status and date of acceptance of every record are in Appendix B.
 
 == Ten major decisions
 
@@ -2265,7 +2268,7 @@ The seven tables below list all active decisions by theme: trust and lists (Tabl
   ([#{strong[ADR-0061.]} The pseudonym seed as a separate credential configuration], [Standards conformance], [A non-standard response field],),
 ))
 
-#tablo([#{strong[Table 45.]} Governance, positioning and ledger decisions.], (48fr, 44fr, 39fr), ([Decision], [Rationale], [Option left behind],), (
+#tablo([#{strong[Table 45.]} Governance, positioning and ledger decisions.], (48fr, 48fr, 42fr), ([Decision], [Rationale], [Option left behind],), (
   ([#{strong[ADR-0001.]} If a ledger comes, Hyperledger Besu and QBFT], [Permissioned, equal votes, immediate finality; EU precedent], [Cosmos SDK; consensus from scratch; a public chain],),
   ([#{strong[ADR-0002.]} Sovereignty-first three-layer governance], [Each state the sole author of its own register; the right to exit], [A founding consortium and joint voting],),
   ([#{strong[ADR-0009.]} A chainless start; a chain only with at least two independent operators], [A single operator’s chain produces no trust], [Waiting for the chain; a single-operator development chain],),
@@ -2287,6 +2290,9 @@ The seven tables below list all active decisions by theme: trust and lists (Tabl
   ([#{strong[ADR-0070.]} A provisional operator until the foundation is established; the name in the list is "Tamga Network"], [The network has no legal personality; hand-over from a single point], [The operating company’s name in the list; waiting for work that requires a legal person],),
   ([#{strong[ADR-0071.]} No fees from participants in the provisional phase], [Neutrality; a financial contribution does not affect registration], [An annual fee from institutions],),
   ([#{strong[ADR-0072.]} The value layer suspended, a research direction], [The network handles no tokens or payments; the chain is only a projection], [Keeping the ADR-0003 hooks binding],),
+  ([#{strong[ADR-0073.]} A one-time migration window (at most 30 days) for the move to the ledger, hard revocation, schema version digests are append-only], [The list history can be carried to the ledger exactly; both sources give the same answer], [Not carrying the history; a migration authority that stays open],),
+  ([#{strong[ADR-0074.]} All trust records in the lists go on the ledger, only as digests and fingerprints], [Record-level queries and equivalence; personal data and free text cannot be deleted from a ledger], [List digests only; writing the detail text in the clear],),
+  ([#{strong[ADR-0075.]} Reassigning a verifier identifier and re-registering it after revocation only by a two-thirds vote], [The first state to register must not capture the identifier; revocation must not be a permanent lock], [Treating a domain-name proof as sufficient on its own; doing nothing],),
 ))
 
 == Decisions that changed
@@ -2307,7 +2313,7 @@ For those who will use a trust network, the first need is for it to say plainly 
 
 Table 46 lists the functions under three status labels. The labels mean what they mean in the reading guide: #{strong[live]} means live in the real network or in the sandbox, #{strong[planned]} means decided but not live, and #{strong[research]} means a function with no decision or one that is suspended. The table reflects the date on which this edition was prepared and is updated together with the function status table of the main framework document (FW-ARF-0001 §2.8).
 
-#tablo([#{strong[Table 46.]} Status of the functions.], (37fr, 11fr, 23fr, 18fr), ([Function], [Status], [Note], [Section​​​​​​​],), (
+#tablo([#{strong[Table 46.]} Status of the functions.], (37fr, 11fr, 24fr, 18fr), ([Function], [Status], [Note], [Section​​​​​​​],), (
   ([Signed trust lists, list of trusted lists, anchor log, archive], [Live], [real network and sandbox], [6],),
   ([Credential type catalogue], [Live], [immutable files, integrity hash], [8\.4],),
   ([Institution-initiated and wallet-initiated issuance], [Live], [two paths in the hosted service], [9],),
@@ -2339,7 +2345,7 @@ Table 46 lists the functions under three status labels. The labels mean what the
   ([Policy identifier in the access certificate], [Planned], [when the certificate practice statement is published], [7\.4],),
   ([Certified and offline gate identity], [Planned], [field and reader ready], [10\.9],),
   ([Rerunning the OpenID verifier plan; the wallet plans], [Planned], [], [20\.5],),
-  ([Shared ledger], [Planned], [code ready, not in production and switched off], [19],),
+  ([Shared ledger], [Planned], [code ready; runs on a local network and on the public test network, switched off on the real network and in the sandbox], [19],),
   ([Foundation, council and hand-over of the lists], [Planned], [], [18\.4],),
   ([Participation in EU interoperability events], [Planned], [], [20\.5],),
   ([Pseudonym derivation with a zero-knowledge proof], [Research], [], [15\.3],),
@@ -2354,11 +2360,11 @@ A note on how to read the table. The "live" label says that a function can be sh
 
 The roadmap consists of six steps. Each step depends on a condition, and no step changes the identifiers set up in an earlier step (Table 47). The governance side of the first four steps was described in Section 18.3 and the ledger side in Section 19.8; Figure 30 shows the same path as governance stages.
 
-#tablo([#{strong[Table 47.]} Steps of the roadmap: condition, what changes, what does not.], (16fr, 34fr, 48fr, 45fr), ([Step], [Condition], [What changes], [What does not change],), (
+#tablo([#{strong[Table 47.]} Steps of the roadmap: condition, what changes, what does not.], (16fr, 34fr, 48fr, 48fr), ([Step], [Condition], [What changes], [What does not change],), (
   ([1\. List stage (today)], [], [signed lists and the anchor log; sandbox; packages in pre-release; OpenID self-test], [],),
   ([2\. Preparation], [store releases and device tests of the listed wallets], [device attestation, Bluetooth and browser paths go live; the first institutions join the real network], [credential types, root and institution identifiers],),
   ([3\. Foundation], [the foundation gaining legal personality], [operation passes to the foundation; XML list in the real network; the identity service certificate is renewed], [the list operator’s name, the root identifier, credential types, credentials already issued],),
-  ([4\. Ledger], [written acceptance by at least two independent operators and equivalence tests], [the digest of the lists is also written to the ledger], [the signed lists remain the source; the verification pipeline],),
+  ([4\. Ledger], [written acceptance by at least two independent operators and equivalence tests], [the trust records in the lists are also written to the ledger as digests and fingerprints; the history is carried over in a one-time migration window], [the signed lists remain the source; the verification pipeline; no personal data is written to the ledger],),
   ([5\. State participation], [a state publishing its own list], [the council is set up; the PID place is filled; provisional roles are handed over], [institution identifiers, credential types, credentials already issued],),
   ([6\. Institutional expansion], [thresholds set by the council], [new sector schemas are added by their own decisions], [the network’s principles],),
 ))
@@ -2381,7 +2387,6 @@ The "open topics" sections of the decision records and specifications explicitly
   ([A second identity verification provider], [Avoiding dependence on a single provider], [SPEC-ID-0003],),
   ([Is collecting status lists mandatory; multiple status providers], ["Recommended" today; may need to be written explicitly], [SPEC-CRED-0003],),
   ([Tying verifier scope to credential type identifiers], [The problem of updating every verifier for every new type], [SPEC-PROTO-0002],),
-  ([The ledger counterpart of wallet provider entries], [In which contract they will be kept in the ledger stage], [SPEC-TRUST-0001],),
   ([If the EU chooses another revocation method for ZK], [The short-lived copy decision will be reassessed], [ADR-0044],),
   ([Overlap period in root certificate rollover; intermediate certificate authority], [Proposed 12 months; depends on the states’ preference], [SPEC-ID-0002],),
   ([Out-of-scope functions: PID issuance, payments, organisational wallet, W3C VCDM representation, qualified electronic signature], [Each can be opened only by a separate decision], [FW-ARF-0001 §1.7],),
@@ -2437,7 +2442,7 @@ We began with Aynur’s application. To show the diploma she obtained in Baku to
 
 It also has to be said honestly how open this path is for Aynur today. The Türkiye list is active and the whole flow works; but for Azerbaijan a place has only been reserved in the lists. This is not a notice of any agreement or negotiation; it is an empty slot in which a state, when it joins, can publish its own list. Whether Aynur’s university in Baku can issue credentials by this route depends on that slot being filled. The structure is built to wait for this: when the slot is filled, no new field is added; an existing place is filled.
 
-Three choices came up again and again throughout the document. The technical layer is the same as the EU’s, because the value of working together comes from no one having to write a special adaptation. Trust today comes from signed lists, because a single operator’s chain produces no more trust than a signed list; a shared ledger comes only when independent parties run it together, and even then it carries the digest of the lists. Each state is the sole author of its own register, and every role carried out today on behalf of a state is designed so that it can be handed over without changing any credential or identifier.
+Three choices came up again and again throughout the document. The technical layer is the same as the EU’s, because the value of working together comes from no one having to write a special adaptation. Trust today comes from signed lists, because a single operator’s chain produces no more trust than a signed list; a shared ledger comes only when independent parties run it together, and even then it carries only digests and fingerprints of the records in the lists. Each state is the sole author of its own register, and every role carried out today on behalf of a state is designed so that it can be handed over without changing any credential or identifier.
 
 The road is long and includes steps whose conditions are not in the network’s hands: independent operators, institutions, states. That is why the roadmap gives conditions, not dates. Operators may change, domain names may be handed over, the ledger may come or may be delayed. What lasts is the trust model: signed records that anyone can check, verification without asking the source, and shared records that do not know the person.
 
@@ -2471,7 +2476,7 @@ The terms are in alphabetical order. Technical terms are not translated. The def
   ([Key attestation (KA)], [A signed document in which the wallet provider declares that the keys to which the credential will be bound were generated and are protected in the device’s secure hardware.],),
   ([Key proof (#{emph[proof of possession]}, #{raw("proof")})], [A short proof that the wallet attaches to its credential request, signed with the key to which the credential will be bound (the OpenID4VCI JWT proof); it shows that the key is in the wallet and that the request is fresh (#{raw("aud")}, #{raw("iat")}, #{raw("nonce")}). Not to be confused with the key attestation (KA): the wallet provider signs the KA, the wallet signs the key proof.],),
   ([Ledger], [A ledger (chain) in which the digests of trust entries are kept by multiple independent operators; it does not exist today.],),
-  ([Ledger stage], [The stage in which list digests are also written to a shared ledger kept by multiple independent operators.],),
+  ([Ledger stage], [The stage in which the trust records in the lists are also written, as digests and fingerprints, to a shared ledger kept by multiple independent operators.],),
   ([List of Trusted Lists (LoTL)], [A signed list showing the addresses, signers and recognition status of the country lists.],),
   ([mdoc], [The binary credential format defined by ISO\/IEC 18013-5 and encoded in CBOR.],),
   ([Non-qualified attestation of attributes (EAA)], [A credential issued by any institution that is not a qualified trust service provider.],),
@@ -2481,7 +2486,7 @@ The terms are in alphabetical order. Technical terms are not translated. The def
   ([PID], [Person identification data; an identity credential issued by the state or by an organisation the state authorises. Tamga does not issue PIDs.],),
   ([PKCE], [An OAuth extension in which the client uses a single-use verifier value against interception of the authorisation code.],),
   ([Pre-authorized code], [A single-use code used in institution-initiated issuance, because the person’s identity is already known.],),
-  ([Projection], [The shared ledger carrying only the digests of the signed lists; the lists are the source, and in a conflict the list prevails.],),
+  ([Projection], [The shared ledger carrying only digests and fingerprints of the records in the signed lists; the lists are the source, and in a conflict the list prevails.],),
   ([Provisional identity credential], [The credential the identity service issues through remote identity verification while there is no PID provider; it is not a PID.],),
   ([Provisional operator], [The legal person that operates the network’s services "on behalf of Tamga Network" until the foundation is established.],),
   ([Pseudonym], [An account identifier that the wallet generates separately for each site; stable, but impossible to link across sites.],),
@@ -2512,9 +2517,9 @@ The terms are in alphabetical order. Technical terms are not translated. The def
 
 #heading(level: 1, numbering: none)[Appendix B — Decision records index]
 
-Table 51 gives all decision records in numerical order. The date is the date on which the record was created; for active records the date of acceptance is usually the same, and if not, the record states the date of acceptance separately. The "Section" column shows the main sections in which the record is cited in this document. The full text of the records is under #{raw("docs.tamga.network/en/adr/")}.
+Table 51 gives all decision records in numerical order. The date is the date on which the record was created; for active records the date of acceptance is usually the same, and if not, the record states the date of acceptance separately. The "Section" column shows the main sections in which the record is cited in this document. The full text of the records is under #{raw("docs.tamga.network/adr/")}.
 
-#tablo([#{strong[Table 51.]} Decision records.], (10fr, 40fr, 13fr, 13fr, 9fr), ([ADR​​​​​], [Title], [Status], [Date], [Section],), (
+#tablo([#{strong[Table 51.]} Decision records.], (10fr, 42fr, 13fr, 13fr, 9fr), ([ADR​​​​​], [Title], [Status], [Date], [Section],), (
   ([0001], [Besu QBFT ledger], [Active], [2026-07-29], [19],),
   ([0002], [Sovereignty-first governance], [Active], [2026-08-05], [2, 4, 18],),
   ([0003], [Value layer hooks], [Superseded], [2026-08-06], [19],),
@@ -2587,13 +2592,16 @@ Table 51 gives all decision records in numerical order. The date is the date on 
   ([0070], [Provisional operator chain], [Active], [2026-10-30], [4, 18],),
   ([0071], [Funding the network in the provisional phase: no service fees; the foundation is funded by grants and state or member contributions], [Active], [2026-10-30], [4, 18],),
   ([0072], [Value layer suspended: the ADR-0003 hooks are a research direction], [Active], [2026-10-30], [4, 19, 23],),
+  ([0073], [Feasibility of chain–list equivalence: migration mode, hard revocation, schema versions, verifier identifier, status mapping], [Active], [2026-11-04], [19],),
+  ([0074], [Projection scope 0.8: all trust records in the signed lists on the chain], [Active], [2026-11-04], [4, 19],),
+  ([0075], [Ownership of the verifier domain-name identifier and re-registration after revocation], [Active], [2026-11-04], [19],),
 ))
 
 #heading(level: 1, numbering: none)[Appendix C — Standards index]
 
 Table 52 gives the external standards and regulations cited in the document, their versions and the sections in which they are used in Tamga. The versions are those current at the time this edition was prepared; the content of the standards is not quoted, only the place where they are used is shown.
 
-#tablo([#{strong[Table 52.]} Standards and regulations.], (13fr, 34fr, 14fr, 27fr, 24fr), ([Body], [Document], [Version], [In Tamga], [Section​​​​​​​​​​​​],), (
+#tablo([#{strong[Table 52.]} Standards and regulations.], (13fr, 34fr, 19fr, 27fr, 24fr), ([Body], [Document], [Version], [In Tamga], [Section​​​​​​​​​​​​],), (
   ([EU], [Regulation 910\/2014 \[1\] and 2024\/1183 \[2\] (eIDAS 2.0)], [2024\/1183, 30 April 2024], [framework, roles, credential classes], [3, 20],),
   ([EU], [Implementing Regulations 2024\/2977–2982 \[5\]], [December 2024; as amended by 2026\/1731], [PID and EAA encoding, wallet functions], [3, 13, 14],),
   ([EU], [Implementing Regulations 2025\/847 \[6\], 2025\/848, 2025\/849], [May 2025; 2025\/848 as amended by 2026\/1730], [incident notification, verifier registration, list of certified wallets], [7, 18, 20],),
@@ -2602,7 +2610,7 @@ Table 52 gives the external standards and regulations cited in the document, the
   ([EU], [EUDI technical specifications (TS3 \[12\], TS10, TS13 …)], [living documents], [WIA and KA, export, ZK], [13, 15],),
   ([EU], [Attestation Rulebook \[13\] template], [1\.5], [branches of the Tamga Rulebook], [18\.8],),
   ([IETF], [RFC 9901 \[15\] SD-JWT], [November 2025], [credential format], [8],),
-  ([IETF], [SD-JWT VC \[16\]], [draft-19], [credential format], [8],),
+  ([IETF], [SD-JWT VC \[16\]], [Internet-Draft; the version pinned by 2026\/1731], [credential format], [8],),
   ([IETF], [Token Status List \[17\]], [draft-20 (referenced by the EU), draft-21], [status lists], [12],),
   ([IETF], [OAuth 2.0 Attestation-Based Client Authentication \[18\]], [draft], [client authentication with the WIA], [9, 13],),
   ([IETF], [RFC 9449 DPoP \[20\] · RFC 9126 PAR \[21\] · RFC 7636 PKCE \[22\] · RFC 9700 \[23\]], [published], [issuance profile], [9],),
@@ -2710,7 +2718,7 @@ Tamga’s framework documents are at #{raw("arf.tamga.network/")}, and its speci
   ([GUIDE-0009], [Conformance tests], [#{raw("docs.tamga.network/guides/conformance")}],),
   ([GUIDE-0013], [Sandbox: the test network], [#{raw("docs.tamga.network/guides/sandbox")}],),
   ([GUIDE-0014], [Onboarding tool: for the IT team], [#{raw("docs.tamga.network/guides/onboarding-tool")}],),
-  ([ADR-0001 … ADR-0072], [Decision records (Appendix B)], [#{raw("docs.tamga.network/adr/")}],),
+  ([ADR-0001 … ADR-0075], [Decision records (Appendix B)], [#{raw("docs.tamga.network/adr/")}],),
 ))
 
 #heading(level: 1, numbering: none)[References]
@@ -2745,7 +2753,7 @@ Tamga’s framework documents are at #{raw("arf.tamga.network/")}, and its speci
 
 #kaynak("15")[Fett, D., Yasuda, K. and Campbell, B. (2025). #{emph[Selective Disclosure for JSON Web Tokens (SD-JWT).]} IETF RFC 9901, November 2025.]
 
-#kaynak("16")[Terbu, O., Fett, D. and Campbell, B. #{emph[SD-JWT-based Verifiable Digital Credentials (SD-JWT VC).]} IETF OAuth Working Group Internet-Draft draft-ietf-oauth-sd-jwt-vc-19, 2026. https:\/\/datatracker.ietf.org\/doc\/draft-ietf-oauth-sd-jwt-vc\/]
+#kaynak("16")[Terbu, O., Fett, D. and Campbell, B. #{emph[SD-JWT-based Verifiable Digital Credentials (SD-JWT VC).]} IETF OAuth Working Group Internet-Draft draft-ietf-oauth-sd-jwt-vc; the version pinned by the EU’s Implementing Regulation 2026\/1731 is followed. https:\/\/datatracker.ietf.org\/doc\/draft-ietf-oauth-sd-jwt-vc\/ (accessed 11 November 2026).]
 
 #kaynak("17")[Looker, T., Bastian, P. and Bormann, C. #{emph[Token Status List.]} IETF OAuth Working Group Internet-Draft draft-ietf-oauth-status-list-20 (20 April 2026; the version referenced by the EU in 2026\/1731) and draft-21 (21 June 2026). https:\/\/datatracker.ietf.org\/doc\/draft-ietf-oauth-status-list\/]
 
@@ -2783,7 +2791,7 @@ Tamga’s framework documents are at #{raw("arf.tamga.network/")}, and its speci
 
 #kaynak("34")[ISO\/IEC (2021). #{emph[ISO\/IEC 18013-5:2021 Personal identification: ISO-compliant driving licence, Part 5: Mobile driving licence (mDL) application.]} ISO\/IEC JTC 1\/SC 17. https:\/\/www.iso.org\/standard\/69084.html]
 
-#kaynak("35")[ISO\/IEC (2025). #{emph[ISO\/IEC TS 18013-7:2025 Personal identification: ISO-compliant driving licence, Part 7: Mobile driving licence (mDL) add-on functions.]} Second edition, May 2025.]
+#kaynak("35")[ISO\/IEC (2025). #{emph[ISO\/IEC TS 18013-7:2025 Personal identification: ISO-compliant driving licence, Part 7: Mobile driving licence (mDL) add-on functions.]} Second edition, May 2025 (first edition October 2024).]
 
 #kaynak("36")[Caceres, M., Cappalli, T. and Yosef, M. A. (Ed.) (2026). #{emph[Digital Credentials.]} W3C Working Draft, Federated Identity Working Group, 29 October 2026. https:\/\/www.w3.org\/TR\/digital-credentials\/]
 
@@ -2837,38 +2845,38 @@ Tamga’s framework documents are at #{raw("arf.tamga.network/")}, and its speci
 
 #kaynak("61")[European Commission. #{emph[Europass and the European Learning Model (ELM)]}, version 3. https:\/\/europa.eu\/europass\/]
 
-#kaynak("62")[Tamga Network (2026). #{emph[Kadim mührün çağdaş karşılığını inşa ediyoruz]} \[Building the modern counterpart of the ancient seal\] (manifesto), version 1.0, November 2026. https:\/\/tamga.network\/manifesto-tr.pdf]
+#kaynak("62")[Tamga Network (2026). #{emph[We are building the modern counterpart of the ancient seal]} (manifesto), version 1.0, November 2026. https:\/\/tamga.network\/manifesto-en.pdf]
 
 #kaynak("63")[Tamga Network (2026). #{emph[Architecture and Reference Framework]} (FW-ARF-0001) and its annexes: Trust Framework, Tamga Rulebook and the credential type rulebooks, Definitions, References, Roles, Onboarding, and the Revocation, Wallet Attestation and Registration Certificate policies; version 1.0.0. https:\/\/arf.tamga.network\/ (identifiers in Appendix E).]
 
 #kaynak("64")[Tamga Network (2026). #{emph[Specifications]} (SPEC-TRUST-0001, SPEC-ID-0002\/0003, SPEC-CRED-0001\/0002\/0003, SPEC-SCHEMA-0001\/0002\/0003, SPEC-PROTO-0001\/0002, SPEC-API-0001, SPEC-WALLET-0001), version 1.0.0; guides and concept pages. https:\/\/docs.tamga.network\/]
 
-#kaynak("65")[Tamga Network (2026). #{emph[Architecture decision records]} ADR-0001…ADR-0072. https:\/\/docs.tamga.network\/adr\/ (index in Appendix B).]
+#kaynak("65")[Tamga Network (2026). #{emph[Architecture decision records]} ADR-0001…ADR-0075. https:\/\/docs.tamga.network\/adr\/ (index in Appendix B).]
 
 #kaynak("66")[Tamga Network (2026). #{emph[tamga-network]} repository: README, SECURITY.md, CHANGELOG (0.8.2, 5 November 2026) and the #{raw("@tamga-network/*")} packages, Apache-2.0. https:\/\/github.com\/tamga-network\/tamga-network]
 
 #kaynak("67")[Tamga Network Academic Papers A1 (2026). #{emph[Dijital Kimliğin Evrimi: Kullanıcı Adından Kimlik Cüzdanına]} \[The Evolution of Digital Identity: From Username to Identity Wallet\]. https:\/\/tamga.network\/files\/publications\/evolution-of-digital-identity-tr.pdf]
 
-#kaynak("68")[Tamga Network Academic Papers A3 (2026). #{emph[Seçici Açıklama: Gerekeni Göster, Gerisi Sende Kalsın]} \[Selective Disclosure: Show What Is Needed, Keep the Rest\]. https:\/\/tamga.network\/files\/publications\/selective-disclosure-tr.pdf]
+#kaynak("68")[Tamga Network Academic Papers A3. #{emph[Seçici Açıklama: Gerekeni Göster, Gerisi Sende Kalsın]} \[Selective Disclosure: Show What Is Needed, Keep the Rest\]. Forthcoming.]
 
-#kaynak("69")[Tamga Network Academic Papers A4 (2026). #{emph[Sıfır Bilgi İspatları ve Kimlik]} \[Zero-Knowledge Proofs and Identity\]. https:\/\/tamga.network\/files\/publications\/zero-knowledge-proofs-tr.pdf]
+#kaynak("69")[Tamga Network Academic Papers A4. #{emph[Sıfır Bilgi İspatları ve Kimlik]} \[Zero-Knowledge Proofs and Identity\]. Forthcoming.]
 
-#kaynak("70")[Tamga Network Academic Papers A5 (2026). #{emph[Bağlanamazlık: Doğrulayıcılar Seni Birbirine Anlatmasın]} \[Unlinkability: Verifiers Should Not Tell Each Other About You\]. https:\/\/tamga.network\/files\/publications\/unlinkability-tr.pdf]
+#kaynak("70")[Tamga Network Academic Papers A5. #{emph[Bağlanamazlık: Doğrulayıcılar Seni Birbirine Anlatmasın]} \[Unlinkability: Verifiers Should Not Tell Each Other About You\]. Forthcoming.]
 
-#kaynak("71")[Tamga Network Academic Papers A6 (2026). #{emph[Kime Güveniyoruz? Güven Listeleri ve Dijital Güven Altyapısı]} \[Whom Do We Trust? Trust Lists and Digital Trust Infrastructure\]. https:\/\/tamga.network\/files\/publications\/trust-lists-tr.pdf]
+#kaynak("71")[Tamga Network Academic Papers A6. #{emph[Kime Güveniyoruz? Güven Listeleri ve Dijital Güven Altyapısı]} \[Whom Do We Trust? Trust Lists and Digital Trust Infrastructure\]. Forthcoming.]
 
-#kaynak("72")[Tamga Network Academic Papers A7 (2026). #{emph[İptal: Bir Belgeyi Geri Almak, Kimseyi İzlemeden]} \[Revocation: Withdrawing a Credential Without Tracking Anyone\]. https:\/\/tamga.network\/files\/publications\/revocation-tr.pdf]
+#kaynak("72")[Tamga Network Academic Papers A7. #{emph[İptal: Bir Belgeyi Geri Almak, Kimseyi İzlemeden]} \[Revocation: Withdrawing a Credential Without Tracking Anyone\]. Forthcoming.]
 
-#kaynak("73")[Tamga Network Academic Papers A8 (2026). #{emph[Belge Nasıl Verilir, Nasıl Gösterilir]} \[How a Credential Is Issued and How It Is Presented\]. https:\/\/tamga.network\/files\/publications\/issuing-and-presenting-tr.pdf]
+#kaynak("73")[Tamga Network Academic Papers A8. #{emph[Belge Nasıl Verilir, Nasıl Gösterilir]} \[How a Credential Is Issued and How It Is Presented\]. Forthcoming.]
 
-#kaynak("74")[Tamga Network Academic Papers A9 (2026). #{emph[Yüz Yüze Doğrulama: NFC, Bluetooth ve Mobil Ehliyet]} \[In-Person Verification: NFC, Bluetooth and the Mobile Driving Licence\]. https:\/\/tamga.network\/files\/publications\/in-person-verification-tr.pdf]
+#kaynak("74")[Tamga Network Academic Papers A9. #{emph[Yüz Yüze Doğrulama: NFC, Bluetooth ve Mobil Ehliyet]} \[In-Person Verification: NFC, Bluetooth and the Mobile Driving Licence\]. Forthcoming.]
 
-#kaynak("75")[Tamga Network Academic Papers A10 (2027, according to the publication schedule). #{emph[Cüzdan Güvenliği: Anahtar Nerede Saklanır, Telefon Gerçek mi?]} \[Wallet Security: Where Is the Key Kept, Is the Phone Genuine?\]. https:\/\/tamga.network\/files\/publications\/wallet-security-tr.pdf]
+#kaynak("75")[Tamga Network Academic Papers A10. #{emph[Cüzdan Güvenliği: Anahtar Nerede Saklanır, Telefon Gerçek mi?]} \[Wallet Security: Where Is the Key Kept, Is the Phone Genuine?\]. Forthcoming.]
 
-#kaynak("76")[Tamga Network Academic Papers A11 (2027, according to the publication schedule). #{emph[eIDAS 2.0’a Hukuk Dışından Bakış]} \[eIDAS 2.0 Seen from Outside the Law\]. https:\/\/tamga.network\/files\/publications\/eidas-2-explained-tr.pdf]
+#kaynak("76")[Tamga Network Academic Papers A11. #{emph[eIDAS 2.0’a Hukuk Dışından Bakış]} \[eIDAS 2.0 Seen from Outside the Law\]. Forthcoming.]
 
-#kaynak("77")[Tamga Network Academic Papers A12 (2027, according to the publication schedule). #{emph[Blokzincir ve Dijital Kimlik]} \[Blockchain and Digital Identity\]. https:\/\/tamga.network\/files\/publications\/blockchain-and-identity-tr.pdf]
+#kaynak("77")[Tamga Network Academic Papers A12. #{emph[Blokzincir ve Dijital Kimlik]} \[Blockchain and Digital Identity\]. Forthcoming.]
 
-#kaynak("78")[Tamga Network Academic Papers A14 (2027, according to the publication schedule). #{emph[Deepfake Çağında Kimlik Doğrulama]} \[Identity Verification in the Age of Deepfakes\]. https:\/\/tamga.network\/files\/publications\/deepfakes-and-identity-verification-tr.pdf]
+#kaynak("78")[Tamga Network Academic Papers A14. #{emph[Deepfake Çağında Kimlik Doğrulama]} \[Identity Verification in the Age of Deepfakes\]. Forthcoming.]
 
-#kaynak("79")[Tamga Network Academic Papers A15 (2027, according to the publication schedule). #{emph[Kuantum Sonrası Dönemde Dijital Kimlik]} \[Digital Identity in the Post-Quantum Era\]. https:\/\/tamga.network\/files\/publications\/post-quantum-identity-tr.pdf]
+#kaynak("79")[Tamga Network Academic Papers A15. #{emph[Kuantum Sonrası Dönemde Dijital Kimlik]} \[Digital Identity in the Post-Quantum Era\]. Forthcoming.]
