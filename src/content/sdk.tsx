@@ -18,7 +18,7 @@ export const pkgDocsUrl = (name: string) =>
   DOCS_OVERRIDE[name] ??
   `https://docs.tamga.network/packages/${name.replace("@tamga-network/", "")}`;
 
-/* soon: npm'de henüz olmayan paket için; bugün on paketin hepsi npm'de (0.8.2; onboard ilk kez 0.8.2'de). */
+/* soon: npm'de henüz olmayan paket için; bugün on paketin hepsi npm'de (0.8.3; onboard ilk kez 0.8.2'de). */
 export const PACKAGES: { name: string; what: L; soon?: L }[] = [
   {
     name: "@tamga-network/core",

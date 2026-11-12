@@ -108,6 +108,70 @@ export const CHANGELOG_PAGE: Record<
 
 export const RELEASES: Release[] = [
   {
+    id: "v1.0.0-2026-11-12-packages-0-8-3",
+    version: "v1.0.0",
+    date: "2026-11-12",
+    kind: "security",
+    title: {
+      en: "The verifier returns only what was asked for, the wallet core ties registration to the signer, packages 0.8.3",
+      tr: "Doğrulayıcı yalnız istenen alanları döndürüyor, cüzdan çekirdeği kaydı imzalayana bağlıyor, paketler 0.8.3",
+      tk: "Barlaýjy diňe soralan meýdançalary gaýtarýar, gapjyk ýadrosy hasaba alşy gol çekene baglaýar, paketler 0.8.3",
+      az: "Yoxlayıcı yalnız istənən sahələri qaytarır, cüzdan nüvəsi qeydiyyatı imzalayana bağlayır, paketlər 0.8.3",
+    },
+    sections: {
+      security: {
+        en: [
+          "The verifier now returns only the fields the verification policy asks for. The technical fields of a document and anything the wallet disclosed beyond the request are no longer in the result.",
+          "The verifier limits how far a revocation list may run ahead of its last anchor. When the list is newer than the latest anchor by more than one hour (the default), the result is “undetermined” instead of a decision. A site that verifies on its own server should reload the anchors more often than that.",
+          "The wallet core can tie a verifier's registration certificate to the certificate that signed the request. A self-signed certificate that copies a registered organisation's identifier no longer counts as that organisation.",
+          "The wallet core refuses http addresses by default, both in a document offer and in the address it returns to after a presentation. Local development needs an explicit option.",
+          "The trust list publisher stops when a record of the previously published list is missing from the new one or when a history row was changed. A removal goes through only with an approved entry that is bound to one list version.",
+        ],
+        tr: [
+          "Doğrulayıcı artık yalnız doğrulama politikasının istediği alanları döndürüyor. Belgenin teknik alanları ve cüzdanın istenenden fazla açtığı alanlar sonuçta yer almıyor.",
+          "Doğrulayıcı, bir iptal listesinin son çapasının ne kadar önüne geçebileceğini sınırlıyor. Liste son çapadan bir saatten (varsayılan) daha yeniyse sonuç karar yerine “belirsiz” oluyor. Kendi sunucusunda doğrulama yapan bir site çapaları bundan daha sık yenilemeli.",
+          "Cüzdan çekirdeği, doğrulayıcının kayıt sertifikasını isteği imzalayan sertifikaya bağlayabiliyor. Kayıtlı bir kurumun kimliğini kopyalayan, kendinden imzalı bir sertifika artık o kurum sayılmıyor.",
+          "Cüzdan çekirdeği http adreslerini varsayılan olarak reddediyor; hem belge teklifinde hem de sunumdan sonra dönülen adreste. Yerel geliştirme için açık bir seçenek gerekiyor.",
+          "Güven listesi yayıncısı, önceki yayımlanan listedeki bir kayıt yeni listede yoksa ya da bir geçmiş satırı değiştirilmişse duruyor. Bir kaydın çıkarılması ancak tek bir liste sürümüne bağlı, onaylı bir girdiyle geçiyor.",
+        ],
+        tk: [
+          "Barlaýjy indi diňe barlag syýasatynyň soraýan meýdançalaryny gaýtarýar. Resminamanyň tehniki meýdançalary we gapjygyň soralandan artyk açan meýdançalary netijede ýok.",
+          "Barlaýjy ýatyrylyş sanawynyň soňky labyryndan näçe öňe geçip biljekdigini çäklendirýär. Sanaw soňky labyrdan bir sagatdan (deslapky baha) köp täze bolsa, netije karar däl-de, “näbelli” bolýar. Öz serwerinde barlag geçirýän saýt labyrlary mundan ýygy-ýygydan täzelemeli.",
+          "Gapjyk ýadrosy barlaýjynyň hasaba alyş sertifikatyny haýyşa gol çeken sertifikata baglap bilýär. Hasaba alnan guramanyň kimligini göçürýän, öz-özüne gol çekilen sertifikat indi şol gurama hasaplanmaýar.",
+          "Gapjyk ýadrosy http salgylaryny deslapky ýagdaýda ret edýär; resminama teklibinde hem, görkezişden soň gaýdylýan salgyda hem. Ýerli işläp düzmek üçin aýdyň saýlaw gerek.",
+          "Ynam sanawynyň neşirçisi öň çap edilen sanawdaky bir ýazgy täze sanawda ýok bolsa ýa-da taryh setiri üýtgedilen bolsa durýar. Ýazgyny aýyrmak diňe bir sanaw wersiýasyna baglanan, tassyklanan ýazgy bilen geçýär.",
+        ],
+        az: [
+          "Yoxlayıcı artıq yalnız yoxlama siyasətinin istədiyi sahələri qaytarır. Sənədin texniki sahələri və cüzdanın istəniləndən artıq açdığı sahələr nəticədə yer almır.",
+          "Yoxlayıcı ləğv siyahısının son lövbərindən nə qədər irəli keçə biləcəyini məhdudlaşdırır. Siyahı son lövbərdən bir saatdan (standart dəyər) çox yenidirsə, nəticə qərar əvəzinə “qeyri-müəyyən” olur. Öz serverində yoxlama aparan sayt lövbərləri bundan daha tez-tez yeniləməlidir.",
+          "Cüzdan nüvəsi yoxlayıcının qeydiyyat sertifikatını sorğunu imzalayan sertifikata bağlaya bilir. Qeydiyyatlı qurumun identifikatorunu kopyalayan, özü-özünü imzalamış sertifikat artıq həmin qurum sayılmır.",
+          "Cüzdan nüvəsi http ünvanlarını standart olaraq rədd edir; həm sənəd təklifində, həm də təqdimatdan sonra qayıdılan ünvanda. Lokal tərtibat üçün açıq seçim lazımdır.",
+          "Etibar siyahısının naşiri əvvəl dərc olunmuş siyahıdakı bir qeyd yeni siyahıda yoxdursa və ya tarixçə sətri dəyişdirilibsə dayanır. Qeydin çıxarılması yalnız tək bir siyahı versiyasına bağlı, təsdiqlənmiş girişlə keçir.",
+        ],
+      },
+      changed: {
+        en: [
+          "The @tamga-network/* packages are on npm as the 0.8.3 test release; the stable 1.0.0 comes when everything is ready.",
+        ],
+        tr: [
+          "@tamga-network/* paketleri npm'de 0.8.3 deneme sürümünde; kararlı 1.0.0 her şey hazır olunca gelir.",
+        ],
+        tk: [
+          "@tamga-network/* paketleri npm-de 0.8.3 synag wersiýasynda; durnukly 1.0.0 hemme zat taýýar bolanda geler.",
+        ],
+        az: [
+          "@tamga-network/* paketləri npm-də 0.8.3 sınaq buraxılışı kimi mövcuddur; sabit 1.0.0 hər şey hazır olduqda çıxacaq.",
+        ],
+      },
+    },
+    note: {
+      en: "Applications built on the wallet core have to be updated, not only the package. For a local development server pass allowLocalDevHost. To get the registration certificate check pass signerTrust, and do not accept a result that says signerTrusted: false. When a document is issued after an identity presentation and the result comes back to the app's own address, pass that address as callbackUri. The steps are in the package changelog, in the 0.8.3 section.",
+      tr: "Cüzdan çekirdeğini kullanan uygulamaların da güncellenmesi gerekiyor, yalnız paketi yükseltmek yetmiyor. Yerel geliştirme sunucusu için allowLocalDevHost verin. Kayıt sertifikası denetimi için signerTrust verin ve signerTrusted: false dönen sonucu geçerli saymayın. Belge bir kimlik sunumundan sonra veriliyorsa ve sonuç uygulamanın kendi adresine dönüyorsa bu adresi callbackUri olarak verin. Adımlar paket değişiklik kaydının 0.8.3 bölümünde.",
+      tk: "Gapjyk ýadrosyny ulanýan programmalary hem täzelemeli, diňe paketi ýokarlandyrmak ýeterlik däl. Ýerli işläp düzüş serweri üçin allowLocalDevHost beriň. Hasaba alyş sertifikatynyň barlagy üçin signerTrust beriň we signerTrusted: false gaýtarýan netijäni dogry hasaplamaň. Resminama kimlik görkezişinden soň berilýän bolsa we netije programmanyň öz salgysyna gaýdýan bolsa, şol salgyny callbackUri hökmünde beriň. Ädimler paket üýtgeşme ýazgysynyň 0.8.3 bölüminde.",
+      az: "Cüzdan nüvəsindən istifadə edən tətbiqlər də yenilənməlidir, yalnız paketi yüksəltmək kifayət etmir. Lokal tərtibat serveri üçün allowLocalDevHost verin. Qeydiyyat sertifikatının yoxlanması üçün signerTrust verin və signerTrusted: false qaytaran nəticəni etibarlı saymayın. Sənəd kimlik təqdimatından sonra verilirsə və nəticə tətbiqin öz ünvanına qayıdırsa, bu ünvanı callbackUri kimi verin. Addımlar paket dəyişiklik qeydinin 0.8.3 bölməsindədir.",
+    },
+  },
+  {
     id: "v1.0.0-2026-11-05-packages-0-8-2",
     version: "v1.0.0",
     date: "2026-11-05",

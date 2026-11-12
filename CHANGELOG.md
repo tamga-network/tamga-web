@@ -91,3 +91,10 @@ tamga.network with the network's 1.0 documentation set, in English, Turkish and 
   Whitepaper: current-version sentences 0.8.2 (four languages × 6 places), four PDFs rebuilt; page counts on the whitepaper
   page follow the rebuilt PDFs (en 138, az 132 — the reflow comes from the build environment: the previous `.typ` also builds
   to these counts now).
+- 2026-11-12: currency check after the 0.8.3 package release. Packages at npm 0.8.3 everywhere a version is shown (SDK
+  page, home, roadmap, blog notes; source notes "0.8.3 since 2026-11-12"). Release note for 0.8.3 (en/tr/tk/az, kind
+  Security: the verifier returns only the requested fields; a bound on how far a revocation list may run ahead of its
+  anchor; the wallet core ties a registration certificate to the request signer and refuses http by default; removal
+  protection in the trust list publisher; a migration note for applications — `allowLocalDevHost`, `signerTrust`,
+  `callbackUri`); code examples re-synced. The whitepaper keeps its edition sentences (0.8.2 at the time the edition was prepared); PDFs not
+  rebuilt.
