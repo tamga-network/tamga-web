@@ -82,7 +82,7 @@ Täze modeli daşardan alyp ýa-da şol bir açyk standartlar bilen öz infrastr
 | Iňlis we türk dillerinde işläp düzüjiler üçin resminamalar (docs.tamga.network) | Sanawdaky gapjyklaryň hiç biri entek programma dükanlarynda ýok |
 | Gol çekilen ynam sanawlary (trust.tamga.network); ilkinji gapjyk üpjün edijisi hem sanawda | Önümçilikde umumy kitap ýok; onuň kody ýazyldy we synagdan geçdi, ýöne azyndan iki garaşsyz operator ony işledýänçä öçük durar |
 | Tamga Verify: barlag koduny özi işletmek islemeýänler üçin barlag hyzmaty | Hiç bir döwletiň ýa-da Ýewropa Bileleşiginiň ykrarnamasy ýok |
-| Oýlanyp tapylan adamlar bilen başdan-ahyr synag geçirilýän synag tory we npm-de açyk bukjalar (@tamga-network, 0.8.3 wersiýasy) | Daşky howpsuzlyk barlagy entek geçirilmedi |
+| Oýlanyp tapylan adamlar bilen başdan-ahyr synag geçirilýän synag tory we npm-de açyk bukjalar (@tamga-network, {{NPM_VERSION}} wersiýasy) | Daşky howpsuzlyk barlagy entek geçirilmedi |
 | OpenID Foundation-yň laýyklyk synag guraly bilen geçirilen we şowsuz modulsyz tamamlanan öz-özüňi barlamak | |
 
 Bu çäkleri açyk ýazýarys, sebäbi çäklerini gizleýän ynam infrastrukturasy ynama mynasyp däl. Umumy kitabyň näme üçin entek ýokdugyny [Näme üçin blokçeýnsiz başlaýarys](/blog/why-no-blockchain-yet) ýazgysynda düşündirdik: azyndan iki garaşsyz operator bolmasa, kitap diňe has haýal maglumatlar binýadydyr. Laýyklyk synaglarynyň jikme-jikligi [OpenID laýyklyk synaglaryndan öwrenenlerimiz](/blog/openid-conformance-self-test) ýazgysynda.

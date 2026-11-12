@@ -24,12 +24,23 @@ export const whitepaperPdf = (lang: string) => `/whitepaper-${lang}.pdf`;
 /** Yayın ayı (JSON-LD datePublished). */
 export const WHITEPAPER_DATE = "2026-11";
 
+/**
+ * Baskıya ait alan: PDF'lerin basıldığı andaki `@tamga-network/*` npm sürümü (PDF metni "npm'de … deneme sürümüyle
+ * yayımlanmıştır" der). Yalnız PDF yeniden basılınca değişir; her paket sürümünde baskı yenilenmez. Sayfa, güncel sürümü
+ * `NPM_VERSION`'dan (src/lib/package-version.ts) ayrıca gösterir; ikisi aynıysa yalnız güncel sürüm görünür.
+ */
+export const WHITEPAPER_PRINT_NPM_VERSION: string = "0.8.2";
+
 type Ui = {
   metaDescription: string;
   eyebrow: string;
   mastheadSub: string;
   version: string;
   pages: (n: number) => string;
+  /** Baskı anındaki paket sürümü (künyenin altındaki küçük not). */
+  packagesAtPrint: (v: string) => string;
+  /** Güncel paket sürümü etiketi; ardından sürüm /sdk bağlantısı olarak gelir. */
+  packagesCurrent: string;
   open: string;
   download: string;
   otherLanguages: string;
@@ -53,6 +64,8 @@ const UI: Record<Locale, Ui> = {
     mastheadSub: "v1.0 · November 2026",
     version: "Version",
     pages: (n) => `${n} pages`,
+    packagesAtPrint: (v) => `When this edition was prepared, the open packages were at ${v} on npm.`,
+    packagesCurrent: "Current package version",
     open: "Open PDF",
     download: "Download",
     otherLanguages: "Other languages",
@@ -74,6 +87,8 @@ const UI: Record<Locale, Ui> = {
     mastheadSub: "v1.0 · Kasım 2026",
     version: "Sürüm",
     pages: (n) => `${n} sayfa`,
+    packagesAtPrint: (v) => `Bu baskı hazırlandığında açık paketler npm'de ${v} sürümündeydi.`,
+    packagesCurrent: "Güncel paket sürümü",
     open: "PDF'i aç",
     download: "İndir",
     otherLanguages: "Diğer diller",
@@ -95,6 +110,8 @@ const UI: Record<Locale, Ui> = {
     mastheadSub: "v1.0 · Noýabr 2026",
     version: "Wersiýa",
     pages: (n) => `${n} sahypa`,
+    packagesAtPrint: (v) => `Bu neşir taýýarlananda açyk paketler npm-de ${v} wersiýasyndady.`,
+    packagesCurrent: "Häzirki paket wersiýasy",
     open: "PDF-i aç",
     download: "Ýükle",
     otherLanguages: "Beýleki diller",
@@ -116,6 +133,8 @@ const UI: Record<Locale, Ui> = {
     mastheadSub: "v1.0 · Noyabr 2026",
     version: "Versiya",
     pages: (n) => `${n} səhifə`,
+    packagesAtPrint: (v) => `Bu nəşr hazırlananda açıq paketlər npm-də ${v} versiyasında idi.`,
+    packagesCurrent: "Cari paket versiyası",
     open: "PDF-i aç",
     download: "Yüklə",
     otherLanguages: "Digər dillər",

@@ -98,3 +98,7 @@ tamga.network with the network's 1.0 documentation set, in English, Turkish and 
   protection in the trust list publisher; a migration note for applications — `allowLocalDevHost`, `signerTrust`,
   `callbackUri`); code examples re-synced. The whitepaper keeps its edition sentences (0.8.2 at the time the edition was prepared); PDFs not
   rebuilt.
+- 2026-11-12: the npm package version comes from one constant (`NPM_VERSION` in `src/lib/package-version.ts`): SDK page,
+  home, roadmap and the blog notes (`{{NPM_VERSION}}` placeholder, filled at build time) read it, so a patch release is a
+  one-line change; release notes and "since 0.8.1" sentences stay as written. The whitepaper page shows the package version
+  its edition was prepared with (`WHITEPAPER_PRINT_NPM_VERSION`, 0.8.2) next to the current one, with a link to `/sdk`.

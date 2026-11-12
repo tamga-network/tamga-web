@@ -82,7 +82,7 @@ We could import the new model or build our own infrastructure on the same open s
 | Developer documentation in English and Turkish (docs.tamga.network) | No wallet on the list is in the app stores yet |
 | Signed trust lists (trust.tamga.network), with the first wallet provider listed | No shared ledger in production; its code is written and tested, but it stays off until at least two independent operators run it |
 | Tamga Verify, a verification service for those who do not want to run verification code themselves | No recognition by any state or by the European Union |
-| A test network for end-to-end trials with made-up people, and open packages on npm (@tamga-network, version 0.8.3) | No external security audit yet |
+| A test network for end-to-end trials with made-up people, and open packages on npm (@tamga-network, version {{NPM_VERSION}}) | No external security audit yet |
 | A self-test with the OpenID Foundation's conformance tool that ended without a failed module | |
 
 We write these limits down because trust infrastructure that hides them does not deserve trust. The reason there is no shared ledger yet is in [Why we start without a blockchain](/blog/why-no-blockchain-yet): without at least two independent operators, a ledger is only a slower database. The details of the conformance tests are in [What we learned passing the OpenID conformance tests](/blog/openid-conformance-self-test).

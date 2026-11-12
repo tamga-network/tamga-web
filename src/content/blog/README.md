@@ -37,6 +37,10 @@ related: why-no-blockchain-yet, learn:trust-lists, page:/join
 ```
 Başlıkta `:` varsa değeri tırnağa alın (`title: "Gerçek kriptografi: ilk sürüm"`).
 
+**Paket sürümü:** "paketler npm'de şu sürümde" gibi GÜNCEL sürümü bildiren cümlelerde sayıyı yazmayın, `{{NPM_VERSION}}` yazın;
+derlemede `src/lib/package-version.ts`'teki sürümle değişir (kod pencerelerinde de). Geçmişi anlatan cümlede ("0.8.1'den beri")
+sayı olduğu gibi yazılır.
+
 | Alan | Zorunlu | Not |
 |---|---|---|
 | `title` | evet | Dile göre. |

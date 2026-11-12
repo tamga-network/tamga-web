@@ -1,4 +1,5 @@
 import type { Locale } from "@/i18n/routing";
+import { NPM_VERSION } from "@/lib/package-version";
 
 /*
  * Yol haritası — koşullu aşamalar, tarihsiz (kamuya açık depo: takvim, iş planı yok). Kaynak: whitepaper (2026-11 baskısı)
@@ -112,7 +113,7 @@ const en: RoadmapContent = {
         {
           icon: "package",
           title: "Open-source packages",
-          desc: "@tamga-network: 0.8.3 test release on npm, ten packages including the onboarding tool; the stable 1.0.0 when everything is ready",
+          desc: `@tamga-network: ${NPM_VERSION} test release on npm, ten packages including the onboarding tool; the stable 1.0.0 when everything is ready`,
         },
         {
           icon: "user",
@@ -361,7 +362,7 @@ const tr: RoadmapContent = {
         {
           icon: "package",
           title: "Açık kaynak paketler",
-          desc: "@tamga-network: npm'de 0.8.3 deneme sürümü, katılım aracıyla birlikte on paket; kararlı 1.0.0 hazır olunca",
+          desc: `@tamga-network: npm'de ${NPM_VERSION} deneme sürümü, katılım aracıyla birlikte on paket; kararlı 1.0.0 hazır olunca`,
         },
         {
           icon: "user",
@@ -610,7 +611,7 @@ const tk: RoadmapContent = {
         {
           icon: "package",
           title: "Açyk çeşmeli paketler",
-          desc: "@tamga-network: npm-de 0.8.3 synag wersiýasy, goşulyş guraly bilen bilelikde on paket; durnukly 1.0.0 taýýar bolanda",
+          desc: `@tamga-network: npm-de ${NPM_VERSION} synag wersiýasy, goşulyş guraly bilen bilelikde on paket; durnukly 1.0.0 taýýar bolanda`,
         },
         {
           icon: "user",
@@ -859,7 +860,7 @@ const az: RoadmapContent = {
         {
           icon: "package",
           title: "Açıq mənbəli paketlər",
-          desc: "@tamga-network: npm-də 0.8.3 test buraxılışı, qoşulma aləti ilə birlikdə on paket; sabit 1.0.0 hər şey hazır olduqda",
+          desc: `@tamga-network: npm-də ${NPM_VERSION} test buraxılışı, qoşulma aləti ilə birlikdə on paket; sabit 1.0.0 hər şey hazır olduqda`,
         },
         {
           icon: "user",

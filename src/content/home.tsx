@@ -4,6 +4,7 @@
  * Terimler: gündelik sözcükler Türkçe; teknik terim gerektiğinde İngilizcesi parantezde.
  */
 import type { Locale } from "@/i18n/routing";
+import { NPM_VERSION } from "@/lib/package-version";
 import type {
   ChainLabels,
   CredLabels,
@@ -326,7 +327,7 @@ const tr: HomeContent = {
     eyebrow: "Geliştiriciler",
     title: "İki paket, beş dakika.",
     lead: "Bir belgeyi kendi sunucunuzda doğrulayın. Barındırılan doğrulayıcıyı kullanırsanız sunucu kodu bile gerekmez.",
-    npmNote: "Paketler npm'de 0.8.3 deneme sürümüyle yayımlanır; kararlı 1.0.0 hazır olunca gelir. Deneme sürümünde arayüz değişebilir.",
+    npmNote: `Paketler npm'de ${NPM_VERSION} deneme sürümüyle yayımlanır; kararlı 1.0.0 hazır olunca gelir. Deneme sürümünde arayüz değişebilir.`,
     docs: "Belgelere git",
     github: "GitHub",
     copy: "Kopyala",
@@ -601,7 +602,7 @@ const en: HomeContent = {
     eyebrow: "Developers",
     title: "Two packages, five minutes.",
     lead: "Verify a credential on your own server. With the hosted verifier you don't even need server code.",
-    npmNote: "The packages are published on npm as the 0.8.3 test release; the stable 1.0.0 comes when everything is ready. In test releases the API may change.",
+    npmNote: `The packages are published on npm as the ${NPM_VERSION} test release; the stable 1.0.0 comes when everything is ready. In test releases the API may change.`,
     docs: "Go to the docs",
     github: "GitHub",
     copy: "Copy",
@@ -876,7 +877,7 @@ const tk: HomeContent = {
     eyebrow: "Işläp düzüjiler",
     title: "Iki paket, bäş minut.",
     lead: "Resminamany öz serweriňizde barlaň. Ýerleşdirilen barlaýjyny ulansaňyz, serwer kody hem gerek däl.",
-    npmNote: "Paketler npm-de 0.8.3 synag wersiýasy bilen çap edilýär; durnukly 1.0.0 taýýar bolanda geler. Synag wersiýasynda interfeýs üýtgäp biler.",
+    npmNote: `Paketler npm-de ${NPM_VERSION} synag wersiýasy bilen çap edilýär; durnukly 1.0.0 taýýar bolanda geler. Synag wersiýasynda interfeýs üýtgäp biler.`,
     docs: "Resminamalara geç",
     github: "GitHub",
     copy: "Göçür",
@@ -1151,7 +1152,7 @@ const az: HomeContent = {
     eyebrow: "Tərtibatçılar",
     title: "İki paket, beş dəqiqə.",
     lead: "Rəqəmsal sənədi öz serverinizdə yoxlayın. Host edilən yoxlama xidmətindən istifadə etsəniz, server koduna belə ehtiyac yoxdur.",
-    npmNote: "Paketlər npm-də 0.8.3 test buraxılışı kimi dərc olunur; sabit 1.0.0 versiyası hər şey hazır olduqda çıxacaq. Test buraxılışlarında API dəyişə bilər.",
+    npmNote: `Paketlər npm-də ${NPM_VERSION} test buraxılışı kimi dərc olunur; sabit 1.0.0 versiyası hər şey hazır olduqda çıxacaq. Test buraxılışlarında API dəyişə bilər.`,
     docs: "Dokumentasiyaya keçin",
     github: "GitHub",
     copy: "Kopyalayın",

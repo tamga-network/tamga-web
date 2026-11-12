@@ -82,7 +82,7 @@ Yeni modeli dışarıdan alabilir ya da aynı açık standartlarla kendi altyap�
 | İngilizce ve Türkçe geliştirici belgeleri (docs.tamga.network) | Listedeki cüzdanların hiçbiri henüz uygulama mağazalarında değil |
 | İmzalı güven listeleri (trust.tamga.network); ilk cüzdan sağlayıcı da listede | Üretimde ortak defter yok; kodu yazıldı ve test edildi, ama en az iki bağımsız işletmeci çalıştırana kadar kapalı kalacak |
 | Tamga Verify: doğrulama kodunu kendisi çalıştırmak istemeyenler için doğrulama hizmeti | Hiçbir devletin ya da Avrupa Birliği'nin tanıması yok |
-| Uydurma kişilerle uçtan uca deneme yapılan test ağı ve npm'de açık paketler (@tamga-network, sürüm 0.8.3) | Dış güvenlik denetimi henüz yapılmadı |
+| Uydurma kişilerle uçtan uca deneme yapılan test ağı ve npm'de açık paketler (@tamga-network, sürüm {{NPM_VERSION}}) | Dış güvenlik denetimi henüz yapılmadı |
 | OpenID Foundation'ın uyum test aracıyla yapılan ve başarısız modül kalmadan biten öz-test | |
 
 Bu sınırları açıkça yazıyoruz, çünkü sınırlarını saklayan bir güven altyapısı güveni hak etmez. Ortak defterin neden henüz olmadığını [Neden zincirsiz başlıyoruz](/blog/why-no-blockchain-yet) yazısında anlattık: en az iki bağımsız işletmeci olmadan defter, yalnızca daha yavaş bir veritabanıdır. Uyum testlerinin ayrıntısı [OpenID uyum testlerinden öğrendiklerimiz](/blog/openid-conformance-self-test) yazısında.

@@ -7,12 +7,14 @@ import { LogoMark } from "@/components/logo";
 import { EXTERNAL_ATTRS } from "@/components/external-link";
 import { JsonLd, ORGANIZATION } from "@/components/json-ld";
 import { pageMeta, SITE_URL } from "@/lib/seo";
+import { NPM_VERSION } from "@/lib/package-version";
 import { langName } from "@/content/team";
 import {
   getWhitepaperPage,
   whitepaperPdf,
   WHITEPAPER_DATE,
   WHITEPAPER_LOCALES,
+  WHITEPAPER_PRINT_NPM_VERSION,
 } from "@/content/whitepaper-page";
 
 /*
@@ -103,6 +105,14 @@ export default async function WhitepaperPage({
         <p className="mt-6 text-lg leading-relaxed text-foreground-muted">{c.subtitle}</p>
         <p className="mono-label mt-6">
           {[`${ui.version} ${c.version}`, c.date, ui.pages(c.pdf.pages), `PDF · ${size}`].join(" · ")}
+        </p>
+        {/* Baskı anındaki paket sürümü + güncel sürüm (tek kaynak NPM_VERSION); aynıysa yalnız güncel sürüm. */}
+        <p className="mt-2 text-sm text-foreground-muted">
+          {WHITEPAPER_PRINT_NPM_VERSION !== NPM_VERSION && <>{ui.packagesAtPrint(WHITEPAPER_PRINT_NPM_VERSION)} </>}
+          {ui.packagesCurrent}:{" "}
+          <Link href="/sdk" className={linkCls}>
+            {NPM_VERSION}
+          </Link>
         </p>
 
         <div className="no-print mt-8 flex flex-wrap items-center gap-3">

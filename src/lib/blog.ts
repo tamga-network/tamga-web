@@ -10,6 +10,7 @@
  * Markdown alt kümesi: ## / ### başlık, paragraf, - ve 1. liste, | tablo |, > alıntı ("**Not:**" / "**Note:**" / "**Önemli:**" /
  * "**Important:**" ile başlarsa vurgulu kutu), ![alt](/blog/… "isteğe bağlı alt yazı"), ```dil title="…" kod penceresi,
  * "## Kaynaklar" / "## Sources" bölümü (küçük yazı). Satır içi: **kalın**, *eğik*, `kod`, [metin](adres). `<!-- … -->` görünmez.
+ * `{{NPM_VERSION}}` → paketlerin güncel npm sürümü (`src/lib/package-version.ts`); yalnız "güncel sürüm" diyen cümlelerde kullanılır.
  *
  * Taslak (`draft: true`): yayında görünmez. Yalnız geliştirmede (`npm run dev`) ya da `BLOG_DRAFTS=1` ile derlenince görünür;
  * o zaman da "Taslak" etiketiyle ve noindex.
@@ -20,6 +21,7 @@ import { routing } from "@/i18n/routing";
 import { LEARN_PAGES } from "@/content/learn";
 import { BLOG_CATEGORIES, categoryLabel, type BlogCategory } from "./blog-ui";
 import { formatDate } from "./blog-format";
+import { NPM_VERSION } from "./package-version";
 
 export { BLOG_CATEGORIES, type BlogCategory } from "./blog-ui";
 export { formatDate } from "./blog-format";
@@ -27,6 +29,9 @@ export { formatDate } from "./blog-format";
 export type BlogLocale = "en" | "tr" | "tk" | "az";
 const BLOG_LOCALES: BlogLocale[] = ["en", "tr", "tk", "az"];
 const REQUIRED: BlogLocale[] = ["en", "tr"];
+
+/** Yazılarda güncel paket sürümünün yer tutucusu; derlemede `NPM_VERSION` ile değişir (yazının her yerinde, kod pencereleri dahil). */
+const NPM_VERSION_TOKEN = "{{NPM_VERSION}}";
 
 /* ---------- bloklar ---------- */
 
@@ -391,7 +396,7 @@ function load(): BlogPost[] {
     const files: Partial<Record<BlogLocale, ReturnType<typeof frontmatter>>> = {};
     for (const lang of BLOG_LOCALES) {
       const file = path.join(DIR, slug, `article.${lang}.md`);
-      if (existsSync(file)) files[lang] = frontmatter(readFileSync(file, "utf8"));
+      if (existsSync(file)) files[lang] = frontmatter(readFileSync(file, "utf8").replaceAll(NPM_VERSION_TOKEN, NPM_VERSION));
       else if (REQUIRED.includes(lang)) errors.push(`${slug}: article.${lang}.md yok (en ve tr zorunlu)`);
     }
     if (!files.en || !files.tr) continue;
