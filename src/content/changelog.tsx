@@ -108,6 +108,56 @@ export const CHANGELOG_PAGE: Record<
 
 export const RELEASES: Release[] = [
   {
+    id: "v1.0.0-2026-11-13-packages-0-8-4",
+    version: "v1.0.0",
+    date: "2026-11-13",
+    kind: "feature",
+    title: {
+      en: "Copies in face-to-face presentation, a final “is this you?” check, packages 0.8.4",
+      tr: "Yüz yüze gösterimde kopya yönetimi, kimlikte son “bu sen misin?” onayı, paketler 0.8.4",
+      tk: "Ýüzbe-ýüz görkezişde nusgalary dolandyrmak, kimlikde soňky “bu senmi?” tassyklamasy, paketler 0.8.4",
+      az: "Üzbəüz təqdimatda nüsxələrin idarəsi, kimlikdə son “bu sənsən?” təsdiqi, paketlər 0.8.4",
+    },
+    sections: {
+      added: {
+        en: [
+          "Every face-to-face presentation still uses a fresh copy of the document, so two readers cannot link the person. The wallet core now reports how many copies are left and what to do when they run out: refresh first when online, or reuse the last copy only after the person accepts a clear warning when offline. The copy is marked as used before anything is sent.",
+          "When a document is issued after identity verification, the identity service can show the wallet a masked summary of the verified person (initials and birth year). The wallet asks “is this you?” and the document is issued only after the person confirms. This protects against a verification link that someone else forwarded.",
+          "Before the consent screen the wallet core can tell which fields the person already shared with this verifier and which are asked for the first time. Only field names and dates are used; values never leave the device.",
+        ],
+        tr: [
+          "Her yüz yüze gösterim yine belgenin yeni bir kopyasını kullanıyor; böylece iki okuyucu kişiyi eşleştiremiyor. Cüzdan çekirdeği artık kaç kopya kaldığını ve bitince ne yapılacağını söylüyor: internet varsa önce yenile, yoksa son kopyayı yalnız kişi açık bir uyarıyı kabul ederse yeniden kullan. Kopya, bir şey gönderilmeden önce kullanıldı olarak kaydediliyor.",
+          "Kimlik doğrulamasından sonra belge verilirken kimlik servisi cüzdana doğrulanan kişinin maskeli bir özetini (baş harfler ve doğum yılı) gösterebiliyor. Cüzdan “bu sen misin?” diye soruyor; belge ancak kişi onaylarsa veriliyor. Bu, başkasının ilettiği bir doğrulama bağlantısına karşı koruyor.",
+          "Onay ekranından önce cüzdan çekirdeği, kişinin bu doğrulayıcıyla daha önce hangi alanları paylaştığını ve hangilerinin ilk kez istendiğini söyleyebiliyor. Yalnız alan adları ve tarihler kullanılıyor; değerler cihazdan çıkmıyor.",
+        ],
+        tk: [
+          "Her ýüzbe-ýüz görkeziş ýene resminamanyň täze nusgasyny ulanýar; şeýlelikde iki okaýjy adamy baglanyşdyryp bilmeýär. Gapjyk ýadrosy indi näçe nusga galandygyny we gutaranda näme etmelidigini aýdýar: internet bar bolsa ilki täzele, ýok bolsa soňky nusgany diňe adam aýdyň duýduryşy kabul etse gaýtadan ulan. Nusga hiç zat iberilmezden öň ulanyldy diýip bellenilýär.",
+          "Kimlik barlagyndan soň resminama berlende kimlik hyzmaty gapjyga barlanan adamyň gizlenen gysgaça maglumatyny (baş harplary we doglan ýyly) görkezip bilýär. Gapjyk “bu senmi?” diýip soraýar; resminama diňe adam tassyklasa berilýär. Bu başga biriniň iberen barlag baglanyşygyndan goraýar.",
+          "Tassyklama ekranyndan öň gapjyk ýadrosy adamyň bu barlaýjy bilen öň haýsy meýdançalary paýlaşandygyny we haýsylarynyň ilkinji gezek soralýandygyny aýdyp bilýär. Diňe meýdança atlary we seneler ulanylýar; bahalar enjamdan çykmaýar.",
+        ],
+        az: [
+          "Hər üzbəüz təqdimat yenə sənədin yeni nüsxəsindən istifadə edir; beləliklə iki oxuyucu şəxsi əlaqələndirə bilmir. Cüzdan nüvəsi artıq neçə nüsxə qaldığını və bitəndə nə ediləcəyini bildirir: internet varsa əvvəlcə yenilə, yoxdursa son nüsxəni yalnız şəxs açıq xəbərdarlığı qəbul edərsə yenidən istifadə et. Nüsxə heç nə göndərilməmişdən əvvəl istifadə olunmuş kimi qeyd edilir.",
+          "Kimlik yoxlamasından sonra sənəd verilərkən kimlik xidməti cüzdana yoxlanılan şəxsin maskalanmış xülasəsini (baş hərflər və doğum ili) göstərə bilir. Cüzdan “bu sənsən?” deyə soruşur; sənəd yalnız şəxs təsdiqləyərsə verilir. Bu, başqasının yönləndirdiyi yoxlama keçidinə qarşı qoruyur.",
+          "Təsdiq ekranından əvvəl cüzdan nüvəsi şəxsin bu yoxlayıcı ilə əvvəllər hansı sahələri paylaşdığını və hansılarının ilk dəfə istənildiyini bildirə bilir. Yalnız sahə adları və tarixlər istifadə olunur; dəyərlər cihazdan çıxmır.",
+        ],
+      },
+      changed: {
+        en: [
+          "The @tamga-network/* packages are on npm as the 0.8.4 test release. All additions are optional; without them the behaviour is that of 0.8.3.",
+        ],
+        tr: [
+          "@tamga-network/* paketleri npm'de 0.8.4 deneme sürümünde. Eklemelerin hepsi isteğe bağlı; kullanılmazsa davranış 0.8.3 ile aynı.",
+        ],
+        tk: [
+          "@tamga-network/* paketleri npm-de 0.8.4 synag wersiýasynda. Goşulanlaryň hemmesi islege bagly; ulanylmasa özüni alyp barşy 0.8.3 bilen birmeňzeş.",
+        ],
+        az: [
+          "@tamga-network/* paketləri npm-də 0.8.4 sınaq buraxılışındadır. Bütün əlavələr ixtiyaridir; istifadə edilməsə davranış 0.8.3 ilə eynidir.",
+        ],
+      },
+    },
+  },
+  {
     id: "v1.0.0-2026-11-12-packages-0-8-3",
     version: "v1.0.0",
     date: "2026-11-12",

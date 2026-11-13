@@ -9,4 +9,4 @@
  * beri" gibi geçmişi anlatan cümleler ve whitepaper baskısının sürümü (`WHITEPAPER_PRINT_NPM_VERSION`, PDF yeniden
  * basılınca değişir).
  */
-export const NPM_VERSION: string = "0.8.3";
+export const NPM_VERSION: string = "0.8.4";
