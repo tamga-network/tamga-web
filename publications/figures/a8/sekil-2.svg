@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 890 380" width="890" height="380" font-family="IBM Plex Sans">
+<defs>
+  <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1E5A78"/></marker>
+  <marker id="arm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4A4740"/></marker>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#A8432F"/></marker>
+  <marker id="arg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#C8A24C"/></marker>
+</defs>
+<rect x="0" y="0" width="890" height="380" fill="#FFFFFF"/>
+<text x="220" y="24.0" font-size="15" font-weight="700" fill="#1E5A78" text-anchor="middle" dominant-baseline="middle">Belge verme (OpenID4VCI)</text><text x="670" y="24.0" font-size="15" font-weight="700" fill="#1E5A78" text-anchor="middle" dominant-baseline="middle">Belge gösterme (OpenID4VP)</text><line x1="445" y1="12" x2="445" y2="330" stroke="#CFC7B6" stroke-width="1.2"/><rect x="130" y="50" width="180" height="56" rx="6" fill="#FAF4E4" stroke="#C8A24C" stroke-width="1.4"/>
+<text x="220" y="78.0" font-size="13" font-weight="600" fill="#14120F" text-anchor="middle" dominant-baseline="middle">Aynur'un cüzdanı</text><text x="220" y="120.0" font-size="10.5" font-weight="400" fill="#4A4740" text-anchor="middle" dominant-baseline="middle" font-style="italic">OAuth rolü: istemci</text><rect x="20" y="230" width="180" height="64" rx="6" fill="#EEF5F8" stroke="#1E5A78" stroke-width="1.4"/>
+<text x="110" y="254.2" font-size="12" font-weight="600" fill="#14120F" text-anchor="middle" dominant-baseline="middle">Yetkilendirme</text>
+<text x="110" y="269.8" font-size="12" font-weight="600" fill="#14120F" text-anchor="middle" dominant-baseline="middle">sunucusu (üniversite)</text><text x="110" y="308.0" font-size="10.5" font-weight="400" fill="#4A4740" text-anchor="middle" dominant-baseline="middle" font-style="italic">OAuth rolü: yetkilendirme sunucusu</text><rect x="240" y="230" width="180" height="64" rx="6" fill="#EEF5F8" stroke="#1E5A78" stroke-width="1.4"/>
+<text x="330" y="254.2" font-size="12" font-weight="600" fill="#14120F" text-anchor="middle" dominant-baseline="middle">Belge uç noktası</text>
+<text x="330" y="269.8" font-size="12" font-weight="600" fill="#14120F" text-anchor="middle" dominant-baseline="middle">(veren kurum)</text><text x="330" y="308.0" font-size="10.5" font-weight="400" fill="#4A4740" text-anchor="middle" dominant-baseline="middle" font-style="italic">OAuth rolü: kaynak sunucusu</text><line x1="180" y1="132" x2="120" y2="226" stroke="#1E5A78" stroke-width="1.6" marker-end="url(#ar)"/><rect x="65.5" y="156.9" width="60.5" height="15.8" fill="#FFFFFF"/>
+<text x="122" y="164.8" font-size="11" font-weight="400" fill="#174A63" text-anchor="end" dominant-baseline="middle">1. erişim</text>
+<rect x="30.5" y="171.3" width="95.5" height="15.8" fill="#FFFFFF"/>
+<text x="122" y="179.2" font-size="11" font-weight="400" fill="#174A63" text-anchor="end" dominant-baseline="middle">belirteci ister</text><line x1="262" y1="132" x2="322" y2="226" stroke="#1E5A78" stroke-width="1.6" marker-end="url(#ar)"/><rect x="314.0" y="156.9" width="136.3" height="15.8" fill="#FFFFFF"/>
+<text x="318" y="164.8" font-size="11" font-weight="400" fill="#174A63" text-anchor="start" dominant-baseline="middle">2. belirteci gösterir,</text>
+<rect x="314.0" y="171.3" width="78.0" height="15.8" fill="#FFFFFF"/>
+<text x="318" y="179.2" font-size="11" font-weight="400" fill="#174A63" text-anchor="start" dominant-baseline="middle">belgeyi alır</text><rect x="480" y="62" width="180" height="56" rx="6" fill="#F8F6F1" stroke="#14120F" stroke-width="1.4"/>
+<text x="570" y="81.9" font-size="12.5" font-weight="600" fill="#14120F" text-anchor="middle" dominant-baseline="middle">Yurdun sitesi</text>
+<text x="570" y="98.1" font-size="12.5" font-weight="600" fill="#14120F" text-anchor="middle" dominant-baseline="middle">(doğrulayan)</text><text x="570" y="48.0" font-size="10.5" font-weight="400" fill="#4A4740" text-anchor="middle" dominant-baseline="middle" font-style="italic">OAuth rolü: istemci</text><rect x="690" y="230" width="180" height="64" rx="6" fill="#FAF4E4" stroke="#C8A24C" stroke-width="1.4"/>
+<text x="780" y="262.0" font-size="13" font-weight="600" fill="#14120F" text-anchor="middle" dominant-baseline="middle">Aynur'un cüzdanı</text><text x="780" y="308.0" font-size="10.5" font-weight="400" fill="#4A4740" text-anchor="middle" dominant-baseline="middle" font-style="italic">yetkilendirme sunucusu gibi</text><line x1="620" y1="120" x2="750" y2="226" stroke="#1E5A78" stroke-width="1.6" marker-end="url(#ar)"/><rect x="708.0" y="142.9" width="124.6" height="15.8" fill="#FFFFFF"/>
+<text x="712" y="150.8" font-size="11" font-weight="400" fill="#174A63" text-anchor="start" dominant-baseline="middle">yetkilendirme isteği</text>
+<rect x="708.0" y="157.3" width="89.6" height="15.8" fill="#FFFFFF"/>
+<text x="712" y="165.2" font-size="11" font-weight="400" fill="#174A63" text-anchor="start" dominant-baseline="middle">+ DCQL sorgusu</text><line x1="700" y1="228" x2="550" y2="122" stroke="#C8A24C" stroke-width="1.6" marker-end="url(#arg)"/><rect x="451.6" y="180.9" width="130.4" height="15.8" fill="#FFFFFF"/>
+<text x="578" y="188.8" font-size="11" font-weight="400" fill="#8A6A1F" text-anchor="end" dominant-baseline="middle">yetkilendirme cevabı:</text>
+<rect x="527.4" y="195.3" width="54.6" height="15.8" fill="#FFFFFF"/>
+<text x="578" y="203.2" font-size="11" font-weight="400" fill="#8A6A1F" text-anchor="end" dominant-baseline="middle">vp_token</text><text x="445" y="360.0" font-size="12" font-weight="600" fill="#174A63" text-anchor="middle" dominant-baseline="middle">Belge verirken cüzdan isteyen taraftır; gösterirken isteği karşılayan taraftır.</text>
+</svg>

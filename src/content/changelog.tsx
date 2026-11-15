@@ -108,6 +108,66 @@ export const CHANGELOG_PAGE: Record<
 
 export const RELEASES: Release[] = [
   {
+    id: "v1.0.0-2026-11-15-packages-0-8-5",
+    version: "v1.0.0",
+    date: "2026-11-15",
+    kind: "security",
+    title: {
+      en: "Single-use consent, request fetched by POST, access certificate revocation, packages 0.8.5",
+      tr: "Tek kullanımlık onay, isteğin POST ile alınması, erişim sertifikası iptali, paketler 0.8.5",
+      tk: "Bir gezeklik tassyklama, haýyşyň POST bilen alynmagy, giriş sertifikatynyň ýatyrylmagy, paketler 0.8.5",
+      az: "Birdəfəlik təsdiq, sorğunun POST ilə alınması, giriş sertifikatının ləğvi, paketlər 0.8.5",
+    },
+    sections: {
+      added: {
+        en: [
+          "The wallet core can fetch a verifier's request with POST and a fresh one-time value from the wallet (OpenID4VP 1.0). The verifier must return the same value in its signed request, so an old request cannot be replayed to the wallet. The existing GET path keeps working.",
+          "When a verifier's registration is suspended, revoked or expires, its access certificate is put on a revocation list in the same publication. Live in the sandbox today.",
+        ],
+        tr: [
+          "Cüzdan çekirdeği doğrulayıcının isteğini POST ile ve cüzdandan gelen yeni, tek seferlik bir değerle alabiliyor (OpenID4VP 1.0). Doğrulayıcı aynı değeri imzalı isteğinde geri vermek zorunda; böylece eski bir istek cüzdana yeniden oynatılamıyor. Var olan GET yolu aynen çalışıyor.",
+          "Bir doğrulayıcının kaydı askıya alınınca, iptal edilince ya da süresi dolunca erişim sertifikası aynı yayında iptal listesine giriyor. Bugün sandbox'ta açık.",
+        ],
+        tk: [
+          "Gapjyk ýadrosy barlaýjynyň haýyşyny POST bilen we gapjykdan gelýän täze, bir gezeklik baha bilen alyp bilýär (OpenID4VP 1.0). Barlaýjy şol bahany gol çekilen haýyşynda yzyna bermeli; şeýlelikde köne haýyş gapjyga gaýtadan iberilip bilinmeýär. Bar bolan GET ýoly öňküsi ýaly işleýär.",
+          "Barlaýjynyň hasaba alnyşy togtadylanda, ýatyrylanda ýa-da möhleti gutaranda onuň giriş sertifikaty şol bir neşirde ýatyrylanlaryň sanawyna girýär. Häzir sandboksda açyk.",
+        ],
+        az: [
+          "Cüzdan nüvəsi yoxlayıcının sorğusunu POST ilə və cüzdandan gələn yeni, birdəfəlik dəyərlə ala bilir (OpenID4VP 1.0). Yoxlayıcı eyni dəyəri imzalı sorğusunda geri qaytarmalıdır; beləliklə köhnə sorğu cüzdana təkrar göndərilə bilməz. Mövcud GET yolu əvvəlki kimi işləyir.",
+          "Yoxlayıcının qeydiyyatı dayandırıldıqda, ləğv edildikdə və ya müddəti bitdikdə onun giriş sertifikatı eyni nəşrdə ləğv siyahısına düşür. Hazırda sandbox-da açıqdır.",
+        ],
+      },
+      security: {
+        en: [
+          "A consent the person gives in the wallet can be used only once and is bound to that request: the wallet will not send the answer if the request's state or encryption key changed after the consent screen.",
+        ],
+        tr: [
+          "Kişinin cüzdanda verdiği onay yalnız bir kez kullanılabiliyor ve o isteğe bağlı: onay ekranından sonra isteğin durumu ya da şifreleme anahtarı değişirse cüzdan yanıtı göndermiyor.",
+        ],
+        tk: [
+          "Adamyň gapjykda beren tassyklamasy diňe bir gezek ulanylyp bilner we şol haýyşa baglanýar: tassyklama ekranyndan soň haýyşyň ýagdaýy ýa-da şifrleme açary üýtgese, gapjyk jogaby ibermeýär.",
+        ],
+        az: [
+          "Şəxsin cüzdanda verdiyi təsdiq yalnız bir dəfə istifadə oluna bilər və həmin sorğuya bağlıdır: təsdiq ekranından sonra sorğunun vəziyyəti və ya şifrələmə açarı dəyişərsə, cüzdan cavabı göndərmir.",
+        ],
+      },
+      changed: {
+        en: [
+          "The @tamga-network/* packages are on npm as the 0.8.5 test release. The zero-knowledge prover's Android libraries are rebuilt for 16 KB memory pages (a Google Play requirement); apps using it should be rebuilt after updating.",
+        ],
+        tr: [
+          "@tamga-network/* paketleri npm'de 0.8.5 deneme sürümünde. Sıfır bilgi ispatçısının Android kütüphaneleri 16 KB bellek sayfasına göre yeniden derlendi (Google Play şartı); kullanan uygulamalar güncellemeden sonra yeniden derlenmeli.",
+        ],
+        tk: [
+          "@tamga-network/* paketleri npm-de 0.8.5 synag wersiýasynda. Nol bilim subutnamasyny düzüjiniň Android kitaphanalary 16 KB ýat sahypasyna görä täzeden düzüldi (Google Play talaby); ony ulanýan programmalar täzelenenden soň täzeden düzülmeli.",
+        ],
+        az: [
+          "@tamga-network/* paketləri npm-də 0.8.5 sınaq buraxılışındadır. Sıfır bilikli sübut generatorunun Android kitabxanaları 16 KB yaddaş səhifəsinə görə yenidən yığıldı (Google Play tələbi); ondan istifadə edən tətbiqlər yenilənmədən sonra yenidən yığılmalıdır.",
+        ],
+      },
+    },
+  },
+  {
     id: "v1.0.0-2026-11-13-packages-0-8-4",
     version: "v1.0.0",
     date: "2026-11-13",

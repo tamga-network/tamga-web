@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 345" width="900" height="345" font-family="IBM Plex Sans">
+<defs>
+  <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1E5A78"/></marker>
+  <marker id="arm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4A4740"/></marker>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#A8432F"/></marker>
+  <marker id="arg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#C8A24C"/></marker>
+</defs>
+<rect x="0" y="0" width="900" height="345" fill="#FFFFFF"/>
+<rect x="20" y="125" width="160" height="80" rx="6" fill="#FAF4E4" stroke="#C8A24C" stroke-width="1.4"/>
+<text x="100" y="156.6" font-size="13" font-weight="600" fill="#14120F" text-anchor="middle" dominant-baseline="middle">Aynur'un diploması</text>
+<text x="100" y="173.5" font-size="13" font-weight="600" fill="#14120F" text-anchor="middle" dominant-baseline="middle">(imzalı belge)</text><rect x="250" y="20" width="330" height="100" rx="6" fill="#EEF5F8" stroke="#1E5A78" stroke-width="1.4"/>
+<text x="415" y="53.8" font-size="12.5" font-weight="500" fill="#14120F" text-anchor="middle" dominant-baseline="middle">1. Matematik sorusu</text>
+<text x="415" y="70.0" font-size="12.5" font-weight="500" fill="#14120F" text-anchor="middle" dominant-baseline="middle">İmza bu anahtarla mı atılmış?</text>
+<text x="415" y="86.3" font-size="12.5" font-weight="500" fill="#14120F" text-anchor="middle" dominant-baseline="middle">Belge imzadan sonra değişmiş mi?</text><line x1="182" y1="150" x2="248" y2="80" stroke="#1E5A78" stroke-width="1.6" marker-end="url(#ar)"/><text x="415" y="136.0" font-size="10.5" font-weight="400" fill="#4A4740" text-anchor="middle" dominant-baseline="middle" font-style="italic">Cevap belgenin kendisinden çıkar; herkes kendi bilgisayarında hesaplar.</text><rect x="620" y="40" width="150" height="60" rx="6" fill="#EAF4EE" stroke="#2F7A55" stroke-width="1.4"/>
+<text x="695" y="62.2" font-size="12" font-weight="600" fill="#14120F" text-anchor="middle" dominant-baseline="middle">İmza geçerli</text>
+<text x="695" y="77.8" font-size="12" font-weight="600" fill="#14120F" text-anchor="middle" dominant-baseline="middle">(yeşil işaret)</text><line x1="582" y1="70" x2="618" y2="70" stroke="#1E5A78" stroke-width="1.6" marker-end="url(#ar)"/><rect x="250" y="190" width="330" height="110" rx="6" fill="#EEF5F8" stroke="#1E5A78" stroke-width="1.4"/>
+<text x="415" y="220.6" font-size="12.5" font-weight="500" fill="#14120F" text-anchor="middle" dominant-baseline="middle">2. Güven sorusu</text>
+<text x="415" y="236.9" font-size="12.5" font-weight="500" fill="#14120F" text-anchor="middle" dominant-baseline="middle">Bu anahtar kimin?</text>
+<text x="415" y="253.1" font-size="12.5" font-weight="500" fill="#14120F" text-anchor="middle" dominant-baseline="middle">Kurum bu belgeyi vermeye yetkili mi?</text>
+<text x="415" y="269.4" font-size="12.5" font-weight="500" fill="#14120F" text-anchor="middle" dominant-baseline="middle">Bugün hâlâ yetkili mi?</text><line x1="182" y1="180" x2="248" y2="240" stroke="#1E5A78" stroke-width="1.6" marker-end="url(#ar)"/><rect x="620" y="205" width="150" height="80" rx="6" fill="#FAF4E4" stroke="#C8A24C" stroke-width="1.4"/>
+<text x="695" y="229.4" font-size="12" font-weight="600" fill="#14120F" text-anchor="middle" dominant-baseline="middle">Güven altyapısı</text>
+<text x="695" y="245.0" font-size="12" font-weight="600" fill="#14120F" text-anchor="middle" dominant-baseline="middle">sertifika zinciri,</text>
+<text x="695" y="260.6" font-size="12" font-weight="600" fill="#14120F" text-anchor="middle" dominant-baseline="middle">güven listesi</text><line x1="582" y1="245" x2="618" y2="245" stroke="#C8A24C" stroke-width="1.6" marker-end="url(#arg)"/><text x="695" y="302.0" font-size="10.5" font-weight="400" fill="#4A4740" text-anchor="middle" dominant-baseline="middle" font-style="italic">cevap belgenin dışından gelir</text><rect x="805" y="135" width="80" height="60" rx="6" fill="#1E5A78" stroke="#1E5A78" stroke-width="1.4"/>
+<text x="845" y="165.0" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle">Kabul</text><line x1="772" y1="75" x2="820" y2="133" stroke="#1E5A78" stroke-width="1.6" marker-end="url(#ar)"/><line x1="772" y1="240" x2="820" y2="197" stroke="#1E5A78" stroke-width="1.6" marker-end="url(#ar)"/><text x="885" y="330.0" font-size="11.5" font-weight="400" fill="#4A4740" text-anchor="end" dominant-baseline="middle" font-style="italic">Birinci soru tek başına yeşil ışık yakar; kabul için ikisi de gerekir.</text>
+</svg>

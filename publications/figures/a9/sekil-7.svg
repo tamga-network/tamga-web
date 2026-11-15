@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 670" width="900" height="670" font-family="IBM Plex Sans">
+<defs>
+  <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1E5A78"/></marker>
+  <marker id="arm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4A4740"/></marker>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#A8432F"/></marker>
+  <marker id="arg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#C8A24C"/></marker>
+</defs>
+<rect x="0" y="0" width="900" height="670" fill="#FFFFFF"/>
+<rect x="9" y="14" width="150" height="48" rx="6" fill="#FAF4E4" stroke="#C8A24C" stroke-width="1.4"/>
+<text x="84" y="38.0" font-size="12" font-weight="600" fill="#14120F" text-anchor="middle" dominant-baseline="middle">Aynur</text><line x1="84" y1="62" x2="84" y2="660" stroke="#CFC7B6" stroke-width="1.4" stroke-dasharray="5 4"/><rect x="225" y="14" width="150" height="48" rx="6" fill="#EEF5F8" stroke="#1E5A78" stroke-width="1.4"/>
+<text x="300" y="30.2" font-size="12" font-weight="600" fill="#14120F" text-anchor="middle" dominant-baseline="middle">Aynur'un cüzdanı</text>
+<text x="300" y="45.8" font-size="12" font-weight="600" fill="#14120F" text-anchor="middle" dominant-baseline="middle">(gösteren · mdoc)</text><line x1="300" y1="62" x2="300" y2="660" stroke="#CFC7B6" stroke-width="1.4" stroke-dasharray="5 4"/><rect x="515" y="14" width="150" height="48" rx="6" fill="#EEF5F8" stroke="#1E5A78" stroke-width="1.4"/>
+<text x="590" y="30.2" font-size="12" font-weight="600" fill="#14120F" text-anchor="middle" dominant-baseline="middle">Nurlan'ın cüzdanı</text>
+<text x="590" y="45.8" font-size="12" font-weight="600" fill="#14120F" text-anchor="middle" dominant-baseline="middle">(doğrulayan · okuyucu)</text><line x1="590" y1="62" x2="590" y2="660" stroke="#CFC7B6" stroke-width="1.4" stroke-dasharray="5 4"/><rect x="743" y="14" width="150" height="48" rx="6" fill="#FAF4E4" stroke="#C8A24C" stroke-width="1.4"/>
+<text x="818" y="38.0" font-size="12" font-weight="600" fill="#14120F" text-anchor="middle" dominant-baseline="middle">Nurlan</text><line x1="818" y1="62" x2="818" y2="660" stroke="#CFC7B6" stroke-width="1.4" stroke-dasharray="5 4"/><line x1="84" y1="96" x2="298" y2="96" stroke="#1E5A78" stroke-width="1.6" marker-end="url(#ar)"/><rect x="114.9" y="78.7" width="154.3" height="16.6" fill="#FFFFFF"/>
+<text x="192" y="87.0" font-size="11.5" font-weight="400" fill="#14120F" text-anchor="middle" dominant-baseline="middle">1. Kipi açar: &quot;gösteren&quot;</text><rect x="190" y="117" width="220" height="34" rx="6" fill="#FAF4E4" stroke="#C8A24C" stroke-width="1.4"/>
+<text x="300" y="134.0" font-size="11" font-weight="500" fill="#14120F" text-anchor="middle" dominant-baseline="middle">Uyarı: yalnız güvendiğin kişilerle</text><line x1="818" y1="184" x2="592" y2="184" stroke="#1E5A78" stroke-width="1.6" marker-end="url(#ar)"/><rect x="620.8" y="166.7" width="166.5" height="16.6" fill="#FFFFFF"/>
+<text x="704" y="175.0" font-size="11.5" font-weight="400" fill="#14120F" text-anchor="middle" dominant-baseline="middle">2. Kipi açar: &quot;doğrulayan&quot;</text><line x1="300" y1="240" x2="588" y2="240" stroke="#1E5A78" stroke-width="1.6" marker-end="url(#ar)"/><rect x="328.2" y="207.8" width="233.5" height="16.6" fill="#FFFFFF"/>
+<text x="445" y="216.1" font-size="11.5" font-weight="400" fill="#14120F" text-anchor="middle" dominant-baseline="middle">3. QR: aygıt katılımı + sunum teklifi</text>
+<rect x="383.1" y="222.7" width="123.8" height="16.6" fill="#FFFFFF"/>
+<text x="445" y="231.0" font-size="11.5" font-weight="400" fill="#14120F" text-anchor="middle" dominant-baseline="middle">(ad, soyad, portre)</text><line x1="590" y1="292" x2="816" y2="292" stroke="#1E5A78" stroke-width="1.6" marker-end="url(#ar)"/><rect x="599.4" y="274.7" width="209.1" height="16.6" fill="#FFFFFF"/>
+<text x="704" y="283.0" font-size="11.5" font-weight="400" fill="#14120F" text-anchor="middle" dominant-baseline="middle">4. Teklifi gösterir; Nurlan seçer</text><line x1="590" y1="356" x2="302" y2="356" stroke="#1E5A78" stroke-width="1.6" marker-end="url(#ar)"/><rect x="310.0" y="323.7" width="270.1" height="16.6" fill="#FFFFFF"/>
+<text x="445" y="332.0" font-size="11.5" font-weight="400" fill="#14120F" text-anchor="middle" dominant-baseline="middle">5. BLE, şifreli istek: teklifin alt kümesi,</text>
+<rect x="319.1" y="338.7" width="251.8" height="16.6" fill="#FFFFFF"/>
+<text x="445" y="347.0" font-size="11.5" font-weight="400" fill="#14120F" text-anchor="middle" dominant-baseline="middle">saklama bayrakları false + cüzdan kanıtı</text><rect x="180" y="389" width="240" height="50" rx="6" fill="#F8F6F1" stroke="#14120F" stroke-width="1.4"/>
+<text x="300" y="406.9" font-size="11" font-weight="500" fill="#14120F" text-anchor="middle" dominant-baseline="middle">6. Alt küme mi? Bayraklar false mı?</text>
+<text x="300" y="421.2" font-size="11" font-weight="500" fill="#14120F" text-anchor="middle" dominant-baseline="middle">Değilse status 10 ile keser</text><line x1="84" y1="470" x2="298" y2="470" stroke="#C8A24C" stroke-width="1.6" marker-end="url(#arg)"/><rect x="157.5" y="452.7" width="69.0" height="16.6" fill="#FFFFFF"/>
+<text x="192" y="461.0" font-size="11.5" font-weight="400" fill="#8A6A1F" text-anchor="middle" dominant-baseline="middle">7. Onaylar</text><line x1="300" y1="524" x2="588" y2="524" stroke="#C8A24C" stroke-width="1.6" marker-end="url(#arg)"/><rect x="392.2" y="506.7" width="105.5" height="16.6" fill="#FFFFFF"/>
+<text x="445" y="515.0" font-size="11.5" font-weight="400" fill="#8A6A1F" text-anchor="middle" dominant-baseline="middle">8. Şifreli cevap</text><rect x="490" y="551" width="200" height="50" rx="6" fill="#F8F6F1" stroke="#14120F" stroke-width="1.4"/>
+<text x="590" y="568.9" font-size="11" font-weight="500" fill="#14120F" text-anchor="middle" dominant-baseline="middle">9. Doğrular, gösterir;</text>
+<text x="590" y="583.1" font-size="11" font-weight="500" fill="#14120F" text-anchor="middle" dominant-baseline="middle">saklamaz, iletmez</text><rect x="660" y="400" width="230" height="60" rx="6" fill="#F8ECE8" stroke="#A8432F" stroke-width="1.4"/>
+<text x="775" y="422.9" font-size="11" font-weight="500" fill="#14120F" text-anchor="middle" dominant-baseline="middle">Doğrulayan kipi: saatte en çok 5,</text>
+<text x="775" y="437.2" font-size="11" font-weight="500" fill="#14120F" text-anchor="middle" dominant-baseline="middle">günde 20, haftada 50 istek</text><rect x="660" y="470" width="230" height="60" rx="6" fill="#F8ECE8" stroke="#A8432F" stroke-width="1.4"/>
+<text x="775" y="492.9" font-size="11" font-weight="500" fill="#14120F" text-anchor="middle" dominant-baseline="middle">Doğrulayan cüzdanın kanıtı:</text>
+<text x="775" y="507.2" font-size="11" font-weight="500" fill="#14120F" text-anchor="middle" dominant-baseline="middle">zorunlu, yöntem henüz yok</text>
+</svg>

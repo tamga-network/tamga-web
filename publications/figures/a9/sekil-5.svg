@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 372" width="900" height="372" font-family="IBM Plex Sans">
+<defs>
+  <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1E5A78"/></marker>
+  <marker id="arm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4A4740"/></marker>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#A8432F"/></marker>
+  <marker id="arg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#C8A24C"/></marker>
+</defs>
+<rect x="0" y="0" width="900" height="372" fill="#FFFFFF"/>
+<text x="170" y="24.0" font-size="15" font-weight="700" fill="#1E5A78" text-anchor="middle" dominant-baseline="middle">Tanışma</text><text x="720" y="24.0" font-size="15" font-weight="700" fill="#1E5A78" text-anchor="middle" dominant-baseline="middle">Veri aktarımı</text><rect x="40" y="70" width="260" height="60" rx="6" fill="#FAF4E4" stroke="#C8A24C" stroke-width="1.4"/>
+<text x="170" y="92.2" font-size="12" font-weight="600" fill="#14120F" text-anchor="middle" dominant-baseline="middle">QR kod</text>
+<text x="170" y="107.8" font-size="12" font-weight="600" fill="#14120F" text-anchor="middle" dominant-baseline="middle">tek yönlü · ekran ve kamera</text><rect x="40" y="220" width="260" height="60" rx="6" fill="#FAF4E4" stroke="#C8A24C" stroke-width="1.4"/>
+<text x="170" y="242.2" font-size="12" font-weight="600" fill="#14120F" text-anchor="middle" dominant-baseline="middle">NFC</text>
+<text x="170" y="257.8" font-size="12" font-weight="600" fill="#14120F" text-anchor="middle" dominant-baseline="middle">dokunma · iki yönlü pazarlık</text><rect x="590" y="46" width="260" height="60" rx="6" fill="#EEF5F8" stroke="#1E5A78" stroke-width="1.4"/>
+<text x="720" y="68.2" font-size="12" font-weight="600" fill="#14120F" text-anchor="middle" dominant-baseline="middle">BLE</text>
+<text x="720" y="83.8" font-size="12" font-weight="600" fill="#14120F" text-anchor="middle" dominant-baseline="middle">telefon elde kalır</text><rect x="590" y="156" width="260" height="60" rx="6" fill="#EEF5F8" stroke="#1E5A78" stroke-width="1.4"/>
+<text x="720" y="178.2" font-size="12" font-weight="600" fill="#14120F" text-anchor="middle" dominant-baseline="middle">NFC</text>
+<text x="720" y="193.8" font-size="12" font-weight="600" fill="#14120F" text-anchor="middle" dominant-baseline="middle">küçük veri · telefon alanda tutulur</text><rect x="590" y="266" width="260" height="60" rx="6" fill="#EEF5F8" stroke="#1E5A78" stroke-width="1.4"/>
+<text x="720" y="288.2" font-size="12" font-weight="600" fill="#14120F" text-anchor="middle" dominant-baseline="middle">Wi-Fi Aware</text>
+<text x="720" y="303.8" font-size="12" font-weight="600" fill="#14120F" text-anchor="middle" dominant-baseline="middle">isteğe bağlı · hızlı</text><line x1="302" y1="92" x2="588" y2="72" stroke="#1E5A78" stroke-width="3" marker-end="url(#ar)"/><rect x="391.4" y="62.1" width="107.1" height="15.8" fill="#FFFFFF"/>
+<text x="445" y="70.0" font-size="11" font-weight="600" fill="#174A63" text-anchor="middle" dominant-baseline="middle">en yaygın eşleşme</text><line x1="302" y1="236" x2="588" y2="90" stroke="#1E5A78" stroke-width="1.6" marker-end="url(#ar)"/><line x1="302" y1="252" x2="588" y2="190" stroke="#1E5A78" stroke-width="1.6" marker-end="url(#ar)"/><line x1="302" y1="112" x2="588" y2="290" stroke="#4A4740" stroke-width="1.1" marker-end="url(#arm)"/><line x1="302" y1="268" x2="588" y2="300" stroke="#4A4740" stroke-width="1.1" marker-end="url(#arm)"/><line x1="302" y1="104" x2="588" y2="176" stroke="#A8432F" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#arr)"/><rect x="354.8" y="142.1" width="130.4" height="15.8" fill="#FFFFFF"/>
+<text x="420" y="150.0" font-size="11" font-weight="400" fill="#A8432F" text-anchor="middle" dominant-baseline="middle">telefona bildirilemez</text><text x="450" y="356.0" font-size="11.5" font-weight="400" fill="#4A4740" text-anchor="middle" dominant-baseline="middle" font-style="italic">Okuyucu hepsini konuşmak zorundadır; telefon her evrede en az birini destekler.</text>
+</svg>

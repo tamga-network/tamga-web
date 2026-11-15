@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 416" width="900" height="416" font-family="IBM Plex Sans">
+<defs>
+  <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1E5A78"/></marker>
+  <marker id="arm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4A4740"/></marker>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#A8432F"/></marker>
+  <marker id="arg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#C8A24C"/></marker>
+</defs>
+<rect x="0" y="0" width="900" height="416" fill="#FFFFFF"/>
+<circle cx="60" cy="101.8" r="11.700000000000001" fill="#C8A24C"/>
+<path d="M39.2,143.4 Q39.2,117.4 60,117.4 Q80.8,117.4 80.8,143.4 z" fill="#C8A24C"/><text x="60" y="166.0" font-size="12.5" font-weight="600" fill="#14120F" text-anchor="middle" dominant-baseline="middle">Aynur</text><rect x="110" y="80" width="230" height="74" rx="6" fill="#EEF5F8" stroke="#1E5A78" stroke-width="1.4"/>
+<text x="225" y="102.0" font-size="11.5" font-weight="500" fill="#14120F" text-anchor="middle" dominant-baseline="middle">1. kat: işletim sistemi</text>
+<text x="225" y="117.0" font-size="11.5" font-weight="500" fill="#14120F" text-anchor="middle" dominant-baseline="middle">telefon kilidi + isteğe bağlı</text>
+<text x="225" y="131.9" font-size="11.5" font-weight="500" fill="#14120F" text-anchor="middle" dominant-baseline="middle">cüzdan PIN'i</text><line x1="88" y1="117" x2="108" y2="117" stroke="#1E5A78" stroke-width="1.6" marker-end="url(#ar)"/><line x1="342" y1="117" x2="388" y2="117" stroke="#1E5A78" stroke-width="1.6" marker-end="url(#ar)"/><rect x="390" y="90" width="150" height="54" rx="6" fill="#FFFFFF" stroke="#1E5A78" stroke-width="1.4"/>
+<text x="465" y="117.0" font-size="13" font-weight="700" fill="#14120F" text-anchor="middle" dominant-baseline="middle">Cüzdan açılır</text><line x1="542" y1="117" x2="588" y2="117" stroke="#1E5A78" stroke-width="1.6" marker-end="url(#ar)"/><rect x="590" y="70" width="290" height="94" rx="6" fill="#F8F6F1" stroke="#14120F" stroke-width="1.4"/>
+<text x="735" y="102.0" font-size="11.5" font-weight="500" fill="#14120F" text-anchor="middle" dominant-baseline="middle">Belgeleri ve işlem kaydını görmek</text>
+<text x="735" y="117.0" font-size="11.5" font-weight="500" fill="#14120F" text-anchor="middle" dominant-baseline="middle">anahtar deposundaki belgeler</text>
+<text x="735" y="131.9" font-size="11.5" font-weight="500" fill="#14120F" text-anchor="middle" dominant-baseline="middle">(bilet, öğrenci kartı gibi)</text><line x1="465" y1="146" x2="465" y2="206" stroke="#1E5A78" stroke-width="1.6" marker-end="url(#ar)"/><rect x="330" y="208" width="270" height="50" rx="6" fill="#FFFFFF" stroke="#1E5A78" stroke-width="1.4"/>
+<text x="465" y="233.0" font-size="11.5" font-weight="500" fill="#14120F" text-anchor="middle" dominant-baseline="middle">PID vermek, göstermek ya da silmek</text><line x1="465" y1="260" x2="465" y2="290" stroke="#1E5A78" stroke-width="1.6" marker-end="url(#ar)"/><rect x="290" y="292" width="350" height="70" rx="6" fill="#FAF4E4" stroke="#C8A24C" stroke-width="1.4"/>
+<text x="465" y="319.5" font-size="11.5" font-weight="500" fill="#14120F" text-anchor="middle" dominant-baseline="middle">2. kat: WSCA / WSCD</text>
+<text x="465" y="334.5" font-size="11.5" font-weight="500" fill="#14120F" text-anchor="middle" dominant-baseline="middle">PIN ya da biyometri, güvenli donanımın içinde</text><line x1="642" y1="327" x2="728" y2="327" stroke="#C8A24C" stroke-width="1.6" marker-end="url(#arg)"/><rect x="730" y="304" width="150" height="46" rx="6" fill="#FAF4E4" stroke="#C8A24C" stroke-width="1.4"/>
+<text x="805" y="327.0" font-size="13" font-weight="700" fill="#14120F" text-anchor="middle" dominant-baseline="middle">İmza</text><g transform="translate(305,327) scale(0.9)"><rect x="-8" y="-2" width="16" height="12" rx="2" fill="#A8432F"/>
+<path d="M-5,-2 V-6 A5,5 0 0 1 5,-6 V-2" stroke="#A8432F" stroke-width="2.2" fill="none"/></g><text x="20" y="400.0" font-size="11" font-weight="400" fill="#4A4740" text-anchor="start" dominant-baseline="middle" font-style="italic">Yanlış deneme sayacı ve biyometrik karşılaştırma güvenli donanımın içindedir; işletim sistemi ele geçirilse bile 2. kat aşılamaz.</text>
+</svg>
