@@ -13,7 +13,7 @@ related: how-trust-lists-work, network-as-a-foundation, learn:trust-lists, learn
 
 ## Reyestri niyə bir əl saxlaya bilməz?
 
-Blokçeyn eyni qeydi bir neçə **müstəqil** tərəf saxlayanda və onlardan heç biri bu qeydi təkbaşına dəyişə bilməyəndə öz xərcinə dəyir. Bu gün isə bir operator var və bu operator dövlətlər adından müvəqqəti olaraq işləyən Tamga-dır. Bir validatoru olan zəncir xərci və mürəkkəbliyi artırır, amma etibarı heç artırmır.
+Blokçeyn eyni qeydi bir neçə **müstəqil** tərəf saxlayanda və onlardan heç biri bu qeydi təkbaşına dəyişə bilməyəndə öz xərcinə dəyir. Bu gün isə bir operator var: hər dövlət və ya onun səlahiyyət verdiyi qurum öz siyahısını öz üzərinə götürənə qədər siyahıları müvəqqəti olaraq idarə edən Tamga. Hələlik heç bir dövlətlə razılaşma yoxdur. Bir validatoru olan zəncir xərci və mürəkkəbliyi artırır, amma etibarı heç artırmır.
 
 ## Bunun əvəzinə nə edirik?
 

@@ -128,7 +128,10 @@ export async function Footer() {
       <div className="border-t border-border">
         <div className="shell flex flex-col items-center justify-between gap-2 py-6 text-xs text-foreground-subtle md:flex-row">
           <span>
-            © {new Date().getFullYear()} Tamga Network. {t("rights")}
+            © {new Date().getFullYear()} Tamga Network. {t("rights")}{" "}
+            <Link href="/privacy" className="link-underline hover:text-foreground">
+              {t("privacy")}
+            </Link>
           </span>
           <span className="font-mono tracking-wide">tamga.network</span>
         </div>

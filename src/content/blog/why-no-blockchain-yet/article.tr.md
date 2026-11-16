@@ -13,7 +13,7 @@ related: how-trust-lists-work, network-as-a-foundation, learn:trust-lists, learn
 
 ## Bir defter neden tek elle tutulmaz?
 
-Bir blockchain, aynı kaydı birden çok **bağımsız** taraf tuttuğunda ve hiçbiri bu kaydı tek başına değiştiremediğinde maliyetine değer. Bugün ise tek bir işletmeci var ve bu işletmeci, devletler adına geçici olarak çalışan Tamga. Tek doğrulayıcısı olan bir zincir maliyeti ve karmaşıklığı artırır, ama güveni hiç artırmaz.
+Bir blockchain, aynı kaydı birden çok **bağımsız** taraf tuttuğunda ve hiçbiri bu kaydı tek başına değiştiremediğinde maliyetine değer. Bugün ise tek bir işletmeci var: her devlet ya da yetkilendirdiği bir kurum kendi listesini devralana kadar listeleri geçici olarak işleten Tamga. Henüz hiçbir devletle anlaşma yoktur. Tek doğrulayıcısı olan bir zincir maliyeti ve karmaşıklığı artırır, ama güveni hiç artırmaz.
 
 ## Bunun yerine ne yapıyoruz?
 

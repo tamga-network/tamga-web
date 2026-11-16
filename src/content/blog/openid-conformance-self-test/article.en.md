@@ -15,9 +15,9 @@ Between 21 and 27 October 2026 we ran two OpenID Foundation conformance test pla
 
 > **Important:** This is a self-test with the OpenID Foundation's own test tool. It is not an OpenID certification, and we did not publish the test plans in the tool (the reason is below).
 
-## Why do conformance tests matter for an EU-compatible network?
+## Why do conformance tests matter for an EU-aligned network?
 
-Two products can each follow OpenID4VP to the letter and still fail to talk to each other, because the specification leaves many choices open. [HAIP](/blog/haip-and-token-status-list), the high-assurance interoperability profile, closes most of those gaps by fixing one set of choices, and the European digital identity ecosystem builds on it. Tamga calls itself EU-compatible, and if we checked that claim only with our own tests, we would be grading our own homework.
+Two products can each follow OpenID4VP to the letter and still fail to talk to each other, because the specification leaves many choices open. [HAIP](/blog/haip-and-token-status-list), the high-assurance interoperability profile, closes most of those gaps by fixing one set of choices, and the European digital identity ecosystem builds on it. Tamga calls itself EU-aligned, and if we checked that claim only with our own tests, we would be grading our own homework.
 
 Our own tests and conformance vectors check the code against our reading of the specifications. The OpenID Foundation's [conformance suite](https://gitlab.com/openid/conformance-suite) checks it against someone else's reading: an open-source tool, maintained by the Foundation, that plays the other side of the protocol and tries hundreds of things a careless implementation gets wrong. It is also the tool behind the Foundation's [certification programme](https://openid.net/certification/). When it disagrees with us, one of us is wrong, and finding out which is the useful part.
 

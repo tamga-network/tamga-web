@@ -28,6 +28,7 @@ export const routing = defineRouting({
     "/changelog": "/changelog",
     "/sdk": "/sdk",
     "/brand": "/brand",
+    "/privacy": "/privacy",
     "/blog/[slug]": "/blog/[slug]",
     // Öğren (Learn): sıfırdan Tamga Network'e öğrenme yolu; sayfalar src/content/learn/
     "/learn": "/learn",

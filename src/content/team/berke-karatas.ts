@@ -29,19 +29,19 @@ export const berkeKaratas: TeamMember = {
   },
   bio: {
     en: [
-      "Berke Karataş is the founder of Tamga Network, an open, EU-compatible digital trust network for the Turkic world. He defines the network's rules (Tamga ARF 1.0), principles and roadmap.",
+      "Berke Karataş is the founder of Tamga Network, an open, EU-aligned digital trust network for the Turkic world. He defines the network's rules (Tamga ARF 1.0), principles and roadmap.",
       "His interest is digital identity and verifiable credentials: proving that a document is genuine without calling the issuer, while the person shares only what is asked. He follows the EU's eIDAS 2.0 framework and the EUDI Wallet architecture closely, and works on software architecture and backend development.",
     ],
     tr: [
-      "Berke Karataş, Türk dünyası için açık ve AB uyumlu dijital güven ağı Tamga Network'ün kurucusu. Ağın kurallarını (Tamga ARF 1.0), ilkelerini ve yol haritasını belirliyor.",
+      "Berke Karataş, Türk dünyası için açık ve AB standartlarıyla hizalı dijital güven ağı Tamga Network'ün kurucusu. Ağın kurallarını (Tamga ARF 1.0), ilkelerini ve yol haritasını belirliyor.",
       "İlgi alanı dijital kimlik ve doğrulanabilir belgeler: bir belgenin gerçek olduğunu belgeyi verene sormadan kanıtlamak, kişinin yalnız istenen bilgiyi paylaşması. Avrupa'nın eIDAS 2.0 düzenini ve EUDI cüzdan mimarisini yakından izliyor; yazılım mimarisi ve backend geliştirme üzerine çalışıyor.",
     ],
     tk: [
-      "Berke Karataş türki dünýäsi üçin açyk, ÝB bilen laýyk sanly ynam tory bolan Tamga Network-yň esaslandyryjysy. Toruň düzgünlerini (Tamga ARF 1.0), ýörelgelerini we ýol kartasyny kesgitleýär.",
+      "Berke Karataş türki dünýäsi üçin açyk, ÝB standartlary bilen utgaşdyrylan sanly ynam tory bolan Tamga Network-yň esaslandyryjysy. Toruň düzgünlerini (Tamga ARF 1.0), ýörelgelerini we ýol kartasyny kesgitleýär.",
       "Onuň gyzyklanýan ugry sanly şahsyýet we barlanyp bilinýän resminamalar: resminamanyň hakykydygyny ony berene ýüz tutman subut etmek, adamyň diňe soralan maglumaty paýlaşmagy. Ýewropanyň eIDAS 2.0 düzgünini we EUDI gapjyk arhitekturasyny ýakyndan yzarlaýar; programma arhitekturasy we backend işläp taýýarlamak bilen meşgullanýar.",
     ],
     az: [
-      "Berke Karataş Türk dünyası üçün açıq, Aİ ilə uyğun rəqəmsal etibar şəbəkəsi olan Tamga Network-un təsisçisidir. Şəbəkənin qaydalarını (Tamga ARF 1.0), prinsiplərini və yol xəritəsini müəyyənləşdirir.",
+      "Berke Karataş Türk dünyası üçün açıq, Aİ standartları ilə uzlaşdırılmış rəqəmsal etibar şəbəkəsi olan Tamga Network-un təsisçisidir. Şəbəkənin qaydalarını (Tamga ARF 1.0), prinsiplərini və yol xəritəsini müəyyənləşdirir.",
       "Maraq sahəsi rəqəmsal kimlik və yoxlanıla bilən sənədlərdir: sənədin həqiqi olduğunu onu verən quruma müraciət etmədən sübut etmək, insanın yalnız istənilən məlumatı paylaşması. Avropanın eIDAS 2.0 çərçivəsini və EUDI pul kisəsi arxitekturasını yaxından izləyir; proqram arxitekturası və backend inkişafı üzərində işləyir.",
     ],
   },

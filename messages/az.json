@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Tamga Network · Türk dünyası üçün rəqəmsal etibar şəbəkəsi",
-    "description": "Tamga Network Türk dünyası üçün qurulan rəqəmsal etibar şəbəkəsidir. Qurumların verdiyi sənədlər sərhədlərə ilişmədən, saniyələr ərzində və şəxsin məxfiliyi qorunmaqla yoxlanılır. Şəbəkə açıq qaydalara və imzalanmış siyahılara söykənir və Aİ ilə uyğundur.",
-    "ogDescription": "Tamga Network Türk dünyası üçün açıq qaydalara və imzalanmış etibar siyahılarına söykənən, Aİ ilə uyğun rəqəmsal etibar şəbəkəsidir.",
+    "description": "Tamga Network Türk dünyası üçün qurulan rəqəmsal etibar şəbəkəsidir. Qurumların verdiyi sənədlər sərhədlərə ilişmədən, saniyələr ərzində və şəxsin məxfiliyi qorunmaqla yoxlanılır. Şəbəkə açıq qaydalara və imzalanmış siyahılara söykənir və Aİ standartları ilə uzlaşdırılmışdır.",
+    "ogDescription": "Tamga Network Türk dünyası üçün açıq qaydalara və imzalanmış etibar siyahılarına söykənən, Aİ standartları ilə uzlaşdırılmış rəqəmsal etibar şəbəkəsidir.",
     "tagline": "Türk dünyası üçün rəqəmsal etibar şəbəkəsi"
   },
   "nav": {
@@ -15,10 +15,11 @@
     "skipToContent": "Məzmuna keç"
   },
   "footer": {
-    "tagline": "Türk dünyası üçün açıq, Aİ ilə uyğun etibar şəbəkəsi.",
+    "tagline": "Türk dünyası üçün açıq, Aİ standartları ilə uzlaşdırılmış etibar şəbəkəsi.",
     "slogan": "Türk dünyası üçün rəqəmsal etibar şəbəkəsi.",
     "contact": "Əlaqə",
-    "rights": "Bütün hüquqlar qorunur.",
+    "rights": "Mətn CC BY 4.0, kod Apache-2.0; ad və loqo istisnadır.",
+    "privacy": "Məxfilik",
     "social": "Sosial media"
   },
   "notFound": {

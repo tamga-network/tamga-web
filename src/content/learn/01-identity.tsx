@@ -1152,8 +1152,7 @@ export const CHAPTER_1: LearnPage[] = [
             olduğunu nereden bilecek? Cevap, herkesin bakabildiği imzalı bir listedir: hangi kurumların belge verebileceğini,
             hangi doğrulayıcıların kayıtlı olduğunu ve hangi cüzdanların kurallara uyduğunu yazan{" "}
             <Term tip="Bir ülkede hangi kurumların belge verebileceğini, hangi doğrulayıcı ve cüzdanların kayıtlı olduğunu yazan imzalı, herkese açık liste." en="trust list">güven listesi</Term>
-            . Tamga Network&apos;te bu listeyi her devlet kendisi yayınlar; bugün Türkiye listesini Tamga, devlet adına
-            geçici olarak işletir.
+            . Tamga Network&apos;te bu listeyi her devlet kendisi yayınlar; türkiye listesini, devlet ya da yetkilendirdiği bir kurum devralana kadar Tamga geçici olarak işletir. Henüz hiçbir devletle anlaşma yoktur.
           </p>
           <Callout kind="info" locale="tr">
             <p>
@@ -1218,8 +1217,7 @@ export const CHAPTER_1: LearnPage[] = [
             Example University? The answer is a signed list anyone can read: a{" "}
             <Term tip="A signed, public list of which institutions in a country may issue credentials and which verifiers and wallets are registered.">trust list</Term>{" "}
             that says which institutions may issue credentials, which verifiers are registered and which wallets follow the
-            rules. In Tamga Network each state publishes its own list; today Tamga operates the Türkiye list provisionally,
-            on behalf of the state.
+            rules. In Tamga Network each state publishes its own list; until the state, or a body it authorises, takes it over, Tamga runs the Türkiye list provisionally. There is no agreement with any state yet.
           </p>
           <Callout kind="info" locale="en">
             <p>
@@ -1327,8 +1325,7 @@ export const CHAPTER_1: LearnPage[] = [
             verə biləcəyini, hansı yoxlayan tərəflərin qeydiyyatda olduğunu və hansı rəqəmsal cüzdanların qaydalara uyğun
             olduğunu göstərən{" "}
             <Term tip="Bir ölkədə hansı qurumların rəqəmsal sənəd verə biləcəyini, hansı yoxlayan tərəflərin və rəqəmsal cüzdanların qeydiyyatda olduğunu göstərən imzalanmış, açıq siyahı." en="trust list">etibar siyahısı</Term>
-            . Tamga Network-da hər dövlət öz siyahısını dərc edir; bu gün Türkiyə siyahısını dövlət adından müvəqqəti
-            olaraq Tamga idarə edir.
+            . Tamga Network-da hər dövlət öz siyahısını dərc edir; türkiyə siyahısını dövlət və ya onun səlahiyyət verdiyi qurum öz üzərinə götürənə qədər Tamga müvəqqəti olaraq idarə edir. Hələlik heç bir dövlətlə razılaşma yoxdur.
           </p>
           <Callout kind="info" locale="az">
             <p>

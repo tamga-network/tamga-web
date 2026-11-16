@@ -46,14 +46,14 @@ const en: ScenariosContent = {
   meta: {
     title: "Scenarios & use cases",
     description:
-      "How Tamga Network works in practice. Education comes first, from enrolment to the first job, while tickets, website sign-in and age checks already work today. The page also shows where the same trust layer can go next.",
+      "How Tamga Network works in practice. Education comes first, from enrolment to the first job, while tickets, website sign-in and age checks already work in the sandbox. The page also shows where the same trust layer can go next.",
   },
   eyebrow: "Use cases",
   title: "Scenarios: education first, one trust layer",
   intro:
-    "Education is the network's first and main scenario: a student's documents from enrolment to the first job application. Tickets, website sign-in and age checks run on the same layer today. Health is at the decision stage; work, public services, logistics and payments show where the layer can go. Every scenario carries its status.",
-  note: "The screens are illustrative mockups of a wallet on the network and use example values only. “Works today” means the scenario runs end to end in the sandbox on the network's live software. Institution credentials reach the real network as the first institutions join.",
-  statusLabels: { today: "Works today", pilot: "In preparation", later: "Later" },
+    "Education is the network's first and main scenario: a student's documents from enrolment to the first job application. Tickets, website sign-in and age checks already run on the same layer in the sandbox. Health is at the decision stage; work, public services, logistics and payments show where the layer can go. Every scenario carries its status.",
+  note: "The screens are illustrative mockups of a wallet on the network and use example values only. “Works in the sandbox” means the scenario runs end to end in the sandbox on the network's live software. Institution credentials reach the real network as the first institutions join.",
+  statusLabels: { today: "Works in the sandbox", pilot: "In preparation", later: "Later" },
   verticals: [
     {
       id: "education",
@@ -131,7 +131,7 @@ const en: ScenariosContent = {
       icon: "ticket",
       eyebrow: "Events",
       name: "Tickets and events",
-      badge: "Works today",
+      badge: "Works in the sandbox",
       tone: "today",
       intro:
         "A ticket should prove one thing, that it is valid for this event, and nothing about the person holding it.",
@@ -175,7 +175,7 @@ const en: ScenariosContent = {
       icon: "online",
       eyebrow: "Online",
       name: "Websites: sign-in and age checks",
-      badge: "Works today",
+      badge: "Works in the sandbox",
       tone: "today",
       intro:
         "A website can sign people up, let them back in and check their age without collecting more than it needs.",
@@ -444,14 +444,14 @@ const tr: ScenariosContent = {
   meta: {
     title: "Senaryolar ve kullanım alanları",
     description:
-      "Tamga Network'ün pratikte nasıl çalıştığını anlatıyoruz. İlk sırada kayıttan ilk işe uzanan eğitim senaryosu var. Bilet, sitelere giriş ve yaş kontrolü bugün çalışıyor ve sayfa aynı güven katmanının sonra nereye uzanabileceğini de gösteriyor.",
+      "Tamga Network'ün pratikte nasıl çalıştığını anlatıyoruz. İlk sırada kayıttan ilk işe uzanan eğitim senaryosu var. Bilet, sitelere giriş ve yaş kontrolü sandbox'ta çalışıyor ve sayfa aynı güven katmanının sonra nereye uzanabileceğini de gösteriyor.",
   },
   eyebrow: "Kullanım alanları",
   title: "Senaryolar: önce eğitim, tek güven katmanı",
   intro:
-    "Ağın ilk ve ana senaryosu eğitim: bir öğrencinin belgeleri, kayıttan ilk iş başvurusuna kadar. Bilet, sitelere giriş ve yaş kontrolü bugün aynı katman üzerinde çalışıyor. Sağlık karar aşamasında; iş, kamu hizmetleri, lojistik ve ödeme katmanın nereye uzanabileceğini gösteriyor. Her senaryonun yanında durumu yazıyor.",
-  note: "Ekranlar ağdaki bir cüzdan için hazırlanmış temsilî tasarımlardır ve değerler örnektir. “Bugün çalışıyor” ifadesi, senaryonun sandbox'ta ve ağın canlıdaki yazılımıyla uçtan uca çalıştığını anlatır. Kurum belgeleri gerçek ağa ilk kurumlar katıldıkça gelecek.",
-  statusLabels: { today: "Bugün çalışıyor", pilot: "Hazırlık aşamasında", later: "Sonra" },
+    "Ağın ilk ve ana senaryosu eğitim: bir öğrencinin belgeleri, kayıttan ilk iş başvurusuna kadar. Bilet, sitelere giriş ve yaş kontrolü sandbox'ta aynı katman üzerinde çalışıyor. Sağlık karar aşamasında; iş, kamu hizmetleri, lojistik ve ödeme katmanın nereye uzanabileceğini gösteriyor. Her senaryonun yanında durumu yazıyor.",
+  note: "Ekranlar ağdaki bir cüzdan için hazırlanmış temsilî tasarımlardır ve değerler örnektir. “Sandbox'ta çalışıyor” ifadesi, senaryonun sandbox'ta ve ağın canlıdaki yazılımıyla uçtan uca çalıştığını anlatır. Kurum belgeleri gerçek ağa ilk kurumlar katıldıkça gelecek.",
+  statusLabels: { today: "Sandbox'ta çalışıyor", pilot: "Hazırlık aşamasında", later: "Sonra" },
   verticals: [
     {
       id: "education",
@@ -529,7 +529,7 @@ const tr: ScenariosContent = {
       icon: "ticket",
       eyebrow: "Etkinlik",
       name: "Bilet ve etkinlikler",
-      badge: "Bugün çalışıyor",
+      badge: "Sandbox'ta çalışıyor",
       tone: "today",
       intro:
         "Bir bilet yalnızca bu etkinlik için geçerli olduğunu kanıtlamalı ve onu taşıyan kişi hakkında hiçbir şey söylememeli.",
@@ -573,7 +573,7 @@ const tr: ScenariosContent = {
       icon: "online",
       eyebrow: "Çevrimiçi",
       name: "Web siteleri: giriş ve yaş kontrolü",
-      badge: "Bugün çalışıyor",
+      badge: "Sandbox'ta çalışıyor",
       tone: "today",
       intro:
         "Bir web sitesi, ihtiyacından fazlasını toplamadan kişiyi kaydedebilir, tekrar içeri alabilir ve yaşını kontrol edebilir.",
@@ -842,14 +842,14 @@ const tk: ScenariosContent = {
   meta: {
     title: "Ssenariýalar we ulanyş ugurlary",
     description:
-      "Tamga Network-yň amalda nähili işleýändigini düşündirýäris. Ilkinji orunda hasaba alnyşdan ilkinji işe çenli bilim ssenarisi dur. Bilet, saýtlara giriş we ýaş barlagy şu gün işleýär we sahypa şol bir ynam gatlagynyň soňra nirä ýetip biljekdigini hem görkezýär.",
+      "Tamga Network-yň amalda nähili işleýändigini düşündirýäris. Ilkinji orunda hasaba alnyşdan ilkinji işe çenli bilim ssenarisi dur. Bilet, saýtlara giriş we ýaş barlagy sandbox-da işleýär we sahypa şol bir ynam gatlagynyň soňra nirä ýetip biljekdigini hem görkezýär.",
   },
   eyebrow: "Ulanyş ugurlary",
   title: "Ssenariýalar: ilki bilim, bir ynam gatlagy",
   intro:
-    "Toruň ilkinji we esasy ssenariýasy bilim: talybyň resminamalary, hasaba alnyşdan ilkinji işe ýüz tutmaga çenli. Bilet, saýtlara giriş we ýaş barlagy şu gün şol bir gatlakda işleýär. Saglyk karar tapgyrynda; iş, döwlet hyzmatlary, logistika we töleg gatlagyň nirä ýetip biljekdigini görkezýär. Her ssenariýanyň ýanynda ýagdaýy ýazylýar.",
-  note: "Ekranlar tordaky bir gapjyk üçin taýýarlanan şertli dizaýnlardyr we bahalar mysaldyr. “Şu gün işleýär” diýmek, ssenariniň sandbox-da we toruň işleýän programma üpjünçiliginde başdan-aýak işleýändigini aňladýar. Gurama resminamalary hakyky tora ilkinji guramalar goşuldygyça geler.",
-  statusLabels: { today: "Şu gün işleýär", pilot: "Taýýarlyk tapgyrynda", later: "Soňra" },
+    "Toruň ilkinji we esasy ssenariýasy bilim: talybyň resminamalary, hasaba alnyşdan ilkinji işe ýüz tutmaga çenli. Bilet, saýtlara giriş we ýaş barlagy sandbox-da şol bir gatlakda işleýär. Saglyk karar tapgyrynda; iş, döwlet hyzmatlary, logistika we töleg gatlagyň nirä ýetip biljekdigini görkezýär. Her ssenariýanyň ýanynda ýagdaýy ýazylýar.",
+  note: "Ekranlar tordaky bir gapjyk üçin taýýarlanan şertli dizaýnlardyr we bahalar mysaldyr. “Sandbox-da işleýär” diýmek, ssenariniň sandbox-da we toruň işleýän programma üpjünçiliginde başdan-aýak işleýändigini aňladýar. Gurama resminamalary hakyky tora ilkinji guramalar goşuldygyça geler.",
+  statusLabels: { today: "Sandbox-da işleýär", pilot: "Taýýarlyk tapgyrynda", later: "Soňra" },
   verticals: [
     {
       id: "education",
@@ -927,7 +927,7 @@ const tk: ScenariosContent = {
       icon: "ticket",
       eyebrow: "Çäre",
       name: "Biletler we çäreler",
-      badge: "Şu gün işleýär",
+      badge: "Sandbox-da işleýär",
       tone: "today",
       intro:
         "Bilet diňe şu çäre üçin güýjündedigini subut etmeli we ony göterýän adam barada hiç zat aýtmaly däl.",
@@ -971,7 +971,7 @@ const tk: ScenariosContent = {
       icon: "online",
       eyebrow: "Onlaýn",
       name: "Saýtlar: giriş we ýaş barlagy",
-      badge: "Şu gün işleýär",
+      badge: "Sandbox-da işleýär",
       tone: "today",
       intro:
         "Saýt zerur bolandan artygyny ýygnaman adamy hasaba alyp, gaýtadan içeri goýberip we ýaşyny barlap biler.",
@@ -1240,14 +1240,14 @@ const az: ScenariosContent = {
   meta: {
     title: "Ssenarilər və istifadə sahələri",
     description:
-      "Tamga Network-un praktikada necə işlədiyini izah edirik. İlk sırada qeydiyyatdan ilk işə qədər uzanan təhsil ssenarisi durur. Biletlər, saytlara giriş və yaş yoxlaması bu gün işləyir və səhifə eyni etibar qatının bundan sonra hara qədər genişlənə biləcəyini də göstərir.",
+      "Tamga Network-un praktikada necə işlədiyini izah edirik. İlk sırada qeydiyyatdan ilk işə qədər uzanan təhsil ssenarisi durur. Biletlər, saytlara giriş və yaş yoxlaması sandbox-da işləyir və səhifə eyni etibar qatının bundan sonra hara qədər genişlənə biləcəyini də göstərir.",
   },
   eyebrow: "İstifadə sahələri",
   title: "Ssenarilər: əvvəlcə təhsil, vahid etibar qatı",
   intro:
-    "Təhsil şəbəkənin ilk və əsas ssenarisidir: tələbənin qeydiyyatdan ilk iş müraciətinə qədər sənədləri. Biletlər, saytlara giriş və yaş yoxlaması bu gün eyni qat üzərində işləyir. Səhiyyə qərar mərhələsindədir; iş, dövlət xidmətləri, logistika və ödənişlər qatın hara qədər genişlənə biləcəyini göstərir. Hər ssenarinin yanında onun statusu qeyd olunur.",
-  note: "Ekranlar şəbəkədəki bir rəqəmsal cüzdan üçün hazırlanmış təsviri maketlərdir və dəyərlər yalnız nümunədir. “Bu gün işləyir” ifadəsi ssenarinin sandbox-da və şəbəkənin canlı proqram təminatı ilə əvvəldən sona qədər işlədiyini bildirir. Qurum sənədləri real şəbəkəyə ilk qurumlar qoşulduqca gələcək.",
-  statusLabels: { today: "Bu gün işləyir", pilot: "Hazırlıq mərhələsində", later: "Sonra" },
+    "Təhsil şəbəkənin ilk və əsas ssenarisidir: tələbənin qeydiyyatdan ilk iş müraciətinə qədər sənədləri. Biletlər, saytlara giriş və yaş yoxlaması sandbox-da eyni qat üzərində işləyir. Səhiyyə qərar mərhələsindədir; iş, dövlət xidmətləri, logistika və ödənişlər qatın hara qədər genişlənə biləcəyini göstərir. Hər ssenarinin yanında onun statusu qeyd olunur.",
+  note: "Ekranlar şəbəkədəki bir rəqəmsal cüzdan üçün hazırlanmış təsviri maketlərdir və dəyərlər yalnız nümunədir. “Sandbox-da işləyir” ifadəsi ssenarinin sandbox-da və şəbəkənin canlı proqram təminatı ilə əvvəldən sona qədər işlədiyini bildirir. Qurum sənədləri real şəbəkəyə ilk qurumlar qoşulduqca gələcək.",
+  statusLabels: { today: "Sandbox-da işləyir", pilot: "Hazırlıq mərhələsində", later: "Sonra" },
   verticals: [
     {
       id: "education",
@@ -1325,7 +1325,7 @@ const az: ScenariosContent = {
       icon: "ticket",
       eyebrow: "Tədbirlər",
       name: "Biletlər və tədbirlər",
-      badge: "Bu gün işləyir",
+      badge: "Sandbox-da işləyir",
       tone: "today",
       intro:
         "Bilet yalnız bu tədbir üçün etibarlı olduğunu sübut etməli və onu daşıyan şəxs haqqında heç nə deməməlidir.",
@@ -1369,7 +1369,7 @@ const az: ScenariosContent = {
       icon: "online",
       eyebrow: "Onlayn",
       name: "Saytlar: giriş və yaş yoxlaması",
-      badge: "Bu gün işləyir",
+      badge: "Sandbox-da işləyir",
       tone: "today",
       intro:
         "Sayt ehtiyac duyduğundan artıq məlumat toplamadan istifadəçini qeydiyyatdan keçirə, yenidən daxil olmasına imkan verə və yaşını yoxlaya bilər.",

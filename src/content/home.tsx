@@ -90,7 +90,7 @@ const tr: HomeContent = {
       { code: "TM", name: "Türkmenistan listesi", status: "Yer ayrıldı" },
       { code: "EU", name: "AB listeleri (federasyon)", status: "Dış liste olarak okunur" },
     ],
-    listNote: "Her devlet kendi listesini kendisi yayınlar. Bugün Türkiye listesini Tamga, devlet adına geçici olarak işletir.",
+    listNote: "Her devlet kendi listesini kendisi yayınlar. Türkiye listesini, devlet ya da yetkilendirdiği bir kurum devralana kadar Tamga geçici olarak işletir. Henüz hiçbir devletle anlaşma yoktur.",
   },
   partners: {
     eyebrow: "Partnerler",
@@ -308,7 +308,7 @@ const tr: HomeContent = {
     title: "Bugün geçici işletmeci. Yarın vakıf.",
     lead: "Ağı bugün Tamga işletiyor, ama ağ Tamga'ya ait değil. İzlenecek yol baştan yazıldı. Devletler katıldıkça yönetim ortaklaşacak, iki bağımsız işletmeci olduğunda da kayıtlar ortak deftere taşınacak.",
     steps: [
-      { when: "Bugün", title: "Geçici işletmeci", body: "Tamga, Türkiye listesini devlet adına açık kurallarla ve herkese açık çapa günlüğüyle yayınlar." },
+      { when: "Bugün", title: "Geçici işletmeci", body: "Devlet ya da yetkilendirdiği bir kurum devralana kadar Tamga, Türkiye listesini açık kurallarla ve herkese açık çapa günlüğüyle geçici olarak yayınlar. Henüz hiçbir devletle anlaşma yoktur." },
       { when: "Devletler katılınca", title: "Konsey ya da vakıf", body: "Listeler sahiplerine devredilir ve ağın kuralları ortak kararla değişir." },
       { when: "İki bağımsız işletmeci", title: "Ortak defter", body: "Kayıtlar izinli bir deftere taşınır ve hiçbir taraf onları tek başına değiştiremez." },
     ],
@@ -365,7 +365,7 @@ const en: HomeContent = {
       { code: "TM", name: "Turkmenistan list", status: "Seat reserved" },
       { code: "EU", name: "EU lists (federation)", status: "Read as external lists" },
     ],
-    listNote: "Every state publishes its own list. Today Tamga runs the Türkiye list provisionally, on behalf of the state.",
+    listNote: "Every state publishes its own list. Until the state, or a body it authorises, takes it over, Tamga runs the Türkiye list provisionally. There is no agreement with any state yet.",
   },
   partners: {
     eyebrow: "Partners",
@@ -583,7 +583,7 @@ const en: HomeContent = {
     title: "A provisional operator today. A foundation tomorrow.",
     lead: "Tamga runs the network today, but the network does not belong to Tamga. The path was written down from the start. As states join, governance will be shared, and once there are two independent operators the records will move to a shared ledger.",
     steps: [
-      { when: "Today", title: "Provisional operator", body: "Tamga publishes the Türkiye list on behalf of the state, with open rules and a public anchor log." },
+      { when: "Today", title: "Provisional operator", body: "Until the state, or a body it authorises, takes it over, Tamga publishes the Türkiye list provisionally, with open rules and a public anchor log. There is no agreement with any state yet." },
       { when: "When states join", title: "Council or foundation", body: "Lists are handed over to their owners, and the network's rules change by joint decision." },
       { when: "Two independent operators", title: "Shared ledger", body: "Records move to a permissioned ledger, and no single party can change them alone." },
     ],
@@ -609,7 +609,7 @@ const en: HomeContent = {
     copied: "Copied",
   },
   eu: {
-    eyebrow: "EU compatibility",
+    eyebrow: "EU alignment",
     title: "The Turkic-world counterpart of what the EU built.",
     head: ["European Union", "Tamga Network", "What it means"],
     rows: [
@@ -640,7 +640,7 @@ const tk: HomeContent = {
       { code: "TM", name: "Türkmenistanyň sanawy", status: "Orun goýuldy" },
       { code: "EU", name: "ÝB sanawlary (federasiýa)", status: "Daşky sanaw hökmünde okalýar" },
     ],
-    listNote: "Her döwlet öz sanawyny özi çap edýär. Häzir Türkiýäniň sanawyny Tamga döwletiň adyndan wagtlaýyn işledýär.",
+    listNote: "Her döwlet öz sanawyny özi çap edýär. Türkiýäniň sanawyny döwlet ýa-da onuň ygtyýarlandyran guramasy öz üstüne alýança Tamga wagtlaýyn işledýär. Häzirlikçe hiç bir döwlet bilen ylalaşyk ýok.",
   },
   partners: {
     eyebrow: "Hyzmatdaşlar",
@@ -858,7 +858,7 @@ const tk: HomeContent = {
     title: "Häzir wagtlaýyn operator. Ertir gazna.",
     lead: "Tory häzir Tamga işledýär, ýöne tor Tamga degişli däl. Gidiljek ýol başdan ýazyldy. Döwletler goşuldygyça dolandyryş umumy bolar, iki garaşsyz operator bolanda bolsa ýazgylar umumy kitaba geçiriler.",
     steps: [
-      { when: "Häzir", title: "Wagtlaýyn operator", body: "Tamga Türkiýäniň sanawyny döwletiň adyndan açyk düzgünler we açyk labyr žurnaly bilen çap edýär." },
+      { when: "Häzir", title: "Wagtlaýyn operator", body: "Döwlet ýa-da onuň ygtyýarlandyran guramasy öz üstüne alýança Tamga Türkiýäniň sanawyny açyk düzgünler we açyk labyr žurnaly bilen wagtlaýyn çap edýär. Häzirlikçe hiç bir döwlet bilen ylalaşyk ýok." },
       { when: "Döwletler goşulanda", title: "Geňeş ýa-da gazna", body: "Sanawlar eýelerine geçirilýär we toruň düzgünleri bilelikdäki karar bilen üýtgeýär." },
       { when: "Iki garaşsyz operator", title: "Umumy kitap", body: "Ýazgylar rugsatly kitaba geçirilýär we hiç bir tarap olary ýeke özi üýtgedip bilmez." },
     ],
@@ -915,7 +915,7 @@ const az: HomeContent = {
       { code: "TM", name: "Türkmənistan siyahısı", status: "Yer ayrılıb" },
       { code: "EU", name: "Aİ siyahıları (federasiya)", status: "Xarici siyahı kimi oxunur" },
     ],
-    listNote: "Hər dövlət öz siyahısını özü dərc edir. Hazırda Türkiyə siyahısını dövlət adından müvəqqəti olaraq Tamga idarə edir.",
+    listNote: "Hər dövlət öz siyahısını özü dərc edir. Türkiyə siyahısını dövlət və ya onun səlahiyyət verdiyi qurum öz üzərinə götürənə qədər Tamga müvəqqəti olaraq idarə edir. Hələlik heç bir dövlətlə razılaşma yoxdur.",
   },
   partners: {
     eyebrow: "Tərəfdaşlar",
@@ -1133,7 +1133,7 @@ const az: HomeContent = {
     title: "Bu gün müvəqqəti operator. Sabah fond.",
     lead: "Bu gün şəbəkəni Tamga idarə edir, amma şəbəkə Tamga-ya məxsus deyil. Gediləcək yol əvvəldən yazılıb. Dövlətlər qoşulduqca idarəetmə ortaq olacaq, iki müstəqil operator olanda isə qeydlər ortaq reyestrə köçürüləcək.",
     steps: [
-      { when: "Bu gün", title: "Müvəqqəti operator", body: "Tamga Türkiyə siyahısını dövlət adından açıq qaydalar və ictimai lövbər jurnalı ilə dərc edir." },
+      { when: "Bu gün", title: "Müvəqqəti operator", body: "Dövlət və ya onun səlahiyyət verdiyi qurum öz üzərinə götürənə qədər Tamga Türkiyə siyahısını açıq qaydalar və ictimai lövbər jurnalı ilə müvəqqəti olaraq dərc edir. Hələlik heç bir dövlətlə razılaşma yoxdur." },
       { when: "Dövlətlər qoşulduqda", title: "Şura və ya fond", body: "Siyahılar sahiblərinə təhvil verilir və şəbəkənin qaydaları birgə qərarla dəyişir." },
       { when: "İki müstəqil operator", title: "Ortaq reyestr", body: "Qeydlər icazəli reyestrə köçürülür və heç bir tərəf onları təkbaşına dəyişə bilməz." },
     ],
@@ -1159,7 +1159,7 @@ const az: HomeContent = {
     copied: "Kopyalandı",
   },
   eu: {
-    eyebrow: "Aİ ilə uyğunluq",
+    eyebrow: "Aİ standartları ilə uzlaşma",
     title: "Aİ-nin qurduğu sistemin Türk dünyasındakı qarşılığı.",
     head: ["Avropa İttifaqı", "Tamga Network", "Mənası"],
     rows: [

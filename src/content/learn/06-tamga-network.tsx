@@ -14,10 +14,10 @@ export const CHAPTER_6: LearnPage[] = [
     minutes: 5,
     title: { tr: "Tamga Network nedir?", en: "What is Tamga Network?", tk: "Tamga Network näme?", az: "Tamga Network nədir?" },
     summary: {
-      tr: "Türk dünyası için dijital, AB uyumlu güven ağı: ne yapar, ne yapmaz.",
-      en: "The digital, EU-compatible trust network for the Turkic world: what it does and what it doesn't.",
-      tk: "Türki dünýäsi üçin sanly, ÝB bilen laýyk ynam tory: näme edýär we näme etmeýär.",
-      az: "Türk dünyası üçün rəqəmsal, Aİ ilə uyğun etibar şəbəkəsi: nə edir və nə etmir.",
+      tr: "Türk dünyası için dijital, AB standartlarıyla hizalı güven ağı: ne yapar, ne yapmaz.",
+      en: "The digital, EU-aligned trust network for the Turkic world: what it does and what it doesn't.",
+      tk: "Türki dünýäsi üçin sanly, ÝB standartlary bilen utgaşdyrylan ynam tory: näme edýär we näme etmeýär.",
+      az: "Türk dünyası üçün rəqəmsal, Aİ standartları ilə uzlaşdırılmış etibar şəbəkəsi: nə edir və nə etmir.",
     },
     diagram: "flow",
     body: {
@@ -66,8 +66,7 @@ export const CHAPTER_6: LearnPage[] = [
           </p>
           <Callout kind="turkic" locale="tr">
             <p>
-              Ağın asıl işi ülke listelerini bir araya getirmektir. Bugün Türkiye listesini Tamga, devlet adına geçici olarak
-              yayınlar. Bir Türk devleti kendi listesini yayınladığında ağ onu gösterir; cüzdanlar ve doğrulayıcılar için yalnız
+              Ağın asıl işi ülke listelerini bir araya getirmektir. Türkiye listesini, devlet ya da yetkilendirdiği bir kurum devralana kadar Tamga geçici olarak işletir. Henüz hiçbir devletle anlaşma yoktur. Bir Türk devleti kendi listesini yayınladığında ağ onu gösterir; cüzdanlar ve doğrulayıcılar için yalnız
               listenin adresi değişir.
             </p>
           </Callout>
@@ -125,8 +124,7 @@ export const CHAPTER_6: LearnPage[] = [
           </p>
           <Callout kind="turkic" locale="en">
             <p>
-              The network’s real job is to bring the countries’ lists together. Today Tamga publishes Türkiye’s list provisionally,
-              on behalf of the state. When a Turkic state publishes its own list, the network points to it; for wallets and
+              The network’s real job is to bring the countries’ lists together. Until the state, or a body it authorises, takes it over, Tamga runs the Türkiye list provisionally. There is no agreement with any state yet. When a Turkic state publishes its own list, the network points to it; for wallets and
               verifiers only the list’s address changes.
             </p>
           </Callout>
@@ -172,8 +170,7 @@ export const CHAPTER_6: LearnPage[] = [
           </p>
           <Callout kind="turkic" locale="tk">
             <p>
-              Toruň esasy işi ýurtlaryň sanawlaryny birleşdirmekdir. Häzir Türkiýäniň sanawyny Tamga döwletiň adyndan wagtlaýyn
-              çap edýär. Bir türki döwlet öz sanawyny çap edende tor şony görkezýär; diňe sanawyň salgysy üýtgeýär.
+              Toruň esasy işi ýurtlaryň sanawlaryny birleşdirmekdir. Türkiýäniň sanawyny döwlet ýa-da onuň ygtyýarlandyran guramasy öz üstüne alýança Tamga wagtlaýyn işledýär. Häzirlikçe hiç bir döwlet bilen ylalaşyk ýok. Bir türki döwlet öz sanawyny çap edende tor şony görkezýär; diňe sanawyň salgysy üýtgeýär.
             </p>
           </Callout>
           <h2>Näme üçin “tor”?</h2>
@@ -229,8 +226,7 @@ export const CHAPTER_6: LearnPage[] = [
           </p>
           <Callout kind="turkic" locale="az">
             <p>
-              Şəbəkənin əsas işi ölkələrin siyahılarını bir araya gətirməkdir. Hazırda Türkiyənin siyahısını dövlət adından
-              müvəqqəti olaraq Tamga dərc edir. Türk dövlətlərindən biri öz siyahısını dərc etdikdə şəbəkə ona istinad edir;
+              Şəbəkənin əsas işi ölkələrin siyahılarını bir araya gətirməkdir. Türkiyə siyahısını dövlət və ya onun səlahiyyət verdiyi qurum öz üzərinə götürənə qədər Tamga müvəqqəti olaraq idarə edir. Hələlik heç bir dövlətlə razılaşma yoxdur. Türk dövlətlərindən biri öz siyahısını dərc etdikdə şəbəkə ona istinad edir;
               rəqəmsal cüzdanlar və yoxlayan tərəflər üçün yalnız siyahının ünvanı dəyişir.
             </p>
           </Callout>
@@ -541,8 +537,7 @@ export const CHAPTER_6: LearnPage[] = [
           <h2>Devlet</h2>
           <p>
             Bir ülkenin kendi güven listesinin sahibi. Hangi kurumların listede olacağına, hangi ülkelerin listelerini
-            tanıyacağına karar verir. Devlet henüz katılmadığında bu rolü geçici işletmeci devlet adına üstlenir ve devletin
-            katılmasıyla rol sahibine geçer.
+            tanıyacağına karar verir. Devlet katılana kadar bu rolü geçici işletmeci yürütür ve devletin katılmasıyla rol sahibine geçer. Henüz hiçbir devletle anlaşma yoktur.
           </p>
           <Callout kind="turkic" locale="tr">
             <p>
@@ -605,8 +600,7 @@ export const CHAPTER_6: LearnPage[] = [
           <h2>State</h2>
           <p>
             The owner of a country’s trust list. It decides which institutions are on the list and which countries’ lists it
-            recognises. Until a state joins, the provisional operator takes on this role on its behalf, and the role passes to the
-            state when it joins.
+            recognises. Until a state joins, the provisional operator carries out this role, and the role passes to the state when it joins. There is no agreement with any state yet.
           </p>
           <Callout kind="turkic" locale="en">
             <p>
@@ -713,8 +707,7 @@ export const CHAPTER_6: LearnPage[] = [
           <h2>Dövlət</h2>
           <p>
             Ölkənin etibar siyahısının sahibi. Siyahıda hansı qurumların olacağına və hansı ölkələrin siyahılarını tanıyacağına
-            qərar verir. Dövlət qoşulana qədər bu rolu onun adından müvəqqəti operator yerinə yetirir; dövlət qoşulduqda rol ona
-            keçir.
+            qərar verir. Dövlət qoşulana qədər bu rolu müvəqqəti operator yerinə yetirir; dövlət qoşulduqda rol ona keçir. Hələlik heç bir dövlətlə razılaşma yoxdur.
           </p>
           <Callout kind="turkic" locale="az">
             <p>
@@ -739,10 +732,10 @@ export const CHAPTER_6: LearnPage[] = [
         az: "Rəqəmsal sənədin sahibi şəxsdir; yoxlayan tərəf yalnız qeydiyyatının icazə verdiyini tələb edə bilər; cüzdan provayderləri uyğunluq testlərindən sonra siyahıya daxil edilir.",
       },
       {
-        tr: "Her devlet kendi listesinin sahibidir; katılana kadar geçici işletmeci onun adına çalışır.",
-        en: "Each state owns its list; until it joins, the provisional operator acts on its behalf.",
-        tk: "Her döwlet öz sanawynyň eýesi; goşulýança wagtlaýyn operator onuň adyndan işleýär.",
-        az: "Hər dövlət öz siyahısının sahibidir; qoşulana qədər onun adından müvəqqəti operator çıxış edir.",
+        tr: "Her devlet kendi listesinin sahibidir; katılana kadar bu işi geçici işletmeci yürütür.",
+        en: "Each state owns its list; until it joins, the provisional operator does this work.",
+        tk: "Her döwlet öz sanawynyň eýesi; goşulýança bu işi wagtlaýyn operator ýerine ýetirýär.",
+        az: "Hər dövlət öz siyahısının sahibidir; qoşulana qədər bu işi müvəqqəti operator yerinə yetirir.",
       },
     ],
     deeper: [
@@ -1195,8 +1188,7 @@ export const CHAPTER_6: LearnPage[] = [
           </p>
           <h2>Bugün: geçici işletmeci</h2>
           <p>
-            Bugün ağı Tamga geçici işletmeci olarak işletir. Türkiye listesini devlet adına yayınlar ve bu durumu açıkça adlandırır:
-            listelerde işletmecinin “geçici” olduğu ve kimin adına çalıştığı yazar. Her liste sürümü imzalıdır ve önceki sürüme özetle bağlıdır;
+            Bugün ağı Tamga geçici işletmeci olarak işletir. Türkiye listesini, devlet ya da yetkilendirdiği bir kurum devralana kadar geçici olarak yayınlar ve bunu açıkça adlandırır: listelerde işletmecinin “geçici” olduğu yazar. Henüz hiçbir devletle anlaşma yoktur. Her liste sürümü imzalıdır ve önceki sürüme özetle bağlıdır;
             iptal listesi yayınları ayrıca herkese açık bir günlüğe yazılır. Böylece listenin sessizce değiştirilmediği herkes
             tarafından denetlenebilir.
           </p>
@@ -1235,8 +1227,7 @@ export const CHAPTER_6: LearnPage[] = [
           </p>
           <h2>Today: a provisional operator</h2>
           <p>
-            Today Tamga runs the network as a provisional operator. It publishes Türkiye’s list on behalf of the state and names this
-            openly: the lists say that the operator is “provisional” and on whose behalf it acts. Every list version is signed and
+            Today Tamga runs the network as a provisional operator. It publishes Türkiye’s list provisionally, until the state or a body it authorises takes it over, and names this openly: the lists say that the operator is “provisional”. There is no agreement with any state yet. Every list version is signed and
             chained to the previous one by its hash, and status list publications are also written to a public log, so anyone can
             check that a list was not changed silently.
           </p>
@@ -1291,8 +1282,7 @@ export const CHAPTER_6: LearnPage[] = [
           </p>
           <h2>Bu gün: müvəqqəti operator</h2>
           <p>
-            Hazırda şəbəkəni Tamga müvəqqəti operator kimi idarə edir. O, Türkiyənin siyahısını dövlət adından dərc edir və bunu
-            açıq şəkildə bildirir: siyahılarda operatorun “müvəqqəti” olduğu və kimin adından çıxış etdiyi yazılır. Siyahının hər
+            Hazırda şəbəkəni Tamga müvəqqəti operator kimi idarə edir. O, Türkiyənin siyahısını dövlət və ya onun səlahiyyət verdiyi qurum öz üzərinə götürənə qədər müvəqqəti dərc edir və bunu açıq şəkildə bildirir: siyahılarda operatorun “müvəqqəti” olduğu yazılır. Hələlik heç bir dövlətlə razılaşma yoxdur. Siyahının hər
             versiyası imzalanır və əvvəlki versiyaya hash ilə bağlanır; ləğv siyahılarının dərcləri isə açıq jurnala yazılır.
             Beləliklə hər kəs siyahının xəbərsiz dəyişdirilmədiyini yoxlaya bilər.
           </p>
@@ -1552,7 +1542,7 @@ export const CHAPTER_6: LearnPage[] = [
           <p>
             Bir ağın işe yaradığını göstermenin en iyi yolu, onu gerçekten kullanan bir cüzdandır. Tamga Wallet bu ağın ilk
             cüzdanıdır: kişilerin belgelerini telefonlarında taşıması ve yalnız gereken bilgiyi göstermesi için geliştirilen,
-            AB uyumlu bir uygulama.
+            AB standartlarıyla hizalı bir uygulama.
           </p>
           <h2>Ağın parçası değil, katılımcısı</h2>
           <p>
@@ -1571,7 +1561,7 @@ export const CHAPTER_6: LearnPage[] = [
           </ul>
           <Callout kind="info" locale="tr">
             <p>
-              Tamga Wallet “AB uyumlu” bir cüzdandır. “EUDI Wallet” unvanı, bir AB üye devletinin sunduğu ya da tanıdığı
+              Tamga Wallet “AB standartlarıyla hizalı” bir cüzdandır. “EUDI Wallet” unvanı, bir AB üye devletinin sunduğu ya da tanıdığı
               cüzdanlara ayrılmıştır; Tamga Wallet bu unvanı kullanmaz ve ulusal kimlik cüzdanı değildir.
             </p>
           </Callout>
@@ -1593,7 +1583,7 @@ export const CHAPTER_6: LearnPage[] = [
         <>
           <p>
             The best way to show that a network works is a wallet that actually uses it. Tamga Wallet is this network’s first wallet:
-            an EU-compatible app built so that people can carry their credentials on their phones and show only the information
+            an EU-aligned app built so that people can carry their credentials on their phones and show only the information
             that is needed.
           </p>
           <h2>A participant, not part of the network</h2>
@@ -1613,7 +1603,7 @@ export const CHAPTER_6: LearnPage[] = [
           </ul>
           <Callout kind="info" locale="en">
             <p>
-              Tamga Wallet is an “EU-compatible” wallet. The title “EUDI Wallet” is reserved for wallets provided or recognised by an
+              Tamga Wallet is an “EU-aligned” wallet. The title “EUDI Wallet” is reserved for wallets provided or recognised by an
               EU member state; Tamga Wallet doesn’t use that title and is not a national identity wallet.
             </p>
           </Callout>
@@ -1633,7 +1623,7 @@ export const CHAPTER_6: LearnPage[] = [
       ),
       tk: (
         <>
-          <p>Toruň işleýändigini görkezmegiň iň gowy ýoly ony ulanýan gapjykdyr. Tamga Wallet bu toruň ilkinji gapjygy: ÝB bilen laýyk programma.</p>
+          <p>Toruň işleýändigini görkezmegiň iň gowy ýoly ony ulanýan gapjykdyr. Tamga Wallet bu toruň ilkinji gapjygy: ÝB standartlary bilen utgaşdyrylan programma.</p>
           <h2>Toruň bölegi däl, gatnaşyjysy</h2>
           <p>Tamga Wallet aýry önüm; öz topary we öz sahypasy bar. Tora beýleki gapjyklar ýaly goşulýar; tor oňa hiç hili artykmaçlyk bermeýär. Tor gapjyk işletmeýär: programmany, gapjyk üpjün edijini we sahypany Tamga Wallet özi işledýär: <ExternalLink href={tamgaWalletUrl("tk")}>tamgawallet.com</ExternalLink>.</p>
           <h2>Näme üçin gerek?</h2>
@@ -1644,7 +1634,7 @@ export const CHAPTER_6: LearnPage[] = [
             <li>“Tamga bilen gir” arkaly her sahypa üçin aýry lakam bilen girmek.</li>
           </ul>
           <Callout kind="info" locale="tk">
-            <p>Tamga Wallet “ÝB bilen laýyk” gapjyk. “EUDI Wallet” ady ÝB agza döwletleriniň gapjyklaryna degişli.</p>
+            <p>Tamga Wallet “ÝB standartlary bilen utgaşdyrylan” gapjyk. “EUDI Wallet” ady ÝB agza döwletleriniň gapjyklaryna degişli.</p>
           </Callout>
           <h2>Ilkinji gapjyk näme üçin möhüm?</h2>
           <p>Ol düzgünleriň hakyky telefonda işleýändigini görkezýär. Gapjyk etmek isleýän her topar şol bir paketleri we synaglary ulanyp bilýär.</p>
@@ -1658,7 +1648,7 @@ export const CHAPTER_6: LearnPage[] = [
           <p>
             Şəbəkənin işlədiyini göstərməyin ən yaxşı yolu ondan real istifadə edən rəqəmsal cüzdandır. Tamga Wallet bu şəbəkənin
             ilk cüzdanıdır: insanların rəqəmsal sənədlərini telefonlarında gəzdirməsi və yalnız lazım olan məlumatı göstərməsi
-            üçün hazırlanmış, Aİ ilə uyğun tətbiq.
+            üçün hazırlanmış, Aİ standartları ilə uzlaşdırılmış tətbiq.
           </p>
           <h2>Şəbəkənin hissəsi deyil, iştirakçısı</h2>
           <p>
@@ -1677,7 +1667,7 @@ export const CHAPTER_6: LearnPage[] = [
           </ul>
           <Callout kind="info" locale="az">
             <p>
-              Tamga Wallet “Aİ ilə uyğun” rəqəmsal cüzdandır. “EUDI Wallet” adı Aİ üzv dövlətinin təqdim etdiyi və ya tanıdığı
+              Tamga Wallet “Aİ standartları ilə uzlaşdırılmış” rəqəmsal cüzdandır. “EUDI Wallet” adı Aİ üzv dövlətinin təqdim etdiyi və ya tanıdığı
               cüzdanlar üçün nəzərdə tutulub; Tamga Wallet bu addan istifadə etmir və milli şəxsiyyət cüzdanı deyil.
             </p>
           </Callout>
@@ -1710,10 +1700,10 @@ export const CHAPTER_6: LearnPage[] = [
         az: "Rəqəmsal sənədlər telefonda qalır; şəxs yalnız lazım olanı göstərir və hər sayt üçün ayrı təxəllüsdən istifadə edir.",
       },
       {
-        tr: "Tamga Wallet “AB uyumlu” bir cüzdandır; EUDI Wallet ya da ulusal kimlik cüzdanı değildir.",
-        en: "Tamga Wallet is an “EU-compatible” wallet; it is not an EUDI Wallet or a national identity wallet.",
-        tk: "Tamga Wallet “ÝB bilen laýyk” gapjyk; EUDI Wallet däl.",
-        az: "Tamga Wallet “Aİ ilə uyğun” rəqəmsal cüzdandır; EUDI Wallet və ya milli şəxsiyyət cüzdanı deyil.",
+        tr: "Tamga Wallet “AB standartlarıyla hizalı” bir cüzdandır; EUDI Wallet ya da ulusal kimlik cüzdanı değildir.",
+        en: "Tamga Wallet is an “EU-aligned” wallet; it is not an EUDI Wallet or a national identity wallet.",
+        tk: "Tamga Wallet “ÝB standartlary bilen utgaşdyrylan” gapjyk; EUDI Wallet däl.",
+        az: "Tamga Wallet “Aİ standartları ilə uzlaşdırılmış” rəqəmsal cüzdandır; EUDI Wallet və ya milli şəxsiyyət cüzdanı deyil.",
       },
     ],
     deeper: [

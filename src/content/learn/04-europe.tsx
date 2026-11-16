@@ -130,14 +130,14 @@ function EuTimeline({ locale }: { locale: "tr" | "en" | "tk" | "az" }) {
   );
 }
 
-/* ------------------------------------------------------------------ EUDI Wallet ile AB uyumlu cüzdan tablosu */
+/* ------------------------------------------------------------------ EUDI Wallet ile AB standartlarıyla hizalı cüzdan tablosu */
 
 function WalletCompare({ locale }: { locale: "tr" | "en" | "tk" | "az" }) {
   const head = {
-    tr: ["", "EUDI Wallet", "AB uyumlu cüzdan"],
-    en: ["", "EUDI Wallet", "EU-compatible wallet"],
-    tk: ["", "EUDI Wallet", "ÝB bilen laýyk gapjyk"],
-    az: ["", "EUDI Wallet", "Aİ ilə uyğun rəqəmsal cüzdan"],
+    tr: ["", "EUDI Wallet", "AB standartlarıyla hizalı cüzdan"],
+    en: ["", "EUDI Wallet", "EU-aligned wallet"],
+    tk: ["", "EUDI Wallet", "ÝB standartlary bilen utgaşdyrylan gapjyk"],
+    az: ["", "EUDI Wallet", "Aİ standartları ilə uzlaşdırılmış rəqəmsal cüzdan"],
   }[locale];
   const rows: Record<"tr" | "en" | "tk" | "az", string[][]> = {
     tr: [
@@ -345,7 +345,7 @@ export const CHAPTER_4: LearnPage[] = [
             Tamga Network bir AB kurumu değildir ve eIDAS'ın kapsamında da değildir. Ama aynı mimariyi bilerek kullanır: belge
             biçimleri, belge alma ve gösterme protokolleri, güven listeleri AB standartlarındadır. Böylece Türk dünyasında verilen
             bir belge, Avrupa'daki yazılımlarla birlikte çalışmaya uygun olur; bu uyum birlikte çalışabilirlik testleriyle
-            gösterilir. Ağın konumu bir kararla yazılıdır: önce AB uyumu, onun üstünde Türk dünyasının hafif bir güven ağı.
+            gösterilir. Ağın konumu bir kararla yazılıdır: önce AB standartlarıyla hizalanma, onun üstünde Türk dünyasının hafif bir güven ağı.
           </p>
           <p>
             Birlikte çalışmak, hukuken tanınmak demek değildir. eIDAS'ın 5f maddesi AB içindeki kurumların AB cüzdanlarını kabul
@@ -414,7 +414,7 @@ export const CHAPTER_4: LearnPage[] = [
             Tamga Network is not an EU body and is not within the scope of eIDAS. But it deliberately uses the same architecture:
             credential formats, the protocols for issuing and presenting credentials, and trust lists all follow EU standards. A
             credential issued in the Turkic world is therefore fit to work with European software, and that compatibility is shown
-            through interoperability tests. The network's position is set down in a decision: EU compatibility first, and on top of
+            through interoperability tests. The network's position is set down in a decision: EU alignment first, and on top of
             it a light trust network for the Turkic world.
           </p>
           <p>
@@ -551,7 +551,7 @@ export const CHAPTER_4: LearnPage[] = [
             Tamga Network Aİ qurumu deyil və eIDAS-ın əhatə dairəsinə daxil deyil. Lakin o, eyni arxitekturadan şüurlu şəkildə istifadə
             edir: rəqəmsal sənəd formatları, rəqəmsal sənədlərin verilməsi və təqdim edilməsi protokolları və etibar siyahıları Aİ
             standartlarına əsaslanır. Buna görə Türk dünyasında verilmiş rəqəmsal sənəd Avropa proqram təminatı ilə işləməyə yararlıdır və
-            bu uyğunluq qarşılıqlı işləmə testləri ilə göstərilir. Şəbəkənin mövqeyi bir qərarla müəyyən edilib: əvvəlcə Aİ ilə uyğunluq,
+            bu uyğunluq qarşılıqlı işləmə testləri ilə göstərilir. Şəbəkənin mövqeyi bir qərarla müəyyən edilib: əvvəlcə Aİ standartları ilə uzlaşma,
             onun üzərində isə Türk dünyası üçün yüngül etibar şəbəkəsi.
           </p>
           <p>
@@ -588,7 +588,7 @@ export const CHAPTER_4: LearnPage[] = [
     ],
     deeper: [
       {
-        label: { tr: "Konumlanma kararı (AB uyumu taban)", en: "The positioning decision (EU compatibility as the base)", tk: "Ýerleşiş karary", az: "Mövqeləndirmə qərarı (əsas kimi Aİ ilə uyğunluq)" },
+        label: { tr: "Konumlanma kararı (taban: AB standartlarıyla hizalanma)", en: "The positioning decision (EU alignment as the base)", tk: "Ýerleşiş karary", az: "Mövqeləndirmə qərarı (əsas kimi Aİ standartları ilə uzlaşma)" },
         href: "/adr/0035-positioning-three-layers",
         kind: "docs",
       },
@@ -618,10 +618,10 @@ export const CHAPTER_4: LearnPage[] = [
     minutes: 5,
     title: { tr: "EUDI Wallet nedir?", en: "What is the EUDI Wallet?", tk: "EUDI Wallet näme?", az: "EUDI Wallet nədir?" },
     summary: {
-      tr: "Avrupa dijital kimlik cüzdanı nedir, ne değildir; \"AB uyumlu cüzdan\" ile farkı.",
-      en: "What the European Digital Identity Wallet is and is not, and how it differs from an \"EU-compatible wallet\".",
-      tk: "Ýewropa sanly şahsyýet gapjygy näme we näme däl; \"ÝB bilen laýyk gapjyk\" bilen tapawudy.",
-      az: "Avropa Rəqəmsal Şəxsiyyət Cüzdanı nədir və nə deyil, \"Aİ ilə uyğun rəqəmsal cüzdan\"dan nə ilə fərqlənir.",
+      tr: "Avrupa dijital kimlik cüzdanı nedir, ne değildir; \"AB standartlarıyla hizalı cüzdan\" ile farkı.",
+      en: "What the European Digital Identity Wallet is and is not, and how it differs from an \"EU-aligned wallet\".",
+      tk: "Ýewropa sanly şahsyýet gapjygy näme we näme däl; \"ÝB standartlary bilen utgaşdyrylan gapjyk\" bilen tapawudy.",
+      az: "Avropa Rəqəmsal Şəxsiyyət Cüzdanı nədir və nə deyil, \"Aİ standartları ilə uzlaşdırılmış rəqəmsal cüzdan\"dan nə ilə fərqlənir.",
     },
     body: {
       tr: (
@@ -659,15 +659,15 @@ export const CHAPTER_4: LearnPage[] = [
             <Term tip="Belgenin bağlanacağı anahtarın hangi güvenli donanımda üretildiğini gösteren kanıt." en="key attestation">anahtar kanıtı</Term>.
             AB bu ikisini 2026'daki güncellemeyle zorunlu hâle getirdi.
           </p>
-          <h2>"AB uyumlu cüzdan" ne demek</h2>
+          <h2>"AB standartlarıyla hizalı cüzdan" ne demek</h2>
           <p>
             AB dışındaki bir kuruluşun cüzdanı EUDI Wallet unvanını alamaz. Ama aynı standartları konuşabilir, aynı belgeleri
-            alabilir ve gösterebilir. Buna "AB uyumlu cüzdan" denir; uyum, sertifikayla değil birlikte çalışabilirlik testleriyle
+            alabilir ve gösterebilir. Buna "AB standartlarıyla hizalı cüzdan" denir; uyum, sertifikayla değil birlikte çalışabilirlik testleriyle
             gösterilir.
           </p>
           <WalletCompare locale="tr" />
           <p>
-            Tamga Network'ün ilk cüzdanı olan Tamga Wallet ikinci gruptadır: AB uyumlu bir cüzdandır, ama "EUDI Wallet" ya da
+            Tamga Network'ün ilk cüzdanı olan Tamga Wallet ikinci gruptadır: AB standartlarıyla hizalı bir cüzdandır, ama "EUDI Wallet" ya da
             "ulusal cüzdan" değildir ve öyle tanıtılmaz. Bu kural ağın kararlarında açıkça yazılıdır.
           </p>
           <Callout kind="turkic" locale="tr">
@@ -720,15 +720,15 @@ export const CHAPTER_4: LearnPage[] = [
             and a <Term tip="A proof of which secure hardware generated the key that a credential will be bound to.">key attestation</Term>. The EU
             made both mandatory in its 2026 update.
           </p>
-          <h2>What an "EU-compatible wallet" means</h2>
+          <h2>What an "EU-aligned wallet" means</h2>
           <p>
             A wallet from an organisation outside the EU cannot take the EUDI Wallet title. It can, however, speak the same standards,
-            receive the same credentials and present them. That is called an EU-compatible wallet; compatibility is shown through
+            receive the same credentials and present them. That is called an EU-aligned wallet; compatibility is shown through
             interoperability tests rather than certification.
           </p>
           <WalletCompare locale="en" />
           <p>
-            Tamga Wallet, the first wallet of Tamga Network, belongs to the second group: an EU-compatible wallet, never presented as
+            Tamga Wallet, the first wallet of Tamga Network, belongs to the second group: an EU-aligned wallet, never presented as
             an "EUDI Wallet" or a "national wallet". The network's decisions state this rule explicitly.
           </p>
           <Callout kind="turkic" locale="en">
@@ -774,14 +774,14 @@ export const CHAPTER_4: LearnPage[] = [
             <Term tip="Wallet Instance Attestation: gapjyk nusgasynyň hakyky we täze bolandygyny tassyklaýan gysga möhletli subutnama.">WIA</Term>{" "}
             we <Term tip="Açaryň haýsy howpsuz enjamda döredilendigini görkezýän subutnama." en="key attestation">açar subutnamasy</Term>.
           </p>
-          <h2>"ÝB bilen laýyk gapjyk" näme</h2>
+          <h2>"ÝB standartlary bilen utgaşdyrylan gapjyk" näme</h2>
           <p>
             ÝB-den daşardaky guramanyň gapjygy EUDI Wallet adyny alyp bilmeýär, emma şol bir standartlarda gürläp bilýär. Laýyklyk
             sertifikat bilen däl-de, bilelikde işleýiş synaglary bilen görkezilýär.
           </p>
           <WalletCompare locale="tk" />
           <p>
-            Tamga Network-yň ilkinji gapjygy Tamga Wallet ikinji topara degişli: ÝB bilen laýyk gapjyk, emma "EUDI Wallet" ýa-da
+            Tamga Network-yň ilkinji gapjygy Tamga Wallet ikinji topara degişli: ÝB standartlary bilen utgaşdyrylan gapjyk, emma "EUDI Wallet" ýa-da
             "milli gapjyk" däl.
           </p>
           <Callout kind="turkic" locale="tk">
@@ -832,15 +832,15 @@ export const CHAPTER_4: LearnPage[] = [
             və <Term tip="Rəqəmsal sənədin bağlanacağı açarın hansı təhlükəsiz aparatda yaradıldığını göstərən sübut.">açar attestasiyası</Term>. Aİ
             2026-cı il yenilənməsində hər ikisini məcburi etdi.
           </p>
-          <h2>"Aİ ilə uyğun rəqəmsal cüzdan" nə deməkdir</h2>
+          <h2>"Aİ standartları ilə uzlaşdırılmış rəqəmsal cüzdan" nə deməkdir</h2>
           <p>
             Aİ-dən kənar təşkilatın rəqəmsal cüzdanı EUDI Wallet statusunu ala bilməz. Lakin o, eyni standartlarla işləyə, eyni rəqəmsal
-            sənədləri qəbul edə və təqdim edə bilər. Buna Aİ ilə uyğun rəqəmsal cüzdan deyilir; uyğunluq sertifikatlaşdırma ilə deyil,
+            sənədləri qəbul edə və təqdim edə bilər. Buna Aİ standartları ilə uzlaşdırılmış rəqəmsal cüzdan deyilir; uyğunluq sertifikatlaşdırma ilə deyil,
             qarşılıqlı işləmə testləri ilə göstərilir.
           </p>
           <WalletCompare locale="az" />
           <p>
-            Tamga Network-un ilk rəqəmsal cüzdanı olan Tamga Wallet ikinci qrupa aiddir: Aİ ilə uyğun rəqəmsal cüzdandır və heç vaxt
+            Tamga Network-un ilk rəqəmsal cüzdanı olan Tamga Wallet ikinci qrupa aiddir: Aİ standartları ilə uzlaşdırılmış rəqəmsal cüzdandır və heç vaxt
             "EUDI Wallet" və ya "milli cüzdan" kimi təqdim edilmir. Şəbəkənin qərarlarında bu qayda açıq şəkildə yazılıb.
           </p>
           <Callout kind="turkic" locale="az">
@@ -867,16 +867,16 @@ export const CHAPTER_4: LearnPage[] = [
         az: "EUDI Wallet tətbiq adı deyil, hüquqi statusdur: Aİ üzv dövlətinin təqdim etdiyi və ya tanıdığı sertifikatlaşdırılmış rəqəmsal cüzdan.",
       },
       {
-        tr: "AB dışındaki cüzdanlar \"AB uyumlu\" olabilir: aynı standartlar, uyum testlerle gösterilir.",
-        en: "Wallets outside the EU can be \"EU-compatible\": the same standards, with compatibility shown through tests.",
-        tk: "ÝB-den daşardaky gapjyklar \"ÝB bilen laýyk\" bolup biler: şol bir standartlar, laýyklyk synaglar bilen görkezilýär.",
-        az: "Aİ-dən kənar rəqəmsal cüzdanlar \"Aİ ilə uyğun\" ola bilər: eyni standartlar, uyğunluq isə testlərlə göstərilir.",
+        tr: "AB dışındaki cüzdanlar \"AB standartlarıyla hizalı\" olabilir: aynı standartlar, uyum testlerle gösterilir.",
+        en: "Wallets outside the EU can be \"EU-aligned\": the same standards, with compatibility shown through tests.",
+        tk: "ÝB-den daşardaky gapjyklar \"ÝB standartlary bilen utgaşdyrylan\" bolup biler: şol bir standartlar, laýyklyk synaglar bilen görkezilýär.",
+        az: "Aİ-dən kənar rəqəmsal cüzdanlar \"Aİ standartları ilə uzlaşdırılmış\" ola bilər: eyni standartlar, uyğunluq isə testlərlə göstərilir.",
       },
       {
-        tr: "Tamga Wallet ağın ilk cüzdanıdır ve AB uyumludur; Tamga Network kurallara uyan her cüzdanı tanır.",
-        en: "Tamga Wallet is the network's first wallet and is EU-compatible; Tamga Network recognises every wallet that follows its rules.",
-        tk: "Tamga Wallet toruň ilkinji gapjygy we ÝB bilen laýyk; Tamga Network düzgünlere eýerýän her gapjygy ykrar edýär.",
-        az: "Tamga Wallet şəbəkənin ilk rəqəmsal cüzdanıdır və Aİ ilə uyğundur; Tamga Network öz qaydalarına əməl edən hər rəqəmsal cüzdanı tanıyır.",
+        tr: "Tamga Wallet ağın ilk cüzdanıdır ve AB standartlarıyla hizalıdır; Tamga Network kurallara uyan her cüzdanı tanır.",
+        en: "Tamga Wallet is the network's first wallet and is EU-aligned; Tamga Network recognises every wallet that follows its rules.",
+        tk: "Tamga Wallet toruň ilkinji gapjygy we ÝB standartlary bilen utgaşdyrylan; Tamga Network düzgünlere eýerýän her gapjygy ykrar edýär.",
+        az: "Tamga Wallet şəbəkənin ilk rəqəmsal cüzdanıdır və Aİ standartları ilə uzlaşdırılmışdır; Tamga Network öz qaydalarına əməl edən hər rəqəmsal cüzdanı tanıyır.",
       },
     ],
     deeper: [

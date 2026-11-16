@@ -169,7 +169,7 @@ export const CHAPTER_5: LearnPage[] = [
 
           <Callout kind="turkic" locale="tr">
             <p>
-              Bugün Türkiye listesini Tamga, devlet adına geçici işletmeci olarak yayınlıyor. Azerbaycan, Kazakistan, Kırgızistan,
+              Türkiye listesini, devlet ya da yetkilendirdiği bir kurum devralana kadar Tamga geçici olarak işletir. Henüz hiçbir devletle anlaşma yoktur. Azerbaycan, Kazakistan, Kırgızistan,
               Özbekistan ve Türkmenistan için listede yer ayrılmış durumda. Bir devlet kendi listesini yayınladığında listelerin listesi
               onu gösterir; cüzdanlar ve doğrulayıcılar için yalnızca adres değişir.
             </p>
@@ -242,7 +242,7 @@ export const CHAPTER_5: LearnPage[] = [
 
           <Callout kind="turkic" locale="en">
             <p>
-              Today Tamga publishes the Türkiye list as a provisional operator, on behalf of the state. Seats are reserved for
+              Until the state, or a body it authorises, takes it over, Tamga runs the Türkiye list provisionally. There is no agreement with any state yet. Seats are reserved for
               Azerbaijan, Kazakhstan, Kyrgyzstan, Uzbekistan and Turkmenistan. When a state publishes its own list, the list of lists
               points to it; for wallets and verifiers only the address changes.
             </p>
@@ -302,7 +302,7 @@ export const CHAPTER_5: LearnPage[] = [
           </p>
           <Callout kind="turkic" locale="tk">
             <p>
-              Häzir Türkiýäniň sanawyny Tamga döwletiň adyndan wagtlaýyn operator hökmünde çap edýär. Azerbaýjan, Gazagystan,
+              Türkiýäniň sanawyny döwlet ýa-da onuň ygtyýarlandyran guramasy öz üstüne alýança Tamga wagtlaýyn işledýär. Häzirlikçe hiç bir döwlet bilen ylalaşyk ýok. Azerbaýjan, Gazagystan,
               Gyrgyzystan, Özbegistan we Türkmenistan üçin ýer goýlupdyr. Döwlet öz sanawyny çap edende diňe salgy üýtgeýär.
             </p>
           </Callout>
@@ -361,7 +361,7 @@ export const CHAPTER_5: LearnPage[] = [
 
           <Callout kind="turkic" locale="az">
             <p>
-              Bu gün Türkiyə siyahısını Tamga dövlət adından müvəqqəti operator kimi dərc edir. Azərbaycan, Qazaxıstan, Qırğızıstan,
+              Türkiyə siyahısını dövlət və ya onun səlahiyyət verdiyi qurum öz üzərinə götürənə qədər Tamga müvəqqəti olaraq idarə edir. Hələlik heç bir dövlətlə razılaşma yoxdur. Azərbaycan, Qazaxıstan, Qırğızıstan,
               Özbəkistan və Türkmənistan üçün yerlər ayrılıb. Dövlət öz siyahısını dərc etdikdə siyahıların siyahısı ona istinad edir;
               rəqəmsal cüzdanlar və yoxlayan tərəflər üçün yalnız ünvan dəyişir.
             </p>
@@ -507,7 +507,7 @@ export const CHAPTER_5: LearnPage[] = [
 
           <h2>Devir nasıl olur?</h2>
           <p>
-            Bugün Türkiye listesini Tamga geçici olarak, devlet adına işletiyor. Devlet ya da yetkilendirdiği kurum kendi listesini
+            Bugün Türkiye listesini Tamga geçici olarak işletiyor; henüz hiçbir devletle anlaşma yoktur. Devlet ya da yetkilendirdiği kurum kendi listesini
             yayınlamaya hazır olduğunda listelerin listesi yeni adresi ve yeni imzacıyı gösterir. Kurumların sertifikaları, belge
             türleri ve verilmiş belgeler değişmez; cüzdanlar ve doğrulayıcılar için yalnızca adres değişir. Ağ baştan bu devre göre
             tasarlandı.
@@ -582,7 +582,7 @@ export const CHAPTER_5: LearnPage[] = [
 
           <h2>How does a hand-over work?</h2>
           <p>
-            Today Tamga runs the Türkiye list provisionally, on behalf of the state. When the state, or a body it authorises, is ready
+            Today Tamga runs the Türkiye list provisionally; there is no agreement with any state yet. When the state, or a body it authorises, is ready
             to publish its own list, the list of lists points to the new address and the new signer. Institution certificates,
             credential types and credentials already issued stay the same; for wallets and verifiers only the address changes. The
             network was designed for this hand-over from the start.
@@ -700,7 +700,7 @@ export const CHAPTER_5: LearnPage[] = [
 
           <h2>Təhvil necə həyata keçirilir?</h2>
           <p>
-            Bu gün Türkiyə siyahısını Tamga dövlət adından müvəqqəti olaraq idarə edir. Dövlət və ya onun səlahiyyət verdiyi qurum öz
+            Bu gün Türkiyə siyahısını Tamga müvəqqəti olaraq idarə edir; hələlik heç bir dövlətlə razılaşma yoxdur. Dövlət və ya onun səlahiyyət verdiyi qurum öz
             siyahısını dərc etməyə hazır olduqda siyahıların siyahısı yeni ünvana və yeni imzalayana istinad edir. Qurum sertifikatları,
             sənəd növləri və artıq verilmiş rəqəmsal sənədlər eyni qalır; rəqəmsal cüzdanlar və yoxlayan tərəflər üçün yalnız ünvan
             dəyişir. Şəbəkə əvvəldən bu təhvil nəzərə alınaraq layihələndirilib.
@@ -1037,7 +1037,7 @@ export const CHAPTER_5: LearnPage[] = [
 
           <h2>Bir defter tek elle olmaz</h2>
           <p>
-            Bugün ağda tek bir işletmeci var: devletler adına geçici olarak çalışan Tamga. Tek bir işletmecinin çalıştırdığı zincirde
+            Bugün ağda tek bir işletmeci var: devletler kendi listelerini devralana kadar geçici olarak çalışan Tamga. Henüz hiçbir devletle anlaşma yoktur. Tek bir işletmecinin çalıştırdığı zincirde
             blokları üreten de, onaylayan da aynı taraftır. Böyle bir zincir maliyeti ve karmaşıklığı artırır, ama güveni artırmaz.
             Dürüst olmak gerekirse, o durumda zincir yalnızca daha yavaş bir veritabanı olur.
           </p>
@@ -1091,7 +1091,7 @@ export const CHAPTER_5: LearnPage[] = [
 
           <h2>A ledger needs more than one hand</h2>
           <p>
-            Today the network has one operator: Tamga, acting provisionally on behalf of the states. On a chain run by a single
+            Today the network has one operator: Tamga, acting provisionally until the states take their lists over. There is no agreement with any state yet. On a chain run by a single
             operator, the same party produces and approves the blocks. Such a chain adds cost and complexity but no trust. To be
             honest, in that situation a chain is just a slower database.
           </p>
@@ -1143,7 +1143,7 @@ export const CHAPTER_5: LearnPage[] = [
           </p>
           <h2>Kitap ýeke el bilen bolmaýar</h2>
           <p>
-            Häzir torda bir operator bar: döwletleriň adyndan wagtlaýyn işleýän Tamga. Ýeke operatorly zynjyr çykdajy goşýar, ynam
+            Häzir torda bir operator bar: döwletler öz sanawlaryny öz üstüne alýança wagtlaýyn işleýän Tamga. Häzirlikçe hiç bir döwlet bilen ylalaşyk ýok. Ýeke operatorly zynjyr çykdajy goşýar, ynam
             goşmaýar.
           </p>
           <h2>Häzir näme ulanýarys?</h2>
@@ -1175,7 +1175,7 @@ export const CHAPTER_5: LearnPage[] = [
 
           <h2>Reyestr üçün bir əl kifayət deyil</h2>
           <p>
-            Bu gün şəbəkənin bir operatoru var: dövlətlər adından müvəqqəti fəaliyyət göstərən Tamga. Tək operatorun idarə etdiyi
+            Bu gün şəbəkənin bir operatoru var: dövlətlər öz siyahılarını öz üzərinə götürənə qədər müvəqqəti fəaliyyət göstərən Tamga. Hələlik heç bir dövlətlə razılaşma yoxdur. Tək operatorun idarə etdiyi
             zəncirdə blokları eyni tərəf həm yaradır, həm də təsdiqləyir. Belə zəncir xərci və mürəkkəbliyi artırır, lakin etibarı
             artırmır. Açığını desək, bu vəziyyətdə zəncir sadəcə daha yavaş verilənlər bazasıdır.
           </p>

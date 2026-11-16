@@ -53,7 +53,7 @@ Kural gereği teknik katman AB ile aynı kalıyor. Tamga'nın konumlanma kararı
 - **Güvence düzeyi adları:** kimlik doğrulama için Low, Substantial ve High; belgeler için EAA ve QEAA terimleri.
 - **Rol seti:** güven listesi işletmecisinden aracı doğrulayıcıya kadar ARF'deki bütün roller; her birinin her ulusal listede bir yeri var.
 
-Amaç, AB ekosistemi için yazılmış bir yazılımın Tamga belgelerini Tamga'ya özgü bir kod eklemeden işleyebilmesi. Burada "AB uyumlu" sözü bunu anlatıyor ve bu uyumu bir etiketle değil, testlerle gösteriyoruz.
+Amaç, AB ekosistemi için yazılmış bir yazılımın Tamga belgelerini Tamga'ya özgü bir kod eklemeden işleyebilmesi. Burada "AB standartlarıyla hizalı" sözü bunu anlatıyor ve bu uyumu bir etiketle değil, testlerle gösteriyoruz.
 
 ## Farklı olan ne, neden?
 
@@ -138,7 +138,7 @@ Tamga AB kurallarını yayımlandıkça izliyor. Değişiklikler önce kendi kar
 
 ### Tamga ARF'ye uyan bir cüzdan EUDI Wallet olur mu?
 
-Hayır. "EUDI Wallet", bir AB üye devletinin sunduğu ya da tanıdığı ve AB kurallarına göre sertifikalandırılmış cüzdanlara verilen hukuki bir unvan. Tamga ARF'ye uymak bir cüzdanı AB uyumlu kılıyor ve Tamga Network'te listelenmesini sağlıyor.
+Hayır. "EUDI Wallet", bir AB üye devletinin sunduğu ya da tanıdığı ve AB kurallarına göre sertifikalandırılmış cüzdanlara verilen hukuki bir unvan. Tamga ARF'ye uymak bir cüzdanı AB standartlarıyla hizalı kılıyor ve Tamga Network'te listelenmesini sağlıyor.
 
 ### Bir devlet kuralları değiştirebilir mi?
 

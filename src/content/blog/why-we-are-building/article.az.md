@@ -45,7 +45,7 @@ Hər dövlət öz siyahısını özü dərc edir. Siyahıların bugünkü vəziy
 
 | Siyahı | Vəziyyət |
 |---|---|
-| Türkiyə | Dərc olunub. Tamga onu dövlət adından müvəqqəti idarə edir. |
+| Türkiyə | Dərc olunub. Dövlət və ya onun səlahiyyət verdiyi qurum öz üzərinə götürənə qədər Tamga onu müvəqqəti idarə edir. Hələlik heç bir dövlətlə razılaşma yoxdur. |
 | Azərbaycan, Qazaxıstan, Qırğızıstan, Özbəkistan | Türk Dövlətləri Təşkilatının bu üzv dövlətləri üçün yer ayrılıb; hər dövlət öz siyahısını özü dərc edəcək. |
 | Macarıstan, Türkmənistan | Təşkilatın müşahidəçi dövlətləri üçün yer ayrılıb. |
 | Avropa İttifaqı | Şəbəkə Aİ siyahılarını xarici siyahı kimi oxuya bilir; bu gün qoşulmuş Aİ siyahısı yoxdur. |

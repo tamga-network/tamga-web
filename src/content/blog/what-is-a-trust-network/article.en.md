@@ -63,7 +63,7 @@ The limits matter as much as the jobs, and they are written down as binding rule
 
 It uses the same building blocks, namely SD-JWT VC and ISO/IEC 18013-5 mdoc for credentials, OpenID4VCI and OpenID4VP with the HAIP profile for issuance and presentation, the IETF Token Status List for revocation, X.509 certificates for institutions, and trust lists mapped to ETSI formats. These are the formats the EU's Architecture and Reference Framework names ([EU ARF on GitHub](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework)).
 
-What it cannot claim is a title. "EUDI Wallet" is a legal status for wallets provided or recognised by an EU member state. A network or wallet outside the EU can be EU-compatible, which means it uses the same standards and proves it with tests, and that is how Tamga describes itself ([ADR-0035](https://docs.tamga.network/adr/0035-positioning-three-layers)).
+What it cannot claim is a title. "EUDI Wallet" is a legal status for wallets provided or recognised by an EU member state. A network or wallet outside the EU can be EU-aligned, which means it uses the same standards and proves it with tests, and that is how Tamga describes itself ([ADR-0035](https://docs.tamga.network/adr/0035-positioning-three-layers)).
 
 The country lists are also built to sit next to other lists. An external list in the ETSI format, from another state or from the EU, can be added to the network's list of trusted lists with a pinned signer and a defined scope, and each addition needs a separate approval ([ADR-0036](https://docs.tamga.network/adr/0036-trust-federation-external-lists)). None has been added yet.
 
@@ -107,7 +107,7 @@ No. Any wallet that follows the network's wallet rules and whose provider is lis
 
 ### Who decides which institutions are on the list?
 
-The registrar records institutions and the credential types each may issue. Today Tamga does this provisionally for Türkiye, on the state's behalf, and when a state publishes its own list, that state decides. The network does not grant the legal right to issue a diploma, which comes from the law that governs the institution.
+The registrar records institutions and the credential types each may issue. For Türkiye, Tamga does this provisionally until the state, or a body it authorises, takes it over; there is no agreement with any state yet. When a state publishes its own list, that state decides. The network does not grant the legal right to issue a diploma, which comes from the law that governs the institution.
 
 ### Can a credential from another country be accepted?
 

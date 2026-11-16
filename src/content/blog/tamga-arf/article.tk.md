@@ -53,7 +53,7 @@ Düzgüne görä tehniki gatlak ÝB bilen birmeňzeş galýar. Tamga-nyň orun k
 - **Ynamlylyk derejeleriniň atlary:** şahsyýeti barlamak üçin Low, Substantial we High; resminamalar üçin EAA we QEAA adalgalary.
 - **Rollar toplumy:** ynam sanawy operatoryndan araçy barlaýja çenli ARF-däki ähli rollar; olaryň her biriniň her milli sanawda ýeri bar.
 
-Maksat, ÝB ekoulgamy üçin ýazylan programma üpjünçiliginiň Tamga resminamasyny Tamga-a mahsus kod goşmazdan işläp bilmegidir. Bu ýerde "ÝB bilen laýyk" diýen söz şuny aňladýar we bu laýyklygy bellik bilen däl-de, synaglar bilen görkezýäris.
+Maksat, ÝB ekoulgamy üçin ýazylan programma üpjünçiliginiň Tamga resminamasyny Tamga-a mahsus kod goşmazdan işläp bilmegidir. Bu ýerde "ÝB standartlary bilen utgaşdyrylan" diýen söz şuny aňladýar we bu laýyklygy bellik bilen däl-de, synaglar bilen görkezýäris.
 
 ## Näme tapawutlanýar we näme üçin?
 
@@ -138,7 +138,7 @@ Tamga ÝB düzgünlerini çap edilişine görä yzarlaýar. Üýtgeşmeler ilki 
 
 ### Tamga ARF-e eýerýän gapjyk EUDI Wallet bolýarmy?
 
-Ýok. "EUDI Wallet" ÝB agza döwletiniň hödürleýän ýa-da ykrar edýän we ÝB düzgünleri boýunça sertifikatlaşdyrylan gapjyklaryna berilýän hukuky derejedir. Tamga ARF-e eýermek gapjygy ÝB bilen laýyk edýär we onuň Tamga Network-da sanawa girizilmegine mümkinçilik berýär.
+Ýok. "EUDI Wallet" ÝB agza döwletiniň hödürleýän ýa-da ykrar edýän we ÝB düzgünleri boýunça sertifikatlaşdyrylan gapjyklaryna berilýän hukuky derejedir. Tamga ARF-e eýermek gapjygy ÝB standartlary bilen utgaşdyrylan edýär we onuň Tamga Network-da sanawa girizilmegine mümkinçilik berýär.
 
 ### Döwlet düzgünleri üýtgedip bilermi?
 

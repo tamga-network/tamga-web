@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "Tamga Network · The digital trust network for the Turkic world",
-    "description": "Tamga Network is the digital trust network for the Turkic world. Credentials issued by institutions can be verified across borders in seconds while the person's privacy stays protected, under open rules, with signed lists and EU-compatible standards.",
-    "ogDescription": "Tamga Network is the digital trust network for the Turkic world, built on open rules and signed trust lists and compatible with the EU.",
+    "description": "Tamga Network is the digital trust network for the Turkic world. Credentials issued by institutions can be verified across borders in seconds while the person's privacy stays protected, under open rules and signed lists, aligned with EU standards.",
+    "ogDescription": "Tamga Network is the digital trust network for the Turkic world, built on open rules and signed trust lists and aligned with EU standards.",
     "tagline": "The digital trust network for the Turkic world"
   },
   "nav": {
@@ -15,10 +15,11 @@
     "skipToContent": "Skip to content"
   },
   "footer": {
-    "tagline": "An open, EU-compatible trust network for the Turkic world.",
+    "tagline": "An open, EU-aligned trust network for the Turkic world.",
     "slogan": "The digital trust network for the Turkic world.",
     "contact": "Contact",
-    "rights": "All rights reserved.",
+    "rights": "Text CC BY 4.0, code Apache-2.0; name and logo excluded.",
+    "privacy": "Privacy",
     "social": "Social media"
   },
   "notFound": {

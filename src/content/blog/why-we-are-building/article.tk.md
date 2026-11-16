@@ -45,7 +45,7 @@ Her döwlet öz sanawyny özi çap edýär. Sanawlaryň şu günki ýagdaýy şe
 
 | Sanaw | Ýagdaýy |
 |---|---|
-| Türkiýe | Çap edildi. Tamga ony döwletiň adyndan wagtlaýyn dolandyrýar. |
+| Türkiýe | Çap edildi. Döwlet ýa-da onuň ygtyýarlandyran guramasy öz üstüne alýança Tamga ony wagtlaýyn dolandyrýar. Häzirlikçe hiç bir döwlet bilen ylalaşyk ýok. |
 | Azerbaýjan, Gazagystan, Gyrgyzystan, Özbegistan | Türki döwletler guramasynyň bu agza döwletleri üçin ýer bölünip goýuldy; her döwlet öz sanawyny özi çap eder. |
 | Wengriýa, Türkmenistan | Guramanyň synçy döwletleri üçin ýer bölünip goýuldy. |
 | Ýewropa Bileleşigi | Tor ÝB sanawlaryny daşky sanaw hökmünde okap bilýär; şu gün birikdirilen ÝB sanawy ýok. |

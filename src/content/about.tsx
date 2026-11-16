@@ -32,7 +32,7 @@ const en: AboutContent = {
   meta: {
     title: "About",
     description:
-      "What Tamga Network is, where its name comes from, what it does and why. It is an EU-compatible Digital Trust Infrastructure for the Turkic world, built in three layers.",
+      "What Tamga Network is, where its name comes from, what it does and why. It is an EU-aligned Digital Trust Infrastructure for the Turkic world, built in three layers.",
   },
   header: {
     eyebrow: "About",
@@ -87,11 +87,11 @@ const en: AboutContent = {
   },
   positioning: {
     eyebrow: "Positioning",
-    title: "Three layers: EU-compatible, a federation, wallets on the network",
+    title: "Three layers: EU-aligned, a federation, wallets on the network",
     lead: (
       <>
         Tamga is built in three layers, and each of them can stand on its own. The base is{" "}
-        <strong className="text-foreground">compatibility with the EU’s eIDAS 2.0 / EUDI standards</strong>. On top
+        <strong className="text-foreground">alignment with the EU’s eIDAS 2.0 / EUDI standards</strong>. On top
         of it, <strong className="text-foreground">Tamga Network</strong> brings the trust lists of the Turkic states
         together. <strong className="text-foreground">The wallets on the network</strong> (the first is
         Tamga Wallet) and the network’s reference services run on that foundation.
@@ -99,12 +99,12 @@ const en: AboutContent = {
     ),
     rows: [
       {
-        k: "EU-compatible base",
-        v: "Credentials, protocols and trust lists follow EU standards. “EUDI Wallet” is a legal title reserved for wallets that an EU member state provides or recognises, so we describe Tamga Wallet, the network’s first wallet, as EU-compatible. Interoperability will be shown with test results.",
+        k: "EU-aligned base",
+        v: "Credentials, protocols and trust lists follow EU standards. “EUDI Wallet” is a legal title reserved for wallets that an EU member state provides or recognises, so we describe Tamga Wallet, the network’s first wallet, as EU-aligned. Interoperability will be shown with test results.",
       },
       {
         k: "Tamga Network, a light federation",
-        v: "The network collects each state’s trust list and lets the states recognise one another. Today Tamga publishes Türkiye’s list provisionally on behalf of the state, and when the state or a body it authorises publishes its own list, the network will point to that one. The network recognises any wallet that follows the published rules. A governance body and a shared ledger will follow as states join.",
+        v: "The network collects each state’s trust list and lets the states recognise one another. Until the state, or a body it authorises, takes it over, Tamga runs the Türkiye list provisionally. There is no agreement with any state yet. When the state publishes its own list, the network will point to that one. The network recognises any wallet that follows the published rules. A governance body and a shared ledger will follow as states join.",
       },
       {
         k: "Wallets on the network and the team that builds it",
@@ -152,7 +152,7 @@ const tr: AboutContent = {
   meta: {
     title: "Hakkında",
     description:
-      "Tamga Network’ün ne olduğu, adının nereden geldiği, ne yaptığı ve neden yaptığı. Tamga Network, Türk dünyası için kurulan, AB ile uyumlu ve üç katmandan oluşan bir Dijital Güven Altyapısıdır.",
+      "Tamga Network’ün ne olduğu, adının nereden geldiği, ne yaptığı ve neden yaptığı. Tamga Network, Türk dünyası için kurulan, AB standartlarıyla hizalı ve üç katmandan oluşan bir Dijital Güven Altyapısıdır.",
   },
   header: {
     eyebrow: "Hakkında",
@@ -207,7 +207,7 @@ const tr: AboutContent = {
   },
   positioning: {
     eyebrow: "Konumlanma",
-    title: "Üç katman: AB uyumu, federasyon, ağdaki cüzdanlar",
+    title: "Üç katman: AB standartlarıyla hizalanma, federasyon, ağdaki cüzdanlar",
     lead: (
       <>
         Tamga, her biri tek başına ayakta durabilen üç katman üzerine kuruludur. Tabanı{" "}
@@ -219,12 +219,12 @@ const tr: AboutContent = {
     ),
     rows: [
       {
-        k: "AB uyumlu taban",
-        v: "Belgeler, protokoller ve güven listeleri AB standartlarına uyar. “EUDI Wallet” unvanı yalnızca bir AB üye devletinin sunduğu ya da tanıdığı cüzdanlara verilen hukuki bir unvan olduğu için ağın ilk cüzdanı Tamga Wallet’ı AB uyumlu bir cüzdan olarak anıyoruz. Birlikte çalışabilirliği test sonuçlarıyla göstereceğiz.",
+        k: "AB standartlarıyla hizalı taban",
+        v: "Belgeler, protokoller ve güven listeleri AB standartlarına uyar. “EUDI Wallet” unvanı yalnızca bir AB üye devletinin sunduğu ya da tanıdığı cüzdanlara verilen hukuki bir unvan olduğu için ağın ilk cüzdanı Tamga Wallet’ı AB standartlarıyla hizalı bir cüzdan olarak anıyoruz. Birlikte çalışabilirliği test sonuçlarıyla göstereceğiz.",
       },
       {
         k: "Tamga Network, hafif bir federasyon",
-        v: "Ağ her devletin güven listesini toplar ve devletlerin birbirini tanımasını sağlar. Türkiye listesini bugün Tamga, devlet adına geçici olarak yayınlıyor. Devlet ya da yetkilendirdiği kurum kendi listesini yayınladığında ağ o listeyi gösterecek. Ağ, yayınlanmış kurallara uyan her cüzdanı tanır. Yönetişim kurumu ve ortak defter de devletler katıldıkça kurulacak.",
+        v: "Ağ her devletin güven listesini toplar ve devletlerin birbirini tanımasını sağlar. Türkiye listesini, devlet ya da yetkilendirdiği bir kurum devralana kadar Tamga geçici olarak işletir. Henüz hiçbir devletle anlaşma yoktur. Devlet kendi listesini yayınladığında ağ o listeyi gösterecek. Ağ, yayınlanmış kurallara uyan her cüzdanı tanır. Yönetişim kurumu ve ortak defter de devletler katıldıkça kurulacak.",
       },
       {
         k: "Ağdaki cüzdanlar ve ağı geliştiren ekip",
@@ -271,7 +271,7 @@ const tk: AboutContent = {
   meta: {
     title: "Biz barada",
     description:
-      "Tamga Network-yň näme bolýandygy, adynyň nireden gelýändigi, näme edýändigi we näme üçin edýändigi. Tamga Network türki dünýäsi üçin gurlan, ÝB bilen laýyk we üç gatlakdan ybarat Sanly Ynam Infrastrukturasydyr.",
+      "Tamga Network-yň näme bolýandygy, adynyň nireden gelýändigi, näme edýändigi we näme üçin edýändigi. Tamga Network türki dünýäsi üçin gurlan, ÝB standartlary bilen utgaşdyrylan we üç gatlakdan ybarat Sanly Ynam Infrastrukturasydyr.",
   },
   header: {
     eyebrow: "Biz barada",
@@ -326,7 +326,7 @@ const tk: AboutContent = {
   },
   positioning: {
     eyebrow: "Orun",
-    title: "Üç gatlak: ÝB bilen laýyklyk, federasiýa, tordaky gapjyklar",
+    title: "Üç gatlak: ÝB standartlary bilen utgaşyk, federasiýa, tordaky gapjyklar",
     lead: (
       <>
         Tamga her biri özbaşdak durup bilýän üç gatlakda gurulýar. Onuň esasyny{" "}
@@ -338,12 +338,12 @@ const tk: AboutContent = {
     ),
     rows: [
       {
-        k: "ÝB bilen laýyk esas",
-        v: "Resminamalar, protokollar we ynam sanawlary ÝB standartlaryna eýerýär. “EUDI Wallet” diňe ÝB agza döwletiniň hödürleýän ýa-da ykrar edýän gapjyklaryna berilýän hukuk ady bolany üçin, toruň ilkinji gapjygy Tamga Wallet-i ÝB bilen laýyk gapjyk hökmünde agzaýarys. Bilelikde işleýşini synag netijeleri bilen görkezeris.",
+        k: "ÝB standartlary bilen utgaşdyrylan esas",
+        v: "Resminamalar, protokollar we ynam sanawlary ÝB standartlaryna eýerýär. “EUDI Wallet” diňe ÝB agza döwletiniň hödürleýän ýa-da ykrar edýän gapjyklaryna berilýän hukuk ady bolany üçin, toruň ilkinji gapjygy Tamga Wallet-i ÝB standartlary bilen utgaşdyrylan gapjyk hökmünde agzaýarys. Bilelikde işleýşini synag netijeleri bilen görkezeris.",
       },
       {
         k: "Tamga Network, ýeňil federasiýa",
-        v: "Tor her döwletiň ynam sanawyny jemleýär we döwletleriň biri-birini ykrar etmegine mümkinçilik berýär. Türkiýäniň sanawyny häzir Tamga döwletiň adyndan wagtlaýyn çap edýär. Döwlet ýa-da onuň ygtyýarlandyran guramasy öz sanawyny çap edende tor şol sanawy görkezer. Tor çap edilen düzgünlere eýerýän her gapjygy ykrar edýär. Dolandyryş guramasy we umumy kitap hem döwletler goşulyşdygyça döredilýär.",
+        v: "Tor her döwletiň ynam sanawyny jemleýär we döwletleriň biri-birini ykrar etmegine mümkinçilik berýär. Türkiýäniň sanawyny döwlet ýa-da onuň ygtyýarlandyran guramasy öz üstüne alýança Tamga wagtlaýyn işledýär. Häzirlikçe hiç bir döwlet bilen ylalaşyk ýok. Döwlet öz sanawyny çap edende tor şol sanawy görkezer. Tor çap edilen düzgünlere eýerýän her gapjygy ykrar edýär. Dolandyryş guramasy we umumy kitap hem döwletler goşulyşdygyça döredilýär.",
       },
       {
         k: "Tordaky gapjyklar we tory gurýan topar",
@@ -391,7 +391,7 @@ const az: AboutContent = {
   meta: {
     title: "Haqqımızda",
     description:
-      "Tamga Network-un nə olduğu, adının haradan gəldiyi, nə etdiyi və niyə etdiyi. Tamga Network Türk dünyası üçün qurulan, Avropa İttifaqı (Aİ) ilə uyğun və üç qatdan ibarət Rəqəmsal Etibar İnfrastrukturudur.",
+      "Tamga Network-un nə olduğu, adının haradan gəldiyi, nə etdiyi və niyə etdiyi. Tamga Network Türk dünyası üçün qurulan, Avropa İttifaqı (Aİ) standartları ilə uzlaşdırılmış və üç qatdan ibarət Rəqəmsal Etibar İnfrastrukturudur.",
   },
   header: {
     eyebrow: "Haqqımızda",
@@ -446,7 +446,7 @@ const az: AboutContent = {
   },
   positioning: {
     eyebrow: "Mövqe",
-    title: "Üç qat: Aİ ilə uyğunluq, federasiya, şəbəkədəki rəqəmsal cüzdanlar",
+    title: "Üç qat: Aİ standartları ilə uzlaşma, federasiya, şəbəkədəki rəqəmsal cüzdanlar",
     lead: (
       <>
         Tamga hər biri müstəqil dayana bilən üç qatda qurulur. Təməli{" "}
@@ -458,12 +458,12 @@ const az: AboutContent = {
     ),
     rows: [
       {
-        k: "Aİ ilə uyğun təməl",
-        v: "Rəqəmsal sənədlər, protokollar və etibar siyahıları Aİ standartlarına əməl edir. “EUDI Wallet” yalnız Aİ üzv dövlətinin təqdim etdiyi və ya tanıdığı rəqəmsal cüzdanlara verilən hüquqi ad olduğu üçün şəbəkənin ilk rəqəmsal cüzdanı Tamga Wallet-i Aİ ilə uyğun cüzdan kimi təqdim edirik. Qarşılıqlı işləmə qabiliyyətini test nəticələri ilə göstərəcəyik.",
+        k: "Aİ standartları ilə uzlaşdırılmış təməl",
+        v: "Rəqəmsal sənədlər, protokollar və etibar siyahıları Aİ standartlarına əməl edir. “EUDI Wallet” yalnız Aİ üzv dövlətinin təqdim etdiyi və ya tanıdığı rəqəmsal cüzdanlara verilən hüquqi ad olduğu üçün şəbəkənin ilk rəqəmsal cüzdanı Tamga Wallet-i Aİ standartları ilə uzlaşdırılmış cüzdan kimi təqdim edirik. Qarşılıqlı işləmə qabiliyyətini test nəticələri ilə göstərəcəyik.",
       },
       {
         k: "Tamga Network, yüngül federasiya",
-        v: "Şəbəkə hər dövlətin etibar siyahısını toplayır və dövlətlərin bir-birini tanımasına imkan verir. Türkiyənin siyahısını hazırda Tamga dövlət adından müvəqqəti olaraq dərc edir. Dövlət və ya onun səlahiyyət verdiyi qurum öz siyahısını dərc edəndə şəbəkə həmin siyahını göstərəcək. Şəbəkə dərc olunmuş qaydalara əməl edən istənilən rəqəmsal cüzdanı tanıyır. İdarəetmə orqanı və ortaq reyestr də dövlətlər qoşulduqca formalaşacaq.",
+        v: "Şəbəkə hər dövlətin etibar siyahısını toplayır və dövlətlərin bir-birini tanımasına imkan verir. Türkiyə siyahısını dövlət və ya onun səlahiyyət verdiyi qurum öz üzərinə götürənə qədər Tamga müvəqqəti olaraq idarə edir. Hələlik heç bir dövlətlə razılaşma yoxdur. Dövlət öz siyahısını dərc edəndə şəbəkə həmin siyahını göstərəcək. Şəbəkə dərc olunmuş qaydalara əməl edən istənilən rəqəmsal cüzdanı tanıyır. İdarəetmə orqanı və ortaq reyestr də dövlətlər qoşulduqca formalaşacaq.",
       },
       {
         k: "Şəbəkədəki rəqəmsal cüzdanlar və şəbəkəni quran komanda",

@@ -42,6 +42,7 @@ const STATIC: [SHref, string[]][] = [
   ["/changelog", [`${APP}/changelog`, "src/content/changelog.tsx"]],
   ["/sdk", [`${APP}/sdk`, "src/content/sdk.tsx", "src/content/examples.generated.ts"]],
   ["/brand", [`${APP}/brand`, "src/content/brand.tsx"]],
+  ["/privacy", [`${APP}/privacy`, "src/content/privacy.tsx"]],
 ];
 
 /** Learn bölüm dosyası: src/content/learn/0<n>-*.tsx */

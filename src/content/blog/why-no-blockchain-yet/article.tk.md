@@ -13,7 +13,7 @@ related: how-trust-lists-work, network-as-a-foundation, learn:trust-lists, learn
 
 ## Näme üçin kitaby bir el saklap bilmeýär?
 
-Blokçeýn şol bir ýazgyny birnäçe **garaşsyz** tarap saklanda we olaryň hiç biri bu ýazgyny ýeke özi üýtgedip bilmände öz çykdajysyna mynasyp bolýar. Häzir bolsa bir operator bar we bu operator döwletleriň adyndan wagtlaýyn işleýän Tamga. Ýeke barlaýjy düwünli zynjyr çykdajyny we çylşyrymlylygy artdyrýar, ýöne ynamy asla artdyrmaýar.
+Blokçeýn şol bir ýazgyny birnäçe **garaşsyz** tarap saklanda we olaryň hiç biri bu ýazgyny ýeke özi üýtgedip bilmände öz çykdajysyna mynasyp bolýar. Häzir bolsa bir operator bar: her döwlet ýa-da onuň ygtyýarlandyran guramasy öz sanawyny öz üstüne alýança sanawlary wagtlaýyn işledýän Tamga. Häzirlikçe hiç bir döwlet bilen ylalaşyk ýok. Ýeke barlaýjy düwünli zynjyr çykdajyny we çylşyrymlylygy artdyrýar, ýöne ynamy asla artdyrmaýar.
 
 ## Munuň deregine näme edýäris?
 

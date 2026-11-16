@@ -53,7 +53,7 @@ Qaydaya görə texniki qat Aİ ilə eyni qalır. Tamga-nın mövqeləndirmə qə
 - **Etibarlılıq səviyyələrinin adları:** şəxsiyyətin yoxlanılması üçün Low, Substantial və High; sənədlər üçün EAA və QEAA terminləri.
 - **Rollar dəsti:** etibar siyahısı operatorundan vasitəçi yoxlayan tərəfə qədər ARF-dəki bütün rollar; onların hər birinin hər milli siyahıda yeri var.
 
-Məqsəd Aİ ekosistemi üçün yazılmış proqram təminatının Tamga sənədini Tamga-ya xas kod əlavə etmədən emal edə bilməsidir. Burada "Aİ ilə uyğun" ifadəsi bunu bildirir və bu uyğunluğu etiketlə deyil, testlərlə göstəririk.
+Məqsəd Aİ ekosistemi üçün yazılmış proqram təminatının Tamga sənədini Tamga-ya xas kod əlavə etmədən emal edə bilməsidir. Burada "Aİ standartları ilə uzlaşdırılmış" ifadəsi bunu bildirir və bu uyğunluğu etiketlə deyil, testlərlə göstəririk.
 
 ## Nə fərqlənir və niyə?
 
@@ -138,7 +138,7 @@ Tamga Aİ qaydalarını dərc olunduqca izləyir. Dəyişikliklər əvvəlcə ö
 
 ### Tamga ARF-ə əməl edən cüzdan EUDI Wallet olurmu?
 
-Xeyr. "EUDI Wallet" Aİ üzv dövlətinin təqdim etdiyi və ya tanıdığı və Aİ qaydalarına əsasən sertifikatlaşdırılmış cüzdanlara verilən hüquqi statusdur. Tamga ARF-ə əməl etmək cüzdanı Aİ ilə uyğun edir və onun Tamga Network-da siyahıya alınmasına imkan verir.
+Xeyr. "EUDI Wallet" Aİ üzv dövlətinin təqdim etdiyi və ya tanıdığı və Aİ qaydalarına əsasən sertifikatlaşdırılmış cüzdanlara verilən hüquqi statusdur. Tamga ARF-ə əməl etmək cüzdanı Aİ standartları ilə uzlaşdırılmış edir və onun Tamga Network-da siyahıya alınmasına imkan verir.
 
 ### Dövlət qaydaları dəyişə bilərmi?
 

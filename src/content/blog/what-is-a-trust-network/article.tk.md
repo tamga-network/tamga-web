@@ -63,7 +63,7 @@ Toruň çäkleri hem wezipeleri ýaly möhüm we bu çäkler hökmany düzgünle
 
 Tamga Network şol bir esasy bölekleri ulanýar. Resminamalar üçin SD-JWT VC we ISO/IEC 18013-5 mdoc, resminama bermek we görkezmek üçin HAIP profili bilen bilelikde OpenID4VCI we OpenID4VP, ýatyrmak üçin IETF Token Status List, guramalar üçin X.509 sertifikatlary we ETSI formatlaryna laýyklaşdyrylan ynam sanawlary ulanylýar. Bular ÝB-niň Architecture and Reference Framework-ynda görkezilen formatlardyr ([ÝB ARF, GitHub](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework)).
 
-Tamga-nyň ulanyp bilmejek zady bolsa derejedir. "EUDI Wallet" ÝB agza döwletiniň hödürleýän ýa-da ykrar edýän gapjyklaryna berilýän hukuky derejedir. ÝB-den daşardaky tor ýa-da gapjyk bolsa ÝB bilen laýyk bolup biler, ýagny şol bir standartlary ulanyp we muny synaglar bilen subut edip biler. Tamga hem özüni şeýle häsiýetlendirýär ([ADR-0035](https://docs.tamga.network/adr/0035-positioning-three-layers)).
+Tamga-nyň ulanyp bilmejek zady bolsa derejedir. "EUDI Wallet" ÝB agza döwletiniň hödürleýän ýa-da ykrar edýän gapjyklaryna berilýän hukuky derejedir. ÝB-den daşardaky tor ýa-da gapjyk bolsa ÝB standartlary bilen utgaşdyrylan bolup biler, ýagny şol bir standartlary ulanyp we muny synaglar bilen subut edip biler. Tamga hem özüni şeýle häsiýetlendirýär ([ADR-0035](https://docs.tamga.network/adr/0035-positioning-three-layers)).
 
 Ýurt sanawlary başga sanawlar bilen ýanaşyk ulanylyp bilinjek görnüşde guruldy. Başga döwletiň ýa-da ÝB-niň ETSI formatyndaky sanawy gol çekijisi berkidilip we gerimi kesgitlenip toruň sanawlar sanawyna goşulyp bilner we her goşundy aýratyn tassyklamany talap edýär ([ADR-0036](https://docs.tamga.network/adr/0036-trust-federation-external-lists)). Häzire çenli şeýle sanaw goşulmady.
 
@@ -107,7 +107,7 @@ Synag we görkeziş guramalary diňe sandbox-da ýerleşýär. Sandbox-da alnan 
 
 ### Haýsy guramalaryň sanawda boljakdygyny kim kesgitleýär?
 
-Hasaba alyş edarasy guramalary we her guramanyň berip bilýän resminama görnüşlerini ýazga geçirýär. Häzir bu işi Türkiýe üçin döwletiň adyndan wagtlaýyn Tamga edýär. Döwlet öz sanawyny çap edende karar şol döwlete geçer. Diplom bermek hukugyny tor bermeýär, bu hukuk guramanyň tabyn bolan kanunyndan gelýär.
+Hasaba alyş edarasy guramalary we her guramanyň berip bilýän resminama görnüşlerini ýazga geçirýär. Türkiýe üçin bu işi döwlet ýa-da onuň ygtyýarlandyran guramasy öz üstüne alýança Tamga wagtlaýyn edýär; häzirlikçe hiç bir döwlet bilen ylalaşyk ýok. Döwlet öz sanawyny çap edende karar şol döwlete geçer. Diplom bermek hukugyny tor bermeýär, bu hukuk guramanyň tabyn bolan kanunyndan gelýär.
 
 ### Başga ýurduň resminamasy kabul edilip bilnermi?
 

@@ -15,9 +15,9 @@ related: openid4vci-deep-dive, openid4vp-dcql-deep-dive, haip-and-token-status-l
 
 > **Möhüm:** Bu OpenID Foundation-yň öz synag guraly bilen geçirilen öz-synagdyr. OpenID sertifikaty däl; synag meýilnamalaryny gural içinde çap etmedik (sebäbi aşakda).
 
-## ÝB bilen laýyk tor üçin laýyklyk synagy näme üçin möhüm?
+## ÝB standartlary bilen utgaşdyrylan tor üçin laýyklyk synagy näme üçin möhüm?
 
-Iki önüm OpenID4VP-ä harpma-harp eýerip, ýene-de biri-biri bilen düşünişip bilmezligi mümkin, sebäbi spesifikasiýa köp ýerde birnäçe saýlawa ýol berýär. Ýokary kepillikli özara işleşme profili [HAIP](/blog/haip-and-token-status-list) bir saýlaw toplumyny berkidip, bu boşluklaryň köpüsini ýapýar; Ýewropanyň sanly şahsyýet ulgamy hem oňa daýanýar. Tamga özüni ÝB bilen laýyk diýip tanyşdyrýar. Bu tassyklamany diňe öz synaglarymyz bilen barlasak, öz öý işimize özümiz baha beren bolarys.
+Iki önüm OpenID4VP-ä harpma-harp eýerip, ýene-de biri-biri bilen düşünişip bilmezligi mümkin, sebäbi spesifikasiýa köp ýerde birnäçe saýlawa ýol berýär. Ýokary kepillikli özara işleşme profili [HAIP](/blog/haip-and-token-status-list) bir saýlaw toplumyny berkidip, bu boşluklaryň köpüsini ýapýar; Ýewropanyň sanly şahsyýet ulgamy hem oňa daýanýar. Tamga özüni ÝB standartlary bilen utgaşdyrylan diýip tanyşdyrýar. Bu tassyklamany diňe öz synaglarymyz bilen barlasak, öz öý işimize özümiz baha beren bolarys.
 
 Öz synaglarymyz we laýyklyk wektorlarymyz kody spesifikasiýalary biziň okaýşymyz boýunça barlaýar. OpenID Foundation-yň [conformance suite](https://gitlab.com/openid/conformance-suite) guraly bolsa başga biriniň okaýşy boýunça barlaýar: Gaznanyň taýýarlan, protokolyň beýleki tarapyny oýnaýan we üns bermeýän ulgamyň ýalňyşjak ýüzlerçe zadyny synap görýän açyk çeşmeli gural. Gaznanyň [sertifikatlaşdyryş maksatnamasynyň](https://openid.net/certification/) aňyrsynda hem şu gural durýar. Gural biziň bilen ylalaşmasa, ikimizden biri ýalňyşýar; haýsymyzdygyny tapmak işiň peýdaly bölegi.
 

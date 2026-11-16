@@ -35,6 +35,7 @@ const PAGE_LABELS: Record<string, Record<UiLocale, string>> = {
   "/changelog": { en: "Changelog", tr: "Değişiklikler", tk: "Üýtgeşmeler", az: "Dəyişikliklər" },
   "/sdk": { en: "SDK", tr: "SDK", tk: "SDK", az: "SDK" },
   "/brand": { en: "Brand", tr: "Marka", tk: "Marka", az: "Brend" },
+  "/privacy": { en: "Privacy", tr: "Gizlilik", tk: "Gizlinlik", az: "Məxfilik" },
   "/learn": { en: "Learn", tr: "Öğren", tk: "Öwren", az: "Öyrən" },
 };
 export const pageLabel = (p: string, locale: string) => PAGE_LABELS[p]?.[pick(locale)] ?? p;

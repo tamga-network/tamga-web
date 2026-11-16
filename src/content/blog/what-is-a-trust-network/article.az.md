@@ -63,7 +63,7 @@ Bu sualları hər qurum üçün ayrı-ayrılıqda cavablandırmaq qurumların sa
 
 Tamga Network eyni əsas komponentlərdən istifadə edir. Sənədlər üçün SD-JWT VC və ISO/IEC 18013-5 mdoc, sənədin verilməsi və təqdim olunması üçün HAIP profili ilə birlikdə OpenID4VCI və OpenID4VP, ləğv üçün IETF Token Status List, qurumlar üçün X.509 sertifikatları və ETSI formatlarına uyğunlaşdırılmış etibar siyahıları istifadə olunur. Bunlar Aİ-nin Arxitektura və İstinad Çərçivəsində göstərilən formatlardır ([Aİ ARF, GitHub](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework)).
 
-Tamga-nın istifadə edə bilməyəcəyi şey isə statusdur. "EUDI Wallet" Aİ üzv dövlətinin təqdim etdiyi və ya tanıdığı cüzdanlara verilən hüquqi statusdur. Aİ-dən kənardakı şəbəkə və ya cüzdan isə Aİ ilə uyğun ola bilər, yəni eyni standartlardan istifadə edə və bunu testlərlə sübut edə bilər. Tamga da özünü məhz belə təsvir edir ([ADR-0035](https://docs.tamga.network/adr/0035-positioning-three-layers)).
+Tamga-nın istifadə edə bilməyəcəyi şey isə statusdur. "EUDI Wallet" Aİ üzv dövlətinin təqdim etdiyi və ya tanıdığı cüzdanlara verilən hüquqi statusdur. Aİ-dən kənardakı şəbəkə və ya cüzdan isə Aİ standartları ilə uzlaşdırılmış ola bilər, yəni eyni standartlardan istifadə edə və bunu testlərlə sübut edə bilər. Tamga da özünü məhz belə təsvir edir ([ADR-0035](https://docs.tamga.network/adr/0035-positioning-three-layers)).
 
 Ölkə siyahıları başqa siyahılarla yanaşı istifadə oluna biləcək şəkildə qurulub. Başqa dövlətin və ya Aİ-nin ETSI formatındakı siyahısı imzalayanı sabitlənərək və əhatə dairəsi müəyyən edilərək şəbəkənin siyahılar siyahısına əlavə edilə bilər və hər əlavə ayrıca təsdiq tələb edir ([ADR-0036](https://docs.tamga.network/adr/0036-trust-federation-external-lists)). İndiyədək belə siyahı əlavə edilməyib.
 
@@ -107,7 +107,7 @@ Xeyr. Şəbəkənin cüzdan qaydalarına əməl edən və provayderi siyahıda q
 
 ### Hansı qurumların siyahıda olacağına kim qərar verir?
 
-Qeydiyyat orqanı qurumları və hər qurumun verə biləcəyi sənəd növlərini qeydə alır. Bu gün bu işi Türkiyə üçün dövlət adından müvəqqəti olaraq Tamga görür. Dövlət öz siyahısını dərc edəndə qərar həmin dövlətə keçəcək. Diplom vermək hüququnu şəbəkə vermir, bu hüquq qurumun tabe olduğu qanundan gəlir.
+Qeydiyyat orqanı qurumları və hər qurumun verə biləcəyi sənəd növlərini qeydə alır. Türkiyə üçün bu işi dövlət və ya onun səlahiyyət verdiyi qurum öz üzərinə götürənə qədər Tamga müvəqqəti olaraq görür; hələlik heç bir dövlətlə razılaşma yoxdur. Dövlət öz siyahısını dərc edəndə qərar həmin dövlətə keçəcək. Diplom vermək hüququnu şəbəkə vermir, bu hüquq qurumun tabe olduğu qanundan gəlir.
 
 ### Başqa ölkənin sənədi qəbul edilə bilərmi?
 

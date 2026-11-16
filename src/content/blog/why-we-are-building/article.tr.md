@@ -45,7 +45,7 @@ Her devlet kendi listesini kendisi yayınlar. Listelerin bugünkü durumu şöyl
 
 | Liste | Durum |
 |---|---|
-| Türkiye | Yayında. Tamga listeyi devlet adına geçici olarak işletiyor. |
+| Türkiye | Yayında. Devlet ya da yetkilendirdiği bir kurum devralana kadar Tamga geçici olarak işletir. Henüz hiçbir devletle anlaşma yoktur. |
 | Azerbaycan, Kazakistan, Kırgızistan, Özbekistan | Türk Devletleri Teşkilatı'nın bu üye devletleri için yer ayrıldı; her devlet kendi listesini kendisi yayınlayacak. |
 | Macaristan, Türkmenistan | Teşkilatın gözlemci devletleri için yer ayrıldı. |
 | Avrupa Birliği | Ağ, AB listelerini dış liste olarak okuyabiliyor; bugün bağlı bir AB listesi yok. |

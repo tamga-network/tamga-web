@@ -12,7 +12,7 @@ görünür). Denetim: `npm run check` ve `npm run build`.
 - **Tamga Network** kâr amacı gütmeyen, vakfa devredilmek üzere kurulan bir güven ağıdır: kurallar (Tamga ARF), güven
   listeleri, katalog ve açık kaynak paketler. **Ağ cüzdan işletmez** (ADR-0042); cüzdanları listeler. Bir cüzdandan söz
   edilecekse "ağdaki cüzdanlardan biri" diye, ağın parçası değilmiş gibi anılır.
-- "AB uyumlu" denir; "EUDI Wallet" unvanı ya da AB onayı iddia edilmez. Sade, olgusal, abartısız; sınırlar açıkça söylenir.
+- "AB standartlarıyla hizalı" denir; "EUDI Wallet" unvanı ya da AB onayı iddia edilmez. Sade, olgusal, abartısız; sınırlar açıkça söylenir.
 - Teknik terim çevrilmez (SD-JWT VC, mdoc, OpenID4VP, trust list); ilk geçtiği yerde kısa açıklanır. Türkçe metin "siz" dilinde.
 
 ## Klasör ve adlar

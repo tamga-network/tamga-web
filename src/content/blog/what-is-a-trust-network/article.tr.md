@@ -63,7 +63,7 @@ Ağın sınırları da görevleri kadar önemli ve bu sınırlar bağlayıcı ku
 
 Tamga Network aynı yapı taşlarını kullanıyor. Belgeler için SD-JWT VC ve ISO/IEC 18013-5 mdoc, belge verme ve gösterme için HAIP profiliyle birlikte OpenID4VCI ve OpenID4VP, iptal için IETF Token Status List, kurumlar için X.509 sertifikaları ve ETSI biçimlerine eşlenen güven listeleri kullanılıyor. Bunlar AB'nin Mimari ve Referans Çerçevesi'nde yer alan biçimler ([AB ARF, GitHub](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework)).
 
-Tamga'nın kullanamayacağı şey ise bir unvan. "EUDI Wallet", bir AB üye devletinin sağladığı ya da tanıdığı cüzdanlara verilen yasal bir unvandır. AB dışındaki bir ağ ya da cüzdan ise AB uyumlu olabilir, yani aynı standartları kullanabilir ve bunu testlerle kanıtlayabilir. Tamga kendini de bu şekilde tanımlıyor ([ADR-0035](https://docs.tamga.network/tr/adr/0035-positioning-three-layers)).
+Tamga'nın kullanamayacağı şey ise bir unvan. "EUDI Wallet", bir AB üye devletinin sağladığı ya da tanıdığı cüzdanlara verilen yasal bir unvandır. AB dışındaki bir ağ ya da cüzdan ise AB standartlarıyla hizalı olabilir, yani aynı standartları kullanabilir ve bunu testlerle kanıtlayabilir. Tamga kendini de bu şekilde tanımlıyor ([ADR-0035](https://docs.tamga.network/tr/adr/0035-positioning-three-layers)).
 
 Ülke listeleri, başka listelerle yan yana kullanılabilecek biçimde kuruldu. Başka bir devletin ya da AB'nin ETSI biçimindeki bir listesi, imzacısı sabitlenerek ve kapsamı tanımlanarak ağın listelerin listesine eklenebilir ve her ekleme ayrı bir onay gerektirir ([ADR-0036](https://docs.tamga.network/tr/adr/0036-trust-federation-external-lists)). Bugüne kadar böyle bir liste eklenmedi.
 
@@ -107,7 +107,7 @@ Hayır. Ağın cüzdan kurallarına uyan ve sağlayıcısı listede kayıtlı ol
 
 ### Listede hangi kurumların olacağına kim karar veriyor?
 
-Kayıt makamı kurumları ve her kurumun verebileceği belge türlerini kayda geçiriyor. Bugün bu işi Türkiye için devlet adına geçici olarak Tamga yapıyor. Bir devlet kendi listesini yayımladığında karar o devlete geçecek. Diploma verme hakkını ağ vermiyor, bu hak kurumun bağlı olduğu yasadan geliyor.
+Kayıt makamı kurumları ve her kurumun verebileceği belge türlerini kayda geçiriyor. Türkiye için bu işi, devlet ya da yetkilendirdiği bir kurum devralana kadar Tamga geçici olarak yapıyor; henüz hiçbir devletle anlaşma yok. Bir devlet kendi listesini yayımladığında karar o devlete geçecek. Diploma verme hakkını ağ vermiyor, bu hak kurumun bağlı olduğu yasadan geliyor.
 
 ### Başka bir ülkenin belgesi kabul edilir mi?
 

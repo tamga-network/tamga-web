@@ -70,7 +70,7 @@ const en: JoinContent = {
     },
     {
       title: "Wallet providers",
-      who: "EU-compatible wallets",
+      who: "EU-aligned wallets",
       body: "Any wallet that follows the network's wallet rules can carry Tamga credentials. Tamga Wallet is the network's first wallet, not the only one.",
       items: [
         "your own wallet provider, registered first in the sandbox list and tested there end to end",
@@ -226,7 +226,7 @@ const tr: JoinContent = {
     },
     {
       title: "Cüzdan sağlayıcılar",
-      who: "AB uyumlu cüzdanlar",
+      who: "AB standartlarıyla hizalı cüzdanlar",
       body: "Ağın cüzdan kurallarına uyan her cüzdan Tamga belgelerini taşıyabilir. Tamga Wallet ağın ilk cüzdanıdır, tek cüzdanı değil.",
       items: [
         "kendi cüzdan sağlayıcınız; önce sandbox listesine kaydedilir ve orada uçtan uca denenir",
@@ -529,7 +529,7 @@ const az: JoinContent = {
     },
     {
       title: "Cüzdan provayderləri",
-      who: "Avropa İttifaqı (Aİ) ilə uyğun rəqəmsal cüzdanlar",
+      who: "Avropa İttifaqı (Aİ) standartları ilə uzlaşdırılmış rəqəmsal cüzdanlar",
       body: "Şəbəkənin rəqəmsal cüzdan qaydalarına əməl edən istənilən cüzdan Tamga rəqəmsal sənədlərini saxlaya bilər. Tamga Wallet şəbəkənin ilk rəqəmsal cüzdanıdır, yeganəsi deyil.",
       items: [
         "öz cüzdan provayderiniz: əvvəlcə sandbox siyahısında qeydiyyatdan keçir və orada başdan-sona sınaqdan keçirilir",

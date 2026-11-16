@@ -1824,8 +1824,7 @@ export const CHAPTER_7: LearnPage[] = [
 
           <h2>Bugün durum ne?</h2>
           <p>
-            Bugün Türkiye listesini Tamga, devlet adına ve geçici olarak
-            işletir; listede bu açıkça yazar. Diğer Türk devletleri için yerler
+            Türkiye listesini, devlet ya da yetkilendirdiği bir kurum devralana kadar Tamga geçici olarak işletir; listede bu açıkça yazar. Henüz hiçbir devletle anlaşma yoktur. Diğer Türk devletleri için yerler
             ayrılmış durumda. Ağın yapısı ilk günden birden çok devlete göre
             kuruldu: kimlikler, liste biçimi ve kurallar bir devlet katıldığında
             değişmez.
@@ -1936,8 +1935,7 @@ export const CHAPTER_7: LearnPage[] = [
 
           <h2>Where things stand today</h2>
           <p>
-            Today Tamga operates Türkiye&apos;s list provisionally, on the
-            state&apos;s behalf; the list says so explicitly. Places are
+            Until the state, or a body it authorises, takes it over, Tamga runs Türkiye&apos;s list provisionally; the list says so explicitly. There is no agreement with any state yet. Places are
             reserved for the other Turkic states. The network was built for many
             states from day one: identifiers, the list format and the rules do
             not change when a state joins.
@@ -2049,7 +2047,7 @@ export const CHAPTER_7: LearnPage[] = [
 
           <h2>Häzir ýagdaý nähili?</h2>
           <p>
-            Häzir Türkiýäniň sanawyny Tamga döwletiň adyndan wagtlaýyn işledýär.
+            Türkiýäniň sanawyny döwlet ýa-da onuň ygtyýarlandyran guramasy öz üstüne alýança Tamga wagtlaýyn işledýär. Häzirlikçe hiç bir döwlet bilen ylalaşyk ýok.
             Beýleki türki döwletler üçin ýer goýlan. Döwlet goşulanda
             kesgitleýjiler, sanaw formaty we düzgünler üýtgemeýär.
           </p>
@@ -2108,8 +2106,7 @@ export const CHAPTER_7: LearnPage[] = [
 
           <h2>Bu gün vəziyyət necədir</h2>
           <p>
-            Hazırda Türkiyənin siyahısını Tamga müvəqqəti olaraq, dövlət adından
-            idarə edir; siyahıda bu açıq şəkildə qeyd olunur. Digər türk
+            Türkiyə siyahısını dövlət və ya onun səlahiyyət verdiyi qurum öz üzərinə götürənə qədər Tamga müvəqqəti olaraq idarə edir; siyahıda bu açıq şəkildə qeyd olunur. Hələlik heç bir dövlətlə razılaşma yoxdur. Digər türk
             dövlətləri üçün yerlər ayrılıb. Şəbəkə ilk gündən bir çox dövlət
             üçün qurulub: dövlət qoşulduqda identifikatorlar, siyahının formatı
             və qaydalar dəyişmir.

@@ -15,9 +15,9 @@ related: openid4vci-deep-dive, openid4vp-dcql-deep-dive, haip-and-token-status-l
 
 > **Önemli:** Bu çalışma, OpenID Foundation'ın kendi test aracıyla yaptığımız bir öz-testtir ve OpenID sertifikası yerine geçmez. Test planlarını araçta yayımlamadık; nedenini aşağıda anlatıyoruz.
 
-## AB uyumlu bir ağ için uyum testi neden önemli?
+## AB standartlarıyla hizalı bir ağ için uyum testi neden önemli?
 
-OpenID4VP'ye harfiyen uyan iki ürün yine de birbiriyle anlaşamayabilir, çünkü şartname birçok noktada birden fazla seçeneğe izin verir. Yüksek güvenceli birlikte çalışabilirlik profili [HAIP](/blog/haip-and-token-status-list), bu seçeneklerden tek bir küme belirleyerek boşlukların çoğunu kapatır ve Avrupa dijital kimlik ekosistemi de bu profile dayanır. Tamga kendini AB uyumlu diye tanıtıyor. Bu iddiayı yalnız kendi testlerimizle sınarsak kendi ödevimize kendimiz not vermiş oluruz.
+OpenID4VP'ye harfiyen uyan iki ürün yine de birbiriyle anlaşamayabilir, çünkü şartname birçok noktada birden fazla seçeneğe izin verir. Yüksek güvenceli birlikte çalışabilirlik profili [HAIP](/blog/haip-and-token-status-list), bu seçeneklerden tek bir küme belirleyerek boşlukların çoğunu kapatır ve Avrupa dijital kimlik ekosistemi de bu profile dayanır. Tamga kendini AB standartlarıyla hizalı diye tanıtıyor. Bu iddiayı yalnız kendi testlerimizle sınarsak kendi ödevimize kendimiz not vermiş oluruz.
 
 Kendi testlerimiz ve uyum vektörlerimiz, kodu şartnameleri bizim anladığımız biçimle karşılaştırır. OpenID Foundation'ın [conformance suite](https://gitlab.com/openid/conformance-suite) adlı test aracı ise işe başka birinin okumasını katar. Vakfın geliştirdiği bu açık kaynak araç protokolün karşı tarafının yerine geçer ve özensiz bir uygulamanın yanlış yapabileceği yüzlerce durumu tek tek dener. Vakfın [sertifika programında](https://openid.net/certification/) kullanılan araç da budur. Araç bizimle aynı fikirde değilse ikimizden biri yanılıyordur ve hangimizin yanıldığını bulmak bu işin en yararlı kısmıdır.
 

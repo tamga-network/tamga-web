@@ -48,7 +48,7 @@ const C: Record<
         key: "institutions",
         icon: Building2,
         title: "Institutions",
-        desc: "Universities, public bodies and companies that issue or verify credentials on the network, or are preparing to (pilot partners).",
+        desc: "Universities, public bodies and companies that issue or verify credentials on the network, or are preparing to (first institutions).",
       },
       {
         key: "wallets",
@@ -86,7 +86,7 @@ const C: Record<
         key: "institutions",
         icon: Building2,
         title: "Kurumlar",
-        desc: "Ağda belge veren ya da doğrulayan, ya da buna hazırlanan (pilot ortaklar) üniversiteler, kamu kurumları ve şirketler.",
+        desc: "Ağda belge veren ya da doğrulayan, ya da buna hazırlanan (ilk kurumlar) üniversiteler, kamu kurumları ve şirketler.",
       },
       {
         key: "wallets",
@@ -124,7 +124,7 @@ const C: Record<
         key: "institutions",
         icon: Building2,
         title: "Guramalar",
-        desc: "Torda resminama berýän ýa-da barlaýan, ýa-da oňa taýýarlanýan (pilot hyzmatdaşlar) uniwersitetler, döwlet edaralary we kompaniýalar.",
+        desc: "Torda resminama berýän ýa-da barlaýan, ýa-da oňa taýýarlanýan (ilkinji guramalar) uniwersitetler, döwlet edaralary we kompaniýalar.",
       },
       {
         key: "wallets",
@@ -162,7 +162,7 @@ const C: Record<
         key: "institutions",
         icon: Building2,
         title: "Qurumlar",
-        desc: "Şəbəkədə rəqəmsal sənədlər verən və ya yoxlayan, yaxud buna hazırlaşan (pilot tərəfdaşlar) universitetlər, dövlət qurumları və şirkətlər.",
+        desc: "Şəbəkədə rəqəmsal sənədlər verən və ya yoxlayan, yaxud buna hazırlaşan (ilk qurumlar) universitetlər, dövlət qurumları və şirkətlər.",
       },
       {
         key: "wallets",

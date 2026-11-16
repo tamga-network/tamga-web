@@ -45,7 +45,7 @@ Every state publishes its own list. This is where the lists stand today:
 
 | List | Status |
 |---|---|
-| Türkiye | Live. Tamga runs it provisionally, on behalf of the state. |
+| Türkiye | Live. Tamga runs it provisionally until the state, or a body it authorises, takes it over. No agreement with any state yet. |
 | Azerbaijan, Kazakhstan, Kyrgyzstan, Uzbekistan | Seats reserved for these member states of the Organization of Turkic States; each state will publish its own list. |
 | Hungary, Turkmenistan | Seats reserved for the organisation's observer states. |
 | European Union | The network can read EU lists as external lists; no EU list is connected today. |

@@ -53,7 +53,7 @@ By rule, the technical layer stays identical. Tamga's positioning decision says 
 - **Assurance names:** Low, Substantial and High for identity proofing, and EAA and QEAA terms for credentials.
 - **Role set:** the ARF's roles, from trusted list scheme operator to relying party intermediary, each with a place in every national list.
 
-The aim is that software written for the EU ecosystem can process a Tamga credential without a Tamga-specific code path. That is what "EU-compatible" means here, and we show it with tests rather than claim it with a label.
+The aim is that software written for the EU ecosystem can process a Tamga credential without a Tamga-specific code path. That is what "EU-aligned" means here, and we show it with tests rather than claim it with a label.
 
 ## What differs, and why?
 
@@ -138,7 +138,7 @@ Tamga tracks EU rules as they are published. Changes go into its own decisions f
 
 ### Does following Tamga ARF make a wallet an EUDI Wallet?
 
-No. "EUDI Wallet" is a legal status for wallets provided or recognised by an EU member state and certified under EU rules. Following Tamga ARF makes a wallet EU-compatible and lets it be listed in Tamga Network.
+No. "EUDI Wallet" is a legal status for wallets provided or recognised by an EU member state and certified under EU rules. Following Tamga ARF makes a wallet EU-aligned and lets it be listed in Tamga Network.
 
 ### Can a state change the rules?
 

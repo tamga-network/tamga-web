@@ -1069,8 +1069,7 @@ export const CHAPTER_2: LearnPage[] = [
           </Callout>
           <h2>Kim kök sertifikayı tutar?</h2>
           <p>
-            Tamga Network&apos;te her ülkenin kökü, o ülkenin listesinde yer alır. Bugün Türkiye kökünü Tamga devlet adına
-            geçici olarak işletiyor. Devlet ya da yetkilendirdiği kurum kendi kökünü ve listesini yayınladığında yalnız
+            Tamga Network&apos;te her ülkenin kökü, o ülkenin listesinde yer alır. Türkiye kökünü, devlet ya da yetkilendirdiği bir kurum devralana kadar Tamga geçici olarak işletir. Henüz hiçbir devletle anlaşma yoktur. Devlet ya da yetkilendirdiği kurum kendi kökünü ve listesini yayınladığında yalnız
             adres ve imzacı değişir; belgeler ve cüzdanlar aynı kalır.
           </p>
           <Callout kind="turkic" locale="tr">
@@ -1129,8 +1128,7 @@ export const CHAPTER_2: LearnPage[] = [
           </Callout>
           <h2>Who holds the root?</h2>
           <p>
-            In Tamga Network each country&apos;s root sits in that country&apos;s list. Today Tamga operates the Türkiye root
-            provisionally, on behalf of the state. When the state or the body it authorises publishes its own root and list,
+            In Tamga Network each country&apos;s root sits in that country&apos;s list. Until the state, or a body it authorises, takes it over, Tamga runs the Türkiye root provisionally. There is no agreement with any state yet. When the state or the body it authorises publishes its own root and list,
             only the address and the signer change; credentials and wallets stay the same.
           </p>
           <Callout kind="turkic" locale="en">
@@ -1210,8 +1208,7 @@ export const CHAPTER_2: LearnPage[] = [
           </Callout>
           <h2>Kök sertifikatı kim saxlayır?</h2>
           <p>
-            Tamga Network-da hər ölkənin kök sertifikatı həmin ölkənin siyahısında yer alır. Hazırda Türkiyə kök sertifikatını
-            dövlət adından müvəqqəti olaraq Tamga idarə edir. Dövlət və ya onun səlahiyyət verdiyi qurum öz kök sertifikatını
+            Tamga Network-da hər ölkənin kök sertifikatı həmin ölkənin siyahısında yer alır. Türkiyə kök sertifikatını dövlət və ya onun səlahiyyət verdiyi qurum öz üzərinə götürənə qədər Tamga müvəqqəti olaraq idarə edir. Hələlik heç bir dövlətlə razılaşma yoxdur. Dövlət və ya onun səlahiyyət verdiyi qurum öz kök sertifikatını
             və siyahısını dərc etdikdə yalnız ünvan və imzalayan dəyişir; rəqəmsal sənədlər və rəqəmsal cüzdanlar olduğu kimi
             qalır.
           </p>

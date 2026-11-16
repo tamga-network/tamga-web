@@ -13,7 +13,7 @@ Our earlier writing described a permissioned blockchain as Tamga's trust anchor.
 
 ## A ledger needs more than one hand
 
-A blockchain is worth its cost when several **independent** parties keep the same record and none of them can rewrite it alone. Today there is a single operator, Tamga, acting provisionally on behalf of the states. A chain with one validator adds cost and complexity without adding any trust.
+A blockchain is worth its cost when several **independent** parties keep the same record and none of them can rewrite it alone. Today there is a single operator, Tamga, which runs the lists provisionally until each state, or a body it authorises, takes its list over. There is no agreement with any state yet. A chain with one validator adds cost and complexity without adding any trust.
 
 ## What we do instead
 
