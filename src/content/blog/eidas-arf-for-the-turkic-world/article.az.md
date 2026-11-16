@@ -3,6 +3,7 @@ title: "eIDAS 2.0 və ARF: Türk dünyası üçün nə deməkdir?"
 slug: eidas-arf-for-the-turkic-world
 description: "Aİ-nin eIDAS 2.0 və istinad çərçivəsi ilə nə qurduğunu, bunun nə vaxtdan tətbiq olunduğunu, Aİ-dən kənar dövlətlər üçün niyə vacib olduğunu və hüdudlarını izah edirik."
 date: 2026-10-08
+updated: 2026-11-16
 lang: az
 category: europe
 draft: false
@@ -121,6 +122,10 @@ Xeyr. Reqlament Aİ üzv dövlətlərini və onun Aİ daxilində əhatə etdiyi 
 
 Sənəd eyni formatlardan istifadə edirsə, Aİ-dəki proqramlar onu oxuya bilər və Tamga sənədləri bu formatlardan istifadə edir. Sənədin hüquqi nəticə doğuracaq şəkildə etibarlı sayılması üçün isə onu verən qurum tanınmalıdır. Bu tanınma etibar siyahıları ilə, kvalifikasiyalı status üçün isə 14-cü maddəyə əsasən saziş və ya icra aktı ilə təmin olunur.
 
+### Tam tanınmadan əvvəl aralıq addım varmı?
+
+Var, amma hər ikisi dövlətlərin atdığı addımlardır. Komissiyanın üçüncü ölkələrlə etibar xidmətləri üzrə pilotunda ölkə ETSI TS 119 612 formatında milli etibar siyahısını və özünüqiymətləndirməni təqdim edir; Komissiya ilə yazılı razılaşma bağlanarsa, həmin siyahıdakı provayderlərin imzaları Aİ dövlət xidmətlərində təkmilləşdirilmiş elektron imza kimi yoxlana bilər. Bu, kvalifikasiyalı imza ilə hüquqi bərabərlik deyil. Qərbi Balkan ölkələri də Aİ ilə tam tanınmadan əvvəl öz aralarında qarşılıqlı tanınan, Aİ standartlarına uyğun regional rəqəmsal cüzdan üzərində işləyir. Tamga Network bu yollarda yalnız texniki vasitə təqdim edə bilər.
+
 ### Reqlament ilə ARF arasında fərq nədir?
 
 Reqlament və icra aktları hüquqi mətnlərdir. ARF isə Komissiyanın hazırladığı texniki istinad sənədidir və bu aktların söykəndiyi arxitekturanı, rolları və tələbləri təsvir edir. Cari versiya 23 iyul 2026-cı ildə buraxılmış 3.0.0-dır.
@@ -140,6 +145,7 @@ Texniki səviyyələri qurmaq vaxt aparır və bu iş siyasi qərardan asılı d
 - [EUDI Wallet (rəqəmsal cüzdan) Arxitektura və İstinad Çərçivəsi, v3.0.0 (GitHub)](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/releases/tag/v3.0.0)
 - [Avropa Komissiyası: EUDI Wallet (rəqəmsal cüzdan) tətbiqi və genişmiqyaslı pilot layihələr](https://digital-strategy.ec.europa.eu/en/policies/eudi-wallet-implementation)
 - [ETSI TS 119 602: etibarlı subyektlərin siyahıları](https://www.etsi.org/deliver/etsi_ts/119600_119699/119602/01.01.01_60/ts_119602v010101p.pdf) · [Aİ etibar siyahıları brauzeri](https://eidas.ec.europa.eu/efda/trust-services/browse/eidas/tls)
+- [Dünya Bankı: Qərbi Balkanlarda rəqəmsal şəxsiyyət cüzdanları (2026)](https://www.worldbank.org/en/region/eca/publication/digital-id-wallets-in-the-western-balkans)
 - [Daily Sabah: TDT Rəqəmsal İqtisadiyyat Tərəfdaşlığı Sazişi](https://www.dailysabah.com/business/economy/turkic-states-edge-closer-in-digital-trade-as-turkiye-ratifies-deal) · [The Astana Times: Türküstan qeyri-rəsmi sammiti](https://astanatimes.com/2026/05/tokayev-proposes-turkic-ai-network-and-digital-integration-at-turkic-states-summit/)
 - [Tamga ARF](https://arf.tamga.network/architecture) · [Etibar Çərçivəsi](https://arf.tamga.network/trust-framework) · [ADR-0035: mövqeləndirmə](https://docs.tamga.network/adr/0035-positioning-three-layers) · [ADR-0036: etibar federasiyası](https://docs.tamga.network/adr/0036-trust-federation-external-lists)
 - [eIDAS 2.0](/learn/eidas) · [Dövlətlər üçün](/learn/for-states) · [Manifest](/manifesto)

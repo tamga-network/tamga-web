@@ -3,6 +3,7 @@ title: "eIDAS 2.0 and the ARF: what they mean for the Turkic world"
 slug: eidas-arf-for-the-turkic-world
 description: What the EU built with eIDAS 2.0 and its reference framework, when it applies, why alignment matters for states outside the EU, and where its limits are.
 date: 2026-10-08
+updated: 2026-11-16
 lang: en
 category: europe
 draft: false
@@ -121,6 +122,10 @@ No. It binds EU member states and the services it covers inside the EU. Its stan
 
 EU software can read it if it uses the same formats, and Tamga credentials do. For the credential to be trusted with legal effect, its issuer has to be recognised. That happens through trust lists and, for qualified status, through an agreement or implementing act under Article 14.
 
+### Is there an intermediate step before full recognition?
+
+Yes, but both are steps that states take. In the Commission's pilot on trust services with third countries, a country submits its national trusted list in the ETSI TS 119 612 format and a self-assessment; once a written arrangement is made with the Commission, signatures from the providers on that list can be validated as advanced electronic signatures by EU public services. This is not legal equivalence with qualified signatures. The Western Balkan countries, before full recognition with the EU, are also working on a regional wallet that they recognise among themselves and that follows EU standards. Tamga Network can only provide technical tools along these paths.
+
 ### What is the difference between the regulation and the ARF?
 
 The regulation and its implementing acts are law. The ARF is the Commission's technical reference that describes the architecture, roles and requirements those acts rely on. Version 3.0.0 is current, released on 23 July 2026.
@@ -140,6 +145,7 @@ The technical levels take time to build, and they do not depend on a political d
 - [EUDI Wallet Architecture and Reference Framework, v3.0.0 (GitHub)](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/releases/tag/v3.0.0)
 - [European Commission: EUDI Wallet implementation and large-scale pilots](https://digital-strategy.ec.europa.eu/en/policies/eudi-wallet-implementation)
 - [ETSI TS 119 602: lists of trusted entities](https://www.etsi.org/deliver/etsi_ts/119600_119699/119602/01.01.01_60/ts_119602v010101p.pdf) · [EU trusted lists browser](https://eidas.ec.europa.eu/efda/trust-services/browse/eidas/tls)
+- [World Bank: Digital ID Wallets in the Western Balkans (2026)](https://www.worldbank.org/en/region/eca/publication/digital-id-wallets-in-the-western-balkans)
 - [Daily Sabah: OTS Digital Economy Partnership Agreement](https://www.dailysabah.com/business/economy/turkic-states-edge-closer-in-digital-trade-as-turkiye-ratifies-deal) · [The Astana Times: Turkistan informal summit](https://astanatimes.com/2026/05/tokayev-proposes-turkic-ai-network-and-digital-integration-at-turkic-states-summit/)
 - [Tamga ARF](https://arf.tamga.network/architecture) · [Trust Framework](https://arf.tamga.network/trust-framework) · [ADR-0035: positioning](https://docs.tamga.network/adr/0035-positioning-three-layers) · [ADR-0036: trust federation](https://docs.tamga.network/adr/0036-trust-federation-external-lists)
 - [eIDAS 2.0](/learn/eidas) · [For states](/learn/for-states) · [Manifesto](/manifesto)

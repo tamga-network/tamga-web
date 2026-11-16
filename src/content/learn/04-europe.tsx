@@ -355,6 +355,15 @@ export const CHAPTER_4: LearnPage[] = [
             listeler, ETSI profilli sertifikalar ve devletlere devredilebilecek roller. Bugün bir AB doğrulayıcısı Tamga belgelerini
             ancak kendi isteğiyle, güven listemizi kendi güven kaynağına ekleyerek kabul edebilir.
           </p>
+          <p>
+            Tam tanımadan önce ara adımlar da var. Komisyon'un üçüncü ülkelerle yürüttüğü güven hizmetleri pilotunda bir ülke,
+            ETSI TS 119 612 biçimindeki ulusal güven listesini ve bir öz değerlendirmeyi sunar; Komisyon'la yazılı bir düzenleme
+            yapılırsa o listedeki sağlayıcıların imzaları AB kamu hizmetlerinde gelişmiş elektronik imza olarak doğrulanabilir. Bu,
+            nitelikli imzaya hukuki eşdeğerlik değildir. Batı Balkan ülkeleri de AB ile tam tanımadan önce kendi aralarında
+            karşılıklı tanınan ve AB standartlarına uyan bölgesel bir cüzdan üzerinde çalışıyor; bölge içi tanıma eIDAS'ın kapsamı
+            dışındadır. İki yolun da tarafı devletlerdir. Tamga Network bu yollarda yalnız teknik araç sağlayabilir; örneğin güven
+            listelerinin ETSI TS 119 612 görünümü bugün deneme ortamında yayımlanıyor.
+          </p>
         </>
       ),
       en: (
@@ -426,6 +435,16 @@ export const CHAPTER_4: LearnPage[] = [
             handed over to states. Today an EU relying party can accept Tamga credentials only of its own accord, by adding our
             trusted list to its own trust source.
           </p>
+          <p>
+            There are also intermediate steps before full recognition. In the Commission's pilot on trust services with third
+            countries, a country submits its national trusted list in the ETSI TS 119 612 format and a self-assessment; once a
+            written arrangement is made with the Commission, signatures from the providers on that list can be validated as advanced
+            electronic signatures by EU public services. This is not legal equivalence with qualified signatures. The Western
+            Balkan countries, before full recognition with the EU, are also working on a regional wallet that they recognise among
+            themselves and that follows EU standards; recognition within the region lies outside eIDAS. Both paths are for states to
+            take. Tamga Network can only provide technical tools along them; for example, the ETSI TS 119 612 view of the trusted
+            lists is published in the sandbox today.
+          </p>
         </>
       ),
       tk: (
@@ -490,6 +509,16 @@ export const CHAPTER_4: LearnPage[] = [
             şertnamanyň tarapy bolup bilmeýär. Toruň işi tehniki taýýarlykdyr: ETSI görnüşindäki sanawlar, ETSI profilli
             şahadatnamalar we döwletlere geçirilip bilinjek rollar. Häzir ÝB-däki barlaýjy Tamga resminamalaryny diňe öz islegi
             bilen, ynam sanawymyzy öz ynam çeşmesine goşup kabul edip biler.
+          </p>
+          <p>
+            Doly ykrar edilmezden öň aralyk ädimler hem bar. Komissiýanyň üçünji ýurtlar bilen ynam hyzmatlary boýunça synag
+            maksatnamasynda ýurt ETSI TS 119 612 görnüşindäki milli ynam sanawyny we öz-özüne baha bermesini hödürleýär;
+            Komissiýa bilen ýazmaça ylalaşyk baglaşylsa, şol sanawdaky üpjünçileriň gollary ÝB döwlet hyzmatlarynda ösen elektron
+            gol hökmünde barlanyp bilner. Bu kwalifisirlenen gol bilen hukuky deňlik däldir. Günbatar Balkan ýurtlary hem ÝB bilen
+            doly ykrar edilmezden öň öz aralarynda özara ykrar edilýän we ÝB standartlaryna laýyk gelýän sebitleýin gapjyk
+            üstünde işleýärler; sebitiň içindäki ykrar etmek eIDAS-yň çäginden daşarda. Iki ýoluň hem taraplary döwletlerdir.
+            Tamga Network bu ýollarda diňe tehniki gural berip biler; meselem, ynam sanawlarynyň ETSI TS 119 612 görnüşi häzir
+            synag gurşawynda çap edilýär.
           </p>
         </>
       ),
@@ -562,6 +591,15 @@ export const CHAPTER_4: LearnPage[] = [
             Şəbəkənin işi texniki hazırlıqdır: ETSI formatlarında siyahılar, ETSI profilli sertifikatlar və dövlətlərə təhvil verilə bilən
             rollar. Bu gün Aİ-dəki etibar edən tərəf Tamga rəqəmsal sənədlərini yalnız öz təşəbbüsü ilə, etibar siyahımızı öz etibar
             mənbəyinə əlavə etməklə qəbul edə bilər.
+          </p>
+          <p>
+            Tam tanınmadan əvvəl aralıq addımlar da var. Komissiyanın üçüncü ölkələrlə etibar xidmətləri üzrə pilotunda ölkə ETSI
+            TS 119 612 formatında milli etibar siyahısını və özünüqiymətləndirməni təqdim edir; Komissiya ilə yazılı razılaşma
+            bağlanarsa, həmin siyahıdakı provayderlərin imzaları Aİ dövlət xidmətlərində təkmilləşdirilmiş elektron imza kimi
+            yoxlana bilər. Bu, kvalifikasiyalı imza ilə hüquqi bərabərlik deyil. Qərbi Balkan ölkələri də Aİ ilə tam tanınmadan
+            əvvəl öz aralarında qarşılıqlı tanınan və Aİ standartlarına uyğun regional rəqəmsal cüzdan üzərində işləyir; region
+            daxilində tanınma eIDAS-ın əhatə dairəsindən kənardadır. Hər iki yolun tərəfləri dövlətlərdir. Tamga Network bu yollarda
+            yalnız texniki vasitə təqdim edə bilər; məsələn, etibar siyahılarının ETSI TS 119 612 görünüşü bu gün sınaq mühitində dərc olunur.
           </p>
         </>
       ),

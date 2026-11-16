@@ -3,6 +3,7 @@ title: "eIDAS 2.0 we ARF: türki dünýäsi üçin näme aňladýar?"
 slug: eidas-arf-for-the-turkic-world
 description: ÝB-niň eIDAS 2.0 we salgylanma çarçuwasy bilen näme gurandygyny, munuň haçandan ulanylýandygyny, ÝB-den daşardaky döwletler üçin näme üçin möhümdigini we onuň çäklerini düşündirýäris.
 date: 2026-10-08
+updated: 2026-11-16
 lang: tk
 category: europe
 draft: false
@@ -121,6 +122,10 @@ Toruň sanawlar sanawynda eýýäm Türki Döwletleriň Guramasynyň her agza d�
 
 Resminama şol bir formatlary ulanýan bolsa, ÝB-däki programmalar ony okap bilýär we Tamga resminamalary şol formatlary ulanýar. Resminamanyň hukuky netije döredýän görnüşde ynamly hasaplanmagy üçin bolsa ony beren edara ykrar edilmeli. Bu ykrar etmek ynam sanawlary bilen, kwalifisirlenen derejesi üçin bolsa 14-nji madda boýunça ylalaşyk ýa-da ýerine ýetiriş namasy bilen üpjün edilýär.
 
+### Doly ykrar edilmezden öň aralyk ädim barmy?
+
+Bar, ýöne ikisi hem döwletleriň ätýän ädimleri. Komissiýanyň üçünji ýurtlar bilen ynam hyzmatlary boýunça synag maksatnamasynda ýurt ETSI TS 119 612 görnüşindäki milli ynam sanawyny we öz-özüne baha bermesini hödürleýär; Komissiýa bilen ýazmaça ylalaşyk baglaşylsa, şol sanawdaky üpjünçileriň gollary ÝB döwlet hyzmatlarynda ösen elektron gol hökmünde barlanyp bilner. Bu kwalifisirlenen gol bilen hukuky deňlik däldir. Günbatar Balkan ýurtlary hem ÝB bilen doly ykrar edilmezden öň öz aralarynda özara ykrar edilýän, ÝB standartlaryna laýyk sebitleýin gapjyk üstünde işleýärler. Tamga Network bu ýollarda diňe tehniki gural berip biler.
+
 ### Regulament bilen ARF-iň arasynda näme tapawut bar?
 
 Regulament we ýerine ýetiriş namalary hukuky tekstlerdir. ARF bolsa Komissiýanyň taýýarlan tehniki salgylanma resminamasy bolup, şol namalaryň daýanýan arhitekturasyny, rollaryny we talaplaryny beýan edýär. Häzirki wersiýasy 2026-njy ýylyň 23-nji iýulynda çykan 3.0.0.
@@ -140,6 +145,7 @@ Tehniki derejeleri gurmak wagt alýar we bu iş syýasy karara bagly däl. Bu de
 - [EUDI Wallet Architecture and Reference Framework, v3.0.0 (GitHub)](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/releases/tag/v3.0.0)
 - [Ýewropa Komissiýasy: EUDI Wallet implementation we uly göwrümli pilotlar](https://digital-strategy.ec.europa.eu/en/policies/eudi-wallet-implementation)
 - [ETSI TS 119 602: lists of trusted entities](https://www.etsi.org/deliver/etsi_ts/119600_119699/119602/01.01.01_60/ts_119602v010101p.pdf) · [ÝB ynam sanawlaryny gözden geçiriji](https://eidas.ec.europa.eu/efda/trust-services/browse/eidas/tls)
+- [Bütindünýä banky: Günbatar Balkanlarda sanly şahsyýet gapjyklary (2026)](https://www.worldbank.org/en/region/eca/publication/digital-id-wallets-in-the-western-balkans)
 - [Daily Sabah: TDG Sanly ykdysadyýet hyzmatdaşlygy ylalaşygy](https://www.dailysabah.com/business/economy/turkic-states-edge-closer-in-digital-trade-as-turkiye-ratifies-deal) · [The Astana Times: Türkistan resmi däl sammiti](https://astanatimes.com/2026/05/tokayev-proposes-turkic-ai-network-and-digital-integration-at-turkic-states-summit/)
 - [Tamga ARF](https://arf.tamga.network/architecture) · [Trust Framework](https://arf.tamga.network/trust-framework) · [ADR-0035: orun kesgitlemek](https://docs.tamga.network/adr/0035-positioning-three-layers) · [ADR-0036: ynam federasiýasy](https://docs.tamga.network/adr/0036-trust-federation-external-lists)
 - [eIDAS 2.0](/learn/eidas) · [Döwletler üçin](/learn/for-states) · [Manifest](/manifesto)
