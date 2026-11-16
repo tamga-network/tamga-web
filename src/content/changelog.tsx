@@ -108,6 +108,60 @@ export const CHANGELOG_PAGE: Record<
 
 export const RELEASES: Release[] = [
   {
+    id: "v1.0.0-2026-11-16-packages-0-8-6",
+    version: "v1.0.0",
+    date: "2026-11-16",
+    kind: "security",
+    title: {
+      en: "Suspended issuers, identity credential renewal, future-dated credentials, packages 0.8.6",
+      tr: "Askıdaki kurumlar, kimlik belgesinin yenilenmesi, ileri tarihli belgeler, paketler 0.8.6",
+      tk: "Togtadylan guramalar, şahsyýet resminamasynyň täzelenmegi, geljekki senede başlaýan resminamalar, paketler 0.8.6",
+      az: "Dayandırılmış qurumlar, şəxsiyyət sənədinin yenilənməsi, gələcək tarixli sənədlər, paketlər 0.8.6",
+    },
+    sections: {
+      changed: {
+        en: [
+          "While an institution is suspended in the trust list, its credentials are not accepted, including those issued before the suspension. When the suspension is lifted, the earlier credentials are accepted again. Apps should show this as \"temporarily not accepted\", not \"invalid\".",
+          "The wallet now gets the mdoc copy of the identity credential through the standard OpenID4VCI path, and renews the identity credential's short-lived copies regularly.",
+          "A credential whose validity starts at a later date is kept in the wallet but is not offered for presentation until that date.",
+          "The @tamga-network/* packages are on npm as the 0.8.6 test release. Credential type hashes changed; issuers and verifiers should use the current catalog and trust list. Apps using the zero-knowledge prover should be rebuilt after updating.",
+        ],
+        tr: [
+          "Bir kurum güven listesinde askıdayken belgeleri kabul edilmiyor; askıdan önce verilenler de. Askı kalkınca önceki belgeler yeniden kabul ediliyor. Uygulamalar bunu \"geçersiz\" değil \"geçici olarak kabul edilmiyor\" diye göstermeli.",
+          "Cüzdan, kimlik belgesinin mdoc kopyasını artık standart OpenID4VCI yolundan alıyor ve kimlik belgesinin kısa ömürlü kopyalarını düzenli olarak yeniliyor.",
+          "Geçerliliği ileri bir tarihte başlayan belge cüzdanda saklanıyor, ama o tarihe kadar paylaşım için sunulmuyor.",
+          "@tamga-network/* paketleri npm'de 0.8.6 deneme sürümünde. Belge türü özetleri değişti; belge verenler ve doğrulayıcılar güncel katalog ve güven listesini kullanmalı. Sıfır bilgi ispatçısını kullanan uygulamalar güncellemeden sonra yeniden derlenmeli.",
+        ],
+        tk: [
+          "Gurama ynam sanawynda togtadylan wagtynda onuň resminamalary kabul edilmeýär; togtadylmazdan öň berlenler hem. Togtatma aýrylanda öňki resminamalar ýene kabul edilýär. Programmalar muny \"nädogry\" däl-de, \"wagtlaýyn kabul edilmeýär\" diýip görkezmeli.",
+          "Gapjyk şahsyýet resminamasynyň mdoc nusgasyny indi standart OpenID4VCI ýoly bilen alýar we şahsyýet resminamasynyň gysga möhletli nusgalaryny yzygiderli täzeleýär.",
+          "Hereket ediş möhleti geljekki bir senede başlaýan resminama gapjykda saklanýar, ýöne şol sene çenli paýlaşmak üçin hödürlenmeýär.",
+          "@tamga-network/* paketleri npm-de 0.8.6 synag wersiýasynda. Resminama görnüşleriniň heşleri üýtgedi; resminama berijiler we barlaýjylar häzirki katalogy we ynam sanawyny ulanmaly. Nol bilim subutnamasyny düzüjini ulanýan programmalar täzelenenden soň täzeden düzülmeli.",
+        ],
+        az: [
+          "Qurum etibar siyahısında dayandırılmış olduğu müddətdə onun sənədləri qəbul edilmir; dayandırılmadan əvvəl verilənlər də. Dayandırma götürüldükdə əvvəlki sənədlər yenidən qəbul edilir. Tətbiqlər bunu \"etibarsız\" deyil, \"müvəqqəti qəbul edilmir\" kimi göstərməlidir.",
+          "Cüzdan şəxsiyyət sənədinin mdoc nüsxəsini artıq standart OpenID4VCI yolu ilə alır və şəxsiyyət sənədinin qısamüddətli nüsxələrini müntəzəm yeniləyir.",
+          "Etibarlılığı gələcək bir tarixdə başlayan sənəd cüzdanda saxlanılır, lakin həmin tarixə qədər təqdim üçün göstərilmir.",
+          "@tamga-network/* paketləri npm-də 0.8.6 sınaq buraxılışındadır. Sənəd növlərinin heşləri dəyişdi; sənəd verənlər və yoxlayıcılar cari kataloq və etibar siyahısından istifadə etməlidir. Sıfır bilikli sübut generatorundan istifadə edən tətbiqlər yenilənmədən sonra yenidən yığılmalıdır.",
+        ],
+      },
+      security: {
+        en: [
+          "The zero-knowledge prover and verifier are rebuilt with an updated compression library that fixes a known vulnerability (RUSTSEC-2026-0344). The verifier no longer crashes its host when a prover process stops unexpectedly, and a malformed trust list is reported with the same error as any other bad list.",
+        ],
+        tr: [
+          "Sıfır bilgi ispatçısı ve doğrulayıcısı, bilinen bir açığı kapatan güncel sıkıştırma kütüphanesiyle yeniden derlendi (RUSTSEC-2026-0344). İspatçı süreci beklenmedik biçimde durduğunda doğrulayıcı artık çalıştığı uygulamayı çökertmiyor; bozuk bir güven listesi de öteki bozuk listelerle aynı hatayla bildiriliyor.",
+        ],
+        tk: [
+          "Nol bilim subutnamasyny düzüji we barlaýjy belli bir gowşaklygy düzedýän täzelenen gysyş kitaphanasy bilen täzeden düzüldi (RUSTSEC-2026-0344). Subutnama düzüji prosesi garaşylmadyk ýagdaýda duranda barlaýjy indi işleýän programmasyny ýykmaýar; nädogry ynam sanawy hem beýleki nädogry sanawlar ýaly şol bir ýalňyşlyk bilen habar berilýär.",
+        ],
+        az: [
+          "Sıfır bilikli sübut generatoru və yoxlayıcısı məlum bir boşluğu aradan qaldıran yenilənmiş sıxılma kitabxanası ilə yenidən yığıldı (RUSTSEC-2026-0344). Sübut prosesi gözlənilmədən dayandıqda yoxlayıcı artıq işlədiyi tətbiqi çökdürmür; xətalı etibar siyahısı da digər xətalı siyahılar kimi eyni xəta ilə bildirilir.",
+        ],
+      },
+    },
+  },
+  {
     id: "v1.0.0-2026-11-15-packages-0-8-5",
     version: "v1.0.0",
     date: "2026-11-15",
