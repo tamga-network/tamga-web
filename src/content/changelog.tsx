@@ -108,6 +108,56 @@ export const CHANGELOG_PAGE: Record<
 
 export const RELEASES: Release[] = [
   {
+    id: "v1.0.0-2026-11-17-packages-0-8-7",
+    version: "v1.0.0",
+    date: "2026-11-17",
+    kind: "security",
+    title: {
+      en: "Identity number check for driving licences, longer migration passwords, packages 0.8.7",
+      tr: "Sürücü belgesinde kimlik numarası denetimi, daha uzun taşıma parolası, paketler 0.8.7",
+      tk: "Sürüjilik şahadatnamasynda şahsyýet belgisiniň barlagy, has uzyn göçürme açar sözi, paketler 0.8.7",
+      az: "Sürücülük vəsiqəsində şəxsiyyət nömrəsinin yoxlanması, daha uzun köçürmə parolu, paketlər 0.8.7",
+    },
+    sections: {
+      changed: {
+        en: [
+          "When the wallet requests a driving licence credential, it also shares the identity number from the identity credential, if there is one, and only with the identity service. The service compares it with the number on the card as a keyed digest; it does not store the number or write it into the driving licence.",
+          "The @tamga-network/* packages are on npm as the 0.8.7 test release. Credential type hashes did not change; wallets that request driving licences should update.",
+        ],
+        tr: [
+          "Cüzdan sürücü belgesi isterken kimlik belgesinde varsa kimlik numarasını da paylaşıyor, yalnız kimlik servisiyle. Servis numarayı karttaki numarayla anahtarlı bir özet üzerinden karşılaştırıyor; numarayı saklamıyor, sürücü belgesine yazmıyor.",
+          "@tamga-network/* paketleri npm'de 0.8.7 deneme sürümünde. Belge türü özetleri değişmedi; sürücü belgesi isteyen cüzdanlar güncellemeli.",
+        ],
+        tk: [
+          "Gapjyk sürüjilik şahadatnamasyny soranda, şahsyýet resminamasynda bar bolsa, şahsyýet belgisini hem paýlaşýar, diňe şahsyýet hyzmaty bilen. Hyzmat belgini kartdaky belgi bilen açarly heş arkaly deňeşdirýär; belgini saklamaýar we sürüjilik şahadatnamasyna ýazmaýar.",
+          "@tamga-network/* paketleri npm-de 0.8.7 synag wersiýasynda. Resminama görnüşleriniň heşleri üýtgemedi; sürüjilik şahadatnamasyny soraýan gapjyklar täzelenmeli.",
+        ],
+        az: [
+          "Cüzdan sürücülük vəsiqəsi istəyərkən şəxsiyyət sənədində varsa şəxsiyyət nömrəsini də paylaşır, yalnız şəxsiyyət xidməti ilə. Xidmət nömrəni kartdakı nömrə ilə açarlı heş vasitəsilə müqayisə edir; nömrəni saxlamır və sürücülük vəsiqəsinə yazmır.",
+          "@tamga-network/* paketləri npm-də 0.8.7 sınaq buraxılışındadır. Sənəd növlərinin heşləri dəyişmədi; sürücülük vəsiqəsi istəyən cüzdanlar yenilənməlidir.",
+        ],
+      },
+      security: {
+        en: [
+          "A wallet migration file must now be protected with a password of at least 12 characters. Older files protected with 8 or more characters can still be opened.",
+          "Apps can now choose to load external trust lists only from the network's copy, so that the external list server never sees their IP address or fetch time.",
+        ],
+        tr: [
+          "Cüzdan taşıma dosyası artık en az 12 karakterli bir parolayla korunmalı. 8 ve daha uzun parolayla korunmuş eski dosyalar açılmaya devam ediyor.",
+          "Uygulamalar dış güven listelerini yalnız ağın kopyasından yüklemeyi seçebiliyor; böylece dış listenin sunucusu IP adreslerini ve çekme zamanını hiç görmüyor.",
+        ],
+        tk: [
+          "Gapjyk göçürme faýly indi azyndan 12 nyşanly açar sözi bilen goralmaly. 8 we has köp nyşanly açar sözi bilen goralan köne faýllar açylmagyny dowam edýär.",
+          "Programmalar daşarky ynam sanawlaryny diňe toruň nusgasyndan ýüklemegi saýlap bilýär; şeýlelikde daşarky sanawyň serweri olaryň IP salgysyny we alnan wagtyny hiç görmeýär.",
+        ],
+        az: [
+          "Cüzdanın köçürmə faylı artıq ən azı 12 simvollu parolla qorunmalıdır. 8 və daha çox simvollu parolla qorunan köhnə fayllar açılmağa davam edir.",
+          "Tətbiqlər xarici etibar siyahılarını yalnız şəbəkənin nüsxəsindən yükləməyi seçə bilər; beləliklə xarici siyahının serveri onların IP ünvanını və yükləmə vaxtını heç görmür.",
+        ],
+      },
+    },
+  },
+  {
     id: "v1.0.0-2026-11-16-packages-0-8-6",
     version: "v1.0.0",
     date: "2026-11-16",
