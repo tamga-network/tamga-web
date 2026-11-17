@@ -102,3 +102,10 @@ tamga.network with the network's 1.0 documentation set, in English, Turkish and 
   home, roadmap and the blog notes (`{{NPM_VERSION}}` placeholder, filled at build time) read it, so a patch release is a
   one-line change; release notes and "since 0.8.1" sentences stay as written. The whitepaper page shows the package version
   its edition was prepared with (`WHITEPAPER_PRINT_NPM_VERSION`, 0.8.2) next to the current one, with a link to `/sdk`.
+- 2026-11-18: design pass. "How it works" is a dark, animated trust-flow scene: arrows draw and the real object moves along
+  them (credential, request, shared fields, list query and answer); the viewer can pick which fields to share and try an
+  altered name to see the signature fail. On phones a fixed-height mini map plus one panel (no layout jumps). The five
+  technology diagrams and the governance roles diagram were redrawn in the same dark screen style (also on Learn pages).
+  About opens with the same scene; name, mission/vision, layers and contact were redesigned (seal mark, statement band, layer
+  cross-section, contact rows); the unused platform diagram was removed. Home "Why" shows each problem next to how the
+  network answers it (sentences drawn from existing site copy). Next.js 16.4.3 → 16.4.6 (security advisories).

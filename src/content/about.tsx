@@ -512,3 +512,36 @@ const content: Record<Locale, AboutContent> = { en, tr, tk, az };
 export function getAboutContent(locale: string): AboutContent {
   return content[locale as Locale] ?? en;
 }
+
+/* -------------------------------------------------------------------------- */
+/*  Görsel paneller için metinler (2026-11-18 yeniden tasarım)                 */
+/*  Örnek veriler kurgusaldır ("Örnek …"): gerçek kurum adı yok.               */
+/* -------------------------------------------------------------------------- */
+
+export type AboutVisuals = {
+  seal: [string, string, string];
+  layer: string;
+};
+
+const visuals: Record<Locale, AboutVisuals> = {
+  en: {
+    seal: ["Whose it is", "Who said it", "Is it genuine"],
+    layer: "Layer",
+  },
+  tr: {
+    seal: ["Kime ait", "Kimden geldi", "Gerçek mi"],
+    layer: "Katman",
+  },
+  tk: {
+    seal: ["Kime degişli", "Kimden gelýär", "Hakykymy"],
+    layer: "Gatlak",
+  },
+  az: {
+    seal: ["Kimə məxsusdur", "Kimdən gəlir", "Həqiqidirmi"],
+    layer: "Qat",
+  },
+};
+
+export function getAboutVisuals(locale: string): AboutVisuals {
+  return visuals[locale as Locale] ?? visuals.en;
+}

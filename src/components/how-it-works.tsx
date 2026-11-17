@@ -1,14 +1,30 @@
 "use client";
 
 /*
- * "Nasıl çalışır" — animasyonlu, adım adım anlatım (2026-10-02).
- * Sahne: belge veren kurum (sol) · kişinin cüzdanı (orta) · doğrulayan (sağ) · güven listesi (üst orta).
- * Beş adım: belge hazırlanır (her alan ayrı mühür) → cüzdana gider → doğrulayan sorar → yalnız gereken gider →
- * güven listesine sorulur, cevap döner. Görünür olunca kendiliğinden ilerler; Oynat/Duraklat, adım düğmeleri, önceki/sonraki.
- * Masaüstü yatay sahne; telefonda farklı, dikey düzen (küçük iz + belge kartı). Hareket azaltma: beş adım sabit dizi.
+ * "Nasıl çalışır" — güven akışı sahnesi (2026-10-02; 2026-11-18 yeniden tasarım).
+ * Koyu sahne (her iki temada): güven listesi (üst) · belge veren kurum · kişinin cüzdanı · doğrulayan. Oklar çizilir, üzerinden
+ * gerçek nesne kayar (belge, soru, paylaşılan alanlar, listeye soru ve cevap). Beş adım kendiliğinden ilerler (görünürken);
+ * etkileşim: cüzdanda paylaşılacak alanları seçmek ve "adı değiştirip göster" ile imzanın tutmadığını görmek.
+ * Telefonda yalnız o adımın iki tarafı alt alta. Hareket azaltma: son adımın sabit, tam hâli.
  */
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
-import { Building2, Check, ChevronLeft, ChevronRight, ListChecks, Pause, Play, ScanLine, Wallet } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import {
+  Building2,
+  Check,
+  ChevronLeft,
+  ChevronRight,
+  FileText,
+  ListChecks,
+  Lock,
+  Pause,
+  PenLine,
+  Play,
+  RotateCcw,
+  ScanLine,
+  Wallet,
+  X as XIcon,
+} from "lucide-react";
 
 type Field = [label: string, value: string];
 type Labels = {
@@ -270,9 +286,143 @@ const L: Record<"tr" | "en" | "tk" | "az", Labels> = {
   },
 };
 
-/** Her adımın süresi (ms): son adımda soru-cevap gidip geldiği için daha uzun. */
-const DURATIONS = [3800, 3200, 3000, 4000, 4600];
+/* ------------------------------------------------------------------ etkileşim metinleri (2026-11-18) */
+
+type Extra = {
+  pick: string;
+  pickHint: string;
+  tamper: string;
+  untamper: string;
+  rejected: string;
+  badSig: string;
+  sigOk: string;
+  listed: string;
+  notRevoked: string;
+  received: string;
+  unseen: string;
+  waiting: string;
+  issued: string;
+  tryIt: string;
+};
+
+const XL: Record<"tr" | "en" | "tk" | "az", Extra> = {
+  tr: {
+    pick: "Paylaşılacakları seç",
+    pickHint: "Alanlara dokun: telefondan neyin çıkacağına kişi karar verir.",
+    tamper: "Adı değiştirip göster",
+    untamper: "Belgeyi düzelt",
+    rejected: "Reddedildi",
+    badSig: "İmza tutmuyor",
+    sigOk: "İmza geçerli",
+    listed: "Kurum listede",
+    notRevoked: "İptal edilmemiş",
+    received: "Gelen",
+    unseen: "görmediği alan",
+    waiting: "Bekliyor",
+    issued: "İmzalandı ve gönderildi",
+    tryIt: "Kendin dene",
+  },
+  en: {
+    pick: "Choose what to share",
+    pickHint: "Tap a field: the person decides what leaves the phone.",
+    tamper: "Alter the name and present it",
+    untamper: "Restore the credential",
+    rejected: "Rejected",
+    badSig: "Signature does not match",
+    sigOk: "Signature valid",
+    listed: "Issuer listed",
+    notRevoked: "Not revoked",
+    received: "Received",
+    unseen: "fields not seen",
+    waiting: "Waiting",
+    issued: "Signed and sent",
+    tryIt: "Try it yourself",
+  },
+  tk: {
+    pick: "Paýlaşyljagyny saýla",
+    pickHint: "Meýdana basyň: telefondan näme çykjagyny adam özi saýlaýar.",
+    tamper: "Ady üýtgedip görkez",
+    untamper: "Resminamany dikelt",
+    rejected: "Ret edildi",
+    badSig: "Gol gabat gelmeýär",
+    sigOk: "Gol dogry",
+    listed: "Gurama sanawda",
+    notRevoked: "Ýatyrylmadyk",
+    received: "Gelen",
+    unseen: "görülmedik meýdan",
+    waiting: "Garaşýar",
+    issued: "Gol çekildi we iberildi",
+    tryIt: "Özüňiz synap görüň",
+  },
+  az: {
+    pick: "Paylaşılacaqları seçin",
+    pickHint: "Sahəyə toxunun: telefondan nəyin çıxacağına şəxs özü qərar verir.",
+    tamper: "Adı dəyişib təqdim edin",
+    untamper: "Sənədi bərpa edin",
+    rejected: "Rədd edildi",
+    badSig: "İmza uyğun gəlmir",
+    sigOk: "İmza etibarlıdır",
+    listed: "Qurum siyahıdadır",
+    notRevoked: "Ləğv edilməyib",
+    received: "Gələn",
+    unseen: "görülməyən sahə",
+    waiting: "Gözləyir",
+    issued: "İmzalandı və göndərildi",
+    tryIt: "Özünüz sınayın",
+  },
+};
+
+/* ------------------------------------------------------------------ zamanlama ve geometri */
+
+/** Her adımın süresi (ms). */
+const DURATIONS = [4200, 3400, 3400, 4600, 5600];
 const STEPS = 5;
+/** Sahne koordinatları (SVG viewBox ile aynı; paneller ve paketler yüzdeyle yerleşir). */
+const W = 1000;
+const H = 590;
+
+type Pt = [number, number];
+type Curve = [Pt, Pt, Pt, Pt];
+
+/** Oklar: her biri kübik eğri. */
+const CURVES: Record<"issue" | "request" | "present" | "query" | "answer", Curve> = {
+  issue: [[262, 400], [300, 350], [338, 350], [374, 400]],
+  request: [[738, 340], [700, 300], [664, 300], [626, 340]],
+  present: [[626, 500], [664, 545], [700, 545], [738, 500]],
+  query: [[880, 262], [880, 160], [780, 96], [668, 96]],
+  answer: [[668, 128], [748, 128], [846, 170], [846, 262]],
+};
+
+const ACTIVE: Record<number, (keyof typeof CURVES)[]> = {
+  0: [],
+  1: ["issue"],
+  2: ["request"],
+  3: ["present"],
+  4: ["query", "answer"],
+};
+
+function bez([p0, p1, p2, p3]: Curve, t: number): Pt {
+  const u = 1 - t;
+  const x = u * u * u * p0[0] + 3 * u * u * t * p1[0] + 3 * u * t * t * p2[0] + t * t * t * p3[0];
+  const y = u * u * u * p0[1] + 3 * u * u * t * p1[1] + 3 * u * t * t * p2[1] + t * t * t * p3[1];
+  return [x, y];
+}
+
+function d([p0, p1, p2, p3]: Curve) {
+  return `M${p0[0]} ${p0[1]} C ${p1[0]} ${p1[1]}, ${p2[0]} ${p2[1]}, ${p3[0]} ${p3[1]}`;
+}
+
+function track(c: Curve) {
+  const pts = Array.from({ length: 13 }, (_, i) => bez(c, i / 12));
+  return {
+    left: pts.map(([x]) => `${(x / W) * 100}%`),
+    top: pts.map(([, y]) => `${(y / H) * 100}%`),
+  };
+}
+
+const EASE = [0.4, 0, 0.2, 1] as const;
+
+/* ------------------------------------------------------------------ küçük parçalar */
 
 function useReducedMotion(): boolean {
   const [reduced, setReduced] = useState(false);
@@ -286,247 +436,491 @@ function useReducedMotion(): boolean {
   return reduced;
 }
 
-/* ------------------------------------------------------------------ belge kartı */
-
-function CredentialCard({
-  l,
-  step,
-  animate,
-  compact = false,
-}: {
-  l: Labels;
-  step: number;
-  animate: boolean;
-  compact?: boolean;
-}) {
-  const hashing = step === 0 && animate;
-  const redacted = step >= 3;
+function PanelHead({ icon, title, sub, active }: { icon: React.ReactNode; title: string; sub: string; active: boolean }) {
   return (
-    <div className={`hw-card ${compact ? "hw-card-compact" : ""}`} data-step={step}>
-      <div className="hw-card-head">
-        <span className="hw-card-title">{l.cardTitle}</span>
-        <span className="hw-card-issuer">{l.cardIssuer}</span>
-      </div>
-      <ul className="hw-fields">
-        {l.fields.map(([k, v], i) => {
-          const keep = i === l.fields.length - 1;
-          const hide = redacted && !keep;
-          return (
-            <li key={k} className={`hw-field ${hide ? "is-hidden" : ""} ${redacted && keep ? "is-kept" : ""}`}>
-              <span className="hw-field-k">{k}</span>
-              <span className="hw-field-v">
-                <span className="hw-field-text">{v}</span>
-                {hide ? (
-                  <span
-                    className={`hw-redact ${step === 3 && animate ? "is-anim" : ""}`}
-                    style={{ animationDelay: `${i * 120}ms` } as CSSProperties}
-                    aria-label={l.hidden}
-                  />
-                ) : null}
-              </span>
-              <span
-                className={`hw-hash ${hashing ? "is-anim" : ""}`}
-                style={{ animationDelay: `${300 + i * 260}ms` } as CSSProperties}
-                aria-hidden="true"
+    <div className="flex items-center gap-2.5 border-b border-[var(--flow-line)] px-3.5 py-2.5">
+      <span
+        className={`grid size-7 shrink-0 place-items-center rounded-md transition-colors duration-500 ${
+          active ? "bg-gok-300 text-gok-900" : "bg-[color-mix(in_oklab,var(--ink-band-fg)_8%,transparent)] text-ink-band-muted"
+        }`}
+        aria-hidden
+      >
+        {icon}
+      </span>
+      <span className="min-w-0">
+        <span className="block truncate text-[13px] font-semibold leading-tight text-ink-band-fg">{title}</span>
+        <span className="block truncate font-mono text-[10px] leading-tight text-ink-band-muted">{sub}</span>
+      </span>
+    </div>
+  );
+}
+
+function panelClass(active: boolean) {
+  return `overflow-hidden rounded-xl border bg-[color-mix(in_oklab,var(--ink-band)_80%,var(--gok-900))] transition-[border-color,box-shadow] duration-500 ${
+    active
+      ? "border-[color-mix(in_oklab,var(--gok-300)_55%,transparent)] shadow-[0_0_0_1px_color-mix(in_oklab,var(--gok-300)_25%,transparent),0_20px_50px_-20px_rgba(0,0,0,0.8)]"
+      : "border-[var(--flow-line)] shadow-[0_20px_50px_-25px_rgba(0,0,0,0.8)]"
+  }`;
+}
+
+type SceneState = {
+  l: Labels;
+  x: Extra;
+  step: number;
+  shared: Set<number>;
+  tampered: boolean;
+  animate: boolean;
+  onToggle: (i: number) => void;
+};
+
+function fieldValue(l: Labels, i: number, tampered: boolean) {
+  const v = l.fields[i][1];
+  if (i === 0 && tampered) return v.replace(/a(?=[^a]*$)/, "e");
+  return v;
+}
+
+/* ------------------------------------------------------------------ paneller */
+
+function IssuerPanel({ l, x, step, animate }: SceneState) {
+  const sealing = step === 0 && animate;
+  return (
+    <div className={panelClass(step <= 1)}>
+      <PanelHead icon={<Building2 size={15} />} title={l.issuer} sub={l.issuerSub} active={step <= 1} />
+      <div className="px-3.5 py-3">
+        <div className="flex items-baseline justify-between gap-2">
+          <span className="text-[12px] font-semibold text-ink-band-fg">{l.cardTitle}</span>
+          <span className="truncate font-mono text-[10px] text-ink-band-muted">{l.cardIssuer}</span>
+        </div>
+        <ul className="mt-2 grid gap-1">
+          {l.fields.map(([k], i) => (
+            <li key={k} className="flex items-center justify-between gap-2 text-[11px]">
+              <span className="truncate text-ink-band-muted">{k}</span>
+              <motion.span
+                key={`h-${step}`}
+                initial={sealing ? { opacity: 0, scale: 0.4 } : false}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: sealing ? 0.3 + i * 0.35 : 0, duration: 0.3 }}
+                className="rounded bg-[color-mix(in_oklab,var(--gok-300)_16%,transparent)] px-1.5 font-mono text-[10px] text-gok-300"
               >
-                #
-              </span>
+                #{(0x3a1 + i * 0x2f7).toString(16)}
+              </motion.span>
+            </li>
+          ))}
+        </ul>
+        <motion.div
+          key={`seal-${step}`}
+          initial={sealing ? { opacity: 0, scale: 1.6, rotate: -12 } : false}
+          animate={{ opacity: 1, scale: 1, rotate: -4 }}
+          transition={{ delay: sealing ? 2.2 : 0, duration: 0.45, ease: EASE }}
+          className="mt-3 inline-flex items-center gap-1.5 rounded-md bg-gold-bright px-2 py-1 text-[11px] font-bold text-ink-band"
+        >
+          <Check size={12} strokeWidth={3} aria-hidden /> {step === 0 ? l.sealed : x.issued}
+        </motion.div>
+      </div>
+    </div>
+  );
+}
+
+function WalletPanel({ l, x, step, shared, tampered, onToggle }: SceneState) {
+  const has = step >= 1;
+  const picking = step >= 2;
+  return (
+    <div className="rounded-[1.6rem] border border-[var(--flow-line)] bg-[color-mix(in_oklab,var(--ink-band)_60%,black)] p-1.5 shadow-[0_24px_60px_-25px_rgba(0,0,0,0.9)]">
+      <div className={`${panelClass(step >= 1 && step <= 3)} rounded-[1.3rem]`}>
+        <PanelHead icon={<Wallet size={15} />} title={l.wallet} sub={l.walletSub} active={step >= 1 && step <= 3} />
+        <div className="px-3 py-3 md:min-h-[15.5rem]">
+          {!has ? (
+            <div className="grid h-24 place-items-center md:h-[13.5rem] rounded-lg border border-dashed border-[var(--flow-line)] font-mono text-[11px] text-ink-band-muted">
+              {x.waiting}
+            </div>
+          ) : (
+            <motion.div initial={step === 1 ? { opacity: 0, y: 12 } : false} animate={{ opacity: 1, y: 0 }} transition={{ delay: step === 1 ? 1.5 : 0, duration: 0.4 }}>
+              {step === 2 ? (
+                <motion.p
+                  initial={{ opacity: 0, y: -6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.6 }}
+                  className="mb-2 rounded-lg bg-gok-300 px-2.5 py-1.5 text-[11px] font-semibold leading-snug text-gok-900"
+                >
+                  {l.request}
+                </motion.p>
+              ) : null}
+              <div className="flex items-baseline justify-between gap-2">
+                <span className="text-[12px] font-semibold text-ink-band-fg">{l.cardTitle}</span>
+                {picking ? <span className="font-mono text-[9px] uppercase tracking-[0.12em] text-gold-bright">{x.pick}</span> : null}
+              </div>
+              <ul className="mt-2 grid gap-1">
+                {l.fields.map(([k], i) => {
+                  const on = shared.has(i);
+                  const forged = tampered && i === 0;
+                  return (
+                    <li key={k}>
+                      <button
+                        type="button"
+                        disabled={!picking}
+                        aria-pressed={picking ? on : undefined}
+                        onClick={() => onToggle(i)}
+                        className={`flex w-full items-center gap-2 rounded-md border px-2 py-1 text-left text-[11px] transition-colors duration-300 ${
+                          picking ? "cursor-pointer hover:border-gok-300" : "cursor-default"
+                        } ${
+                          picking && on
+                            ? "border-[color-mix(in_oklab,var(--gok-300)_60%,transparent)] bg-[color-mix(in_oklab,var(--gok-300)_14%,transparent)]"
+                            : "border-transparent bg-[color-mix(in_oklab,var(--ink-band-fg)_5%,transparent)]"
+                        }`}
+                      >
+                        {picking ? (
+                          on ? (
+                            <Check size={12} strokeWidth={3} className="shrink-0 text-gok-300" aria-hidden />
+                          ) : (
+                            <Lock size={11} className="shrink-0 text-ink-band-muted" aria-hidden />
+                          )
+                        ) : null}
+                        <span className="min-w-0 flex-1 truncate text-ink-band-muted">{k}</span>
+                        <span
+                          className={`truncate font-medium ${forged ? "text-[var(--flow-bad)] underline decoration-wavy" : picking && !on ? "text-ink-band-muted" : "text-ink-band-fg"}`}
+                        >
+                          {picking && !on ? "••••" : fieldValue(l, i, tampered)}
+                        </span>
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            </motion.div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function VerifierPanel({ l, x, step, shared, tampered, animate }: SceneState) {
+  const list = [...shared].sort();
+  const bad = tampered && shared.has(0);
+  const checks: [string, boolean][] = [
+    [bad ? x.badSig : x.sigOk, !bad],
+    [x.listed, true],
+    [x.notRevoked, true],
+  ];
+  return (
+    <div className={panelClass(step >= 2)}>
+      <PanelHead icon={<ScanLine size={15} />} title={l.verifier} sub={l.verifierSub} active={step >= 2} />
+      <div className="px-3.5 py-3 md:min-h-[13rem]">
+        {step < 2 ? (
+          <div className="grid h-24 place-items-center md:h-[11.5rem] rounded-lg border border-dashed border-[var(--flow-line)] font-mono text-[11px] text-ink-band-muted">
+            {x.waiting}
+          </div>
+        ) : step === 2 ? (
+          <p className="rounded-lg border border-[var(--flow-line)] px-2.5 py-2 text-[12px] leading-snug text-ink-band-fg">{l.request}</p>
+        ) : (
+          <>
+            <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-ink-band-muted">{x.received}</p>
+            <motion.ul
+              key={`r-${step}-${list.join()}`}
+              initial={step === 3 && animate ? { opacity: 0 } : false}
+              animate={{ opacity: 1 }}
+              transition={{ delay: step === 3 && animate ? 1.9 : 0 }}
+              className="mt-1.5 grid gap-1"
+            >
+              {list.length === 0 ? <li className="text-[11px] text-ink-band-muted">—</li> : null}
+              {list.map((i) => (
+                <li key={i} className="flex items-center justify-between gap-2 rounded-md bg-[color-mix(in_oklab,var(--ink-band-fg)_5%,transparent)] px-2 py-1 text-[11px]">
+                  <span className="truncate text-ink-band-muted">{l.fields[i][0]}</span>
+                  <span className={`truncate font-medium ${tampered && i === 0 ? "text-[var(--flow-bad)]" : "text-ink-band-fg"}`}>{fieldValue(l, i, tampered)}</span>
+                </li>
+              ))}
+              <li className="px-2 pt-0.5 font-mono text-[10px] text-ink-band-muted">
+                <Lock size={10} className="mr-1 inline" aria-hidden />
+                {l.fields.length - list.length} {x.unseen}
+              </li>
+            </motion.ul>
+            {step === 4 ? (
+              <div className="mt-3 grid gap-1">
+                {checks.map(([t, ok], i) => (
+                  <motion.p
+                    key={t}
+                    initial={animate ? { opacity: 0, x: -6 } : false}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: animate ? 2.6 + i * 0.3 : 0 }}
+                    className={`flex items-center gap-1.5 text-[11px] font-medium ${ok ? "text-[var(--flow-ok)]" : "text-[var(--flow-bad)]"}`}
+                  >
+                    {ok ? <Check size={12} strokeWidth={3} aria-hidden /> : <XIcon size={12} strokeWidth={3} aria-hidden />} {t}
+                  </motion.p>
+                ))}
+                <motion.span
+                  initial={animate ? { opacity: 0, scale: 1.6, rotate: -12 } : false}
+                  animate={{ opacity: 1, scale: 1, rotate: -4 }}
+                  transition={{ delay: animate ? 3.7 : 0, duration: 0.45, ease: EASE }}
+                  className={`mt-2 inline-flex w-fit items-center gap-1.5 rounded-md px-2.5 py-1 text-[13px] font-bold ${
+                    bad ? "bg-[var(--flow-bad)] text-ink-band" : "bg-gold-bright text-ink-band"
+                  }`}
+                >
+                  {bad ? <XIcon size={14} strokeWidth={3} aria-hidden /> : <Check size={14} strokeWidth={3} aria-hidden />}
+                  {bad ? x.rejected : l.verified}
+                </motion.span>
+              </div>
+            ) : null}
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function TrustPanel({ l, step, animate }: SceneState) {
+  const live = step === 4;
+  return (
+    <div className={panelClass(live)}>
+      <div className="flex items-center gap-2 border-b border-[var(--flow-line)] px-3.5 py-2">
+        <span className="flex gap-1" aria-hidden>
+          <i className="size-2 rounded-full bg-[var(--flow-line)]" />
+          <i className="size-2 rounded-full bg-[var(--flow-line)]" />
+          <i className="size-2 rounded-full bg-[var(--flow-line)]" />
+        </span>
+        <ListChecks size={14} className={live ? "text-gok-300" : "text-ink-band-muted"} aria-hidden />
+        <span className="text-[13px] font-semibold text-ink-band-fg">{l.trust}</span>
+        <span className="ml-auto font-mono text-[10px] text-ink-band-muted">{l.trustSub}</span>
+      </div>
+      <ul className="grid gap-1 px-3 py-2.5">
+        {l.rows.map(([cc, name], i) => {
+          const hit = live && i === 0;
+          return (
+            <li key={name} className="relative flex items-center gap-2.5 overflow-hidden rounded-md px-2 py-1 text-[12px]">
+              {hit ? (
+                <motion.span
+                  className="absolute inset-0 bg-[color-mix(in_oklab,var(--gok-300)_18%,transparent)]"
+                  initial={animate ? { scaleX: 0 } : false}
+                  animate={{ scaleX: 1 }}
+                  style={{ transformOrigin: "left" }}
+                  transition={{ delay: animate ? 1.3 : 0, duration: 0.5 }}
+                  aria-hidden
+                />
+              ) : null}
+              <span className="relative font-mono text-[10px] text-ink-band-muted">{cc}</span>
+              <span className="relative text-ink-band-fg">{name}</span>
+              {hit ? (
+                <motion.span
+                  className="relative ml-auto text-[var(--flow-ok)]"
+                  initial={animate ? { opacity: 0 } : false}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: animate ? 1.7 : 0 }}
+                >
+                  <Check size={13} strokeWidth={3} aria-hidden />
+                </motion.span>
+              ) : null}
             </li>
           );
         })}
       </ul>
-      <div className="hw-card-foot">
-        <span
-          className={`hw-seal ${hashing ? "is-anim" : ""}`}
-          style={{ animationDelay: hashing ? "1900ms" : "0ms" } as CSSProperties}
-        >
-          <Check size={12} strokeWidth={3} aria-hidden="true" />
-          {l.sealed}
-        </span>
-      </div>
     </div>
   );
+}
+
+/* ------------------------------------------------------------------ paketler */
+
+function Packet({ step, l, x, shared, tampered }: SceneState) {
+  const chip =
+    "pointer-events-none absolute z-20 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-full px-3 py-1 text-[11px] font-semibold shadow-[0_8px_24px_-6px_rgba(0,0,0,0.7)]";
+  const go = (c: Curve, delay: number, dur = 1.1) => ({
+    initial: { left: track(c).left[0], top: track(c).top[0], opacity: 0 },
+    animate: { ...track(c), opacity: [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0] },
+    transition: { delay, duration: dur, ease: EASE },
+  });
+  if (step === 1)
+    return (
+      <motion.span key="p1" className={`${chip} inline-flex items-center gap-1.5 bg-gold-bright text-ink-band`} {...go(CURVES.issue, 0.6)}>
+        <FileText size={12} aria-hidden /> {l.cardTitle}
+      </motion.span>
+    );
+  if (step === 2)
+    return (
+      <motion.span key="p2" className={`${chip} max-w-[15rem] truncate bg-gok-300 text-gok-900`} {...go(CURVES.request, 0.6)}>
+        {l.request}
+      </motion.span>
+    );
+  if (step === 3) {
+    const n = shared.size;
+    const label = n === 1 ? `${l.fields[[...shared][0]][0]}: ${fieldValue(l, [...shared][0], tampered)}` : `${n} / ${l.fields.length}`;
+    return (
+      <motion.span key={`p3-${n}`} className={`${chip} inline-flex items-center gap-1.5 bg-gok-300 text-gok-900`} {...go(CURVES.present, 0.6)}>
+        <Check size={12} strokeWidth={3} aria-hidden /> {label}
+      </motion.span>
+    );
+  }
+  if (step === 4)
+    return (
+      <>
+        <motion.span key="p4q" className={`${chip} bg-gok-300 text-gok-900`} {...go(CURVES.query, 0.5)}>
+          {l.query}
+        </motion.span>
+        <motion.span key="p4a" className={`${chip} inline-flex items-center gap-1.5 bg-[var(--flow-ok)] text-ink-band`} {...go(CURVES.answer, 1.9)}>
+          <Check size={12} strokeWidth={3} aria-hidden /> {x.listed}
+        </motion.span>
+      </>
+    );
+  return null;
 }
 
 /* ------------------------------------------------------------------ masaüstü sahne */
 
-function ActorNode({
-  icon,
-  title,
-  sub,
-  className,
-  active,
-  children,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  sub: string;
-  className: string;
-  active: boolean;
-  children?: React.ReactNode;
-}) {
-  return (
-    <div className={`hw-node ${className} ${active ? "is-active" : ""}`}>
-      <span className="hw-node-icon" aria-hidden="true">
-        {icon}
-      </span>
-      <span className="hw-node-text">
-        <span className="hw-node-title">{title}</span>
-        <span className="hw-node-sub">{sub}</span>
-      </span>
-      {children}
-    </div>
-  );
+function pos(cx: number, top: number, w: number): CSSProperties {
+  return { left: `${((cx - w / 2) / W) * 100}%`, top: `${(top / H) * 100}%`, width: `${(w / W) * 100}%` };
 }
 
-function DesktopStage({ l, step, animate }: { l: Labels; step: number; animate: boolean }) {
-  // Kartın yeri: 1. adımda kurumda, sonra cüzdanda.
-  const cardX = step === 0 ? "16.666%" : "50%";
-  const moveCard = step === 1 && animate;
-  const active = {
-    issuer: step === 0 || step === 1,
-    wallet: step >= 1 && step <= 3,
-    verifier: step >= 2,
-    trust: step === 4,
-  };
+function DesktopStage(s: SceneState) {
+  const live = new Set(ACTIVE[s.step]);
   return (
-    <div className="hw-stage" aria-hidden="true">
-      <svg className="hw-lines" viewBox="0 0 1000 480" preserveAspectRatio="none">
-        <path d="M166 420 H834" />
-        <path className="hw-line-faint" d="M500 98 C 500 200, 166 250, 166 372" />
-        <path className="hw-line-faint" d="M500 98 V 372" />
-        <path className={`hw-line-faint ${step === 4 ? "is-live" : ""}`} d="M500 98 C 500 200, 834 250, 834 372" />
+    <div className="relative hidden aspect-[1000/590] w-full md:block">
+      <svg viewBox={`0 0 ${W} ${H}`} className="absolute inset-0 h-full w-full" aria-hidden>
+        <defs>
+          <marker id="flow-head" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="var(--gok-300)" />
+          </marker>
+          <marker id="flow-head-dim" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="var(--flow-line)" />
+          </marker>
+        </defs>
+        {(Object.keys(CURVES) as (keyof typeof CURVES)[]).map((k) => {
+          const on = live.has(k);
+          return (
+            <g key={k}>
+              <path d={d(CURVES[k])} fill="none" stroke="var(--flow-line)" strokeWidth="1.5" strokeDasharray="3 6" markerEnd={on ? undefined : "url(#flow-head-dim)"} />
+              {on ? (
+                <>
+                  <motion.path
+                    key={`${k}-${s.step}`}
+                    d={d(CURVES[k])}
+                    fill="none"
+                    stroke="var(--gok-300)"
+                    strokeWidth="2"
+                    markerEnd="url(#flow-head)"
+                    initial={s.animate ? { pathLength: 0 } : false}
+                    animate={{ pathLength: 1 }}
+                    transition={{ duration: 0.55, ease: EASE, delay: k === "answer" ? 1.4 : 0 }}
+                  />
+                  <path d={d(CURVES[k])} fill="none" stroke="var(--ink-band-fg)" strokeOpacity="0.55" strokeWidth="2" className="flow-dash" />
+                </>
+              ) : null}
+            </g>
+          );
+        })}
       </svg>
 
-      <div className={`hw-trust ${active.trust ? "is-active" : ""}`}>
-        <div className="hw-trust-head">
-          <ListChecks size={16} aria-hidden="true" />
-          <span className="hw-node-title">{l.trust}</span>
-          <span className="hw-node-sub">{l.trustSub}</span>
-        </div>
-        <ul className="hw-trust-rows">
-          {l.rows.map(([cc, name], i) => (
-            <li key={name} className={`hw-trust-row ${i === 0 && step === 4 && animate ? "is-hit" : ""} ${i === 0 && step === 4 && !animate ? "is-hit-static" : ""}`}>
-              <span className="hw-cc">{cc}</span>
-              <span>{name}</span>
-              <Check size={13} strokeWidth={3} className="hw-row-check" aria-hidden="true" />
-            </li>
-          ))}
-        </ul>
+      <div className="absolute" style={pos(500, 18, 330)}>
+        <TrustPanel {...s} />
+      </div>
+      <div className="absolute" style={pos(135, 262, 250)}>
+        <IssuerPanel {...s} />
+      </div>
+      <div className="absolute" style={pos(500, 218, 252)}>
+        <WalletPanel {...s} />
+      </div>
+      <div className="absolute" style={pos(865, 262, 255)}>
+        <VerifierPanel {...s} />
       </div>
 
-      <ActorNode className="hw-at-issuer" icon={<Building2 size={18} />} title={l.issuer} sub={l.issuerSub} active={active.issuer} />
-      <ActorNode className="hw-at-wallet" icon={<Wallet size={18} />} title={l.wallet} sub={l.walletSub} active={active.wallet} />
-      <ActorNode className="hw-at-verifier" icon={<ScanLine size={18} />} title={l.verifier} sub={l.verifierSub} active={active.verifier}>
-        {step === 4 ? (
-          <span className={`hw-verified ${animate ? "is-anim" : ""}`}>
-            <Check size={13} strokeWidth={3} aria-hidden="true" />
-            {l.verified}
-          </span>
-        ) : null}
-      </ActorNode>
-
-      {/* Belge kartı: kurumdan cüzdana kayar */}
-      <div
-        key={`card-${step}`}
-        className={`hw-card-slot ${moveCard ? "is-moving" : ""}`}
-        style={{ "--x": cardX } as CSSProperties}
-      >
-        <CredentialCard l={l} step={step} animate={animate} />
-      </div>
-
-      {/* 3: istek doğrulayandan cüzdana */}
-      {step === 2 ? (
-        <span key="req" className={`hw-pill hw-pill-req ${animate ? "is-anim" : "is-static"}`}>
-          {l.request}
-        </span>
-      ) : null}
-
-      {/* 4–5: en küçük sunum cüzdandan doğrulayana */}
-      {step >= 3 ? (
-        <div key={`mini-${step}`} className={`hw-mini ${step === 3 && animate ? "is-anim" : "is-at-verifier"}`}>
-          <span className="hw-mini-row">
-            <span className="hw-field-k">{l.fields[l.fields.length - 1][0]}</span>
-            <span className="hw-mini-v">{l.fields[l.fields.length - 1][1]}</span>
-          </span>
-          <span className="hw-mini-seal">
-            <Check size={11} strokeWidth={3} aria-hidden="true" />
-            {l.sealed}
-          </span>
-        </div>
-      ) : null}
-
-      {/* 5: listeye soru ve cevap */}
-      {step === 4 ? (
-        <>
-          <span key="q" className={`hw-pill hw-pill-query ${animate ? "is-anim" : "is-static"}`}>
-            {l.query}
-          </span>
-          <span key="r" className={`hw-pill hw-pill-resp ${animate ? "is-anim" : "is-static"}`}>
-            <Check size={12} strokeWidth={3} aria-hidden="true" />
-            {l.response}
-          </span>
-        </>
-      ) : null}
+      {s.animate ? <Packet {...s} /> : null}
     </div>
   );
 }
 
-/* ------------------------------------------------------------------ telefon düzeni */
+/* ------------------------------------------------------------------ telefon sahnesi */
+/*
+ * Telefonda iki katman, ikisinin de yüksekliği sabit (geçişte sayfa zıplamaz):
+ * üstte dört tarafın küçük haritası (oklar ve kayan nokta), altta o adımda işi yapan tarafın paneli (yerinde soluklaşarak değişir).
+ */
 
-const TRACK: { key: "issuer" | "wallet" | "verifier" | "trust"; icon: React.ReactNode }[] = [
-  { key: "issuer", icon: <Building2 size={16} /> },
-  { key: "wallet", icon: <Wallet size={16} /> },
-  { key: "verifier", icon: <ScanLine size={16} /> },
-  { key: "trust", icon: <ListChecks size={16} /> },
-];
+const MINI_W = 360;
+const MINI_H = 210;
+const MINI_NODES = { trust: [180, 34], issuer: [52, 150], wallet: [180, 150], verifier: [308, 150] } as const;
+const MINI_CURVES: Record<keyof typeof CURVES, Curve> = {
+  issue: [[76, 150], [100, 150], [130, 150], [156, 150]],
+  request: [[290, 136], [262, 112], [228, 112], [200, 136]],
+  present: [[200, 164], [228, 190], [262, 190], [290, 164]],
+  query: [[308, 126], [308, 80], [260, 38], [206, 36]],
+  answer: [[206, 46], [252, 50], [292, 84], [296, 128]],
+};
+const FOCUS: ("issuer" | "wallet" | "verifier")[] = ["issuer", "wallet", "wallet", "verifier", "verifier"];
 
-/** Telefonda her adımın hareketi: hangi iki durak arasında bir şey taşınıyor. */
-const MOBILE_MOVE: [number, number][] = [
-  [0, 0],
-  [0, 1],
-  [2, 1],
-  [1, 2],
-  [2, 3],
-];
-
-function MobileStage({ l, step, animate }: { l: Labels; step: number; animate: boolean }) {
-  const [from, to] = MOBILE_MOVE[step];
-  const name = { issuer: l.issuer, wallet: l.wallet, verifier: l.verifier, trust: l.trust };
-  const activeSet = new Set([from, to]);
+function MiniMap({ l, step, animate }: SceneState) {
+  const live = new Set(ACTIVE[step]);
+  const nodes: [keyof typeof MINI_NODES, string, React.ReactNode][] = [
+    ["trust", l.trust, <ListChecks key="t" size={15} />],
+    ["issuer", l.issuer, <Building2 key="i" size={15} />],
+    ["wallet", l.wallet, <Wallet key="w" size={15} />],
+    ["verifier", l.verifier, <ScanLine key="v" size={15} />],
+  ];
+  const lit: Record<keyof typeof MINI_NODES, boolean> = {
+    trust: step === 4,
+    issuer: step <= 1,
+    wallet: step >= 1 && step <= 3,
+    verifier: step >= 2,
+  };
   return (
-    <div className="hw-mobile" aria-hidden="true">
-      <div className="hw-track">
-        <span className="hw-track-line" />
-        {TRACK.map((t, i) => (
-          <span key={t.key} className={`hw-stop ${activeSet.has(i) ? "is-active" : ""}`} style={{ "--i": i } as CSSProperties}>
-            <span className="hw-stop-icon">{t.icon}</span>
-            <span className="hw-stop-label">{name[t.key]}</span>
-          </span>
+    <div className="relative w-full" style={{ aspectRatio: `${MINI_W} / ${MINI_H}` }}>
+      <svg viewBox={`0 0 ${MINI_W} ${MINI_H}`} className="absolute inset-0 h-full w-full" aria-hidden>
+        {(Object.keys(MINI_CURVES) as (keyof typeof CURVES)[]).map((k) => (
+          <g key={k}>
+            <path d={d(MINI_CURVES[k])} fill="none" stroke="var(--flow-line)" strokeWidth="1.2" strokeDasharray="2 4" />
+            {live.has(k) ? (
+              <>
+                <path d={d(MINI_CURVES[k])} fill="none" stroke="var(--gok-300)" strokeWidth="1.6" strokeOpacity="0.55" />
+                <path d={d(MINI_CURVES[k])} fill="none" stroke="var(--ink-band-fg)" strokeOpacity="0.7" strokeWidth="1.6" className="flow-dash" />
+                {animate ? (
+                  <circle r="4.5" fill={k === "answer" ? "var(--flow-ok)" : "var(--gold-bright)"}>
+                    <animateMotion dur="1.6s" repeatCount="indefinite" begin={k === "answer" ? "0.8s" : "0s"} path={d(MINI_CURVES[k])} />
+                  </circle>
+                ) : null}
+              </>
+            ) : null}
+          </g>
         ))}
-        {from !== to ? (
-          <span
-            key={`dot-${step}`}
-            className={`hw-dot ${animate ? "is-anim" : ""} ${step === 4 ? "is-roundtrip" : ""}`}
-            style={{ "--from": from, "--to": to } as CSSProperties}
-          />
-        ) : null}
-      </div>
-      <div className="hw-mobile-card">
-        {step === 2 ? <span className="hw-chip hw-chip-req">{l.request}</span> : null}
-        {step === 4 ? (
-          <span className="hw-chip hw-chip-ok">
-            <Check size={12} strokeWidth={3} aria-hidden="true" />
-            {l.response}
-          </span>
-        ) : null}
-        <CredentialCard l={l} step={step} animate={animate} compact />
-        {step === 4 ? (
-          <span className="hw-verified hw-verified-mobile">
-            <Check size={13} strokeWidth={3} aria-hidden="true" />
-            {l.verified}
-          </span>
-        ) : null}
+      </svg>
+      {nodes.map(([k, label, icon]) => {
+        const [x, y] = MINI_NODES[k];
+        return (
+          <div
+            key={k}
+            className="absolute flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-1"
+            style={{ left: `${(x / MINI_W) * 100}%`, top: `${(y / MINI_H) * 100}%`, width: "30%" }}
+          >
+            <span
+              className={`grid size-9 place-items-center rounded-xl border transition-colors duration-500 ${
+                lit[k]
+                  ? "border-gok-300 bg-gok-300 text-gok-900 shadow-[0_0_0_4px_color-mix(in_oklab,var(--gok-300)_18%,transparent)]"
+                  : "border-[var(--flow-line)] bg-[color-mix(in_oklab,var(--ink-band)_80%,var(--gok-900))] text-ink-band-muted"
+              }`}
+              aria-hidden
+            >
+              {icon}
+            </span>
+            <span className={`line-clamp-2 text-center text-[10px] leading-tight ${lit[k] ? "text-ink-band-fg" : "text-ink-band-muted"}`}>{label}</span>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function MobileStage(s: SceneState) {
+  const focus = FOCUS[s.step];
+  const panel = focus === "issuer" ? <IssuerPanel {...s} /> : focus === "wallet" ? <WalletPanel {...s} /> : <VerifierPanel {...s} />;
+  return (
+    <div className="grid gap-3 md:hidden">
+      <MiniMap {...s} />
+      <div className="relative h-[22rem] overflow-hidden">
+        <AnimatePresence initial={false}>
+          <motion.div
+            key={focus}
+            className="absolute inset-x-0 top-0"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.35 }}
+          >
+            {panel}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </div>
   );
@@ -535,18 +929,22 @@ function MobileStage({ l, step, animate }: { l: Labels; step: number; animate: b
 /* ------------------------------------------------------------------ bileşen */
 
 export function HowItWorks({ locale }: { locale: string }) {
-  const l = L[(locale as keyof typeof L) in L ? (locale as keyof typeof L) : "en"];
+  const key = ((locale as keyof typeof L) in L ? locale : "en") as keyof typeof L;
+  const l = L[key];
+  const x = XL[key];
   const reduced = useReducedMotion();
   const [step, setStep] = useState(0);
   const [playing, setPlaying] = useState(true);
   const [inView, setInView] = useState(false);
   const [visible, setVisible] = useState(true);
+  const [shared, setShared] = useState<Set<number>>(() => new Set([l.fields.length - 1]));
+  const [tampered, setTampered] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const io = new IntersectionObserver(([e]) => setInView(e.isIntersecting), { threshold: 0.35 });
+    const io = new IntersectionObserver(([e]) => setInView(e.isIntersecting), { threshold: 0.3 });
     io.observe(el);
     const vis = () => setVisible(document.visibilityState === "visible");
     document.addEventListener("visibilitychange", vis);
@@ -565,92 +963,123 @@ export function HowItWorks({ locale }: { locale: string }) {
 
   const go = useCallback((n: number) => setStep(((n % STEPS) + STEPS) % STEPS), []);
   const onKey = (e: React.KeyboardEvent) => {
-    if (e.key === "ArrowRight") {
+    if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
       e.preventDefault();
       setPlaying(false);
-      go(step + 1);
-    } else if (e.key === "ArrowLeft") {
-      e.preventDefault();
-      setPlaying(false);
-      go(step - 1);
+      go(step + (e.key === "ArrowRight" ? 1 : -1));
     }
   };
+  const onToggle = (i: number) => {
+    setPlaying(false);
+    setShared((prev) => {
+      const next = new Set(prev);
+      if (next.has(i)) next.delete(i);
+      else next.add(i);
+      return next;
+    });
+    if (step < 3) setStep(3);
+  };
+  const onTamper = () => {
+    if (tampered) {
+      setTampered(false);
+      setShared(new Set([l.fields.length - 1]));
+      setStep(0);
+      setPlaying(true);
+      return;
+    }
+    setTampered(true);
+    setShared((prev) => new Set([...prev, 0]));
+    setStep(3);
+    setPlaying(true);
+  };
 
-  if (reduced) {
-    return (
-      <ol className="hw-static" aria-label={l.title}>
-        {l.steps.map((s, i) => (
-          <li key={s.title} className="hw-static-step">
-            <span className="hw-static-num">{i + 1}</span>
-            <div className="hw-static-body">
-              <h3 className="hw-caption-title">{s.title}</h3>
-              <p className="hw-caption-text">{s.body}</p>
-            </div>
-            <MobileStage l={l} step={i} animate={false} />
-          </li>
-        ))}
-      </ol>
-    );
-  }
+  // Hareket azaltılmışsa ya da sunucu çiziminde: son adımın tam, okunur hâli.
+  const shownStep = reduced ? 4 : step;
+  const s: SceneState = { l, x, step: shownStep, shared, tampered, animate: inView && !reduced, onToggle };
 
-  const animate = inView;
-  const cur = l.steps[step];
   return (
-    <div ref={ref} className="hw" role="group" aria-roledescription="carousel" aria-label={l.title} onKeyDown={onKey}>
-      <DesktopStage l={l} step={step} animate={animate} />
-      <MobileStage l={l} step={step} animate={animate} />
-
-      <div className="hw-controls">
-        <div className="hw-chips" role="tablist" aria-label={l.title}>
-          {l.steps.map((s, i) => (
-            <button
-              key={s.title}
-              type="button"
-              role="tab"
-              aria-selected={i === step}
-              aria-label={`${l.step} ${i + 1}: ${s.title}`}
-              className={`hw-chipbtn ${i === step ? "is-current" : ""} ${i < step ? "is-done" : ""}`}
-              onClick={() => {
-                setPlaying(false);
-                go(i);
-              }}
-            >
-              <span className="hw-chipbtn-num">{i + 1}</span>
-              <span className="hw-chipbtn-bar">
-                <span
-                  key={`bar-${step}-${running}`}
-                  className={`hw-chipbtn-fill ${i === step && running ? "is-running" : ""}`}
-                  style={{ animationDuration: `${DURATIONS[i]}ms` } as CSSProperties}
-                />
-              </span>
-            </button>
-          ))}
-        </div>
-        <div className="hw-buttons">
-          <button type="button" className="hw-iconbtn" aria-label={l.prev} onClick={() => { setPlaying(false); go(step - 1); }}>
-            <ChevronLeft size={18} aria-hidden="true" />
-          </button>
-          <button
-            type="button"
-            className="hw-iconbtn"
-            aria-label={playing ? l.pause : l.play}
-            aria-pressed={!playing}
-            onClick={() => setPlaying((p) => !p)}
-          >
-            {playing ? <Pause size={16} aria-hidden="true" /> : <Play size={16} aria-hidden="true" />}
-          </button>
-          <button type="button" className="hw-iconbtn" aria-label={l.next} onClick={() => { setPlaying(false); go(step + 1); }}>
-            <ChevronRight size={18} aria-hidden="true" />
-          </button>
-        </div>
+    <div ref={ref} className="grid gap-6" role="group" aria-label={l.title} onKeyDown={onKey}>
+      <div className="flow-stage overflow-hidden rounded-2xl border border-[var(--flow-line)] p-3 sm:p-5">
+        <DesktopStage {...s} />
+        <MobileStage {...s} />
       </div>
 
-      <div className="hw-caption" aria-live="polite">
-        <span className="hw-caption-step">
-          {l.step} {step + 1} / {STEPS}
-        </span>
-        <h3 className="hw-caption-title">{cur.title}</h3>
-        <p className="hw-caption-text">{cur.body}</p>
+      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-start">
+        {/* Bütün adım metinleri aynı hücrede üst üste: kutu en uzununa göre boy alır, geçişte sayfa zıplamaz. */}
+        <div className="grid">
+          {l.steps.map((st, i) => (
+            <div
+              key={st.title}
+              aria-hidden={i !== shownStep}
+              aria-live={i === shownStep ? "polite" : undefined}
+              className={`[grid-area:1/1] transition-opacity duration-300 ${i === shownStep ? "opacity-100" : "pointer-events-none invisible opacity-0"}`}
+            >
+              <p className="font-mono text-xs uppercase tracking-[0.14em] text-primary">
+                {l.step} {i + 1} / {STEPS}
+              </p>
+              <h3 className="mt-2 text-2xl font-semibold text-foreground">{st.title}</h3>
+              <p className="mt-2 max-w-[62ch] leading-relaxed text-foreground-muted">{st.body}</p>
+              <p className={`mt-2 text-sm text-gold ${i >= 2 ? "" : "invisible"}`}>{x.pickHint}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="grid gap-3 lg:justify-items-end">
+          {!reduced ? (
+            <div className="flex items-center gap-3">
+              <div className="flex gap-1.5" role="tablist" aria-label={l.title}>
+                {l.steps.map((st, i) => (
+                  <button
+                    key={st.title}
+                    type="button"
+                    role="tab"
+                    aria-selected={i === step}
+                    aria-label={`${l.step} ${i + 1}: ${st.title}`}
+                    onClick={() => {
+                      setPlaying(false);
+                      go(i);
+                    }}
+                    className="group grid gap-1.5 py-1"
+                  >
+                    <span className={`font-mono text-[11px] ${i === step ? "text-foreground" : "text-foreground-subtle"}`}>{i + 1}</span>
+                    <span className="block h-1 w-10 overflow-hidden rounded-full bg-border-strong sm:w-12">
+                      <span
+                        key={`bar-${step}-${running}`}
+                        className={`block h-full bg-primary ${i < step ? "w-full" : i === step ? (running ? "flow-bar w-full" : "w-full opacity-60") : "w-0"}`}
+                        style={i === step && running ? { animationDuration: `${DURATIONS[i]}ms` } : undefined}
+                      />
+                    </span>
+                  </button>
+                ))}
+              </div>
+              <div className="flex gap-1">
+                <button type="button" className="grid size-9 place-items-center rounded-md border border-border-strong text-foreground hover:bg-surface" aria-label={l.prev} onClick={() => { setPlaying(false); go(step - 1); }}>
+                  <ChevronLeft size={17} aria-hidden />
+                </button>
+                <button type="button" className="grid size-9 place-items-center rounded-md border border-border-strong text-foreground hover:bg-surface" aria-label={playing ? l.pause : l.play} aria-pressed={!playing} onClick={() => setPlaying((p) => !p)}>
+                  {playing ? <Pause size={15} aria-hidden /> : <Play size={15} aria-hidden />}
+                </button>
+                <button type="button" className="grid size-9 place-items-center rounded-md border border-border-strong text-foreground hover:bg-surface" aria-label={l.next} onClick={() => { setPlaying(false); go(step + 1); }}>
+                  <ChevronRight size={17} aria-hidden />
+                </button>
+              </div>
+            </div>
+          ) : null}
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-foreground-subtle">{x.tryIt}</span>
+            <button
+              type="button"
+              onClick={onTamper}
+              aria-pressed={tampered}
+              className={`inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-sm font-medium transition-colors ${
+                tampered ? "border-primary bg-primary text-primary-contrast" : "border-border-strong text-foreground hover:bg-surface"
+              }`}
+            >
+              {tampered ? <RotateCcw size={14} aria-hidden /> : <PenLine size={14} aria-hidden />}
+              {tampered ? x.untamper : x.tamper}
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

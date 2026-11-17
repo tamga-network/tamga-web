@@ -70,7 +70,13 @@ export function Figure({
 }) {
   return (
     <figure className="not-prose my-9">
-      <div className="overflow-hidden rounded-2xl border border-border bg-background-elevated p-3 sm:p-5">
+      <div
+        className={
+          diagram && diagram !== "how-it-works"
+            ? "overflow-hidden rounded-2xl"
+            : "overflow-hidden rounded-2xl border border-border bg-background-elevated p-3 sm:p-5"
+        }
+      >
         {diagram && locale ? <LearnDiagram diagram={diagram} locale={locale} /> : children}
       </div>
       {caption ? (

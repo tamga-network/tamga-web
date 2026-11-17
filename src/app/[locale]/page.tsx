@@ -1,5 +1,5 @@
 import { setRequestLocale } from "next-intl/server";
-import { ArrowRight, ArrowUpRight, CalendarDays } from "lucide-react";
+import { ArrowRight, ArrowUpRight, CalendarDays, Check, X } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { Reveal } from "@/components/reveal";
 import { VerifyModule } from "@/components/verify-card";
@@ -21,6 +21,7 @@ import { pickL, upcomingEvents } from "@/content/events";
 import { formatDate, getPostsMeta } from "@/lib/blog";
 import { arfUrl, docsUrl } from "@/lib/docs-nav";
 import { DEV_LINKS } from "@/lib/ecosystem";
+import { getWhyCompare } from "@/content/why-compare";
 
 /*
  * tamga.network ana sayfası (2026-10-02, ikinci tur). Sıra: hero → ağda yer alanlar → neden → felsefe → nasıl çalışır
@@ -49,7 +50,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <Hero c={c} locale={locale} />
       <PartnersBand c={c} locale={locale} />
       <StandardsBand c={c} />
-      <Why c={c} />
+      <Why c={c} locale={locale} />
       <Philosophy c={c} />
       <How c={c} locale={locale} />
       <Tech c={c} />
@@ -108,40 +109,48 @@ function Hero({ c, locale }: { c: HomeContent; locale: string }) {
           </div>
         </div>
 
-        <div
-          className="home-rise overflow-hidden rounded-xl border border-border-strong bg-background-elevated shadow-[0_24px_60px_-30px_rgba(13,41,56,0.45)]"
-          style={{ animationDelay: "220ms" }}
-        >
-          <div className="flex items-center justify-between gap-3 border-b border-border-strong px-4 py-3.5">
-            <span className="font-mono text-xs uppercase tracking-[0.08em] text-foreground">{c.hero.listTitle}</span>
-            <span className="font-mono text-xs text-foreground-subtle">{c.hero.listHost}</span>
-          </div>
-          <ul className="m-0 list-none p-0">
-            {c.hero.rows.map((r, i) => (
-              <li
-                key={r.code}
-                className={`home-rise grid grid-cols-[2.5rem_minmax(0,1fr)_auto] items-center gap-3 px-4 py-3 ${
-                  i < c.hero.rows.length - 1 ? "border-b border-border" : ""
-                } ${r.live ? "text-foreground" : "text-foreground-subtle"}`}
-                style={{ animationDelay: `${320 + i * 70}ms` }}
-              >
-                <span className="font-mono text-[13px]">{r.code}</span>
-                <span className="truncate">{r.name}</span>
-                {r.live ? (
-                  <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">
-                    <span className="home-live h-1.5 w-1.5 rounded-full bg-primary" aria-hidden />
-                    {r.status}
-                  </span>
-                ) : (
-                  <span className="text-right text-xs">{r.status}</span>
-                )}
-              </li>
-            ))}
-          </ul>
-          <p className="m-0 bg-surface px-4 py-3 text-[13px] leading-snug text-foreground-muted">{c.hero.listNote}</p>
+        <div className="home-rise" style={{ animationDelay: "220ms" }}>
+          <HeroListPanel c={c} />
         </div>
       </div>
     </section>
+  );
+}
+
+/** Açılış paneli: listelerin listesi (LOTL) kutusu. */
+function HeroListPanel({ c }: { c: HomeContent }) {
+  return (
+          <div
+            className="overflow-hidden rounded-xl border border-border-strong bg-background-elevated shadow-[0_24px_60px_-30px_rgba(13,41,56,0.45)]"
+          >
+            <div className="flex items-center justify-between gap-3 border-b border-border-strong px-4 py-3.5">
+              <span className="font-mono text-xs uppercase tracking-[0.08em] text-foreground">{c.hero.listTitle}</span>
+              <span className="font-mono text-xs text-foreground-subtle">{c.hero.listHost}</span>
+            </div>
+            <ul className="m-0 list-none p-0">
+              {c.hero.rows.map((r, i) => (
+                <li
+                  key={r.code}
+                  className={`home-rise grid grid-cols-[2.5rem_minmax(0,1fr)_auto] items-center gap-3 px-4 py-3 ${
+                    i < c.hero.rows.length - 1 ? "border-b border-border" : ""
+                  } ${r.live ? "text-foreground" : "text-foreground-subtle"}`}
+                  style={{ animationDelay: `${320 + i * 70}ms` }}
+                >
+                  <span className="font-mono text-[13px]">{r.code}</span>
+                  <span className="truncate">{r.name}</span>
+                  {r.live ? (
+                    <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">
+                      <span className="home-live h-1.5 w-1.5 rounded-full bg-primary" aria-hidden />
+                      {r.status}
+                    </span>
+                  ) : (
+                    <span className="text-right text-xs">{r.status}</span>
+                  )}
+                </li>
+              ))}
+            </ul>
+            <p className="m-0 bg-surface px-4 py-3 text-[13px] leading-snug text-foreground-muted">{c.hero.listNote}</p>
+          </div>
   );
 }
 
@@ -241,7 +250,7 @@ function StandardsBand({ c }: { c: HomeContent }) {
 
 /* ------------------------------------------------------------------ why */
 
-function Why({ c }: { c: HomeContent }) {
+function Why({ c, locale }: { c: HomeContent; locale: string }) {
   return (
     <section id="network" className="shell grid scroll-mt-24 gap-12 py-20 sm:py-28">
       <Reveal className="grid max-w-3xl gap-4">
@@ -249,23 +258,91 @@ function Why({ c }: { c: HomeContent }) {
         <h2 className={h2}>{c.why.title}</h2>
         <p className="text-lg leading-relaxed text-foreground-muted">{c.why.lead}</p>
       </Reveal>
-      <ol className="m-0 grid list-none gap-px overflow-hidden rounded-2xl border border-border bg-border p-0 sm:grid-cols-2 lg:grid-cols-3">
-        {c.why.problems.map((p, i) => (
-          <li key={p.title} className="grid content-start gap-3 bg-background-elevated p-7">
-            <span className="font-mono text-xs text-primary">{String(i + 1).padStart(2, "0")}</span>
-            <h3 className="text-xl font-semibold leading-snug">{p.title}</h3>
-            <p className="text-[15px] leading-relaxed text-foreground-muted">{p.body}</p>
-          </li>
-        ))}
-        <li className="sig-band grid content-start gap-3 p-7 text-ink-band-fg">
-          <span className="font-mono text-xs uppercase tracking-[0.14em] text-gok-200">{c.why.purposeTitle}</span>
-          <p className="text-[17px] leading-relaxed text-ink-band-fg">{c.why.purpose}</p>
-        </li>
-      </ol>
+      <WhyCompare c={c} locale={locale} />
     </section>
   );
 }
 
+
+/* ------------------------------------------------------------------ why: bugün / Tamga ile (2026-11-18) */
+
+function WhyCompare({ c, locale }: { c: HomeContent; locale: string }) {
+  const w = getWhyCompare(locale);
+  const n = c.why.problems.length;
+  return (
+    <div className="grid gap-10">
+      {/* Masaüstü: üç sütunlu tablo; "Tamga Network ile" sütunu baştan sona tek parça koyu şerit. */}
+      <Reveal>
+        <div
+          className="relative hidden md:grid md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.05fr)_minmax(0,1.15fr)]"
+          style={{ gridTemplateRows: `auto repeat(${n}, auto) 1.25rem` }}
+        >
+          <div
+            aria-hidden
+            className="flow-stage rounded-2xl border border-[var(--flow-line)] shadow-[0_40px_80px_-40px_rgba(13,41,56,0.65)]"
+            style={{ gridColumn: 3, gridRow: `1 / span ${n + 2}` }}
+          />
+          {/* başlık satırı */}
+          <div className="relative px-1 pb-5 pt-7" style={{ gridColumn: 1, gridRow: 1 }} />
+          <div className="relative flex items-end gap-2 px-6 pb-5 pt-7" style={{ gridColumn: 2, gridRow: 1 }}>
+            <span className="font-mono text-xs uppercase tracking-[0.14em] text-foreground-subtle">{w.today}</span>
+          </div>
+          <div className="relative flex items-end gap-2.5 px-7 pb-5 pt-7" style={{ gridColumn: 3, gridRow: 1 }}>
+            <span className="mb-[5px] size-1.5 rounded-full bg-gold-bright" aria-hidden />
+            <span className="font-mono text-xs uppercase tracking-[0.14em] text-gok-300">{w.tamga}</span>
+          </div>
+          {c.why.problems.map((p, i) => {
+            const row = i + 2;
+            return (
+              <div key={p.title} className="group contents">
+                <div className="relative border-t border-border-strong py-6 pr-6" style={{ gridColumn: 1, gridRow: row }}>
+                  <span className="font-mono text-xs text-foreground-subtle">{String(i + 1).padStart(2, "0")}</span>
+                  <h3 className="mt-2 text-lg font-semibold leading-snug">{p.title}</h3>
+                </div>
+                <div className="relative flex gap-3 border-t border-border-strong px-6 py-6" style={{ gridColumn: 2, gridRow: row }}>
+                  <span className="mt-1 grid size-4 shrink-0 place-items-center rounded-full border border-border-strong text-foreground-subtle" aria-hidden>
+                    <X size={9} strokeWidth={3} />
+                  </span>
+                  <p className="text-[15px] leading-relaxed text-foreground-muted">{p.body}</p>
+                </div>
+                <div className="relative flex gap-3 border-t px-7 py-6" style={{ gridColumn: 3, gridRow: row, borderTopColor: "color-mix(in oklab, var(--ink-band-fg) 10%, transparent)" }}>
+                  <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-gold-bright text-ink-band" aria-hidden>
+                    <Check size={11} strokeWidth={3.5} />
+                  </span>
+                  <p className="text-[15px] leading-relaxed text-ink-band-fg">{w.fixes[i]}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </Reveal>
+
+      {/* Telefon: her sorun bir blok; çözüm altında koyu şeritte. */}
+      <ol className="m-0 grid list-none gap-0 p-0 md:hidden">
+        {c.why.problems.map((p, i) => (
+          <li key={p.title} className="grid gap-3 border-t border-border-strong py-6">
+            <span className="font-mono text-xs text-foreground-subtle">{String(i + 1).padStart(2, "0")}</span>
+            <h3 className="text-lg font-semibold leading-snug">{p.title}</h3>
+            <p className="text-[15px] leading-relaxed text-foreground-muted">{p.body}</p>
+            <div className="flow-stage flex gap-3 rounded-xl border border-[var(--flow-line)] p-4">
+              <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-gold-bright text-ink-band" aria-hidden>
+                <Check size={11} strokeWidth={3.5} />
+              </span>
+              <p className="text-[15px] leading-relaxed text-ink-band-fg">{w.fixes[i]}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+
+      <Reveal>
+        <div className="sig-band grid gap-3 rounded-2xl p-7 text-ink-band-fg md:grid-cols-[minmax(0,0.85fr)_minmax(0,2.2fr)] md:gap-8 md:p-9">
+          <span className="font-mono text-xs uppercase tracking-[0.14em] text-gok-200">{c.why.purposeTitle}</span>
+          <p className="max-w-[68ch] text-[17px] leading-relaxed text-ink-band-fg">{c.why.purpose}</p>
+        </div>
+      </Reveal>
+    </div>
+  );
+}
 /* ------------------------------------------------------------------ philosophy */
 
 function Philosophy({ c }: { c: HomeContent }) {
@@ -359,7 +436,7 @@ function Tech({ c }: { c: HomeContent }) {
                   </div>
                 </dl>
               </div>
-              <div className={`rounded-2xl border border-border bg-background-elevated p-3 sm:p-4 ${i % 2 === 1 ? "lg:order-1" : ""}`}>
+              <div className={`overflow-hidden rounded-2xl shadow-[0_30px_70px_-35px_rgba(13,41,56,0.55)] ${i % 2 === 1 ? "lg:order-1" : ""}`}>
                 <TopicDiagram t={t} />
               </div>
             </article>
@@ -541,7 +618,7 @@ function Governance({ c, locale }: { c: HomeContent; locale: string }) {
             </Link>
           </div>
         </Reveal>
-        <div className="rounded-2xl border border-border bg-background-elevated p-3 sm:p-4">
+        <div className="overflow-hidden rounded-2xl shadow-[0_30px_70px_-35px_rgba(13,41,56,0.55)]">
           <RolesDiagram l={c.gov.roles} />
         </div>
       </div>
