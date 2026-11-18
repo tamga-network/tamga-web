@@ -108,6 +108,70 @@ export const CHANGELOG_PAGE: Record<
 
 export const RELEASES: Release[] = [
   {
+    id: "v1.0.0-2026-11-18-packages-0-8-8",
+    version: "v1.0.0",
+    date: "2026-11-18",
+    kind: "feature",
+    title: {
+      en: "Place of birth in the identity credential, rulebook links, packages 0.8.8",
+      tr: "Kimlik belgesinde doğum yeri, kural kitabı bağlantıları, paketler 0.8.8",
+      tk: "Şahsyýet resminamasynda doglan ýeri, düzgünler kitabyna salgylar, paketler 0.8.8",
+      az: "Şəxsiyyət sənədində doğum yeri, qaydalar kitabına keçidlər, paketlər 0.8.8",
+    },
+    sections: {
+      added: {
+        en: [
+          "The identity credential now carries the place of birth, only when the verified document shows it, and the name of the issuing organisation, as in the EU person identification data.",
+          "Each entry in the credential type catalogue links to the rulebook for that type.",
+        ],
+        tr: [
+          "Kimlik belgesi artık doğum yerini (yalnız doğrulanan belgede yazılıysa) ve belgeyi veren kurumun adını taşıyor; AB kişi kimlik verisindeki gibi.",
+          "Belge türü kataloğundaki her kayıt, o türün kural kitabına bağlantı veriyor.",
+        ],
+        tk: [
+          "Şahsyýet resminamasy indi doglan ýerini (diňe barlanan resminamada ýazylan bolsa) we resminamany berýän guramanyň adyny saklaýar; ÝB şahsy şahsyýet maglumatlaryndaky ýaly.",
+          "Resminama görnüşleriniň katalogyndaky her ýazgy şol görnüşiň düzgünler kitabyna salgy berýär.",
+        ],
+        az: [
+          "Şəxsiyyət sənədi artıq doğum yerini (yalnız yoxlanılan sənəddə yazılıbsa) və sənədi verən təşkilatın adını daşıyır; AB şəxsi identifikasiya məlumatlarında olduğu kimi.",
+          "Sənəd növləri kataloqundakı hər qeyd həmin növün qaydalar kitabına keçid verir.",
+        ],
+      },
+      changed: {
+        en: [
+          "The @tamga-network/* packages are on npm as the 0.8.8 test release. The identity credential type hash changed: wallets should update and renew their identity credential.",
+        ],
+        tr: [
+          "@tamga-network/* paketleri npm'de 0.8.8 deneme sürümünde. Kimlik belgesi türünün özeti değişti; cüzdanlar güncellenmeli ve kimlik belgesini yenilemeli.",
+        ],
+        tk: [
+          "@tamga-network/* paketleri npm-de 0.8.8 synag wersiýasynda. Şahsyýet resminamasy görnüşiniň heşi üýtgedi; gapjyklar täzelenmeli we şahsyýet resminamasyny täzelemeli.",
+        ],
+        az: [
+          "@tamga-network/* paketləri npm-də 0.8.8 sınaq buraxılışındadır. Şəxsiyyət sənədi növünün heşi dəyişdi; cüzdanlar yenilənməli və şəxsiyyət sənədini yeniləməlidir.",
+        ],
+      },
+      security: {
+        en: [
+          "The wallet encrypts each save of its local store under a fresh key derived for that save.",
+          "A presentation request that asks the wallet to sign transaction data is refused until such a transaction type is defined; when one is, the wallet signs only the items it showed to the person.",
+        ],
+        tr: [
+          "Cüzdan, yerel deposunun her kaydını o kayıt için türetilen yeni bir anahtarla şifreliyor.",
+          "Cüzdandan işlem verisi imzalamasını isteyen sunum isteği, böyle bir işlem türü tanımlanana kadar reddediliyor; tanımlandığında cüzdan yalnız kişiye gösterdiği öğeleri imzalayacak.",
+        ],
+        tk: [
+          "Gapjyk ýerli ammarynyň her ýazgysyny şol ýazgy üçin alnan täze açar bilen şifrleýär.",
+          "Gapjykdan amal maglumatlaryna gol çekmegi soraýan görkezme haýyşy şeýle amal görnüşi kesgitlenýänçä ret edilýär; kesgitlenende gapjyk diňe adama görkezen bölümlerine gol çeker.",
+        ],
+        az: [
+          "Cüzdan yerli anbarının hər yazısını həmin yazı üçün törədilən yeni açarla şifrələyir.",
+          "Cüzdandan əməliyyat məlumatlarını imzalamağı istəyən təqdimat sorğusu belə bir əməliyyat növü müəyyən edilənə qədər rədd edilir; müəyyən edildikdə cüzdan yalnız şəxsə göstərdiyi elementləri imzalayacaq.",
+        ],
+      },
+    },
+  },
+  {
     id: "v1.0.0-2026-11-17-packages-0-8-7",
     version: "v1.0.0",
     date: "2026-11-17",
