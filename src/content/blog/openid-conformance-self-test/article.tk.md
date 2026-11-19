@@ -1,5 +1,5 @@
 ---
-title: "OpenID laýyklyk synaglaryndan geçende öwrenenlerimiz we açyk çeşmeli eden toplumymyz"
+title: "OpenID laýyklyk synaglaryny işledenimizde öwrenenlerimiz we açyk çeşmeli eden toplumymyz"
 slug: openid-conformance-self-test
 description: OpenID Foundation-yň issuer we verifier synag meýilnamalaryny (OpenID4VCI, OpenID4VP, HAIP, FAPI 2.0) sandbox-da işletdik, ýigrimä golaý tapyndyny düzetdik we toplumy çap etdik.
 date: 2026-10-27

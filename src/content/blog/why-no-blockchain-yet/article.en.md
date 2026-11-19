@@ -3,6 +3,7 @@ title: Why we start without a blockchain
 slug: why-no-blockchain-yet
 description: A ledger run by one operator is a slower database. Tamga starts with signed trust lists, the EU model, and adds a ledger once independent operators join.
 date: 2026-09-27
+updated: 2026-11-19
 lang: en
 category: network
 draft: false
@@ -24,7 +25,8 @@ We publish [signed trust lists](/learn/trust-lists), which is the model the EU u
 - Institution and document type identifiers are computed exactly the way the contracts compute them.
 - Every list field maps to a contract record. The list history can be replayed into the ledger, and tests confirm that both give the same answers.
 - Wallets, verifiers and credentials read trust through a single interface, so the switch changes nothing for them.
+- The signed lists stay the single source after the ledger arrives too: the ledger is a witness and is never read in any verification decision, and its code is already written and switched off.
 
 ## When the ledger comes
 
-A permissioned Besu/QBFT ledger will be started once at least two independent validator operators agree in writing. Until then we say it plainly ([why the network is bound for a foundation](/blog/network-as-a-foundation)). The anchor rests on one operator's signature, and the public log, the transparency report and audits deter misuse without making it impossible. The details are in the [whitepaper v1.0](/whitepaper).
+A permissioned Besu/QBFT ledger will be started once at least two independent validator operators agree in writing, after a test network run and an independent security audit. Until then we say it plainly ([why the network is bound for a foundation](/blog/network-as-a-foundation)). The anchor rests on one operator's signature, and the public log, the transparency report and audits deter misuse without making it impossible. The details are in the [whitepaper v1.0](/whitepaper).

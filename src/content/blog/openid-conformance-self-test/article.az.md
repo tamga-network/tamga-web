@@ -1,5 +1,5 @@
 ---
-title: "OpenID uyğunluq testlərindən keçərkən öyrəndiklərimiz və açıq mənbəli etdiyimiz dəst"
+title: "OpenID uyğunluq testlərini işlədərkən öyrəndiklərimiz və açıq mənbəli etdiyimiz dəst"
 slug: openid-conformance-self-test
 description: OpenID Foundation-ın issuer və verifier test planlarını (OpenID4VCI, OpenID4VP, HAIP, FAPI 2.0) sandbox-da işlətdik, iyirmiyə yaxın tapıntını düzəltdik və dəsti dərc etdik.
 date: 2026-10-27

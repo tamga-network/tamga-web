@@ -1,5 +1,5 @@
 ---
-title: "OpenID uyum testlerinden öğrendiklerimiz ve açık kaynak yaptığımız kit"
+title: "OpenID uyum testlerini çalıştırırken öğrendiklerimiz ve açık kaynak yaptığımız kit"
 slug: openid-conformance-self-test
 description: OpenID Foundation'ın issuer ve verifier test planlarını (OpenID4VCI, OpenID4VP, HAIP, FAPI 2.0) sandbox'ımızda çalıştırdık, yirmiye yakın bulguyu düzelttik ve kiti yayımladık.
 date: 2026-10-27

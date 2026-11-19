@@ -108,6 +108,60 @@ export const CHANGELOG_PAGE: Record<
 
 export const RELEASES: Release[] = [
   {
+    id: "v1.0.0-2026-11-19-packages-0-8-9",
+    version: "v1.0.0",
+    date: "2026-11-19",
+    kind: "security",
+    title: {
+      en: "Safer package defaults and EU alignment, packages 0.8.9",
+      tr: "Daha güvenli paket varsayılanları ve AB uyumu, paketler 0.8.9",
+      tk: "Has howpsuz paket bellenen sazlamalary we ÝB bilen gabat gelmek, paketler 0.8.9",
+      az: "Daha təhlükəsiz paket standartları və AB uyğunluğu, paketlər 0.8.9",
+    },
+    sections: {
+      changed: {
+        en: [
+          "The @tamga-network/* packages are on npm as the 0.8.9 test release. It changes how the packages are called: integrators should read the package changelog before updating.",
+        ],
+        tr: [
+          "@tamga-network/* paketleri npm'de 0.8.9 deneme sürümünde. Paketlerin çağrılış biçimi değişti; entegratörler güncellemeden önce paket sürüm notunu okumalı.",
+        ],
+        tk: [
+          "@tamga-network/* paketleri npm-de 0.8.9 synag wersiýasynda. Paketleriň çagyrylyş usuly üýtgedi; integratorlar täzelemezden öň paketiň wersiýa belligini okamaly.",
+        ],
+        az: [
+          "@tamga-network/* paketləri npm-də 0.8.9 sınaq buraxılışındadır. Paketlərin çağırılma qaydası dəyişdi; inteqratorlar yeniləmədən əvvəl paketin buraxılış qeydlərini oxumalıdır.",
+        ],
+      },
+      security: {
+        en: [
+          "A wallet accepts a credential only from an issuer that the signed trust list authorises for that credential type.",
+          "When several copies of one credential arrive together, they must be identical apart from their keys; otherwise the wallet rejects all of them, as the EU framework requires.",
+          "Presentation requests and the addresses in them must use https; plain http is allowed only for local development.",
+          "A wallet provider's revocation list is accepted only when it is signed by a key of that same provider.",
+        ],
+        tr: [
+          "Cüzdan bir belgeyi yalnız imzalı güven listesinin o belge türü için yetkilendirdiği kurumdan kabul ediyor.",
+          "Aynı belgenin birkaç kopyası birlikte geldiğinde, anahtarları dışında birbirinin aynı olmalı; değilse cüzdan hepsini reddediyor (AB çerçevesindeki gibi).",
+          "Sunum istekleri ve içlerindeki adresler https olmalı; düz http yalnız yerel geliştirmede kabul ediliyor.",
+          "Bir cüzdan sağlayıcısının iptal listesi yalnız aynı sağlayıcının anahtarıyla imzalıysa kabul ediliyor.",
+        ],
+        tk: [
+          "Gapjyk resminamany diňe gol çekilen ynam sanawynyň şol resminama görnüşi üçin ygtyýar beren guramasyndan kabul edýär.",
+          "Bir resminamanyň birnäçe nusgasy bilelikde gelende, açarlaryndan başga ähli zatda birmeňzeş bolmaly; bolmasa gapjyk olaryň hemmesini ret edýär (ÝB çarçuwasyndaky ýaly).",
+          "Görkezme haýyşlary we olardaky salgylar https bolmaly; ýönekeý http diňe ýerli işläp düzmekde kabul edilýär.",
+          "Gapjyk üpjün edijisiniň ýatyrma sanawy diňe şol üpjün edijiniň açary bilen gol çekilen bolsa kabul edilýär.",
+        ],
+        az: [
+          "Cüzdan sənədi yalnız imzalı etibar siyahısının həmin sənəd növü üçün səlahiyyət verdiyi təşkilatdan qəbul edir.",
+          "Eyni sənədin bir neçə nüsxəsi birlikdə gəldikdə, açarlarından başqa hər şeydə eyni olmalıdır; əks halda cüzdan hamısını rədd edir (AB çərçivəsində olduğu kimi).",
+          "Təqdimat sorğuları və onlardakı ünvanlar https olmalıdır; adi http yalnız yerli inkişafda qəbul edilir.",
+          "Cüzdan təminatçısının ləğv siyahısı yalnız həmin təminatçının açarı ilə imzalanıbsa qəbul edilir.",
+        ],
+      },
+    },
+  },
+  {
     id: "v1.0.0-2026-11-18-packages-0-8-8",
     version: "v1.0.0",
     date: "2026-11-18",

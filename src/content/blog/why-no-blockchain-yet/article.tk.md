@@ -3,6 +3,7 @@ title: Näme üçin blokçeýnsiz başlaýarys
 slug: why-no-blockchain-yet
 description: Bir operatoryň saklaýan kitaby diňe has haýal maglumatlar binýadydyr. Tamga ÝB-niň modeli bolan gol çekilen ynam sanawlary bilen başlaýar we kitaby garaşsyz operatorlar goşulanda goşar.
 date: 2026-09-27
+updated: 2026-11-19
 lang: tk
 category: network
 draft: false
@@ -24,7 +25,8 @@ Blokçeýn şol bir ýazgyny birnäçe **garaşsyz** tarap saklanda we olaryň h
 - Guramalaryň we resminama görnüşleriniň belgileri akylly şertnamalaryň hasaplaýşy ýaly hasaplanýar.
 - Sanawlardaky her meýdan şertnama ýazgysyna gabat gelýär. Sanawyň taryhyny kitaba başdan ýazyp bolýar we synaglar ikisiniň hem şol bir jogaby berýändigini tassyklaýar.
 - Gapjyklar, barlaýjylar we resminamalar ynam maglumatyny bir interfeýsden okaýar, şonuň üçin geçiş olar üçin hiç zady üýtgetmez.
+- Kitap gelenden soň hem gol çekilen sanawlar ýeke-täk çeşme bolup galar: kitap şaýatdyr we hiç bir barlag kararynda okalmaýar; onuň kody ýazyldy we öçürilen ýagdaýda dur.
 
 ## Kitap haçan geler?
 
-Rugsatly Besu/QBFT kitaby azyndan iki garaşsyz walidator operatory muny ýazmaça kabul edende işe girizilýär. Oňa çenli ýagdaýy aç-açan aýdýarys ([näme üçin tor fonda geçmeli](/blog/network-as-a-foundation)). Ynam ýakory bir operatoryň goluna daýanýar. Açyk žurnal, açyklyk hasabaty we auditler hyýanatçylykly ulanylyşyň öňüni alýar, ýöne ony mümkin däl etmeýär. Jikme-jiklikleri [whitepaper v1.0](/whitepaper)-da tapyp bilersiňiz.
+Rugsatly Besu/QBFT kitaby azyndan iki garaşsyz walidator operatory muny ýazmaça kabul edende, ilki synag torunda barlanyp, garaşsyz howpsuzlyk auditinden geçenden soň işe girizilýär. Oňa çenli ýagdaýy aç-açan aýdýarys ([näme üçin tor fonda geçmeli](/blog/network-as-a-foundation)). Ynam ýakory bir operatoryň goluna daýanýar. Açyk žurnal, açyklyk hasabaty we auditler hyýanatçylykly ulanylyşyň öňüni alýar, ýöne ony mümkin däl etmeýär. Jikme-jiklikleri [whitepaper v1.0](/whitepaper)-da tapyp bilersiňiz.

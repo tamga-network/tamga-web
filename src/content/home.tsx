@@ -282,7 +282,7 @@ const tr: HomeContent = {
       { title: "Belge biçimleri", body: "SD-JWT VC ve ISO mdoc; OpenID4VCI ile verme, OpenID4VP ile gösterme.", status: "Yürürlükte" },
       { title: "Açık paketler", body: "Doğrulama, belge verme ve cüzdan çekirdeği; herkes kendi sunucusunda çalıştırabilir.", status: "Ön sürüm" },
       { title: "Ağın üstündekiler", body: "Ağın kurallarına uyan cüzdanlar ve hizmet sağlayıcılar. İlk cüzdan Tamga Wallet.", status: "Ağın üstünde" },
-      { title: "Ortak defter", body: "En az iki bağımsız işletmeci katıldığında aynı kayıtlar izinli bir deftere taşınır.", status: "İleride", future: true },
+      { title: "Ortak defter", body: "En az iki bağımsız işletmeci katıldığında aynı kayıtlar izinli bir deftere de yazılır; defter tanık ve değiştirilemez ikinci kayıttır, imzalı listeler kaynak kalır.", status: "İleride", future: true },
     ],
   },
   doors: {
@@ -306,11 +306,11 @@ const tr: HomeContent = {
   gov: {
     eyebrow: "Yönetişim",
     title: "Bugün geçici işletmeci. Yarın vakıf.",
-    lead: "Ağı bugün Tamga işletiyor, ama ağ Tamga'ya ait değil. İzlenecek yol baştan yazıldı. Devletler katıldıkça yönetim ortaklaşacak, iki bağımsız işletmeci olduğunda da kayıtlar ortak deftere taşınacak.",
+    lead: "Ağı bugün Tamga işletiyor, ama ağ Tamga'ya ait değil. İzlenecek yol baştan yazıldı. Devletler katıldıkça yönetim ortaklaşacak, iki bağımsız işletmeci olduğunda da kayıtlar ortak deftere tanık olarak yazılacak; kaynak imzalı listeler kalacak.",
     steps: [
       { when: "Bugün", title: "Geçici işletmeci", body: "Devlet ya da yetkilendirdiği bir kurum devralana kadar Tamga, Türkiye listesini açık kurallarla ve herkese açık çapa günlüğüyle geçici olarak yayınlar. Henüz hiçbir devletle anlaşma yoktur." },
       { when: "Devletler katılınca", title: "Konsey ya da vakıf", body: "Listeler sahiplerine devredilir ve ağın kuralları ortak kararla değişir." },
-      { when: "İki bağımsız işletmeci", title: "Ortak defter", body: "Kayıtlar izinli bir deftere taşınır ve hiçbir taraf onları tek başına değiştiremez." },
+      { when: "İki bağımsız işletmeci", title: "Ortak defter", body: "İzinli bir defter listelerin değiştirilemez ikinci kaydını tanık olarak tutar; hiçbir taraf onu tek başına değiştiremez, doğrulama imzalı listelerden yapılmaya devam eder." },
     ],
     roles: {
       title: "Yönetişim rolleri",
@@ -557,7 +557,7 @@ const en: HomeContent = {
       { title: "Credential formats", body: "SD-JWT VC and ISO mdoc; issuance with OpenID4VCI, presentation with OpenID4VP.", status: "In force" },
       { title: "Open packages", body: "Verification, issuance and the wallet core, which anyone can run on their own server.", status: "Pre-release" },
       { title: "On top of the network", body: "Wallets and service providers that follow the network's rules. The first wallet is Tamga Wallet.", status: "On top" },
-      { title: "Shared ledger", body: "Once at least two independent operators join, the same records move to a permissioned ledger.", status: "Later", future: true },
+      { title: "Shared ledger", body: "Once at least two independent operators join, the same records are also written to a permissioned ledger, a witness and immutable second record; the signed lists stay the source.", status: "Later", future: true },
     ],
   },
   doors: {
@@ -581,11 +581,11 @@ const en: HomeContent = {
   gov: {
     eyebrow: "Governance",
     title: "A provisional operator today. A foundation tomorrow.",
-    lead: "Tamga runs the network today, but the network does not belong to Tamga. The path was written down from the start. As states join, governance will be shared, and once there are two independent operators the records will move to a shared ledger.",
+    lead: "Tamga runs the network today, but the network does not belong to Tamga. The path was written down from the start. As states join, governance will be shared, and once there are two independent operators a shared ledger will witness the records, while the signed lists stay the source.",
     steps: [
       { when: "Today", title: "Provisional operator", body: "Until the state, or a body it authorises, takes it over, Tamga publishes the Türkiye list provisionally, with open rules and a public anchor log. There is no agreement with any state yet." },
       { when: "When states join", title: "Council or foundation", body: "Lists are handed over to their owners, and the network's rules change by joint decision." },
-      { when: "Two independent operators", title: "Shared ledger", body: "Records move to a permissioned ledger, and no single party can change them alone." },
+      { when: "Two independent operators", title: "Shared ledger", body: "A permissioned ledger keeps an immutable second record of the lists as a witness. No single party can change it alone, and verification still reads the signed lists." },
     ],
     roles: {
       title: "Governance roles",
@@ -832,7 +832,7 @@ const tk: HomeContent = {
       { title: "Resminama görnüşleri", body: "SD-JWT VC we ISO mdoc; OpenID4VCI bilen bermek, OpenID4VP bilen görkezmek.", status: "Güýjünde" },
       { title: "Açyk paketler", body: "Barlamak, resminama bermek we gapjyk ýadrosy, olary her kim öz serwerinde işledip biler.", status: "Deslapky" },
       { title: "Toruň üstündäkiler", body: "Toruň düzgünlerine eýerýän gapjyklar we hyzmat üpjün edijiler. Ilkinji gapjyk Tamga Wallet.", status: "Toruň üstünde" },
-      { title: "Umumy kitap", body: "Azyndan iki garaşsyz operator goşulanda şol ýazgylar rugsatly kitaba geçirilýär.", status: "Soňra", future: true },
+      { title: "Umumy kitap", body: "Azyndan iki garaşsyz operator goşulanda şol ýazgylar rugsatly kitaba-da ýazylýar; kitap şaýat we üýtgedip bolmaýan ikinji ýazgydyr, gol çekilen sanawlar çeşme bolup galýar.", status: "Soňra", future: true },
     ],
   },
   doors: {
@@ -856,11 +856,11 @@ const tk: HomeContent = {
   gov: {
     eyebrow: "Dolandyryş",
     title: "Häzir wagtlaýyn operator. Ertir gazna.",
-    lead: "Tory häzir Tamga işledýär, ýöne tor Tamga degişli däl. Gidiljek ýol başdan ýazyldy. Döwletler goşuldygyça dolandyryş umumy bolar, iki garaşsyz operator bolanda bolsa ýazgylar umumy kitaba geçiriler.",
+    lead: "Tory häzir Tamga işledýär, ýöne tor Tamga degişli däl. Gidiljek ýol başdan ýazyldy. Döwletler goşuldygyça dolandyryş umumy bolar, iki garaşsyz operator bolanda bolsa ýazgylar umumy kitaba şaýat hökmünde ýazylar; çeşme gol çekilen sanawlar bolup galar.",
     steps: [
       { when: "Häzir", title: "Wagtlaýyn operator", body: "Döwlet ýa-da onuň ygtyýarlandyran guramasy öz üstüne alýança Tamga Türkiýäniň sanawyny açyk düzgünler we açyk labyr žurnaly bilen wagtlaýyn çap edýär. Häzirlikçe hiç bir döwlet bilen ylalaşyk ýok." },
       { when: "Döwletler goşulanda", title: "Geňeş ýa-da gazna", body: "Sanawlar eýelerine geçirilýär we toruň düzgünleri bilelikdäki karar bilen üýtgeýär." },
-      { when: "Iki garaşsyz operator", title: "Umumy kitap", body: "Ýazgylar rugsatly kitaba geçirilýär we hiç bir tarap olary ýeke özi üýtgedip bilmez." },
+      { when: "Iki garaşsyz operator", title: "Umumy kitap", body: "Rugsatly kitap sanawlaryň üýtgedip bolmaýan ikinji ýazgysyny şaýat hökmünde saklaýar; hiç bir tarap ony ýeke özi üýtgedip bilmez, barlag gol çekilen sanawlardan edilmegini dowam edýär." },
     ],
     roles: {
       title: "Dolandyryş rollary",
@@ -1107,7 +1107,7 @@ const az: HomeContent = {
       { title: "Rəqəmsal sənəd formatları", body: "SD-JWT VC və ISO mdoc; OpenID4VCI ilə vermə, OpenID4VP ilə təqdimetmə.", status: "Qüvvədədir" },
       { title: "Açıq paketlər", body: "Yoxlama, sənəd vermə və rəqəmsal cüzdan nüvəsi, onları hər kəs öz serverində işlədə bilər.", status: "İlkin versiya" },
       { title: "Şəbəkənin üzərində", body: "Şəbəkənin qaydalarına əməl edən rəqəmsal cüzdanlar və xidmət provayderləri. İlk rəqəmsal cüzdan Tamga Wallet-dır.", status: "Şəbəkə üzərində" },
-      { title: "Ortaq reyestr", body: "Ən azı iki müstəqil operator qoşulduqda eyni qeydlər icazəli reyestrə köçürülür.", status: "Gələcəkdə", future: true },
+      { title: "Ortaq reyestr", body: "Ən azı iki müstəqil operator qoşulduqda eyni qeydlər icazəli reyestrə də yazılır; reyestr şahid və dəyişdirilə bilməyən ikinci qeyddir, imzalanmış siyahılar mənbə olaraq qalır.", status: "Gələcəkdə", future: true },
     ],
   },
   doors: {
@@ -1131,11 +1131,11 @@ const az: HomeContent = {
   gov: {
     eyebrow: "İdarəetmə",
     title: "Bu gün müvəqqəti operator. Sabah fond.",
-    lead: "Bu gün şəbəkəni Tamga idarə edir, amma şəbəkə Tamga-ya məxsus deyil. Gediləcək yol əvvəldən yazılıb. Dövlətlər qoşulduqca idarəetmə ortaq olacaq, iki müstəqil operator olanda isə qeydlər ortaq reyestrə köçürüləcək.",
+    lead: "Bu gün şəbəkəni Tamga idarə edir, amma şəbəkə Tamga-ya məxsus deyil. Gediləcək yol əvvəldən yazılıb. Dövlətlər qoşulduqca idarəetmə ortaq olacaq, iki müstəqil operator olanda isə qeydlər ortaq reyestrə şahid kimi yazılacaq; mənbə imzalanmış siyahılar olaraq qalacaq.",
     steps: [
       { when: "Bu gün", title: "Müvəqqəti operator", body: "Dövlət və ya onun səlahiyyət verdiyi qurum öz üzərinə götürənə qədər Tamga Türkiyə siyahısını açıq qaydalar və ictimai lövbər jurnalı ilə müvəqqəti olaraq dərc edir. Hələlik heç bir dövlətlə razılaşma yoxdur." },
       { when: "Dövlətlər qoşulduqda", title: "Şura və ya fond", body: "Siyahılar sahiblərinə təhvil verilir və şəbəkənin qaydaları birgə qərarla dəyişir." },
-      { when: "İki müstəqil operator", title: "Ortaq reyestr", body: "Qeydlər icazəli reyestrə köçürülür və heç bir tərəf onları təkbaşına dəyişə bilməz." },
+      { when: "İki müstəqil operator", title: "Ortaq reyestr", body: "İcazəli reyestr siyahıların dəyişdirilə bilməyən ikinci qeydini şahid kimi saxlayır; heç bir tərəf onu təkbaşına dəyişə bilməz, yoxlama imzalanmış siyahılardan aparılmağa davam edir." },
     ],
     roles: {
       title: "İdarəetmə rolları",

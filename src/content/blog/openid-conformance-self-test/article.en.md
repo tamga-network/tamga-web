@@ -1,5 +1,5 @@
 ---
-title: "What we learned passing the OpenID conformance tests, and the kit we open-sourced"
+title: "What we learned running the OpenID conformance tests, and the kit we open-sourced"
 slug: openid-conformance-self-test
 description: We ran the OpenID Foundation's issuer and verifier test plans (OpenID4VCI, OpenID4VP, HAIP, FAPI 2.0) on our sandbox, fixed about twenty findings and published the kit.
 date: 2026-10-27

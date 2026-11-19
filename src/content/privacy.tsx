@@ -7,11 +7,10 @@ import { ExternalLink } from "@/components/external-link";
  * Kaynaklar:
  *  - site: src/proxy.ts + src/lib/csp.ts (dış betik/yazı tipi/analiz yok, her şey 'self'), çerezler `theme`
  *    (src/lib/theme.ts) ve next-intl dil çerezi `NEXT_LOCALE`; Öğren ilerlemesi yalnız tarayıcıda (src/components/learn/progress.ts);
- *    sunucu kayıtları tamga-platform ops/nginx/tamga.conf (IP'siz erişim kaydı) + ops/server/2-setup.sh (erişim 14 gün,
- *    hata kaydı ~24 saat).
- *  - kimlik servisi: tamga-platform apps/id/src/store.ts (kalıcı kayıt: opak subject_ref, belge no anahtarlı özeti, tür, tarihler,
- *    yöntem, sağlayıcı oturum kimliği, iptal listesi yeri; kişi alanları yalnız bellekte, ihraçtan sonra silinir) ve retention.ts
- *    (bitiş/iptalden 30 gün sonra kayıt + sağlayıcı oturumu silme isteği; olay günlüğü 365 gün); KVKK ön incelemesi 2026-10-28.
+ *    sunucu kayıtları işletmecinin sunucu yapılandırmasından (IP'siz erişim kaydı; erişim 14 gün, hata kaydı ~24 saat).
+ *  - kimlik servisi: kalıcı kayıt yalnız opak subject_ref, belge no anahtarlı özeti, tür, tarihler, yöntem, sağlayıcı oturum
+ *    kimliği, iptal listesi yeri; kişi alanları yalnız bellekte, ihraçtan sonra silinir; bitiş/iptalden 30 gün sonra kayıt +
+ *    sağlayıcı oturumu silme isteği; olay günlüğü 365 gün.
  * Veri sorumlusu satırında tüzel kişi adı yazılmaz (vakıf henüz yok) — hukukçu sorusu.
  * Kişisel veri, saklama süresi ya da sağlayıcı değişirse bu sayfa aynı gün güncellenir.
  */

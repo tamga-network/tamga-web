@@ -3,6 +3,7 @@ title: Neden zincirsiz başlıyoruz
 slug: why-no-blockchain-yet
 description: Tek işletmecinin tuttuğu bir defter, yalnız daha yavaş bir veritabanıdır. Tamga AB'nin modeli olan imzalı güven listeleriyle başlıyor ve defteri bağımsız işletmeciler katıldığında ekleyecek.
 date: 2026-09-27
+updated: 2026-11-19
 lang: tr
 category: network
 draft: false
@@ -24,7 +25,8 @@ Bir blockchain, aynı kaydı birden çok **bağımsız** taraf tuttuğunda ve hi
 - Kurum ve belge türü kimlikleri, akıllı sözleşmelerin hesapladığı biçimde hesaplanıyor.
 - Listelerdeki her alan bir sözleşme kaydına karşılık geliyor. Liste geçmişi deftere baştan yazılabiliyor ve testler ikisinin aynı yanıtı verdiğini doğruluyor.
 - Cüzdanlar, doğrulayıcılar ve belgeler güven bilgisini tek bir arayüzden okuyor, bu yüzden geçiş onlar için hiçbir şeyi değiştirmeyecek.
+- Defter geldikten sonra da imzalı listeler tek kaynak kalacak: defter tanıktır ve hiçbir doğrulama kararında okunmaz; kodu yazıldı ve kapalı duruyor.
 
 ## Defter ne zaman gelecek?
 
-İzinli bir Besu/QBFT defteri, en az iki bağımsız doğrulayıcı işletmecisi bunu yazılı olarak kabul ettiğinde başlatılacak. O zamana kadar durumu açıkça söylüyoruz ([ağ neden vakfa gidiyor](/blog/network-as-a-foundation)). Güven çapası tek bir işletmecinin imzasına dayanıyor. Herkese açık günlük, şeffaflık raporu ve denetimler kötüye kullanımı caydırıyor, ama imkânsız kılmıyor. Ayrıntıları [whitepaper v1.0](/whitepaper)'da bulabilirsiniz.
+İzinli bir Besu/QBFT defteri, en az iki bağımsız doğrulayıcı işletmecisi bunu yazılı olarak kabul ettiğinde, önce bir test ağında denendikten ve bağımsız bir güvenlik denetiminden geçtikten sonra başlatılacak. O zamana kadar durumu açıkça söylüyoruz ([ağ neden vakfa gidiyor](/blog/network-as-a-foundation)). Güven çapası tek bir işletmecinin imzasına dayanıyor. Herkese açık günlük, şeffaflık raporu ve denetimler kötüye kullanımı caydırıyor, ama imkânsız kılmıyor. Ayrıntıları [whitepaper v1.0](/whitepaper)'da bulabilirsiniz.

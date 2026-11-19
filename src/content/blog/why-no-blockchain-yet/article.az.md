@@ -3,6 +3,7 @@ title: Niyə blokçeyn olmadan başlayırıq
 slug: why-no-blockchain-yet
 description: "Bir operatorun saxladığı reyestr sadəcə daha yavaş verilənlər bazasıdır. Tamga Aİ modeli olan imzalanmış etibar siyahıları ilə başlayır və reyestri müstəqil operatorlar qoşulanda əlavə edəcək."
 date: 2026-09-27
+updated: 2026-11-19
 lang: az
 category: network
 draft: false
@@ -24,7 +25,8 @@ Blokçeyn eyni qeydi bir neçə **müstəqil** tərəf saxlayanda və onlardan h
 - Qurum və sənəd növü identifikatorları ağıllı müqavilələrin hesabladığı kimi hesablanır.
 - Siyahılardakı hər sahə müqavilə qeydinə uyğun gəlir. Siyahının tarixçəsini reyestrə əvvəldən yazmaq olar və testlər hər ikisinin eyni cavabı verdiyini təsdiqləyir.
 - Cüzdanlar, yoxlayan tərəflər və sənədlər etibar məlumatını bir interfeysdən oxuyur, ona görə keçid onlar üçün heç nəyi dəyişməyəcək.
+- Reyestr gələndən sonra da imzalanmış siyahılar yeganə mənbə olaraq qalacaq: reyestr şahiddir və heç bir yoxlama qərarında oxunmur; onun kodu yazılıb və söndürülmüş vəziyyətdədir.
 
 ## Reyestr nə vaxt gələcək?
 
-İcazəli Besu/QBFT reyestri ən azı iki müstəqil validator operatoru bunu yazılı şəkildə qəbul edəndə işə salınacaq. O vaxta qədər vəziyyəti açıq deyirik ([şəbəkə niyə fonda doğru gedir](/blog/network-as-a-foundation)). Etibar lövbəri bir operatorun imzasına söykənir. Açıq jurnal, şəffaflıq hesabatı və auditlər sui-istifadənin qarşısını alır, amma onu qeyri-mümkün etmir. Təfərrüatları [whitepaper v1.0](/whitepaper) sənədində tapa bilərsiniz.
+İcazəli Besu/QBFT reyestri ən azı iki müstəqil validator operatoru bunu yazılı şəkildə qəbul edəndə, əvvəlcə test şəbəkəsində sınandıqdan və müstəqil təhlükəsizlik auditindən keçdikdən sonra işə salınacaq. O vaxta qədər vəziyyəti açıq deyirik ([şəbəkə niyə fonda doğru gedir](/blog/network-as-a-foundation)). Etibar lövbəri bir operatorun imzasına söykənir. Açıq jurnal, şəffaflıq hesabatı və auditlər sui-istifadənin qarşısını alır, amma onu qeyri-mümkün etmir. Təfərrüatları [whitepaper v1.0](/whitepaper) sənədində tapa bilərsiniz.

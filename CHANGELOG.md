@@ -5,7 +5,8 @@ changes before it are folded into this release. The user-facing release notes ar
 
 ## [1.0.0] — 2026-10-16
 
-tamga.network with the network's 1.0 documentation set, in English, Turkish and Turkmen.
+tamga.network with the network's 1.0 documentation set, in four languages: English, Turkish, Turkmen and Azerbaijani
+(machine translation, marked on every page until a native speaker has reviewed it).
 
 - Design: N1 mark at every size (one favicon across the network's sites), Gök palette, Onest + IBM Plex; mega menus;
   entry-level homepage with the animated "How it works".
@@ -109,3 +110,10 @@ tamga.network with the network's 1.0 documentation set, in English, Turkish and 
   About opens with the same scene; name, mission/vision, layers and contact were redesigned (seal mark, statement band, layer
   cross-section, contact rows); the unused platform diagram was removed. Home "Why" shows each problem next to how the
   network answers it (sentences drawn from existing site copy). Next.js 16.4.3 → 16.4.6 (security advisories).
+- 2026-11-19: ledger wording follows the EU model (ADR-0084). Home (layers, governance) and the roadmap's stage 4 say the
+  signed lists stay the source and the ledger is a witness and immutable second record; the roadmap title reads "witness
+  ledger" and stage 4 names the conditions: test network first, written acceptance by two independent operators, key
+  decisions and an independent security audit. "Why we start without a blockchain" adds that the ledger is never read in a
+  verification decision and its code is written and switched off (`updated: 2026-11-19`). The OpenID self-test post title
+  says "running" rather than "passing" the conformance tests. README and changelog say four languages; README build steps
+  point to `publications/build.ps1`; source comments on the privacy page no longer carry private paths or an internal date.

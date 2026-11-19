@@ -55,10 +55,10 @@ const en: RoadmapContent = {
   meta: {
     title: "Roadmap",
     description:
-      "The Tamga Network roadmap covers what is live today and the conditional stages that follow: preparation, the foundation, the shared ledger, state participation and institutional expansion.",
+      "The Tamga Network roadmap covers what is live today and the conditional stages that follow: preparation, the foundation, the witness ledger, state participation and institutional expansion.",
   },
   eyebrow: "Roadmap",
-  title: "From signed lists to a shared ledger",
+  title: "From signed lists to a witness ledger",
   lead: "The roadmap is organised by conditions, not dates. Each stage depends on a condition, several of them outside the network's own hands, and no stage changes the identifiers set up in an earlier one.",
   phaseLabel: "Phase",
   labels: {
@@ -210,7 +210,7 @@ const en: RoadmapContent = {
       state: "planned",
       title: "Ledger",
       summary:
-        "Condition: written acceptance by at least two independent operators, and equivalence tests. The signed lists remain the source and the verification pipeline does not change.",
+        "Condition: a test network first, where equivalence tests run without differences; then the real ledger, after written acceptance by at least two independent operators, key decisions (production key path, separation of keys) and an independent security audit. The signed lists remain the source, the ledger is only a witness and the verification pipeline does not change.",
       cards: [
         {
           icon: "network",
@@ -304,10 +304,10 @@ const tr: RoadmapContent = {
   meta: {
     title: "Yol haritası",
     description:
-      "Tamga Network yol haritası bugün yayında olanları ve ardından gelen koşullu aşamaları anlatır: hazırlık, vakıf, ortak defter, devlet katılımı ve kurumsal genişleme.",
+      "Tamga Network yol haritası bugün yayında olanları ve ardından gelen koşullu aşamaları anlatır: hazırlık, vakıf, tanık defter, devlet katılımı ve kurumsal genişleme.",
   },
   eyebrow: "Yol haritası",
-  title: "İmzalı listelerden ortak deftere",
+  title: "İmzalı listelerden tanık deftere",
   lead: "Yol haritası tarihlere göre değil, koşullara göre düzenlendi. Her aşama bir koşula bağlıdır, bu koşulların bir kısmı ağın kendi elinde değildir ve hiçbir aşama önceki aşamada kurulan kimlikleri değiştirmez.",
   phaseLabel: "Aşama",
   labels: {
@@ -459,7 +459,7 @@ const tr: RoadmapContent = {
       state: "planned",
       title: "Defter",
       summary:
-        "Koşul: en az iki bağımsız işletmecinin yazılı kabulü ve eşdeğerlik testleri. İmzalı listeler kaynak kalır, doğrulama hattı değişmez.",
+        "Koşul: önce test ağı ve orada eşdeğerlik testlerinin farksız işlemesi; ardından gerçek defter, en az iki bağımsız işletmecinin yazılı kabulü, anahtar kararları (üretim anahtar yolu, anahtarların ayrılması) ve bağımsız güvenlik denetiminden sonra. İmzalı listeler kaynak kalır, defter yalnız tanıktır, doğrulama hattı değişmez.",
       cards: [
         {
           icon: "network",
@@ -553,10 +553,10 @@ const tk: RoadmapContent = {
   meta: {
     title: "Ýol kartasy",
     description:
-      "Tamga Network ýol kartasy häzir işleýän zatlary we soňky şertli tapgyrlary düşündirýär: taýýarlyk, gazna, umumy kitap, döwletiň goşulmagy we institusional giňelme.",
+      "Tamga Network ýol kartasy häzir işleýän zatlary we soňky şertli tapgyrlary düşündirýär: taýýarlyk, gazna, şaýat kitap, döwletiň goşulmagy we institusional giňelme.",
   },
   eyebrow: "Ýol kartasy",
-  title: "Gol çekilen sanawlardan umumy kitaba",
+  title: "Gol çekilen sanawlardan şaýat kitaba",
   lead: "Ýol kartasy senelere görä däl, şertlere görä düzüldi. Her tapgyr bir şerte bagly, bu şertleriň bir bölegi toruň öz elinde däl we hiç bir tapgyr öňki tapgyrda döredilen belgileri üýtgetmeýär.",
   phaseLabel: "Tapgyr",
   labels: {
@@ -708,7 +708,7 @@ const tk: RoadmapContent = {
       state: "planned",
       title: "Kitap",
       summary:
-        "Şert: azyndan iki garaşsyz operatoryň ýazmaça razylygy we deňgüýçlilik synaglary. Gol çekilen sanawlar çeşme bolup galýar, barlag hatary üýtgemeýär.",
+        "Şert: ilki synag tory we onda deňgüýçlilik synaglarynyň tapawutsyz işlemegi; soňra hakyky kitap, azyndan iki garaşsyz operatoryň ýazmaça razylygyndan, açar kararlaryndan (önümçilik açar ýoly, açarlaryň aýrylmagy) we garaşsyz howpsuzlyk auditinden soň. Gol çekilen sanawlar çeşme bolup galýar, kitap diňe şaýatdyr, barlag hatary üýtgemeýär.",
       cards: [
         {
           icon: "network",
@@ -802,10 +802,10 @@ const az: RoadmapContent = {
   meta: {
     title: "Yol xəritəsi",
     description:
-      "Tamga Network-un yol xəritəsi bu gün işlək olanları və ardınca gələn şərti mərhələləri izah edir: hazırlıq, fond, ortaq reyestr, dövlətin qoşulması və institusional genişlənmə.",
+      "Tamga Network-un yol xəritəsi bu gün işlək olanları və ardınca gələn şərti mərhələləri izah edir: hazırlıq, fond, şahid reyestr, dövlətin qoşulması və institusional genişlənmə.",
   },
   eyebrow: "Yol xəritəsi",
-  title: "İmzalı siyahılardan ortaq reyestrə",
+  title: "İmzalı siyahılardan şahid reyestrə",
   lead: "Yol xəritəsi tarixlərə görə yox, şərtlərə görə qurulub. Hər mərhələ bir şərtə bağlıdır, bu şərtlərin bir hissəsi şəbəkənin öz əlində deyil və heç bir mərhələ əvvəlki mərhələdə qurulan identifikatorları dəyişmir.",
   phaseLabel: "Mərhələ",
   labels: {
@@ -957,7 +957,7 @@ const az: RoadmapContent = {
       state: "planned",
       title: "Reyestr",
       summary:
-        "Şərt: ən azı iki müstəqil operatorun yazılı razılığı və ekvivalentlik testləri. İmzalı siyahılar mənbə olaraq qalır, yoxlama xətti dəyişmir.",
+        "Şərt: əvvəlcə test şəbəkəsi və orada ekvivalentlik testlərinin fərqsiz işləməsi; sonra real reyestr, ən azı iki müstəqil operatorun yazılı razılığı, açar qərarları (istehsal açar yolu, açarların ayrılması) və müstəqil təhlükəsizlik auditindən sonra. İmzalı siyahılar mənbə olaraq qalır, reyestr yalnız şahiddir, yoxlama xətti dəyişmir.",
       cards: [
         {
           icon: "network",
