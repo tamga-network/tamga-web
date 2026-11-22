@@ -108,6 +108,60 @@ export const CHANGELOG_PAGE: Record<
 
 export const RELEASES: Release[] = [
   {
+    id: "v1.0.0-2026-11-22-packages-0-9-0",
+    version: "v1.0.0",
+    date: "2026-11-22",
+    kind: "feature",
+    title: {
+      en: "Several national trust lists and representative PID in the sandbox, packages 0.9.0",
+      tr: "Birden çok ülke güven listesi ve sandbox'ta temsili PID, paketler 0.9.0",
+      tk: "Birnäçe ýurt ynam sanawy we sandbox-da wekilçilikli PID, paketler 0.9.0",
+      az: "Bir neçə ölkə etibar siyahısı və sandbox-da təmsili PID, paketlər 0.9.0",
+    },
+    sections: {
+      added: {
+        en: [
+          "Wallets and verifiers can load every active national list named by the signed list of lists. An institution's identity comes from the list of its own state; if another state's list cannot be loaded, only that state's institutions answer \"unknown\".",
+          "Sandbox: national lists for Azerbaijan and Kazakhstan with fictional institutions, next to Türkiye.",
+          "Sandbox: representative providers of person identification data (EU PID) for Türkiye, Azerbaijan and Kazakhstan, in SD-JWT and ISO mdoc formats. They are test services; the states do not take part in or endorse them.",
+          "Sandbox: fictional source institutions for the phone number and e-mail address credentials (Sinyalnet Mobil, Postakuş). The real network is unchanged.",
+        ],
+        tr: [
+          "Cüzdanlar ve doğrulayıcılar, imzalı listeler listesinin gösterdiği bütün etkin ülke listelerini yükleyebiliyor. Bir kurumun kimliği kendi ülkesinin listesinden geliyor; başka bir ülkenin listesi yüklenemezse yalnız o ülkenin kurumları \"bilinmiyor\" yanıtı veriyor.",
+          "Sandbox: Türkiye'nin yanında Azerbaycan ve Kazakistan için kurgusal kurumlu ülke listeleri.",
+          "Sandbox: Türkiye, Azerbaycan ve Kazakistan için temsili kişi kimlik verisi (AB PID) sağlayıcıları, SD-JWT ve ISO mdoc biçiminde. Bunlar deneme hizmetidir; devletler katılmıyor ve onaylamıyor.",
+          "Sandbox: telefon numarası ve e-posta adresi belgeleri için kurgusal kaynak kurumlar (Sinyalnet Mobil, Postakuş). Gerçek ağ değişmedi.",
+        ],
+        tk: [
+          "Gapjyklar we barlaýjylar gol çekilen sanawlaryň sanawynyň görkezýän ähli işjeň ýurt sanawlaryny ýükläp bilýär. Guramanyň şahsyýeti öz ýurdunyň sanawyndan gelýär; başga ýurduň sanawy ýüklenip bilinmese, diňe şol ýurduň guramalary \"näbelli\" jogabyny berýär.",
+          "Sandbox: Türkiýäniň ýanynda Azerbaýjan we Gazagystan üçin toslama guramaly ýurt sanawlary.",
+          "Sandbox: Türkiýe, Azerbaýjan we Gazagystan üçin şahsyýet maglumatlarynyň (ÝB PID) wekilçilikli üpjün edijileri, SD-JWT we ISO mdoc görnüşinde. Olar synag hyzmatlarydyr; döwletler olara gatnaşmaýar we olary tassyklamaýar.",
+          "Sandbox: telefon belgisi we e-poçta salgysy resminamalary üçin toslama çeşme guramalary (Sinyalnet Mobil, Postakuş). Hakyky tor üýtgemedi.",
+        ],
+        az: [
+          "Cüzdanlar və yoxlayıcılar imzalı siyahılar siyahısının göstərdiyi bütün aktiv ölkə siyahılarını yükləyə bilir. Təşkilatın şəxsiyyəti öz ölkəsinin siyahısından gəlir; başqa ölkənin siyahısı yüklənə bilmirsə, yalnız həmin ölkənin təşkilatları \"naməlum\" cavabı verir.",
+          "Sandbox: Türkiyənin yanında Azərbaycan və Qazaxıstan üçün uydurma təşkilatlı ölkə siyahıları.",
+          "Sandbox: Türkiyə, Azərbaycan və Qazaxıstan üçün şəxsiyyət məlumatlarının (AB PID) təmsili təminatçıları, SD-JWT və ISO mdoc formatında. Bunlar sınaq xidmətləridir; dövlətlər onlarda iştirak etmir və onları təsdiq etmir.",
+          "Sandbox: telefon nömrəsi və e-poçt ünvanı sənədləri üçün uydurma mənbə təşkilatları (Sinyalnet Mobil, Postakuş). Real şəbəkə dəyişməyib.",
+        ],
+      },
+      changed: {
+        en: [
+          "The @tamga-network/* packages are on npm as the 0.9.0 test release. It changes how trust lists are built and how the issuer's identity is resolved: integrators should read the package changelog before updating.",
+        ],
+        tr: [
+          "@tamga-network/* paketleri npm'de 0.9.0 deneme sürümünde. Güven listelerinin kurulma ve kurum kimliğinin bulunma biçimi değişti; entegratörler güncellemeden önce paket sürüm notunu okumalı.",
+        ],
+        tk: [
+          "@tamga-network/* paketleri npm-de 0.9.0 synag wersiýasynda. Ynam sanawlarynyň gurluşy we guramanyň şahsyýetiniň tapylyş usuly üýtgedi; integratorlar täzelemezden öň paketiň wersiýa belligini okamaly.",
+        ],
+        az: [
+          "@tamga-network/* paketləri npm-də 0.9.0 sınaq buraxılışındadır. Etibar siyahılarının qurulma və təşkilat şəxsiyyətinin müəyyənləşdirilmə qaydası dəyişdi; inteqratorlar yeniləmədən əvvəl paketin buraxılış qeydlərini oxumalıdır.",
+        ],
+      },
+    },
+  },
+  {
     id: "v1.0.0-2026-11-19-packages-0-8-9",
     version: "v1.0.0",
     date: "2026-11-19",
