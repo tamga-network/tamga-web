@@ -15,7 +15,7 @@ Universitetin həqiqətən istifadə edəcəyi sistemi qurduq və onu uydurma t�
 
 - Universitet cüzdana diplom və ya tələbə sənədi verir. Sənəd hər biri fərqli cihaz açarına bağlı on nüsxə kimi gəlir.
 - İşəgötürən iki sahə istəyir və məhz bu iki sahəni saniyələr ərzində yoxlanılmış şəkildə alır.
-- Ləğv növbəti sabit dərcdə bütün yoxlayan tərəflərə çatır. Universitetin fəaliyyəti dayandırılanda o yeni sənəd verə bilmir, amma əvvəl verdiyi diplomlar etibarlı qalır.
+- Ləğv növbəti sabit dərcdə bütün yoxlayan tərəflərə çatır. Universitet dayandırılmış olduğu müddətdə onun heç bir diplomu qəbul edilmir, əvvəl verilənlər də; dayandırma götürüldükdə yenidən qəbul edilir.
 - Sənədin ekran görüntüsü rədd edilir. Başqa telefonun açarı ilə təqdim edilən nüsxə də rədd edilir.
 - Şəxsiyyət yoxlamasının sonunda şəxsiyyət sənədi yaradılır və bu sənəd ISO mdoc formatında da verilir. Yaşı yoxlayan tərəf isə yalnız "18 yaşdan yuxarıdır" məlumatını alır.
 - Kampus turniketləri və tədbir girişləri 60 saniyə etibarlı QR keçidini qəbul edir. Bilet isə yalnız bir dəfə istifadə oluna bilər.

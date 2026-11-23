@@ -93,7 +93,7 @@ const en: ScenariosContent = {
         {
           status: "today",
           title: "When a diploma is withdrawn, and when a university closes",
-          body: "If the university revokes a diploma, every verifier learns it within a few minutes from the published status list, and the university never learns who checked. If a university is later suspended, diplomas it issued before that date stay valid: authority is judged on the issue date.",
+          body: "If the university revokes a diploma, every verifier learns it within a few minutes from the published status list, and the university never learns who checked. If a university is suspended, none of its diplomas are accepted while the suspension lasts, including those issued before it; when the suspension is lifted, the earlier diplomas are accepted again.",
         },
         {
           status: "later",
@@ -491,7 +491,7 @@ const tr: ScenariosContent = {
         {
           status: "today",
           title: "Diploma geri alınırsa, üniversite kapanırsa",
-          body: "Üniversite bir diplomayı iptal ederse her doğrulayıcı bunu yayımlanan iptal listesinden birkaç dakikada öğrenir; üniversite kimin kontrol ettiğini hiç öğrenmez. Bir üniversitenin yetkisi sonradan askıya alınırsa, o tarihten önce verdiği diplomalar geçerli kalır: yetki, veriliş tarihine göre değerlendirilir.",
+          body: "Üniversite bir diplomayı iptal ederse her doğrulayıcı bunu yayımlanan iptal listesinden birkaç dakikada öğrenir; üniversite kimin kontrol ettiğini hiç öğrenmez. Bir üniversite askıya alınırsa, askı sürdükçe hiçbir diploması kabul edilmez, askıdan önce verdikleri de; askı kalkınca önceki diplomalar yeniden kabul edilir.",
         },
         {
           status: "later",
@@ -889,7 +889,7 @@ const tk: ScenariosContent = {
         {
           status: "today",
           title: "Diplom yzyna alnanda, uniwersitet ýapylanda",
-          body: "Uniwersitet diplomy ýatyrsa, her barlaýjy muny çap edilen ýagdaý sanawyndan birnäçe minutda bilýär; uniwersitet kimiň barlandygyny hiç haçan bilmeýär. Uniwersitetiň ygtyýary soňra togtadylsa, şol senä çenli beren diplomlary güýjünde galýar: ygtyýar berlen senesine görä bahalandyrylýar.",
+          body: "Uniwersitet diplomy ýatyrsa, her barlaýjy muny çap edilen ýagdaý sanawyndan birnäçe minutda bilýär; uniwersitet kimiň barlandygyny hiç haçan bilmeýär. Uniwersitet togtadylsa, togtatma dowam edýän wagtynda onuň hiç bir diplomy kabul edilmeýär, togtadylmazdan öň berlenler hem; togtatma aýrylanda öňki diplomlar ýene kabul edilýär.",
         },
         {
           status: "later",
@@ -1287,7 +1287,7 @@ const az: ScenariosContent = {
         {
           status: "today",
           title: "Diplom geri götürüldükdə və universitet bağlandıqda",
-          body: "Universitet diplomu ləğv edərsə, hər yoxlayan tərəf bunu dərc olunmuş status siyahısından bir neçə dəqiqə ərzində öyrənir, universitet isə kimin yoxladığını heç vaxt bilmir. Universitetin fəaliyyəti sonradan dayandırılarsa, onun həmin tarixdən əvvəl verdiyi diplomlar etibarlı qalır: səlahiyyət sənədin verilmə tarixinə görə qiymətləndirilir.",
+          body: "Universitet diplomu ləğv edərsə, hər yoxlayan tərəf bunu dərc olunmuş status siyahısından bir neçə dəqiqə ərzində öyrənir, universitet isə kimin yoxladığını heç vaxt bilmir. Universitetin fəaliyyəti dayandırılarsa, dayandırılmış olduğu müddətdə onun heç bir diplomu qəbul edilmir, dayandırılmadan əvvəl verilənlər də; dayandırma götürüldükdə əvvəlki diplomlar yenidən qəbul edilir.",
         },
         {
           status: "later",

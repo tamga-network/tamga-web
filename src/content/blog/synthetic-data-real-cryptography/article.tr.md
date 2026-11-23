@@ -15,7 +15,7 @@ Bir üniversitenin gerçekten kullanacağı sistemi kurduk ve onu uydurma öğre
 
 - Üniversite cüzdana diploma ya da öğrenci belgesi veriyor. Belge, her biri farklı bir cihaz anahtarına bağlı on kopya olarak geliyor.
 - İşveren iki alan istiyor ve tam olarak bu iki alanı, saniyeler içinde doğrulanmış olarak alıyor.
-- Bir iptal, bir sonraki sabit yayında bütün doğrulayıcılara ulaşıyor. Bir üniversite askıya alındığında yeni belge veremiyor, ama daha önce verdiği diplomalar geçerli kalıyor.
+- Bir iptal, bir sonraki sabit yayında bütün doğrulayıcılara ulaşıyor. Bir üniversite askıdayken diplomalarının hiçbiri kabul edilmiyor, daha önce verdikleri de; askı kalkınca yeniden kabul ediliyor.
 - Bir belgenin ekran görüntüsü reddediliyor. Başka bir telefonun anahtarıyla sunulan bir kopya da reddediliyor.
 - Kimlik kontrolünün sonunda bir kimlik belgesi üretiliyor ve bu belge ISO mdoc olarak da veriliyor. Yaşı denetleyen taraf ise yalnız "18 yaşından büyük" bilgisini alıyor.
 - Kampüs turnikeleri ve etkinlik girişleri 60 saniye geçerli bir QR geçiş kartını kabul ediyor. Bilet ise yalnız bir kez kullanılabiliyor.

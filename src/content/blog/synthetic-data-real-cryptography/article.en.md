@@ -15,7 +15,7 @@ We built the system a university would actually use and then ran it on invented 
 
 - A university issues a diploma or student card into the wallet as ten copies, each bound to a different device key.
 - An employer asks for two fields and gets exactly those two, verified in seconds.
-- A revocation reaches every verifier at the next fixed publication. Suspending a university stops new issuance, while diplomas it issued earlier stay valid.
+- A revocation reaches every verifier at the next fixed publication. While a university is suspended, none of its diplomas are accepted, including earlier ones; when the suspension is lifted, they are accepted again.
 - A screenshot of a credential is rejected, and so is a copy presented with another phone's key.
 - An identity check produces an identity credential, also as an ISO mdoc, and an age check receives only "over 18".
 - Campus turnstiles and event gates accept a 60-second QR pass, and a ticket works once.

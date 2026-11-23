@@ -15,7 +15,7 @@ Uniwersitetiň hakykatdan ulanjak ulgamyny gurduk we ony oýlanyp tapylan talypl
 
 - Uniwersitet gapjyga diplom ýa-da talyp resminamasyny berýär. Resminama her biri başga enjam açaryna bagly on nusga görnüşinde gelýär.
 - Iş beriji iki meýdan soraýar we edil şol iki meýdany birnäçe sekuntda barlanan görnüşde alýar.
-- Ýatyrylyş indiki kesgitli çap edilişde ähli barlaýjylara ýetýär. Uniwersitet togtadylanda täze resminama berip bilmeýär, ýöne öň beren diplomlary güýjünde galýar.
+- Ýatyrylyş indiki kesgitli çap edilişde ähli barlaýjylara ýetýär. Uniwersitet togtadylan wagtynda onuň hiç bir diplomy kabul edilmeýär, öň berlenler hem; togtatma aýrylanda ýene kabul edilýär.
 - Resminamanyň ekran suraty ret edilýär. Başga telefonyň açary bilen hödürlenen nusga hem ret edilýär.
 - Şahsyýet barlagynyň ahyrynda şahsyýet resminamasy döredilýär we bu resminama ISO mdoc görnüşinde hem berilýär. Ýaşy barlaýan tarap bolsa diňe "18 ýaşdan uly" diýen maglumaty alýar.
 - Kampus turniketleri we çärä giriş gapylary 60 sekunt güýjünde bolan QR geçiş kartasyny kabul edýär. Bilet bolsa diňe bir gezek ulanylyp bilner.

@@ -357,22 +357,23 @@ Listelerdeki iki şey de bugüne kadar çapa günlüğünde yoktu: kayıt sertif
 
 Aynur’un diplomasını veren üniversitenin bir gün kapandığını ya da ağdan çekildiğini düşünelim. Aynur’un diploması geçersiz mi olur? Kâğıt dünyasında cevap açıktır: kapanmış bir okulun yıllar önce verdiği diploma, verildiği gün okul yetkili olduğu için geçerlidir. Dijital dünyada aynı cevabı vermek için doğrulayıcının belgenin #{strong[verildiği andaki]} duruma bakması gerekir; kurumun #{strong[bugünkü]} durumu bu soruda belirleyici olamaz. Belgenin içindeki verilme anı (#{raw("iat")}, issued at) bu yüzden doğrulamanın merkezindedir.
 
-İmzalı listeler bunu baştan beri böyle yapar: her kurum kaydı bir durum geçmişi (#{raw("status_history")}) taşır ve doğrulama bu geçmişe belgenin verilme anıyla bakar \[13\]. Kontratların ilk hâli ise bazı sorularda bugünkü duruma bakıyordu: askıdaki bir kurumun bütün belgelerini reddediyor, emekliye ayrılmış bir kökün sonraki belgelerini kabul ediyordu. Bir de sınırlarda bir saniyelik fark vardı: liste "iptal anında verilen belge geçersiz" derken kontrat aynı anı geçerli sayıyordu. ADR-0073 bu farkları kapattı ve kuralı listeyle eşitledi (CE5) \[10\].
+İmzalı listeler bunu baştan beri böyle yapar: her kurum kaydı bir durum geçmişi (#{raw("status_history")}) taşır ve doğrulama bu geçmişe belgenin verilme anıyla bakar \[13\]. Kontratların ilk hâli ise bazı sorularda bugünkü duruma bakıyordu: askıdaki bir kurumun bütün belgelerini reddediyor, emekliye ayrılmış bir kökün sonraki belgelerini kabul ediyordu. Bir de sınırlarda bir saniyelik fark vardı: liste "iptal anında verilen belge geçersiz" derken kontrat aynı anı geçerli sayıyordu. ADR-0073 bu farkları kapattı ve kuralı listeyle eşitledi (CE5) \[10\]. Askıda kural sonradan bir kez daha değişti ve AB’deki kurala geçildi (ADR-0088) \[31\]: doğrulama anında askıda olan bir kurumun hiçbir belgesi, ne zaman verilmiş olursa olsun, kabul edilmez; askı kalkınca askıdan önce verilenler yeniden kabul edilir. Liste kaynağı, kontrat ve indeksleyici bu soruya da aynı cevabı verir.
 
 #kutu("teknik", [#{raw("iat")} anındaki durum ve yarı açık aralıklar])[
 Bir kaydın durum geçmişi, yalnız eklenebilen $(t_j, s_j)$ değişikliklerinden oluşur: $t_j$ anından itibaren durum $s_j$’dir. Her durum bir #{strong[yarı açık aralıkta]} geçerlidir; başlangıç dahil, bitiş hariç \[10, 14\]:
 
 #formul[$ s(t) &= s_j quad "eğer" t in [t_j, t_(j+1)) \
 "C1"(i, t) &<==> s_i (t) = "ACTIVE" and t in [v_"başlangıç", v_"bitiş"] and "kök"_i (t) = "ACTIVE" \
-&quad and ("invalidatesFrom"_i = 0 or t < "invalidatesFrom"_i) $]
+&quad and ("invalidatesFrom"_i = 0 or t < "invalidatesFrom"_i) \
+"Kabul"(i, t, tau) &<==> "C1"(i, t) and s_i (tau) != "SUSPENDED" $]
 
-$"C1"(i, t)$, $i$ kurumunun $t$ anında verdiği bir belgenin kabul edilip edilmeyeceğidir. Yarı açık aralık sayesinde bir durumun bittiği an ile sonrakinin başladığı an çakışmaz; askıya alma anında verilmiş bir belge askı süresinde sayılır. Son koşul Bölüm 8.3’teki sert iptaldir.
+$"C1"(i, t)$, $i$ kurumunun $t$ anında verdiği bir belgenin kabul edilip edilmeyeceğidir. Yarı açık aralık sayesinde bir durumun bittiği an ile sonrakinin başladığı an çakışmaz; askıya alma anında verilmiş bir belge askı süresinde sayılır. Son koşul Bölüm 8.3’teki sert iptaldir. İkinci satırdaki $tau$ doğrulama anıdır: kurum o anda askıdaysa belge, verilme anına bakılmadan reddedilir (ADR-0088) \[31\].
 ]
 
-Bu kuralın sonuçları sade cümlelerle şöyle: askıdan önce verilmiş belge geçerlidir, askı süresinde verilen belge geçersizdir; iptal anında ya da sonrasında verilen belge geçersizdir; emekliye ayrılmış bir kökün emeklilikten sonraki belgeleri geçersizdir; kullanımdan kaldırılan bir belge türüyle kaldırılmadan önce verilmiş belge geçerlidir. Kök sertifikanın iptali ise farklıdır: iptal edilmiş bir kökün altındaki bütün belgeler, ne zaman verilmiş olurlarsa olsunlar düşer \[14\]. Proje yönetimi bu kuralların ilkini ayrıca onayladı: askıdaki kurumun askıdan önceki belgeleri geçerlidir; zincir listeye uyar \[10\].
+Bu kuralın sonuçları sade cümlelerle şöyle: askı sürerken kurumun hiçbir belgesi kabul edilmez; askı kalkınca askıdan önce verilmiş belge yeniden kabul edilir, askı süresinde verilen belge hiçbir zaman; iptal anında ya da sonrasında verilen belge geçersizdir; emekliye ayrılmış bir kökün emeklilikten sonraki belgeleri geçersizdir; kullanımdan kaldırılan bir belge türüyle kaldırılmadan önce verilmiş belge geçerlidir. Kök sertifikanın iptali ise farklıdır: iptal edilmiş bir kökün altındaki bütün belgeler, ne zaman verilmiş olurlarsa olsunlar düşer \[14\]. Proje yönetimi askı kuralını önce "askıdaki kurumun askıdan önceki belgeleri geçerlidir" diye onaylamıştı \[10\]; 16 Kasım 2026’da AB kuralına geçildi ve zincir yine listeye uyar \[31\].
 
 #kutu("ornek", [Aynur’un diploması ve bir askı])[
-Aynur’un üniversitesi bir yıl Mart ayında Aynur’a diplomasını verdi. Haziran’da kurumun anahtar yönetiminde bir sorun fark edildi ve kurum üç hafta askıya alındı; Temmuz başında yeniden etkin oldu. Askı süresinde kurumun verdiği bir belge (diyelim ki 20 Haziran tarihli bir transkript) doğrulayıcıda reddedilir. Aynur’un Mart tarihli diploması ise askıdan önce verildiği için kabul edilir; Temmuz’dan sonra verilen belgeler de kabul edilir. Doğrulayıcı bu üç kararı, ne üniversiteye ne de işletmeciye sormadan, listedeki durum geçmişine bakarak verir. Defter açıldığında aynı üç karar defterden de aynı çıkmalıdır.
+Aynur’un üniversitesi bir yıl Mart ayında Aynur’a diplomasını verdi. Haziran’da kurumun anahtar yönetiminde bir sorun fark edildi ve kurum üç hafta askıya alındı; Temmuz başında yeniden etkin oldu. Askı süresinde kurumun verdiği bir belge (diyelim ki 20 Haziran tarihli bir transkript) hiçbir zaman kabul edilmez. Askı sürerken Aynur’un Mart tarihli diploması da kabul edilmez; Temmuz’da kurum yeniden etkin olunca diploma, askıdan önce verildiği için yeniden kabul edilir. Temmuz’dan sonra verilen belgeler de kabul edilir. Doğrulayıcı bu kararları, ne üniversiteye ne de işletmeciye sormadan, listedeki durum geçmişine bakarak verir. Defter açıldığında aynı kararlar defterden de aynı çıkmalıdır.
 ]
 
 == Durum adlarının eşlenmesi
@@ -390,7 +391,7 @@ Bu alan, göç penceresi dışında geçmiş bir tarihin yazılabildiği tek ala
 #formul[$ "validFrom"_i <= "invalidatesFrom"_i &<= "revokedAt"_i \
 "invalidatesFrom"_i^"yeni" &<= "invalidatesFrom"_i^"eski" quad "(yalnız geriye)" $]
 
-#sekil(5, [Belgenin verildiği andaki durum: askı, yeniden etkinleşme ve sert iptal], "figures/zincir/sekil-5.svg", yarim: false)
+#sekil(5, [Belgenin verildiği andaki durum: askı, yeniden etkinleşme ve sert iptal (doğrulama, askı kalktıktan sonra)], "figures/zincir/sekil-5.svg", yarim: false)
 
 #{strong[Durum:]} #{raw("iat")} anındaki durum, yarı açık aralıklar, durum eşlemesi ve sert iptal imzalı listelerde ve doğrulama paketinde #{strong[çalışıyor]}; kontratlardaki karşılıkları yerel geliştirme ağında #{strong[çalışıyor]}.
 
@@ -650,6 +651,8 @@ Timur’un iki sorusunun cevabı da buradadır. Tek bir işletmecinin çift konu
 #kaynak("29")[Tamga Network. #{emph[ARCH-0002: Besu ağı kurulumu]} ve #{emph[ARCH-0006: Canlıya alma adımları.]} Mimari belgeleri. Herkese açık depo: github.com\/tamga-network\/tamga-network, #{raw("docs/ledger/architecture/")}.]
 
 #kaynak("30")[Tamga Network. #{emph[Değişiklik günlüğü (CHANGELOG)]}, "chain: reading and transfer side" maddesi. Herkese açık depo: github.com\/tamga-network\/tamga-network, #{raw("CHANGELOG.md")}.]
+
+#kaynak("31")[Tamga Network. #{emph[ADR-0088: Askıdaki kurumun belgeleri.]} Karar kaydı, 16 Kasım 2026. https:\/\/docs.tamga.network\/tr\/adr\/0088-suspended-issuer-credentials]
 
 #heading(level: 1, numbering: none)[Ek A — Sözlük]
 

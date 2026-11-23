@@ -185,9 +185,7 @@ export const CHAPTER_7: LearnPage[] = [
 
           <h2>Katıldıktan sonra</h2>
           <p>
-            Kurum her zaman ağın kurallarına tabidir. Bir sorun olursa askıya
-            alınabilir: yeni belge veremez, ama daha önce verdiği belgeler
-            verildikleri tarihe göre geçerli kalır. Kurum isterse bildirimle
+            Kurum her zaman ağın kurallarına tabidir. Bir sorun olursa askıya alınabilir: askı sürdükçe yeni belge veremez ve verdiği belgeler kabul edilmez; askı kalkınca önceki belgeler yeniden kabul edilir. Kurum isterse bildirimle
             ayrılabilir; geçmiş kayıtlar silinmez, eski belgeler doğrulanmaya
             devam eder.
           </p>
@@ -367,8 +365,7 @@ export const CHAPTER_7: LearnPage[] = [
           <h2>After joining</h2>
           <p>
             An institution always remains subject to the network&apos;s rules.
-            If something goes wrong it can be suspended: it can no longer issue,
-            but credentials it issued earlier stay valid as of their issue date.
+            If something goes wrong it can be suspended: while suspended it cannot issue and its credentials are not accepted; when the suspension is lifted, the earlier credentials are accepted again.
             An institution can also leave with notice; past records are not
             deleted and old credentials keep verifying.
           </p>
@@ -488,8 +485,7 @@ export const CHAPTER_7: LearnPage[] = [
 
           <h2>Goşulandan soň</h2>
           <p>
-            Gurama togtadylyp bilner: täze resminama berip bilmeýär, ýöne öň
-            berlenler güýjünde galýar. Gurama habar berip çykyp hem biler. Tor
+            Gurama togtadylyp bilner: togtadylan wagtynda täze resminama berip bilmeýär we resminamalary kabul edilmeýär; togtatma aýrylanda öňki resminamalar ýene kabul edilýär. Gurama habar berip çykyp hem biler. Tor
             hyzmat satmaýar; goşulyş ýoly hemmeler üçin birmeňzeş.
           </p>
         </>
@@ -659,9 +655,7 @@ export const CHAPTER_7: LearnPage[] = [
           <h2>Qoşulduqdan sonra</h2>
           <p>
             Qurum həmişə şəbəkənin qaydalarına tabe olaraq qalır. Problem
-            yaranarsa, onun fəaliyyəti dayandırıla bilər: o, artıq sənəd verə
-            bilmir, lakin əvvəl verdiyi rəqəmsal sənədlər verildikləri tarixə
-            görə etibarlı qalır. Qurum bildiriş verməklə şəbəkədən çıxa da
+            yaranarsa, onun fəaliyyəti dayandırıla bilər: dayandırılmış olduğu müddətdə sənəd verə bilmir və onun rəqəmsal sənədləri qəbul edilmir; dayandırma götürüldükdə əvvəlki sənədlər yenidən qəbul edilir. Qurum bildiriş verməklə şəbəkədən çıxa da
             bilər; keçmiş qeydlər silinmir və köhnə rəqəmsal sənədlər
             yoxlanılmağa davam edir.
           </p>
