@@ -336,7 +336,7 @@ Tamga-nın rollar toplusu Aİ ARF-indən \[11\] götürülüb və bir qayda ilə
   ([Milli kök sertifikat orqanı], [Qurum sertifikatlarının kökü], [Şəbəkə, müvəqqəti; kökün identifikatoru təhvildə dəyişmir], [Dövlətin kökü və ya səlahiyyətli sertifikat provayderi],),
   ([Giriş və qeydiyyat sertifikatı provayderi], [Yoxlayan tərəflərə giriş və qeydiyyat sertifikatı verir], [Şəbəkə, müvəqqəti], [Dövlət],),
   ([PID provayderi], [Şəxsiyyət məlumatlarını ən yüksək təminatla verir], [#{strong[Boş]}; şəbəkə bu rolu öz üzərinə götürmür], [Dövlət],),
-  ([Müvəqqəti şəxsiyyət sənədi provayderi], [PID provayderi olmadıqda məsafədən şəxsiyyət təsdiqi ilə şəxsiyyət sənədi verir], [Şəbəkənin şəxsiyyət xidməti], [PID provayderi əvəz edir],),
+  ([Müvəqqəti şəxsiyyət sənədi provayderi], [PID provayderi olmadıqda şəxsiyyət sənədi verir; real şəbəkədə real şəxsiyyət yolu açılana qədər verilmir (ADR-0098)], [Şəbəkənin şəxsiyyət xidməti], [PID provayderi əvəz edir],),
   ([Sənəd verən (#{emph[Attestation Provider]})], [Atribut attestasiyası verir və lazım olduqda ləğv edir], [Qurumlar (universitet, bilet satıcısı kimi)], [Qurumlar və dövlət qurumları],),
   ([Səlahiyyətli mənbə (#{emph[Authentic Source]})], [Məlumatın əsl qeydini saxlayır], [Qurumun öz qeydiyyat sistemi], [Eyni; əlavə olaraq dövlət mənbələri],),
   ([Cüzdan provayderi (#{emph[Wallet Provider]})], [Cüzdanı təqdim edir; cüzdan və açar attestasiyalarını imzalayır], [Cüzdanı təqdim edən təşkilatlar; şəbəkə idarə etmir, siyahıya alır], [Qaydalara uyan hər provayder],),
@@ -1497,6 +1497,10 @@ Bu sənəd PID deyil; Aİ-nin dilində kvalifikasiyalı olmayan elektron atribut
 
 == Məsafədən şəxsiyyət yoxlaması
 
+#kutu("onemli", [Yeniləmə: 25 noyabr 2026])[
+Tamga Network kommersiya məsafədən şəxsiyyət yoxlaması provayderindən imtina etdi (ADR-0098). Real şəbəkədə şəxsiyyət sənədi, təxəllüs toxumu və sürücülük vəsiqəsi məlumatları hələlik verilmir; onlar yalnız real şəxsiyyət yolu ilə yenidən açılacaq: dövlətin və ya onun səlahiyyət verdiyi qurumun PID-i, ixtisaslı elektron imza sertifikatı verilərkən aparılan qanuni şəxsiyyət müəyyənləşdirilməsi və ya şəxsiyyət vəsiqəsinin çipi (hüquqi rəy və üz uyğunlaşdırma üsulu seçilənə qədər bağlıdır). Sandbox-da şəxsiyyət addımı nümunə şəxslə keçilir. Bu bölmə provayderdən istifadə olunan dizaynı təsvir edir.
+]
+
 Məsafədən şəxsiyyət yoxlaması üç yoxlamanın birləşməsidir: şəxsiyyət sənədinin skan edilib həqiqiliyinin araşdırılması, kameranın qarşısındakı şəxsin canlı olduğunun müəyyənləşdirilməsi (canlılıq) və üzün sənəddəki fotoşəkillə uyğunlaşdırılması. Bu işi lisenziyalı məsafədən şəxsiyyət yoxlaması provayderi görür. Dizayn müəyyən provayderə bağlı deyil: şəxsiyyət xidməti provayderlə dar adapter interfeysi üzərindən danışır (sessiya aç, qərarı al, bildirişi yoxla) və ikinci provayder eyni interfeysin arxasına əlavə edilə bilər (SPEC-ID-0003 §6). İkinci, yerli provayderin əlavə edilməsi açıq məsələdir (SPEC-ID-0003, Açıq Məsələlər 3).
 
 Provayder şəbəkənin ən çox görmə səlahiyyəti olan xarici hissəsidir; şəxsin sənədini və üzünü görür. Buna görə onun ətrafına sərt qaydalar çəkilib (SPEC-ID-0003 §3, §8). Provayderlə yalnız şəxsiyyət xidməti danışır; qurumlar, cüzdanlar və yoxlayan tərəflər danışmır. Provayder sessiyası şəxsə şəxsiyyət xidmətinin verdiyi qeyri-şəffaf istinadla bağlanır; bu sahəyə ad, şəxsiyyət nömrəsi və ya e-poçt yazılmır. İş axınında yalnız sənəd, canlılıq və üz uyğunlaşdırması açıqdır; çirkli pulların yuyulması üzrə yoxlama və əlaqə məlumatlarının yoxlanılması bağlıdır, çünki məqsəd yalnız sənəd verilməsinin ilkin şərtini təmin etməkdir. Provayderin bildirişi (webhook) imza və vaxt möhürü ilə yoxlanılır, lakin yalnız tətikdir; qərar həmişə provayderin qərar ucundan yenidən alınır. Sənəd təsviri, portret, video və simvol tanıma nəticəsi şəxsiyyət xidmətində saxlanmır; xidmətin saxladığı nəticənin qısa xülasəsidir. Jurnallara hadisə növü, sessiya istinadı və səviyyə yazılır; ad, sənəd nömrəsi və uyğunluq balı yazılmır.
@@ -1530,10 +1534,10 @@ Toxumun ayrıca sorğuda verilməsi standarta uyğunluq qərarıdır: OpenID4VCI
 
 Şəbəkə etibarı iki müstəqil ox üzrə ölçür (ADR-0005). Birinci ox şəxsin kimliyinin nə qədər güclü yoxlandığıdır: T0-dan T3-ə. İkinci ox sənəd verənin nə qədər yoxlanıldığıdır: I1-dən I3-ə (Bölmə 18.6). Yoxlayan tərəfin etibarı ikisinin cəmi deyil, hasilidir; çox yaxşı yoxlanılmış şəxs yoxlanılmamış qurumun sənədini daşıyırsa və ya akkreditə olunmuş bir qurum, şəxsiyyəti heç yoxlanılmamış birinə sənəd veribsə, nəticə dəyərsizdir. Şəxs tərəfindəki səviyyələr eIDAS təminat səviyyələri \[4\] və şəxsiyyətin yoxlanılması üçün ETSI TS 119 461-in səviyyələri ilə birə-bir uyğunlaşdırılır; beləliklə şəbəkə öz ölçüsündən istifadə edərkən Aİ ilə eyni dildə danışır (Cədvəl 23).
 
-#tablo([#{strong[Cədvəl 23.]} Şəxsin təminat səviyyələri və uyğunluqları (ADR-0005; SPEC-ID-0003 §1; FW-ARF-0001 §6.5).], (20fr, 23fr, 14fr, 48fr, 25fr), ([Səviyyə​​​​​​​​​], [eIDAS səviyyəsi​​​​​​​​​], [ETSI TS 119 461​​​​​​], [Tipik yol], [Şəxsiyyət xidmətində],), (
+#tablo([#{strong[Cədvəl 23.]} Şəxsin təminat səviyyələri və uyğunluqları (ADR-0005; SPEC-ID-0003 §1; FW-ARF-0001 §6.5).], (20fr, 23fr, 14fr, 48fr, 33fr), ([Səviyyə​​​​​​​​​], [eIDAS səviyyəsi​​​​​​​​​], [ETSI TS 119 461​​​​​​], [Tipik yol], [Şəxsiyyət xidmətində],), (
   ([T0], [yoxdur], [yoxdur], [cihaz açarı, e-poçt və ya telefon kodu; şəxsiyyət iddiası yoxdur], [əlaqə sənədləri],),
   ([T1], [Low], [Baseline], [ayrıca kanaldan gələn kod, xətt və ya hesab sahibliyi], [istifadə edilmir],),
-  ([T2], [Substantial], [Substantial], [məsafədən sənəd + canlılıq + üz uyğunlaşdırması və ya üzbəüz qeydiyyat masası], [şəxsiyyət sənədi bu gün bu səviyyədədir],),
+  ([T2], [Substantial], [Substantial], [məsafədən sənəd + canlılıq + üz uyğunlaşdırması və ya üzbəüz qeydiyyat masası], [şəxsiyyət sənədi bu səviyyədə nəzərdə tutulub; real şəbəkədə hələlik verilmir],),
   ([T3], [High], [High], [kvalifikasiyalı elektron imza ilə nonce imzalanması; dövlət mərhələsində PID], [məsafədən üz yoxlaması ilə verilmir],),
 ))
 

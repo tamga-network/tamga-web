@@ -12,6 +12,7 @@ import { ExternalLink } from "@/components/external-link";
  *    kimliği, iptal listesi yeri; kişi alanları yalnız bellekte, ihraçtan sonra silinir; bitiş/iptalden 30 gün sonra kayıt +
  *    sağlayıcı oturumu silme isteği; olay günlüğü 365 gün.
  * Veri sorumlusu satırında tüzel kişi adı yazılmaz (vakıf henüz yok) — hukukçu sorusu.
+ * 2026-11-25 (ağın ADR-0098'i): sağlayıcı kaldırıldı; gerçek ağda kimlik belgesi verilmiyor, ilk madde buna göre.
  * Kişisel veri, saklama süresi ya da sağlayıcı değişirse bu sayfa aynı gün güncellenir.
  */
 
@@ -34,7 +35,7 @@ const en: PrivacyContent = {
   description: "What this website and the Tamga identity service process, how long it is kept and how to reach us.",
   eyebrow: "About",
   lead: "What this website and the Tamga identity service process, how long it is kept and how to reach us.",
-  notice: "This text is provisional; a legal review is under way. Last updated 2026-11-18.",
+  notice: "This text is provisional; a legal review is under way. Last updated 2026-11-25.",
   sections: [
     {
       id: "site",
@@ -50,7 +51,7 @@ const en: PrivacyContent = {
       id: "identity",
       title: "Identity service (id.tamga.network)",
       items: [
-        "When you ask for an identity credential from a wallet, with your explicit consent, a remote verification provider (Didit) checks your ID card or passport and your face. The document images, selfie and video go directly to the provider and are not kept at Tamga. The provider works for Tamga as a processor; its retention and deletion terms are being settled by contract.",
+        "Identity credentials are not issued on the real network for now: Tamga no longer uses a remote identity verification provider, and no ID card, passport or face images are processed. A person's core identity (PID) has to come from the state or a body it authorises; the identity service will reopen only through such a path. Credentials issued earlier by invitation stay valid until they expire, and the points below describe what is kept for them. The images taken for those credentials were processed by the former provider (Didit) as Tamga's processor; Tamga asks the provider to delete them.",
         "The verified fields (name, surname, date of birth, nationality, ID number and, if the document carries it, place of birth) are held only in memory until the credential is issued, are never written to disk and are deleted within minutes after the credential reaches your wallet. About once a month your wallet renews the copies of the credential: it shows one copy to the identity service, and the fields read from it are again held only in memory for a few minutes.",
         "What is kept: a record with no personal fields: an opaque (pseudonymous) reference, a keyed hash of the document number (to notice the same document being used twice), the credential type, the issue and expiry dates, the verification method, the provider's session reference and the credential's position in the revocation list. The record is deleted 30 days after the credential expires (at most two years) or is revoked, and the provider is then asked to delete the session. The revocation list keeps only a bit. The event log contains no personal data and is deleted after 365 days.",
         "Retention periods will be confirmed by the legal review.",
@@ -73,7 +74,7 @@ const tr: PrivacyContent = {
   description: "Bu sitenin ve Tamga kimlik servisinin neyi işlediği, ne kadar tuttuğu ve bize nasıl ulaşacağınız.",
   eyebrow: "Hakkında",
   lead: "Bu sitenin ve Tamga kimlik servisinin neyi işlediği, ne kadar tuttuğu ve bize nasıl ulaşacağınız.",
-  notice: "Bu metin geçicidir; hukuki inceleme sürüyor. Son güncelleme 2026-11-18.",
+  notice: "Bu metin geçicidir; hukuki inceleme sürüyor. Son güncelleme 2026-11-25.",
   sections: [
     {
       id: "site",
@@ -89,7 +90,7 @@ const tr: PrivacyContent = {
       id: "identity",
       title: "Kimlik servisi (id.tamga.network)",
       items: [
-        "Cüzdandan kimlik belgesi istediğinizde, açık rızanızla, uzaktan doğrulama yapan bir sağlayıcı (Didit) kimlik kartınızı ya da pasaportunuzu ve yüzünüzü kontrol eder. Belge görüntüleri, özçekim ve video doğrudan sağlayıcıya gider; Tamga'da tutulmaz. Sağlayıcı Tamga adına veri işleyen olarak çalışır; saklama ve silme koşulları sözleşmeyle netleştiriliyor.",
+        "Gerçek ağda kimlik belgesi şimdilik verilmiyor: Tamga artık uzaktan kimlik doğrulama sağlayıcısı kullanmıyor; kimlik kartı, pasaport ya da yüz görüntüsü işlenmiyor. Kişinin temel kimliğini (PID) devletin ya da yetkilendirdiği kurumun vermesi gerekir; kimlik servisi ancak böyle bir yolla yeniden açılır. Daha önce davetle verilmiş belgeler süreleri dolana kadar geçerlidir; aşağıdaki maddeler onlar için tutulanları anlatır. O belgeler için alınan görüntüleri Tamga adına veri işleyen eski sağlayıcı (Didit) işledi; Tamga bu görüntülerin silinmesini sağlayıcıdan ister.",
         "Doğrulanan alanlar (ad, soyad, doğum tarihi, uyruk, kimlik numarası ve belgede varsa doğum yeri) belge verilene kadar yalnız bellekte durur, diske yazılmaz ve belge cüzdanınıza ulaştıktan sonra dakikalar içinde silinir. Cüzdanınız belgenin kopyalarını ayda bir kez kendiliğinden yeniler: kimlik servisine bir kopyayı gösterir; okunan alanlar yine yalnız birkaç dakika bellekte durur.",
         "Tutulan: kişi alanı içermeyen bir kayıt: opak (takma) bir başvuru kimliği, belge numarasının anahtarlı özeti (aynı belgenin iki kez kullanılmasını fark etmek için), belge türü, veriliş ve bitiş tarihleri, doğrulama yöntemi, sağlayıcının oturum kimliği ve belgenin iptal listesindeki yeri. Kayıt, belgenin süresi bittikten (en çok iki yıl) ya da belge iptal edildikten 30 gün sonra silinir; o sırada sağlayıcıdan oturumu silmesi istenir. İptal listesinde yalnız bir bit kalır. Olay günlüğü kişi verisi içermez ve 365 gün sonra silinir.",
         "Saklama süreleri hukuki incelemeyle kesinleşecektir.",
@@ -112,7 +113,7 @@ const tk: PrivacyContent = {
   description: "Bu saýtyň we Tamga şahsyýet hyzmatynyň nämäni işleýändigi, näçe wagt saklaýandygy we biziň bilen nädip habarlaşyp boljakdygy.",
   eyebrow: "Biz barada",
   lead: "Bu saýtyň we Tamga şahsyýet hyzmatynyň nämäni işleýändigi, näçe wagt saklaýandygy we biziň bilen nädip habarlaşyp boljakdygy.",
-  notice: "Bu tekst wagtlaýyndyr; hukuk barlagy dowam edýär. Soňky täzelenme 2026-11-18.",
+  notice: "Bu tekst wagtlaýyndyr; hukuk barlagy dowam edýär. Soňky täzelenme 2026-11-25.",
   sections: [
     {
       id: "site",
@@ -128,7 +129,7 @@ const tk: PrivacyContent = {
       id: "identity",
       title: "Şahsyýet hyzmaty (id.tamga.network)",
       items: [
-        "Gapjykdan şahsyýet resminamasyny soranyňyzda, aç-açan razylygyňyz bilen, uzakdan barlaýan üpjün ediji (Didit) şahsyýetnamaňyzy ýa-da pasportyňyzy we ýüzüňizi barlaýar. Resminamanyň suratlary, selfi we wideo gönüden-göni üpjün edijä gidýär; Tamga-da saklanmaýar. Üpjün ediji Tamga-nyň adyndan maglumat işleýji hökmünde işleýär; saklamak we pozmak şertleri şertnama bilen kesgitlenýär.",
+        "Hakyky torda şahsyýet resminamasy häzirlikçe berilmeýär: Tamga indi uzakdan şahsyýet barlaýan üpjün edijini ulanmaýar; şahsyýetnamanyň, pasportyň ýa-da ýüzüň suratlary işlenmeýär. Adamyň esasy şahsyýet maglumatlaryny (PID) döwlet ýa-da onuň ygtyýarly eden edarasy bermeli; şahsyýet hyzmaty diňe şeýle ýol bilen täzeden açylar. Ozal çakylyk bilen berlen resminamalar möhleti gutarýança hereket edýär; aşakdaky bentler olar üçin saklanýan zatlary düşündirýär. Şol resminamalar üçin alnan suratlary Tamga-nyň adyndan maglumat işleýji öňki üpjün ediji (Didit) işledi; Tamga bu suratlaryň pozulmagyny üpjün edijiden soraýar.",
         "Barlanan meýdanlar (ady, familiýasy, doglan senesi, raýatlygy, şahsyýet belgisi we resminamada bar bolsa doglan ýeri) resminama berilýänçä diňe ýatda saklanýar, diske ýazylmaýar we resminama gapjygyňyza ýetenden soň birnäçe minudyň içinde pozulýar. Gapjygyňyz resminamanyň nusgalaryny aýda bir gezek özbaşdak täzeleýär: şahsyýet hyzmatyna bir nusgany görkezýär; okalan meýdanlar ýene-de diňe birnäçe minut ýatda saklanýar.",
         "Saklanýan: şahsy meýdany bolmadyk ýazgy: opak (lakam) salgylanma, resminama belgisiniň açarly heşi (şol bir resminamanyň iki gezek ulanylmagyny bilmek üçin), resminamanyň görnüşi, berlen we möhleti gutarýan senesi, barlag usuly, üpjün edijiniň sessiýa belgisi we resminamanyň ýatyrylyş sanawyndaky ýeri. Ýazgy resminamanyň möhleti gutarandan (iň köp iki ýyl) ýa-da ýatyrylandan 30 gün soň pozulýar; şol wagt üpjün edijiden sessiýany pozmak soralýar. Ýatyrylyş sanawynda diňe bir bit galýar. Waka žurnalynda şahsy maglumat ýok we ol 365 günden soň pozulýar.",
         "Saklamak möhletleri hukuk barlagy bilen kesgitlener.",
@@ -151,7 +152,7 @@ const az: PrivacyContent = {
   description: "Bu saytın və Tamga şəxsiyyət xidmətinin nəyi emal etdiyi, nə qədər saxladığı və bizimlə necə əlaqə saxlaya biləcəyiniz.",
   eyebrow: "Haqqımızda",
   lead: "Bu saytın və Tamga şəxsiyyət xidmətinin nəyi emal etdiyi, nə qədər saxladığı və bizimlə necə əlaqə saxlaya biləcəyiniz.",
-  notice: "Bu mətn müvəqqətidir; hüquqi yoxlama davam edir. Son yenilənmə 2026-11-18.",
+  notice: "Bu mətn müvəqqətidir; hüquqi yoxlama davam edir. Son yenilənmə 2026-11-25.",
   sections: [
     {
       id: "site",
@@ -167,7 +168,7 @@ const az: PrivacyContent = {
       id: "identity",
       title: "Şəxsiyyət xidməti (id.tamga.network)",
       items: [
-        "Rəqəmsal cüzdandan şəxsiyyət sənədi istədiyiniz zaman, açıq razılığınızla, uzaqdan yoxlama aparan provayder (Didit) şəxsiyyət vəsiqənizi və ya pasportunuzu və üzünüzü yoxlayır. Sənəd şəkilləri, selfi və video birbaşa provayderə gedir; Tamga-da saxlanılmır. Provayder Tamga adından məlumat emal edən kimi işləyir; saxlama və silmə şərtləri müqavilə ilə dəqiqləşdirilir.",
+        "Real şəbəkədə şəxsiyyət sənədi hələlik verilmir: Tamga artıq məsafədən şəxsiyyət yoxlaması provayderindən istifadə etmir; şəxsiyyət vəsiqəsi, pasport və ya üz təsvirləri emal olunmur. Şəxsin əsas şəxsiyyət məlumatlarını (PID) dövlət və ya onun səlahiyyət verdiyi qurum verməlidir; şəxsiyyət xidməti yalnız belə bir yolla yenidən açılacaq. Əvvəllər dəvətlə verilmiş sənədlər müddəti bitənə qədər qüvvədədir; aşağıdakı bəndlər onlar üçün saxlanılanları izah edir. Həmin sənədlər üçün alınan təsvirləri Tamga adından məlumat emal edən keçmiş provayder (Didit) emal edib; Tamga bu təsvirlərin silinməsini provayderdən tələb edir.",
         "Yoxlanılan sahələr (ad, soyad, doğum tarixi, vətəndaşlıq, şəxsiyyət nömrəsi və sənəddə varsa doğum yeri) sənəd verilənə qədər yalnız yaddaşda qalır, diskə yazılmır və sənəd cüzdanınıza çatdıqdan sonra bir neçə dəqiqə ərzində silinir. Cüzdanınız sənədin nüsxələrini ayda bir dəfə özü yeniləyir: şəxsiyyət xidmətinə bir nüsxəni göstərir; oxunan sahələr yenə yalnız bir neçə dəqiqə yaddaşda qalır.",
         "Saxlanılan: şəxsi sahə olmayan qeyd: opak (təxəllüs) istinad, sənəd nömrəsinin açarlı heşi (eyni sənədin iki dəfə istifadəsini görmək üçün), sənəd növü, verilmə və bitmə tarixləri, yoxlama üsulu, provayderin sessiya identifikatoru və sənədin ləğv siyahısındakı yeri. Qeyd sənədin müddəti bitdikdən (ən çox iki il) və ya ləğv edildikdən 30 gün sonra silinir; bu zaman provayderdən sessiyanı silmək istənilir. Ləğv siyahısında yalnız bir bit qalır. Hadisə jurnalında şəxsi məlumat yoxdur və o, 365 gündən sonra silinir.",
         "Saxlama müddətləri hüquqi yoxlama ilə dəqiqləşəcək.",

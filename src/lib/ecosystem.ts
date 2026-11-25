@@ -167,10 +167,10 @@ export const SUBDOMAINS: Subdomain[] = [
       az: "Şəxsiyyət xidməti",
     },
     desc: {
-      en: "remote identity check (document + liveness) and the identity credential",
-      tr: "uzaktan kimlik doğrulama (belge + canlılık) ve kimlik belgesi",
-      tk: "uzakdan şahsyýet barlagy (resminama + janlylyk) we şahsyýet resminamasy",
-      az: "məsafədən şəxsiyyət yoxlaması (sənəd + canlılıq) və şəxsiyyət rəqəmsal sənədi",
+      en: "contact credentials; the identity credential only when a real identity path opens (not issued on the real network for now)",
+      tr: "iletişim belgeleri; kimlik belgesi yalnız gerçek bir kimlik yolu açılınca (gerçek ağda şimdilik verilmiyor)",
+      tk: "aragatnaşyk resminamalary; şahsyýet resminamasy diňe hakyky şahsyýet ýoly açylanda (hakyky torda häzirlikçe berilmeýär)",
+      az: "əlaqə sənədləri; şəxsiyyət sənədi yalnız real şəxsiyyət yolu açıldıqda (real şəbəkədə hələlik verilmir)",
     },
   },
 ];
@@ -187,10 +187,10 @@ export const SANDBOX_SUBDOMAIN: Subdomain = {
   soon: SANDBOX_URL.startsWith("https://docs."),
   name: { en: "Sandbox", tr: "Sandbox", tk: "Sandbox", az: "Sandbox" },
   desc: {
-    en: "separate test network: sample institutions, made-up people and test credentials, an optional real identity check (daily and monthly caps) next to the quick test, and test institution accounts; wallet developers register their own wallet provider and test their wallet here; no real wallet or verifier trusts it",
-    tr: "ayrı test ağı: örnek kurumlar, uydurma kişiler ve test belgeleri, hızlı denemenin yanında isteğe bağlı gerçek kimlik doğrulama (günlük ve aylık tavanlı) ve test kurumu hesapları; cüzdan geliştiricileri kendi cüzdan sağlayıcılarını kaydettirip cüzdanlarını burada dener; gerçek hiçbir cüzdan ya da doğrulayıcı ona güvenmez",
-    tk: "aýry synag ulgamy: nusga guramalar, oýlanyp tapylan adamlar we synag resminamalary, çalt synagyň ýanynda islege bagly hakyky şahsyýet barlagy (gündelik we aýlyk çägi bilen) we synag gurama hasaplary; gapjyk işläp düzüjileri öz gapjyk üpjün edijisini hasaba aldyryp, gapjygyny şu ýerde synaýar; hiç bir hakyky gapjyk ýa-da barlaýjy oňa ynanmaýar",
-    az: "ayrıca test şəbəkəsi: nümunə qurumlar, uydurma şəxslər və test rəqəmsal sənədləri, sürətli testin yanında istəyə bağlı real şəxsiyyət yoxlaması (gündəlik və aylıq limitlərlə) və test qurum hesabları; rəqəmsal cüzdan tərtibatçıları öz cüzdan provayderlərini qeydiyyatdan keçirir və rəqəmsal cüzdanlarını burada sınaqdan keçirirlər; heç bir real rəqəmsal cüzdan və ya yoxlayan tərəf ona etibar etmir",
+    en: "separate test network: sample institutions, made-up people and test credentials, an identity step with sample persons (treated as if the PID was issued and identity verified), and test institution accounts; wallet developers register their own wallet provider and test their wallet here; no real wallet or verifier trusts it",
+    tr: "ayrı test ağı: örnek kurumlar, uydurma kişiler ve test belgeleri, örnek kişiyle kimlik adımı (PID verilmiş ve kimlik doğrulanmış sayılır) ve test kurumu hesapları; cüzdan geliştiricileri kendi cüzdan sağlayıcılarını kaydettirip cüzdanlarını burada dener; gerçek hiçbir cüzdan ya da doğrulayıcı ona güvenmez",
+    tk: "aýry synag ulgamy: nusga guramalar, oýlanyp tapylan adamlar we synag resminamalary, nusga adam bilen şahsyýet ädimi (PID berlen we şahsyýeti barlanan hasaplanýar) we synag gurama hasaplary; gapjyk işläp düzüjileri öz gapjyk üpjün edijisini hasaba aldyryp, gapjygyny şu ýerde synaýar; hiç bir hakyky gapjyk ýa-da barlaýjy oňa ynanmaýar",
+    az: "ayrıca test şəbəkəsi: nümunə qurumlar, uydurma şəxslər və test rəqəmsal sənədləri, nümunə şəxslə şəxsiyyət addımı (PID verilmiş və şəxsiyyəti yoxlanılmış sayılır) və test qurum hesabları; rəqəmsal cüzdan tərtibatçıları öz cüzdan provayderlərini qeydiyyatdan keçirir və rəqəmsal cüzdanlarını burada sınaqdan keçirirlər; heç bir real rəqəmsal cüzdan və ya yoxlayan tərəf ona etibar etmir",
   },
 };
 

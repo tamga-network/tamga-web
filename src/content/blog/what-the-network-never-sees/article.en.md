@@ -3,6 +3,7 @@ title: What Tamga Network never sees
 slug: what-the-network-never-sees
 description: What Tamga Network's lists, logs and services never contain, where its provisional services touch personal data, and what operators can and cannot access.
 date: 2026-10-08
+updated: 2026-11-25
 lang: en
 category: privacy
 draft: false
@@ -10,6 +11,8 @@ related: status-list-privacy, trusting-a-wallet, what-is-a-trust-network, zero-k
 ---
 
 <!-- Sources: SPEC-TRUST-0001 TL11 (no personal data, credential or credential hash in any list, anchor log or change log); SPEC-BC-0001 DP1 (ledger later: no personal data, content or hash); ADR-0020 K2 + AS1–AS4 (no register of persons; data read from the authentic source at signing and dropped; persistent only subject_ref and keyed digest; Tamga never gets a contact address); ADR-0041 TI3–TI5 (trial register only in the sandbox); SPEC-API-0001 AP3, AP4, AP7; ADR-0017 HV1–HV3 (values once, deleted ≤ 5 min); SPEC-WALLET-0001 WL4, WL9; SPEC-ID-0003 §3 IP4/IP11, §8 IDP3, IDP4, IDP9, IDP11, §9 (identity service, data controller, ≤ 30 days provider image retention by contract, 10 copies, 730 days), §9.1 erasure; ADR-0011 (provisional until a state PID provider; Tamga data controller under KVKK); ADR-0022 (non-qualified, I2); ADR-0031 PS1–PS3 and "known weakening" with mitigations; ARF architecture §2.7 (deletion by resetting the wallet), §4.5 item 4 (no IP), §7.2 items 1, 6, 7 (no images at Tamga; statistics only in aggregate, groups ≥ 50); ARF rulebook RB-GEN-05 (no IP raw, hashed or truncated; debug logs ≤ 7 days); ADR-0038 SB1–SB5; ADR-0040 RI3–RI6; ADR-0041 TI4; ADR-0042 NW1 (no wallet operated). SPEC-TRUST-0001 security notes (single operator, quarterly transparency report, audit). Live check 2026-10-08: lotl.json / tl-tr.json fields and anchors.jsonl payloads contain no personal data. -->
+
+> **Update (25 November 2026):** Tamga Network has stopped using a commercial remote identity verification provider ([ADR-0098](https://docs.tamga.network/adr/0098-remove-commercial-identity-proofing-provider)). On the real network, identity credentials are not issued for now, and no identity document or face images are processed; a person's core identity (PID) has to come from the state or a body it authorises. You can try it on the test network with sample persons. The section "What does the identity service see?" below describes the period when the provider was used.
 
 Tamga Network never sees the contents of people's credentials in its lists, its logs or its anchor log. It keeps no register of people, does not learn where or to whom a credential is shown, and records no IP addresses. The network does run a few provisional services that touch personal data for a short time. The identity service does so during identity verification, the hosted issuing service at the moment of signing, and the hosted verifier when a site chooses to use it. For each of these services the rules say what may be kept, for how long, and what may never be kept.
 

@@ -3,6 +3,7 @@ title: Tamga Network-un heç vaxt görmədikləri
 slug: what-the-network-never-sees
 description: "Tamga Network-un siyahılarında və jurnallarında nəyin heç vaxt olmadığını, müvəqqəti xidmətlərinin fərdi məlumatlara harada toxunduğunu və operatorların nəyə çıxışı olduğunu izah edirik."
 date: 2026-10-08
+updated: 2026-11-25
 lang: az
 category: privacy
 draft: false
@@ -10,6 +11,8 @@ related: status-list-privacy, trusting-a-wallet, what-is-a-trust-network, zero-k
 ---
 
 <!-- Sources: SPEC-TRUST-0001 TL11 (no personal data, credential or credential hash in any list, anchor log or change log); SPEC-BC-0001 DP1 (ledger later: no personal data, content or hash); ADR-0020 K2 + AS1–AS4 (no register of persons; data read from the authentic source at signing and dropped; persistent only subject_ref and keyed digest; Tamga never gets a contact address); ADR-0041 TI3–TI5 (trial register only in the sandbox); SPEC-API-0001 AP3, AP4, AP7; ADR-0017 HV1–HV3 (values once, deleted ≤ 5 min); SPEC-WALLET-0001 WL4, WL9; SPEC-ID-0003 §3 IP4/IP11, §8 IDP3, IDP4, IDP9, IDP11, §9 (identity service, data controller, ≤ 30 days provider image retention by contract, 10 copies, 730 days), §9.1 erasure; ADR-0011 (provisional until a state PID provider; Tamga data controller under KVKK); ADR-0022 (non-qualified, I2); ADR-0031 PS1–PS3 and "known weakening" with mitigations; ARF architecture §2.7 (deletion by resetting the wallet), §4.5 item 4 (no IP), §7.2 items 1, 6, 7 (no images at Tamga; statistics only in aggregate, groups ≥ 50); ARF rulebook RB-GEN-05 (no IP raw, hashed or truncated; debug logs ≤ 7 days); ADR-0038 SB1–SB5; ADR-0040 RI3–RI6; ADR-0041 TI4; ADR-0042 NW1 (no wallet operated). SPEC-TRUST-0001 security notes (single operator, quarterly transparency report, audit). Live check 2026-10-08: lotl.json / tl-tr.json fields and anchors.jsonl payloads contain no personal data. -->
+
+> **Yeniləmə (25 noyabr 2026):** Tamga Network kommersiya məsafədən şəxsiyyət yoxlaması provayderindən imtina etdi ([ADR-0098](https://docs.tamga.network/adr/0098-remove-commercial-identity-proofing-provider)). Real şəbəkədə şəxsiyyət sənədi hələlik verilmir və şəxsiyyət sənədi və ya üz təsvirləri emal olunmur; şəxsin əsas şəxsiyyət məlumatlarını (PID) dövlət və ya onun səlahiyyət verdiyi qurum verməlidir. Test şəbəkəsində nümunə şəxslərlə sınaqdan keçirmək olar. Aşağıdakı şəxsiyyət xidməti haqqında bölmə provayderdən istifadə olunan dövrü təsvir edir.
 
 Tamga Network insanların sənədlərinin məzmununu siyahılarında, jurnallarında və ya lövbər jurnalında heç vaxt görmür. Şəxslərlə bağlı qeyd saxlamır, sənədin harada və ya kimə göstərildiyini öyrənmir və IP ünvanlarını qeydə almır. Bununla belə şəbəkə fərdi məlumatlara qısa müddət ərzində toxunan bir neçə müvəqqəti xidmət idarə edir. Şəxsiyyət xidməti şəxsiyyət yoxlaması zamanı, host edilən sənəd vermə xidməti imza anında, host edilən yoxlayan tərəf isə sayt ondan istifadə etməyi seçəndə fərdi məlumatla qarşılaşır. Qaydalar bu xidmətlərin hər biri üçün nəyin nə qədər müddət saxlanıla biləcəyini və nəyin heç vaxt saxlanıla bilməyəcəyini müəyyən edir.
 

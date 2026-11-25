@@ -5,6 +5,10 @@ changes before it are folded into this release. The user-facing release notes ar
 
 ## [1.0.0] — 2026-10-16
 
+- 2026-11-25 (network ADR-0098, commercial identity verification provider removed): privacy page identity section (4 languages),
+  roadmap phase 1 and identity card, network addresses (identity service, sandbox), blog "What the network never sees" dated
+  update note, whitepaper (4 languages) note in the remote identity verification section and two table cells; whitepaper PDFs rebuilt.
+
 tamga.network with the network's 1.0 documentation set, in four languages: English, Turkish, Turkmen and Azerbaijani
 (machine translation, marked on every page until a native speaker has reviewed it).
 

@@ -336,7 +336,7 @@ Tamga-nyň rollar toplumy ÝB ARF-inden \[11\] alyndy we bir düzgün bilen baş
   ([Milli kök sertifikat edarasy], [Gurama sertifikatlarynyň köki], [Tor, wagtlaýyn; köküň belgisi tabşyryşda üýtgemeýär], [Döwletiň köki ýa-da ygtyýarly sertifikat üpjün edijisi],),
   ([Giriş we hasaba alyş sertifikaty üpjün edijisi], [Barlaýjylara giriş we hasaba alyş sertifikatyny berýär], [Tor, wagtlaýyn], [Döwlet],),
   ([PID üpjün edijisi], [Adamyň şahsyýet maglumatlaryny iň ýokary kepillikde berýär], [#{strong[Boş]}; tor bu roly öz üstüne almaýar], [Döwlet],),
-  ([Wagtlaýyn şahsyýet resminamasy üpjün edijisi], [PID üpjün edijisi ýokka uzakdan şahsyýet barlagy bilen şahsyýet resminamasyny berýär], [Toruň şahsyýet hyzmaty], [PID üpjün edijisi öz üstüne alýar],),
+  ([Wagtlaýyn şahsyýet resminamasy üpjün edijisi], [PID üpjün edijisi ýokka şahsyýet resminamasyny berýär; hakyky torda hakyky şahsyýet ýoly açylýança berilmeýär (ADR-0098)], [Toruň şahsyýet hyzmaty], [PID üpjün edijisi öz üstüne alýar],),
   ([Resminama beriji (#{emph[Attestation Provider]})], [Atribut tassyklamasyny berýär we gerek bolanda ýatyrýar], [Guramalar (uniwersitet, bilet satyjy ýaly)], [Guramalar we döwlet edaralary],),
   ([Ygtyýarly çeşme (#{emph[Authentic Source]})], [Maglumatyň esasy ýazgysyny saklaýar], [Guramanyň öz hasaba alyş ulgamy], [Şol bir; mundan başga-da döwlet çeşmeleri],),
   ([Gapjyk üpjün edijisi (#{emph[Wallet Provider]})], [Gapjygy hödürleýär; gapjyk we açar tassyklamalaryna gol çekýär], [Gapjygy hödürleýän guramalar; tor işletmeýär, sanaýar], [Düzgünlere eýerýän her üpjün ediji],),
@@ -1497,6 +1497,10 @@ Bu resminama PID däl; ÝB-niň dilinde ol kwalifisirlenmedik elektron atribut t
 
 == Uzakdan şahsyýet barlagy
 
+#kutu("onemli", [Täzelenme: 2026-njy ýylyň 25-nji noýabry])[
+Tamga Network täjirçilik maksatly uzakdan şahsyýet barlaýan üpjün edijini ulanmagy bes etdi (ADR-0098). Hakyky torda şahsyýet resminamasy, lakam tohumy we sürüjilik şahadatnamasy baradaky maglumatlar häzirlikçe berilmeýär; olar diňe hakyky şahsyýet ýoly bilen täzeden açylar: döwletiň ýa-da onuň ygtyýarly eden edarasynyň PID-i, ykrar edilen elektron gol şahadatnamasy berlende geçirilýän kanuny şahsyýet kesgitlemesi ýa-da şahsyýetnamanyň çipi (hukuk pikiri we ýüz deňeşdirme usuly saýlanýança ýapyk). Sandbox-da şahsyýet ädimi nusga adam bilen geçilýär. Bu bölüm üpjün edijiniň ulanylan dizaýnyny düşündirýär.
+]
+
 Uzakdan şahsyýet barlagy üç barlagyň jemidir: şahsyýet resminamasyny skanirläp, onuň hakykylygyny derňemek, kameranyň öňündäki adamyň janlydygyny anyklamak (janlylyk) we ýüzi resminamadaky surat bilen deňeşdirmek. Bu işi ygtyýarnamaly uzakdan şahsyýet barlagy üpjün edijisi ýerine ýetirýär. Dizaýn belli bir üpjün edijä bagly däl: şahsyýet hyzmaty üpjün ediji bilen dar adapter interfeýsi arkaly gürleşýär (sessiýa aç, karary al, habarnamany barla) we ikinji üpjün ediji şol bir interfeýsiň aňyrsyna goşulyp bilner (SPEC-ID-0003 §6). Ikinji, ýerli üpjün edijiniň goşulmagy açyk meseledir (SPEC-ID-0003, Açyk meseleler 3).
 
 Üpjün ediji toruň görmäge iň köp ygtyýary bolan daşky bölegidir; ol adamyň resminamasyny we ýüzüni görýär. Şonuň üçin onuň töweregine berk düzgünler çekildi (SPEC-ID-0003 §3, §8). Üpjün ediji bilen diňe şahsyýet hyzmaty gürleşýär; guramalar, gapjyklar we barlaýjylar gürleşmeýär. Üpjün edijiniň sessiýasy adama şahsyýet hyzmatynyň beren opak salgylanmasy bilen baglanýar; bu meýdana at, şahsyýet belgisi ýa-da e-poçta ýazylmaýar. Iş akymynda diňe resminama, janlylyk we ýüz deňeşdirmesi açyk; jenaýatçylykly girdejileri barlamak we aragatnaşyk barlagy ýapyk, sebäbi maksat diňe resminama bermegiň deslapky şertini üpjün etmekdir. Üpjün edijiniň habarnamasy (webhook) gol we wagt belligi bilen barlanýar, ýöne ol diňe başladyjydyr; karar hemişe üpjün edijiniň karar nokadyndan täzeden alynýar. Resminamanyň şekili, portret, wideo we nyşan tanamagyň netijesi şahsyýet hyzmatynda saklanmaýar; hyzmatyň saklaýan zady netijäniň gysga jemlemesidir. Žurnallara wakanyň görnüşi, sessiýa salgylanmasy we dereje ýazylýar; at, resminama belgisi we gabat gelme baly ýazylmaýar.
@@ -1530,10 +1534,10 @@ Tohumyň aýry haýyşda berilmegi standarta laýyklyk kararydyr: OpenID4VCI 1.0
 
 Tor ynamy iki garaşsyz okda ölçeýär (ADR-0005). Birinji ok adamyň şahsyýetiniň näderejede güýçli barlanandygydyr: T0-dan T3-e çenli. Ikinji ok resminama berijiniň näderejede barlanandygydyr: I1-den I3-e çenli (Bölüm 18.6). Barlaýjynyň ynamy ikisiniň jemi däl-de, köpeltmek hasylydyr; gaty gowy barlanan adam barlanmadyk guramanyň resminamasyny göterýän bolsa ýa-da akkreditasiýaly gurama şahsyýeti asla barlanmadyk adama resminama beren bolsa, netije gymmatsyzdyr. Adam tarapyndaky derejeler eIDAS kepillik derejeleri \[4\] we şahsyýet barlagy üçin ETSI TS 119 461-iň derejeleri bilen birme-bir gabat gelýär; şeýlelikde tor öz ölçegini ulananda ÝB bilen şol bir dilde gürleşýär (Tablisa 23).
 
-#tablo([#{strong[Tablisa 23.]} Adamyň kepillik derejeleri we olaryň gabatlyklary (ADR-0005; SPEC-ID-0003 §1; FW-ARF-0001 §6.5).], (19fr, 21fr, 14fr, 48fr, 26fr), ([Dereje​​​​​​​​​], [eIDAS derejesi​​​​​​​​​], [ETSI TS 119 461​​​​​​], [Adaty ýol], [Şahsyýet hyzmatynda],), (
+#tablo([#{strong[Tablisa 23.]} Adamyň kepillik derejeleri we olaryň gabatlyklary (ADR-0005; SPEC-ID-0003 §1; FW-ARF-0001 §6.5).], (19fr, 21fr, 14fr, 48fr, 34fr), ([Dereje​​​​​​​​​], [eIDAS derejesi​​​​​​​​​], [ETSI TS 119 461​​​​​​], [Adaty ýol], [Şahsyýet hyzmatynda],), (
   ([T0], [ýok], [ýok], [enjam açary, e-poçta ýa-da telefon kody; şahsyýet barada tassyklama ýok], [aragatnaşyk resminamalary],),
   ([T1], [Low], [Baseline], [aýry kanaldan gelýän kod, liniýa ýa-da hasap eýeçiligi], [ulanylmaýar],),
-  ([T2], [Substantial], [Substantial], [uzakdan resminama + janlylyk + ýüz deňeşdirmesi ýa-da ýüzbe-ýüz hasaba alyş stoly], [şahsyýet resminamasy häzir şu derejede],),
+  ([T2], [Substantial], [Substantial], [uzakdan resminama + janlylyk + ýüz deňeşdirmesi ýa-da ýüzbe-ýüz hasaba alyş stoly], [şahsyýet resminamasy şu derejede taslanyldy; hakyky torda häzirlikçe berilmeýär],),
   ([T3], [High], [High], [kwalifisirlenen elektron gol bilen nonce-a gol çekmek; döwlet tapgyrynda PID], [uzakdan ýüz barlagy bilen berilmeýär],),
 ))
 

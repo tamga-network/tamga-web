@@ -330,13 +330,13 @@ Bölüm 3, AB’nin rol setini anlattı. Bu bölüm aynı seti Tamga’nın içi
 
 Tamga’nın rol seti AB ARF’sinden \[11\] alınmıştır ve bir kuralla başlar: her ülke listesi bu rollerin her biri için bir yer ayırır; yer boş kalsa da vardır (FW-ARF-0001 §3). Bunun pratik anlamı şudur: bir devlet katıldığında yapıya yeni bir alan eklenmez, var olan bir yer dolar. Tablo 7 rolleri, bugünkü ve devlet katıldığındaki sahipleriyle birlikte verir.
 
-#tablo([#{strong[Tablo 7.]} Roller: bugün ve devlet katıldığında.], (29fr, 45fr, 23fr, 21fr), ([Rol (AB adı)], [Ne yapar], [Bugün], [Devlet katıldığında],), (
+#tablo([#{strong[Tablo 7.]} Roller: bugün ve devlet katıldığında.], (29fr, 48fr, 23fr, 21fr), ([Rol (AB adı)], [Ne yapar], [Bugün], [Devlet katıldığında],), (
   ([Güven listesi işletmecisi (#{emph[Trusted List Scheme Operator]})], [Ülke listesini derler, imzalar, yayımlar], [Ağ, devlet adına geçici], [Ulusal otorite ya da yetkilendirdiği kurum],),
   ([Kayıt kurumu (#{emph[Registrar]})], [Belge verenleri, doğrulayıcıları ve cüzdan sağlayıcılarını kaydeder; yasal yetki vermez], [Ağ, devlet adına geçici], [Devletin kayıt kurumu],),
   ([Ulusal kök sertifika makamı], [Kurum sertifikalarının kökü], [Ağ, geçici; kök kimliği devirde değişmez], [Devletin kökü ya da yetkili sertifika sağlayıcısı],),
   ([Erişim ve kayıt sertifikası sağlayıcısı], [Doğrulayıcılara erişim ve kayıt sertifikası verir], [Ağ, geçici], [Devlet],),
   ([PID sağlayıcısı], [Kişi kimlik verisini en yüksek güvencede verir], [#{strong[Boş]}; ağ bu rolü üstlenmez], [Devlet],),
-  ([Geçici kimlik belgesi sağlayıcısı], [PID sağlayıcısı yokken uzaktan kimlik doğrulamasıyla kimlik belgesi verir], [Ağın kimlik servisi], [PID sağlayıcısı devralır],),
+  ([Geçici kimlik belgesi sağlayıcısı], [PID sağlayıcısı yokken kimlik belgesi verir; gerçek ağda gerçek bir kimlik yolu açılana kadar verilmez (ADR-0098)], [Ağın kimlik servisi], [PID sağlayıcısı devralır],),
   ([Belge veren (#{emph[Attestation Provider]})], [Öznitelik belgesi verir ve gerektiğinde iptal eder], [Kurumlar (üniversite, bilet satıcısı gibi)], [Kurumlar ve kamu kurumları],),
   ([Yetkili kaynak (#{emph[Authentic Source]})], [Bilginin asıl kaydını tutar], [Kurumun kendi kayıt sistemi], [Aynı; ayrıca kamu kaynakları],),
   ([Cüzdan sağlayıcısı (#{emph[Wallet Provider]})], [Cüzdanı sunar; cüzdan ve anahtar kanıtlarını imzalar], [Cüzdanı sunan kuruluşlar; ağ işletmez, listeler], [Kurallara uyan her sağlayıcı],),
@@ -1497,6 +1497,10 @@ Bu belge PID değildir; AB’nin dilinde nitelikli olmayan bir elektronik öznit
 
 == Uzaktan kimlik doğrulama
 
+#kutu("onemli", [Güncelleme: 25 Kasım 2026])[
+Tamga Network ticari uzaktan kimlik doğrulama sağlayıcısını bıraktı (ADR-0098). Gerçek ağda kimlik belgesi, takma ad tohumu ve sürücü belgesi bilgisi şimdilik verilmiyor; yeniden açılış yalnız gerçek bir kimlik yoluyla olacak: devletin ya da yetkilendirdiği kurumun PID’i, nitelikli e-imza sertifikası verilirken yapılan kanuni kimlik tespiti ya da kimlik kartı çipi (hukuki görüş ve yüz eşleştirme yöntemi seçilene kadar kapalı). Sandbox’ta kimlik adımı örnek kişiyle geçilir. Bu bölüm, sağlayıcının kullanıldığı tasarımı anlatır.
+]
+
 Uzaktan kimlik doğrulama üç denetimin birleşimidir: kimlik belgesinin taranıp gerçekliğinin incelenmesi, kameranın önündeki kişinin canlı olduğunun anlaşılması (canlılık) ve yüzün belgedeki fotoğrafla eşleştirilmesi. Bu işi lisanslı bir uzaktan kimlik doğrulama sağlayıcısı yapar. Tasarım belirli bir sağlayıcıya bağlı değildir: kimlik servisi sağlayıcıyla dar bir adaptör arayüzü üzerinden konuşur (oturum aç, kararı al, bildirimi doğrula) ve ikinci bir sağlayıcı aynı arayüzün arkasına eklenebilir (SPEC-ID-0003 §6). İkinci, yerli bir sağlayıcının eklenmesi açık bir konudur (SPEC-ID-0003, Açık Konular 3).
 
 Sağlayıcı ağın en çok görme yetkisi olan dış parçasıdır; kişinin belgesini ve yüzünü görür. Bu yüzden onun çevresine sıkı kurallar çizilmiştir (SPEC-ID-0003 §3, §8). Sağlayıcıyla yalnız kimlik servisi konuşur; kurumlar, cüzdanlar ve doğrulayıcılar konuşmaz. Sağlayıcı oturumu kişiye kimlik servisinin verdiği opak bir referansla bağlanır; bu alana ad, kimlik numarası ya da e-posta yazılmaz. İş akışında yalnız belge, canlılık ve yüz eşleştirmesi açıktır; kara para taraması ve iletişim doğrulaması kapalıdır, çünkü amaç yalnız belge vermenin ön koşulunu sağlamaktır. Sağlayıcının bildirimi (webhook) imza ve zaman damgasıyla denetlenir ama yalnız bir tetikleyicidir; karar her zaman sağlayıcının karar ucundan yeniden çekilir. Belge görüntüsü, portre, video ve karakter tanıma çıktısı kimlik servisinde saklanmaz; servisin tuttuğu şey sonucun kısa özetidir. Günlüklere olay türü, oturum referansı ve seviye yazılır; ad, belge numarası ve eşleşme skoru yazılmaz.
@@ -1530,10 +1534,10 @@ Tohumun ayrı bir istekte verilmesi bir standart uyumu kararıdır: OpenID4VCI 1
 
 Ağ güveni iki bağımsız eksende ölçer (ADR-0005). Birinci eksen kişinin kimliğinin ne kadar güçlü doğrulandığıdır: T0’dan T3’e. İkinci eksen belge verenin ne kadar denetlendiğidir: I1’den I3’e (Bölüm 18.6). Doğrulayıcının güveni ikisinin çarpımıdır, toplamı değildir; çok iyi doğrulanmış bir kişi denetlenmemiş bir kurumun belgesini taşıyorsa ya da akredite bir kurum kimliği hiç doğrulanmamış birine belge vermişse sonuç değersizdir. Kişi tarafındaki seviyeler eIDAS güvence düzeyleriyle \[4\] ve kimlik doğrulama için ETSI TS 119 461’in düzeyleriyle bire bir eşlenir; böylece ağ kendi ölçüsünü kullanırken AB ile aynı dili konuşur (Tablo 23).
 
-#tablo([#{strong[Tablo 23.]} Kişi güvence seviyeleri ve eşlemeleri (ADR-0005; SPEC-ID-0003 §1; FW-ARF-0001 §6.5).], (19fr, 19fr, 14fr, 48fr, 22fr), ([Seviye​​​​​​​​​], [eIDAS düzeyi​​​​​​​​​], [ETSI TS 119 461​​​​​​], [Tipik yol], [Kimlik servisinde],), (
+#tablo([#{strong[Tablo 23.]} Kişi güvence seviyeleri ve eşlemeleri (ADR-0005; SPEC-ID-0003 §1; FW-ARF-0001 §6.5).], (19fr, 19fr, 14fr, 48fr, 30fr), ([Seviye​​​​​​​​​], [eIDAS düzeyi​​​​​​​​​], [ETSI TS 119 461​​​​​​], [Tipik yol], [Kimlik servisinde],), (
   ([T0], [yok], [yok], [cihaz anahtarı, e-posta ya da telefon kodu; kimlik iddiası yok], [iletişim belgeleri],),
   ([T1], [Low], [Baseline], [ayrı kanaldan gelen kod, hat ya da hesap sahipliği], [kullanılmaz],),
-  ([T2], [Substantial], [Substantial], [uzaktan belge + canlılık + yüz eşleştirmesi ya da yüz yüze kayıt masası], [kimlik belgesi bugün bu düzeyde],),
+  ([T2], [Substantial], [Substantial], [uzaktan belge + canlılık + yüz eşleştirmesi ya da yüz yüze kayıt masası], [kimlik belgesi bu düzeyde tasarlandı; gerçek ağda şimdilik verilmiyor],),
   ([T3], [High], [High], [nitelikli elektronik imza ile nonce imzalama; devlet aşamasında PID], [uzaktan yüz doğrulamasıyla verilmez],),
 ))
 

@@ -73,7 +73,7 @@ const en: RoadmapContent = {
       state: "done",
       title: "List stage (today)",
       summary:
-        "The full flow already works end to end in the sandbox, with real cryptography and on the network's live software. “Live” does not mean an institution already uses it: on the real network's Türkiye list the only active issuer today is the network's provisional identity service, and institution credentials will follow the same path as the first institutions join. Identity checks on the real network are currently by invitation.",
+        "The full flow already works end to end in the sandbox, with real cryptography and on the network's live software. “Live” does not mean an institution already uses it: on the real network's Türkiye list the only active issuer today is the network's provisional identity service, and institution credentials will follow the same path as the first institutions join. No identity credential is issued on the real network for now: the commercial verification provider was dropped, and identity will come from the state's PID or another real identity path; the service issues contact credentials.",
       cards: [
         {
           icon: "shield",
@@ -83,7 +83,7 @@ const en: RoadmapContent = {
         {
           icon: "id",
           title: "Identity credential",
-          desc: "remote identity check; also as ISO mdoc",
+          desc: "in the sandbox with sample persons, also as ISO mdoc; on the real network once a real identity path opens",
         },
         {
           icon: "list",
@@ -322,7 +322,7 @@ const tr: RoadmapContent = {
       state: "done",
       title: "Liste aşaması (bugün)",
       summary:
-        "Akışın tamamı bugün sandbox'ta, gerçek kriptografiyle ve ağın canlıdaki yazılımıyla uçtan uca çalışıyor. “Yayında” bir kurumun bunu kullandığı anlamına gelmez: gerçek ağın Türkiye listesinde bugün etkin tek belge veren ağın geçici kimlik servisidir; kurum belgeleri ilk kurumlar katıldıkça aynı yoldan verilecek. Gerçek ağda kimlik doğrulama şimdilik yalnız davetle yapılıyor.",
+        "Akışın tamamı bugün sandbox'ta, gerçek kriptografiyle ve ağın canlıdaki yazılımıyla uçtan uca çalışıyor. “Yayında” bir kurumun bunu kullandığı anlamına gelmez: gerçek ağın Türkiye listesinde bugün etkin tek belge veren ağın geçici kimlik servisidir; kurum belgeleri ilk kurumlar katıldıkça aynı yoldan verilecek. Gerçek ağda şimdilik kimlik belgesi verilmiyor: ticari doğrulama sağlayıcısı bırakıldı, kimlik devletin PID'inden ya da başka gerçek bir kimlik yolundan gelecek; servis iletişim belgelerini veriyor.",
       cards: [
         {
           icon: "shield",
@@ -332,7 +332,7 @@ const tr: RoadmapContent = {
         {
           icon: "id",
           title: "Kimlik belgesi",
-          desc: "uzaktan kimlik doğrulama; ISO mdoc olarak da",
+          desc: "sandbox'ta örnek kişilerle, ISO mdoc olarak da; gerçek ağda gerçek bir kimlik yolu açılınca",
         },
         {
           icon: "list",
@@ -571,7 +571,7 @@ const tk: RoadmapContent = {
       state: "done",
       title: "Sanaw tapgyry (häzir)",
       summary:
-        "Akymyň hemmesi häzir sandbox-da, hakyky kriptografiýa bilen we toruň işleýän programma üpjünçiliginde başdan-aýak işleýär. “Işleýär” bir guramanyň muny ulanýandygyny aňlatmaýar: hakyky toruň Türkiýe sanawynda häzir işjeň ýeke-täk resminama beriji toruň wagtlaýyn şahsyýet hyzmatydyr; gurama resminamalary ilkinji guramalar goşuldygyça şol bir ýol bilen berler. Hakyky torda şahsyýet barlagy häzirlikçe diňe çakylyk bilen geçirilýär.",
+        "Akymyň hemmesi häzir sandbox-da, hakyky kriptografiýa bilen we toruň işleýän programma üpjünçiliginde başdan-aýak işleýär. “Işleýär” bir guramanyň muny ulanýandygyny aňlatmaýar: hakyky toruň Türkiýe sanawynda häzir işjeň ýeke-täk resminama beriji toruň wagtlaýyn şahsyýet hyzmatydyr; gurama resminamalary ilkinji guramalar goşuldygyça şol bir ýol bilen berler. Hakyky torda häzirlikçe şahsyýet resminamasy berilmeýär: täjirçilik barlag üpjün edijisinden ýüz öwrüldi, şahsyýet döwletiň PID-inden ýa-da başga hakyky şahsyýet ýolundan geler; hyzmat aragatnaşyk resminamalaryny berýär.",
       cards: [
         {
           icon: "shield",
@@ -581,7 +581,7 @@ const tk: RoadmapContent = {
         {
           icon: "id",
           title: "Şahsyýet resminamasy",
-          desc: "uzakdan şahsyýet barlagy; ISO mdoc görnüşinde hem",
+          desc: "sandbox-da nusga adamlar bilen, ISO mdoc görnüşinde hem; hakyky torda hakyky şahsyýet ýoly açylanda",
         },
         {
           icon: "list",
@@ -820,7 +820,7 @@ const az: RoadmapContent = {
       state: "done",
       title: "Siyahı mərhələsi (bu gün)",
       summary:
-        "Bütün axın bu gün sandbox-da, real kriptoqrafiya ilə və şəbəkənin işlək proqram təminatı üzərində əvvəldən sona qədər işləyir. “İşləkdir” bir qurumun bundan istifadə etdiyi demək deyil: real şəbəkənin Türkiyə siyahısında bu gün aktiv olan yeganə sənəd verən şəbəkənin müvəqqəti şəxsiyyət xidmətidir; qurum sənədləri ilk qurumlar qoşulduqca eyni yolla veriləcək. Real şəbəkədə şəxsiyyət yoxlaması hələlik yalnız dəvətlə aparılır.",
+        "Bütün axın bu gün sandbox-da, real kriptoqrafiya ilə və şəbəkənin işlək proqram təminatı üzərində əvvəldən sona qədər işləyir. “İşləkdir” bir qurumun bundan istifadə etdiyi demək deyil: real şəbəkənin Türkiyə siyahısında bu gün aktiv olan yeganə sənəd verən şəbəkənin müvəqqəti şəxsiyyət xidmətidir; qurum sənədləri ilk qurumlar qoşulduqca eyni yolla veriləcək. Real şəbəkədə hələlik şəxsiyyət sənədi verilmir: kommersiya yoxlama provayderindən imtina edildi, şəxsiyyət dövlətin PID-indən və ya başqa real şəxsiyyət yolundan gələcək; xidmət əlaqə sənədlərini verir.",
       cards: [
         {
           icon: "shield",
@@ -830,7 +830,7 @@ const az: RoadmapContent = {
         {
           icon: "id",
           title: "Şəxsiyyət sənədi",
-          desc: "məsafədən şəxsiyyət yoxlaması; ISO mdoc formatında da",
+          desc: "sandbox-da nümunə şəxslərlə, ISO mdoc formatında da; real şəbəkədə real şəxsiyyət yolu açıldıqda",
         },
         {
           icon: "list",

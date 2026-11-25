@@ -336,7 +336,7 @@ Tamga’s set of roles is taken from the EU ARF \[11\] and begins with a rule: e
   ([National root certificate authority], [Root of the institution certificates], [The network, provisionally; the root’s identity does not change at handover], [The state’s root or an authorised certificate provider],),
   ([Access and registration certificate provider], [Issues access and registration certificates to verifiers], [The network, provisionally], [The state],),
   ([PID provider], [Issues person identification data at the highest assurance], [#{strong[Empty]}; the network does not take on this role], [The state],),
-  ([Provisional identity credential provider], [Issues an identity credential through remote identity proofing while there is no PID provider], [The network’s identity service], [The PID provider takes over],),
+  ([Provisional identity credential provider], [Issues an identity credential while there is no PID provider; not issued on the real network until a real identity path opens (ADR-0098)], [The network’s identity service], [The PID provider takes over],),
   ([Issuer (#{emph[Attestation Provider]})], [Issues attestations of attributes and revokes them when necessary], [Institutions (such as universities, ticket sellers)], [Institutions and public bodies],),
   ([Authentic source (#{emph[Authentic Source]})], [Holds the original record of the information], [The institution’s own record system], [The same; public sources as well],),
   ([Wallet provider (#{emph[Wallet Provider]})], [Provides the wallet; signs wallet and key attestations], [The organisations that provide wallets; the network does not operate one, it lists them], [Every provider that follows the rules],),
@@ -1497,6 +1497,10 @@ This credential is not a PID; in the EU’s language it is a non-qualified elect
 
 == Remote identity verification
 
+#kutu("onemli", [Update: 25 November 2026])[
+Tamga Network has stopped using a commercial remote identity verification provider (ADR-0098). On the real network the identity credential, the pseudonym seed and driving licence data are not issued for now; they reopen only through a real identity path: the PID of the state or a body it authorises, the legal identification done when a qualified e-signature certificate is issued, or the ID card chip (closed until a legal opinion and a face matching method are in place). In the sandbox the identity step is passed with a sample person. This section describes the design in which the provider was used.
+]
+
 Remote identity verification combines three checks: scanning the identity document and examining its authenticity, establishing that the person in front of the camera is alive (liveness), and matching the face against the photo in the document. This work is done by a licensed remote identity verification provider. The design is not tied to a particular provider: the identity service talks to the provider through a narrow adapter interface (open a session, fetch the decision, verify the notification), and a second provider can be added behind the same interface (SPEC-ID-0003 §6). Adding a second, domestic provider is an open topic (SPEC-ID-0003, Open Topics 3).
 
 The provider is the external component of the network with the widest view; it sees the person’s document and face. For this reason strict rules are drawn around it (SPEC-ID-0003 §3, §8). Only the identity service talks to the provider; institutions, wallets and verifiers do not. The provider session is linked to the person by an opaque reference issued by the identity service; no name, identity number or e-mail is written into this field. In the workflow only document, liveness and face matching are switched on; anti-money laundering screening and contact verification are switched off, because the aim is only to meet the precondition for issuance. The provider’s notification (webhook) is checked by signature and timestamp, but it is only a trigger; the decision is always fetched again from the provider’s decision endpoint. The document image, portrait, video and character recognition output are not stored at the identity service; what the service keeps is a short summary of the result. Logs record the event type, session reference and level; they do not record the name, document number or match score.
@@ -1530,10 +1534,10 @@ Issuing the seed in a separate request is a standards conformance decision: Open
 
 The network measures trust on two independent axes (ADR-0005). The first axis is how strongly the person’s identity has been verified: from T0 to T3. The second is how thoroughly the issuer has been audited: from I1 to I3 (Section 18.6). A verifier’s trust is the product of the two, not their sum; if a very well verified person carries a credential from an unaudited institution, or an accredited institution has issued a credential to someone whose identity was never verified, the result is worthless. The levels on the person’s side map one to one onto the eIDAS levels of assurance \[4\] and the levels of ETSI TS 119 461 for identity proofing; this way the network uses its own measure while speaking the same language as the EU (Table 23).
 
-#tablo([#{strong[Table 23.]} Person assurance levels and their mappings (ADR-0005; SPEC-ID-0003 §1; FW-ARF-0001 §6.5).], (18fr, 18fr, 14fr, 48fr, 27fr), ([Level​​​​​​​​​], [eIDAS level​​​​​​​​​], [ETSI TS 119 461​​​​​​], [Typical path], [At the identity service],), (
+#tablo([#{strong[Table 23.]} Person assurance levels and their mappings (ADR-0005; SPEC-ID-0003 §1; FW-ARF-0001 §6.5).], (18fr, 18fr, 14fr, 48fr, 36fr), ([Level​​​​​​​​​], [eIDAS level​​​​​​​​​], [ETSI TS 119 461​​​​​​], [Typical path], [At the identity service],), (
   ([T0], [none], [none], [device key, e-mail or phone code; no identity claim], [contact credentials],),
   ([T1], [Low], [Baseline], [a code from a separate channel, line or account ownership], [not used],),
-  ([T2], [Substantial], [Substantial], [remote document + liveness + face matching, or an in-person registration desk], [the identity credential is at this level today],),
+  ([T2], [Substantial], [Substantial], [remote document + liveness + face matching, or an in-person registration desk], [the identity credential was designed at this level; not issued on the real network for now],),
   ([T3], [High], [High], [signing a nonce with a qualified electronic signature; PID in the state stage], [not granted by remote face verification],),
 ))
 

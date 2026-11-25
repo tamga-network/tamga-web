@@ -3,6 +3,7 @@ title: Tamga Network'ün hiç görmediği şeyler
 slug: what-the-network-never-sees
 description: Tamga Network'ün listelerinde ve günlüklerinde nelerin hiç bulunmadığını, geçici hizmetlerinin kişisel veriye nerede dokunduğunu ve işletmecilerin neye erişebildiğini anlatıyoruz.
 date: 2026-10-08
+updated: 2026-11-25
 lang: tr
 category: privacy
 draft: false
@@ -10,6 +11,8 @@ related: status-list-privacy, trusting-a-wallet, what-is-a-trust-network, zero-k
 ---
 
 <!-- Kaynak: SPEC-TRUST-0001 TL11 (hiçbir liste, çapa günlüğü, değişiklik kaydında kişisel veri, belge ya da belge özeti yok); SPEC-BC-0001 DP1 (ileride defter: kişisel veri, içerik, özet yok); ADR-0020 K2 + AS1–AS4 (kişi kaydı yok; veri imza anında yetkili kaynaktan okunur, bırakılır; kalıcı yalnız subject_ref ve anahtarlı özet; Tamga iletişim adresi almaz); ADR-0041 TI3–TI5 (deneme kayıt defteri yalnız sandbox'ta); SPEC-API-0001 AP3, AP4, AP7; ADR-0017 HV1–HV3 (değer bir kez, ≤ 5 dk'da silinir); SPEC-WALLET-0001 WL4, WL9; SPEC-ID-0003 §3 IP4/IP11, §8 IDP3, IDP4, IDP9, IDP11, §9 (kimlik servisi, veri sorumlusu, sağlayıcıda görüntü sözleşmeyle ≤ 30 gün), §9.1 silme; ADR-0011; ADR-0022; ADR-0031 PS1–PS3 ve "bilinen zayıflama"; ARF mimari §2.7, §4.5 madde 4, §7.2 madde 1, 6, 7; ARF kural kitabı RB-GEN-05; ADR-0038 SB1–SB5; ADR-0040 RI3–RI6; ADR-0041 TI4; ADR-0042 NW1. SPEC-TRUST-0001 güvenlik notları (tek işletmeci, üç aylık şeffaflık raporu, denetim). Canlı bakış 2026-10-08: lotl.json / tl-tr.json alanları ve anchors.jsonl satırları kişisel veri içermiyor. -->
+
+> **Güncelleme (25 Kasım 2026):** Tamga Network ticari uzaktan kimlik doğrulama sağlayıcısını bıraktı ([ADR-0098](https://docs.tamga.network/tr/adr/0098-remove-commercial-identity-proofing-provider)). Gerçek ağda kimlik belgesi şimdilik verilmiyor ve kimlik belgesi ya da yüz görüntüsü işlenmiyor; kişinin temel kimliğini (PID) devletin ya da yetkilendirdiği kurumun vermesi gerekiyor. Test ağında örnek kişilerle denenebilir. Aşağıdaki "Kimlik servisi ne görür?" bölümü sağlayıcının kullanıldığı dönemi anlatır.
 
 Tamga Network, kişilerin belgelerinin içeriğini listelerinde, günlüklerinde ya da çapa günlüğünde hiçbir zaman görmez. Kişilerle ilgili bir kayıt tutmaz, bir belgenin nerede ya da kime gösterildiğini öğrenmez ve IP adresi kaydetmez. Bununla birlikte ağ, kişisel veriye kısa bir süre için dokunan birkaç geçici hizmet işletiyor. Kimlik servisi kimlik doğrulaması sırasında, barındırılan belge verme hizmeti imza anında, barındırılan doğrulayıcı da bir site onu kullanmayı seçtiğinde kişisel veriyle karşılaşıyor. Kurallar bu hizmetlerin her biri için neyin ne kadar süre tutulabileceğini ve neyin hiçbir zaman tutulamayacağını belirliyor.
 
